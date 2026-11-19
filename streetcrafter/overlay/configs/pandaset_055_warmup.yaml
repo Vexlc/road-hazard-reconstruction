@@ -1,0 +1,37 @@
+parent_cfg: configs/waymo_val_121.yaml
+task: pandaset
+source_path: ../data/processed/055
+model_path: ../runs/pandaset055_warmup
+record_dir: ../runs/pandaset055_warmup/record
+exp_name: pandaset055_warmup
+resume: True
+resolution: 960
+resolution_scales: [1]
+data:
+  type: Pandaset
+  selected_frames: [0, 79]
+  cameras: [0]
+  split_train: -1
+  split_test: 8
+  use_colmap: False
+  extent: 30.0
+model:
+  sky:
+    resolution: 256
+train:
+  iterations: 7000
+  keep_optimizer: True
+  test_iterations: [1000, 3000, 7000]
+  checkpoint_iterations: [1000, 2000, 3000, 4000, 5000, 6000, 7000]
+optim:
+  lambda_lpips: 0.05
+  lambda_sky: 0.05
+  lambda_depth_lidar: 0.01
+  lambda_scale_flatten: 0.0
+diffusion:
+  use_diffusion: False
+  sample_iterations: [7000, 12000, 17000, 22000]
+render:
+  use_gsplat: True
+  novel_view:
+    shift: [0.0, 0.5, 1.0]

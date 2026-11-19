@@ -1,0 +1,98 @@
+{
+  "checked": 5,
+  "omitted": 1194,
+  "failures": [
+    {
+      "id": "stereo_pothole_fan_1_01",
+      "kind": "glb",
+      "actual": "555f53366afb2b477148644f50b83a28b66a604a8884e209b8a3258fa5c63725"
+    },
+    {
+      "id": "stereo_pothole_fan_1_01",
+      "kind": "ply",
+      "actual": "2bc4f8791a693179bb995fa7278f587836a2b25463a9adac8a706c1bb7abaa27"
+    }
+  ],
+  "assets": [
+    {
+      "id": "model_missing_oval_broken_flange_aged_asphalt",
+      "category": "missing",
+      "files": {
+        "glb": {
+          "sha256": "299508c5061d0e3cea8bdca66a9856fcc39c1ced61d9831eccf3245e332a5dc0",
+          "expected": "299508c5061d0e3cea8bdca66a9856fcc39c1ced61d9831eccf3245e332a5dc0",
+          "match": true
+        },
+        "ply": {
+          "sha256": "d3a31fd4394b5c93b62d9f1bc1245bd6a3a9f7350ab7d08dfbdf6c693dd41017",
+          "expected": "d3a31fd4394b5c93b62d9f1bc1245bd6a3a9f7350ab7d08dfbdf6c693dd41017",
+          "match": true
+        }
+      }
+    },
+    {
+      "id": "model_pothole_bowled_aged_asphalt_01",
+      "category": "pothole",
+      "files": {
+        "glb": {
+          "sha256": "740a1e6a4200b2f483123a12e467ad60b09b362c2bb2a9163356735802f963f4",
+          "expected": "740a1e6a4200b2f483123a12e467ad60b09b362c2bb2a9163356735802f963f4",
+          "match": true
+        },
+        "ply": {
+          "sha256": "27432170e3adc5036082f0080f34597530d0de301da894f56ae7bccf2626209f",
+          "expected": "27432170e3adc5036082f0080f34597530d0de301da894f56ae7bccf2626209f",
+          "match": true
+        }
+      }
+    },
+    {
+      "id": "model_raised_oval_ajar14_aged_asphalt",
+      "category": "raised",
+      "files": {
+        "glb": {
+          "sha256": "8b837e7a52b85ef021232a78a58cdfb5d8216b54a160eeba4c06ea0316c59673",
+          "expected": "8b837e7a52b85ef021232a78a58cdfb5d8216b54a160eeba4c06ea0316c59673",
+          "match": true
+        },
+        "ply": {
+          "sha256": "3bb0cd7eb1d330797ad6a5628a6ae268255aec6be041ca8be240372ab4c4648e",
+          "expected": "3bb0cd7eb1d330797ad6a5628a6ae268255aec6be041ca8be240372ab4c4648e",
+          "match": true
+        }
+      }
+    },
+    {
+      "id": "rgbd_pothole_20250227_135438",
+      "category": "rgbd",
+      "files": {
+        "glb": {
+          "sha256": "1bb4551b9fbb8acfb6ca6122e0a50ae4c35bffbfcdcd5aaff2da819a231ab201",
+          "expected": "1bb4551b9fbb8acfb6ca6122e0a50ae4c35bffbfcdcd5aaff2da819a231ab201",
+          "match": true
+        },
+        "ply": {
+          "sha256": "9bc3f1d020ff31cc121fbfe7c12361a078cc92ff8503455f90361858734cea5a",
+          "expected": "9bc3f1d020ff31cc121fbfe7c12361a078cc92ff8503455f90361858734cea5a",
+          "match": true
+        }
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_01",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "555f53366afb2b477148644f50b83a28b66a604a8884e209b8a3258fa5c63725",
+          "expected": "2de6b708347f953d4fae795ca6b71258b7100684efb6fca37824e12aa7d046c2",
+          "match": false
+        },
+        "ply": {
+          "sha256": "2bc4f8791a693179bb995fa7278f587836a2b25463a9adac8a706c1bb7abaa27",
+          "expected": "37ac48e4f08b7d61c76fda1e77cf9000aa268c10d7105ea837a7ed23941c3c97",
+          "match": false
+        }
+      }
+    }
+  ]
+}

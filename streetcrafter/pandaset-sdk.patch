@@ -1,0 +1,35 @@
+diff --git a/python/pandaset/annotations.py b/python/pandaset/annotations.py
+index 54f3d56..181ba17 100644
+--- a/python/pandaset/annotations.py
++++ b/python/pandaset/annotations.py
+@@ -92,7 +92,7 @@ class Cuboids(Annotation):
+ 
+     @property
+     def _data_file_extension(self) -> str:
+-        return 'pkl'
++        return 'pkl.gz'
+ 
+     @property
+     def data(self) -> List[pd.DataFrame]:
+@@ -203,7 +203,7 @@ class SemanticSegmentation(Annotation):
+ 
+     @property
+     def _data_file_extension(self) -> str:
+-        return 'pkl'
++        return 'pkl.gz'
+ 
+     @property
+     def data(self) -> List[pd.DataFrame]:
+diff --git a/python/pandaset/sensors.py b/python/pandaset/sensors.py
+index 1894b1f..a3dec3f 100644
+--- a/python/pandaset/sensors.py
++++ b/python/pandaset/sensors.py
+@@ -134,7 +134,7 @@ class Sensor:
+ class Lidar(Sensor):
+     @property
+     def _data_file_extension(self) -> str:
+-        return 'pkl'
++        return 'pkl.gz'
+ 
+     @property
+     def data(self) -> List[pd.DataFrame]:

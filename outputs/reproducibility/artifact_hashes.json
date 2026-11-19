@@ -1,0 +1,98 @@
+{
+  "scene_A_056/input_vs_reconstruction.mp4": {
+    "bytes": 15312939,
+    "sha256": "e5979dd0676046938026193ac5a15df097b60bc9a1a9f69cf31b70ae935318ae"
+  },
+  "scene_A_056/scene_frame040.ply": {
+    "bytes": 94311784,
+    "sha256": "e15d726452c59f83c2d2e9a46e2226fee0ee67a9d9fbf7cefc82cee8e7a41714"
+  },
+  "scene_A_056/comparison_000.jpg": {
+    "bytes": 267592,
+    "sha256": "1193418a3a258d180fa60573c52eb2fced73f9f09546c5676284c48bde295d0c"
+  },
+  "scene_A_056/comparison_025.jpg": {
+    "bytes": 272624,
+    "sha256": "9eb63306bfb552967670de1128cb301b6251b55c342c8a14b1d682585ef50d6d"
+  },
+  "scene_A_056/comparison_040.jpg": {
+    "bytes": 282820,
+    "sha256": "8085950f2d6376d30921c70c557ad97a4eea22a83b3c601ce794ba9340d93c24"
+  },
+  "scene_A_056/checkpoint_7000.pth": {
+    "bytes": 284559254,
+    "sha256": "9d69d3679a661e3a2793d9a7e78c76b8414ee9a2ef229f62b49b37481b9ede5c"
+  },
+  "scene_A_056/comparison_079.jpg": {
+    "bytes": 280231,
+    "sha256": "e4770e90106b9f75adba67b4cd41c241e09c2412a30badf55677b7b302149e67"
+  },
+  "scene_A_056/metrics.json": {
+    "bytes": 1696,
+    "sha256": "66eda20a5b35205685f844c3931c34089fce951bba03c2900841a5f4ec848a3f"
+  },
+  "scene_A_056/sky_latlong.png": {
+    "bytes": 3674,
+    "sha256": "1f8c3e9d535ba415fd874abd5598044ee35e4e0dd370074d55cb72d77ae66ca7"
+  },
+  "scene_A_056/reconstruction.mp4": {
+    "bytes": 5752922,
+    "sha256": "4364f8713e45cf3d8ef662ce2dc41b6f379e99ee73116b2e8635d1d38c8c61f3"
+  },
+  "scene_A_056/comparison_050.jpg": {
+    "bytes": 275392,
+    "sha256": "da655cc867779bf545d1907022fa21c5033c33948ee265c82aaaa16ab60d3a46"
+  },
+  "scene_A_056/novel_view_0.5m.mp4": {
+    "bytes": 5803000,
+    "sha256": "aa0e4109d7f0c1928fde2f4e66de44a853c5cceeebb7fdd596e83ba72fca88cc"
+  },
+  "scene_B_055/input_vs_reconstruction.mp4": {
+    "bytes": 15975120,
+    "sha256": "b934b4fc0f12904766ae7fe7ac2e9a867619a8121e3d2d748cba5f22022bebac"
+  },
+  "scene_B_055/scene_frame040.ply": {
+    "bytes": 109769721,
+    "sha256": "ea3e3eb6e6c4fae2ea1fd83d84cde39b82b07b7120a86654df1f9d01933282fe"
+  },
+  "scene_B_055/comparison_000.jpg": {
+    "bytes": 280730,
+    "sha256": "23e578c68f10ba434a6c41a179823dd49450dcdccfca29abe19da69a8f02fbfe"
+  },
+  "scene_B_055/comparison_025.jpg": {
+    "bytes": 293444,
+    "sha256": "78cedb7f9a14d151b34d431cf840b0feb59ca9f1c2568302ac7a602da99fa326"
+  },
+  "scene_B_055/comparison_040.jpg": {
+    "bytes": 297203,
+    "sha256": "62c9b3c316554cdfad1496cd9e8fb1c0d63056e59ac251cef857bd34caa00eb1"
+  },
+  "scene_B_055/checkpoint_7000.pth": {
+    "bytes": 333878510,
+    "sha256": "8adc102a0702a7f89a5ab38141ee57eb5acc2816f57ccd6fe33dfa686a3934c1"
+  },
+  "scene_B_055/comparison_079.jpg": {
+    "bytes": 275635,
+    "sha256": "777905da792459bb024c5893071f7474c2372effcbdf255574344c00e9f18ccd"
+  },
+  "scene_B_055/metrics.json": {
+    "bytes": 1701,
+    "sha256": "a97558591d9e981ced8de272837c4f393b7f07f1223e9c8114222b12112fb2b6"
+  },
+  "scene_B_055/sky_latlong.png": {
+    "bytes": 2355,
+    "sha256": "201900484d8a14ca905d5efb1aa3295cae13435dfd231497ff0e4f5a10d40826"
+  },
+  "scene_B_055/reconstruction.mp4": {
+    "bytes": 6037947,
+    "sha256": "cd10f0754550ef74687b8e3d7fe8d87ee053424a7bdc5c0a4d05965d0618101d"
+  },
+  "scene_B_055/comparison_050.jpg": {
+    "bytes": 280419,
+    "sha256": "c017120d4d81d4007993d3f1021820ad48f012357f49863b1203d763844e0d23"
+  },
+  "scene_B_055/novel_view_0.5m.mp4": {
+    "bytes": 6057117,
+    "sha256": "ac5f703ee08e0ddd7b1fa65f3631f1d45df61061f80e6914ebc5d74fae29dbf2"
+  }
+}

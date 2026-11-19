@@ -1,0 +1,1145 @@
+{
+  "videos": [
+    {
+      "name": "01_双目坑洞",
+      "file": "01_双目坑洞_全局动态综合版_1080p.mp4",
+      "source": "./outputs/道路病害_多场景迁入/双目坑洞_几何放大10倍/双目来源坑洞_几何放大10倍_逐帧前后对照.mp4",
+      "frames": 2880,
+      "fps": 24,
+      "seconds": 120,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "global_decoded_frames_at_10fps": 1200,
+      "segments_checked": 30,
+      "actual_scene_motion_passed": true,
+      "segment_audit": [
+        {
+          "segment": 1,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.258445739746094,
+          "after_scene_change": 45.193939208984375
+        },
+        {
+          "segment": 2,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.540618896484375,
+          "after_scene_change": 37.48819351196289
+        },
+        {
+          "segment": 3,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.22026062011719,
+          "after_scene_change": 46.19255065917969
+        },
+        {
+          "segment": 4,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.247745513916016,
+          "after_scene_change": 45.20042037963867
+        },
+        {
+          "segment": 5,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.49584197998047,
+          "after_scene_change": 37.499298095703125
+        },
+        {
+          "segment": 6,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.2202262878418,
+          "after_scene_change": 46.20947265625
+        },
+        {
+          "segment": 7,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.25759506225586,
+          "after_scene_change": 45.26603317260742
+        },
+        {
+          "segment": 8,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.478515625,
+          "after_scene_change": 37.52274703979492
+        },
+        {
+          "segment": 9,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.14459991455078,
+          "after_scene_change": 46.148704528808594
+        },
+        {
+          "segment": 10,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.240867614746094,
+          "after_scene_change": 45.2022819519043
+        },
+        {
+          "segment": 11,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.5267333984375,
+          "after_scene_change": 37.502899169921875
+        },
+        {
+          "segment": 12,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.22498321533203,
+          "after_scene_change": 46.1907844543457
+        },
+        {
+          "segment": 13,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.27219772338867,
+          "after_scene_change": 45.247779846191406
+        },
+        {
+          "segment": 14,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.476619720458984,
+          "after_scene_change": 37.477630615234375
+        },
+        {
+          "segment": 15,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.143184661865234,
+          "after_scene_change": 46.18661880493164
+        },
+        {
+          "segment": 16,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.246212005615234,
+          "after_scene_change": 45.2198486328125
+        },
+        {
+          "segment": 17,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.49886703491211,
+          "after_scene_change": 37.49736785888672
+        },
+        {
+          "segment": 18,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.16593933105469,
+          "after_scene_change": 46.19091033935547
+        },
+        {
+          "segment": 19,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.28232955932617,
+          "after_scene_change": 45.234352111816406
+        },
+        {
+          "segment": 20,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.509132385253906,
+          "after_scene_change": 37.49421310424805
+        },
+        {
+          "segment": 21,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.122520446777344,
+          "after_scene_change": 46.14948654174805
+        },
+        {
+          "segment": 22,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.2815055847168,
+          "after_scene_change": 45.20759582519531
+        },
+        {
+          "segment": 23,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.514530181884766,
+          "after_scene_change": 37.47077178955078
+        },
+        {
+          "segment": 24,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.136566162109375,
+          "after_scene_change": 46.108985900878906
+        },
+        {
+          "segment": 25,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.239009857177734,
+          "after_scene_change": 45.241127014160156
+        },
+        {
+          "segment": 26,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.5128173828125,
+          "after_scene_change": 37.51023483276367
+        },
+        {
+          "segment": 27,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.23170471191406,
+          "after_scene_change": 46.23467254638672
+        },
+        {
+          "segment": 28,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.233375549316406,
+          "after_scene_change": 45.20545959472656
+        },
+        {
+          "segment": 29,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.50248718261719,
+          "after_scene_change": 37.495697021484375
+        },
+        {
+          "segment": 30,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.19574737548828,
+          "after_scene_change": 46.259944915771484
+        }
+      ]
+    },
+    {
+      "name": "02_RGB-D坑洞",
+      "file": "02_RGB-D坑洞_全局动态综合版_1080p.mp4",
+      "source": "./outputs/道路病害_多场景迁入/逐帧行车与双目增强版/02_RGB-D实拍坑洞_逐帧行车与局部对照.mp4",
+      "frames": 2880,
+      "fps": 24,
+      "seconds": 120,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "global_decoded_frames_at_10fps": 1200,
+      "segments_checked": 30,
+      "actual_scene_motion_passed": true,
+      "segment_audit": [
+        {
+          "segment": 1,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.25678253173828,
+          "after_scene_change": 45.26634979248047
+        },
+        {
+          "segment": 2,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.59618377685547,
+          "after_scene_change": 37.54182815551758
+        },
+        {
+          "segment": 3,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.21144485473633,
+          "after_scene_change": 46.21623611450195
+        },
+        {
+          "segment": 4,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.258060455322266,
+          "after_scene_change": 45.31507110595703
+        },
+        {
+          "segment": 5,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.53984069824219,
+          "after_scene_change": 37.50302505493164
+        },
+        {
+          "segment": 6,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.18192672729492,
+          "after_scene_change": 46.12862777709961
+        },
+        {
+          "segment": 7,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.26586151123047,
+          "after_scene_change": 45.243064880371094
+        },
+        {
+          "segment": 8,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.58504867553711,
+          "after_scene_change": 37.56003952026367
+        },
+        {
+          "segment": 9,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.22631072998047,
+          "after_scene_change": 46.226173400878906
+        },
+        {
+          "segment": 10,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.27458953857422,
+          "after_scene_change": 45.2527961730957
+        },
+        {
+          "segment": 11,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.58058166503906,
+          "after_scene_change": 37.546836853027344
+        },
+        {
+          "segment": 12,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.21219253540039,
+          "after_scene_change": 46.19573974609375
+        },
+        {
+          "segment": 13,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.2617301940918,
+          "after_scene_change": 45.26494216918945
+        },
+        {
+          "segment": 14,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.5997428894043,
+          "after_scene_change": 37.55133056640625
+        },
+        {
+          "segment": 15,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.2215461730957,
+          "after_scene_change": 46.232872009277344
+        },
+        {
+          "segment": 16,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.25892639160156,
+          "after_scene_change": 45.23976516723633
+        },
+        {
+          "segment": 17,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.56635665893555,
+          "after_scene_change": 37.53547668457031
+        },
+        {
+          "segment": 18,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.19963836669922,
+          "after_scene_change": 46.200599670410156
+        },
+        {
+          "segment": 19,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.27346420288086,
+          "after_scene_change": 45.244529724121094
+        },
+        {
+          "segment": 20,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.579681396484375,
+          "after_scene_change": 37.53352355957031
+        },
+        {
+          "segment": 21,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.22639846801758,
+          "after_scene_change": 46.239952087402344
+        },
+        {
+          "segment": 22,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.27765655517578,
+          "after_scene_change": 45.26078414916992
+        },
+        {
+          "segment": 23,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.508995056152344,
+          "after_scene_change": 37.459800720214844
+        },
+        {
+          "segment": 24,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.14231872558594,
+          "after_scene_change": 46.110595703125
+        },
+        {
+          "segment": 25,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.26359558105469,
+          "after_scene_change": 45.28965377807617
+        },
+        {
+          "segment": 26,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.550086975097656,
+          "after_scene_change": 37.590980529785156
+        },
+        {
+          "segment": 27,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.207759857177734,
+          "after_scene_change": 46.21294403076172
+        },
+        {
+          "segment": 28,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.24136734008789,
+          "after_scene_change": 45.262447357177734
+        },
+        {
+          "segment": 29,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.535118103027344,
+          "after_scene_change": 37.533897399902344
+        },
+        {
+          "segment": 30,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.14823532104492,
+          "after_scene_change": 46.21041488647461
+        }
+      ]
+    },
+    {
+      "name": "03_建模坑洞",
+      "file": "03_建模坑洞_全局动态综合版_1080p.mp4",
+      "source": "./outputs/道路病害_多场景迁入/逐帧行车与双目增强版/03_建模坑洞_逐帧行车与局部对照.mp4",
+      "frames": 2880,
+      "fps": 24,
+      "seconds": 120,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "global_decoded_frames_at_10fps": 1200,
+      "segments_checked": 30,
+      "actual_scene_motion_passed": true,
+      "segment_audit": [
+        {
+          "segment": 1,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.30990219116211,
+          "after_scene_change": 45.301998138427734
+        },
+        {
+          "segment": 2,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.60710906982422,
+          "after_scene_change": 37.618614196777344
+        },
+        {
+          "segment": 3,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.216033935546875,
+          "after_scene_change": 46.221614837646484
+        },
+        {
+          "segment": 4,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.2944450378418,
+          "after_scene_change": 45.346012115478516
+        },
+        {
+          "segment": 5,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.62702178955078,
+          "after_scene_change": 37.59463119506836
+        },
+        {
+          "segment": 6,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.22964859008789,
+          "after_scene_change": 46.203189849853516
+        },
+        {
+          "segment": 7,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.304046630859375,
+          "after_scene_change": 45.31700897216797
+        },
+        {
+          "segment": 8,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.63568115234375,
+          "after_scene_change": 37.59682846069336
+        },
+        {
+          "segment": 9,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.201560974121094,
+          "after_scene_change": 46.2059326171875
+        },
+        {
+          "segment": 10,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.31862258911133,
+          "after_scene_change": 45.295875549316406
+        },
+        {
+          "segment": 11,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.63908767700195,
+          "after_scene_change": 37.638572692871094
+        },
+        {
+          "segment": 12,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.241615295410156,
+          "after_scene_change": 46.19453048706055
+        },
+        {
+          "segment": 13,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.31110382080078,
+          "after_scene_change": 45.31188201904297
+        },
+        {
+          "segment": 14,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.6170539855957,
+          "after_scene_change": 37.58600997924805
+        },
+        {
+          "segment": 15,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.1651496887207,
+          "after_scene_change": 46.19227600097656
+        },
+        {
+          "segment": 16,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.32489776611328,
+          "after_scene_change": 45.323097229003906
+        },
+        {
+          "segment": 17,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.64151382446289,
+          "after_scene_change": 37.60319900512695
+        },
+        {
+          "segment": 18,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.22954559326172,
+          "after_scene_change": 46.2266731262207
+        },
+        {
+          "segment": 19,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.319847106933594,
+          "after_scene_change": 45.32130432128906
+        },
+        {
+          "segment": 20,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.60968017578125,
+          "after_scene_change": 37.588993072509766
+        },
+        {
+          "segment": 21,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.16592788696289,
+          "after_scene_change": 46.13820266723633
+        },
+        {
+          "segment": 22,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.28892135620117,
+          "after_scene_change": 45.31911849975586
+        },
+        {
+          "segment": 23,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.623199462890625,
+          "after_scene_change": 37.64598083496094
+        },
+        {
+          "segment": 24,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.1869010925293,
+          "after_scene_change": 46.21876525878906
+        },
+        {
+          "segment": 25,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.328369140625,
+          "after_scene_change": 45.33395767211914
+        },
+        {
+          "segment": 26,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.618621826171875,
+          "after_scene_change": 37.56444549560547
+        },
+        {
+          "segment": 27,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.16504669189453,
+          "after_scene_change": 46.15886306762695
+        },
+        {
+          "segment": 28,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.297821044921875,
+          "after_scene_change": 45.3449592590332
+        },
+        {
+          "segment": 29,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.614498138427734,
+          "after_scene_change": 37.60932922363281
+        },
+        {
+          "segment": 30,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.216102600097656,
+          "after_scene_change": 46.24953842163086
+        }
+      ]
+    },
+    {
+      "name": "04_缺盖窨井",
+      "file": "04_缺盖窨井_全局动态综合版_1080p.mp4",
+      "source": "./outputs/道路病害_多场景迁入/逐帧行车与双目增强版/04_缺盖窨井_逐帧行车与局部对照.mp4",
+      "frames": 2880,
+      "fps": 24,
+      "seconds": 120,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "global_decoded_frames_at_10fps": 1200,
+      "segments_checked": 30,
+      "actual_scene_motion_passed": true,
+      "segment_audit": [
+        {
+          "segment": 1,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.39005661010742,
+          "after_scene_change": 45.3518180847168
+        },
+        {
+          "segment": 2,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.68587112426758,
+          "after_scene_change": 37.713287353515625
+        },
+        {
+          "segment": 3,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.26752471923828,
+          "after_scene_change": 46.245094299316406
+        },
+        {
+          "segment": 4,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.39134216308594,
+          "after_scene_change": 45.440208435058594
+        },
+        {
+          "segment": 5,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.67513656616211,
+          "after_scene_change": 37.680145263671875
+        },
+        {
+          "segment": 6,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.21226119995117,
+          "after_scene_change": 46.2201042175293
+        },
+        {
+          "segment": 7,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.37250518798828,
+          "after_scene_change": 45.358924865722656
+        },
+        {
+          "segment": 8,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.67097091674805,
+          "after_scene_change": 37.696048736572266
+        },
+        {
+          "segment": 9,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.19980239868164,
+          "after_scene_change": 46.188289642333984
+        },
+        {
+          "segment": 10,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.386993408203125,
+          "after_scene_change": 45.3569450378418
+        },
+        {
+          "segment": 11,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.69963073730469,
+          "after_scene_change": 37.71200942993164
+        },
+        {
+          "segment": 12,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.26105880737305,
+          "after_scene_change": 46.242515563964844
+        },
+        {
+          "segment": 13,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.435150146484375,
+          "after_scene_change": 45.45652389526367
+        },
+        {
+          "segment": 14,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.67461395263672,
+          "after_scene_change": 37.66731643676758
+        },
+        {
+          "segment": 15,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.210365295410156,
+          "after_scene_change": 46.2604866027832
+        },
+        {
+          "segment": 16,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.38136291503906,
+          "after_scene_change": 45.37503433227539
+        },
+        {
+          "segment": 17,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.70888900756836,
+          "after_scene_change": 37.670833587646484
+        },
+        {
+          "segment": 18,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.23393249511719,
+          "after_scene_change": 46.2462272644043
+        },
+        {
+          "segment": 19,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.440399169921875,
+          "after_scene_change": 45.42892837524414
+        },
+        {
+          "segment": 20,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.69055938720703,
+          "after_scene_change": 37.70033264160156
+        },
+        {
+          "segment": 21,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.23626708984375,
+          "after_scene_change": 46.15782928466797
+        },
+        {
+          "segment": 22,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.354732513427734,
+          "after_scene_change": 45.40290451049805
+        },
+        {
+          "segment": 23,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.68866729736328,
+          "after_scene_change": 37.681217193603516
+        },
+        {
+          "segment": 24,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.264591217041016,
+          "after_scene_change": 46.228179931640625
+        },
+        {
+          "segment": 25,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.378753662109375,
+          "after_scene_change": 45.409507751464844
+        },
+        {
+          "segment": 26,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.69315719604492,
+          "after_scene_change": 37.68330764770508
+        },
+        {
+          "segment": 27,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.22679138183594,
+          "after_scene_change": 46.26544189453125
+        },
+        {
+          "segment": 28,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.34284973144531,
+          "after_scene_change": 45.38726043701172
+        },
+        {
+          "segment": 29,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.717376708984375,
+          "after_scene_change": 37.66452407836914
+        },
+        {
+          "segment": 30,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.204036712646484,
+          "after_scene_change": 46.22587585449219
+        }
+      ]
+    },
+    {
+      "name": "05_异常井盖",
+      "file": "05_异常井盖_全局动态综合版_1080p.mp4",
+      "source": "./outputs/道路病害_多场景迁入/逐帧行车与双目增强版/05_掀盖与移位窨井_逐帧行车与局部对照.mp4",
+      "frames": 2880,
+      "fps": 24,
+      "seconds": 120,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "global_decoded_frames_at_10fps": 1200,
+      "segments_checked": 30,
+      "actual_scene_motion_passed": true,
+      "segment_audit": [
+        {
+          "segment": 1,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.479408264160156,
+          "after_scene_change": 45.47222900390625
+        },
+        {
+          "segment": 2,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.71963119506836,
+          "after_scene_change": 37.686153411865234
+        },
+        {
+          "segment": 3,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.170894622802734,
+          "after_scene_change": 46.13167190551758
+        },
+        {
+          "segment": 4,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.48623275756836,
+          "after_scene_change": 45.4876708984375
+        },
+        {
+          "segment": 5,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.70813751220703,
+          "after_scene_change": 37.6848258972168
+        },
+        {
+          "segment": 6,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.1666145324707,
+          "after_scene_change": 46.11948013305664
+        },
+        {
+          "segment": 7,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.527469635009766,
+          "after_scene_change": 45.50508499145508
+        },
+        {
+          "segment": 8,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.70029067993164,
+          "after_scene_change": 37.70892333984375
+        },
+        {
+          "segment": 9,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.16498565673828,
+          "after_scene_change": 46.184326171875
+        },
+        {
+          "segment": 10,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.4946403503418,
+          "after_scene_change": 45.47799301147461
+        },
+        {
+          "segment": 11,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.71579360961914,
+          "after_scene_change": 37.70341110229492
+        },
+        {
+          "segment": 12,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.16046142578125,
+          "after_scene_change": 46.15635299682617
+        },
+        {
+          "segment": 13,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.45560836791992,
+          "after_scene_change": 45.49274826049805
+        },
+        {
+          "segment": 14,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.73881912231445,
+          "after_scene_change": 37.735023498535156
+        },
+        {
+          "segment": 15,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.19868087768555,
+          "after_scene_change": 46.25651550292969
+        },
+        {
+          "segment": 16,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.52677536010742,
+          "after_scene_change": 45.51667404174805
+        },
+        {
+          "segment": 17,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.719051361083984,
+          "after_scene_change": 37.70509338378906
+        },
+        {
+          "segment": 18,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.16838836669922,
+          "after_scene_change": 46.13846969604492
+        },
+        {
+          "segment": 19,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.475616455078125,
+          "after_scene_change": 45.45751190185547
+        },
+        {
+          "segment": 20,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.70515441894531,
+          "after_scene_change": 37.721099853515625
+        },
+        {
+          "segment": 21,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.21056365966797,
+          "after_scene_change": 46.21368408203125
+        },
+        {
+          "segment": 22,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.48500442504883,
+          "after_scene_change": 45.47072219848633
+        },
+        {
+          "segment": 23,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.760658264160156,
+          "after_scene_change": 37.72900390625
+        },
+        {
+          "segment": 24,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.19168472290039,
+          "after_scene_change": 46.157493591308594
+        },
+        {
+          "segment": 25,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.540279388427734,
+          "after_scene_change": 45.608341217041016
+        },
+        {
+          "segment": 26,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.69807052612305,
+          "after_scene_change": 37.711326599121094
+        },
+        {
+          "segment": 27,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.17683410644531,
+          "after_scene_change": 46.13010025024414
+        },
+        {
+          "segment": 28,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 45.473541259765625,
+          "after_scene_change": 45.51986312866211
+        },
+        {
+          "segment": 29,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 37.72816467285156,
+          "after_scene_change": 37.71547317504883
+        },
+        {
+          "segment": 30,
+          "unique_global_before_frames": 40,
+          "unique_global_after_frames": 40,
+          "before_scene_change": 46.11677932739258,
+          "after_scene_change": 46.17348098754883
+        }
+      ]
+    }
+  ],
+  "all_segments": 150,
+  "both_global_panels_animated": true,
+  "gif_frames": 40,
+  "gif_infinite_loop": true,
+  "gif_scene_motion_mean_change": 39.08344605099503,
+  "global_only_mp4_decodes": true
+}

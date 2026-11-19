@@ -1,0 +1,21 @@
+{
+  "verified_assets": 1199,
+  "counts": {
+    "missing": 64,
+    "pothole": 120,
+    "raised": 128,
+    "rgbd": 822,
+    "stereo": 65
+  },
+  "all_glbs_and_gaussian_files_are_byte_distinct": true,
+  "checks": [
+    "glTF 2.0 embedded texture and buffer bounds",
+    "mesh vertices and UV finite",
+    "triangle indices in range",
+    "finite 3DGS positions, opacity, scales and SH coefficients",
+    "unit Gaussian quaternions",
+    "per-asset rendered preview available",
+    "valid local road cutout field",
+    "recorded source and depth screening for real captures"
+  ]
+}

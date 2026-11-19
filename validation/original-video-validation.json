@@ -1,0 +1,61 @@
+{
+  "asset_ids": 1199,
+  "unique_asset_ids": 1199,
+  "missing_ids": 0,
+  "extra_ids": 0,
+  "width": 2560,
+  "height": 1920,
+  "fps": 24,
+  "grid": [
+    4,
+    4
+  ],
+  "seconds_per_page": 4,
+  "videos": [
+    {
+      "category": "stereo",
+      "assets": 65,
+      "frames": 480,
+      "duration_s": 20,
+      "decoded_all_frames": true,
+      "half_rotation_mean_pixel_change": 6.564,
+      "file_size_bytes": 10128625
+    },
+    {
+      "category": "rgbd",
+      "assets": 822,
+      "frames": 4992,
+      "duration_s": 208,
+      "decoded_all_frames": true,
+      "half_rotation_mean_pixel_change": 4.028,
+      "file_size_bytes": 130437320
+    },
+    {
+      "category": "pothole",
+      "assets": 120,
+      "frames": 768,
+      "duration_s": 32,
+      "decoded_all_frames": true,
+      "half_rotation_mean_pixel_change": 2.353,
+      "file_size_bytes": 18131996
+    },
+    {
+      "category": "missing",
+      "assets": 64,
+      "frames": 384,
+      "duration_s": 16,
+      "decoded_all_frames": true,
+      "half_rotation_mean_pixel_change": 2.131,
+      "file_size_bytes": 10648425
+    },
+    {
+      "category": "raised",
+      "assets": 128,
+      "frames": 768,
+      "duration_s": 32,
+      "decoded_all_frames": true,
+      "half_rotation_mean_pixel_change": 2.514,
+      "file_size_bytes": 18854597
+    }
+  ]
+}

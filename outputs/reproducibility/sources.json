@@ -1,0 +1,38 @@
+{
+  "streetcrafter": {
+    "url": "https://github.com/zju3dv/street_crafter",
+    "commit": "9937775ba12f069d363c61ad00ff977900660f9c"
+  },
+  "gsplat": {
+    "url": "https://github.com/nerfstudio-project/gsplat",
+    "tag": "v1.4.0",
+    "commit": "4d3a3b69db4de0326f983ccf7b7b255271a17b01"
+  },
+  "easyvolcap": {
+    "url": "https://github.com/yunzhiy/EasyVolcap",
+    "commit": "e72da764ed7e88d0e4ab61e8d9071d465a951a4b"
+  },
+  "nvdiffrast": {
+    "url": "https://github.com/NVlabs/nvdiffrast",
+    "commit": "253ac4fcea7de5f396371124af597e6cc957bfae"
+  },
+  "pandaset_sdk": {
+    "url": "https://github.com/ziyc/pandaset-devkit",
+    "commit": "0c10f2b03bc00b9c77950f86e478e271edba2c00",
+    "local_change": "pkl file suffix changed to pkl.gz to match the downloaded archive"
+  },
+  "pandaset_data": {
+    "url": "https://huggingface.co/datasets/georghess/pandaset",
+    "archive_bytes": 44520528731,
+    "selected": [
+      "055",
+      "056"
+    ],
+    "verification": "CRC32 and uncompressed size checked for every extracted member"
+  },
+  "sky_segmentation": {
+    "model": "nvidia/segformer-b0-finetuned-cityscapes-1024-1024",
+    "sky_class": 10,
+    "revision": "21b3847fae21ddee674abd31129307b6a1235bd9"
+  }
+}

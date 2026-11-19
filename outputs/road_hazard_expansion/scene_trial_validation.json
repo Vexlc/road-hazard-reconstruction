@@ -1,0 +1,146 @@
+[
+  {
+    "id": "model_missing_round_masonry_aged_asphalt",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 310141,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_missing_square_broken_flange_fine_asphalt",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 333171,
+    "editable_scene": true,
+    "actors_bit_exact_in_checkpoint": true
+  },
+  {
+    "id": "model_pothole_deep_break_fine_asphalt_02",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 234232,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_pothole_waterlogged_aged_asphalt_02",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 215954,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_pothole_wheel_rut_chip_seal_02",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 207220,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_raised_oval_skewed_fine_asphalt",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 380801,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_raised_rectangular_removed_side_chip_seal",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 295235,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_raised_round_raised62_aged_asphalt",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 309322,
+    "editable_scene": true,
+    "actors_bit_exact_in_checkpoint": true
+  },
+  {
+    "id": "rgbd_pothole_20250305_123822",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 223452,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "rgbd_pothole_20250305_135046",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 153991,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "stereo_pothole_fan_2_28",
+    "site": "055",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 181008,
+    "editable_scene": true,
+    "actors_bit_exact_in_checkpoint": true
+  },
+  {
+    "id": "model_missing_rectangular_settled_concrete",
+    "site": "056",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 381496,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_pothole_joined_concrete_02",
+    "site": "056",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 178405,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_pothole_slab_corner_concrete_03",
+    "site": "056",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 343668,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_raised_oval_upright82_concrete",
+    "site": "056",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 398647,
+    "editable_scene": false,
+    "actors_bit_exact_in_checkpoint": null
+  },
+  {
+    "id": "model_raised_square_propped43_concrete",
+    "site": "056",
+    "drive_frames": 80,
+    "near_frames": 45,
+    "changed_pixels_near": 285750,
+    "editable_scene": true,
+    "actors_bit_exact_in_checkpoint": true
+  }
+]

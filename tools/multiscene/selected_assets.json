@@ -1,0 +1,66 @@
+{
+  "seed": 20261119,
+  "sample_method": "uniform random sample without replacement within each category",
+  "selected": {
+    "stereo": [
+      "stereo_pothole_fan_3_02",
+      "stereo_pothole_fan_2_07",
+      "stereo_pothole_fan_3_03",
+      "stereo_pothole_fan_3_01",
+      "stereo_pothole_fan_2_35",
+      "stereo_pothole_fan_1_03",
+      "stereo_pothole_fan_1_18",
+      "stereo_pothole_fan_2_16",
+      "stereo_pothole_fan_2_24",
+      "stereo_pothole_fan_2_08"
+    ],
+    "rgbd": [
+      "rgbd_pothole_20250305_054319",
+      "rgbd_pothole_20250227_171044",
+      "rgbd_pothole_20250305_045716",
+      "rgbd_pothole_20250305_124307",
+      "rgbd_pothole_20250227_170940",
+      "rgbd_pothole_20250305_132557",
+      "rgbd_pothole_20250305_131813",
+      "rgbd_pothole_20250227_190609",
+      "rgbd_pothole_20250305_135233",
+      "rgbd_pothole_20250305_050151"
+    ],
+    "pothole": [
+      "model_pothole_bowled_chip_seal_01",
+      "model_pothole_slab_corner_chip_seal_03",
+      "model_pothole_patch_break_aged_asphalt_03",
+      "model_pothole_patch_break_chip_seal_02",
+      "model_pothole_deep_break_concrete_01",
+      "model_pothole_deep_break_aged_asphalt_03",
+      "model_pothole_waterlogged_concrete_02",
+      "model_pothole_patch_break_fine_asphalt_03",
+      "model_pothole_patch_break_fine_asphalt_02",
+      "model_pothole_crescent_chip_seal_01"
+    ],
+    "missing": [
+      "model_missing_oval_flush_fine_asphalt",
+      "model_missing_oval_broken_flange_aged_asphalt",
+      "model_missing_oval_settled_concrete",
+      "model_missing_square_settled_chip_seal",
+      "model_missing_rectangular_settled_concrete",
+      "model_missing_oval_broken_flange_fine_asphalt",
+      "model_missing_oval_masonry_concrete",
+      "model_missing_rectangular_flush_aged_asphalt",
+      "model_missing_rectangular_masonry_aged_asphalt",
+      "model_missing_square_settled_concrete"
+    ],
+    "raised": [
+      "model_raised_oval_removed_side_concrete",
+      "model_raised_rectangular_ajar14_fine_asphalt",
+      "model_raised_round_skewed_aged_asphalt",
+      "model_raised_rectangular_slid_concrete",
+      "model_raised_rectangular_slid_aged_asphalt",
+      "model_raised_round_ajar14_fine_asphalt",
+      "model_raised_oval_slid_concrete",
+      "model_raised_square_removed_side_chip_seal",
+      "model_raised_square_skewed_aged_asphalt",
+      "model_raised_rectangular_tilted29_chip_seal"
+    ]
+  }
+}

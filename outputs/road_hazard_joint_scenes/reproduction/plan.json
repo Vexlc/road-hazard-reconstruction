@@ -1,0 +1,2740 @@
+{
+  "slots_by_site": {
+    "055": [
+      {
+        "center_world": [
+          31.97324243348247,
+          -31.42962328056692,
+          -0.8901777884220415
+        ],
+        "basis_columns": [
+          [
+            -0.6999280019444317,
+            0.714213401059006,
+            9.920586320078412e-05
+          ],
+          [
+            -0.7140490431049104,
+            -0.6997639380899799,
+            -0.02154982574789931
+          ],
+          [
+            -0.015321753654121107,
+            -0.01515416432966675,
+            0.9997677706189733
+          ]
+        ],
+        "points": 5871,
+        "rms_m": 0.007006310773806333,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 8.5,
+        "lateral_m": 1.15,
+        "slot": "082"
+      },
+      {
+        "center_world": [
+          35.690603607663434,
+          -31.921819587887654,
+          -0.9159817329983987
+        ],
+        "basis_columns": [
+          [
+            -0.6998185752239591,
+            0.7142237537034475,
+            0.011763988153060135
+          ],
+          [
+            -0.7143167732610686,
+            -0.699774003091191,
+            -0.00823966234896991
+          ],
+          [
+            0.0023471705100539856,
+            -0.014169482823557976,
+            0.9998968529538982
+          ]
+        ],
+        "points": 5875,
+        "rms_m": 0.006231023660325487,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 11.5,
+        "lateral_m": -1.1,
+        "slot": "110"
+      },
+      {
+        "center_world": [
+          37.02849618586281,
+          -34.842622441133535,
+          -0.9515994572877204
+        ],
+        "basis_columns": [
+          [
+            -0.6998160452677252,
+            0.7142932099377973,
+            -0.006535520071029145
+          ],
+          [
+            -0.7142198040129057,
+            -0.6998411476026657,
+            -0.010603757727818523
+          ],
+          [
+            -0.012148018011495511,
+            -0.002752881933806191,
+            0.9999224206404469
+          ]
+        ],
+        "points": 5626,
+        "rms_m": 0.007081141414664512,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 14.5,
+        "lateral_m": 0.05,
+        "slot": "141"
+      },
+      {
+        "center_world": [
+          38.401380949297206,
+          -37.727710492233456,
+          -1.0054550959326105
+        ],
+        "basis_columns": [
+          [
+            -0.6998727925725943,
+            0.7142419322283717,
+            -0.006044539959375224
+          ],
+          [
+            -0.7139546969781613,
+            -0.6997916615117815,
+            -0.02367110351044757
+          ],
+          [
+            -0.021136813370525406,
+            -0.012251233622063755,
+            0.9997015266544697
+          ]
+        ],
+        "points": 5398,
+        "rms_m": 0.0064760985712507355,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 17.5,
+        "lateral_m": 1.15,
+        "slot": "172"
+      },
+      {
+        "center_world": [
+          41.313921863072636,
+          -39.04134724891122,
+          -1.023075848423478
+        ],
+        "basis_columns": [
+          [
+            -0.6998701965365649,
+            0.7142617272562646,
+            -0.003448619545214292
+          ],
+          [
+            -0.7141152233926794,
+            -0.6998108569823468,
+            -0.01744167906071366
+          ],
+          [
+            -0.014871305211497248,
+            -0.009744199635222293,
+            0.9998419349351055
+          ]
+        ],
+        "points": 4687,
+        "rms_m": 0.0065286168626670325,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 20.5,
+        "lateral_m": 0.05,
+        "slot": "201"
+      },
+      {
+        "center_world": [
+          44.261454962083086,
+          -40.319269203443035,
+          -1.047939603763955
+        ],
+        "basis_columns": [
+          [
+            -0.6998449477170366,
+            0.7142768183497384,
+            0.0050671415130191496
+          ],
+          [
+            -0.7142947667560737,
+            -0.6998254469422054,
+            -0.005227809964856653
+          ],
+          [
+            -0.0001879888945668385,
+            -0.00727808905669174,
+            0.9999734966887164
+          ]
+        ],
+        "points": 4921,
+        "rms_m": 0.0069851139224767255,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 23.5,
+        "lateral_m": -1.1,
+        "slot": "230"
+      },
+      {
+        "center_world": [
+          44.82951946511194,
+          -44.02579770389999,
+          -1.0892948628906685
+        ],
+        "basis_columns": [
+          [
+            -0.6998995977400734,
+            0.7142357358462172,
+            -0.002804767993257582
+          ],
+          [
+            -0.714033909584145,
+            -0.6997856449433663,
+            -0.021345423284111195
+          ],
+          [
+            -0.017208400485354408,
+            -0.012936953714438834,
+            0.9997682262311232
+          ]
+        ],
+        "points": 5220,
+        "rms_m": 0.006495514017891276,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 26.5,
+        "lateral_m": 1.15,
+        "slot": "262"
+      },
+      {
+        "center_world": [
+          47.74206037888737,
+          -45.339434460577756,
+          -1.1199684193364534
+        ],
+        "basis_columns": [
+          [
+            -0.6999316842678872,
+            0.7142053246072846,
+            0.0025281733568079424
+          ],
+          [
+            -0.7140987755359116,
+            -0.6997560826879776,
+            -0.02010879208923374
+          ],
+          [
+            -0.012592701697035538,
+            -0.015880146214049203,
+            0.9997946013157852
+          ]
+        ],
+        "points": 5223,
+        "rms_m": 0.005236671275311606,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 29.5,
+        "lateral_m": 0.05,
+        "slot": "291"
+      }
+    ],
+    "056": [
+      {
+        "center_world": [
+          31.91058004214535,
+          -30.686934480701897,
+          -0.40573437158634706
+        ],
+        "basis_columns": [
+          [
+            -0.6992921623077408,
+            0.7148285462313992,
+            -0.0032590225019938635
+          ],
+          [
+            -0.7147995001962624,
+            -0.6992952689658025,
+            -0.006913849956375418
+          ],
+          [
+            -0.007221236330275266,
+            -0.0025052534303114595,
+            0.9999707882988943
+          ]
+        ],
+        "points": 6072,
+        "rms_m": 0.004514324724283528,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 8.5,
+        "lateral_m": 0.05,
+        "slot": "081"
+      },
+      {
+        "center_world": [
+          33.28582830968741,
+          -33.5711320181006,
+          -0.42776251302551027
+        ],
+        "basis_columns": [
+          [
+            -0.6992797265087362,
+            0.7148321245868632,
+            -0.0047851596105290975
+          ],
+          [
+            -0.7147181475448492,
+            -0.6992645532059623,
+            -0.014389378017302643
+          ],
+          [
+            -0.013632082156667802,
+            -0.006642159912026425,
+            0.9998850174133909
+          ]
+        ],
+        "points": 4144,
+        "rms_m": 0.004527538500565727,
+        "neighborhood_coverage": 0.92,
+        "distance_m": 11.5,
+        "lateral_m": 1.15,
+        "slot": "112"
+      },
+      {
+        "center_world": [
+          36.19952737860199,
+          -34.88275211476061,
+          -0.42238401153358013
+        ],
+        "basis_columns": [
+          [
+            -0.699236011736004,
+            0.714825642653537,
+            -0.009659218212903506
+          ],
+          [
+            -0.7147275005653381,
+            -0.699301242893679,
+            -0.011931958053071042
+          ],
+          [
+            -0.015283972885066237,
+            -0.0014395458705069768,
+            0.9998821569967808
+          ]
+        ],
+        "points": 5889,
+        "rms_m": 0.004426735278156386,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 14.5,
+        "lateral_m": 0.05,
+        "slot": "141"
+      },
+      {
+        "center_world": [
+          39.14819123845686,
+          -36.15863181504021,
+          -0.4138991065878962
+        ],
+        "basis_columns": [
+          [
+            -0.699293447471097,
+            0.7148322378020814,
+            -0.0018831152001365782
+          ],
+          [
+            -0.714774640255493,
+            -0.6992664026756873,
+            -0.011122577787290549
+          ],
+          [
+            -0.009267576361640035,
+            -0.0064319427759025796,
+            0.9999363690458053
+          ]
+        ],
+        "points": 6482,
+        "rms_m": 0.006013296585606883,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 17.5,
+        "lateral_m": -1.1,
+        "slot": "170"
+      },
+      {
+        "center_world": [
+          40.488474715058636,
+          -39.07856974881933,
+          -0.43622465877640554
+        ],
+        "basis_columns": [
+          [
+            -0.6992742655330848,
+            0.7148297551027267,
+            -0.005824326822966246
+          ],
+          [
+            -0.7147615142725675,
+            -0.6992917835370511,
+            -0.010343074608479576
+          ],
+          [
+            -0.011466441381323439,
+            -0.003069641240596768,
+            0.9999295465305057
+          ]
+        ],
+        "points": 6385,
+        "rms_m": 0.007190418460826946,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 20.5,
+        "lateral_m": 0.05,
+        "slot": "201"
+      },
+      {
+        "center_world": [
+          41.86372298260069,
+          -41.96276728621803,
+          -0.4657811154252411
+        ],
+        "basis_columns": [
+          [
+            -0.6992459777077829,
+            0.7148250335573396,
+            -0.008957346662655186
+          ],
+          [
+            -0.7147424002760103,
+            -0.6993022342134456,
+            -0.01094013125015496
+          ],
+          [
+            -0.014084172221832841,
+            -0.0012476473184955955,
+            0.9999000347379703
+          ]
+        ],
+        "points": 7344,
+        "rms_m": 0.006305798828493025,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 23.5,
+        "lateral_m": 1.15,
+        "slot": "232"
+      },
+      {
+        "center_world": [
+          44.77742205151528,
+          -43.27438738287805,
+          -0.46212127053063085
+        ],
+        "basis_columns": [
+          [
+            -0.6992982358601548,
+            0.7148295393822582,
+            -0.0008408028446151104
+          ],
+          [
+            -0.7148175257450847,
+            -0.6992924740124051,
+            -0.005093199120831188
+          ],
+          [
+            -0.00422873628289345,
+            -0.002960644551054539,
+            0.9999866760978827
+          ]
+        ],
+        "points": 7399,
+        "rms_m": 0.0060421951262702315,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 26.5,
+        "lateral_m": 0.05,
+        "slot": "261"
+      },
+      {
+        "center_world": [
+          46.152670319057336,
+          -46.15858492027675,
+          -0.492623391998148
+        ],
+        "basis_columns": [
+          [
+            -0.6992792089009315,
+            0.7148197044795302,
+            -0.006432580095461433
+          ],
+          [
+            -0.7145342910241357,
+            -0.6992102346508972,
+            -0.023362249679200017
+          ],
+          [
+            -0.021197522249621036,
+            -0.011740436415850528,
+            0.9997063704924773
+          ]
+        ],
+        "points": 3752,
+        "rms_m": 0.006985791513146003,
+        "neighborhood_coverage": 1.0,
+        "distance_m": 29.5,
+        "lateral_m": 1.15,
+        "slot": "292"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "site": "055",
+      "assets": [
+        "model_missing_square_broken_flange_fine_asphalt",
+        "rgbd_pothole_20250305_123822",
+        "model_raised_round_raised62_aged_asphalt",
+        "model_pothole_deep_break_fine_asphalt_02",
+        "model_raised_rectangular_removed_side_chip_seal",
+        "stereo_pothole_fan_1_01",
+        "model_missing_round_masonry_aged_asphalt",
+        "model_pothole_waterlogged_aged_asphalt_02"
+      ],
+      "showcase": true,
+      "id": "001"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_slab_corner_concrete_03",
+        "model_missing_rectangular_settled_concrete",
+        "model_raised_square_propped43_concrete",
+        "model_pothole_joined_concrete_02",
+        "model_raised_oval_upright82_concrete",
+        "rgbd_pothole_20250305_135046",
+        "model_missing_oval_flush_concrete",
+        "stereo_pothole_fan_2_28"
+      ],
+      "showcase": true,
+      "id": "002"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_pothole_wheel_rut_chip_seal_02",
+        "model_raised_oval_skewed_fine_asphalt",
+        "rgbd_pothole_20250227_135438",
+        "model_missing_round_settled_fine_asphalt",
+        "model_raised_square_slid_aged_asphalt",
+        "model_pothole_crescent_aged_asphalt_03",
+        "stereo_pothole_fan_3_05",
+        "model_missing_rectangular_broken_flange_chip_seal"
+      ],
+      "showcase": true,
+      "id": "003"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_raised_rectangular_ajar14_concrete",
+        "model_missing_square_masonry_concrete",
+        "model_pothole_wheel_rut_concrete_03",
+        "model_raised_round_tilted29_concrete",
+        "model_pothole_waterlogged_concrete_03",
+        "model_missing_oval_broken_flange_concrete",
+        "rgbd_pothole_20250305_142220",
+        "stereo_pothole_fan_2_40"
+      ],
+      "showcase": true,
+      "id": "004"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_124302",
+        "rgbd_pothole_20250227_185502",
+        "rgbd_pothole_20250227_170115",
+        "rgbd_pothole_20250305_135440",
+        "model_raised_square_tilted29_aged_asphalt",
+        "model_pothole_cluster_fine_asphalt_03",
+        "rgbd_pothole_20250305_050031",
+        "rgbd_pothole_20250227_185200"
+      ],
+      "showcase": false,
+      "id": "005"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_061303",
+        "model_missing_square_flush_aged_asphalt",
+        "stereo_pothole_fan_2_38",
+        "rgbd_pothole_20250305_055243",
+        "rgbd_pothole_20250305_054214",
+        "model_raised_square_ajar14_chip_seal",
+        "rgbd_pothole_20250305_132549",
+        "model_pothole_wheel_rut_fine_asphalt_01"
+      ],
+      "showcase": false,
+      "id": "006"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_060227",
+        "rgbd_pothole_20250305_135157",
+        "rgbd_pothole_20250305_042433",
+        "rgbd_pothole_20250305_100728",
+        "rgbd_pothole_20250305_130544",
+        "rgbd_pothole_20250305_052514",
+        "rgbd_pothole_20250305_060130",
+        "model_raised_round_removed_side_chip_seal"
+      ],
+      "showcase": false,
+      "id": "007"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_095829",
+        "model_pothole_cluster_concrete_01",
+        "rgbd_pothole_20250305_093918",
+        "rgbd_pothole_20250305_103511",
+        "rgbd_pothole_20250305_052830",
+        "rgbd_pothole_20250305_043912",
+        "stereo_pothole_fan_2_33",
+        "rgbd_pothole_20250305_142246"
+      ],
+      "showcase": false,
+      "id": "008"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_missing_oval_settled_aged_asphalt",
+        "rgbd_pothole_20250227_175202",
+        "model_pothole_spall_concrete_01",
+        "model_raised_round_upright82_concrete",
+        "rgbd_pothole_20250305_125111",
+        "rgbd_pothole_20250305_094344",
+        "rgbd_pothole_20250305_121258",
+        "rgbd_pothole_20250227_190012"
+      ],
+      "showcase": false,
+      "id": "009"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_174810",
+        "rgbd_pothole_20250305_140432",
+        "model_raised_rectangular_removed_side_aged_asphalt",
+        "rgbd_pothole_20250227_185135",
+        "rgbd_pothole_20250305_055210",
+        "rgbd_pothole_20250227_190423",
+        "model_pothole_joined_aged_asphalt_03",
+        "rgbd_pothole_20250305_042621"
+      ],
+      "showcase": false,
+      "id": "010"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_124716",
+        "stereo_pothole_fan_2_24",
+        "rgbd_pothole_20250305_124840",
+        "rgbd_pothole_20250227_142636",
+        "model_missing_rectangular_broken_flange_aged_asphalt",
+        "model_raised_rectangular_propped43_chip_seal",
+        "rgbd_pothole_20250227_173336",
+        "rgbd_pothole_20250305_054557"
+      ],
+      "showcase": false,
+      "id": "011"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_143414",
+        "model_pothole_crescent_chip_seal_03",
+        "rgbd_pothole_20250305_061029",
+        "rgbd_pothole_20250305_135259",
+        "rgbd_pothole_20250305_052412",
+        "rgbd_pothole_20250305_025031",
+        "rgbd_pothole_20250305_055147",
+        "model_raised_rectangular_ajar14_fine_asphalt"
+      ],
+      "showcase": false,
+      "id": "012"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_171126",
+        "rgbd_pothole_20250305_133732",
+        "model_pothole_bowled_chip_seal_02",
+        "rgbd_pothole_20250305_083530",
+        "rgbd_pothole_20250305_052046",
+        "stereo_pothole_fan_2_23",
+        "rgbd_pothole_20250227_173312",
+        "rgbd_pothole_20250305_053826"
+      ],
+      "showcase": false,
+      "id": "013"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_raised_square_propped43_fine_asphalt",
+        "rgbd_pothole_20250305_134211",
+        "model_missing_rectangular_flush_fine_asphalt",
+        "rgbd_pothole_20250305_135325",
+        "rgbd_pothole_20250227_165925",
+        "rgbd_pothole_20250227_141050",
+        "rgbd_pothole_20250305_051101",
+        "model_pothole_slab_corner_aged_asphalt_01"
+      ],
+      "showcase": false,
+      "id": "014"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_024332",
+        "rgbd_pothole_20250305_062157",
+        "model_raised_round_slid_concrete",
+        "rgbd_pothole_20250305_035536",
+        "stereo_pothole_fan_1_15",
+        "rgbd_pothole_20250305_053919",
+        "rgbd_pothole_20250305_102150",
+        "rgbd_pothole_20250305_095140"
+      ],
+      "showcase": false,
+      "id": "015"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_crescent_aged_asphalt_01",
+        "rgbd_pothole_20250305_054517",
+        "rgbd_pothole_20250227_184609",
+        "model_raised_oval_tilted29_fine_asphalt",
+        "rgbd_pothole_20250305_051245",
+        "model_missing_oval_flush_chip_seal",
+        "rgbd_pothole_20250305_125611",
+        "rgbd_pothole_20250305_112325"
+      ],
+      "showcase": false,
+      "id": "016"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_161423",
+        "rgbd_pothole_20250227_181001",
+        "model_pothole_bowled_fine_asphalt_03",
+        "rgbd_pothole_20250227_184521",
+        "rgbd_pothole_20250227_184349",
+        "model_raised_round_ajar14_fine_asphalt",
+        "rgbd_pothole_20250305_113508",
+        "rgbd_pothole_20250305_095515"
+      ],
+      "showcase": false,
+      "id": "017"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_045148",
+        "rgbd_pothole_20250227_170837",
+        "rgbd_pothole_20250305_050349",
+        "stereo_pothole_fan_2_07",
+        "rgbd_pothole_20250305_124651",
+        "model_pothole_waterlogged_fine_asphalt_01",
+        "rgbd_pothole_20250305_114516",
+        "rgbd_pothole_20250305_093858"
+      ],
+      "showcase": false,
+      "id": "018"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_raised_oval_tilted29_aged_asphalt",
+        "rgbd_pothole_20250227_184422",
+        "rgbd_pothole_20250227_190125",
+        "rgbd_pothole_20250305_124140",
+        "model_missing_rectangular_settled_fine_asphalt",
+        "rgbd_pothole_20250227_180158",
+        "model_pothole_wheel_rut_fine_asphalt_03",
+        "rgbd_pothole_20250305_125126"
+      ],
+      "showcase": false,
+      "id": "019"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_172520",
+        "rgbd_pothole_20250227_141418",
+        "model_raised_round_raised62_chip_seal",
+        "rgbd_pothole_20250305_053447",
+        "stereo_pothole_fan_1_12",
+        "rgbd_pothole_20250227_171314",
+        "rgbd_pothole_20250305_043451",
+        "rgbd_pothole_20250227_140407"
+      ],
+      "showcase": false,
+      "id": "020"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_054319",
+        "model_pothole_spall_chip_seal_02",
+        "rgbd_pothole_20250305_124933",
+        "model_raised_rectangular_raised62_aged_asphalt",
+        "rgbd_pothole_20250305_124726",
+        "rgbd_pothole_20250305_043724",
+        "rgbd_pothole_20250305_053130",
+        "rgbd_pothole_20250305_082924"
+      ],
+      "showcase": false,
+      "id": "021"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_missing_oval_settled_fine_asphalt",
+        "rgbd_pothole_20250305_060935",
+        "rgbd_pothole_20250305_035554",
+        "rgbd_pothole_20250305_123934",
+        "model_pothole_crescent_chip_seal_01",
+        "model_raised_round_upright82_fine_asphalt",
+        "rgbd_pothole_20250305_110746",
+        "rgbd_pothole_20250305_140155"
+      ],
+      "showcase": false,
+      "id": "022"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_094506",
+        "stereo_pothole_fan_1_04",
+        "rgbd_pothole_20250305_053041",
+        "rgbd_pothole_20250227_190104",
+        "rgbd_pothole_20250305_143305",
+        "rgbd_pothole_20250227_182812",
+        "rgbd_pothole_20250305_111305",
+        "model_pothole_patch_break_chip_seal_01"
+      ],
+      "showcase": false,
+      "id": "023"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_raised_oval_tilted29_chip_seal",
+        "rgbd_pothole_20250305_054625",
+        "model_missing_round_masonry_concrete",
+        "rgbd_pothole_20250305_095915",
+        "rgbd_pothole_20250305_034719",
+        "rgbd_pothole_20250305_115546",
+        "rgbd_pothole_20250305_113513",
+        "rgbd_pothole_20250227_172623"
+      ],
+      "showcase": false,
+      "id": "024"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_raised_round_ajar14_aged_asphalt",
+        "rgbd_pothole_20250305_133552",
+        "model_pothole_deep_break_fine_asphalt_03",
+        "rgbd_pothole_20250305_022135",
+        "stereo_pothole_fan_2_31",
+        "rgbd_pothole_20250305_135425",
+        "rgbd_pothole_20250305_150043",
+        "rgbd_pothole_20250227_173648"
+      ],
+      "showcase": false,
+      "id": "025"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_raised_rectangular_propped43_aged_asphalt",
+        "rgbd_pothole_20250227_190027",
+        "rgbd_pothole_20250305_140801",
+        "rgbd_pothole_20250305_053657",
+        "model_pothole_crescent_concrete_01",
+        "rgbd_pothole_20250305_150331",
+        "rgbd_pothole_20250227_190037",
+        "model_missing_round_masonry_chip_seal"
+      ],
+      "showcase": false,
+      "id": "026"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_054335",
+        "rgbd_pothole_20250305_054618",
+        "model_raised_oval_raised62_fine_asphalt",
+        "rgbd_pothole_20250227_183220",
+        "rgbd_pothole_20250305_053543",
+        "rgbd_pothole_20250305_134201",
+        "model_pothole_bowled_chip_seal_03",
+        "rgbd_pothole_20250227_183509"
+      ],
+      "showcase": false,
+      "id": "027"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_084405",
+        "stereo_pothole_fan_2_03",
+        "rgbd_pothole_20250305_054140",
+        "rgbd_pothole_20250305_124845",
+        "model_raised_oval_removed_side_chip_seal",
+        "rgbd_pothole_20250227_162352",
+        "rgbd_pothole_20250305_142409",
+        "rgbd_pothole_20250305_021453"
+      ],
+      "showcase": false,
+      "id": "028"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_111046",
+        "model_missing_rectangular_masonry_chip_seal",
+        "model_pothole_cluster_fine_asphalt_02",
+        "rgbd_pothole_20250305_063106",
+        "rgbd_pothole_20250305_121446",
+        "rgbd_pothole_20250305_111532",
+        "rgbd_pothole_20250305_053555",
+        "model_raised_rectangular_upright82_concrete"
+      ],
+      "showcase": false,
+      "id": "029"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "stereo_pothole_fan_1_17",
+        "rgbd_pothole_20250305_113702",
+        "rgbd_pothole_20250305_052509",
+        "rgbd_pothole_20250305_132143",
+        "model_pothole_deep_break_fine_asphalt_01",
+        "rgbd_pothole_20250305_094446",
+        "rgbd_pothole_20250227_185027",
+        "model_raised_square_ajar14_aged_asphalt"
+      ],
+      "showcase": false,
+      "id": "030"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_141916",
+        "rgbd_pothole_20250305_023142",
+        "rgbd_pothole_20250305_114525",
+        "rgbd_pothole_20250305_031304",
+        "model_pothole_spall_aged_asphalt_01",
+        "rgbd_pothole_20250227_174024",
+        "rgbd_pothole_20250305_095928",
+        "model_missing_rectangular_masonry_fine_asphalt"
+      ],
+      "showcase": false,
+      "id": "031"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_110857",
+        "rgbd_pothole_20250305_053651",
+        "model_raised_rectangular_slid_fine_asphalt",
+        "rgbd_pothole_20250227_170125",
+        "stereo_pothole_fan_2_29",
+        "rgbd_pothole_20250305_123917",
+        "rgbd_pothole_20250305_055923",
+        "rgbd_pothole_20250305_123648"
+      ],
+      "showcase": false,
+      "id": "032"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_pothole_joined_aged_asphalt_01",
+        "rgbd_pothole_20250305_135057",
+        "rgbd_pothole_20250305_053324",
+        "rgbd_pothole_20250305_095918",
+        "model_raised_square_raised62_fine_asphalt",
+        "rgbd_pothole_20250305_132216",
+        "rgbd_pothole_20250227_143331",
+        "rgbd_pothole_20250305_131734"
+      ],
+      "showcase": false,
+      "id": "033"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_053732",
+        "model_pothole_slab_corner_concrete_01",
+        "rgbd_pothole_20250305_113647",
+        "stereo_pothole_fan_2_05",
+        "rgbd_pothole_20250305_053506",
+        "rgbd_pothole_20250305_113255",
+        "model_missing_rectangular_broken_flange_fine_asphalt",
+        "rgbd_pothole_20250305_022251"
+      ],
+      "showcase": false,
+      "id": "034"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_raised_oval_propped43_fine_asphalt",
+        "rgbd_pothole_20250305_124654",
+        "rgbd_pothole_20250305_140826",
+        "model_pothole_spall_aged_asphalt_02",
+        "rgbd_pothole_20250227_174615",
+        "rgbd_pothole_20250305_055152",
+        "rgbd_pothole_20250305_133640",
+        "rgbd_pothole_20250227_185544"
+      ],
+      "showcase": false,
+      "id": "035"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_raised_square_removed_side_fine_asphalt",
+        "rgbd_pothole_20250305_124559",
+        "rgbd_pothole_20250305_054144",
+        "rgbd_pothole_20250305_040423",
+        "rgbd_pothole_20250305_061347",
+        "rgbd_pothole_20250227_191254",
+        "model_pothole_crescent_aged_asphalt_02",
+        "model_missing_round_flush_fine_asphalt"
+      ],
+      "showcase": false,
+      "id": "036"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_124722",
+        "rgbd_pothole_20250227_170611",
+        "model_raised_oval_ajar14_fine_asphalt",
+        "rgbd_pothole_20250305_031608",
+        "rgbd_pothole_20250305_124240",
+        "stereo_pothole_fan_2_35",
+        "rgbd_pothole_20250305_133018",
+        "rgbd_pothole_20250227_163300"
+      ],
+      "showcase": false,
+      "id": "037"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_183734",
+        "rgbd_pothole_20250227_170024",
+        "model_raised_round_ajar14_chip_seal",
+        "model_pothole_spall_chip_seal_03",
+        "rgbd_pothole_20250305_045711",
+        "rgbd_pothole_20250305_055718",
+        "rgbd_pothole_20250227_170828",
+        "rgbd_pothole_20250305_132930"
+      ],
+      "showcase": false,
+      "id": "038"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_132207",
+        "rgbd_pothole_20250305_100120",
+        "stereo_pothole_fan_2_30",
+        "rgbd_pothole_20250305_053034",
+        "model_raised_round_slid_chip_seal",
+        "model_pothole_slab_corner_concrete_02",
+        "rgbd_pothole_20250305_124920",
+        "model_missing_round_broken_flange_fine_asphalt"
+      ],
+      "showcase": false,
+      "id": "039"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_101733",
+        "rgbd_pothole_20250305_050151",
+        "rgbd_pothole_20250305_095954",
+        "rgbd_pothole_20250305_053910",
+        "rgbd_pothole_20250305_150348",
+        "model_raised_oval_slid_aged_asphalt",
+        "rgbd_pothole_20250305_141439",
+        "model_pothole_bowled_aged_asphalt_02"
+      ],
+      "showcase": false,
+      "id": "040"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_045439",
+        "rgbd_pothole_20250305_124318",
+        "rgbd_pothole_20250305_022335",
+        "rgbd_pothole_20250227_175101",
+        "rgbd_pothole_20250305_043049",
+        "rgbd_pothole_20250305_095853",
+        "rgbd_pothole_20250305_034430",
+        "model_raised_rectangular_upright82_fine_asphalt"
+      ],
+      "showcase": false,
+      "id": "041"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "stereo_pothole_fan_2_08",
+        "rgbd_pothole_20250227_161957",
+        "model_pothole_bowled_aged_asphalt_01",
+        "rgbd_pothole_20250227_171010",
+        "rgbd_pothole_20250305_054221",
+        "rgbd_pothole_20250227_182730",
+        "rgbd_pothole_20250305_125242",
+        "rgbd_pothole_20250305_093835"
+      ],
+      "showcase": false,
+      "id": "042"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_missing_oval_settled_concrete",
+        "rgbd_pothole_20250305_055727",
+        "rgbd_pothole_20250305_133540",
+        "model_raised_oval_skewed_chip_seal",
+        "model_pothole_waterlogged_fine_asphalt_03",
+        "rgbd_pothole_20250227_174724",
+        "rgbd_pothole_20250305_060155",
+        "rgbd_pothole_20250305_121222"
+      ],
+      "showcase": false,
+      "id": "043"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_184651",
+        "rgbd_pothole_20250305_133543",
+        "model_raised_oval_removed_side_concrete",
+        "rgbd_pothole_20250305_095823",
+        "model_pothole_crescent_fine_asphalt_02",
+        "rgbd_pothole_20250305_061043",
+        "stereo_pothole_fan_2_13",
+        "rgbd_pothole_20250305_112253"
+      ],
+      "showcase": false,
+      "id": "044"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_135652",
+        "rgbd_pothole_20250305_121628",
+        "rgbd_pothole_20250305_060250",
+        "model_raised_rectangular_skewed_chip_seal",
+        "rgbd_pothole_20250305_031412",
+        "model_missing_oval_broken_flange_fine_asphalt",
+        "rgbd_pothole_20250305_124234",
+        "rgbd_pothole_20250305_153008"
+      ],
+      "showcase": false,
+      "id": "045"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_bowled_fine_asphalt_01",
+        "rgbd_pothole_20250305_055112",
+        "rgbd_pothole_20250305_035737",
+        "stereo_pothole_fan_3_03",
+        "rgbd_pothole_20250305_124519",
+        "rgbd_pothole_20250227_171506",
+        "model_raised_oval_slid_fine_asphalt",
+        "rgbd_pothole_20250305_142058"
+      ],
+      "showcase": false,
+      "id": "046"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_123923",
+        "rgbd_pothole_20250227_172633",
+        "model_pothole_waterlogged_chip_seal_03",
+        "rgbd_pothole_20250305_052209",
+        "rgbd_pothole_20250305_073411",
+        "rgbd_pothole_20250305_142551",
+        "model_missing_square_flush_fine_asphalt",
+        "rgbd_pothole_20250305_102338"
+      ],
+      "showcase": false,
+      "id": "047"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_172833",
+        "rgbd_pothole_20250227_184927",
+        "model_raised_round_raised62_fine_asphalt",
+        "rgbd_pothole_20250305_041524",
+        "model_pothole_waterlogged_fine_asphalt_02",
+        "rgbd_pothole_20250227_170729",
+        "rgbd_pothole_20250305_150414",
+        "rgbd_pothole_20250227_175001"
+      ],
+      "showcase": false,
+      "id": "048"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_135051",
+        "stereo_pothole_fan_2_06",
+        "rgbd_pothole_20250305_034145",
+        "model_raised_square_skewed_fine_asphalt",
+        "rgbd_pothole_20250227_190626",
+        "rgbd_pothole_20250227_174815",
+        "rgbd_pothole_20250305_053309",
+        "rgbd_pothole_20250305_102121"
+      ],
+      "showcase": false,
+      "id": "049"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_slab_corner_fine_asphalt_03",
+        "rgbd_pothole_20250305_111554",
+        "model_raised_round_raised62_concrete",
+        "rgbd_pothole_20250305_100125",
+        "rgbd_pothole_20250305_143046",
+        "rgbd_pothole_20250305_134250",
+        "rgbd_pothole_20250227_171513",
+        "model_missing_square_masonry_chip_seal"
+      ],
+      "showcase": false,
+      "id": "050"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_172528",
+        "model_pothole_crescent_fine_asphalt_03",
+        "rgbd_pothole_20250305_104035",
+        "stereo_pothole_fan_2_18",
+        "rgbd_pothole_20250305_125440",
+        "rgbd_pothole_20250305_095338",
+        "rgbd_pothole_20250305_054030",
+        "model_raised_rectangular_slid_concrete"
+      ],
+      "showcase": false,
+      "id": "051"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_174609",
+        "rgbd_pothole_20250305_141520",
+        "rgbd_pothole_20250305_023916",
+        "rgbd_pothole_20250305_052348",
+        "model_pothole_crescent_concrete_03",
+        "rgbd_pothole_20250227_171430",
+        "model_raised_round_propped43_aged_asphalt",
+        "rgbd_pothole_20250227_185125"
+      ],
+      "showcase": false,
+      "id": "052"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_060604",
+        "rgbd_pothole_20250305_113241",
+        "rgbd_pothole_20250305_102128",
+        "model_missing_round_broken_flange_chip_seal",
+        "rgbd_pothole_20250305_113238",
+        "rgbd_pothole_20250227_185259",
+        "stereo_pothole_fan_2_17",
+        "rgbd_pothole_20250305_061208"
+      ],
+      "showcase": false,
+      "id": "053"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_cluster_concrete_03",
+        "model_raised_oval_upright82_fine_asphalt",
+        "rgbd_pothole_20250305_043324",
+        "rgbd_pothole_20250305_135029",
+        "rgbd_pothole_20250227_170604",
+        "rgbd_pothole_20250305_054958",
+        "rgbd_pothole_20250305_134830",
+        "rgbd_pothole_20250305_124613"
+      ],
+      "showcase": false,
+      "id": "054"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_054930",
+        "model_missing_oval_flush_aged_asphalt",
+        "rgbd_pothole_20250305_040307",
+        "model_pothole_deep_break_concrete_02",
+        "model_raised_oval_skewed_aged_asphalt",
+        "rgbd_pothole_20250305_041332",
+        "rgbd_pothole_20250227_185556",
+        "rgbd_pothole_20250227_185450"
+      ],
+      "showcase": false,
+      "id": "055"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "stereo_pothole_fan_2_02",
+        "rgbd_pothole_20250227_170443",
+        "rgbd_pothole_20250305_140151",
+        "rgbd_pothole_20250305_021257",
+        "model_raised_oval_ajar14_concrete",
+        "model_pothole_slab_corner_fine_asphalt_02",
+        "rgbd_pothole_20250305_053421",
+        "rgbd_pothole_20250305_125700"
+      ],
+      "showcase": false,
+      "id": "056"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_175237",
+        "rgbd_pothole_20250305_054917",
+        "rgbd_pothole_20250305_024941",
+        "model_pothole_spall_fine_asphalt_03",
+        "rgbd_pothole_20250305_060459",
+        "rgbd_pothole_20250305_143042",
+        "model_raised_oval_upright82_chip_seal",
+        "rgbd_pothole_20250305_045139"
+      ],
+      "showcase": false,
+      "id": "057"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_missing_rectangular_masonry_concrete",
+        "rgbd_pothole_20250305_111615",
+        "rgbd_pothole_20250305_053551",
+        "rgbd_pothole_20250227_175621",
+        "rgbd_pothole_20250227_171154",
+        "rgbd_pothole_20250227_183431",
+        "rgbd_pothole_20250305_115523",
+        "model_raised_square_upright82_aged_asphalt"
+      ],
+      "showcase": false,
+      "id": "058"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "stereo_pothole_fan_1_16",
+        "rgbd_pothole_20250305_141310",
+        "model_pothole_slab_corner_chip_seal_02",
+        "rgbd_pothole_20250305_101458",
+        "rgbd_pothole_20250305_085116",
+        "rgbd_pothole_20250305_125116",
+        "rgbd_pothole_20250305_125426",
+        "rgbd_pothole_20250305_095102"
+      ],
+      "showcase": false,
+      "id": "059"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_wheel_rut_chip_seal_03",
+        "rgbd_pothole_20250305_124833",
+        "model_raised_rectangular_ajar14_chip_seal",
+        "rgbd_pothole_20250227_152725",
+        "rgbd_pothole_20250305_073146",
+        "model_missing_round_settled_aged_asphalt",
+        "rgbd_pothole_20250305_135344",
+        "rgbd_pothole_20250305_042743"
+      ],
+      "showcase": false,
+      "id": "060"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_124908",
+        "rgbd_pothole_20250305_095818",
+        "stereo_pothole_fan_1_18",
+        "rgbd_pothole_20250227_184856",
+        "model_pothole_deep_break_chip_seal_03",
+        "rgbd_pothole_20250305_055009",
+        "model_raised_oval_raised62_aged_asphalt",
+        "rgbd_pothole_20250305_060110"
+      ],
+      "showcase": false,
+      "id": "061"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_052544",
+        "rgbd_pothole_20250227_175021",
+        "rgbd_pothole_20250305_034515",
+        "rgbd_pothole_20250305_131813",
+        "model_raised_oval_propped43_chip_seal",
+        "rgbd_pothole_20250305_102237",
+        "rgbd_pothole_20250305_053221",
+        "model_pothole_deep_break_concrete_03"
+      ],
+      "showcase": false,
+      "id": "062"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_134958",
+        "model_missing_square_broken_flange_concrete",
+        "rgbd_pothole_20250305_142205",
+        "rgbd_pothole_20250227_165450",
+        "stereo_pothole_fan_2_12",
+        "rgbd_pothole_20250305_053002",
+        "rgbd_pothole_20250227_185425",
+        "rgbd_pothole_20250305_125247"
+      ],
+      "showcase": false,
+      "id": "063"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_raised_square_removed_side_aged_asphalt",
+        "rgbd_pothole_20250305_045321",
+        "model_pothole_deep_break_concrete_01",
+        "rgbd_pothole_20250305_080503",
+        "rgbd_pothole_20250305_052731",
+        "rgbd_pothole_20250305_022608",
+        "rgbd_pothole_20250305_113640",
+        "model_raised_square_tilted29_fine_asphalt"
+      ],
+      "showcase": false,
+      "id": "064"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_060535",
+        "rgbd_pothole_20250305_121454",
+        "rgbd_pothole_20250305_054230",
+        "rgbd_pothole_20250305_121553",
+        "model_pothole_slab_corner_chip_seal_01",
+        "rgbd_pothole_20250305_131930",
+        "rgbd_pothole_20250305_095921",
+        "stereo_pothole_fan_1_08"
+      ],
+      "showcase": false,
+      "id": "065"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_175242",
+        "model_missing_rectangular_flush_aged_asphalt",
+        "rgbd_pothole_20250305_053008",
+        "model_raised_round_slid_fine_asphalt",
+        "rgbd_pothole_20250227_183214",
+        "model_pothole_deep_break_chip_seal_02",
+        "rgbd_pothole_20250305_031324",
+        "rgbd_pothole_20250305_124504"
+      ],
+      "showcase": false,
+      "id": "066"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_053230",
+        "rgbd_pothole_20250227_171539",
+        "rgbd_pothole_20250305_080238",
+        "rgbd_pothole_20250305_053503",
+        "model_raised_square_ajar14_fine_asphalt",
+        "rgbd_pothole_20250305_101534",
+        "rgbd_pothole_20250305_134212",
+        "rgbd_pothole_20250305_081309"
+      ],
+      "showcase": false,
+      "id": "067"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_123515",
+        "stereo_pothole_fan_3_02",
+        "model_pothole_cluster_aged_asphalt_03",
+        "rgbd_pothole_20250305_094551",
+        "rgbd_pothole_20250305_141551",
+        "rgbd_pothole_20250305_140842",
+        "model_missing_round_settled_chip_seal",
+        "model_raised_round_removed_side_concrete"
+      ],
+      "showcase": false,
+      "id": "068"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_055020",
+        "rgbd_pothole_20250305_042951",
+        "rgbd_pothole_20250305_073152",
+        "rgbd_pothole_20250227_143319",
+        "model_pothole_waterlogged_aged_asphalt_01",
+        "rgbd_pothole_20250305_134629",
+        "rgbd_pothole_20250305_133054",
+        "model_raised_rectangular_skewed_aged_asphalt"
+      ],
+      "showcase": false,
+      "id": "069"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_034328",
+        "rgbd_pothole_20250305_142115",
+        "stereo_pothole_fan_2_36",
+        "rgbd_pothole_20250305_052530",
+        "model_pothole_deep_break_aged_asphalt_01",
+        "rgbd_pothole_20250227_170327",
+        "rgbd_pothole_20250305_094627",
+        "rgbd_pothole_20250305_124605"
+      ],
+      "showcase": false,
+      "id": "070"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_raised_rectangular_upright82_chip_seal",
+        "rgbd_pothole_20250305_133703",
+        "model_missing_rectangular_broken_flange_concrete",
+        "rgbd_pothole_20250305_113748",
+        "rgbd_pothole_20250227_172731",
+        "rgbd_pothole_20250305_100053",
+        "rgbd_pothole_20250305_135431",
+        "model_pothole_bowled_aged_asphalt_03"
+      ],
+      "showcase": false,
+      "id": "071"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_124859",
+        "rgbd_pothole_20250305_034917",
+        "model_raised_rectangular_removed_side_fine_asphalt",
+        "rgbd_pothole_20250227_190508",
+        "rgbd_pothole_20250305_140423",
+        "rgbd_pothole_20250305_052438",
+        "rgbd_pothole_20250227_191351",
+        "stereo_pothole_fan_2_39"
+      ],
+      "showcase": false,
+      "id": "072"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_060138",
+        "rgbd_pothole_20250305_031258",
+        "rgbd_pothole_20250305_125219",
+        "model_pothole_cluster_chip_seal_01",
+        "rgbd_pothole_20250227_185437",
+        "model_raised_oval_slid_chip_seal",
+        "rgbd_pothole_20250227_174723",
+        "rgbd_pothole_20250227_174003"
+      ],
+      "showcase": false,
+      "id": "073"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_135459",
+        "rgbd_pothole_20250305_095750",
+        "model_missing_round_broken_flange_concrete",
+        "rgbd_pothole_20250305_142518",
+        "rgbd_pothole_20250305_052507",
+        "model_pothole_patch_break_concrete_02",
+        "rgbd_pothole_20250305_021612",
+        "model_raised_oval_ajar14_chip_seal"
+      ],
+      "showcase": false,
+      "id": "074"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_095911",
+        "rgbd_pothole_20250305_132607",
+        "stereo_pothole_fan_1_03",
+        "rgbd_pothole_20250305_050340",
+        "rgbd_pothole_20250305_061250",
+        "rgbd_pothole_20250305_060539",
+        "model_raised_oval_removed_side_fine_asphalt",
+        "rgbd_pothole_20250305_050343"
+      ],
+      "showcase": false,
+      "id": "075"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_061843",
+        "model_pothole_cluster_chip_seal_03",
+        "rgbd_pothole_20250305_095934",
+        "rgbd_pothole_20250305_132340",
+        "rgbd_pothole_20250305_045716",
+        "rgbd_pothole_20250305_114841",
+        "model_missing_round_masonry_fine_asphalt",
+        "rgbd_pothole_20250305_113609"
+      ],
+      "showcase": false,
+      "id": "076"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_053902",
+        "model_raised_square_tilted29_concrete",
+        "rgbd_pothole_20250305_122119",
+        "model_pothole_wheel_rut_aged_asphalt_03",
+        "rgbd_pothole_20250305_054953",
+        "rgbd_pothole_20250227_181028",
+        "rgbd_pothole_20250227_174614",
+        "stereo_pothole_fan_2_27"
+      ],
+      "showcase": false,
+      "id": "077"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_101800",
+        "rgbd_pothole_20250227_142923",
+        "model_raised_oval_upright82_aged_asphalt",
+        "rgbd_pothole_20250305_122203",
+        "rgbd_pothole_20250305_135312",
+        "model_pothole_spall_aged_asphalt_03",
+        "rgbd_pothole_20250305_094634",
+        "rgbd_pothole_20250227_190146"
+      ],
+      "showcase": false,
+      "id": "078"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_190531",
+        "rgbd_pothole_20250305_060007",
+        "rgbd_pothole_20250227_152914",
+        "model_missing_oval_masonry_fine_asphalt",
+        "rgbd_pothole_20250305_034930",
+        "model_raised_square_skewed_aged_asphalt",
+        "rgbd_pothole_20250305_132557",
+        "stereo_pothole_fan_1_21"
+      ],
+      "showcase": false,
+      "id": "079"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_bowled_concrete_02",
+        "rgbd_pothole_20250305_122054",
+        "rgbd_pothole_20250305_133059",
+        "rgbd_pothole_20250227_181024",
+        "rgbd_pothole_20250305_132852",
+        "rgbd_pothole_20250305_133753",
+        "rgbd_pothole_20250305_075013",
+        "model_raised_round_skewed_fine_asphalt"
+      ],
+      "showcase": false,
+      "id": "080"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_021844",
+        "model_pothole_patch_break_aged_asphalt_03",
+        "rgbd_pothole_20250305_111241",
+        "rgbd_pothole_20250305_100109",
+        "rgbd_pothole_20250305_060414",
+        "model_missing_square_flush_concrete",
+        "rgbd_pothole_20250305_101703",
+        "rgbd_pothole_20250305_045928"
+      ],
+      "showcase": false,
+      "id": "081"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_raised_rectangular_skewed_concrete",
+        "rgbd_pothole_20250305_100027",
+        "rgbd_pothole_20250227_154005",
+        "stereo_pothole_fan_2_04",
+        "rgbd_pothole_20250305_034602",
+        "model_pothole_wheel_rut_fine_asphalt_02",
+        "rgbd_pothole_20250305_135042",
+        "rgbd_pothole_20250305_052434"
+      ],
+      "showcase": false,
+      "id": "082"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_133014",
+        "rgbd_pothole_20250305_055906",
+        "rgbd_pothole_20250227_182831",
+        "model_raised_round_propped43_concrete",
+        "rgbd_pothole_20250305_061329",
+        "rgbd_pothole_20250305_112207",
+        "model_pothole_crescent_concrete_02",
+        "rgbd_pothole_20250305_045702"
+      ],
+      "showcase": false,
+      "id": "083"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_124810",
+        "rgbd_pothole_20250305_133709",
+        "rgbd_pothole_20250305_124711",
+        "model_missing_oval_masonry_aged_asphalt",
+        "stereo_pothole_fan_2_21",
+        "rgbd_pothole_20250227_183114",
+        "model_raised_square_propped43_aged_asphalt",
+        "rgbd_pothole_20250227_171023"
+      ],
+      "showcase": false,
+      "id": "084"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_pothole_joined_chip_seal_02",
+        "rgbd_pothole_20250305_045812",
+        "rgbd_pothole_20250305_053636",
+        "rgbd_pothole_20250305_140808",
+        "rgbd_pothole_20250305_055253",
+        "rgbd_pothole_20250227_184048",
+        "rgbd_pothole_20250227_190609",
+        "model_raised_rectangular_ajar14_aged_asphalt"
+      ],
+      "showcase": false,
+      "id": "085"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_124252",
+        "rgbd_pothole_20250305_114447",
+        "model_pothole_waterlogged_concrete_01",
+        "rgbd_pothole_20250305_054850",
+        "rgbd_pothole_20250305_042307",
+        "model_missing_round_flush_aged_asphalt",
+        "rgbd_pothole_20250305_062739",
+        "rgbd_pothole_20250227_174536"
+      ],
+      "showcase": false,
+      "id": "086"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_053058",
+        "model_raised_oval_slid_concrete",
+        "rgbd_pothole_20250227_162651",
+        "rgbd_pothole_20250305_034055",
+        "rgbd_pothole_20250305_060113",
+        "model_pothole_joined_aged_asphalt_02",
+        "rgbd_pothole_20250305_124642",
+        "stereo_pothole_fan_1_19"
+      ],
+      "showcase": false,
+      "id": "087"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_174207",
+        "model_raised_rectangular_slid_chip_seal",
+        "rgbd_pothole_20250305_045931",
+        "rgbd_pothole_20250305_142744",
+        "rgbd_pothole_20250305_125901",
+        "rgbd_pothole_20250305_084706",
+        "rgbd_pothole_20250305_100138",
+        "rgbd_pothole_20250305_055810"
+      ],
+      "showcase": false,
+      "id": "088"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_pothole_spall_concrete_03",
+        "rgbd_pothole_20250305_135233",
+        "model_missing_square_masonry_fine_asphalt",
+        "stereo_pothole_fan_2_32",
+        "rgbd_pothole_20250305_053943",
+        "model_raised_rectangular_raised62_chip_seal",
+        "rgbd_pothole_20250305_132505",
+        "rgbd_pothole_20250305_054900"
+      ],
+      "showcase": false,
+      "id": "089"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_142529",
+        "rgbd_pothole_20250305_083506",
+        "rgbd_pothole_20250305_035126",
+        "model_raised_round_tilted29_fine_asphalt",
+        "rgbd_pothole_20250227_185446",
+        "model_pothole_slab_corner_fine_asphalt_01",
+        "rgbd_pothole_20250227_174412",
+        "rgbd_pothole_20250227_170438"
+      ],
+      "showcase": false,
+      "id": "090"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_135014",
+        "rgbd_pothole_20250305_054700",
+        "rgbd_pothole_20250305_061340",
+        "model_pothole_cluster_fine_asphalt_01",
+        "rgbd_pothole_20250305_132257",
+        "model_raised_square_skewed_chip_seal",
+        "stereo_pothole_fan_2_01",
+        "rgbd_pothole_20250305_143109"
+      ],
+      "showcase": false,
+      "id": "091"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_061313",
+        "rgbd_pothole_20250305_143325",
+        "rgbd_pothole_20250305_125220",
+        "model_missing_rectangular_settled_chip_seal",
+        "rgbd_pothole_20250305_113235",
+        "rgbd_pothole_20250305_124603",
+        "model_pothole_patch_break_fine_asphalt_01",
+        "rgbd_pothole_20250305_102157"
+      ],
+      "showcase": false,
+      "id": "092"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_095114",
+        "model_raised_round_slid_aged_asphalt",
+        "rgbd_pothole_20250227_170940",
+        "rgbd_pothole_20250227_173957",
+        "rgbd_pothole_20250305_133606",
+        "rgbd_pothole_20250227_142113",
+        "rgbd_pothole_20250305_124909",
+        "rgbd_pothole_20250305_024625"
+      ],
+      "showcase": false,
+      "id": "093"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_102814",
+        "model_pothole_spall_concrete_02",
+        "rgbd_pothole_20250305_133525",
+        "model_raised_square_upright82_concrete",
+        "rgbd_pothole_20250305_060025",
+        "rgbd_pothole_20250305_134208",
+        "rgbd_pothole_20250305_135219",
+        "stereo_pothole_fan_2_22"
+      ],
+      "showcase": false,
+      "id": "094"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_missing_oval_flush_fine_asphalt",
+        "rgbd_pothole_20250227_163022",
+        "rgbd_pothole_20250305_054809",
+        "model_raised_oval_removed_side_aged_asphalt",
+        "model_pothole_bowled_chip_seal_01",
+        "rgbd_pothole_20250305_110328",
+        "rgbd_pothole_20250227_192501",
+        "rgbd_pothole_20250305_034016"
+      ],
+      "showcase": false,
+      "id": "095"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_124258",
+        "rgbd_pothole_20250227_185309",
+        "rgbd_pothole_20250227_181003",
+        "rgbd_pothole_20250305_121309",
+        "model_raised_square_slid_fine_asphalt",
+        "rgbd_pothole_20250305_041605",
+        "model_pothole_patch_break_fine_asphalt_02",
+        "stereo_pothole_fan_2_34"
+      ],
+      "showcase": false,
+      "id": "096"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_185221",
+        "rgbd_pothole_20250305_055645",
+        "rgbd_pothole_20250305_142451",
+        "model_missing_oval_broken_flange_chip_seal",
+        "rgbd_pothole_20250227_175216",
+        "rgbd_pothole_20250305_132248",
+        "model_raised_oval_propped43_concrete",
+        "rgbd_pothole_20250305_121411"
+      ],
+      "showcase": false,
+      "id": "097"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_183800",
+        "rgbd_pothole_20250227_172615",
+        "model_pothole_bowled_fine_asphalt_02",
+        "rgbd_pothole_20250305_025744",
+        "rgbd_pothole_20250305_143234",
+        "rgbd_pothole_20250305_050424",
+        "rgbd_pothole_20250305_055230",
+        "rgbd_pothole_20250305_060928"
+      ],
+      "showcase": false,
+      "id": "098"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_raised_rectangular_tilted29_aged_asphalt",
+        "rgbd_pothole_20250305_082909",
+        "model_pothole_crescent_fine_asphalt_01",
+        "rgbd_pothole_20250305_060116",
+        "rgbd_pothole_20250305_151641",
+        "model_missing_oval_masonry_chip_seal",
+        "rgbd_pothole_20250305_135035",
+        "stereo_pothole_fan_2_10"
+      ],
+      "showcase": false,
+      "id": "099"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_110543",
+        "rgbd_pothole_20250305_041543",
+        "rgbd_pothole_20250305_053709",
+        "rgbd_pothole_20250305_094802",
+        "model_pothole_waterlogged_aged_asphalt_03",
+        "model_raised_square_slid_concrete",
+        "rgbd_pothole_20250305_100147",
+        "rgbd_pothole_20250305_042158"
+      ],
+      "showcase": false,
+      "id": "100"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_175724",
+        "rgbd_pothole_20250305_110414",
+        "rgbd_pothole_20250305_114555",
+        "rgbd_pothole_20250305_121500",
+        "rgbd_pothole_20250305_054719",
+        "model_raised_square_tilted29_chip_seal",
+        "rgbd_pothole_20250305_053332",
+        "rgbd_pothole_20250227_170538"
+      ],
+      "showcase": false,
+      "id": "101"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_wheel_rut_chip_seal_01",
+        "stereo_pothole_fan_2_11",
+        "model_missing_round_broken_flange_aged_asphalt",
+        "rgbd_pothole_20250227_175036",
+        "rgbd_pothole_20250305_074604",
+        "model_raised_rectangular_removed_side_concrete",
+        "rgbd_pothole_20250305_135354",
+        "rgbd_pothole_20250305_102845"
+      ],
+      "showcase": false,
+      "id": "102"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_173136",
+        "rgbd_pothole_20250305_053803",
+        "model_pothole_joined_fine_asphalt_02",
+        "rgbd_pothole_20250305_114536",
+        "rgbd_pothole_20250305_102838",
+        "rgbd_pothole_20250305_033147",
+        "rgbd_pothole_20250305_053624",
+        "model_raised_square_ajar14_concrete"
+      ],
+      "showcase": false,
+      "id": "103"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_054607",
+        "stereo_pothole_fan_2_26",
+        "rgbd_pothole_20250305_043741",
+        "rgbd_pothole_20250305_064858",
+        "rgbd_pothole_20250305_124219",
+        "model_pothole_joined_chip_seal_03",
+        "rgbd_pothole_20250305_111558",
+        "rgbd_pothole_20250305_052959"
+      ],
+      "showcase": false,
+      "id": "104"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_124944",
+        "model_raised_round_upright82_aged_asphalt",
+        "rgbd_pothole_20250227_170425",
+        "rgbd_pothole_20250305_133536",
+        "model_missing_square_flush_chip_seal",
+        "rgbd_pothole_20250227_175304",
+        "rgbd_pothole_20250305_150518",
+        "model_pothole_slab_corner_aged_asphalt_03"
+      ],
+      "showcase": false,
+      "id": "105"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_172840",
+        "rgbd_pothole_20250305_045213",
+        "rgbd_pothole_20250305_123857",
+        "model_raised_oval_tilted29_concrete",
+        "rgbd_pothole_20250305_142602",
+        "rgbd_pothole_20250305_040311",
+        "stereo_pothole_fan_2_16",
+        "rgbd_pothole_20250227_180537"
+      ],
+      "showcase": false,
+      "id": "106"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_170934",
+        "model_pothole_wheel_rut_concrete_02",
+        "rgbd_pothole_20250227_162635",
+        "rgbd_pothole_20250227_184207",
+        "model_raised_round_removed_side_aged_asphalt",
+        "rgbd_pothole_20250305_133633",
+        "rgbd_pothole_20250305_102923",
+        "model_missing_rectangular_settled_aged_asphalt"
+      ],
+      "showcase": false,
+      "id": "107"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_171606",
+        "rgbd_pothole_20250305_055733",
+        "rgbd_pothole_20250305_143424",
+        "model_pothole_joined_concrete_01",
+        "rgbd_pothole_20250305_094539",
+        "stereo_pothole_fan_1_10",
+        "rgbd_pothole_20250305_141449",
+        "model_raised_round_propped43_fine_asphalt"
+      ],
+      "showcase": false,
+      "id": "108"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_125029",
+        "rgbd_pothole_20250305_124623",
+        "rgbd_pothole_20250305_134243",
+        "rgbd_pothole_20250305_135253",
+        "rgbd_pothole_20250305_140203",
+        "rgbd_pothole_20250305_100002",
+        "model_raised_round_removed_side_fine_asphalt",
+        "rgbd_pothole_20250227_185330"
+      ],
+      "showcase": false,
+      "id": "109"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_slab_corner_chip_seal_03",
+        "rgbd_pothole_20250227_180722",
+        "rgbd_pothole_20250305_052031",
+        "rgbd_pothole_20250227_174138",
+        "model_missing_rectangular_flush_concrete",
+        "rgbd_pothole_20250305_062247",
+        "rgbd_pothole_20250305_124838",
+        "model_pothole_wheel_rut_concrete_01"
+      ],
+      "showcase": false,
+      "id": "110"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_112128",
+        "rgbd_pothole_20250305_140444",
+        "rgbd_pothole_20250305_025000",
+        "model_raised_oval_ajar14_aged_asphalt",
+        "rgbd_pothole_20250305_143255",
+        "stereo_pothole_fan_1_11",
+        "rgbd_pothole_20250227_184930",
+        "rgbd_pothole_20250305_040158"
+      ],
+      "showcase": false,
+      "id": "111"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_100717",
+        "rgbd_pothole_20250305_052911",
+        "model_pothole_bowled_concrete_03",
+        "model_raised_square_raised62_concrete",
+        "rgbd_pothole_20250305_142050",
+        "rgbd_pothole_20250305_110944",
+        "rgbd_pothole_20250305_124659",
+        "rgbd_pothole_20250305_041507"
+      ],
+      "showcase": false,
+      "id": "112"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_135247",
+        "model_missing_oval_masonry_concrete",
+        "rgbd_pothole_20250227_174930",
+        "rgbd_pothole_20250305_125129",
+        "model_raised_square_slid_chip_seal",
+        "rgbd_pothole_20250305_061011",
+        "model_pothole_patch_break_concrete_03",
+        "rgbd_pothole_20250305_021640"
+      ],
+      "showcase": false,
+      "id": "113"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_191936",
+        "stereo_pothole_fan_1_06",
+        "rgbd_pothole_20250227_170442",
+        "rgbd_pothole_20250305_054019",
+        "rgbd_pothole_20250305_104025",
+        "rgbd_pothole_20250305_042445",
+        "rgbd_pothole_20250305_050841",
+        "model_pothole_patch_break_chip_seal_02"
+      ],
+      "showcase": false,
+      "id": "114"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_raised_oval_propped43_aged_asphalt",
+        "rgbd_pothole_20250305_141316",
+        "rgbd_pothole_20250305_054104",
+        "rgbd_pothole_20250227_170647",
+        "rgbd_pothole_20250305_150515",
+        "model_missing_square_settled_aged_asphalt",
+        "rgbd_pothole_20250305_144527",
+        "rgbd_pothole_20250305_144025"
+      ],
+      "showcase": false,
+      "id": "115"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_waterlogged_chip_seal_01",
+        "rgbd_pothole_20250227_171044",
+        "stereo_pothole_fan_2_14",
+        "model_raised_square_upright82_fine_asphalt",
+        "rgbd_pothole_20250227_173255",
+        "rgbd_pothole_20250305_132405",
+        "rgbd_pothole_20250305_111454",
+        "rgbd_pothole_20250305_143927"
+      ],
+      "showcase": false,
+      "id": "116"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_052425",
+        "rgbd_pothole_20250305_093956",
+        "rgbd_pothole_20250305_143025",
+        "model_raised_square_skewed_concrete",
+        "rgbd_pothole_20250227_170945",
+        "model_pothole_wheel_rut_aged_asphalt_01",
+        "rgbd_pothole_20250305_134302",
+        "model_missing_round_flush_chip_seal"
+      ],
+      "showcase": false,
+      "id": "117"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_183846",
+        "stereo_pothole_fan_1_09",
+        "rgbd_pothole_20250305_021140",
+        "rgbd_pothole_20250305_054116",
+        "model_raised_rectangular_raised62_fine_asphalt",
+        "rgbd_pothole_20250305_102058",
+        "rgbd_pothole_20250227_185038",
+        "model_pothole_patch_break_aged_asphalt_02"
+      ],
+      "showcase": false,
+      "id": "118"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_174035",
+        "rgbd_pothole_20250305_045156",
+        "rgbd_pothole_20250305_114604",
+        "rgbd_pothole_20250227_172052",
+        "rgbd_pothole_20250305_101600",
+        "rgbd_pothole_20250305_123631",
+        "model_raised_rectangular_tilted29_fine_asphalt",
+        "rgbd_pothole_20250305_050357"
+      ],
+      "showcase": false,
+      "id": "119"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_spall_fine_asphalt_01",
+        "rgbd_pothole_20250305_043712",
+        "rgbd_pothole_20250305_135306",
+        "rgbd_pothole_20250305_055220",
+        "rgbd_pothole_20250305_061103",
+        "rgbd_pothole_20250305_054753",
+        "model_raised_oval_skewed_concrete",
+        "rgbd_pothole_20250305_084828"
+      ],
+      "showcase": false,
+      "id": "120"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "stereo_pothole_fan_2_15",
+        "rgbd_pothole_20250305_095805",
+        "rgbd_pothole_20250305_135009",
+        "model_missing_square_settled_fine_asphalt",
+        "model_pothole_patch_break_concrete_01",
+        "rgbd_pothole_20250305_135143",
+        "rgbd_pothole_20250305_041840",
+        "rgbd_pothole_20250305_113619"
+      ],
+      "showcase": false,
+      "id": "121"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_150442",
+        "model_raised_round_skewed_aged_asphalt",
+        "rgbd_pothole_20250305_111624",
+        "rgbd_pothole_20250305_055425",
+        "rgbd_pothole_20250227_185406",
+        "rgbd_pothole_20250305_045952",
+        "model_pothole_deep_break_aged_asphalt_03",
+        "rgbd_pothole_20250227_183322"
+      ],
+      "showcase": false,
+      "id": "122"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_082631",
+        "model_missing_square_settled_chip_seal",
+        "rgbd_pothole_20250305_074730",
+        "rgbd_pothole_20250305_075513",
+        "model_raised_rectangular_upright82_aged_asphalt",
+        "rgbd_pothole_20250227_170710",
+        "stereo_pothole_fan_3_01",
+        "rgbd_pothole_20250305_124827"
+      ],
+      "showcase": false,
+      "id": "123"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_125158",
+        "model_pothole_bowled_concrete_01",
+        "rgbd_pothole_20250305_103403",
+        "rgbd_pothole_20250305_143250",
+        "model_raised_round_tilted29_aged_asphalt",
+        "rgbd_pothole_20250305_052623",
+        "rgbd_pothole_20250305_055950",
+        "rgbd_pothole_20250227_175049"
+      ],
+      "showcase": false,
+      "id": "124"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_082258",
+        "rgbd_pothole_20250305_024047",
+        "rgbd_pothole_20250305_140426",
+        "model_pothole_spall_chip_seal_01",
+        "rgbd_pothole_20250305_042846",
+        "stereo_pothole_fan_3_04",
+        "rgbd_pothole_20250227_162958",
+        "rgbd_pothole_20250305_041534"
+      ],
+      "showcase": false,
+      "id": "125"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_raised_square_raised62_aged_asphalt",
+        "rgbd_pothole_20250305_043508",
+        "rgbd_pothole_20250305_055707",
+        "model_missing_square_masonry_aged_asphalt",
+        "rgbd_pothole_20250305_140549",
+        "model_pothole_deep_break_aged_asphalt_02",
+        "rgbd_pothole_20250305_045853",
+        "rgbd_pothole_20250305_093851"
+      ],
+      "showcase": false,
+      "id": "126"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_raised_round_upright82_chip_seal",
+        "rgbd_pothole_20250305_045744",
+        "rgbd_pothole_20250227_174013",
+        "rgbd_pothole_20250305_143243",
+        "rgbd_pothole_20250305_061138",
+        "rgbd_pothole_20250305_084720",
+        "rgbd_pothole_20250305_095359",
+        "stereo_pothole_fan_1_20"
+      ],
+      "showcase": false,
+      "id": "127"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_crescent_chip_seal_02",
+        "rgbd_pothole_20250227_171601",
+        "rgbd_pothole_20250305_142301",
+        "model_missing_square_broken_flange_aged_asphalt",
+        "model_raised_oval_raised62_chip_seal",
+        "rgbd_pothole_20250305_124803",
+        "rgbd_pothole_20250305_095421",
+        "rgbd_pothole_20250305_053753"
+      ],
+      "showcase": false,
+      "id": "128"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_132157",
+        "rgbd_pothole_20250305_124507",
+        "rgbd_pothole_20250305_134331",
+        "model_pothole_slab_corner_aged_asphalt_02",
+        "rgbd_pothole_20250305_035108",
+        "model_raised_round_skewed_chip_seal",
+        "rgbd_pothole_20250227_141738",
+        "rgbd_pothole_20250305_054159"
+      ],
+      "showcase": false,
+      "id": "129"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_110800",
+        "rgbd_pothole_20250305_124804",
+        "model_pothole_cluster_aged_asphalt_02",
+        "stereo_pothole_fan_2_09",
+        "rgbd_pothole_20250305_031353",
+        "rgbd_pothole_20250305_035042",
+        "rgbd_pothole_20250227_185350",
+        "model_raised_rectangular_skewed_fine_asphalt"
+      ],
+      "showcase": false,
+      "id": "130"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_052012",
+        "rgbd_pothole_20250305_053817",
+        "model_missing_rectangular_flush_chip_seal",
+        "rgbd_pothole_20250227_163440",
+        "rgbd_pothole_20250227_192043",
+        "rgbd_pothole_20250305_043734",
+        "model_pothole_waterlogged_chip_seal_02",
+        "rgbd_pothole_20250227_165810"
+      ],
+      "showcase": false,
+      "id": "131"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_124307",
+        "model_raised_square_removed_side_chip_seal",
+        "rgbd_pothole_20250305_101722",
+        "rgbd_pothole_20250305_053907",
+        "rgbd_pothole_20250227_185703",
+        "stereo_pothole_fan_2_37",
+        "rgbd_pothole_20250305_131541",
+        "rgbd_pothole_20250305_142717"
+      ],
+      "showcase": false,
+      "id": "132"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_raised_round_skewed_concrete",
+        "rgbd_pothole_20250227_170321",
+        "model_pothole_cluster_chip_seal_02",
+        "rgbd_pothole_20250227_175013",
+        "model_missing_oval_settled_chip_seal",
+        "rgbd_pothole_20250305_125419",
+        "rgbd_pothole_20250227_170736",
+        "rgbd_pothole_20250305_140109"
+      ],
+      "showcase": false,
+      "id": "133"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_182647",
+        "rgbd_pothole_20250227_174526",
+        "model_raised_round_tilted29_chip_seal",
+        "rgbd_pothole_20250305_125139",
+        "rgbd_pothole_20250305_053246",
+        "rgbd_pothole_20250305_053112",
+        "model_pothole_patch_break_aged_asphalt_01",
+        "rgbd_pothole_20250305_062512"
+      ],
+      "showcase": false,
+      "id": "134"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_021805",
+        "rgbd_pothole_20250305_135341",
+        "rgbd_pothole_20250305_095310",
+        "rgbd_pothole_20250305_055711",
+        "stereo_pothole_fan_1_05",
+        "model_pothole_cluster_concrete_02",
+        "rgbd_pothole_20250305_134622",
+        "model_raised_rectangular_raised62_concrete"
+      ],
+      "showcase": false,
+      "id": "135"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_050527",
+        "rgbd_pothole_20250227_171548",
+        "model_missing_square_broken_flange_chip_seal",
+        "rgbd_pothole_20250305_024357",
+        "rgbd_pothole_20250227_184542",
+        "rgbd_pothole_20250305_061439",
+        "rgbd_pothole_20250305_050817",
+        "model_raised_square_upright82_chip_seal"
+      ],
+      "showcase": false,
+      "id": "136"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_125639",
+        "model_pothole_joined_concrete_03",
+        "rgbd_pothole_20250305_111006",
+        "rgbd_pothole_20250227_185615",
+        "rgbd_pothole_20250227_143049",
+        "rgbd_pothole_20250305_143002",
+        "rgbd_pothole_20250305_144032",
+        "model_raised_rectangular_slid_aged_asphalt"
+      ],
+      "showcase": false,
+      "id": "137"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "stereo_pothole_fan_1_13",
+        "rgbd_pothole_20250227_185523",
+        "rgbd_pothole_20250305_125432",
+        "rgbd_pothole_20250305_031407",
+        "model_pothole_joined_fine_asphalt_03",
+        "rgbd_pothole_20250227_162618",
+        "rgbd_pothole_20250305_110948",
+        "rgbd_pothole_20250227_163015"
+      ],
+      "showcase": false,
+      "id": "138"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_042726",
+        "model_raised_square_removed_side_concrete",
+        "model_missing_rectangular_masonry_aged_asphalt",
+        "rgbd_pothole_20250305_124929",
+        "rgbd_pothole_20250305_035709",
+        "rgbd_pothole_20250305_084055",
+        "rgbd_pothole_20250305_124818",
+        "model_pothole_cluster_aged_asphalt_01"
+      ],
+      "showcase": false,
+      "id": "139"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_171518",
+        "stereo_pothole_fan_1_14",
+        "rgbd_pothole_20250305_055524",
+        "rgbd_pothole_20250305_143919",
+        "rgbd_pothole_20250305_094638",
+        "model_raised_oval_raised62_concrete",
+        "rgbd_pothole_20250305_082854",
+        "rgbd_pothole_20250305_142815"
+      ],
+      "showcase": false,
+      "id": "140"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_124703",
+        "model_pothole_wheel_rut_aged_asphalt_02",
+        "rgbd_pothole_20250305_124414",
+        "model_missing_oval_broken_flange_aged_asphalt",
+        "rgbd_pothole_20250227_173306",
+        "model_raised_square_raised62_chip_seal",
+        "rgbd_pothole_20250305_060305",
+        "rgbd_pothole_20250305_111636"
+      ],
+      "showcase": false,
+      "id": "141"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_132212",
+        "rgbd_pothole_20250305_031236",
+        "rgbd_pothole_20250305_134713",
+        "model_pothole_deep_break_chip_seal_01",
+        "rgbd_pothole_20250305_115026",
+        "rgbd_pothole_20250305_094522",
+        "stereo_pothole_fan_2_20",
+        "rgbd_pothole_20250305_133021"
+      ],
+      "showcase": false,
+      "id": "142"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250227_183313",
+        "model_raised_square_propped43_chip_seal",
+        "rgbd_pothole_20250227_171856",
+        "rgbd_pothole_20250305_102506",
+        "model_pothole_patch_break_fine_asphalt_03",
+        "rgbd_pothole_20250227_190842",
+        "rgbd_pothole_20250305_053526",
+        "rgbd_pothole_20250227_185645"
+      ],
+      "showcase": false,
+      "id": "143"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250227_154322",
+        "model_raised_rectangular_tilted29_chip_seal",
+        "rgbd_pothole_20250305_074333",
+        "model_missing_square_settled_concrete",
+        "rgbd_pothole_20250305_135133",
+        "rgbd_pothole_20250227_183642",
+        "rgbd_pothole_20250305_060013",
+        "model_pothole_joined_fine_asphalt_01"
+      ],
+      "showcase": false,
+      "id": "144"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_114530",
+        "stereo_pothole_fan_1_22",
+        "rgbd_pothole_20250305_104042",
+        "rgbd_pothole_20250227_171035",
+        "model_raised_round_propped43_chip_seal",
+        "rgbd_pothole_20250305_055452",
+        "rgbd_pothole_20250305_053631",
+        "rgbd_pothole_20250305_133629"
+      ],
+      "showcase": false,
+      "id": "145"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_pothole_waterlogged_concrete_02",
+        "rgbd_pothole_20250305_050811",
+        "rgbd_pothole_20250227_190929",
+        "rgbd_pothole_20250227_185340",
+        "rgbd_pothole_20250305_054000",
+        "model_raised_rectangular_propped43_fine_asphalt",
+        "model_missing_round_flush_concrete",
+        "rgbd_pothole_20250227_163135"
+      ],
+      "showcase": false,
+      "id": "146"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "rgbd_pothole_20250305_082847",
+        "rgbd_pothole_20250305_114701",
+        "stereo_pothole_fan_2_19",
+        "rgbd_pothole_20250227_185112",
+        "model_pothole_joined_chip_seal_01",
+        "rgbd_pothole_20250305_141909",
+        "rgbd_pothole_20250305_060649",
+        "rgbd_pothole_20250305_053937"
+      ],
+      "showcase": false,
+      "id": "147"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "model_raised_rectangular_propped43_concrete",
+        "rgbd_pothole_20250305_095343",
+        "rgbd_pothole_20250227_181033",
+        "rgbd_pothole_20250305_140116",
+        "rgbd_pothole_20250305_131532",
+        "rgbd_pothole_20250227_175029",
+        "rgbd_pothole_20250305_035753",
+        "model_raised_round_ajar14_concrete"
+      ],
+      "showcase": false,
+      "id": "148"
+    },
+    {
+      "site": "055",
+      "assets": [
+        "model_pothole_patch_break_chip_seal_03",
+        "rgbd_pothole_20250305_055325",
+        "rgbd_pothole_20250305_150419",
+        "rgbd_pothole_20250305_140447",
+        "stereo_pothole_fan_1_07",
+        "rgbd_pothole_20250227_172620",
+        "rgbd_pothole_20250227_185245",
+        "model_missing_round_settled_concrete"
+      ],
+      "showcase": false,
+      "id": "149"
+    },
+    {
+      "site": "056",
+      "assets": [
+        "rgbd_pothole_20250305_113505",
+        "model_raised_rectangular_tilted29_concrete",
+        "rgbd_pothole_20250227_170624",
+        "model_pothole_spall_fine_asphalt_02",
+        "rgbd_pothole_20250227_184251",
+        "rgbd_pothole_20250305_045413",
+        "rgbd_pothole_20250305_052703"
+      ],
+      "showcase": false,
+      "id": "150"
+    }
+  ],
+  "total_assets": 1199
+}

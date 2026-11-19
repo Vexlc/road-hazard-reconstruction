@@ -1,0 +1,214 @@
+{
+  "stereo_pothole_dataset1_02": {
+    "mesh": {
+      "triangles": 169932,
+      "embedded_textures": 1,
+      "bounds_y_up_m": [
+        [
+          -0.12018349766731262,
+          -0.04475858807563782,
+          -0.11829569935798645
+        ],
+        [
+          0.12018349766731262,
+          0.01100896392017603,
+          0.11829569935798645
+        ]
+      ]
+    },
+    "gaussians": {
+      "gaussians": 79800,
+      "finite": true,
+      "sh_degree": 1,
+      "local_z_m": [
+        -0.04475858807563782,
+        0.01100896392017603
+      ]
+    },
+    "actors_and_non_background_parameters_equal": true,
+    "checkpoint_reload_max_rgb_error": 0.0,
+    "drive": {
+      "frames": 80,
+      "fps": 10,
+      "resolution": [
+        1920,
+        1080
+      ]
+    },
+    "same_camera_before_after": {
+      "frames": 80,
+      "fps": 10,
+      "resolution": [
+        3840,
+        1080
+      ]
+    },
+    "close": {
+      "frames": 88,
+      "fps": 24,
+      "resolution": [
+        1920,
+        1080
+      ]
+    }
+  },
+  "stereo_pothole_dataset2_25": {
+    "mesh": {
+      "triangles": 226284,
+      "embedded_textures": 1,
+      "bounds_y_up_m": [
+        [
+          -0.14175471663475037,
+          -0.01604187861084938,
+          -0.13382725417613983
+        ],
+        [
+          0.14175471663475037,
+          0.0013445441145449877,
+          0.13382725417613983
+        ]
+      ]
+    },
+    "gaussians": {
+      "gaussians": 107166,
+      "finite": true,
+      "sh_degree": 1,
+      "local_z_m": [
+        -0.01604187861084938,
+        0.0013445441145449877
+      ]
+    },
+    "actors_and_non_background_parameters_equal": true,
+    "checkpoint_reload_max_rgb_error": 0.0,
+    "drive": {
+      "frames": 80,
+      "fps": 10,
+      "resolution": [
+        1920,
+        1080
+      ]
+    },
+    "same_camera_before_after": {
+      "frames": 80,
+      "fps": 10,
+      "resolution": [
+        3840,
+        1080
+      ]
+    },
+    "close": {
+      "frames": 88,
+      "fps": 24,
+      "resolution": [
+        1920,
+        1080
+      ]
+    }
+  },
+  "photo_manhole_missing": {
+    "mesh": {
+      "triangles": 479542,
+      "embedded_textures": 15,
+      "bounds_y_up_m": [
+        [
+          -0.949999988079071,
+          -1.0750000476837158,
+          -0.949999988079071
+        ],
+        [
+          0.949999988079071,
+          0.00243787607178092,
+          0.949999988079071
+        ]
+      ]
+    },
+    "gaussians": {
+      "gaussians": 904046,
+      "finite": true,
+      "sh_degree": 1,
+      "local_z_m": [
+        -1.0750001668930054,
+        0.0024378281086683273
+      ]
+    },
+    "actors_and_non_background_parameters_equal": true,
+    "checkpoint_reload_max_rgb_error": 0.0,
+    "drive": {
+      "frames": 80,
+      "fps": 10,
+      "resolution": [
+        1920,
+        1080
+      ]
+    },
+    "same_camera_before_after": {
+      "frames": 80,
+      "fps": 10,
+      "resolution": [
+        3840,
+        1080
+      ]
+    },
+    "close": {
+      "frames": 88,
+      "fps": 24,
+      "resolution": [
+        1920,
+        1080
+      ]
+    }
+  },
+  "photo_manhole_raised65": {
+    "mesh": {
+      "triangles": 700300,
+      "embedded_textures": 16,
+      "bounds_y_up_m": [
+        [
+          -0.949999988079071,
+          -1.0750000476837158,
+          -0.949999988079071
+        ],
+        [
+          0.949999988079071,
+          0.6269041895866394,
+          0.949999988079071
+        ]
+      ]
+    },
+    "gaussians": {
+      "gaussians": 937418,
+      "finite": true,
+      "sh_degree": 1,
+      "local_z_m": [
+        -1.0750001668930054,
+        0.6268417835235596
+      ]
+    },
+    "actors_and_non_background_parameters_equal": true,
+    "checkpoint_reload_max_rgb_error": 0.0,
+    "drive": {
+      "frames": 80,
+      "fps": 10,
+      "resolution": [
+        1920,
+        1080
+      ]
+    },
+    "same_camera_before_after": {
+      "frames": 80,
+      "fps": 10,
+      "resolution": [
+        3840,
+        1080
+      ]
+    },
+    "close": {
+      "frames": 88,
+      "fps": 24,
+      "resolution": [
+        1920,
+        1080
+      ]
+    }
+  }
+}

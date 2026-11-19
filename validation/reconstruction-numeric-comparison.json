@@ -1,0 +1,191 @@
+{
+  "assets_checked": 5,
+  "passed": true,
+  "assets": [
+    {
+      "id": "model_missing_oval_broken_flange_aged_asphalt",
+      "category": "missing",
+      "points": 122000,
+      "checks": {
+        "position_m": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.0001,
+          "pass": true
+        },
+        "log_scale": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "quaternion_component": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "sh_coefficient": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.02,
+          "pass": true
+        },
+        "opacity_logit": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "height_m": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.0001,
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "model_pothole_bowled_aged_asphalt_01",
+      "category": "pothole",
+      "points": 32240,
+      "checks": {
+        "position_m": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.0001,
+          "pass": true
+        },
+        "log_scale": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "quaternion_component": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "sh_coefficient": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.02,
+          "pass": true
+        },
+        "opacity_logit": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "height_m": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.0001,
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "model_raised_oval_ajar14_aged_asphalt",
+      "category": "raised",
+      "points": 122000,
+      "checks": {
+        "position_m": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.0001,
+          "pass": true
+        },
+        "log_scale": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "quaternion_component": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "sh_coefficient": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.02,
+          "pass": true
+        },
+        "opacity_logit": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "height_m": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.0001,
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "rgbd_pothole_20250227_135438",
+      "category": "rgbd",
+      "points": 111429,
+      "checks": {
+        "position_m": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.0001,
+          "pass": true
+        },
+        "log_scale": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "quaternion_component": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "sh_coefficient": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.02,
+          "pass": true
+        },
+        "opacity_logit": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "height_m": {
+          "max_abs_error": 0.0,
+          "tolerance": 0.0001,
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_01",
+      "category": "stereo",
+      "points": 43178,
+      "checks": {
+        "position_m": {
+          "max_abs_error": 2.7325295377522707e-06,
+          "tolerance": 0.0001,
+          "pass": true
+        },
+        "log_scale": {
+          "max_abs_error": 0.00016927719116210938,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "quaternion_component": {
+          "max_abs_error": 0.0006787143647670746,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "sh_coefficient": {
+          "max_abs_error": 0.013883829116821289,
+          "tolerance": 0.02,
+          "pass": true
+        },
+        "opacity_logit": {
+          "max_abs_error": 2.6226043701171875e-06,
+          "tolerance": 0.002,
+          "pass": true
+        },
+        "height_m": {
+          "max_abs_error": 2.7325295377522707e-06,
+          "tolerance": 0.0001,
+          "pass": true
+        }
+      }
+    }
+  ]
+}

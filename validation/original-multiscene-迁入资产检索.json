@@ -1,0 +1,4802 @@
+[
+  {
+    "scene": "034",
+    "version": "034_01",
+    "asset_id": "stereo_pothole_fan_3_02",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "034",
+    "version": "034_01",
+    "asset_id": "rgbd_pothole_20250305_054319",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "034",
+    "version": "034_01",
+    "asset_id": "model_pothole_bowled_chip_seal_01",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "034",
+    "version": "034_01",
+    "asset_id": "model_missing_oval_flush_fine_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "034",
+    "version": "034_01",
+    "asset_id": "model_raised_oval_removed_side_concrete",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "034",
+    "version": "034_02",
+    "asset_id": "stereo_pothole_fan_2_07",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "034",
+    "version": "034_02",
+    "asset_id": "rgbd_pothole_20250227_171044",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "034",
+    "version": "034_02",
+    "asset_id": "model_pothole_slab_corner_chip_seal_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "034",
+    "version": "034_02",
+    "asset_id": "model_missing_oval_broken_flange_aged_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "034",
+    "version": "034_02",
+    "asset_id": "model_raised_rectangular_ajar14_fine_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "034",
+    "version": "034_03",
+    "asset_id": "stereo_pothole_fan_3_03",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "034",
+    "version": "034_03",
+    "asset_id": "rgbd_pothole_20250305_045716",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "034",
+    "version": "034_03",
+    "asset_id": "model_pothole_patch_break_aged_asphalt_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "034",
+    "version": "034_03",
+    "asset_id": "model_missing_oval_settled_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "034",
+    "version": "034_03",
+    "asset_id": "model_raised_round_skewed_aged_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "034",
+    "version": "034_04",
+    "asset_id": "stereo_pothole_fan_3_01",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "034",
+    "version": "034_04",
+    "asset_id": "rgbd_pothole_20250305_124307",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "034",
+    "version": "034_04",
+    "asset_id": "model_pothole_patch_break_chip_seal_02",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "034",
+    "version": "034_04",
+    "asset_id": "model_missing_square_settled_chip_seal",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "034",
+    "version": "034_04",
+    "asset_id": "model_raised_rectangular_slid_concrete",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "034",
+    "version": "034_05",
+    "asset_id": "stereo_pothole_fan_2_35",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "034",
+    "version": "034_05",
+    "asset_id": "rgbd_pothole_20250227_170940",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "034",
+    "version": "034_05",
+    "asset_id": "model_pothole_deep_break_concrete_01",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "034",
+    "version": "034_05",
+    "asset_id": "model_missing_rectangular_settled_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "034",
+    "version": "034_05",
+    "asset_id": "model_raised_rectangular_slid_aged_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "034",
+    "version": "034_06",
+    "asset_id": "stereo_pothole_fan_1_03",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "034",
+    "version": "034_06",
+    "asset_id": "rgbd_pothole_20250305_132557",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "034",
+    "version": "034_06",
+    "asset_id": "model_pothole_deep_break_aged_asphalt_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "034",
+    "version": "034_06",
+    "asset_id": "model_missing_oval_broken_flange_fine_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "034",
+    "version": "034_06",
+    "asset_id": "model_raised_round_ajar14_fine_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "034",
+    "version": "034_07",
+    "asset_id": "stereo_pothole_fan_1_18",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "034",
+    "version": "034_07",
+    "asset_id": "rgbd_pothole_20250305_131813",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "034",
+    "version": "034_07",
+    "asset_id": "model_pothole_waterlogged_concrete_02",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "034",
+    "version": "034_07",
+    "asset_id": "model_missing_oval_masonry_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "034",
+    "version": "034_07",
+    "asset_id": "model_raised_oval_slid_concrete",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "034",
+    "version": "034_08",
+    "asset_id": "stereo_pothole_fan_2_16",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "034",
+    "version": "034_08",
+    "asset_id": "rgbd_pothole_20250227_190609",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "034",
+    "version": "034_08",
+    "asset_id": "model_pothole_patch_break_fine_asphalt_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "034",
+    "version": "034_08",
+    "asset_id": "model_missing_rectangular_flush_aged_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "034",
+    "version": "034_08",
+    "asset_id": "model_raised_square_removed_side_chip_seal",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "034",
+    "version": "034_09",
+    "asset_id": "stereo_pothole_fan_2_24",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "034",
+    "version": "034_09",
+    "asset_id": "rgbd_pothole_20250305_135233",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "034",
+    "version": "034_09",
+    "asset_id": "model_pothole_patch_break_fine_asphalt_02",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "034",
+    "version": "034_09",
+    "asset_id": "model_missing_rectangular_masonry_aged_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "034",
+    "version": "034_09",
+    "asset_id": "model_raised_square_skewed_aged_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "034",
+    "version": "034_10",
+    "asset_id": "stereo_pothole_fan_2_08",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -36.16243798230243,
+      -5.790768920867825,
+      -5.150513699017868
+    ],
+    "basis_columns": [
+      [
+        -0.15583637906672923,
+        -0.9776676350399915,
+        -0.14100006508750496
+      ],
+      [
+        0.9875661737497854,
+        -0.15719661918618416,
+        -0.00150843682079268
+      ],
+      [
+        -0.02068998367759607,
+        -0.13948196410914124,
+        0.9900084374709527
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "034",
+    "version": "034_10",
+    "asset_id": "rgbd_pothole_20250305_050151",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -39.913730178510214,
+      -7.657097045032512,
+      -5.687371416209338
+    ],
+    "basis_columns": [
+      [
+        -0.15799935478427368,
+        -0.9780079636703009,
+        -0.13614928161846723
+      ],
+      [
+        0.9874240776259753,
+        -0.15725133973556055,
+        -0.016300523791066644
+      ],
+      [
+        -0.005467614858877717,
+        -0.13701255106318838,
+        0.9905542216551865
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "034",
+    "version": "034_10",
+    "asset_id": "model_pothole_crescent_chip_seal_01",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.06189349194502,
+      -7.055127513663942,
+      -6.244618041380145
+    ],
+    "basis_columns": [
+      [
+        -0.15669785563869604,
+        -0.9785928109300476,
+        -0.1334237326500145
+      ],
+      [
+        0.9875269346322547,
+        -0.15734537579513483,
+        -0.005743351957732266
+      ],
+      [
+        -0.015373204417328321,
+        -0.13265950064701726,
+        0.9910424418126739
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "034",
+    "version": "034_10",
+    "asset_id": "model_missing_square_settled_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -47.81318568815281,
+      -8.92145563782863,
+      -6.774471269659303
+    ],
+    "basis_columns": [
+      [
+        -0.15744937616546734,
+        -0.9786321066817988,
+        -0.1322455810855301
+      ],
+      [
+        0.9874784881572678,
+        -0.1573516940561698,
+        -0.011255212316535618
+      ],
+      [
+        -0.009794354074768554,
+        -0.13236179263366707,
+        0.991153079236028
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "034",
+    "version": "034_10",
+    "asset_id": "model_raised_rectangular_tilted29_chip_seal",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/034_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -51.96134900158761,
+      -8.31948610646006,
+      -7.344700583391781
+    ],
+    "basis_columns": [
+      [
+        -0.15659741157373058,
+        -0.9782202118456376,
+        -0.13624414785627867
+      ],
+      [
+        0.9875363365235256,
+        -0.15728546656393816,
+        -0.005767673140735865
+      ],
+      [
+        -0.015787169920593928,
+        -0.13544924933140154,
+        0.9906585012613872
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "109",
+    "version": "109_01",
+    "asset_id": "stereo_pothole_fan_3_02",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "109",
+    "version": "109_01",
+    "asset_id": "rgbd_pothole_20250305_054319",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "109",
+    "version": "109_01",
+    "asset_id": "model_pothole_bowled_chip_seal_01",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "109",
+    "version": "109_01",
+    "asset_id": "model_missing_oval_flush_fine_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "109",
+    "version": "109_01",
+    "asset_id": "model_raised_oval_removed_side_concrete",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "109",
+    "version": "109_02",
+    "asset_id": "stereo_pothole_fan_2_07",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "109",
+    "version": "109_02",
+    "asset_id": "rgbd_pothole_20250227_171044",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "109",
+    "version": "109_02",
+    "asset_id": "model_pothole_slab_corner_chip_seal_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "109",
+    "version": "109_02",
+    "asset_id": "model_missing_oval_broken_flange_aged_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "109",
+    "version": "109_02",
+    "asset_id": "model_raised_rectangular_ajar14_fine_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "109",
+    "version": "109_03",
+    "asset_id": "stereo_pothole_fan_3_03",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "109",
+    "version": "109_03",
+    "asset_id": "rgbd_pothole_20250305_045716",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "109",
+    "version": "109_03",
+    "asset_id": "model_pothole_patch_break_aged_asphalt_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "109",
+    "version": "109_03",
+    "asset_id": "model_missing_oval_settled_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "109",
+    "version": "109_03",
+    "asset_id": "model_raised_round_skewed_aged_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "109",
+    "version": "109_04",
+    "asset_id": "stereo_pothole_fan_3_01",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "109",
+    "version": "109_04",
+    "asset_id": "rgbd_pothole_20250305_124307",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "109",
+    "version": "109_04",
+    "asset_id": "model_pothole_patch_break_chip_seal_02",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "109",
+    "version": "109_04",
+    "asset_id": "model_missing_square_settled_chip_seal",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "109",
+    "version": "109_04",
+    "asset_id": "model_raised_rectangular_slid_concrete",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "109",
+    "version": "109_05",
+    "asset_id": "stereo_pothole_fan_2_35",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "109",
+    "version": "109_05",
+    "asset_id": "rgbd_pothole_20250227_170940",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "109",
+    "version": "109_05",
+    "asset_id": "model_pothole_deep_break_concrete_01",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "109",
+    "version": "109_05",
+    "asset_id": "model_missing_rectangular_settled_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "109",
+    "version": "109_05",
+    "asset_id": "model_raised_rectangular_slid_aged_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "109",
+    "version": "109_06",
+    "asset_id": "stereo_pothole_fan_1_03",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "109",
+    "version": "109_06",
+    "asset_id": "rgbd_pothole_20250305_132557",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "109",
+    "version": "109_06",
+    "asset_id": "model_pothole_deep_break_aged_asphalt_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "109",
+    "version": "109_06",
+    "asset_id": "model_missing_oval_broken_flange_fine_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "109",
+    "version": "109_06",
+    "asset_id": "model_raised_round_ajar14_fine_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "109",
+    "version": "109_07",
+    "asset_id": "stereo_pothole_fan_1_18",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "109",
+    "version": "109_07",
+    "asset_id": "rgbd_pothole_20250305_131813",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "109",
+    "version": "109_07",
+    "asset_id": "model_pothole_waterlogged_concrete_02",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "109",
+    "version": "109_07",
+    "asset_id": "model_missing_oval_masonry_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "109",
+    "version": "109_07",
+    "asset_id": "model_raised_oval_slid_concrete",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "109",
+    "version": "109_08",
+    "asset_id": "stereo_pothole_fan_2_16",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "109",
+    "version": "109_08",
+    "asset_id": "rgbd_pothole_20250227_190609",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "109",
+    "version": "109_08",
+    "asset_id": "model_pothole_patch_break_fine_asphalt_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "109",
+    "version": "109_08",
+    "asset_id": "model_missing_rectangular_flush_aged_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "109",
+    "version": "109_08",
+    "asset_id": "model_raised_square_removed_side_chip_seal",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "109",
+    "version": "109_09",
+    "asset_id": "stereo_pothole_fan_2_24",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "109",
+    "version": "109_09",
+    "asset_id": "rgbd_pothole_20250305_135233",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "109",
+    "version": "109_09",
+    "asset_id": "model_pothole_patch_break_fine_asphalt_02",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "109",
+    "version": "109_09",
+    "asset_id": "model_missing_rectangular_masonry_aged_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "109",
+    "version": "109_09",
+    "asset_id": "model_raised_square_skewed_aged_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "109",
+    "version": "109_10",
+    "asset_id": "stereo_pothole_fan_2_08",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -38.60890679637467,
+      39.414138021219195,
+      -0.5507427847349833
+    ],
+    "basis_columns": [
+      [
+        0.7022745068784205,
+        -0.7111999369127098,
+        0.031704364431875125
+      ],
+      [
+        0.7101220131204765,
+        0.7029704320496952,
+        0.03948794937176009
+      ],
+      [
+        -0.05037105786454429,
+        -0.005217413077624456,
+        0.998716944449419
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "109",
+    "version": "109_10",
+    "asset_id": "rgbd_pothole_20250305_050151",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -42.33280760217728,
+      41.3367046730585,
+      -0.5181848326144055
+    ],
+    "basis_columns": [
+      [
+        0.7025289898836816,
+        -0.7112085574442668,
+        0.025207264648488124
+      ],
+      [
+        0.7106609923783754,
+        0.7029789528305316,
+        0.02795614045378668
+      ],
+      [
+        -0.0376028228301632,
+        -0.0017261794038061738,
+        0.9992912728628571
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "109",
+    "version": "109_10",
+    "asset_id": "model_pothole_crescent_chip_seal_01",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -44.29925840756882,
+      45.03729536749541,
+      -0.5978768974791859
+    ],
+    "basis_columns": [
+      [
+        0.7022025601346754,
+        -0.7112080136151492,
+        0.03308664246945238
+      ],
+      [
+        0.710274424713401,
+        0.7029784152942214,
+        0.036490947212594195
+      ],
+      [
+        -0.0492118495725865,
+        -0.002123440608734671,
+        0.9987861056610801
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "109",
+    "version": "109_10",
+    "asset_id": "model_missing_square_settled_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -48.02315921337143,
+      46.95986201933471,
+      -0.5779390668277125
+    ],
+    "basis_columns": [
+      [
+        0.7028003465846374,
+        -0.7111877270864994,
+        0.016843090038727675
+      ],
+      [
+        0.7106719099140079,
+        0.7029583635069959,
+        0.028195312283119618
+      ],
+      [
+        -0.03189215106715088,
+        -0.007845764277962356,
+        0.9994605218232507
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "109",
+    "version": "109_10",
+    "asset_id": "model_raised_rectangular_tilted29_chip_seal",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/109_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -49.989610018762974,
+      50.660452713771626,
+      -0.6436153210217977
+    ],
+    "basis_columns": [
+      [
+        0.7026154117756905,
+        -0.7111908713336491,
+        0.023219122872363822
+      ],
+      [
+        0.7104238242983579,
+        0.7029614713711317,
+        0.033810643842280004
+      ],
+      [
+        -0.04036797003284676,
+        -0.007260461377806601,
+        0.9991585022888053
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "110",
+    "version": "110_01",
+    "asset_id": "stereo_pothole_fan_3_02",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "110",
+    "version": "110_01",
+    "asset_id": "rgbd_pothole_20250305_054319",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "110",
+    "version": "110_01",
+    "asset_id": "model_pothole_bowled_chip_seal_01",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "110",
+    "version": "110_01",
+    "asset_id": "model_missing_oval_flush_fine_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "110",
+    "version": "110_01",
+    "asset_id": "model_raised_oval_removed_side_concrete",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_01/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 0
+  },
+  {
+    "scene": "110",
+    "version": "110_02",
+    "asset_id": "stereo_pothole_fan_2_07",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "110",
+    "version": "110_02",
+    "asset_id": "rgbd_pothole_20250227_171044",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "110",
+    "version": "110_02",
+    "asset_id": "model_pothole_slab_corner_chip_seal_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "110",
+    "version": "110_02",
+    "asset_id": "model_missing_oval_broken_flange_aged_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "110",
+    "version": "110_02",
+    "asset_id": "model_raised_rectangular_ajar14_fine_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_02/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 3
+  },
+  {
+    "scene": "110",
+    "version": "110_03",
+    "asset_id": "stereo_pothole_fan_3_03",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "110",
+    "version": "110_03",
+    "asset_id": "rgbd_pothole_20250305_045716",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "110",
+    "version": "110_03",
+    "asset_id": "model_pothole_patch_break_aged_asphalt_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "110",
+    "version": "110_03",
+    "asset_id": "model_missing_oval_settled_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "110",
+    "version": "110_03",
+    "asset_id": "model_raised_round_skewed_aged_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_03/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 6
+  },
+  {
+    "scene": "110",
+    "version": "110_04",
+    "asset_id": "stereo_pothole_fan_3_01",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "110",
+    "version": "110_04",
+    "asset_id": "rgbd_pothole_20250305_124307",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "110",
+    "version": "110_04",
+    "asset_id": "model_pothole_patch_break_chip_seal_02",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "110",
+    "version": "110_04",
+    "asset_id": "model_missing_square_settled_chip_seal",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "110",
+    "version": "110_04",
+    "asset_id": "model_raised_rectangular_slid_concrete",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_04/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 9
+  },
+  {
+    "scene": "110",
+    "version": "110_05",
+    "asset_id": "stereo_pothole_fan_2_35",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "110",
+    "version": "110_05",
+    "asset_id": "rgbd_pothole_20250227_170940",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "110",
+    "version": "110_05",
+    "asset_id": "model_pothole_deep_break_concrete_01",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "110",
+    "version": "110_05",
+    "asset_id": "model_missing_rectangular_settled_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "110",
+    "version": "110_05",
+    "asset_id": "model_raised_rectangular_slid_aged_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_05/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 12
+  },
+  {
+    "scene": "110",
+    "version": "110_06",
+    "asset_id": "stereo_pothole_fan_1_03",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "110",
+    "version": "110_06",
+    "asset_id": "rgbd_pothole_20250305_132557",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "110",
+    "version": "110_06",
+    "asset_id": "model_pothole_deep_break_aged_asphalt_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "110",
+    "version": "110_06",
+    "asset_id": "model_missing_oval_broken_flange_fine_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "110",
+    "version": "110_06",
+    "asset_id": "model_raised_round_ajar14_fine_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_06/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 15
+  },
+  {
+    "scene": "110",
+    "version": "110_07",
+    "asset_id": "stereo_pothole_fan_1_18",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "110",
+    "version": "110_07",
+    "asset_id": "rgbd_pothole_20250305_131813",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "110",
+    "version": "110_07",
+    "asset_id": "model_pothole_waterlogged_concrete_02",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "110",
+    "version": "110_07",
+    "asset_id": "model_missing_oval_masonry_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "110",
+    "version": "110_07",
+    "asset_id": "model_raised_oval_slid_concrete",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_07/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 18
+  },
+  {
+    "scene": "110",
+    "version": "110_08",
+    "asset_id": "stereo_pothole_fan_2_16",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "110",
+    "version": "110_08",
+    "asset_id": "rgbd_pothole_20250227_190609",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "110",
+    "version": "110_08",
+    "asset_id": "model_pothole_patch_break_fine_asphalt_03",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "110",
+    "version": "110_08",
+    "asset_id": "model_missing_rectangular_flush_aged_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "110",
+    "version": "110_08",
+    "asset_id": "model_raised_square_removed_side_chip_seal",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_08/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 21
+  },
+  {
+    "scene": "110",
+    "version": "110_09",
+    "asset_id": "stereo_pothole_fan_2_24",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "110",
+    "version": "110_09",
+    "asset_id": "rgbd_pothole_20250305_135233",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "110",
+    "version": "110_09",
+    "asset_id": "model_pothole_patch_break_fine_asphalt_02",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "110",
+    "version": "110_09",
+    "asset_id": "model_missing_rectangular_masonry_aged_asphalt",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "110",
+    "version": "110_09",
+    "asset_id": "model_raised_square_skewed_aged_asphalt",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_09/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 24
+  },
+  {
+    "scene": "110",
+    "version": "110_10",
+    "asset_id": "stereo_pothole_fan_2_08",
+    "category": "stereo",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/stereo_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -6.3658642180972524,
+      7.811166801899868,
+      -0.39056069473516075
+    ],
+    "basis_columns": [
+      [
+        0.7284105888580494,
+        -0.6848261160723442,
+        0.020765470973171586
+      ],
+      [
+        0.6843889193400311,
+        0.7286964707999772,
+        0.024764097565672313
+      ],
+      [
+        -0.032090826166585464,
+        -0.003826772651433873,
+        0.9994776309087763
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "110",
+    "version": "110_10",
+    "asset_id": "rgbd_pothole_20250305_050151",
+    "category": "rgbd",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/rgbd_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -10.257007934763672,
+      8.957347036433411,
+      -0.33159460097782145
+    ],
+    "basis_columns": [
+      [
+        0.7284758716753614,
+        -0.6848293069193543,
+        0.01821331302040712
+      ],
+      [
+        0.6845327779652356,
+        0.7286998660544812,
+        0.020282531976522505
+      ],
+      [
+        -0.027162111074430555,
+        -0.0023077254035709423,
+        0.9996283780112699
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "110",
+    "version": "110_10",
+    "asset_id": "model_pothole_crescent_chip_seal_01",
+    "category": "pothole",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/pothole_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -8.719411714672123,
+      11.774677427863464,
+      -0.42669115150658377
+    ],
+    "basis_columns": [
+      [
+        0.7283672480149642,
+        -0.684830137882519,
+        0.02210959671540513
+      ],
+      [
+        0.6844420858298813,
+        0.7287007502496242,
+        0.023113799568146246
+      ],
+      [
+        -0.031940306259474846,
+        -0.0017025960898707712,
+        0.999488328097235
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "110",
+    "version": "110_10",
+    "asset_id": "model_missing_square_settled_concrete",
+    "category": "missing",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/missing_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -12.610555431338543,
+      12.920857662397008,
+      -0.3955214234740271
+    ],
+    "basis_columns": [
+      [
+        0.728763767324481,
+        -0.684734480819355,
+        0.0064855386883628
+      ],
+      [
+        0.684320283937548,
+        0.7285989653399969,
+        0.029142695433328872
+      ],
+      [
+        -0.024680365205230686,
+        -0.016799954837274315,
+        0.9995542211860254
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  },
+  {
+    "scene": "110",
+    "version": "110_10",
+    "asset_id": "model_raised_rectangular_tilted29_chip_seal",
+    "category": "raised",
+    "closeup_file": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/raised_close.mp4",
+    "checkpoint": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_多场景迁入/迁入场景/110_10/trained_model/iteration_7000.pth",
+    "center_world": [
+      -9.368097956393866,
+      5.675830897334677,
+      -0.27706885371399564
+    ],
+    "basis_columns": [
+      [
+        0.7285491380074505,
+        -0.6848188037547239,
+        0.015471248577588343
+      ],
+      [
+        0.6844664307430297,
+        0.7286886900510859,
+        0.022770555055363774
+      ],
+      [
+        -0.026867428133302878,
+        -0.005999917964496402,
+        0.9996209993242042
+      ]
+    ],
+    "size_multiplier": 1.0,
+    "category_video_start_seconds": 27
+  }
+]

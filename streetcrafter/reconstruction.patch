@@ -1,0 +1,111 @@
+diff --git a/create_scene.py b/create_scene.py
+index cef1108..7330177 100644
+--- a/create_scene.py
++++ b/create_scene.py
+@@ -3,13 +3,13 @@ from street_gaussian.datasets.dataset import Dataset
+ from street_gaussian.pointcloud_processor import getPointCloudProcessor
+ from street_gaussian.models.scene import Scene
+ from street_gaussian.config import cfg
+-from video_diffusion.sample_condition import VideoDiffusionModel
+ 
+ 
+ def create_scene():
+     dataset = Dataset()
+     gaussians = StreetGaussianModel(dataset.metadata)
+     if (cfg.mode == 'train' and cfg.diffusion.use_diffusion) or cfg.mode == 'diffusion':
++        from video_diffusion.sample_condition import VideoDiffusionModel
+         print("Diffusion model loaded")
+         video_diffusion = VideoDiffusionModel(
+             config_path=cfg.diffusion.config_path,
+diff --git a/data_processor/pandaset_processor/pandaset_convertor.py b/data_processor/pandaset_processor/pandaset_convertor.py
+index 73feb3d..3f7f1f5 100644
+--- a/data_processor/pandaset_processor/pandaset_convertor.py
++++ b/data_processor/pandaset_processor/pandaset_convertor.py
+@@ -868,7 +868,7 @@ if __name__ == "__main__":
+     )
+     args = parser.parse_args()
+     
+-    scene_ids_list = [
++    scene_ids_list = args.scene_ids if args.scene_ids is not None else [
+         1, 2, 3, 4, 5, 6, 8, 11, 12, 13, 14, 15, 16, 17,
+         18, 19, 20, 21, 23, 24, 27, 28, 29, 30, 32, 33, 34, 35, 37,
+         38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 50, 51, 52, 53,
+@@ -893,4 +893,3 @@ if __name__ == "__main__":
+ 
+ 
+     # dataset_processor.convert()
+-
+diff --git a/street_gaussian/datasets/dataset.py b/street_gaussian/datasets/dataset.py
+index 504769d..b186934 100644
+--- a/street_gaussian/datasets/dataset.py
++++ b/street_gaussian/datasets/dataset.py
+@@ -4,9 +4,11 @@ from street_gaussian.utils.camera_utils import cameraList_from_camInfos
+ from street_gaussian.config import cfg
+ from street_gaussian.datasets.base_readers import SceneInfo
+ from street_gaussian.datasets.waymo_readers import readWaymoInfo
++from street_gaussian.datasets.pandaset_readers import readPandasetInfo
+ 
+ sceneLoadTypeCallbacks = {
+     "Waymo": readWaymoInfo,
++    "Pandaset": readPandasetInfo,
+ }
+ 
+ 
+diff --git a/street_gaussian/models/scene.py b/street_gaussian/models/scene.py
+index bbad063..f3a0225 100755
+--- a/street_gaussian/models/scene.py
++++ b/street_gaussian/models/scene.py
+@@ -1,3 +1,4 @@
++from __future__ import annotations
+ import os
+ import torch
+ from typing import Union, Optional
+@@ -6,7 +7,6 @@ from street_gaussian.models.street_gaussian_model import StreetGaussianModel
+ from street_gaussian.config import cfg
+ from street_gaussian.utils.system_utils import searchForMaxIteration
+ from street_gaussian.pointcloud_processor.base_processor import BasePointCloudProcessor
+-from video_diffusion.sample_condition import VideoDiffusionModel
+ 
+ from easyvolcap.utils.console_utils import *
+ 
+diff --git a/street_gaussian/utils/camera_utils.py b/street_gaussian/utils/camera_utils.py
+index f2c00ef..6b1a018 100755
+--- a/street_gaussian/utils/camera_utils.py
++++ b/street_gaussian/utils/camera_utils.py
+@@ -147,7 +147,10 @@ def loadCam(cam_info: CameraInfo, resolution_scale, scale=1.0):
+     orig_w = cam_info.width
+     orig_h = cam_info.height
+     # if cfg.mode != 'train':
+-    scale = min(scale, 1600 / orig_w)
++    if cfg.resolution > 0:
++        scale = min(scale, cfg.resolution / orig_w)
++    else:
++        scale = min(scale, 1600 / orig_w)
+     scale = scale / resolution_scale
+     resolution = (int(orig_w * scale), int(orig_h * scale))
+ 
+diff --git a/street_gaussian/utils/diffusion_utils.py b/street_gaussian/utils/diffusion_utils.py
+index b72f353..fd5f636 100644
+--- a/street_gaussian/utils/diffusion_utils.py
++++ b/street_gaussian/utils/diffusion_utils.py
+@@ -9,7 +9,6 @@ from street_gaussian.models.street_gaussian_renderer import StreetGaussianRender
+ from street_gaussian.models.street_gaussian_model import StreetGaussianModel
+ from street_gaussian.config import cfg
+ from street_gaussian.utils.camera_utils import Camera
+-from video_diffusion.sample_condition import VideoDiffusionModel
+ 
+ from easyvolcap.utils.console_utils import *
+ 
+diff --git a/train.py b/train.py
+index 787a309..be7ff3e 100644
+--- a/train.py
++++ b/train.py
+@@ -321,7 +321,7 @@ def training():
+             if (iteration in training_args.checkpoint_iterations):
+                 print("\n[ITER {}] Saving Checkpoint".format(iteration))
+                 try:
+-                    state_dict = gaussians.save_state_dict(is_final=(iteration == training_args.iterations))
++                    state_dict = gaussians.save_state_dict(is_final=(iteration == training_args.iterations and not training_args.get('keep_optimizer', False)))
+                     state_dict['iter'] = iteration + 1
+                     ckpt_path = os.path.join(cfg.trained_model_dir, f'iteration_{iteration}.pth')
+                     torch.save(state_dict, ckpt_path)

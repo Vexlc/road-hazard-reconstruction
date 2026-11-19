@@ -1,0 +1,25 @@
+{
+  "native_checkpoint_reload": true,
+  "views": [
+    {
+      "asset_id": "stereo_pothole_fan_3_02",
+      "mean_abs_pixel_difference_from_saved_jpeg": 0.30133679509162903
+    },
+    {
+      "asset_id": "rgbd_pothole_20250305_054319",
+      "mean_abs_pixel_difference_from_saved_jpeg": 0.350087434053421
+    },
+    {
+      "asset_id": "model_pothole_bowled_chip_seal_01",
+      "mean_abs_pixel_difference_from_saved_jpeg": 0.4540959298610687
+    },
+    {
+      "asset_id": "model_missing_oval_flush_fine_asphalt",
+      "mean_abs_pixel_difference_from_saved_jpeg": 0.4090920686721802
+    },
+    {
+      "asset_id": "model_raised_oval_removed_side_concrete",
+      "mean_abs_pixel_difference_from_saved_jpeg": 0.43806713819503784
+    }
+  ]
+}
