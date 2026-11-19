@@ -1,6 +1,6 @@
 {
-  "source_files_excluding_this_report": 143,
-  "source_bytes": 6693907,
+  "source_files_excluding_this_report": 144,
+  "source_bytes": 6713148,
   "python_files": 86,
   "python_syntax": "passed",
   "shell_syntax": "passed",
@@ -12,8 +12,7 @@
   "large_binary_files": 0,
   "known_limitations": [
     "13 stereo assets have numeric/boundary differences; not claimed byte-identical",
-    "No full rerun on a second physical computer",
-    "6 Drive packages totaling 3052916765 bytes remain pending"
+    "No full rerun on a second physical computer"
   ],
   "files": [
     ".gitattributes",
@@ -129,6 +128,7 @@
     "tools/multiscene/verify_presentation.py",
     "tools/visualization/render_catalog.py",
     "tools/visualization/verify_catalog.py",
+    "validation/cloud-upload-verification.json",
     "validation/current-final-video-motion.json",
     "validation/current-new-road-reload.json",
     "validation/full-library-hashes.json",
@@ -159,5 +159,9 @@
     "work/road_hazard_pipeline/render_capture_closeups.py",
     "work/road_hazard_pipeline/render_hazards.py",
     "work/road_hazard_pipeline/sample_hazards.py"
-  ]
+  ],
+  "cloud_packages_verified": 45,
+  "cloud_package_bytes": 17538283067,
+  "repository_visibility": "public",
+  "downloaded_final_videos_restored_and_motion_verified": true
 }
