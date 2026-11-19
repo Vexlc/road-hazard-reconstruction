@@ -1,6 +1,6 @@
 # 可选下载
 
-所有数据包位于 [Google Drive 项目目录](https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_)，按 `assets/`、`inputs/`、`scenes/`、`visualizations/`、`documents/` 分开存放。默认保持私有，请使用有访问权限的 Google 账号。
+所有数据包位于 [Google Drive 项目目录](https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_)，按 `assets/`、`inputs/`、`scenes/`、`visualizations/`、`documents/` 分开存放。已设置为“知道链接的任何人可查看”，无需 Google 账号即可查看和下载；没有编辑权限，且未开启搜索发现。
 
 [云盘校验文件](https://drive.google.com/file/d/1OgOUPyyvvPmWBUiLI6VqRJSa1V95gaNb/view?usp=drivesdk) · [云盘下载索引](https://drive.google.com/file/d/1dgF3qYTP-uydcLfzlJhzHPLJRp-FyLlC/view?usp=drivesdk)
 
@@ -39,4 +39,4 @@ python scripts/verify-assets.py --category stereo
 
 只看视频时直接下载 MP4 即可；直接 MP4 与 `visualization-files-*` 内的视频是同一内容的两种下载方式，不必同时下载。
 
-如果使用 rclone 下载私有目录，先在自己的电脑运行 `rclone config` 授权 Google Drive，然后使用清单中的文件夹 ID。上传机器的授权文件、浏览器登录信息与令牌不包含在项目内。
+浏览器可直接通过上述共享链接下载。如需使用 rclone 批量下载，先在自己的电脑运行 `rclone config` 授权 Google Drive，然后使用清单中的文件夹 ID。上传机器的授权文件、浏览器登录信息与令牌不包含在项目内。

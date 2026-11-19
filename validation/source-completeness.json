@@ -1,6 +1,6 @@
 {
-  "source_files_excluding_this_report": 144,
-  "source_bytes": 6713148,
+  "source_files_excluding_this_report": 145,
+  "source_bytes": 6723076,
   "python_files": 86,
   "python_syntax": "passed",
   "shell_syntax": "passed",
@@ -131,6 +131,7 @@
     "validation/cloud-upload-verification.json",
     "validation/current-final-video-motion.json",
     "validation/current-new-road-reload.json",
+    "validation/drive-sharing-verification.json",
     "validation/full-library-hashes.json",
     "validation/full-reconstruction-exact-hashes.json",
     "validation/original-joint-validation.json",
@@ -163,5 +164,8 @@
   "cloud_packages_verified": 45,
   "cloud_package_bytes": 17538283067,
   "repository_visibility": "public",
-  "downloaded_final_videos_restored_and_motion_verified": true
+  "downloaded_final_videos_restored_and_motion_verified": true,
+  "drive_link_access": "anyone_reader_no_discovery",
+  "drive_package_permissions_verified": 45,
+  "drive_anonymous_checksum_download_verified": true
 }

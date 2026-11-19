@@ -1,0 +1,334 @@
+{
+  "folder_id": "1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_",
+  "folder_url": "https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_",
+  "anyone_role": "reader",
+  "allow_file_discovery": false,
+  "packages_checked": 45,
+  "all_packages_have_anyone_reader": true,
+  "verification_method": "Drive permission metadata for all 45 packages; anonymous HTTP download of SHA256SUMS compared byte-for-byte with local file",
+  "anonymous_download_sample": {
+    "authenticated": false,
+    "http_status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 4251,
+    "matches_local_checksum_file": true,
+    "url": "https://drive.google.com/uc?export=download&id=1OgOUPyyvvPmWBUiLI6VqRJSa1V95gaNb"
+  },
+  "files": [
+    {
+      "file": "assets-stereo-01.zip",
+      "id": "1ZIoEee4DWILpLGpRZ6r9pYY0K0du-KG_",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-01.zip",
+      "id": "1bQIraiVUwBmcxVekyvRyDsu2RuCDxFLu",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-02.zip",
+      "id": "1WGbQXDpeCnewF8eywyodSFBQZLlKU9Tl",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-03.zip",
+      "id": "1GEHvldrp8O4phjNJf2APafHXpI0D8xZ3",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-04.zip",
+      "id": "1pmfTtbGiNLaeJ5dyThlvScCFJ0XuMzr1",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-05.zip",
+      "id": "1aE_OmmGzTe3VxHwfG7IF6f0HJRdQi9_Z",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-06.zip",
+      "id": "1dj75iXH5yk4bxsJJruuqGjzGbN2JFU-b",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-07.zip",
+      "id": "1o7hf34NK-bp4OFyHhCS9IYYsrXRcW1HN",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-08.zip",
+      "id": "1LqaQwo8RBQz55wWkvxh-KvC3yek94eAQ",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-09.zip",
+      "id": "1DFElyXLnUu7L8CLci3Eof1ECpRx8qifA",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-rgbd-10.zip",
+      "id": "13Ctbc1yi-5w4YAs4ja67QExFK1KjbZlg",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-pothole-01.zip",
+      "id": "13SHZaB8Vtm2nwPfsz0aj5SUI1AiOIIky",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-missing-01.zip",
+      "id": "1FTS4BahcZu8jHfkpC0C_1hkyjvPjUl3o",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-raised-01.zip",
+      "id": "140HFwyGe6WFMjQG1hNJAx1Gddg_xYuAH",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "assets-raised-02.zip",
+      "id": "11R8CSQNDmd3zb935NUxhCIr85AmxIRQT",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "inputs-stereo.tar.zst",
+      "id": "1T5-nk8jDxojUWtsPJKOqsvCJCq8wku94",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "inputs-procedural-pbr.tar.zst",
+      "id": "1x2I2Dnc2qq7dC4-nj-5jK6ADRRsTWc3b",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "pandaset-055-056-runtime.tar.zst",
+      "id": "1svLbGJH_vq7sV1wtmmP5DLCeljFuSYHf",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "pandaset-055-056-exports.tar.zst",
+      "id": "1wcZkhhTlUCfZqYGaS2fF9QEj7Pb5_MkR",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "scene-001-assets.tar.zst",
+      "id": "1AaAKDCA7aTyopziEn-ye4K4-96E_S2PI",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualization-stereo.mp4",
+      "id": "1L-lNSlmjte2kRiVHwByDf3IZVkw7WSlL",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualizations-stereo.tar.zst",
+      "id": "1BSFv1OkZADYxhFmbn13ljxpN5bXQvP6c",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualization-rgbd.mp4",
+      "id": "163iZG5QE9VC_NhuQswDtXDHGskFlmYGC",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualizations-rgbd.tar.zst",
+      "id": "18mspK4fybTrCeawaqqLiYchkyCgXFHDg",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualization-pothole.mp4",
+      "id": "12od0fw6wLbzEzUPe9RHGeco_YjHbGdlo",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualizations-pothole.tar.zst",
+      "id": "1inipMoe2EC-XbEcrpkBD6GZMZYCAsG0S",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualization-missing.mp4",
+      "id": "1nBYJcilnLBKXozcj-zGCyZj8kE1p9SYa",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualizations-missing.tar.zst",
+      "id": "138w0o1g9Sa05wqBNNXdVtU4rdqBDJyUy",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualization-raised.mp4",
+      "id": "1lhP8jstONda2PQn8iyJn7WjYCFQpQ0Gb",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualizations-raised.tar.zst",
+      "id": "1nGS-dur0aAWAH6MSeD8ZkJtSeyohjApU",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "visualization-index.tar.zst",
+      "id": "1_LggUup0kC9Uuq4EYQRPLsNw43Yngf0f",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "pandaset-034-runtime.tar.zst",
+      "id": "1NUNfEV1ZTDSEK287uRUwO--pGM0rx_pZ",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "pandaset-109-runtime.tar.zst",
+      "id": "1psWhCMCe4g3EZst5n83h_zEIREMT8pSc",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "pandaset-110-runtime.tar.zst",
+      "id": "1WIBA4ga9hE_LVAkC_4cmaNfXQv87fszO",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "multiscene-50-selected-assets.tar.zst",
+      "id": "1ZFXYH8AUlZSNdWo2tnvyTja1sXj_a3zy",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "00_全局前后_循环动态图.gif",
+      "id": "1LQp5Ksvk2XDT2oQrQDsTsiXF6fqA33mY",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "00_只看全局前后_连续8秒.mp4",
+      "id": "1_Oy0KR_WWed0WpdsdrPvRSG9jNYirOIA",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "01_双目坑洞_全局动态综合版_1080p.mp4",
+      "id": "1v5DsPBBDx632v-CRA1VMTuVQfdBnIU2V",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "02_RGB-D坑洞_全局动态综合版_1080p.mp4",
+      "id": "13eF8asVBbbENEy6s4iLB4ACatCvtde3I",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "03_建模坑洞_全局动态综合版_1080p.mp4",
+      "id": "1Ik1zHyMMdE1XyvKPJxPxS-OhjiC66vzn",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "04_缺盖窨井_全局动态综合版_1080p.mp4",
+      "id": "1fZdR0Ew1qLCwKYgwUTIT_s9SiLQ7Gct6",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "05_异常井盖_全局动态综合版_1080p.mp4",
+      "id": "1_EDWEWFcXahrOumt5uVzCSnOndwfHvpy",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "dynamic-presentation-metadata.tar.zst",
+      "id": "1vHn5R26eI1sV5xsTQoEriEWnS6JSHTle",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "multiscene-original-scale-previews.tar.zst",
+      "id": "1zdWnlbO442vtmGrDkEeAPRyPfzYWccTA",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    },
+    {
+      "file": "inputs-rgbd.tar.zst",
+      "id": "1p6bDUJqJ0iBLyWXuq8i9pa-jzQiUh384",
+      "anyone_role": "reader",
+      "allow_file_discovery": false,
+      "passed": true
+    }
+  ]
+}
