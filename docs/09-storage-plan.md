@@ -13,15 +13,8 @@
 
 其中最新五份 1080p、2 分钟综合视频合计 **422,710,100 字节，约 423 MB**。直接 MP4 与某些可视化归档中的视频内容重复，用于直接观看和按项目布局解压两种方式；不必同时下载。
 
-当前云端目录读回查到并核对文件大小的内容为 **39 个文件、14.49 GB**；以下六个文件仍待补传或完成云端确认，共 **3.05 GB**：
+45 个包已全部上传，合计 **17.54 GB**，缺失文件为 **0**。本地全部包重新核对了 SHA-256；云端文件已读回核对大小，并用 rclone check 比较本地/云端可用哈希，45 项一致。报告位于 `validation/cloud-upload-verification.json`。
 
-- `pandaset-034-runtime.tar.zst`
-- `pandaset-109-runtime.tar.zst`
-- `pandaset-110-runtime.tar.zst`
-- `multiscene-50-selected-assets.tar.zst`
-- `dynamic-presentation-metadata.tar.zst`
-- `multiscene-original-scale-previews.tar.zst`
+每个包的 SHA-256 和实际云盘文件链接见 `catalog/downloads.json`。该校验使用服务端哈希元数据，并未把全部 17.54 GB 再下载一遍；用户下载后仍由 `scripts/packages.py` 校验 SHA-256。
 
-这个状态是云端文件存在与大小的读回核对，不冒充对所有文件重新下载后的全量 SHA-256 检查。每个本地发布包的 SHA-256 已写入 `catalog/downloads.json`，下载后由 `scripts/packages.py` 校验。
-
-剩余云盘传输保持暂停；本次只发布已经检查完整的代码和文档。GitHub 中包含源码与小型索引/报告，模型、数据、虚拟环境、缓存和视频不进入 Git 历史。
+GitHub 仓库已公开且没有 README；Google Drive 沿用原有访问权限。模型、数据、虚拟环境、缓存和视频不进入 Git 历史。

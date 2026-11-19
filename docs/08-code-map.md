@@ -74,7 +74,7 @@ work/envs/streetcrafter/bin/python tools/visualization/render_catalog.py --categ
 
 ## 从新克隆生成最终五份综合视频
 
-先安装环境，恢复 `scenes-034`、`scenes-109`、`scenes-110` 和 `sample-multiscene-50`。这些文件必须已经下载完成；源代码完整不代表云盘的待上传文件已经可用。
+先安装环境，恢复 `scenes-034`、`scenes-109`、`scenes-110` 和 `sample-multiscene-50`。这些运行包和样例均已上传，使用前先按清单下载并检查 SHA-256。
 
 ```bash
 python scripts/packages.py restore --group scenes-034 --group scenes-109 \

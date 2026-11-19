@@ -1,0 +1,328 @@
+{
+  "packages": 45,
+  "bytes": 17538283067,
+  "local_sha256_all_match": true,
+  "cloud_size_and_common_hash_all_match": true,
+  "cloud_check_method": "rclone check --one-way; compares size and common server/local hash, without redownloading all data",
+  "missing_files": 0,
+  "different_files": 0,
+  "repository_visibility": "public",
+  "readme_files": 0,
+  "files": [
+    {
+      "file": "assets-stereo-01.zip",
+      "bytes": 369044368,
+      "sha256": "5acd3a1670cca9b70f1a7f245315915d2ab7f7285e9d37a71b25f6af1e3b9826",
+      "id": "1ZIoEee4DWILpLGpRZ6r9pYY0K0du-KG_",
+      "url": "https://drive.google.com/file/d/1ZIoEee4DWILpLGpRZ6r9pYY0K0du-KG_/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-01.zip",
+      "bytes": 653512855,
+      "sha256": "62fb1c7dedb7339bd510d783da2cbf586ed41a20a6ac25288d17f9e8dc92fbe8",
+      "id": "1bQIraiVUwBmcxVekyvRyDsu2RuCDxFLu",
+      "url": "https://drive.google.com/file/d/1bQIraiVUwBmcxVekyvRyDsu2RuCDxFLu/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-02.zip",
+      "bytes": 651065737,
+      "sha256": "c771564fed0ed245f9dabb287b181d72c7986746f4f9ccdcd0278bb7635e464e",
+      "id": "1WGbQXDpeCnewF8eywyodSFBQZLlKU9Tl",
+      "url": "https://drive.google.com/file/d/1WGbQXDpeCnewF8eywyodSFBQZLlKU9Tl/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-03.zip",
+      "bytes": 652572155,
+      "sha256": "a5989fdcd0aa2b60cb171e0c8c9f4ea5efabad1cd6c5e3cc70b711b88c2c5233",
+      "id": "1GEHvldrp8O4phjNJf2APafHXpI0D8xZ3",
+      "url": "https://drive.google.com/file/d/1GEHvldrp8O4phjNJf2APafHXpI0D8xZ3/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-04.zip",
+      "bytes": 654079025,
+      "sha256": "dbc862283f89d50bc7a102155bebfc7250b2754c2023e86f60e2c2c153bd2c91",
+      "id": "1pmfTtbGiNLaeJ5dyThlvScCFJ0XuMzr1",
+      "url": "https://drive.google.com/file/d/1pmfTtbGiNLaeJ5dyThlvScCFJ0XuMzr1/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-05.zip",
+      "bytes": 657090658,
+      "sha256": "40718191aa7e070cd72996b8df648ff5a04080b2f84210b43637b1c4abd5db65",
+      "id": "1aE_OmmGzTe3VxHwfG7IF6f0HJRdQi9_Z",
+      "url": "https://drive.google.com/file/d/1aE_OmmGzTe3VxHwfG7IF6f0HJRdQi9_Z/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-06.zip",
+      "bytes": 668087140,
+      "sha256": "7d90bcd08f39fcc4772c3ad0739e8a2707fe4a8e2ecee768eda9fcfe270cee6c",
+      "id": "1dj75iXH5yk4bxsJJruuqGjzGbN2JFU-b",
+      "url": "https://drive.google.com/file/d/1dj75iXH5yk4bxsJJruuqGjzGbN2JFU-b/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-07.zip",
+      "bytes": 674602796,
+      "sha256": "e26f3292ae34bce1ac9d1e8932297416e607c60a40b739c316f8ec02449d2c79",
+      "id": "1o7hf34NK-bp4OFyHhCS9IYYsrXRcW1HN",
+      "url": "https://drive.google.com/file/d/1o7hf34NK-bp4OFyHhCS9IYYsrXRcW1HN/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-08.zip",
+      "bytes": 664145982,
+      "sha256": "4bdaf382a93dad2614d3091a0644acf36820056b2804467d2c4208880e373fac",
+      "id": "1LqaQwo8RBQz55wWkvxh-KvC3yek94eAQ",
+      "url": "https://drive.google.com/file/d/1LqaQwo8RBQz55wWkvxh-KvC3yek94eAQ/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-09.zip",
+      "bytes": 662130567,
+      "sha256": "e4dfd7d1ffeba4287e9c1521a5d10fb9d7e06271c25e8e9d7043e2421c6f488e",
+      "id": "1DFElyXLnUu7L8CLci3Eof1ECpRx8qifA",
+      "url": "https://drive.google.com/file/d/1DFElyXLnUu7L8CLci3Eof1ECpRx8qifA/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-rgbd-10.zip",
+      "bytes": 294972698,
+      "sha256": "6ad4212bb41feb1ece3000825679a92cf21ce4e553e8659f29f44e2afa66bfae",
+      "id": "13Ctbc1yi-5w4YAs4ja67QExFK1KjbZlg",
+      "url": "https://drive.google.com/file/d/13Ctbc1yi-5w4YAs4ja67QExFK1KjbZlg/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-pothole-01.zip",
+      "bytes": 488296524,
+      "sha256": "0c1a1f7d533944dd82e89557794cb566fec2236bbbae3bf8708451ad1f8109e4",
+      "id": "13SHZaB8Vtm2nwPfsz0aj5SUI1AiOIIky",
+      "url": "https://drive.google.com/file/d/13SHZaB8Vtm2nwPfsz0aj5SUI1AiOIIky/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-missing-01.zip",
+      "bytes": 447115204,
+      "sha256": "7ba70da8b9726107adf6cef22ce65d010df60bfddd984588090ed027e0a08b5d",
+      "id": "1FTS4BahcZu8jHfkpC0C_1hkyjvPjUl3o",
+      "url": "https://drive.google.com/file/d/1FTS4BahcZu8jHfkpC0C_1hkyjvPjUl3o/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-raised-01.zip",
+      "bytes": 429618187,
+      "sha256": "92c10a4de5677e6accca52d9e7f5586804cd983cd71bcbeafc3b659f93bd2840",
+      "id": "140HFwyGe6WFMjQG1hNJAx1Gddg_xYuAH",
+      "url": "https://drive.google.com/file/d/140HFwyGe6WFMjQG1hNJAx1Gddg_xYuAH/view?usp=drivesdk"
+    },
+    {
+      "file": "assets-raised-02.zip",
+      "bytes": 439391256,
+      "sha256": "711c2105d41c8ba6f48a544a29f0e24ffd02c6fbe6d89c37273c0fded9b601d0",
+      "id": "11R8CSQNDmd3zb935NUxhCIr85AmxIRQT",
+      "url": "https://drive.google.com/file/d/11R8CSQNDmd3zb935NUxhCIr85AmxIRQT/view?usp=drivesdk"
+    },
+    {
+      "file": "inputs-stereo.tar.zst",
+      "bytes": 2732630940,
+      "sha256": "e57ba89b51c4f0f6968c9d1b55c67f84e9bca441b1096fd0c5aa6cf346442aff",
+      "id": "1T5-nk8jDxojUWtsPJKOqsvCJCq8wku94",
+      "url": "https://drive.google.com/file/d/1T5-nk8jDxojUWtsPJKOqsvCJCq8wku94/view?usp=drivesdk"
+    },
+    {
+      "file": "inputs-procedural-pbr.tar.zst",
+      "bytes": 169712124,
+      "sha256": "e9d107767e639d94c7fe8d429c0239db4dbc98dbf7d102d3671360c396676971",
+      "id": "1x2I2Dnc2qq7dC4-nj-5jK6ADRRsTWc3b",
+      "url": "https://drive.google.com/file/d/1x2I2Dnc2qq7dC4-nj-5jK6ADRRsTWc3b/view?usp=drivesdk"
+    },
+    {
+      "file": "pandaset-055-056-runtime.tar.zst",
+      "bytes": 1450397802,
+      "sha256": "d88e1fb00b14be04c7214adce0e817aac71b2b39001303c4394da6d5d8a3b391",
+      "id": "1svLbGJH_vq7sV1wtmmP5DLCeljFuSYHf",
+      "url": "https://drive.google.com/file/d/1svLbGJH_vq7sV1wtmmP5DLCeljFuSYHf/view?usp=drivesdk"
+    },
+    {
+      "file": "pandaset-055-056-exports.tar.zst",
+      "bytes": 735371654,
+      "sha256": "3039fdaf77b5016b7a9f62b0151a9dd4a07fd1bd9e238add2a8e71903a36a780",
+      "id": "1wcZkhhTlUCfZqYGaS2fF9QEj7Pb5_MkR",
+      "url": "https://drive.google.com/file/d/1wcZkhhTlUCfZqYGaS2fF9QEj7Pb5_MkR/view?usp=drivesdk"
+    },
+    {
+      "file": "scene-001-assets.tar.zst",
+      "bytes": 47337650,
+      "sha256": "3c956cfc5f5db75d68c0cd88cddec19d7ce8774d4ec733bde613cbd2a2634b74",
+      "id": "1AaAKDCA7aTyopziEn-ye4K4-96E_S2PI",
+      "url": "https://drive.google.com/file/d/1AaAKDCA7aTyopziEn-ye4K4-96E_S2PI/view?usp=drivesdk"
+    },
+    {
+      "file": "visualization-stereo.mp4",
+      "bytes": 10128625,
+      "sha256": "058903634531a6280cb98917e07a2a745eb9f0833e0f863334fbe4182f985366",
+      "id": "1L-lNSlmjte2kRiVHwByDf3IZVkw7WSlL",
+      "url": "https://drive.google.com/file/d/1L-lNSlmjte2kRiVHwByDf3IZVkw7WSlL/view?usp=drivesdk"
+    },
+    {
+      "file": "visualizations-stereo.tar.zst",
+      "bytes": 10679372,
+      "sha256": "92010c631ce44e7b3aefcd638ee55e2849776aa2268b5fae28e7d6973ba263fd",
+      "id": "1BSFv1OkZADYxhFmbn13ljxpN5bXQvP6c",
+      "url": "https://drive.google.com/file/d/1BSFv1OkZADYxhFmbn13ljxpN5bXQvP6c/view?usp=drivesdk"
+    },
+    {
+      "file": "visualization-rgbd.mp4",
+      "bytes": 130437320,
+      "sha256": "b4fbfdbc79858df8cdbc98a0610518c35ec4160e2d04bf11269fa1aded9c9ea7",
+      "id": "163iZG5QE9VC_NhuQswDtXDHGskFlmYGC",
+      "url": "https://drive.google.com/file/d/163iZG5QE9VC_NhuQswDtXDHGskFlmYGC/view?usp=drivesdk"
+    },
+    {
+      "file": "visualizations-rgbd.tar.zst",
+      "bytes": 131129861,
+      "sha256": "ab751a5965eb09c67dffdacb574eeed38f4816d6746ac8b3b0755ac9b74f7339",
+      "id": "18mspK4fybTrCeawaqqLiYchkyCgXFHDg",
+      "url": "https://drive.google.com/file/d/18mspK4fybTrCeawaqqLiYchkyCgXFHDg/view?usp=drivesdk"
+    },
+    {
+      "file": "visualization-pothole.mp4",
+      "bytes": 18131996,
+      "sha256": "7927183ba6ada28cc4a5512da5338d7ce7bc298f86257b7697bf2633a0a63306",
+      "id": "12od0fw6wLbzEzUPe9RHGeco_YjHbGdlo",
+      "url": "https://drive.google.com/file/d/12od0fw6wLbzEzUPe9RHGeco_YjHbGdlo/view?usp=drivesdk"
+    },
+    {
+      "file": "visualizations-pothole.tar.zst",
+      "bytes": 18867122,
+      "sha256": "46af6fc4890929279297538ffa97e7cc0419697a48f59b4354c14620b5c4945a",
+      "id": "1inipMoe2EC-XbEcrpkBD6GZMZYCAsG0S",
+      "url": "https://drive.google.com/file/d/1inipMoe2EC-XbEcrpkBD6GZMZYCAsG0S/view?usp=drivesdk"
+    },
+    {
+      "file": "visualization-missing.mp4",
+      "bytes": 10648425,
+      "sha256": "14b01c8ce5f3c20f77e8dd8c002aeac79c020cb891e22dc072202a9216c5f7ba",
+      "id": "1nBYJcilnLBKXozcj-zGCyZj8kE1p9SYa",
+      "url": "https://drive.google.com/file/d/1nBYJcilnLBKXozcj-zGCyZj8kE1p9SYa/view?usp=drivesdk"
+    },
+    {
+      "file": "visualizations-missing.tar.zst",
+      "bytes": 11690035,
+      "sha256": "39be7030a3da9fcceaea44be2612daaee1455ec278c35620f88bc7869324c9f9",
+      "id": "138w0o1g9Sa05wqBNNXdVtU4rdqBDJyUy",
+      "url": "https://drive.google.com/file/d/138w0o1g9Sa05wqBNNXdVtU4rdqBDJyUy/view?usp=drivesdk"
+    },
+    {
+      "file": "visualization-raised.mp4",
+      "bytes": 18854597,
+      "sha256": "648d1960d5b5640bb0d1b76fe45470b15b811e2e9e1ae7fe04752f973f71f82b",
+      "id": "1lhP8jstONda2PQn8iyJn7WjYCFQpQ0Gb",
+      "url": "https://drive.google.com/file/d/1lhP8jstONda2PQn8iyJn7WjYCFQpQ0Gb/view?usp=drivesdk"
+    },
+    {
+      "file": "visualizations-raised.tar.zst",
+      "bytes": 19792077,
+      "sha256": "4e7ebbb2d69db10269f8a46746f72e8a408a413e846b006a0c988ce227a36fcb",
+      "id": "1nGS-dur0aAWAH6MSeD8ZkJtSeyohjApU",
+      "url": "https://drive.google.com/file/d/1nGS-dur0aAWAH6MSeD8ZkJtSeyohjApU/view?usp=drivesdk"
+    },
+    {
+      "file": "visualization-index.tar.zst",
+      "bytes": 24374,
+      "sha256": "94669053c5d6d64b7539586dd92b4ac3fd5899aba9d9e732aca143f7ae904410",
+      "id": "1_LggUup0kC9Uuq4EYQRPLsNw43Yngf0f",
+      "url": "https://drive.google.com/file/d/1_LggUup0kC9Uuq4EYQRPLsNw43Yngf0f/view?usp=drivesdk"
+    },
+    {
+      "file": "pandaset-034-runtime.tar.zst",
+      "bytes": 743070998,
+      "sha256": "97382c93a0cbe5a42cdd09e5489dc2895923b2af55767c0f12ee7074338129f1",
+      "id": "1NUNfEV1ZTDSEK287uRUwO--pGM0rx_pZ",
+      "url": "https://drive.google.com/file/d/1NUNfEV1ZTDSEK287uRUwO--pGM0rx_pZ/view?usp=drivesdk"
+    },
+    {
+      "file": "pandaset-109-runtime.tar.zst",
+      "bytes": 715321609,
+      "sha256": "36fcf569a982d5e458911f30d6f5f07bae0709924b057d1d5c8ea45e02fa80be",
+      "id": "1psWhCMCe4g3EZst5n83h_zEIREMT8pSc",
+      "url": "https://drive.google.com/file/d/1psWhCMCe4g3EZst5n83h_zEIREMT8pSc/view?usp=drivesdk"
+    },
+    {
+      "file": "pandaset-110-runtime.tar.zst",
+      "bytes": 716406889,
+      "sha256": "95fd12dd0951337e346470bdf0bb93a99354c4c2c0cce9e3e75cf061964405d1",
+      "id": "1WIBA4ga9hE_LVAkC_4cmaNfXQv87fszO",
+      "url": "https://drive.google.com/file/d/1WIBA4ga9hE_LVAkC_4cmaNfXQv87fszO/view?usp=drivesdk"
+    },
+    {
+      "file": "multiscene-50-selected-assets.tar.zst",
+      "bytes": 303273249,
+      "sha256": "9b291878e2ff022f6514fb83ecac07dc4c37c1edf58911754c7b1a11409a09d2",
+      "id": "1ZFXYH8AUlZSNdWo2tnvyTja1sXj_a3zy",
+      "url": "https://drive.google.com/file/d/1ZFXYH8AUlZSNdWo2tnvyTja1sXj_a3zy/view?usp=drivesdk"
+    },
+    {
+      "file": "00_全局前后_循环动态图.gif",
+      "bytes": 7175781,
+      "sha256": "1816f012516606f6ae6b6ddb7aad318e3321ba5a968ecffb2e0cee03c504b161",
+      "id": "1LQp5Ksvk2XDT2oQrQDsTsiXF6fqA33mY",
+      "url": "https://drive.google.com/file/d/1LQp5Ksvk2XDT2oQrQDsTsiXF6fqA33mY/view?usp=drivesdk"
+    },
+    {
+      "file": "00_只看全局前后_连续8秒.mp4",
+      "bytes": 6034886,
+      "sha256": "dd58890ea413c25b9fef9b5551801c7fe2ae8a2e92a85a6dad78f5e1738a435e",
+      "id": "1_Oy0KR_WWed0WpdsdrPvRSG9jNYirOIA",
+      "url": "https://drive.google.com/file/d/1_Oy0KR_WWed0WpdsdrPvRSG9jNYirOIA/view?usp=drivesdk"
+    },
+    {
+      "file": "01_双目坑洞_全局动态综合版_1080p.mp4",
+      "bytes": 87892528,
+      "sha256": "12159b136d089b66b230a078e35cd87299bcc299c2e1f89894e1f9e136b3f87c",
+      "id": "1v5DsPBBDx632v-CRA1VMTuVQfdBnIU2V",
+      "url": "https://drive.google.com/file/d/1v5DsPBBDx632v-CRA1VMTuVQfdBnIU2V/view?usp=drivesdk"
+    },
+    {
+      "file": "02_RGB-D坑洞_全局动态综合版_1080p.mp4",
+      "bytes": 84123373,
+      "sha256": "47bd47eff9f14f5fef4c935c568d85669a5dcb161238aaf04aad3f14b12aa5f6",
+      "id": "13eF8asVBbbENEy6s4iLB4ACatCvtde3I",
+      "url": "https://drive.google.com/file/d/13eF8asVBbbENEy6s4iLB4ACatCvtde3I/view?usp=drivesdk"
+    },
+    {
+      "file": "03_建模坑洞_全局动态综合版_1080p.mp4",
+      "bytes": 82944970,
+      "sha256": "f2ad9c131cf554499b3bd5374a0bae58a84b9eafa49d5e9e2a1de8fb1c207882",
+      "id": "1Ik1zHyMMdE1XyvKPJxPxS-OhjiC66vzn",
+      "url": "https://drive.google.com/file/d/1Ik1zHyMMdE1XyvKPJxPxS-OhjiC66vzn/view?usp=drivesdk"
+    },
+    {
+      "file": "04_缺盖窨井_全局动态综合版_1080p.mp4",
+      "bytes": 83224843,
+      "sha256": "ba7b2f2acb276aa3bca3e9bc6c90bce6fece6853847b3f7423befd34054d9b7e",
+      "id": "1fZdR0Ew1qLCwKYgwUTIT_s9SiLQ7Gct6",
+      "url": "https://drive.google.com/file/d/1fZdR0Ew1qLCwKYgwUTIT_s9SiLQ7Gct6/view?usp=drivesdk"
+    },
+    {
+      "file": "05_异常井盖_全局动态综合版_1080p.mp4",
+      "bytes": 84524386,
+      "sha256": "e9beb300a42940589326488040aa542554f5262e2bc4248df75ea14a4d39a54e",
+      "id": "1_EDWEWFcXahrOumt5uVzCSnOndwfHvpy",
+      "url": "https://drive.google.com/file/d/1_EDWEWFcXahrOumt5uVzCSnOndwfHvpy/view?usp=drivesdk"
+    },
+    {
+      "file": "dynamic-presentation-metadata.tar.zst",
+      "bytes": 5361,
+      "sha256": "da7cc8e56e7049ef6cc4de017d85f6ebca67b0d93de015d0cdc48adb4aa4895a",
+      "id": "1vHn5R26eI1sV5xsTQoEriEWnS6JSHTle",
+      "url": "https://drive.google.com/file/d/1vHn5R26eI1sV5xsTQoEriEWnS6JSHTle/view?usp=drivesdk"
+    },
+    {
+      "file": "multiscene-original-scale-previews.tar.zst",
+      "bytes": 574838659,
+      "sha256": "9bdcc4c53d3d364013cb1a2d2f76d608b0615991b863436b09793e7ab2c12036",
+      "id": "1zdWnlbO442vtmGrDkEeAPRyPfzYWccTA",
+      "url": "https://drive.google.com/file/d/1zdWnlbO442vtmGrDkEeAPRyPfzYWccTA/view?usp=drivesdk"
+    },
+    {
+      "file": "inputs-rgbd.tar.zst",
+      "bytes": 127886409,
+      "sha256": "a1c825917bb7f5515a7fcb88aa92877b5d2049059c7c813e493f9390c5a3422b",
+      "id": "1p6bDUJqJ0iBLyWXuq8i9pa-jzQiUh384",
+      "url": "https://drive.google.com/file/d/1p6bDUJqJ0iBLyWXuq8i9pa-jzQiUh384/view?usp=drivesdk"
+    }
+  ]
+}

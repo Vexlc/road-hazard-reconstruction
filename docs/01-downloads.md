@@ -2,6 +2,8 @@
 
 所有数据包位于 [Google Drive 项目目录](https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_)，按 `assets/`、`inputs/`、`scenes/`、`visualizations/`、`documents/` 分开存放。默认保持私有，请使用有访问权限的 Google 账号。
 
+[云盘校验文件](https://drive.google.com/file/d/1OgOUPyyvvPmWBUiLI6VqRJSa1V95gaNb/view?usp=drivesdk) · [云盘下载索引](https://drive.google.com/file/d/1dgF3qYTP-uydcLfzlJhzHPLJRp-FyLlC/view?usp=drivesdk)
+
 `catalog/downloads.json` 是逐文件清单，记录分组、大小、SHA-256、云盘文件 ID 和下载页面。只下载需要的类别；RGB-D 与异常井盖有多个独立分卷，需要完整类别时请下载该类别所有分卷。
 
 ```bash

@@ -9,7 +9,7 @@ git clone https://github.com/Vexlc/road-hazard-reconstruction.git
 cd road-hazard-reconstruction
 ```
 
-仓库私有时，先在新机器用自己的 GitHub 账号授权。下载数据文件另外需要相应 Google Drive 访问权限。
+代码仓库已公开，克隆代码无需 GitHub 登录。下载数据文件仍需要相应 Google Drive 访问权限。
 
 ## 资产环境
 

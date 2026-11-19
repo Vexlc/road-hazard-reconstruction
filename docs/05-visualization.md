@@ -4,7 +4,7 @@
 
 全局动态确认版的五份视频均为 1920×1080、24 fps、120 秒。每类 10 个资产 × 3 条道路，30 段；每段 4 秒，包含资产环绕、连续行车全局前后、局部前后。双目三维 XYZ、Gaussian 尺度和路面高度场实际放大 10 倍，其他四类保持原尺度；原尺度版本另保留。它是演示放大版，不能当作原始实测尺寸。
 
-五份视频的全部 150 段已重新执行全局运动检查。生成代码在 tools/multiscene；完整移机执行入口仍待最后验证。
+五份视频的全部 150 段已重新执行全局运动检查。生成代码在 tools/multiscene；统一入口为 scripts/presentation.sh；已在新的下载恢复目录验证五份最终视频的全部 150 段场景运动。
 
 ## 全资产 4×4 巡览
 
@@ -18,7 +18,7 @@
 | 缺盖窨井 | 64 | 4 | 16 秒 | `visualization-missing.mp4` |
 | 异常井盖 | 128 | 8 | 32 秒 | `visualization-raised.mp4` |
 
-下载页面见 `catalog/downloads.json` 或运行 `python scripts/packages.py list --group visualizations-rgbd`。GitHub Release 的独立视频附件待审阅确认后发布。
+下载页面见 `catalog/downloads.json` 或运行 `python scripts/packages.py list --group visualizations-rgbd`。视频按类别在 Google Drive 提供独立文件；GitHub 包含完整生成与验证代码。
 
 `catalog/visualization-index.json` 为每条资产记录视频原文件名、页码、行列、起止秒数和完整 ID。屏幕内每件资产独立取景，画面大小不能作为实际尺寸的比较依据，应读取尺寸标签或资产元数据。
 
@@ -46,3 +46,14 @@ work/envs/streetcrafter/bin/python tools/visualization/verify_catalog.py
 该脚本逐帧解码，检查帧数、分辨率、帧率、1,199 个 ID 的完整覆盖与不重复，并比较相隔半周的画面变化。它会把校验结果写到输出目录，不修改发布包。
 
 完整场景视频与资产独立视频分开：独立视频用于检查形状，场景近景与行车视频用于检查迁入后遮挡、尺度和路面接缝。前视单相机训练的场景在近景新视角下可能出现背景模糊或拉伸，这属于宿主重建覆盖范围的限制。
+
+## 只下载并验证最新综合视频
+
+```bash
+python scripts/packages.py restore --group dynamic-video-stereo --group dynamic-video-rgbd \
+  --group dynamic-video-pothole --group dynamic-video-missing --group dynamic-video-raised \
+  --group dynamic-preview --group dynamic-metadata
+bash scripts/presentation.sh verify
+```
+
+这条路线不加载道路模型或执行 GPU 渲染，只检查已经下载的最终视频。
