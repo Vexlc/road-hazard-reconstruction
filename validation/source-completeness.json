@@ -1,6 +1,6 @@
 {
-  "source_files_excluding_this_report": 196,
-  "source_bytes": 8594132,
+  "source_files_excluding_this_report": 201,
+  "source_bytes": 8639949,
   "python_files": 86,
   "python_syntax": "passed",
   "shell_syntax": "passed",
@@ -22,6 +22,7 @@
     "catalog/dynamic-播放索引.json",
     "catalog/dynamic-运动逐段验证.json",
     "catalog/factory-v3-assets.json",
+    "catalog/factory-v3-download-status.json",
     "catalog/factory-v3-groups.json",
     "catalog/factory-v3-plan.json",
     "catalog/factory-v3-scene-template.json",
@@ -84,6 +85,7 @@
     "scripts/hazard_factory/audit_catalog.py",
     "scripts/hazard_factory/audit_visibility.py",
     "scripts/hazard_factory/batch_plan.py",
+    "scripts/hazard_factory/camera_fit.py",
     "scripts/hazard_factory/check_media_recovery.py",
     "scripts/hazard_factory/check_recovery.py",
     "scripts/hazard_factory/configure.py",
@@ -99,6 +101,7 @@
     "scripts/hazard_factory/present.py",
     "scripts/hazard_factory/quality.py",
     "scripts/hazard_factory/recipes.py",
+    "scripts/hazard_factory/review_framing.py",
     "scripts/hazard_factory/road_guard.py",
     "scripts/hazard_factory/road_masks.py",
     "scripts/hazard_factory/run.py",
@@ -169,6 +172,8 @@
     "validation/factory-v3-109_可见性诊断.json",
     "validation/factory-v3-110_可见性诊断.json",
     "validation/factory-v3-4x4视频索引.json",
+    "validation/factory-v3-camera-framing-preview.json",
+    "validation/factory-v3-cloud-upload-partial.json",
     "validation/factory-v3-分组冷恢复验证.json",
     "validation/factory-v3-动态视频验证.json",
     "validation/factory-v3-场景分组计划.json",
@@ -226,7 +231,12 @@
     "native_scene_versions": 30,
     "media_interruption_and_cache_recovery_verified": true,
     "different_directory_fresh_migration_verified": true,
-    "cloud_sync": "in_progress",
-    "readme_added": false
+    "cloud_sync": {
+      "complete": false,
+      "available": 8,
+      "pending": 36
+    },
+    "readme_added": false,
+    "full_geometry_camera_preview_verified": true
   }
 }

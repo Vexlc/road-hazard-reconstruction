@@ -1,0 +1,403 @@
+{
+  "complete": false,
+  "available": 8,
+  "pending": 36,
+  "files": [
+    {
+      "file": "factory-v3-road-and-mesh-inputs.tar.zst",
+      "group": "factory-v3-inputs",
+      "bytes": 303473002,
+      "sha256": "663b610464f51d03a38c7ea0ea3c8844905d2441aa5ef70435183d0758abd48d",
+      "available": true,
+      "id": "1QDseqN_YnekHBFJLpJAcCx_jFp7qny_S",
+      "url": "https://drive.google.com/file/d/1QDseqN_YnekHBFJLpJAcCx_jFp7qny_S/view?usp=drivesdk"
+    },
+    {
+      "file": "factory-v3-extra-material.tar.zst",
+      "group": "factory-v3-extra-material",
+      "bytes": 51624997,
+      "sha256": "362d691cca4d261dc408d81f8070ce3c1658bd6c11f1d4a8b311391f03766030",
+      "available": true,
+      "id": "1jVzZRXcN9oO4X-mWq4KKMIV_PaH8ytiY",
+      "url": "https://drive.google.com/file/d/1jVzZRXcN9oO4X-mWq4KKMIV_PaH8ytiY/view?usp=drivesdk"
+    },
+    {
+      "file": "factory-v3-stereo.mp4",
+      "group": "factory-v3-video-stereo",
+      "bytes": 177177827,
+      "sha256": "d8a25fa4752c59e332c57d8e0bf3061118a3c3030a6b2a59edd911cfb8824373",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-rgbd.mp4",
+      "group": "factory-v3-video-rgbd",
+      "bytes": 186486162,
+      "sha256": "9bc564a495ffceed9e527bd1f7099c68ca7baa50f8ef00045612836e64833ccb",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-pothole.mp4",
+      "group": "factory-v3-video-pothole",
+      "bytes": 210833189,
+      "sha256": "6937baba9fd01036a2b9e4307b7c131d382c7261f833ec3fa7b2158e5cccf489",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-missing.mp4",
+      "group": "factory-v3-video-missing",
+      "bytes": 221540695,
+      "sha256": "4c597c2fee0c49a3a355f5be2a16560ff1c8b3e58f632f1e6eb00d0e7880ced6",
+      "available": true,
+      "id": "1qJe65QBja6MF2kYndMJMV1rWzPRIhXQX",
+      "url": "https://drive.google.com/file/d/1qJe65QBja6MF2kYndMJMV1rWzPRIhXQX/view?usp=drivesdk"
+    },
+    {
+      "file": "factory-v3-raised.mp4",
+      "group": "factory-v3-video-raised",
+      "bytes": 225885395,
+      "sha256": "123590ba187ff406d8d37788f66460bbaf9781e4951d41f0745472cb3a11a0e5",
+      "available": true,
+      "id": "1wJ7CjVotAquzUBHT79fZjYrZ1DzfwUIA",
+      "url": "https://drive.google.com/file/d/1wJ7CjVotAquzUBHT79fZjYrZ1DzfwUIA/view?usp=drivesdk"
+    },
+    {
+      "file": "factory-v3-design-orbits.mp4",
+      "group": "factory-v3-overview",
+      "bytes": 44976347,
+      "sha256": "dee1d97690e990af985a0340a9caba461b7d60b99d97cd31973e60b00a78634a",
+      "available": true,
+      "id": "1OOBxWT_hwaqVNfZnDXv7OIL4VFsLI5u4",
+      "url": "https://drive.google.com/file/d/1OOBxWT_hwaqVNfZnDXv7OIL4VFsLI5u4/view?usp=drivesdk"
+    },
+    {
+      "file": "factory-v3-material-review.mp4",
+      "group": "factory-v3-material-review",
+      "bytes": 4714875,
+      "sha256": "e8ab1286e339ac19fa17a269079aacb642290c2d4f62d4de794403b1bf72f322",
+      "available": true,
+      "id": "1NjtZRkicL1ruwvpQrxaLuysYNsM36v6_",
+      "url": "https://drive.google.com/file/d/1NjtZRkicL1ruwvpQrxaLuysYNsM36v6_/view?usp=drivesdk"
+    },
+    {
+      "file": "factory-v3-assets-pothole.tar.zst",
+      "group": "factory-v3-assets",
+      "bytes": 125618200,
+      "sha256": "9cf4b0b613f2767c13238c0ae5de79b2e846bb9ddbf1dc0cc43cdc72ec7f622a",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-assets-missing.tar.zst",
+      "group": "factory-v3-assets",
+      "bytes": 197819276,
+      "sha256": "e025d16e1477174138b7748e502d303df2ca3c7b39e0cbd9d68c57f66150e276",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-assets-raised.tar.zst",
+      "group": "factory-v3-assets",
+      "bytes": 238163654,
+      "sha256": "969fb14e9a17151326606bf1b23aea62859cab25d318cb55d471a1a50771bfad",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_01.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 182604066,
+      "sha256": "8daf348bcca380184ec3ae34c3717e3debb5aa3df39405115fdad69a1af8062d",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_02.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 189635471,
+      "sha256": "1b25b72e83084217e569551a478f84de45519e8b0f0aecb2b9b9c812d0aaea7c",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_03.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 175717438,
+      "sha256": "ccca69179275d127d5028d3712c1023026d08e2561025957454909ada6bebbdf",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_04.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 172550618,
+      "sha256": "06de144223f6c57b7ca287e463f288e1f26eb3b70b4d3e41ff5618d1898cc269",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_05.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 173333057,
+      "sha256": "cee7e8d84f2a0b0523f26bd01a8954b7de314f4297998fc3bc41570c9bb04885",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_06.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 177906910,
+      "sha256": "0eef1699725e59f0c034bd0b216e8eba043a07fecc98136566e0c7047d5235e4",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_07.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 185004249,
+      "sha256": "340b66eff7bc0d94b61bcc117ece22846bd1d449f8a800f45f939046ca55ec72",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_08.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 170630840,
+      "sha256": "e2ab4b3217aa237581c4ac1d553950b2204c6785426d88077ddbcac0b6456502",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_09.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 180904081,
+      "sha256": "aed5edd8aeac81dc16516c48bb6dad2a4485860e098d78ffcb4fc916b73c2988",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-034_10.tar.zst",
+      "group": "factory-v3-scenes-034",
+      "bytes": 168246374,
+      "sha256": "75ed39c0f1e6900c7891adb726184c1ead6d3687aa2e7df45f381aeb043d234b",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_01.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 188839056,
+      "sha256": "349b38b46c220dc8258d965ca3c6008da1c7a9a3703edd79ded090ff33df6dd1",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_02.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 195407231,
+      "sha256": "0bb894882366e912fb6bc17a9622f391e73ee323fe370aa5282e1ee56a6341ad",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_03.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 182317544,
+      "sha256": "8c23967ca9b6530099a17aa4623638608ab5478b71821ff87bb9aedb6cb61c65",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_04.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 178558528,
+      "sha256": "8d073e6806a249130ae78e6a2d5ae7dabb67a4d635ccd6ff74f9979030b54e54",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_05.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 179512932,
+      "sha256": "a91f6e2ec24507e97492fa32f49d8339e62a9985d998509b8629cf9f2269b4e8",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_06.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 183661646,
+      "sha256": "82cb5fd5774964c48724610793a87a715b5173c739b80d48bf65f4083d56ee86",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_07.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 190674244,
+      "sha256": "2344c21876c1f1faeeaf38a3e930fbb3d268ddca5e20135e3da18fe7aaf1b53d",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_08.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 176776435,
+      "sha256": "eca7e5e12966a860d3a0e00699c8094f07b18a5346c75a7c4924b9b134aa4b51",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_09.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 187006004,
+      "sha256": "1f79436c363ae16133c56e5c6fa20b2123c79373a193472cc4557b4b02a35790",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-109_10.tar.zst",
+      "group": "factory-v3-scenes-109",
+      "bytes": 173912609,
+      "sha256": "734100ab5e9f096b6f147e1accda6b7c67aaa517709b594d7f205ee308f55129",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_01.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 186335350,
+      "sha256": "aadf3917442f4f42ce9116a6fd9175a4bf95fda55fc3ad6ac2ba5888a6e7b46e",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_02.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 194249688,
+      "sha256": "bd21e67fc7f5fbcbf0c85b527501ce26312caf0c229496caf33e4c622ac3c6e1",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_03.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 178260761,
+      "sha256": "af5bd4fb53d9b6649771c622cc8eab79fe95f1c9c9393a0bfabf1b44e237d1a6",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_04.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 176811329,
+      "sha256": "c47923abddcdfa18f89709af9c99fcd53618be78881d9f2d069e04ced8776c21",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_05.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 176801579,
+      "sha256": "fb60c32024d59640b138d7f17421d373afe5798a8e88216934cf6d6b6d36648d",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_06.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 181622581,
+      "sha256": "3dce5755226d34d299de55a7d674f28b973530da1a47dee4b0d68ce6bb157557",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_07.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 188979679,
+      "sha256": "6c775b30bca475187af5916ff300227ab5b8039974f5f13a2a39f63759e88bf4",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_08.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 173649678,
+      "sha256": "2b5b6c0a97f7478193238cd7e9f658c297f99377b8bcc8d57222b921a6c59941",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_09.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 185489726,
+      "sha256": "849c49c7715f3fc6d10d489a93e303135c83ef5bc54c63dda3eb5290a84fa347",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-scene-110_10.tar.zst",
+      "group": "factory-v3-scenes-110",
+      "bytes": 171656053,
+      "sha256": "fc5d2b0076736d2fff57774d7ecf1af11b2d235f0425f34659b9dbcc5ddb8cde",
+      "available": false,
+      "id": null,
+      "url": null
+    },
+    {
+      "file": "factory-v3-metadata.tar.zst",
+      "group": "factory-v3-metadata",
+      "bytes": 6462096,
+      "sha256": "9f8467fc5c258f0ecbda5e3203b1a286c263cc5ba193b53a7191ae5ba46f8c84",
+      "available": true,
+      "id": "1kNoy3Tv-YE4CboDTwa5GT-ksO9N0UFqb",
+      "url": "https://drive.google.com/file/d/1kNoy3Tv-YE4CboDTwa5GT-ksO9N0UFqb/view?usp=drivesdk"
+    },
+    {
+      "file": "factory-v3-framing-preview.mp4",
+      "group": "factory-v3-framing-preview",
+      "bytes": 2075609,
+      "sha256": "e2eef95ae8094f022d59faedda9b845530dca934db7b0d9b1264fd9084aec9a2",
+      "available": true,
+      "id": "1q9qzEZhs1Wh5JNm0MhvvYl2Y2QeNv3lr",
+      "url": "https://drive.google.com/file/d/1q9qzEZhs1Wh5JNm0MhvvYl2Y2QeNv3lr/view?usp=drivesdk"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # 道路病害资产工厂
 
-2026-11-20 已验证：30个新设计资产；五类各10条资产记录，迁入3条道路，共150处放置、30份原生检查点。五份综合视频各120秒，另有30个设计资产的两页4×4环绕。实拍记录尚未按物理坑洞去重。当前云端正在同步本版文件，下载索引在云端大小、哈希与权限核对后追加。
+2026-11-20 已验证：30个新设计资产；五类各10条资产记录，迁入3条道路，共150处放置、30份原生检查点。五份综合视频各120秒，另有30个设计资产的两页4×4环绕。实拍记录尚未按物理坑洞去重。当前44个新增文件中8个已完成云端大小、SHA-256和公开只读权限核对并进入下载清单，另36个尚未完成；状态见 catalog/factory-v3-download-status.json。共享rclone客户端项目触发每分钟请求配额，当前暂停重试并调整传输通道。连接器单文件上限为100MiB。
 
 按米制设计连续追加坑洞、缺盖井和异常井盖，并将五类资产迁入标定道路场景。双目与 RGB-D 继续使用原实拍库；放大演示资产不参与本流程。
 
@@ -73,7 +73,7 @@ check_recovery.py 是首批验收夹具：要求专用目录恰好含种子 2026
 
 ## 恢复本版数据的顺序
 
-先用 catalog/downloads.json 中的精确SHA-256核验下载包；基础环境与原始道路恢复参见 docs/03-environment-and-relocation.md。恢复 inputs-procedural、sample-multiscene-50、scenes-034、scenes-109、scenes-110，再恢复 factory-v3-assets、factory-v3-inputs、factory-v3-extra-material。需要直接加载本版原生场景时，再恢复三个 factory-v3-scenes-* 分组。
+本版资产和原生场景包尚未上传完成，以下完整恢复流程须等所需分组在状态清单中全部可用后执行。先用 catalog/downloads.json 中的精确SHA-256核验下载包；基础环境与原始道路恢复参见 docs/03-environment-and-relocation.md。恢复 inputs-procedural、sample-multiscene-50、scenes-034、scenes-109、scenes-110，再恢复 factory-v3-assets、factory-v3-inputs、factory-v3-extra-material。需要直接加载本版原生场景时，再恢复三个 factory-v3-scenes-* 分组。
 
 ```bash
 work/envs/streetcrafter/bin/python scripts/hazard_factory/configure.py
