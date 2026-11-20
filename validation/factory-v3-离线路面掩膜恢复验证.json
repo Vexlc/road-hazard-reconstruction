@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "global_transformers_absent": true,
+  "offline_environment": true,
+  "cached_mask_frames": 81,
+  "provenance_byte_unchanged": true,
+  "provenance_sha256": "da8427468d1adea383c5383ac6f1819bb20a5d77a59921163672db0daeefa665"
+}

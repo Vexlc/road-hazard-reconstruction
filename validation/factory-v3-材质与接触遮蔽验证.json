@@ -1,0 +1,157 @@
+{
+  "passed": true,
+  "serialized_metal_checks": [
+    {
+      "case": "034_01",
+      "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+      "downward_near_road_points": 7484,
+      "new_max_rgb_error": 5.960464477539063e-08,
+      "new_recolored_metal_points": 0,
+      "old_max_rgb_error": 0.38232383131980896,
+      "old_recolored_metal_points": 7484
+    },
+    {
+      "case": "034_03",
+      "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+      "downward_near_road_points": 21517,
+      "new_max_rgb_error": 8.940696716308594e-08,
+      "new_recolored_metal_points": 0,
+      "old_max_rgb_error": 0.4367491900920868,
+      "old_recolored_metal_points": 21517
+    },
+    {
+      "case": "034_06",
+      "asset_id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+      "downward_near_road_points": 116,
+      "new_max_rgb_error": 4.470348358154297e-08,
+      "new_recolored_metal_points": 0
+    },
+    {
+      "case": "034_08",
+      "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+      "downward_near_road_points": 15600,
+      "new_max_rgb_error": 8.940696716308594e-08,
+      "new_recolored_metal_points": 0
+    },
+    {
+      "case": "034_09",
+      "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+      "downward_near_road_points": 11649,
+      "new_max_rgb_error": 8.940696716308594e-08,
+      "new_recolored_metal_points": 0
+    },
+    {
+      "case": "109_01",
+      "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+      "downward_near_road_points": 7484,
+      "new_max_rgb_error": 8.940696716308594e-08,
+      "new_recolored_metal_points": 0,
+      "old_max_rgb_error": 0.4880795478820801,
+      "old_recolored_metal_points": 7484
+    },
+    {
+      "case": "109_03",
+      "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+      "downward_near_road_points": 21517,
+      "new_max_rgb_error": 8.940696716308594e-08,
+      "new_recolored_metal_points": 0,
+      "old_max_rgb_error": 0.5196076035499573,
+      "old_recolored_metal_points": 21517
+    },
+    {
+      "case": "109_06",
+      "asset_id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+      "downward_near_road_points": 116,
+      "new_max_rgb_error": 5.960464477539063e-08,
+      "new_recolored_metal_points": 0
+    },
+    {
+      "case": "109_08",
+      "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+      "downward_near_road_points": 15600,
+      "new_max_rgb_error": 5.960464477539063e-08,
+      "new_recolored_metal_points": 0
+    },
+    {
+      "case": "109_09",
+      "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+      "downward_near_road_points": 11649,
+      "new_max_rgb_error": 8.940696716308594e-08,
+      "new_recolored_metal_points": 0
+    },
+    {
+      "case": "110_01",
+      "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+      "downward_near_road_points": 7484,
+      "new_max_rgb_error": 5.960464477539063e-08,
+      "new_recolored_metal_points": 0,
+      "old_max_rgb_error": 0.4964253902435303,
+      "old_recolored_metal_points": 7484
+    },
+    {
+      "case": "110_03",
+      "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+      "downward_near_road_points": 21517,
+      "new_max_rgb_error": 8.940696716308594e-08,
+      "new_recolored_metal_points": 0,
+      "old_max_rgb_error": 0.5176348686218262,
+      "old_recolored_metal_points": 21517
+    },
+    {
+      "case": "110_06",
+      "asset_id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+      "downward_near_road_points": 116,
+      "new_max_rgb_error": 5.960464477539063e-08,
+      "new_recolored_metal_points": 0
+    },
+    {
+      "case": "110_08",
+      "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+      "downward_near_road_points": 15600,
+      "new_max_rgb_error": 8.940696716308594e-08,
+      "new_recolored_metal_points": 0
+    },
+    {
+      "case": "110_09",
+      "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+      "downward_near_road_points": 11649,
+      "new_max_rgb_error": 8.940696716308594e-08,
+      "new_recolored_metal_points": 0
+    }
+  ],
+  "geometric_contact_checks": [
+    {
+      "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+      "state": "removed_side",
+      "under_lid_road_points": 6840,
+      "under_lid_mean_ambient_visibility": 1.3706140634894837e-05,
+      "far_road_points": 126217,
+      "far_road_mean_ambient_visibility": 0.9999977946281433
+    },
+    {
+      "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+      "state": "slid",
+      "under_lid_road_points": 4561,
+      "under_lid_mean_ambient_visibility": 0.0,
+      "far_road_points": 34992,
+      "far_road_mean_ambient_visibility": 1.0
+    },
+    {
+      "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+      "state": "slid",
+      "under_lid_road_points": 2524,
+      "under_lid_mean_ambient_visibility": 8.666798385092989e-05,
+      "far_road_points": 41860,
+      "far_road_mean_ambient_visibility": 0.9999746084213257
+    },
+    {
+      "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+      "state": "removed_side",
+      "under_lid_road_points": 10227,
+      "under_lid_mean_ambient_visibility": 0.0,
+      "far_road_points": 94942,
+      "far_road_mean_ambient_visibility": 1.0
+    }
+  ],
+  "method": "Downward-facing metal remains exposure-corrected canonical color; independent lid-pose containment checks occlusion beneath horizontal lids against distant road."
+}

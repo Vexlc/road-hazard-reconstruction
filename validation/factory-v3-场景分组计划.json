@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "groups": [
+    {
+      "number": 1,
+      "assets": [
+        "stereo_pothole_fan_3_02",
+        "rgbd_pothole_20250305_054319",
+        "factory_pothole_20261120_000000_0a11ec168c15d5c8",
+        "factory_missing_20261120_000001_4afab717292f6782",
+        "factory_raised_20261120_000002_aa720cb47959b3b4"
+      ]
+    },
+    {
+      "number": 2,
+      "assets": [
+        "stereo_pothole_fan_2_07",
+        "rgbd_pothole_20250227_171044",
+        "factory_pothole_20261120_000003_85570e243c3138a2",
+        "factory_missing_20261120_000004_8ba41a67059a18dc",
+        "factory_raised_20261120_000005_a666133127c6f4ef"
+      ]
+    },
+    {
+      "number": 3,
+      "assets": [
+        "stereo_pothole_fan_3_03",
+        "rgbd_pothole_20250305_045716",
+        "factory_pothole_20261120_000006_a983f023288b5070",
+        "factory_missing_20261120_000007_6b61978511466731",
+        "factory_raised_20261120_000008_4676785bab446fc9"
+      ]
+    },
+    {
+      "number": 4,
+      "assets": [
+        "stereo_pothole_fan_3_01",
+        "rgbd_pothole_20250305_124307",
+        "factory_pothole_20261120_000009_8e562ac175ce4528",
+        "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+        "factory_raised_20261120_000011_c945a5a3b22954e4"
+      ]
+    },
+    {
+      "number": 5,
+      "assets": [
+        "stereo_pothole_fan_2_35",
+        "rgbd_pothole_20250227_170940",
+        "factory_pothole_20261120_000012_d799c1475b15c8a8",
+        "factory_missing_20261120_000013_57a135eb28005ff9",
+        "factory_raised_20261120_000014_25f490d64cd5ca64"
+      ]
+    },
+    {
+      "number": 6,
+      "assets": [
+        "stereo_pothole_fan_1_03",
+        "rgbd_pothole_20250305_132557",
+        "factory_pothole_20261119_000000_d3b40cc2dba384e3",
+        "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+        "factory_raised_20261119_000002_f8c6c6f77add2a0f"
+      ]
+    },
+    {
+      "number": 7,
+      "assets": [
+        "stereo_pothole_fan_1_18",
+        "rgbd_pothole_20250305_131813",
+        "factory_pothole_20261119_000003_7b3b1987a07ecc49",
+        "factory_missing_20261119_000004_ec6ab7a51fc74884",
+        "factory_raised_20261119_000005_8342d657505675c0"
+      ]
+    },
+    {
+      "number": 8,
+      "assets": [
+        "stereo_pothole_fan_2_16",
+        "rgbd_pothole_20250227_190609",
+        "factory_pothole_20261119_000006_b4cb6f5815d68448",
+        "factory_missing_20261119_000007_4def79cf31fcbd38",
+        "factory_raised_20261119_000008_1dd67160bef05522"
+      ]
+    },
+    {
+      "number": 9,
+      "assets": [
+        "stereo_pothole_fan_2_24",
+        "rgbd_pothole_20250305_135233",
+        "factory_pothole_20261119_000009_75172e61c8a78a65",
+        "factory_missing_20261119_000010_afeed0ac3cee14f6",
+        "factory_raised_20261119_000011_46c8fd9e3ec0aaa7"
+      ]
+    },
+    {
+      "number": 10,
+      "assets": [
+        "stereo_pothole_fan_2_08",
+        "rgbd_pothole_20250305_050151",
+        "factory_pothole_20261119_000012_67a3e77cbfabf91a",
+        "factory_missing_20261119_000013_55d3b0a942a15712",
+        "factory_raised_20261119_000014_285bd2e35a859ee1"
+      ]
+    }
+  ]
+}

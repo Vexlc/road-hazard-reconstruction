@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "real_renderer_process_group_interrupted": true,
+  "observed_partial_mp4_bytes": 262192,
+  "published_files_byte_unchanged": 21,
+  "source_delivery_byte_unchanged": true,
+  "damaged_orbit_rejected": true,
+  "actual_cuda_orbit_rebuilt": true,
+  "rebuilt_max_pixel_error_255": 0,
+  "repaired_cache_hash_verified": true,
+  "fixture": "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/work/hazard_factory_v3/media_recovery/e2e3944c569140b4ab4873b9a977081a",
+  "scope": "Real interrupted render plus content-corrupt orbit recovery. Full five-video successful publication is verified separately."
+}

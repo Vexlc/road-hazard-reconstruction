@@ -1,0 +1,42 @@
+{
+  "version": "factory-v3",
+  "technical_checks_passed": true,
+  "photorealism_complete": false,
+  "synthetic_design_assets": 30,
+  "selected_asset_records": 50,
+  "records_per_category": {
+    "stereo": 10,
+    "rgbd": 10,
+    "pothole": 10,
+    "missing": 10,
+    "raised": 10
+  },
+  "road_sites": [
+    "034",
+    "109",
+    "110"
+  ],
+  "native_scene_versions": 30,
+  "physical_scale_1_placements": 150,
+  "five_review_videos_seconds_each": 120,
+  "global_motion_verified_segments": 150,
+  "distinct_native_frames_each_global_panel": 40,
+  "full_driving_frames_visibility_audited": 1200,
+  "maximum_weak_outside_portal_probe_pixels": 6,
+  "visibility_review_required": [
+    "109_03 frame39"
+  ],
+  "append_old_native_checkpoints_byte_unchanged": 18,
+  "media_interruption_recovery_verified": true,
+  "offline_mask_restore_verified": true,
+  "different_directory_fresh_migration_verified": true,
+  "pending": [
+    "残留少量低视角透射探针响应",
+    "110路段独立多帧道路支撑不足",
+    "近距虚拟视角背景模糊",
+    "光照与材质过渡尚未完全物理一致",
+    "实拍资产跨帧去重和RGB-D实物尺度校准待做",
+    "部分竖起井盖在局部近景存在边缘裁切，下一版相机取景需要修正"
+  ],
+  "cloud_sync": "upload_in_progress"
+}

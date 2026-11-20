@@ -1,0 +1,1256 @@
+{
+  "passed": true,
+  "unique_asset_records": 50,
+  "categories": [
+    {
+      "category": "stereo",
+      "unique_asset_records": 10,
+      "native_placements": 30,
+      "family_counts": {
+        "Fan 3/02": 1,
+        "Fan 2/07": 1,
+        "Fan 3/03": 1,
+        "Fan 3/01": 1,
+        "Fan 2/35": 1,
+        "Fan 1/03": 1,
+        "Fan 1/18": 1,
+        "Fan 2/16": 1,
+        "Fan 2/24": 1,
+        "Fan 2/08": 1
+      },
+      "state_counts": {},
+      "material_counts": {
+        "captured_rgb": 10
+      },
+      "source_dataset_groups": {
+        "3": 3,
+        "2": 5,
+        "1": 2
+      },
+      "physical_defect_deduplication": "not_verified",
+      "records": [
+        {
+          "id": "stereo_pothole_fan_3_02",
+          "width_m": 0.07123832157649854,
+          "length_m": 0.07092670777758611,
+          "depth_m": 0.024034503588020565,
+          "family": "Fan 3/02",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 3,
+          "source_frame": 2,
+          "source_rgb_sha256": "6c01c24d9926b3390cfdbc0d3f6a83be343aa2297f8e8db832c128d59e9ac296",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "91c07f1a2bca068453a19d4231712ae7ae2a91f1df41285c4f53cd6e1e01bb5b",
+            "ply": "172ecb083db5abb5aa1ab7f66670014cac889657e5786c2e1fe0833ffa942b4d",
+            "surface": "4401a5fd26672f9af1b6944907a6a102245aaca0a4295f99e7ed3f727718a722"
+          }
+        },
+        {
+          "id": "stereo_pothole_fan_2_07",
+          "width_m": 0.08713999190716978,
+          "length_m": 0.11831158370653218,
+          "depth_m": 0.010373605598325047,
+          "family": "Fan 2/07",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 2,
+          "source_frame": 7,
+          "source_rgb_sha256": "a3fbfd381fbb745241e80819e758f743460084621d16047e4abecc112a254752",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "c01281971407b80b8cbe476a99adc98f74cc580172398a990c6fb247161a94cd",
+            "ply": "3e1fa7a8225a821e517364c617c3dc2b051e9b4920b7a626e191fa3866819d6d",
+            "surface": "78dd38bc612b783680d9a147764f62adc4490ed98614a2aa59589452b2a151fe"
+          }
+        },
+        {
+          "id": "stereo_pothole_fan_3_03",
+          "width_m": 0.06401980749292703,
+          "length_m": 0.07134421529783674,
+          "depth_m": 0.02454289141293523,
+          "family": "Fan 3/03",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 3,
+          "source_frame": 3,
+          "source_rgb_sha256": "bd5e374f0c6d3b759a3c9564788a1eebbf2da824d7c981a3ae1f456970a982fe",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "b18267cedb62b07307b12d90570fd0ab93e93c0094b447b235f82b19d40a1ff7",
+            "ply": "1b85cb2faeeb9cf4740e40e10f071cfec7bf134ba62b0edff97c040a9f9cc476",
+            "surface": "c60ea818180e9c0f463c2a9d9d80a9fca0d303663053f370b50b53af80330335"
+          }
+        },
+        {
+          "id": "stereo_pothole_fan_3_01",
+          "width_m": 0.0692438319677611,
+          "length_m": 0.07130324268096916,
+          "depth_m": 0.024036161496034884,
+          "family": "Fan 3/01",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 3,
+          "source_frame": 1,
+          "source_rgb_sha256": "1a9c5338a766367f511e1cdfeb606e217c8adeebe52cf3bbe10ec54d50e74954",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "6ec190699781c89d0f4f78ba78156318081df568744c5c5083d229cb5d6c753d",
+            "ply": "30642a606e6fb37fbcd7e7ea08071cc13457fb29fc01725a3d7ab2aa60b6fc29",
+            "surface": "5e1bb26d32344b92e0ca446a6de1aaefb85d1b095c99af5ce2eeb1bc966f66b5"
+          }
+        },
+        {
+          "id": "stereo_pothole_fan_2_35",
+          "width_m": 0.08214714222785624,
+          "length_m": 0.04648033311905893,
+          "depth_m": 0.0078055138733326875,
+          "family": "Fan 2/35",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 2,
+          "source_frame": 35,
+          "source_rgb_sha256": "2b249cbe7e417b86749ae79ca9d1cf46343d6eb8c11e6c4a1d1d26c5dee8871d",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "1c1b8edf821746f7454ac2d368114586bca01f572bdabb2cde1df212481bfded",
+            "ply": "0d27fec57590327f81daff146435ac4960af87186d426f774519186491395829",
+            "surface": "fd9b386ec298e0c4e6fb823ed0db863b395ed4d7ac18f73aa835bb4f7d7b7912"
+          }
+        },
+        {
+          "id": "stereo_pothole_fan_1_03",
+          "width_m": 0.08206213716455639,
+          "length_m": 0.07744938475785784,
+          "depth_m": 0.04371352214757321,
+          "family": "Fan 1/03",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 1,
+          "source_frame": 3,
+          "source_rgb_sha256": "60e98b3834e121a8bb915c5c43448b9089e2a6cb657dc9c83d17f895fc647787",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "68a53470ed75eeca90a6c4204d420272ef1a1ab2cec8f4cea8934d3d9c12488a",
+            "ply": "17468ea2b3d53cd0cf710eb8afcdf23d6f84a6eb70ac06c219cbeca4c256da7a",
+            "surface": "c310775b178749e42edc5789ac0143041832cddc950a89b9da1be8294a928efe"
+          }
+        },
+        {
+          "id": "stereo_pothole_fan_1_18",
+          "width_m": 0.08504699836164234,
+          "length_m": 0.08956803423675044,
+          "depth_m": 0.041694619621708326,
+          "family": "Fan 1/18",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 1,
+          "source_frame": 18,
+          "source_rgb_sha256": "7eb36e2ddd8394cdbf9350fab17fbbac62e279b638551bb9a833a05c35f9aee3",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "9c73cbade655c818252e4e4693d731ead30197a3e91b62c39a088f281b1a4e9b",
+            "ply": "4f4c437f3c7bd2941b25bb98b31b3fc226360cc7723afea03a6765b6ed2fad44",
+            "surface": "e23616510769ec63754d12cf6f1d0b7be3c23e0ae6c4dedc6e68cffee6c73445"
+          }
+        },
+        {
+          "id": "stereo_pothole_fan_2_16",
+          "width_m": 0.10702733164962205,
+          "length_m": 0.06836247788468683,
+          "depth_m": 0.009634073617160503,
+          "family": "Fan 2/16",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 2,
+          "source_frame": 16,
+          "source_rgb_sha256": "ca79d80fc6d4796e09cc70399927238eaa1ae6b02fec89380edc2108a11fad0d",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "db6ce793681fd7e2732f9fbb831251e7d9900735c19cb66e31e1bbb68a28f586",
+            "ply": "6f204fb4862529d3e7bd83d799bc137d06c5ee6055a46e2528d40ecff80e6398",
+            "surface": "331d958592464b21fede80633b5047dbd2989888f6b3a8fb10ca315a15a513e0"
+          }
+        },
+        {
+          "id": "stereo_pothole_fan_2_24",
+          "width_m": 0.14666002748960344,
+          "length_m": 0.13102490700848338,
+          "depth_m": 0.014022552322039535,
+          "family": "Fan 2/24",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 2,
+          "source_frame": 24,
+          "source_rgb_sha256": "0109fb411bc6703e8d434f9ca8f357ae2493a4670151b9f4e9e0814afa639c0b",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "c1dae1bb40ac4cbae536a2a01d4983ee1842933dbfa9e258d14f013151bd4618",
+            "ply": "2f5325849985a18b89f3c6a3f2cdaeba514d3262ddfda5f3448824ecc0169d79",
+            "surface": "5ee08680be36ce7219a02f76d59a11b3fffc578fd97a5ec825ae4160fbd5a3cc"
+          }
+        },
+        {
+          "id": "stereo_pothole_fan_2_08",
+          "width_m": 0.13942389735240615,
+          "length_m": 0.04874599660031523,
+          "depth_m": 0.009257417650351294,
+          "family": "Fan 2/08",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": 2,
+          "source_frame": 8,
+          "source_rgb_sha256": "93494c6a85a3bd14b18c7553d01318e5f72784b85a7a38f6c106298725e76b3e",
+          "geometry_source": "stereo_xyz",
+          "limits": [
+            "Frames may depict the same physical defect.",
+            "A height field interpolates sparse areas and cannot represent overhangs."
+          ],
+          "hashes": {
+            "glb": "bd22e8779c3d13c910a3b77be52c736dee79ea76292e5a01438acd02a3e127c7",
+            "ply": "6b1962740d5658ea4fb5b479e71bf3625f28e831de6d3d10cd6818cdc6741ac8",
+            "surface": "b001a4e1f32762edf1d544e2d63e11503d80ba309936ac248ee58f112af5d041"
+          }
+        }
+      ]
+    },
+    {
+      "category": "rgbd",
+      "unique_asset_records": 10,
+      "native_placements": 30,
+      "family_counts": {
+        "20250305_054319": 1,
+        "20250227_171044": 1,
+        "20250305_045716": 1,
+        "20250305_124307": 1,
+        "20250227_170940": 1,
+        "20250305_132557": 1,
+        "20250305_131813": 1,
+        "20250227_190609": 1,
+        "20250305_135233": 1,
+        "20250305_050151": 1
+      },
+      "state_counts": {},
+      "material_counts": {
+        "captured_rgb": 10
+      },
+      "source_dataset_groups": {},
+      "physical_defect_deduplication": "not_verified",
+      "records": [
+        {
+          "id": "rgbd_pothole_20250305_054319",
+          "width_m": 0.6770074483663373,
+          "length_m": 0.476582899949059,
+          "depth_m": 0.0539707586640919,
+          "family": "20250305_054319",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250305_054319",
+          "source_rgb_sha256": "6f03227b2c395f614d05d88298810bd55d823151fc6449f32d241fcd7cdb5c8f",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "49cacbcb3cff94662a4c385192527db24c5b640302145d12e61034ec39793552",
+            "ply": "612f600d27b3f03f8084667e1982742a14da2d29fb6fada7fb47801a55aefabb",
+            "surface": "aacd8ce7d6cf85944808d53ce4635a798d21b60d8f728bcb043a03c947aea37a"
+          }
+        },
+        {
+          "id": "rgbd_pothole_20250227_171044",
+          "width_m": 2.1927796293464397,
+          "length_m": 0.47759825912944187,
+          "depth_m": 0.04937881042710171,
+          "family": "20250227_171044",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250227_171044",
+          "source_rgb_sha256": "6f59fb0706e56f3ff6f648f694ca390dedfd01fab9601ad2bb7ea40b23ea5166",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "0f4a3d706cd2166a8bc41ed770ed1203291fdeba407e59b20a9b97b8781f1a24",
+            "ply": "c8544eeda740b7ef10a25939009bff637ae030fb73326742f9ab1187a06f5684",
+            "surface": "eb066c78d426b375915a5e9e3e5584638b1e9deb1fd2513ff1a9ba0ae1bf700a"
+          }
+        },
+        {
+          "id": "rgbd_pothole_20250305_045716",
+          "width_m": 0.529340879231222,
+          "length_m": 0.40021947879558994,
+          "depth_m": 0.02054063370107478,
+          "family": "20250305_045716",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250305_045716",
+          "source_rgb_sha256": "e2698f8ee19a5ad7ff252a823d62f0eb013974d6aba43e243167348ed5bc53d4",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "1aa304c8310a164fd9e8c13140e783139f9dc93262adb5520391b7c800b9ae2c",
+            "ply": "62e54cf46ab6be21f5212ce5ddc21d78ce05df01402361a339e78fb2ea1fffe6",
+            "surface": "f706b08cb5457d3646e74fa9b73e138115721ba93c99905da1aa7066505e06c4"
+          }
+        },
+        {
+          "id": "rgbd_pothole_20250305_124307",
+          "width_m": 0.8310994639768754,
+          "length_m": 0.5153011476673124,
+          "depth_m": 0.043938938346975924,
+          "family": "20250305_124307",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250305_124307",
+          "source_rgb_sha256": "efe2f34adc4a7ff0a71d5a36947e43b63af902331c25fe495a1032aaa7719820",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "ce7bf5aaad6b864df90324ca7c8cfc9da2c4a6326f937cf35b28f05f45d1c59d",
+            "ply": "35b765af603db976134fdeab8920ed2f5d499d3ffa367989f6d9aa21a0b8bca6",
+            "surface": "0b27fe312b1b241a8eaed528d91d6742fb5c1b5bc7956972b85f6de9c862f10f"
+          }
+        },
+        {
+          "id": "rgbd_pothole_20250227_170940",
+          "width_m": 0.48197910206236816,
+          "length_m": 0.5845593412494808,
+          "depth_m": 0.03831911685394845,
+          "family": "20250227_170940",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250227_170940",
+          "source_rgb_sha256": "3461436f40e685a0e9b18727e25cfb87ab8f999d2f8ddfc75f8f09c543fc1e79",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "7920f0baac0bf7cc2ccb8b951025112e490cf08544b02bef563c32e6920baa7e",
+            "ply": "66f505778656f9f82dc88ae4e2ec10cb263ba6f11d16954c0b249b283451641c",
+            "surface": "b6f1723cf9e1d617935a388c6b4dd67f60b4d8013b791350f11f533c464a3460"
+          }
+        },
+        {
+          "id": "rgbd_pothole_20250305_132557",
+          "width_m": 1.5161538970050987,
+          "length_m": 1.122949033680778,
+          "depth_m": 0.04768139277033046,
+          "family": "20250305_132557",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250305_132557",
+          "source_rgb_sha256": "d8ae9aa8bde1f52807488f9527fc96d3c9e27d37d83445fc847ae1daf3b2e2bb",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "21cdd06184ac29414cf44bc45bbd25d2a7267a9124af3009998f4cfe54c39e69",
+            "ply": "2f15b67bd2a45af62541397cae009e6d291b8ff48c6f17b7a1d8ef1511a15e80",
+            "surface": "622e8e68cec53ebd922b678d360c613db86e49f5c1b155e56c9b4d9e8144d6a8"
+          }
+        },
+        {
+          "id": "rgbd_pothole_20250305_131813",
+          "width_m": 0.16814310972868451,
+          "length_m": 0.15051738064233702,
+          "depth_m": 0.012937430904254182,
+          "family": "20250305_131813",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250305_131813",
+          "source_rgb_sha256": "26fff891aedb0c71a521f64d213079f5372f91764c9daf3dd0d3506f68660caa",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "038633caa1591280b9afcc547e44e0cdb6aa92e0fdafcc845dde3142c5ba6093",
+            "ply": "c25e24696d1b748aacc98094c2fad24f66f46a3769eadaf6a7735d5ef1b22fe6",
+            "surface": "6abd872d6979abb0e034021f8869b29d0d9c2bdf084ca52463eb73509a0230ad"
+          }
+        },
+        {
+          "id": "rgbd_pothole_20250227_190609",
+          "width_m": 0.7765300785635807,
+          "length_m": 0.5130695968126713,
+          "depth_m": 0.048171389650060195,
+          "family": "20250227_190609",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250227_190609",
+          "source_rgb_sha256": "717a767be1a05bc9a09b6a7561e4e364962642f5b6e393e766ba155167728a49",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "a6fef96cbf20e08820f1bffe6f66deccd52af0340c2f7a35e49fdb23f8f2b316",
+            "ply": "42d42ad22bad2bb80437d84b9e771198d39ccc32680cef822475fef2fc194cfe",
+            "surface": "b8215af5b85b27e9c4bd029d4e3787b653688f50ea7d8a9c83c86c09d641f89f"
+          }
+        },
+        {
+          "id": "rgbd_pothole_20250305_135233",
+          "width_m": 0.6833939450525757,
+          "length_m": 0.5658162711849768,
+          "depth_m": 0.05052147502417466,
+          "family": "20250305_135233",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250305_135233",
+          "source_rgb_sha256": "36e00a80eaa7a8ea98be9ccc99bb4cc4058031607d01671718a8e4627bb1904a",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "017c61bea3c62334f4ba1f937ab04f0b6f390e22197a94ce911993cdbc75ab5b",
+            "ply": "984d2cbf294eaadbe85be35587e23e51a265067f88daabb49eff3b98de5f5d64",
+            "surface": "4c0627ef457c45404c1490d577a820a229dfe3d35195878c2ec1ea1d47ea5949"
+          }
+        },
+        {
+          "id": "rgbd_pothole_20250305_050151",
+          "width_m": 0.15413400055916587,
+          "length_m": 0.08374115283874936,
+          "depth_m": 0.022845465873729372,
+          "family": "20250305_050151",
+          "state": null,
+          "material": "captured_rgb",
+          "source_dataset": null,
+          "source_frame": "20250305_050151",
+          "source_rgb_sha256": "f6a68ae20fd725c79b9d3893c9bf94d20ebc8cd60e569846b46ce32f007d1b81",
+          "geometry_source": "real_realsense_depth_with_nominal_intrinsics",
+          "limits": [
+            "Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+            "The source provides one visible surface and may include multiple frames of a defect."
+          ],
+          "hashes": {
+            "glb": "1804affe0e31dd33deb1096e00e426fed8f6615ad6aabd6fd332eb5f7d6fe170",
+            "ply": "6e7cee8a02f5b8dd255188de4da323bfd18d3a0a91efc9060af9af66f902a95e",
+            "surface": "d6dd3c8fb156cff4d7ab6cc2cba88ba635d3c97c71d875ebbee7c5064e6cf245"
+          }
+        }
+      ]
+    },
+    {
+      "category": "pothole",
+      "unique_asset_records": 10,
+      "native_placements": 30,
+      "family_counts": {
+        "waterlogged": 1,
+        "slab_corner": 1,
+        "wheel_rut": 2,
+        "deep_break": 2,
+        "crescent": 2,
+        "bowled": 1,
+        "joined": 1
+      },
+      "state_counts": {},
+      "material_counts": {
+        "fine_asphalt": 3,
+        "concrete": 3,
+        "chip_seal": 2,
+        "aged_asphalt": 2
+      },
+      "source_dataset_groups": {},
+      "physical_defect_deduplication": "synthetic_designs",
+      "records": [
+        {
+          "id": "factory_pothole_20261120_000000_0a11ec168c15d5c8",
+          "width_m": 1.1869,
+          "length_m": 0.9288,
+          "depth_m": 0.1371,
+          "family": "waterlogged",
+          "state": null,
+          "material": "fine_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "1ccdfa38b8d1a624fbd0bb1b5fbedb284621e2c35c6e6e200c0c817df3c754b2",
+            "ply": "5a27f55bdc92b6ecaed8b21399c6e8c3952324658b0395cb555df5d9d53cad03",
+            "surface": "5e81902b5b1cef92c79dcd690d36bf98563caddb21166c305f0bf7bebfc23b83"
+          }
+        },
+        {
+          "id": "factory_pothole_20261120_000003_85570e243c3138a2",
+          "width_m": 1.5204,
+          "length_m": 1.034,
+          "depth_m": 0.1266,
+          "family": "slab_corner",
+          "state": null,
+          "material": "concrete",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "a566bcfdc93e228fc9cfd2005eaeb8222c23016bf04f4d4d8987c64d3ea24c43",
+            "ply": "c1d367a93bb90bf99bf8a76596037649beba586b0472802af165b4d026f8c292",
+            "surface": "88e56c163116c424eeb884c5b86a1d04bf83af14e4b91320fefc42463e78e3f7"
+          }
+        },
+        {
+          "id": "factory_pothole_20261120_000006_a983f023288b5070",
+          "width_m": 0.3916,
+          "length_m": 1.1353,
+          "depth_m": 0.1012,
+          "family": "wheel_rut",
+          "state": null,
+          "material": "chip_seal",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "5f0095fcf3320b881ff253f0d16bbf8f5bea6f8e38926d400d78405cc65f925c",
+            "ply": "d37b05d17f00264658d5840ce38e137c41593614248afbf72d1e7174d016c0ca",
+            "surface": "72e96632d2cfded5d0af68a562590b3645324271452e1a27da9aa216cdbbfd83"
+          }
+        },
+        {
+          "id": "factory_pothole_20261120_000009_8e562ac175ce4528",
+          "width_m": 0.5882,
+          "length_m": 0.4531,
+          "depth_m": 0.1016,
+          "family": "deep_break",
+          "state": null,
+          "material": "aged_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "f0405d8d5d69cae5c60a7bf83205f665b4eb698cd6b476ab65f4822ad1306f3f",
+            "ply": "524c11cad4ea7973c75fc64b80868b4a4a3b76ee90b2e978ff925c6b2951ac6f",
+            "surface": "f607ab8e1e0db1eda312ec346178837394cbd4bd523d7fab8e00101e6bb84d4a"
+          }
+        },
+        {
+          "id": "factory_pothole_20261120_000012_d799c1475b15c8a8",
+          "width_m": 0.9649,
+          "length_m": 0.6701,
+          "depth_m": 0.0662,
+          "family": "crescent",
+          "state": null,
+          "material": "fine_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "862ec3cd3c537c946b97fd4c62b800d4aea149664ee53a932b35b89f4b9a992c",
+            "ply": "36391f83700b5a6d0154b62d57fb4c1c735d6a6c746b8f791a2c4ab66adc5c12",
+            "surface": "d0aa9c256b0555be0402b34cfae957ca8f4ceb656c3a9077bde52c118046999d"
+          }
+        },
+        {
+          "id": "factory_pothole_20261119_000000_d3b40cc2dba384e3",
+          "width_m": 0.7506,
+          "length_m": 0.4997,
+          "depth_m": 0.0933,
+          "family": "crescent",
+          "state": null,
+          "material": "concrete",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "67ab70159d38fa1655478350dc2a02c3e06b2c04797c804774614cbefe7affde",
+            "ply": "7bed0155bbec124b041dba270f31eba479c192502491de69804a0647f75fb337",
+            "surface": "756fa3af42f569ea3aea6d1cff382c4413cf441d081b13a0fd3974857f12776a"
+          }
+        },
+        {
+          "id": "factory_pothole_20261119_000003_7b3b1987a07ecc49",
+          "width_m": 0.5695,
+          "length_m": 1.6085,
+          "depth_m": 0.1246,
+          "family": "wheel_rut",
+          "state": null,
+          "material": "chip_seal",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "8ba4f7d8c70900e7c194aa516a5d93f24d488cd6159a772f133a1a0e74ddcf90",
+            "ply": "d2d5a90a2899e42ead544953b64ecf3665203045e045a4c5a61727a63733a332",
+            "surface": "1065cc76a62caf0a1091d751048a7a691be1de21b74973eb5a90634e60ca0912"
+          }
+        },
+        {
+          "id": "factory_pothole_20261119_000006_b4cb6f5815d68448",
+          "width_m": 0.4619,
+          "length_m": 0.3632,
+          "depth_m": 0.0582,
+          "family": "bowled",
+          "state": null,
+          "material": "aged_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "b3a96795ea0a96582249ce9fb6863e6ae37e1631c69812225696492cc86362ea",
+            "ply": "39d712b988a353aee77773ed2637e33b12bc0f0923fb11accbd2e27fb6d92b21",
+            "surface": "1dab54a883665c57de3746d5eeb9be155c0d319a0abc024de1da9b4cd13c7a87"
+          }
+        },
+        {
+          "id": "factory_pothole_20261119_000009_75172e61c8a78a65",
+          "width_m": 1.0522,
+          "length_m": 0.6693,
+          "depth_m": 0.1051,
+          "family": "joined",
+          "state": null,
+          "material": "fine_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "c852e4703189cd3746711b01d8be745496a9c2a95b7a9a60e21f42e1486ea484",
+            "ply": "2a397d330512a3ec6fed41e41f6bf7c159363d0ce273516ac1d52078a971c614",
+            "surface": "fb48f67dc78d466fbd451fe46c76b62caf38d70fdfc7b05d912731566bb7f62a"
+          }
+        },
+        {
+          "id": "factory_pothole_20261119_000012_67a3e77cbfabf91a",
+          "width_m": 0.7415,
+          "length_m": 0.5776,
+          "depth_m": 0.1116,
+          "family": "deep_break",
+          "state": null,
+          "material": "concrete",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "d5cc32e153d5c20a515fb371e3b01c3ff317c676497dd60898ff9e20f3b0d228",
+            "ply": "81caf6d3dd91b0eef877095507fac63e76721ca026595c2e3bbb65677720655e",
+            "surface": "980a110736f8316a31409e4f191a00ccb0fcd866bbd95c91237845cf810d0508"
+          }
+        }
+      ]
+    },
+    {
+      "category": "missing",
+      "unique_asset_records": 10,
+      "native_placements": 30,
+      "family_counts": {
+        "oval": 4,
+        "round": 2,
+        "square": 2,
+        "rectangular": 2
+      },
+      "state_counts": {
+        "settled": 3,
+        "flush": 2,
+        "broken_flange": 2,
+        "masonry": 3
+      },
+      "material_counts": {
+        "aged_asphalt": 3,
+        "chip_seal": 2,
+        "fine_asphalt": 2,
+        "concrete": 3
+      },
+      "source_dataset_groups": {},
+      "physical_defect_deduplication": "synthetic_designs",
+      "records": [
+        {
+          "id": "factory_missing_20261120_000001_4afab717292f6782",
+          "width_m": 0.6305,
+          "length_m": 0.8179,
+          "depth_m": 1.3007,
+          "family": "oval",
+          "state": "settled",
+          "material": "aged_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "95bca0f31ac53f9199a4ffd0822de13e76f09006c1addefdce66a32de6dcb387",
+            "ply": "6c201a65dda8118f8d0fe0698430c6d6598a17d775b9fa7482f88fef8b80e0c2",
+            "surface": "3c184557b48e12ddeb0e9e51ee3524989cfac4164cadf6f2f20b69fb0dfa5526"
+          }
+        },
+        {
+          "id": "factory_missing_20261120_000004_8ba41a67059a18dc",
+          "width_m": 0.7112,
+          "length_m": 0.7217,
+          "depth_m": 0.963,
+          "family": "round",
+          "state": "flush",
+          "material": "chip_seal",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "0f1fd328aa0bce01e785eec59e0b5679a1da0d91475e765ebc0e437d9dfd2474",
+            "ply": "ac334a4895a31faece4ae554c51a2167f627321eadd15493894a37278ffee8eb",
+            "surface": "21aaa5fb1f68af41a3241d049130184b9ceda40375222f8c84156f592d605298"
+          }
+        },
+        {
+          "id": "factory_missing_20261120_000007_6b61978511466731",
+          "width_m": 0.7843,
+          "length_m": 0.756,
+          "depth_m": 1.3429,
+          "family": "square",
+          "state": "broken_flange",
+          "material": "fine_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "fad90d9fc85dd043b83d69b9f1656c041970448f72be8bed22fc50980800897b",
+            "ply": "2d724e4391d10b7f1bc90916d4b083363e46afd2d366eae4c0c0acd27e0d648a",
+            "surface": "2a3036c07d9c531033e671f8bbf300e636ef6756c47ff485542fa47b75637e81"
+          }
+        },
+        {
+          "id": "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+          "width_m": 0.6386,
+          "length_m": 0.8265,
+          "depth_m": 1.0509,
+          "family": "rectangular",
+          "state": "masonry",
+          "material": "concrete",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "f6f2ae9cd4bfc132e78a7c4f2d5e5777f186f4d20a89a33fabc0ee8510a5c3bf",
+            "ply": "8bf339849b6d2161c16f8fd97990068740fd98a4826ab5fd5b95d53077fb016d",
+            "surface": "81c9a90d9cf196f74bfa8a0f5a9b2e84dd97b9e684b1b52391ad89e0ee1fc57e"
+          }
+        },
+        {
+          "id": "factory_missing_20261120_000013_57a135eb28005ff9",
+          "width_m": 0.545,
+          "length_m": 0.7259,
+          "depth_m": 1.3595,
+          "family": "oval",
+          "state": "settled",
+          "material": "aged_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "41d1db28ceac2a91815fc4cab05b91cbbed09f5e9783e79e85b26c6c7a1cae32",
+            "ply": "f1145fa23629445681fabfdb538cda7f3bfa27b0c05c24a81bc2700179be48c0",
+            "surface": "f0ac5341d5df1a26b9c17bb29b09e7e2bf95aa779989528fa2a0eeb708d3776e"
+          }
+        },
+        {
+          "id": "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+          "width_m": 0.6196,
+          "length_m": 0.8521,
+          "depth_m": 1.1099,
+          "family": "oval",
+          "state": "masonry",
+          "material": "concrete",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "f3fb28f3bbcab570e63589ea446749dd1b086f4ba89a3111a30a1fd6f6cac888",
+            "ply": "96666c04caf489a46c75d955af8f91a3ccfa6fb47dd4860225fb33c89aa2eef8",
+            "surface": "a985f31a900b2344d1eee726ed6e365a7b249c0b08bd86b41aeb6ee7b1487129"
+          }
+        },
+        {
+          "id": "factory_missing_20261119_000004_ec6ab7a51fc74884",
+          "width_m": 0.6308,
+          "length_m": 0.9245,
+          "depth_m": 1.1848,
+          "family": "rectangular",
+          "state": "flush",
+          "material": "aged_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "47949a0ae2724afea843da069319abf6c8f30bfb92521f0cd360040e21cd1494",
+            "ply": "7db56770a253873f65643bd141d38c57133effdbbf36158791882cb9429ccf88",
+            "surface": "22f997c1caed0901eb3ae8d8bcc03834d89f9b0ca317eb96d73997aaf1d85182"
+          }
+        },
+        {
+          "id": "factory_missing_20261119_000007_4def79cf31fcbd38",
+          "width_m": 0.7105,
+          "length_m": 0.6659,
+          "depth_m": 1.2318,
+          "family": "round",
+          "state": "settled",
+          "material": "chip_seal",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "b9bfcd9db8456f52f2d1574000638c9658dcb71bd3f738201166b9d1a0162ab8",
+            "ply": "e3f1ea98b0c1cbed5f9020c759bed2fa6b65c0e53cf7f56c8ece588fb060fc8d",
+            "surface": "5bae0252a2cba8a32daf48d59799824041829c9aa314b3f9847aa831cce9e09c"
+          }
+        },
+        {
+          "id": "factory_missing_20261119_000010_afeed0ac3cee14f6",
+          "width_m": 0.6456,
+          "length_m": 0.6621,
+          "depth_m": 1.0328,
+          "family": "square",
+          "state": "broken_flange",
+          "material": "fine_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "db02076c179d1b605c268c61274f07af5943ec489be45f144a91284c8febbf26",
+            "ply": "6df67a0f0ac3386bfd3b65f2a59244698b0b82736d7933b2b97a3b008eb2d841",
+            "surface": "eaedeb49e3e1d17c43111e3af201a864804a215bd4c2d948d84a7f06039a7ad6"
+          }
+        },
+        {
+          "id": "factory_missing_20261119_000013_55d3b0a942a15712",
+          "width_m": 0.6339,
+          "length_m": 0.9202,
+          "depth_m": 1.1632,
+          "family": "oval",
+          "state": "masonry",
+          "material": "concrete",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "f0e9f6f4b0f25ebd187f32dd87294b603964b25a9f4ac9c4e7a77187e0b30a33",
+            "ply": "f607951ff5fe783bca072f68387315f3c29d24baf869bacb8378cd49314abb70",
+            "surface": "865ad193718f0def7a70408c9dfd09ac94df7af90551d7122ab5058c254a66dc"
+          }
+        }
+      ]
+    },
+    {
+      "category": "raised",
+      "unique_asset_records": 10,
+      "native_placements": 30,
+      "family_counts": {
+        "round": 3,
+        "oval": 2,
+        "rectangular": 3,
+        "square": 2
+      },
+      "state_counts": {
+        "slid": 2,
+        "skewed": 2,
+        "removed_side": 2,
+        "ajar14": 1,
+        "upright82": 2,
+        "propped43": 1
+      },
+      "material_counts": {
+        "aged_asphalt": 3,
+        "fine_asphalt": 2,
+        "concrete": 2,
+        "chip_seal": 3
+      },
+      "source_dataset_groups": {},
+      "physical_defect_deduplication": "synthetic_designs",
+      "records": [
+        {
+          "id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+          "width_m": 0.556,
+          "length_m": 0.5708,
+          "depth_m": 0.9885,
+          "family": "round",
+          "state": "slid",
+          "material": "aged_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "bb6ed1d7e48277bf08dd5f63ba571590041d998001dd66f06e9ef56f5a717994",
+            "ply": "2aab03c17e6884b311199ffc01d3d215af76c69a5dd7146f100dc23b8e3eee73",
+            "surface": "c5029f5b505527f48c8b3ed709da435810fc7e686fad822ff0549e9435c3efe5"
+          }
+        },
+        {
+          "id": "factory_raised_20261120_000005_a666133127c6f4ef",
+          "width_m": 0.5274,
+          "length_m": 0.7684,
+          "depth_m": 1.1092,
+          "family": "oval",
+          "state": "skewed",
+          "material": "fine_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "11888821cbe42fbcef50404a37ba2fcc37f2d13372907ea76c605e8397f38eee",
+            "ply": "65698256b292f4bb82b652b8269c36d5811528d4a81dbe0f1ffe8397775c0a5c",
+            "surface": "766aadd1b6d68190af2f01ec2c33b1c51b235e1b51ef9eaeec3795eb36a4bf40"
+          }
+        },
+        {
+          "id": "factory_raised_20261120_000008_4676785bab446fc9",
+          "width_m": 0.713,
+          "length_m": 0.914,
+          "depth_m": 1.187,
+          "family": "rectangular",
+          "state": "removed_side",
+          "material": "concrete",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "5428e4dd183fe72a60eba84ccdb753178215afdb4bed19c54497cdd07ebd0268",
+            "ply": "7241a05574fcb7d046e852f6ea2a64c7a08b10b96169716bab511ff451a4193e",
+            "surface": "5982492d5869d87a9fd74aea1815deae309ceaddb04a03fe2225b05cbf6e0ae1"
+          }
+        },
+        {
+          "id": "factory_raised_20261120_000011_c945a5a3b22954e4",
+          "width_m": 0.637,
+          "length_m": 0.6486,
+          "depth_m": 0.9539,
+          "family": "square",
+          "state": "ajar14",
+          "material": "chip_seal",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "f4d974583fa058cc9e41b4ecd7f51fbe2ab859baabebcf484f619520e0aa922e",
+            "ply": "858bb468f7b362a3db3b3faf478c69a398194ac4ca2e64e0429521a21165e491",
+            "surface": "0e30297377600c5c8cdca946b9e82fa73842300cbafa98746c71ce18713fbdfa"
+          }
+        },
+        {
+          "id": "factory_raised_20261120_000014_25f490d64cd5ca64",
+          "width_m": 0.634,
+          "length_m": 0.6196,
+          "depth_m": 0.9263,
+          "family": "round",
+          "state": "upright82",
+          "material": "aged_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "133b8b62e328a94a02af12babd9cc3f3e9527489901c8274d73896ff20a4221f",
+            "ply": "aa311cad1cc8e9d6a8e2fd557136e2ef8514d66bfde57cf727de9a093c7387ca",
+            "surface": "11a20ac68ac6648dce2b52bdcb7f8a8be600f0d8173b373161c25cb70f568815"
+          }
+        },
+        {
+          "id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+          "width_m": 0.6311,
+          "length_m": 0.9231,
+          "depth_m": 1.0571,
+          "family": "rectangular",
+          "state": "skewed",
+          "material": "chip_seal",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "ac7bcad24c6b5d3aa47ef77013802c35b94baf9f0adeb3eae663182c5a596fd4",
+            "ply": "3982df35be68372067c079c03adcd4a1d221e686406138d1379f472822012387",
+            "surface": "bba73f265be6be492e4bb4d0085f400d0846ebca1a8381bb9185a44e07ed7ff4"
+          }
+        },
+        {
+          "id": "factory_raised_20261119_000005_8342d657505675c0",
+          "width_m": 0.6492,
+          "length_m": 0.9016,
+          "depth_m": 0.918,
+          "family": "oval",
+          "state": "propped43",
+          "material": "aged_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "4e1493e3b9dcaf3eec2371dd2edb3f9a63d1f2763e0352e74bf6e1e30ce044f6",
+            "ply": "7080b1a7b25a8e341b39efd408b52d98ed8ee2a146222f343e003358a70d58f7",
+            "surface": "98cdaee1ee431ef978db6b44f7b6f3d073ad76de0b2cdfb4395e08f58ed211e1"
+          }
+        },
+        {
+          "id": "factory_raised_20261119_000008_1dd67160bef05522",
+          "width_m": 0.6495,
+          "length_m": 0.6211,
+          "depth_m": 1.0836,
+          "family": "round",
+          "state": "removed_side",
+          "material": "fine_asphalt",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "f2eb5f9ea7923ec0d85d4c282cd0fc350395efc87ea77c11de2f9e677d66c868",
+            "ply": "565fa48adbb4619371f048de4f0f3db38a7b64135d9a128872c637170daec865",
+            "surface": "9bf297f9538a80e1440d88b08fe6b750b8a276a0d5e06cc05bbc218e3e495144"
+          }
+        },
+        {
+          "id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+          "width_m": 0.6331,
+          "length_m": 0.6445,
+          "depth_m": 0.9605,
+          "family": "square",
+          "state": "slid",
+          "material": "concrete",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "893c6d74c192d7cbebf95a4e2fbfedea803395949a23522c6a4569736a4abe08",
+            "ply": "0858e42497b73f8a7103c26bf8194d43a06e5639a585f66c19d36e11f00c0908",
+            "surface": "76559293bc31258497b7ed437b40563997f0900e933b7c5cb8d4a970ad467056"
+          }
+        },
+        {
+          "id": "factory_raised_20261119_000014_285bd2e35a859ee1",
+          "width_m": 0.523,
+          "length_m": 0.722,
+          "depth_m": 1.0004,
+          "family": "rectangular",
+          "state": "upright82",
+          "material": "chip_seal",
+          "source_dataset": null,
+          "source_frame": null,
+          "source_rgb_sha256": null,
+          "geometry_source": "procedural_3d",
+          "limits": [
+            "Designed metric dimensions, not a measurement of a real defect.",
+            "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+          ],
+          "hashes": {
+            "glb": "183fe34371fd7978d33b2942946e806791dbbe4f1f0e6c1ef7b1e99a8b18b4c0",
+            "ply": "2b688ee4610d3e7bfa1d517292673c5004151f0060d3ffe4cc1adca0e9115294",
+            "surface": "86b09c77048b78a902dda7a448f0488b71d3a6382bf3b6fe8d30f55a8cca18be"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": 10,
+  "sites": [
+    "034",
+    "109",
+    "110"
+  ],
+  "native_placements": 150,
+  "all_selected_payloads_exist_and_hashes_match": true,
+  "no_exact_glb_or_ply_duplicates_within_category": true,
+  "caveat": "Distinct files and source frames do not establish distinct physical potholes. Capture deduplication and nominal RGB-D scale remain unverified.",
+  "source_manifest_sha256": {
+    "/home/xiaosz/Documents/Codex/2026-11-18/fu-xi/outputs/road_hazard_expansion/asset_manifest.json": "696f5e34ef5d7598bdf68ac72c42b5d08742cb773af661e3db753790249b8759",
+    "/home/xiaosz/Documents/Codex/2026-11-19/home-xiaosz-documents-codex-2026-11/outputs/道路病害_稳定生成与迁移_v3/资产库/asset_manifest.json": "ff351396a9c6154a424d45b86f3a05e19133edf6ed06f745f57ff70780ddd0c1"
+  },
+  "group_plan_sha256": "ec273e09646131df18856853585257f1dd628bf9d3f55dfd7fe49d1f76b8a8e3"
+}

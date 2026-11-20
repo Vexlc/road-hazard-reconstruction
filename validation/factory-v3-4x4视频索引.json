@@ -1,0 +1,62 @@
+{
+  "file": "30个设计资产_4x4环绕.mp4",
+  "pages": [
+    {
+      "page": 1,
+      "start_seconds": 0,
+      "seconds": 4,
+      "assets": [
+        "factory_pothole_20261120_000000_0a11ec168c15d5c8",
+        "factory_missing_20261120_000001_4afab717292f6782",
+        "factory_raised_20261120_000002_aa720cb47959b3b4",
+        "factory_pothole_20261120_000003_85570e243c3138a2",
+        "factory_missing_20261120_000004_8ba41a67059a18dc",
+        "factory_raised_20261120_000005_a666133127c6f4ef",
+        "factory_pothole_20261120_000006_a983f023288b5070",
+        "factory_missing_20261120_000007_6b61978511466731",
+        "factory_raised_20261120_000008_4676785bab446fc9",
+        "factory_pothole_20261120_000009_8e562ac175ce4528",
+        "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+        "factory_raised_20261120_000011_c945a5a3b22954e4",
+        "factory_pothole_20261120_000012_d799c1475b15c8a8",
+        "factory_missing_20261120_000013_57a135eb28005ff9",
+        "factory_raised_20261120_000014_25f490d64cd5ca64",
+        "factory_pothole_20261119_000000_d3b40cc2dba384e3"
+      ],
+      "empty_cells": 0
+    },
+    {
+      "page": 2,
+      "start_seconds": 4,
+      "seconds": 4,
+      "assets": [
+        "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+        "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+        "factory_pothole_20261119_000003_7b3b1987a07ecc49",
+        "factory_missing_20261119_000004_ec6ab7a51fc74884",
+        "factory_raised_20261119_000005_8342d657505675c0",
+        "factory_pothole_20261119_000006_b4cb6f5815d68448",
+        "factory_missing_20261119_000007_4def79cf31fcbd38",
+        "factory_raised_20261119_000008_1dd67160bef05522",
+        "factory_pothole_20261119_000009_75172e61c8a78a65",
+        "factory_missing_20261119_000010_afeed0ac3cee14f6",
+        "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+        "factory_pothole_20261119_000012_67a3e77cbfabf91a",
+        "factory_missing_20261119_000013_55d3b0a942a15712",
+        "factory_raised_20261119_000014_285bd2e35a859ee1"
+      ],
+      "empty_cells": 2
+    }
+  ],
+  "assets": 30,
+  "seconds": 8,
+  "publication": {
+    "schema": 1,
+    "transaction": "2eb11e08c55b4d43825037a343da1ae9",
+    "files_sha256": {
+      "30个设计资产_4x4环绕.mp4": "dee1d97690e990af985a0340a9caba461b7d60b99d97cd31973e60b00a78634a",
+      "设计资产_4x4预览_01.jpg": "ecd0e33ebd512509c2e5c5b31365e0a875a3bc00cbcd8526548aa70454729bb9",
+      "设计资产_4x4预览_02.jpg": "b53b47ab6f482667ef3d095faba0dd7b527a38f2bc667544ba09a90043e2531f"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "sealed_old_checkpoints": 18,
+  "old_checkpoints_byte_unchanged": true,
+  "old_completion_records_byte_unchanged": true,
+  "old_groups_unchanged": 6,
+  "new_groups": 0,
+  "new_native_scene_versions": 0,
+  "total_native_scene_versions": 18,
+  "scope": "Content hashes, group identity, and committed append results; full rendering checks are separate."
+}

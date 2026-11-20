@@ -22,11 +22,32 @@ def sample_mesh(mesh_path, surface_file, metadata):
         areas = np.linalg.norm(normal, axis=1)*.50
         assert areas.sum() > .1
         geometry = ray_scene({"vertices": vertex, "faces": faces})
-        accum = np.cumsum(areas, dtype="f8")
-        area = accum[-1]
-        count = int(np.clip(area * 26000, 42000, 122000))
+        area = float(areas.sum(dtype="f8"))
+        importance = np.ones(len(faces), dtype="f8")
+        detail = metadata.get("gaussian_detail_weights", {})
+        if detail:
+            if "face_part" not in mesh or "part_names" not in mesh:
+                raise ValueError("Detail-aware sampling needs explicit mesh part IDs")
+            weights = np.array([detail.get(str(name), 1.) for name in mesh["part_names"]])
+            if not (np.isfinite(weights).all() and np.all((weights >= .25) & (weights <= 16))):
+                raise ValueError("Invalid part sampling weights")
+            importance = weights[mesh["face_part"]]
+        accum = np.cumsum(areas*importance, dtype="f8")
+        weighted_area = accum[-1]
+        density = metadata.get("gaussian_sampling_density_m2", 26000)
+        minimum = metadata.get("gaussian_sampling_min", 42000)
+        maximum = metadata.get("gaussian_sampling_max", 122000)
+        if not (0 < density and 1000 <= minimum <= maximum <= 2000000):
+            raise ValueError("Invalid Gaussian sampling budget")
+        count = int(np.clip(area * density, minimum, maximum))
+        metadata["gaussian_sampling"] = {"surface_area_m2": float(area),
+                                         "requested_points": count,
+                                         "spacing_before_alpha_m": float(np.sqrt(area/count)),
+                                         "density_per_m2": density, "maximum_points": maximum,
+                                         "part_weights": detail}
         rng = np.random.default_rng(metadata["seed"] + 91227)
-        triangles_seen = np.searchsorted(accum, (np.arange(count)+rng.uniform(0, 1, count))*area/count)
+        triangles_seen = np.searchsorted(accum, (np.arange(count)+rng.uniform(0, 1, count))*weighted_area/count)
+        spacing = np.sqrt(weighted_area/(count*importance[triangles_seen]))
         bary_u = np.sqrt(rng.random(count))
         bary_v = rng.random(count)
         weights = np.stack([1-bary_u, bary_u*(1-bary_v), bary_u*bary_v], axis=1).astype("f4")
@@ -61,8 +82,8 @@ def sample_mesh(mesh_path, surface_file, metadata):
             road = road*np.clip(1+xyz[:, 2]/max(.005, depth_strength), 0, 1)**2
         ao = ray_ambient(geometry, xyz, normal, tangent, bitangent, rng)
         sun = sun_visibility(geometry, xyz, normal, [-.35, -.25, 1])
-        spacing = np.sqrt(area/count)
-        scales = np.tile([spacing*.83, spacing*.83, .00045], (len(xyz), 1))
+        spacing = spacing[keep]
+        scales = np.c_[spacing*.83, spacing*.83, np.full(len(xyz), .00045)]
         return dict(name=metadata["id"], local_xyz=xyz, normals=normal,
                     rotation_matrices=np.stack([tangent, bitangent, normal], axis=-1),
                     scales=scales, alpha=alpha, color=color, normal=(normal+1)/2,

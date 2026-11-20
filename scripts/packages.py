@@ -34,7 +34,12 @@ def restore(path, dest, record=None):
     elif path.suffix.lower() in {'.mp4', '.gif'}:
         dest.mkdir(parents=True, exist_ok=True)
         shutil.copy2(path, dest / path.name)
-    elif zipfile.is_zipfile(path):
+    elif path.suffix.lower() == '.zip':
+        # NPZ files inside a zstd tar can leave a ZIP end record near the end
+        # of the outer file. is_zipfile() alone then misclassifies the archive.
+        with path.open('rb') as stream:
+            if stream.read(4) not in (b'PK\x03\x04', b'PK\x05\x06'):
+                raise ValueError('ZIP extension without a ZIP header: ' + str(path))
         with zipfile.ZipFile(path) as archive:
             for info in archive.infolist():
                 safe(info.filename)
@@ -49,7 +54,10 @@ def restore(path, dest, record=None):
                     target.parent.mkdir(parents=True, exist_ok=True)
                     with archive.open(info) as source, target.open('wb') as output:
                         shutil.copyfileobj(source, output)
-    else:
+    elif path.name.lower().endswith(('.tar.zst', '.tzst')):
+        with path.open('rb') as stream:
+            if stream.read(4) != b'\x28\xb5\x2f\xfd':
+                raise ValueError('zstd extension without a zstd frame: ' + str(path))
         # Streaming zstd avoids another full uncompressed archive on disk.
         with subprocess.Popen(['zstd', '-q', '-d', '-c', str(path)], stdout=subprocess.PIPE) as proc:
             with tarfile.open(fileobj=proc.stdout, mode='r|') as archive:
@@ -66,6 +74,8 @@ def restore(path, dest, record=None):
                             shutil.copyfileobj(source, output)
             if proc.wait():
                 raise RuntimeError('zstd failed')
+    else:
+        raise ValueError('Unsupported package format: ' + str(path))
 
 
 def main():

@@ -1,0 +1,1009 @@
+{
+  "seed": 20261119,
+  "category_order": [
+    "stereo",
+    "rgbd",
+    "pothole",
+    "missing",
+    "raised"
+  ],
+  "selected_assets": {
+    "stereo": [
+      "stereo_pothole_fan_3_02",
+      "stereo_pothole_fan_2_07",
+      "stereo_pothole_fan_3_03",
+      "stereo_pothole_fan_3_01",
+      "stereo_pothole_fan_2_35",
+      "stereo_pothole_fan_1_03",
+      "stereo_pothole_fan_1_18",
+      "stereo_pothole_fan_2_16",
+      "stereo_pothole_fan_2_24",
+      "stereo_pothole_fan_2_08"
+    ],
+    "rgbd": [
+      "rgbd_pothole_20250305_054319",
+      "rgbd_pothole_20250227_171044",
+      "rgbd_pothole_20250305_045716",
+      "rgbd_pothole_20250305_124307",
+      "rgbd_pothole_20250227_170940",
+      "rgbd_pothole_20250305_132557",
+      "rgbd_pothole_20250305_131813",
+      "rgbd_pothole_20250227_190609",
+      "rgbd_pothole_20250305_135233",
+      "rgbd_pothole_20250305_050151"
+    ],
+    "pothole": [
+      "model_pothole_bowled_chip_seal_01",
+      "model_pothole_slab_corner_chip_seal_03",
+      "model_pothole_patch_break_aged_asphalt_03",
+      "model_pothole_patch_break_chip_seal_02",
+      "model_pothole_deep_break_concrete_01",
+      "model_pothole_deep_break_aged_asphalt_03",
+      "model_pothole_waterlogged_concrete_02",
+      "model_pothole_patch_break_fine_asphalt_03",
+      "model_pothole_patch_break_fine_asphalt_02",
+      "model_pothole_crescent_chip_seal_01"
+    ],
+    "missing": [
+      "model_missing_oval_flush_fine_asphalt",
+      "model_missing_oval_broken_flange_aged_asphalt",
+      "model_missing_oval_settled_concrete",
+      "model_missing_square_settled_chip_seal",
+      "model_missing_rectangular_settled_concrete",
+      "model_missing_oval_broken_flange_fine_asphalt",
+      "model_missing_oval_masonry_concrete",
+      "model_missing_rectangular_flush_aged_asphalt",
+      "model_missing_rectangular_masonry_aged_asphalt",
+      "model_missing_square_settled_concrete"
+    ],
+    "raised": [
+      "model_raised_oval_removed_side_concrete",
+      "model_raised_rectangular_ajar14_fine_asphalt",
+      "model_raised_round_skewed_aged_asphalt",
+      "model_raised_rectangular_slid_concrete",
+      "model_raised_rectangular_slid_aged_asphalt",
+      "model_raised_round_ajar14_fine_asphalt",
+      "model_raised_oval_slid_concrete",
+      "model_raised_square_removed_side_chip_seal",
+      "model_raised_square_skewed_aged_asphalt",
+      "model_raised_rectangular_tilted29_chip_seal"
+    ]
+  },
+  "scene_titles": {
+    "034": "浅色分块接缝路面",
+    "109": "深色均匀路面",
+    "110": "灰色裂缝封补路面"
+  },
+  "drive_start_by_site": {
+    "034": 20,
+    "109": 20,
+    "110": 0
+  },
+  "slots_by_site": {
+    "034": [
+      {
+        "center_world": [
+          -36.16243798230243,
+          -5.790768920867825,
+          -5.150513699017868
+        ],
+        "basis_columns": [
+          [
+            -0.15583637906672923,
+            -0.9776676350399915,
+            -0.14100006508750496
+          ],
+          [
+            0.9875661737497854,
+            -0.15719661918618416,
+            -0.00150843682079268
+          ],
+          [
+            -0.02068998367759607,
+            -0.13948196410914124,
+            0.9900084374709527
+          ]
+        ],
+        "points": 5980,
+        "rms_m": 0.009539089918793717,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.1424312442653223,
+        "slot": "01",
+        "distance_m": 7.5,
+        "lateral_m": 0.65,
+        "source_reference_frame": 30,
+        "source_road_rgb": [
+          94.0,
+          93.0,
+          98.0
+        ]
+      },
+      {
+        "center_world": [
+          -39.913730178510214,
+          -7.657097045032512,
+          -5.687371416209338
+        ],
+        "basis_columns": [
+          [
+            -0.15799935478427368,
+            -0.9780079636703009,
+            -0.13614928161846723
+          ],
+          [
+            0.9874240776259753,
+            -0.15725133973556055,
+            -0.016300523791066644
+          ],
+          [
+            -0.005467614858877717,
+            -0.13701255106318838,
+            0.9905542216551865
+          ]
+        ],
+        "points": 6285,
+        "rms_m": 0.011745067770191082,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.1384291741194248,
+        "slot": "02",
+        "distance_m": 11.5,
+        "lateral_m": -0.6,
+        "source_reference_frame": 33,
+        "source_road_rgb": [
+          99.0,
+          100.0,
+          105.0
+        ]
+      },
+      {
+        "center_world": [
+          -44.06189349194502,
+          -7.055127513663942,
+          -6.244618041380145
+        ],
+        "basis_columns": [
+          [
+            -0.15669785563869604,
+            -0.9785928109300476,
+            -0.1334237326500145
+          ],
+          [
+            0.9875269346322547,
+            -0.15734537579513483,
+            -0.005743351957732266
+          ],
+          [
+            -0.015373204417328321,
+            -0.13265950064701726,
+            0.9910424418126739
+          ]
+        ],
+        "points": 5793,
+        "rms_m": 0.008551025769322856,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.13475435949058423,
+        "slot": "03",
+        "distance_m": 15.5,
+        "lateral_m": 0.65,
+        "source_reference_frame": 36,
+        "source_road_rgb": [
+          102.0,
+          102.0,
+          110.0
+        ]
+      },
+      {
+        "center_world": [
+          -47.81318568815281,
+          -8.92145563782863,
+          -6.774471269659303
+        ],
+        "basis_columns": [
+          [
+            -0.15744937616546734,
+            -0.9786321066817988,
+            -0.1322455810855301
+          ],
+          [
+            0.9874784881572678,
+            -0.1573516940561698,
+            -0.011255212316535618
+          ],
+          [
+            -0.009794354074768554,
+            -0.13236179263366707,
+            0.991153079236028
+          ]
+        ],
+        "points": 6320,
+        "rms_m": 0.00897692551221295,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.13390835011434976,
+        "slot": "04",
+        "distance_m": 19.5,
+        "lateral_m": -0.6,
+        "source_reference_frame": 42,
+        "source_road_rgb": [
+          102.0,
+          105.0,
+          114.0
+        ]
+      },
+      {
+        "center_world": [
+          -51.96134900158761,
+          -8.31948610646006,
+          -7.344700583391781
+        ],
+        "basis_columns": [
+          [
+            -0.15659741157373058,
+            -0.9782202118456376,
+            -0.13624414785627867
+          ],
+          [
+            0.9875363365235256,
+            -0.15728546656393816,
+            -0.005767673140735865
+          ],
+          [
+            -0.015787169920593928,
+            -0.13544924933140154,
+            0.9906585012613872
+          ]
+        ],
+        "points": 5691,
+        "rms_m": 0.007252976130192299,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.13765205218467869,
+        "slot": "05",
+        "distance_m": 23.5,
+        "lateral_m": 0.65,
+        "source_reference_frame": 45,
+        "source_road_rgb": [
+          91.0,
+          92.0,
+          96.0
+        ]
+      }
+    ],
+    "109": [
+      {
+        "center_world": [
+          -38.60890679637467,
+          39.414138021219195,
+          -0.5507427847349833
+        ],
+        "basis_columns": [
+          [
+            0.7022745068784205,
+            -0.7111999369127098,
+            0.031704364431875125
+          ],
+          [
+            0.7101220131204765,
+            0.7029704320496952,
+            0.03948794937176009
+          ],
+          [
+            -0.05037105786454429,
+            -0.005217413077624456,
+            0.998716944449419
+          ]
+        ],
+        "points": 2150,
+        "rms_m": 0.006391006110654229,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.0507056038145363,
+        "slot": "01",
+        "distance_m": 7.5,
+        "lateral_m": 0.65,
+        "source_reference_frame": 27,
+        "source_road_rgb": [
+          119.0,
+          119.0,
+          121.0
+        ]
+      },
+      {
+        "center_world": [
+          -42.33280760217728,
+          41.3367046730585,
+          -0.5181848326144055
+        ],
+        "basis_columns": [
+          [
+            0.7025289898836816,
+            -0.7112085574442668,
+            0.025207264648488124
+          ],
+          [
+            0.7106609923783754,
+            0.7029789528305316,
+            0.02795614045378668
+          ],
+          [
+            -0.0376028228301632,
+            -0.0017261794038061738,
+            0.9992912728628571
+          ]
+        ],
+        "points": 2839,
+        "rms_m": 0.0061742245541154496,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.03766911973979512,
+        "slot": "02",
+        "distance_m": 11.5,
+        "lateral_m": -0.6,
+        "source_reference_frame": 30,
+        "source_road_rgb": [
+          116.0,
+          116.0,
+          119.0
+        ]
+      },
+      {
+        "center_world": [
+          -44.29925840756882,
+          45.03729536749541,
+          -0.5978768974791859
+        ],
+        "basis_columns": [
+          [
+            0.7022025601346754,
+            -0.7112080136151492,
+            0.03308664246945238
+          ],
+          [
+            0.710274424713401,
+            0.7029784152942214,
+            0.036490947212594195
+          ],
+          [
+            -0.0492118495725865,
+            -0.002123440608734671,
+            0.9987861056610801
+          ]
+        ],
+        "points": 3554,
+        "rms_m": 0.006941885333045747,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.049317506648199956,
+        "slot": "03",
+        "distance_m": 15.5,
+        "lateral_m": 0.65,
+        "source_reference_frame": 33,
+        "source_road_rgb": [
+          115.0,
+          115.0,
+          117.0
+        ]
+      },
+      {
+        "center_world": [
+          -48.02315921337143,
+          46.95986201933471,
+          -0.5779390668277125
+        ],
+        "basis_columns": [
+          [
+            0.7028003465846374,
+            -0.7111877270864994,
+            0.016843090038727675
+          ],
+          [
+            0.7106719099140079,
+            0.7029583635069959,
+            0.028195312283119618
+          ],
+          [
+            -0.03189215106715088,
+            -0.007845764277962356,
+            0.9994605218232507
+          ]
+        ],
+        "points": 4215,
+        "rms_m": 0.006975933093745998,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.03286076828170127,
+        "slot": "04",
+        "distance_m": 19.5,
+        "lateral_m": -0.6,
+        "source_reference_frame": 36,
+        "source_road_rgb": [
+          113.0,
+          114.0,
+          116.0
+        ]
+      },
+      {
+        "center_world": [
+          -49.989610018762974,
+          50.660452713771626,
+          -0.6436153210217977
+        ],
+        "basis_columns": [
+          [
+            0.7026154117756905,
+            -0.7111908713336491,
+            0.023219122872363822
+          ],
+          [
+            0.7104238242983579,
+            0.7029614713711317,
+            0.033810643842280004
+          ],
+          [
+            -0.04036797003284676,
+            -0.007260461377806601,
+            0.9991585022888053
+          ]
+        ],
+        "points": 4216,
+        "rms_m": 0.0068214024641175056,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.041050239507376275,
+        "slot": "05",
+        "distance_m": 23.5,
+        "lateral_m": 0.65,
+        "source_reference_frame": 39,
+        "source_road_rgb": [
+          113.0,
+          113.0,
+          115.0
+        ]
+      }
+    ],
+    "110": [
+      {
+        "center_world": [
+          -6.3658642180972524,
+          7.811166801899868,
+          -0.39056069473516075
+        ],
+        "basis_columns": [
+          [
+            0.7284105888580494,
+            -0.6848261160723442,
+            0.020765470973171586
+          ],
+          [
+            0.6843889193400311,
+            0.7286964707999772,
+            0.024764097565672313
+          ],
+          [
+            -0.032090826166585464,
+            -0.003826772651433873,
+            0.9994776309087763
+          ]
+        ],
+        "points": 2935,
+        "rms_m": 0.004929244060573403,
+        "neighborhood_coverage": 0.88,
+        "plane_slope": 0.03233507942431033,
+        "slot": "01",
+        "distance_m": 10.0,
+        "lateral_m": 0.65,
+        "source_reference_frame": 0,
+        "source_road_rgb": [
+          119.0,
+          119.0,
+          121.0
+        ]
+      },
+      {
+        "center_world": [
+          -10.257007934763672,
+          8.957347036433411,
+          -0.33159460097782145
+        ],
+        "basis_columns": [
+          [
+            0.7284758716753614,
+            -0.6848293069193543,
+            0.01821331302040712
+          ],
+          [
+            0.6845327779652356,
+            0.7286998660544812,
+            0.020282531976522505
+          ],
+          [
+            -0.027162111074430555,
+            -0.0023077254035709423,
+            0.9996283780112699
+          ]
+        ],
+        "points": 4444,
+        "rms_m": 0.008003152735949435,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.027270102521841134,
+        "slot": "02",
+        "distance_m": 13.5,
+        "lateral_m": -1.4,
+        "source_reference_frame": 3,
+        "source_road_rgb": [
+          120.0,
+          121.0,
+          123.0
+        ]
+      },
+      {
+        "center_world": [
+          -8.719411714672123,
+          11.774677427863464,
+          -0.42669115150658377
+        ],
+        "basis_columns": [
+          [
+            0.7283672480149642,
+            -0.684830137882519,
+            0.02210959671540513
+          ],
+          [
+            0.6844420858298813,
+            0.7287007502496242,
+            0.023113799568146246
+          ],
+          [
+            -0.031940306259474846,
+            -0.0017025960898707712,
+            0.999488328097235
+          ]
+        ],
+        "points": 3660,
+        "rms_m": 0.006781714666834593,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.03200202753140814,
+        "slot": "03",
+        "distance_m": 14.5,
+        "lateral_m": 1.65,
+        "source_reference_frame": 3,
+        "source_road_rgb": [
+          128.0,
+          127.0,
+          125.0
+        ]
+      },
+      {
+        "center_world": [
+          -12.610555431338543,
+          12.920857662397008,
+          -0.3955214234740271
+        ],
+        "basis_columns": [
+          [
+            0.728763767324481,
+            -0.684734480819355,
+            0.0064855386883628
+          ],
+          [
+            0.684320283937548,
+            0.7285989653399969,
+            0.029142695433328872
+          ],
+          [
+            -0.024680365205230686,
+            -0.016799954837274315,
+            0.9995542211860254
+          ]
+        ],
+        "points": 3707,
+        "rms_m": 0.008149893320826456,
+        "neighborhood_coverage": 1.0,
+        "plane_slope": 0.02986894940800497,
+        "slot": "04",
+        "distance_m": 18.0,
+        "lateral_m": -0.4,
+        "source_reference_frame": 3,
+        "source_road_rgb": [
+          153.0,
+          147.0,
+          145.0
+        ]
+      },
+      {
+        "center_world": [
+          -9.368097956393866,
+          5.675830897334677,
+          -0.27706885371399564
+        ],
+        "basis_columns": [
+          [
+            0.7285491380074505,
+            -0.6848188037547239,
+            0.015471248577588343
+          ],
+          [
+            0.6844664307430297,
+            0.7286886900510859,
+            0.022770555055363774
+          ],
+          [
+            -0.026867428133302878,
+            -0.005999917964496402,
+            0.9996209993242042
+          ]
+        ],
+        "points": 2246,
+        "rms_m": 0.0043959322681905305,
+        "neighborhood_coverage": 0.92,
+        "plane_slope": 0.02753965312040129,
+        "slot": "05",
+        "distance_m": 10.5,
+        "lateral_m": -3.0,
+        "source_reference_frame": 0,
+        "source_road_rgb": [
+          116.0,
+          117.0,
+          119.0
+        ]
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "034_01",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_3_02",
+        "rgbd_pothole_20250305_054319",
+        "model_pothole_bowled_chip_seal_01",
+        "model_missing_oval_flush_fine_asphalt",
+        "model_raised_oval_removed_side_concrete"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "034_02",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_2_07",
+        "rgbd_pothole_20250227_171044",
+        "model_pothole_slab_corner_chip_seal_03",
+        "model_missing_oval_broken_flange_aged_asphalt",
+        "model_raised_rectangular_ajar14_fine_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "034_03",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_3_03",
+        "rgbd_pothole_20250305_045716",
+        "model_pothole_patch_break_aged_asphalt_03",
+        "model_missing_oval_settled_concrete",
+        "model_raised_round_skewed_aged_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "034_04",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_3_01",
+        "rgbd_pothole_20250305_124307",
+        "model_pothole_patch_break_chip_seal_02",
+        "model_missing_square_settled_chip_seal",
+        "model_raised_rectangular_slid_concrete"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "034_05",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_2_35",
+        "rgbd_pothole_20250227_170940",
+        "model_pothole_deep_break_concrete_01",
+        "model_missing_rectangular_settled_concrete",
+        "model_raised_rectangular_slid_aged_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "034_06",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_1_03",
+        "rgbd_pothole_20250305_132557",
+        "model_pothole_deep_break_aged_asphalt_03",
+        "model_missing_oval_broken_flange_fine_asphalt",
+        "model_raised_round_ajar14_fine_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "034_07",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_1_18",
+        "rgbd_pothole_20250305_131813",
+        "model_pothole_waterlogged_concrete_02",
+        "model_missing_oval_masonry_concrete",
+        "model_raised_oval_slid_concrete"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "034_08",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_2_16",
+        "rgbd_pothole_20250227_190609",
+        "model_pothole_patch_break_fine_asphalt_03",
+        "model_missing_rectangular_flush_aged_asphalt",
+        "model_raised_square_removed_side_chip_seal"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "034_09",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_2_24",
+        "rgbd_pothole_20250305_135233",
+        "model_pothole_patch_break_fine_asphalt_02",
+        "model_missing_rectangular_masonry_aged_asphalt",
+        "model_raised_square_skewed_aged_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "034_10",
+      "site": "034",
+      "assets": [
+        "stereo_pothole_fan_2_08",
+        "rgbd_pothole_20250305_050151",
+        "model_pothole_crescent_chip_seal_01",
+        "model_missing_square_settled_concrete",
+        "model_raised_rectangular_tilted29_chip_seal"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_01",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_3_02",
+        "rgbd_pothole_20250305_054319",
+        "model_pothole_bowled_chip_seal_01",
+        "model_missing_oval_flush_fine_asphalt",
+        "model_raised_oval_removed_side_concrete"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_02",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_2_07",
+        "rgbd_pothole_20250227_171044",
+        "model_pothole_slab_corner_chip_seal_03",
+        "model_missing_oval_broken_flange_aged_asphalt",
+        "model_raised_rectangular_ajar14_fine_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_03",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_3_03",
+        "rgbd_pothole_20250305_045716",
+        "model_pothole_patch_break_aged_asphalt_03",
+        "model_missing_oval_settled_concrete",
+        "model_raised_round_skewed_aged_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_04",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_3_01",
+        "rgbd_pothole_20250305_124307",
+        "model_pothole_patch_break_chip_seal_02",
+        "model_missing_square_settled_chip_seal",
+        "model_raised_rectangular_slid_concrete"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_05",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_2_35",
+        "rgbd_pothole_20250227_170940",
+        "model_pothole_deep_break_concrete_01",
+        "model_missing_rectangular_settled_concrete",
+        "model_raised_rectangular_slid_aged_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_06",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_1_03",
+        "rgbd_pothole_20250305_132557",
+        "model_pothole_deep_break_aged_asphalt_03",
+        "model_missing_oval_broken_flange_fine_asphalt",
+        "model_raised_round_ajar14_fine_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_07",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_1_18",
+        "rgbd_pothole_20250305_131813",
+        "model_pothole_waterlogged_concrete_02",
+        "model_missing_oval_masonry_concrete",
+        "model_raised_oval_slid_concrete"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_08",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_2_16",
+        "rgbd_pothole_20250227_190609",
+        "model_pothole_patch_break_fine_asphalt_03",
+        "model_missing_rectangular_flush_aged_asphalt",
+        "model_raised_square_removed_side_chip_seal"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_09",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_2_24",
+        "rgbd_pothole_20250305_135233",
+        "model_pothole_patch_break_fine_asphalt_02",
+        "model_missing_rectangular_masonry_aged_asphalt",
+        "model_raised_square_skewed_aged_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "109_10",
+      "site": "109",
+      "assets": [
+        "stereo_pothole_fan_2_08",
+        "rgbd_pothole_20250305_050151",
+        "model_pothole_crescent_chip_seal_01",
+        "model_missing_square_settled_concrete",
+        "model_raised_rectangular_tilted29_chip_seal"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_01",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_3_02",
+        "rgbd_pothole_20250305_054319",
+        "model_pothole_bowled_chip_seal_01",
+        "model_missing_oval_flush_fine_asphalt",
+        "model_raised_oval_removed_side_concrete"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_02",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_2_07",
+        "rgbd_pothole_20250227_171044",
+        "model_pothole_slab_corner_chip_seal_03",
+        "model_missing_oval_broken_flange_aged_asphalt",
+        "model_raised_rectangular_ajar14_fine_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_03",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_3_03",
+        "rgbd_pothole_20250305_045716",
+        "model_pothole_patch_break_aged_asphalt_03",
+        "model_missing_oval_settled_concrete",
+        "model_raised_round_skewed_aged_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_04",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_3_01",
+        "rgbd_pothole_20250305_124307",
+        "model_pothole_patch_break_chip_seal_02",
+        "model_missing_square_settled_chip_seal",
+        "model_raised_rectangular_slid_concrete"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_05",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_2_35",
+        "rgbd_pothole_20250227_170940",
+        "model_pothole_deep_break_concrete_01",
+        "model_missing_rectangular_settled_concrete",
+        "model_raised_rectangular_slid_aged_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_06",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_1_03",
+        "rgbd_pothole_20250305_132557",
+        "model_pothole_deep_break_aged_asphalt_03",
+        "model_missing_oval_broken_flange_fine_asphalt",
+        "model_raised_round_ajar14_fine_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_07",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_1_18",
+        "rgbd_pothole_20250305_131813",
+        "model_pothole_waterlogged_concrete_02",
+        "model_missing_oval_masonry_concrete",
+        "model_raised_oval_slid_concrete"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_08",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_2_16",
+        "rgbd_pothole_20250227_190609",
+        "model_pothole_patch_break_fine_asphalt_03",
+        "model_missing_rectangular_flush_aged_asphalt",
+        "model_raised_square_removed_side_chip_seal"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_09",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_2_24",
+        "rgbd_pothole_20250305_135233",
+        "model_pothole_patch_break_fine_asphalt_02",
+        "model_missing_rectangular_masonry_aged_asphalt",
+        "model_raised_square_skewed_aged_asphalt"
+      ],
+      "showcase": true
+    },
+    {
+      "id": "110_10",
+      "site": "110",
+      "assets": [
+        "stereo_pothole_fan_2_08",
+        "rgbd_pothole_20250305_050151",
+        "model_pothole_crescent_chip_seal_01",
+        "model_missing_square_settled_concrete",
+        "model_raised_rectangular_tilted29_chip_seal"
+      ],
+      "showcase": true
+    }
+  ],
+  "unique_assets": 50,
+  "placements": 150
+}

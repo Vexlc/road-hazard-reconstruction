@@ -1,0 +1,23 @@
+{
+  "restored_native_checkpoints_byte_identical": 30,
+  "restored_asset_cache_verified": 15,
+  "additional_fingerprint_inputs": [
+    "Road008C color",
+    "Road008C displacement"
+  ],
+  "archive_format_regression": {
+    "zstd_tar_with_embedded_npz_misclassified_by_zipfile_is_zipfile": true,
+    "fixed_by_extension_and_header": true,
+    "actual_assets_and_inputs_restored": true
+  },
+  "same_physical_machine": true,
+  "paths_relocated": true,
+  "fresh_migration_pending": false,
+  "passed": true,
+  "fresh_relocated_scene_versions": 3,
+  "fresh_before_after_images": 30,
+  "fresh_max_pixel_error_255": 0,
+  "relocated_video_segments": 150,
+  "relocated_global_panels_each_distinct_native_frames": 40,
+  "scope": "Different directory and source checkout on the same physical machine; this is not independent hardware validation."
+}

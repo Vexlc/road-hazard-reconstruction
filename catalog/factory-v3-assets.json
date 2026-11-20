@@ -1,0 +1,3001 @@
+[
+  {
+    "category": "missing",
+    "family": "oval",
+    "state": "masonry",
+    "material": "concrete",
+    "width_m": 0.6196,
+    "length_m": 0.8521,
+    "exponent": 2.0,
+    "depth_design_m": 1.1099,
+    "seed": 1390880693,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 1,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 6.608235903995023,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0036354465761430253,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0006862229277049341,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261119_000001_c4a7e0c5cd3d63f2/asset.ply",
+    "glb": "missing/factory_missing_20261119_000001_c4a7e0c5cd3d63f2/asset.glb",
+    "surface": "missing/factory_missing_20261119_000001_c4a7e0c5cd3d63f2/surface.npz",
+    "metadata": "missing/factory_missing_20261119_000001_c4a7e0c5cd3d63f2/metadata.json",
+    "preview": "missing/factory_missing_20261119_000001_c4a7e0c5cd3d63f2/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "d5cc7a6d698642c732c2df9ecc0604e6ffc76b3dee9b06e74207926929a4e6bd",
+      "mesh_area_m2": 6.608236312866211,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.1098999977111816,
+      "outer_seam_max_height_m": 3.933475056783209e-07,
+      "gaussian_tangent_sigma_median_m": 0.003038797527551651,
+      "glb_sha256": "f3fb28f3bbcab570e63589ea446749dd1b086f4ba89a3111a30a1fd6f6cac888",
+      "ply_sha256": "96666c04caf489a46c75d955af8f91a3ccfa6fb47dd4860225fb33c89aa2eef8",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0006862229277049341
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "missing",
+    "family": "rectangular",
+    "state": "flush",
+    "material": "aged_asphalt",
+    "width_m": 0.6308,
+    "length_m": 0.9245,
+    "exponent": 9.0,
+    "depth_design_m": 1.1848,
+    "seed": 3520506046,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 4,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261119_000004_ec6ab7a51fc74884",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Access rung 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 7.583927903766494,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.00389459315045012,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0006877516430141705,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261119_000004_ec6ab7a51fc74884/asset.ply",
+    "glb": "missing/factory_missing_20261119_000004_ec6ab7a51fc74884/asset.glb",
+    "surface": "missing/factory_missing_20261119_000004_ec6ab7a51fc74884/surface.npz",
+    "metadata": "missing/factory_missing_20261119_000004_ec6ab7a51fc74884/metadata.json",
+    "preview": "missing/factory_missing_20261119_000004_ec6ab7a51fc74884/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "75ce6e178bb9e7fbf1ddc522e3655760d84caccbc7ae087082b1fa1caafc382f",
+      "mesh_area_m2": 7.583928108215332,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.1848000288009644,
+      "outer_seam_max_height_m": 1.0794532272484503e-06,
+      "gaussian_tangent_sigma_median_m": 0.00326081202365458,
+      "glb_sha256": "47949a0ae2724afea843da069319abf6c8f30bfb92521f0cd360040e21cd1494",
+      "ply_sha256": "7db56770a253873f65643bd141d38c57133effdbbf36158791882cb9429ccf88",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0006877516430141705
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "missing",
+    "family": "round",
+    "state": "settled",
+    "material": "chip_seal",
+    "width_m": 0.7105,
+    "length_m": 0.6659,
+    "exponent": 2.0,
+    "depth_design_m": 1.2318,
+    "seed": 336116995,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 7,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261119_000007_4def79cf31fcbd38",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Access rung 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 6.765808620279131,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.00367853465942055,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0007667602828493522,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261119_000007_4def79cf31fcbd38/asset.ply",
+    "glb": "missing/factory_missing_20261119_000007_4def79cf31fcbd38/asset.glb",
+    "surface": "missing/factory_missing_20261119_000007_4def79cf31fcbd38/surface.npz",
+    "metadata": "missing/factory_missing_20261119_000007_4def79cf31fcbd38/metadata.json",
+    "preview": "missing/factory_missing_20261119_000007_4def79cf31fcbd38/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "b2511bac952d2dfda50a93e29a219db653e14177246efe702571bc7c583acb08",
+      "mesh_area_m2": 6.76580810546875,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.2317999601364136,
+      "outer_seam_max_height_m": 2.048279384325724e-06,
+      "gaussian_tangent_sigma_median_m": 0.0030691223219037056,
+      "glb_sha256": "b9bfcd9db8456f52f2d1574000638c9658dcb71bd3f738201166b9d1a0162ab8",
+      "ply_sha256": "e3f1ea98b0c1cbed5f9020c759bed2fa6b65c0e53cf7f56c8ece588fb060fc8d",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0007667602828493522
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "missing",
+    "family": "square",
+    "state": "broken_flange",
+    "material": "fine_asphalt",
+    "width_m": 0.6456,
+    "length_m": 0.6621,
+    "exponent": 7.0,
+    "depth_design_m": 1.0328,
+    "seed": 2218200720,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 10,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261119_000010_afeed0ac3cee14f6",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 6.520485646426096,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.003611228501888546,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0007249722125819854,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261119_000010_afeed0ac3cee14f6/asset.ply",
+    "glb": "missing/factory_missing_20261119_000010_afeed0ac3cee14f6/asset.glb",
+    "surface": "missing/factory_missing_20261119_000010_afeed0ac3cee14f6/surface.npz",
+    "metadata": "missing/factory_missing_20261119_000010_afeed0ac3cee14f6/metadata.json",
+    "preview": "missing/factory_missing_20261119_000010_afeed0ac3cee14f6/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "fe0a97009cff1838d6d1fa6b3af3e5f69f86d730db954fe9e33db9b0595a69bb",
+      "mesh_area_m2": 6.5204854011535645,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.0327999591827393,
+      "outer_seam_max_height_m": 1.2464943210943602e-06,
+      "gaussian_tangent_sigma_median_m": 0.0030257098842412233,
+      "glb_sha256": "db02076c179d1b605c268c61274f07af5943ec489be45f144a91284c8febbf26",
+      "ply_sha256": "6df67a0f0ac3386bfd3b65f2a59244698b0b82736d7933b2b97a3b008eb2d841",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0007249722125819854
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "missing",
+    "family": "oval",
+    "state": "masonry",
+    "material": "concrete",
+    "width_m": 0.6339,
+    "length_m": 0.9202,
+    "exponent": 2.0,
+    "depth_design_m": 1.1632,
+    "seed": 2486108008,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 13,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261119_000013_55d3b0a942a15712",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Access rung 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 6.975379617712292,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.003735071516775092,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0007018596337612478,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261119_000013_55d3b0a942a15712/asset.ply",
+    "glb": "missing/factory_missing_20261119_000013_55d3b0a942a15712/asset.glb",
+    "surface": "missing/factory_missing_20261119_000013_55d3b0a942a15712/surface.npz",
+    "metadata": "missing/factory_missing_20261119_000013_55d3b0a942a15712/metadata.json",
+    "preview": "missing/factory_missing_20261119_000013_55d3b0a942a15712/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "175a405cb7921bfd759e62c6068d7e7b38a498dd4b4dcdbb1ab153abb872d0dc",
+      "mesh_area_m2": 6.975379467010498,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.1632000207901,
+      "outer_seam_max_height_m": 4.033742015963071e-07,
+      "gaussian_tangent_sigma_median_m": 0.003118200460448861,
+      "glb_sha256": "f0e9f6f4b0f25ebd187f32dd87294b603964b25a9f4ac9c4e7a77187e0b30a33",
+      "ply_sha256": "f607951ff5fe783bca072f68387315f3c29d24baf869bacb8378cd49314abb70",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0007018596337612478
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "missing",
+    "family": "oval",
+    "state": "settled",
+    "material": "aged_asphalt",
+    "width_m": 0.6305,
+    "length_m": 0.8179,
+    "exponent": 2.0,
+    "depth_design_m": 1.3007,
+    "seed": 3324636901,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 1,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261120_000001_4afab717292f6782",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Access rung 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 7.069307634854113,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.003760135006845928,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0006302467945422377,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261120_000001_4afab717292f6782/asset.ply",
+    "glb": "missing/factory_missing_20261120_000001_4afab717292f6782/asset.glb",
+    "surface": "missing/factory_missing_20261120_000001_4afab717292f6782/surface.npz",
+    "metadata": "missing/factory_missing_20261120_000001_4afab717292f6782/metadata.json",
+    "preview": "missing/factory_missing_20261120_000001_4afab717292f6782/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "5431f0f5a59e3bf37ecb4b8a3bfb35912e89191673388124fcb58c90b7e46cf4",
+      "mesh_area_m2": 7.069307327270508,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.3006999492645264,
+      "outer_seam_max_height_m": 1.4113941233517835e-06,
+      "gaussian_tangent_sigma_median_m": 0.003132748883217573,
+      "glb_sha256": "95bca0f31ac53f9199a4ffd0822de13e76f09006c1addefdce66a32de6dcb387",
+      "ply_sha256": "6c201a65dda8118f8d0fe0698430c6d6598a17d775b9fa7482f88fef8b80e0c2",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0006302467945422377
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "missing",
+    "family": "round",
+    "state": "flush",
+    "material": "chip_seal",
+    "width_m": 0.7112,
+    "length_m": 0.7217,
+    "exponent": 2.0,
+    "depth_design_m": 0.963,
+    "seed": 2781774884,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 4,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261120_000004_8ba41a67059a18dc",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 6.1820104695412965,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0035162509778288854,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.000796292158361945,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261120_000004_8ba41a67059a18dc/asset.ply",
+    "glb": "missing/factory_missing_20261120_000004_8ba41a67059a18dc/asset.glb",
+    "surface": "missing/factory_missing_20261120_000004_8ba41a67059a18dc/surface.npz",
+    "metadata": "missing/factory_missing_20261120_000004_8ba41a67059a18dc/metadata.json",
+    "preview": "missing/factory_missing_20261120_000004_8ba41a67059a18dc/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "bb8a1c94eda8ee676f0cd3c75464f8c78375344057752036feb23e067bacf72d",
+      "mesh_area_m2": 6.182010650634766,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.9629999995231628,
+      "outer_seam_max_height_m": 2.7625121674645925e-06,
+      "gaussian_tangent_sigma_median_m": 0.0029580118134617805,
+      "glb_sha256": "0f1fd328aa0bce01e785eec59e0b5679a1da0d91475e765ebc0e437d9dfd2474",
+      "ply_sha256": "ac334a4895a31faece4ae554c51a2167f627321eadd15493894a37278ffee8eb",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.000796292158361945
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "missing",
+    "family": "square",
+    "state": "broken_flange",
+    "material": "fine_asphalt",
+    "width_m": 0.7843,
+    "length_m": 0.756,
+    "exponent": 7.0,
+    "depth_design_m": 1.3429,
+    "seed": 3303889530,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 7,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261120_000007_6b61978511466731",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Access rung 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 7.944448523456572,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.003986087937679392,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0007269010191873437,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261120_000007_6b61978511466731/asset.ply",
+    "glb": "missing/factory_missing_20261120_000007_6b61978511466731/asset.glb",
+    "surface": "missing/factory_missing_20261120_000007_6b61978511466731/surface.npz",
+    "metadata": "missing/factory_missing_20261120_000007_6b61978511466731/metadata.json",
+    "preview": "missing/factory_missing_20261120_000007_6b61978511466731/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "a284cfe65f7809b2923894052a3b10b141c4730d6dfc00480fda169f11d491ba",
+      "mesh_area_m2": 7.944448947906494,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.342900037765503,
+      "outer_seam_max_height_m": 9.922125627781497e-07,
+      "gaussian_tangent_sigma_median_m": 0.003315398469567299,
+      "glb_sha256": "fad90d9fc85dd043b83d69b9f1656c041970448f72be8bed22fc50980800897b",
+      "ply_sha256": "2d724e4391d10b7f1bc90916d4b083363e46afd2d366eae4c0c0acd27e0d648a",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0007269010191873437
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "missing",
+    "family": "rectangular",
+    "state": "masonry",
+    "material": "concrete",
+    "width_m": 0.6386,
+    "length_m": 0.8265,
+    "exponent": 9.0,
+    "depth_design_m": 1.0509,
+    "seed": 878243689,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 10,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 6.962347496771429,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.003731580763368637,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0007296856070282839,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261120_000010_7e5acdffc6b7ebf0/asset.ply",
+    "glb": "missing/factory_missing_20261120_000010_7e5acdffc6b7ebf0/asset.glb",
+    "surface": "missing/factory_missing_20261120_000010_7e5acdffc6b7ebf0/surface.npz",
+    "metadata": "missing/factory_missing_20261120_000010_7e5acdffc6b7ebf0/metadata.json",
+    "preview": "missing/factory_missing_20261120_000010_7e5acdffc6b7ebf0/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "88f13bb0a22de643bfe674e1413e1c79081285badc85470c53965d87322ef4f1",
+      "mesh_area_m2": 6.962347507476807,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.0508999824523926,
+      "outer_seam_max_height_m": 5.325770757735881e-07,
+      "gaussian_tangent_sigma_median_m": 0.003128006821498275,
+      "glb_sha256": "f6f2ae9cd4bfc132e78a7c4f2d5e5777f186f4d20a89a33fabc0ee8510a5c3bf",
+      "ply_sha256": "8bf339849b6d2161c16f8fd97990068740fd98a4826ab5fd5b95d53077fb016d",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0007296856070282839
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "missing",
+    "family": "oval",
+    "state": "settled",
+    "material": "aged_asphalt",
+    "width_m": 0.545,
+    "length_m": 0.7259,
+    "exponent": 2.0,
+    "depth_design_m": 1.3595,
+    "seed": 1438111233,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 13,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_missing_20261120_000013_57a135eb28005ff9",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Access rung 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 6.819127690515302,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0036930008639358054,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0005951688377066485,
+    "standalone_preview": "preview.jpg",
+    "ply": "missing/factory_missing_20261120_000013_57a135eb28005ff9/asset.ply",
+    "glb": "missing/factory_missing_20261120_000013_57a135eb28005ff9/asset.glb",
+    "surface": "missing/factory_missing_20261120_000013_57a135eb28005ff9/surface.npz",
+    "metadata": "missing/factory_missing_20261120_000013_57a135eb28005ff9/metadata.json",
+    "preview": "missing/factory_missing_20261120_000013_57a135eb28005ff9/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "c79b22451e265349b3086efddd90a407eddd94ba98f64d42aba4323f7857dfbf",
+      "mesh_area_m2": 6.819127559661865,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.3595000505447388,
+      "outer_seam_max_height_m": 1.1980065437455778e-06,
+      "gaussian_tangent_sigma_median_m": 0.003069609869271517,
+      "glb_sha256": "41d1db28ceac2a91815fc4cab05b91cbbed09f5e9783e79e85b26c6c7a1cae32",
+      "ply_sha256": "f1145fa23629445681fabfdb538cda7f3bfa27b0c05c24a81bc2700179be48c0",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0005951688377066485
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "crescent",
+    "material": "concrete",
+    "width_m": 0.7506,
+    "length_m": 0.4997,
+    "depth_design_m": 0.0933,
+    "seed": 154450957,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 0,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261119_000000_d3b40cc2dba384e3",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "minimum_surface_z_m": -0.10761290603393907,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 45000
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 1.7670779903710354,
+      "requested_points": 176707,
+      "spacing_before_alpha_m": 0.0031622848097842,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 137544,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.00031437493291580014,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261119_000000_d3b40cc2dba384e3/asset.ply",
+    "glb": "pothole/factory_pothole_20261119_000000_d3b40cc2dba384e3/asset.glb",
+    "surface": "pothole/factory_pothole_20261119_000000_d3b40cc2dba384e3/surface.npz",
+    "metadata": "pothole/factory_pothole_20261119_000000_d3b40cc2dba384e3/metadata.json",
+    "preview": "pothole/factory_pothole_20261119_000000_d3b40cc2dba384e3/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "118239f69914214212d319b81c5d369aba6b53fbb7c3a8425c391cf9f9cb35ea",
+      "mesh_area_m2": 1.767077922821045,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.10782011598348618,
+      "outer_seam_max_height_m": 4.995297899768048e-07,
+      "gaussian_tangent_sigma_median_m": 0.002624696586281061,
+      "glb_sha256": "67ab70159d38fa1655478350dc2a02c3e06b2c04797c804774614cbefe7affde",
+      "ply_sha256": "7bed0155bbec124b041dba270f31eba479c192502491de69804a0647f75fb337",
+      "gaussians": 137544,
+      "appearance_sh_fit_mae": 0.00031437493291580014
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "wheel_rut",
+    "material": "chip_seal",
+    "width_m": 0.5695,
+    "length_m": 1.6085,
+    "depth_design_m": 0.1246,
+    "seed": 2486569271,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 3,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261119_000003_7b3b1987a07ecc49",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "minimum_surface_z_m": -0.14021068910152842,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 64800
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 5.569006532408821,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0033373661868032465,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 390649,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.000837874623054328,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261119_000003_7b3b1987a07ecc49/asset.ply",
+    "glb": "pothole/factory_pothole_20261119_000003_7b3b1987a07ecc49/asset.glb",
+    "surface": "pothole/factory_pothole_20261119_000003_7b3b1987a07ecc49/surface.npz",
+    "metadata": "pothole/factory_pothole_20261119_000003_7b3b1987a07ecc49/metadata.json",
+    "preview": "pothole/factory_pothole_20261119_000003_7b3b1987a07ecc49/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "45313775c4e7662f43e839ed9b1434efb9e878bb93f34ce5a192c074897ee3f4",
+      "mesh_area_m2": 5.569006443023682,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.1422143578529358,
+      "outer_seam_max_height_m": 2.0391396446939325e-06,
+      "gaussian_tangent_sigma_median_m": 0.0027700134087353945,
+      "glb_sha256": "8ba4f7d8c70900e7c194aa516a5d93f24d488cd6159a772f133a1a0e74ddcf90",
+      "ply_sha256": "d2d5a90a2899e42ead544953b64ecf3665203045e045a4c5a61727a63733a332",
+      "gaussians": 390649,
+      "appearance_sh_fit_mae": 0.000837874623054328
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "bowled",
+    "material": "aged_asphalt",
+    "width_m": 0.4619,
+    "length_m": 0.3632,
+    "depth_design_m": 0.0582,
+    "seed": 833898725,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 6,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261119_000006_b4cb6f5815d68448",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "minimum_surface_z_m": -0.07089412186514504,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 45000
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 1.0279433258201607,
+      "requested_points": 102794,
+      "spacing_before_alpha_m": 0.0031622827758163202,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 79170,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.00048573153326287867,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261119_000006_b4cb6f5815d68448/asset.ply",
+    "glb": "pothole/factory_pothole_20261119_000006_b4cb6f5815d68448/asset.glb",
+    "surface": "pothole/factory_pothole_20261119_000006_b4cb6f5815d68448/surface.npz",
+    "metadata": "pothole/factory_pothole_20261119_000006_b4cb6f5815d68448/metadata.json",
+    "preview": "pothole/factory_pothole_20261119_000006_b4cb6f5815d68448/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "900c1e013567440594185d918aecc0280a2b7c7014c39125c0de4d57c603cfc4",
+      "mesh_area_m2": 1.0279433727264404,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.0731186792254448,
+      "outer_seam_max_height_m": 1.837383479141863e-06,
+      "gaussian_tangent_sigma_median_m": 0.0026246951892971992,
+      "glb_sha256": "b3a96795ea0a96582249ce9fb6863e6ae37e1631c69812225696492cc86362ea",
+      "ply_sha256": "39d712b988a353aee77773ed2637e33b12bc0f0923fb11accbd2e27fb6d92b21",
+      "gaussians": 79170,
+      "appearance_sh_fit_mae": 0.00048573153326287867
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "joined",
+    "material": "fine_asphalt",
+    "width_m": 1.0522,
+    "length_m": 0.6693,
+    "depth_design_m": 0.1051,
+    "seed": 1415301319,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 9,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261119_000009_75172e61c8a78a65",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "minimum_surface_z_m": -0.11945518928119796,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 45000
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 2.903670353010966,
+      "requested_points": 290367,
+      "spacing_before_alpha_m": 0.003162277852393849,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 227295,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0006937830808705517,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261119_000009_75172e61c8a78a65/asset.ply",
+    "glb": "pothole/factory_pothole_20261119_000009_75172e61c8a78a65/asset.glb",
+    "surface": "pothole/factory_pothole_20261119_000009_75172e61c8a78a65/surface.npz",
+    "metadata": "pothole/factory_pothole_20261119_000009_75172e61c8a78a65/metadata.json",
+    "preview": "pothole/factory_pothole_20261119_000009_75172e61c8a78a65/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "433a02fec8354279cd87672f02b8ce2a602a86b348d470497c413820419cf17c",
+      "mesh_area_m2": 2.903670310974121,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.12067368626594543,
+      "outer_seam_max_height_m": 1.2364466783765238e-06,
+      "gaussian_tangent_sigma_median_m": 0.002624690067023039,
+      "glb_sha256": "c852e4703189cd3746711b01d8be745496a9c2a95b7a9a60e21f42e1486ea484",
+      "ply_sha256": "2a397d330512a3ec6fed41e41f6bf7c159363d0ce273516ac1d52078a971c614",
+      "gaussians": 227295,
+      "appearance_sh_fit_mae": 0.0006937830808705517
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "deep_break",
+    "material": "concrete",
+    "width_m": 0.7415,
+    "length_m": 0.5776,
+    "depth_design_m": 0.1116,
+    "seed": 1588125961,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 12,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261119_000012_67a3e77cbfabf91a",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "minimum_surface_z_m": -0.1262312124598448,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 45000
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 1.8045156112493714,
+      "requested_points": 180451,
+      "spacing_before_alpha_m": 0.0031622825768257375,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 141890,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.00035862957722403936,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261119_000012_67a3e77cbfabf91a/asset.ply",
+    "glb": "pothole/factory_pothole_20261119_000012_67a3e77cbfabf91a/asset.glb",
+    "surface": "pothole/factory_pothole_20261119_000012_67a3e77cbfabf91a/surface.npz",
+    "metadata": "pothole/factory_pothole_20261119_000012_67a3e77cbfabf91a/metadata.json",
+    "preview": "pothole/factory_pothole_20261119_000012_67a3e77cbfabf91a/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "15befb62b4173f5a424522ad12ce2446d2ed84574b165693806e8ee24e65c6cd",
+      "mesh_area_m2": 1.8045156002044678,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.12646916508674622,
+      "outer_seam_max_height_m": 3.9171362686829525e-07,
+      "gaussian_tangent_sigma_median_m": 0.002624694025143981,
+      "glb_sha256": "d5cc32e153d5c20a515fb371e3b01c3ff317c676497dd60898ff9e20f3b0d228",
+      "ply_sha256": "81caf6d3dd91b0eef877095507fac63e76721ca026595c2e3bbb65677720655e",
+      "gaussians": 141890,
+      "appearance_sh_fit_mae": 0.00035862957722403936
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "waterlogged",
+    "material": "fine_asphalt",
+    "width_m": 1.1869,
+    "length_m": 0.9288,
+    "depth_design_m": 0.1371,
+    "seed": 2566567844,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 0,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261120_000000_0a11ec168c15d5c8",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "water_level_m": -0.074034,
+    "minimum_surface_z_m": -0.1522889417779725,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 45000,
+      "Water surface": 8887
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 4.209613927625469,
+      "requested_points": 420961,
+      "spacing_before_alpha_m": 0.0031622791353928515,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 345444,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0004878175505754453,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261120_000000_0a11ec168c15d5c8/asset.ply",
+    "glb": "pothole/factory_pothole_20261120_000000_0a11ec168c15d5c8/asset.glb",
+    "surface": "pothole/factory_pothole_20261120_000000_0a11ec168c15d5c8/surface.npz",
+    "metadata": "pothole/factory_pothole_20261120_000000_0a11ec168c15d5c8/metadata.json",
+    "preview": "pothole/factory_pothole_20261120_000000_0a11ec168c15d5c8/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "06c5d24ebb108b4ac8109e4b9f65552a10f1b834c01046480ac9056c32c729ad",
+      "mesh_area_m2": 4.209613800048828,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.07403399795293808,
+      "outer_seam_max_height_m": 1.4267342294260743e-06,
+      "gaussian_tangent_sigma_median_m": 0.002624691464006901,
+      "glb_sha256": "1ccdfa38b8d1a624fbd0bb1b5fbedb284621e2c35c6e6e200c0c817df3c754b2",
+      "ply_sha256": "5a27f55bdc92b6ecaed8b21399c6e8c3952324658b0395cb555df5d9d53cad03",
+      "gaussians": 345444,
+      "appearance_sh_fit_mae": 0.0004878175505754453
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "slab_corner",
+    "material": "concrete",
+    "width_m": 1.5204,
+    "length_m": 1.034,
+    "depth_design_m": 0.1266,
+    "seed": 642520415,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 3,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261120_000003_85570e243c3138a2",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "minimum_surface_z_m": -0.1411176353129884,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 64800
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 5.384714473279018,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0032816808111938668,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 396749,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.00034804753260686994,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261120_000003_85570e243c3138a2/asset.ply",
+    "glb": "pothole/factory_pothole_20261120_000003_85570e243c3138a2/asset.glb",
+    "surface": "pothole/factory_pothole_20261120_000003_85570e243c3138a2/surface.npz",
+    "metadata": "pothole/factory_pothole_20261120_000003_85570e243c3138a2/metadata.json",
+    "preview": "pothole/factory_pothole_20261120_000003_85570e243c3138a2/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "85bbea844e30bbc8fd4ae025d2493bfa65fb1f925c84a873d74f616860dc81a1",
+      "mesh_area_m2": 5.384714603424072,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.14131729304790497,
+      "outer_seam_max_height_m": 6.918060648786195e-07,
+      "gaussian_tangent_sigma_median_m": 0.002723794663324952,
+      "glb_sha256": "a566bcfdc93e228fc9cfd2005eaeb8222c23016bf04f4d4d8987c64d3ea24c43",
+      "ply_sha256": "c1d367a93bb90bf99bf8a76596037649beba586b0472802af165b4d026f8c292",
+      "gaussians": 396749,
+      "appearance_sh_fit_mae": 0.00034804753260686994
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "wheel_rut",
+    "material": "chip_seal",
+    "width_m": 0.3916,
+    "length_m": 1.1353,
+    "depth_design_m": 0.1012,
+    "seed": 3830375439,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 6,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261120_000006_a983f023288b5070",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "minimum_surface_z_m": -0.11484620051674328,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 45000
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 3.1876836062510847,
+      "requested_points": 318768,
+      "spacing_before_alpha_m": 0.003162279448924468,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 248229,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0008371440089831594,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261120_000006_a983f023288b5070/asset.ply",
+    "glb": "pothole/factory_pothole_20261120_000006_a983f023288b5070/asset.glb",
+    "surface": "pothole/factory_pothole_20261120_000006_a983f023288b5070/surface.npz",
+    "metadata": "pothole/factory_pothole_20261120_000006_a983f023288b5070/metadata.json",
+    "preview": "pothole/factory_pothole_20261120_000006_a983f023288b5070/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "17b90d1f692ee81b36af061111f154a993e93149a4d7d15f5170a333f509b317",
+      "mesh_area_m2": 3.187683582305908,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.11643823236227036,
+      "outer_seam_max_height_m": 2.9566845114459284e-06,
+      "gaussian_tangent_sigma_median_m": 0.002624691464006901,
+      "glb_sha256": "5f0095fcf3320b881ff253f0d16bbf8f5bea6f8e38926d400d78405cc65f925c",
+      "ply_sha256": "d37b05d17f00264658d5840ce38e137c41593614248afbf72d1e7174d016c0ca",
+      "gaussians": 248229,
+      "appearance_sh_fit_mae": 0.0008371440089831594
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "deep_break",
+    "material": "aged_asphalt",
+    "width_m": 0.5882,
+    "length_m": 0.4531,
+    "depth_design_m": 0.1016,
+    "seed": 184992677,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 9,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261120_000009_8e562ac175ce4528",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "minimum_surface_z_m": -0.11644620210449769,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 45000
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 1.3333094717509084,
+      "requested_points": 133330,
+      "spacing_before_alpha_m": 0.0031622888925441034,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 104644,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0005488128018831569,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261120_000009_8e562ac175ce4528/asset.ply",
+    "glb": "pothole/factory_pothole_20261120_000009_8e562ac175ce4528/asset.glb",
+    "surface": "pothole/factory_pothole_20261120_000009_8e562ac175ce4528/surface.npz",
+    "metadata": "pothole/factory_pothole_20261120_000009_8e562ac175ce4528/metadata.json",
+    "preview": "pothole/factory_pothole_20261120_000009_8e562ac175ce4528/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "a96a83de81585d04609fed2b0874ece0b800592d68a5a1c2902d306960521dfb",
+      "mesh_area_m2": 1.333309531211853,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.11800811439752579,
+      "outer_seam_max_height_m": 2.7267526547802845e-06,
+      "gaussian_tangent_sigma_median_m": 0.0026247003115713596,
+      "glb_sha256": "f0405d8d5d69cae5c60a7bf83205f665b4eb698cd6b476ab65f4822ad1306f3f",
+      "ply_sha256": "524c11cad4ea7973c75fc64b80868b4a4a3b76ee90b2e978ff925c6b2951ac6f",
+      "gaussians": 104644,
+      "appearance_sh_fit_mae": 0.0005488128018831569
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "pothole",
+    "family": "crescent",
+    "material": "fine_asphalt",
+    "width_m": 0.9649,
+    "length_m": 0.6701,
+    "depth_design_m": 0.0662,
+    "seed": 651565855,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 12,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_pothole_20261120_000012_d799c1475b15c8a8",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "minimum_surface_z_m": -0.08032581998045744,
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road surface, lip and pit floor": 45000
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 2.470633256190922,
+      "requested_points": 247063,
+      "spacing_before_alpha_m": 0.003162279744045046,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 191497,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0006307715326935673,
+    "standalone_preview": "preview.jpg",
+    "ply": "pothole/factory_pothole_20261120_000012_d799c1475b15c8a8/asset.ply",
+    "glb": "pothole/factory_pothole_20261120_000012_d799c1475b15c8a8/asset.glb",
+    "surface": "pothole/factory_pothole_20261120_000012_d799c1475b15c8a8/surface.npz",
+    "metadata": "pothole/factory_pothole_20261120_000012_d799c1475b15c8a8/metadata.json",
+    "preview": "pothole/factory_pothole_20261120_000012_d799c1475b15c8a8/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "cbfbf9e7fa4de220fee4fa7d7bc0fed05b2ca4267a4413d593cf6ecfe641c83d",
+      "mesh_area_m2": 2.470633029937744,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.08070862293243408,
+      "outer_seam_max_height_m": 1.0764565558929462e-06,
+      "gaussian_tangent_sigma_median_m": 0.0026246923953294754,
+      "glb_sha256": "862ec3cd3c537c946b97fd4c62b800d4aea149664ee53a932b35b89f4b9a992c",
+      "ply_sha256": "36391f83700b5a6d0154b62d57fb4c1c735d6a6c746b8f791a2c4ab66adc5c12",
+      "gaussians": 191497,
+      "appearance_sh_fit_mae": 0.0006307715326935673
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "rectangular",
+    "state": "skewed",
+    "material": "chip_seal",
+    "width_m": 0.6311,
+    "length_m": 0.9231,
+    "exponent": 9.0,
+    "depth_design_m": 1.0571,
+    "seed": 3353886667,
+    "cover_pose": [
+      26.02,
+      0.2643,
+      0.022,
+      25.67
+    ],
+    "lid_relief_m": 0.00296,
+    "lid_wear": 0.4576,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 2,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.00453034809727799,
+        0.0030322056429733057
+      ],
+      "relief_std_m": 0.0005880559999127962,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 8.824437109937303,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.004201056321911741,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0008371931747920173,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261119_000002_f8c6c6f77add2a0f/asset.ply",
+    "glb": "raised/factory_raised_20261119_000002_f8c6c6f77add2a0f/asset.glb",
+    "surface": "raised/factory_raised_20261119_000002_f8c6c6f77add2a0f/surface.npz",
+    "metadata": "raised/factory_raised_20261119_000002_f8c6c6f77add2a0f/metadata.json",
+    "preview": "raised/factory_raised_20261119_000002_f8c6c6f77add2a0f/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "fdb148350a4ae94224a17a99b99503157323ef92a15e289f052039b5ceb2d05c",
+      "mesh_area_m2": 8.824438095092773,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.0571000576019287,
+      "outer_seam_max_height_m": 2.5901567823893856e-06,
+      "gaussian_tangent_sigma_median_m": 0.004089171066880226,
+      "glb_sha256": "ac7bcad24c6b5d3aa47ef77013802c35b94baf9f0adeb3eae663182c5a596fd4",
+      "ply_sha256": "3982df35be68372067c079c03adcd4a1d221e686406138d1379f472822012387",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0008371931747920173
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "oval",
+    "state": "propped43",
+    "material": "aged_asphalt",
+    "width_m": 0.6492,
+    "length_m": 0.9016,
+    "exponent": 2.0,
+    "depth_design_m": 0.918,
+    "seed": 2988060570,
+    "cover_pose": [
+      42.28,
+      0.0,
+      0.0,
+      -0.92
+    ],
+    "lid_relief_m": 0.00218,
+    "lid_wear": 0.5795,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 5,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261119_000005_8342d657505675c0",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.004600467421510425,
+        0.002168438367895424
+      ],
+      "relief_std_m": 0.00047047878183219976,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 7.622056832300314,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0039043710971935833,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0008135120460563471,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261119_000005_8342d657505675c0/asset.ply",
+    "glb": "raised/factory_raised_20261119_000005_8342d657505675c0/asset.glb",
+    "surface": "raised/factory_raised_20261119_000005_8342d657505675c0/surface.npz",
+    "metadata": "raised/factory_raised_20261119_000005_8342d657505675c0/metadata.json",
+    "preview": "raised/factory_raised_20261119_000005_8342d657505675c0/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "dd130ff204e9b5de324a746c612b09d2c846a0ad8cec9408ca6915e17a990bd9",
+      "mesh_area_m2": 7.62205696105957,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.9179999828338623,
+      "outer_seam_max_height_m": 2.506355940568028e-06,
+      "gaussian_tangent_sigma_median_m": 0.0037676673382520676,
+      "glb_sha256": "4e1493e3b9dcaf3eec2371dd2edb3f9a63d1f2763e0352e74bf6e1e30ce044f6",
+      "ply_sha256": "7080b1a7b25a8e341b39efd408b52d98ed8ee2a146222f343e003358a70d58f7",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0008135120460563471
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "round",
+    "state": "removed_side",
+    "material": "fine_asphalt",
+    "width_m": 0.6495,
+    "length_m": 0.6211,
+    "exponent": 2.0,
+    "depth_design_m": 1.0836,
+    "seed": 2166986384,
+    "cover_pose": [
+      0.0,
+      0.8666,
+      0.1428,
+      -13.9
+    ],
+    "lid_relief_m": 0.00241,
+    "lid_wear": 0.2591,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 8,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261119_000008_1dd67160bef05522",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.004538745910836514,
+        0.002416767080619919
+      ],
+      "relief_std_m": 0.0006172560582704552,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 10.318573121614186,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.004542812591691228,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0006828818084379177,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261119_000008_1dd67160bef05522/asset.ply",
+    "glb": "raised/factory_raised_20261119_000008_1dd67160bef05522/asset.glb",
+    "surface": "raised/factory_raised_20261119_000008_1dd67160bef05522/surface.npz",
+    "metadata": "raised/factory_raised_20261119_000008_1dd67160bef05522/metadata.json",
+    "preview": "raised/factory_raised_20261119_000008_1dd67160bef05522/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "6539aa3185d884c0f0614a8142b1b36fce2def7a25647ecb0758f02d7391a145",
+      "mesh_area_m2": 10.318574905395508,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.0836000442504883,
+      "outer_seam_max_height_m": 1.0109656614076812e-06,
+      "gaussian_tangent_sigma_median_m": 0.004093554802238941,
+      "glb_sha256": "f2eb5f9ea7923ec0d85d4c282cd0fc350395efc87ea77c11de2f9e677d66c868",
+      "ply_sha256": "565fa48adbb4619371f048de4f0f3db38a7b64135d9a128872c637170daec865",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0006828818084379177
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "square",
+    "state": "slid",
+    "material": "concrete",
+    "width_m": 0.6331,
+    "length_m": 0.6445,
+    "exponent": 7.0,
+    "depth_design_m": 0.9605,
+    "seed": 139624242,
+    "cover_pose": [
+      0.0,
+      0.3937,
+      0.0311,
+      2.78
+    ],
+    "lid_relief_m": 0.00249,
+    "lid_wear": 0.4427,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 11,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.0045041683234986725,
+        0.002531949937317534
+      ],
+      "relief_std_m": 0.0002958635692048715,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 7.457211305257802,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0038619195499797255,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0005527966964070545,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261119_000011_46c8fd9e3ec0aaa7/asset.ply",
+    "glb": "raised/factory_raised_20261119_000011_46c8fd9e3ec0aaa7/asset.glb",
+    "surface": "raised/factory_raised_20261119_000011_46c8fd9e3ec0aaa7/surface.npz",
+    "metadata": "raised/factory_raised_20261119_000011_46c8fd9e3ec0aaa7/metadata.json",
+    "preview": "raised/factory_raised_20261119_000011_46c8fd9e3ec0aaa7/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "c21e7762a8651346d302f509f32af84a9add600c5599b8bd4175bbd26cdf35b3",
+      "mesh_area_m2": 7.457211017608643,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.9605000019073486,
+      "outer_seam_max_height_m": 3.0617650281783426e-07,
+      "gaussian_tangent_sigma_median_m": 0.0036689364351332188,
+      "glb_sha256": "893c6d74c192d7cbebf95a4e2fbfedea803395949a23522c6a4569736a4abe08",
+      "ply_sha256": "0858e42497b73f8a7103c26bf8194d43a06e5639a585f66c19d36e11f00c0908",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0005527966964070545
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "rectangular",
+    "state": "upright82",
+    "material": "chip_seal",
+    "width_m": 0.523,
+    "length_m": 0.722,
+    "exponent": 9.0,
+    "depth_design_m": 1.0004,
+    "seed": 2151192379,
+    "cover_pose": [
+      86.0,
+      0.0,
+      0.0,
+      1.99
+    ],
+    "lid_relief_m": 0.003,
+    "lid_wear": 0.2438,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261119,
+    "stream_index": 14,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261119_000014_285bd2e35a859ee1",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.004516168850755529,
+        0.0030290650854038
+      ],
+      "relief_std_m": 0.0006689684241445829,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 7.536070475958029,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.003882285531992213,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0006229910078605054,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261119_000014_285bd2e35a859ee1/asset.ply",
+    "glb": "raised/factory_raised_20261119_000014_285bd2e35a859ee1/asset.glb",
+    "surface": "raised/factory_raised_20261119_000014_285bd2e35a859ee1/surface.npz",
+    "metadata": "raised/factory_raised_20261119_000014_285bd2e35a859ee1/metadata.json",
+    "preview": "raised/factory_raised_20261119_000014_285bd2e35a859ee1/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "af1a7c9a40407c88da0cdce29136b5b4bd5d56990844c44d662264d72cb64dd2",
+      "mesh_area_m2": 7.536069393157959,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.0003999471664429,
+      "outer_seam_max_height_m": 3.0924786642572144e-06,
+      "gaussian_tangent_sigma_median_m": 0.003662998555228114,
+      "glb_sha256": "183fe34371fd7978d33b2942946e806791dbbe4f1f0e6c1ef7b1e99a8b18b4c0",
+      "ply_sha256": "2b688ee4610d3e7bfa1d517292673c5004151f0060d3ffe4cc1adca0e9115294",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0006229910078605054
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "round",
+    "state": "slid",
+    "material": "aged_asphalt",
+    "width_m": 0.556,
+    "length_m": 0.5708,
+    "exponent": 2.0,
+    "depth_design_m": 0.9885,
+    "seed": 2133651421,
+    "cover_pose": [
+      0.0,
+      0.3226,
+      0.0255,
+      2.04
+    ],
+    "lid_relief_m": 0.00151,
+    "lid_wear": 0.369,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 2,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.004563823876844911,
+        0.0015541007517336177
+      ],
+      "relief_std_m": 0.0004724258737038556,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 6.534676467916103,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.003615156004356134,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0005672120612287118,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261120_000002_aa720cb47959b3b4/asset.ply",
+    "glb": "raised/factory_raised_20261120_000002_aa720cb47959b3b4/asset.glb",
+    "surface": "raised/factory_raised_20261120_000002_aa720cb47959b3b4/surface.npz",
+    "metadata": "raised/factory_raised_20261120_000002_aa720cb47959b3b4/metadata.json",
+    "preview": "raised/factory_raised_20261120_000002_aa720cb47959b3b4/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "dfe8b027844b709b51618fb9677622212283845dfc4a3c05446a07ac9822bf92",
+      "mesh_area_m2": 6.534676551818848,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.9884999990463257,
+      "outer_seam_max_height_m": 1.2460387779356097e-06,
+      "gaussian_tangent_sigma_median_m": 0.0033195288851857185,
+      "glb_sha256": "bb6ed1d7e48277bf08dd5f63ba571590041d998001dd66f06e9ef56f5a717994",
+      "ply_sha256": "2aab03c17e6884b311199ffc01d3d215af76c69a5dd7146f100dc23b8e3eee73",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0005672120612287118
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "oval",
+    "state": "skewed",
+    "material": "fine_asphalt",
+    "width_m": 0.5274,
+    "length_m": 0.7684,
+    "exponent": 2.0,
+    "depth_design_m": 1.1092,
+    "seed": 3480703834,
+    "cover_pose": [
+      23.44,
+      0.2168,
+      0.0181,
+      31.72
+    ],
+    "lid_relief_m": 0.00282,
+    "lid_wear": 0.6688,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 5,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261120_000005_a666133127c6f4ef",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.004616012640221259,
+        0.002832173361763065
+      ],
+      "relief_std_m": 0.0004932947739056845,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 7.283827312376021,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0038167597022542615,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0007499968450411823,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261120_000005_a666133127c6f4ef/asset.ply",
+    "glb": "raised/factory_raised_20261120_000005_a666133127c6f4ef/asset.glb",
+    "surface": "raised/factory_raised_20261120_000005_a666133127c6f4ef/surface.npz",
+    "metadata": "raised/factory_raised_20261120_000005_a666133127c6f4ef/metadata.json",
+    "preview": "raised/factory_raised_20261120_000005_a666133127c6f4ef/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "67218345d7f12827cd7aa452b827f64f72520f4afac2f9f47951d9fa5d34f772",
+      "mesh_area_m2": 7.283827781677246,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.1092000007629395,
+      "outer_seam_max_height_m": 1.3487574506143574e-06,
+      "gaussian_tangent_sigma_median_m": 0.0035410800483077765,
+      "glb_sha256": "11888821cbe42fbcef50404a37ba2fcc37f2d13372907ea76c605e8397f38eee",
+      "ply_sha256": "65698256b292f4bb82b652b8269c36d5811528d4a81dbe0f1ffe8397775c0a5c",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0007499968450411823
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "rectangular",
+    "state": "removed_side",
+    "material": "concrete",
+    "width_m": 0.713,
+    "length_m": 0.914,
+    "exponent": 9.0,
+    "depth_design_m": 1.187,
+    "seed": 2698159816,
+    "cover_pose": [
+      0.0,
+      1.0381,
+      0.1711,
+      -11.52
+    ],
+    "lid_relief_m": 0.00253,
+    "lid_wear": 0.6024,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 8,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261120_000008_4676785bab446fc9",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.004516053286863612,
+        0.002540226212424701
+      ],
+      "relief_std_m": 0.0004133688466926783,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Access rung 4": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 12.763580894593943,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.005052441171274327,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0006420946988785338,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261120_000008_4676785bab446fc9/asset.ply",
+    "glb": "raised/factory_raised_20261120_000008_4676785bab446fc9/asset.glb",
+    "surface": "raised/factory_raised_20261120_000008_4676785bab446fc9/surface.npz",
+    "metadata": "raised/factory_raised_20261120_000008_4676785bab446fc9/metadata.json",
+    "preview": "raised/factory_raised_20261120_000008_4676785bab446fc9/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "e19d9254c11ef0caa91c8222cae0324fe8212eaa347c4499e5298cea81886eb8",
+      "mesh_area_m2": 12.763580322265625,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 1.187000036239624,
+      "outer_seam_max_height_m": 5.109163794259075e-07,
+      "gaussian_tangent_sigma_median_m": 0.004751353524625301,
+      "glb_sha256": "5428e4dd183fe72a60eba84ccdb753178215afdb4bed19c54497cdd07ebd0268",
+      "ply_sha256": "7241a05574fcb7d046e852f6ea2a64c7a08b10b96169716bab511ff451a4193e",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0006420946988785338
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "square",
+    "state": "ajar14",
+    "material": "chip_seal",
+    "width_m": 0.637,
+    "length_m": 0.6486,
+    "exponent": 7.0,
+    "depth_design_m": 0.9539,
+    "seed": 4187479387,
+    "cover_pose": [
+      11.35,
+      0.0,
+      0.0,
+      -1.18
+    ],
+    "lid_relief_m": 0.00162,
+    "lid_wear": 0.3487,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 11,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261120_000011_c945a5a3b22954e4",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.004522456204312476,
+        0.0016810652857548593
+      ],
+      "relief_std_m": 0.0003527164451654488,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 7.488266872192683,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0038699526798638465,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0006554809066697988,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261120_000011_c945a5a3b22954e4/asset.ply",
+    "glb": "raised/factory_raised_20261120_000011_c945a5a3b22954e4/asset.glb",
+    "surface": "raised/factory_raised_20261120_000011_c945a5a3b22954e4/surface.npz",
+    "metadata": "raised/factory_raised_20261120_000011_c945a5a3b22954e4/metadata.json",
+    "preview": "raised/factory_raised_20261120_000011_c945a5a3b22954e4/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "6ed18e0661aba6f8af33cefaae7aaaeb51d4397a8f44e97e7a31365d0712ceff",
+      "mesh_area_m2": 7.488267421722412,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.9538999795913696,
+      "outer_seam_max_height_m": 2.4258670237031765e-06,
+      "gaussian_tangent_sigma_median_m": 0.00368145271204412,
+      "glb_sha256": "f4d974583fa058cc9e41b4ecd7f51fbe2ab859baabebcf484f619520e0aa922e",
+      "ply_sha256": "858bb468f7b362a3db3b3faf478c69a398194ac4ca2e64e0429521a21165e491",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0006554809066697988
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  },
+  {
+    "category": "raised",
+    "family": "round",
+    "state": "upright82",
+    "material": "aged_asphalt",
+    "width_m": 0.634,
+    "length_m": 0.6196,
+    "exponent": 2.0,
+    "depth_design_m": 0.9263,
+    "seed": 2303606638,
+    "cover_pose": [
+      77.33,
+      0.0,
+      0.0,
+      -3.77
+    ],
+    "lid_relief_m": 0.00316,
+    "lid_wear": 0.6742,
+    "recipe_version": "physical-v1",
+    "stream_seed": 20261120,
+    "stream_index": 14,
+    "scale_kind": "physical_design",
+    "size_multiplier": 1.0,
+    "provenance_kind": "synthetic_geometry_with_scanned_materials",
+    "limitations": [
+      "Designed metric dimensions, not a measurement of a real defect.",
+      "Appearance is baked into degree-1 SH; lighting is not fully relightable."
+    ],
+    "gaussian_sampling_density_m2": 100000,
+    "gaussian_sampling_min": 100000,
+    "gaussian_sampling_max": 500000,
+    "gaussian_detail_weights": {
+      "Lid face": 6.0,
+      "Cast ring and cover seat": 2.5,
+      "Shaft bottom": 0.5,
+      "Inspection shaft": 0.85
+    },
+    "id": "factory_raised_20261120_000014_25f490d64cd5ca64",
+    "mesh_runtime": {
+      "numpy": "1.26.4",
+      "trimesh": "5.2.1",
+      "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]"
+    },
+    "lid_geometry_detail": {
+      "relief_range_m": [
+        -0.004616952664644982,
+        0.0032056472603578844
+      ],
+      "relief_std_m": 0.000509011962862435,
+      "top_triangles": 98688,
+      "lifting_recess_depth_m": 0.0045
+    },
+    "units": "metres",
+    "origin": "hazard center at the local road plane",
+    "geometry_source": "procedural_3d",
+    "mesh_name": "asset.glb",
+    "geometry_parts": {
+      "Road around the aperture": 36608,
+      "Cast ring and cover seat": 2464,
+      "Inspection shaft": 40128,
+      "Shaft bottom": 8976,
+      "Access rung 1": 12,
+      "Access rung 2": 12,
+      "Access rung 3": 12,
+      "Lid face": 98688,
+      "Lid underside": 8976,
+      "Lid thickness": 352,
+      "Lid rib 1": 12,
+      "Lid rib 2": 12,
+      "Lid rib 3": 12,
+      "Lid rib 4": 12
+    },
+    "material_sources": [
+      "Asphalt031",
+      "Concrete034",
+      "Concrete049",
+      "ManholeCover009"
+    ],
+    "glb_up": "Y",
+    "gaussian_up": "Z",
+    "gaussian_sampling": {
+      "surface_area_m2": 6.760509683234902,
+      "requested_points": 500000,
+      "spacing_before_alpha_m": 0.0036770938751233702,
+      "density_per_m2": 100000,
+      "maximum_points": 500000,
+      "part_weights": {
+        "Lid face": 6.0,
+        "Cast ring and cover seat": 2.5,
+        "Shaft bottom": 0.5,
+        "Inspection shaft": 0.85
+      }
+    },
+    "gaussians": 500000,
+    "sh_degree": 1,
+    "ply_name": "asset.ply",
+    "appearance_sh_fit_mae": 0.0005033732514351205,
+    "standalone_preview": "preview.jpg",
+    "ply": "raised/factory_raised_20261120_000014_25f490d64cd5ca64/asset.ply",
+    "glb": "raised/factory_raised_20261120_000014_25f490d64cd5ca64/asset.glb",
+    "surface": "raised/factory_raised_20261120_000014_25f490d64cd5ca64/surface.npz",
+    "metadata": "raised/factory_raised_20261120_000014_25f490d64cd5ca64/metadata.json",
+    "preview": "raised/factory_raised_20261120_000014_25f490d64cd5ca64/preview.jpg",
+    "quality": {
+      "passed": true,
+      "geometry_sha256": "b6822645fed77ceb29922489b6bd66c713b8f1c09a84ecbeb835e7fd2b2682d7",
+      "mesh_area_m2": 6.760509967803955,
+      "degenerate_triangle_fraction": 0.0,
+      "deepest_surface_m": 0.9262999892234802,
+      "outer_seam_max_height_m": 1.694663637863414e-06,
+      "gaussian_tangent_sigma_median_m": 0.0034376441035419703,
+      "glb_sha256": "133b8b62e328a94a02af12babd9cc3f3e9527489901c8274d73896ff20a4221f",
+      "ply_sha256": "aa311cad1cc8e9d6a8e2fd557136e2ef8514d66bfde57cf727de9a093c7387ca",
+      "gaussians": 500000,
+      "appearance_sh_fit_mae": 0.0005033732514351205
+    },
+    "pipeline_sha256": "8d253a3a0902d589da2c31ee5e9852876a191df225795994bb864623286c35ed"
+  }
+]

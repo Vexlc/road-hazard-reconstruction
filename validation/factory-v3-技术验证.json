@@ -1,0 +1,4157 @@
+{
+  "assets": [
+    {
+      "id": "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "d5cc7a6d698642c732c2df9ecc0604e6ffc76b3dee9b06e74207926929a4e6bd",
+        "mesh_area_m2": 6.608236312866211,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.1098999977111816,
+        "outer_seam_max_height_m": 3.933475056783209e-07,
+        "gaussian_tangent_sigma_median_m": 0.003038797527551651,
+        "glb_sha256": "f3fb28f3bbcab570e63589ea446749dd1b086f4ba89a3111a30a1fd6f6cac888",
+        "ply_sha256": "96666c04caf489a46c75d955af8f91a3ccfa6fb47dd4860225fb33c89aa2eef8",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0006862229277049341
+      }
+    },
+    {
+      "id": "factory_missing_20261119_000004_ec6ab7a51fc74884",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "75ce6e178bb9e7fbf1ddc522e3655760d84caccbc7ae087082b1fa1caafc382f",
+        "mesh_area_m2": 7.583928108215332,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.1848000288009644,
+        "outer_seam_max_height_m": 1.0794532272484503e-06,
+        "gaussian_tangent_sigma_median_m": 0.00326081202365458,
+        "glb_sha256": "47949a0ae2724afea843da069319abf6c8f30bfb92521f0cd360040e21cd1494",
+        "ply_sha256": "7db56770a253873f65643bd141d38c57133effdbbf36158791882cb9429ccf88",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0006877516430141705
+      }
+    },
+    {
+      "id": "factory_missing_20261119_000007_4def79cf31fcbd38",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "b2511bac952d2dfda50a93e29a219db653e14177246efe702571bc7c583acb08",
+        "mesh_area_m2": 6.76580810546875,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.2317999601364136,
+        "outer_seam_max_height_m": 2.048279384325724e-06,
+        "gaussian_tangent_sigma_median_m": 0.0030691223219037056,
+        "glb_sha256": "b9bfcd9db8456f52f2d1574000638c9658dcb71bd3f738201166b9d1a0162ab8",
+        "ply_sha256": "e3f1ea98b0c1cbed5f9020c759bed2fa6b65c0e53cf7f56c8ece588fb060fc8d",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0007667602828493522
+      }
+    },
+    {
+      "id": "factory_missing_20261119_000010_afeed0ac3cee14f6",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "fe0a97009cff1838d6d1fa6b3af3e5f69f86d730db954fe9e33db9b0595a69bb",
+        "mesh_area_m2": 6.5204854011535645,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.0327999591827393,
+        "outer_seam_max_height_m": 1.2464943210943602e-06,
+        "gaussian_tangent_sigma_median_m": 0.0030257098842412233,
+        "glb_sha256": "db02076c179d1b605c268c61274f07af5943ec489be45f144a91284c8febbf26",
+        "ply_sha256": "6df67a0f0ac3386bfd3b65f2a59244698b0b82736d7933b2b97a3b008eb2d841",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0007249722125819854
+      }
+    },
+    {
+      "id": "factory_missing_20261119_000013_55d3b0a942a15712",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "175a405cb7921bfd759e62c6068d7e7b38a498dd4b4dcdbb1ab153abb872d0dc",
+        "mesh_area_m2": 6.975379467010498,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.1632000207901,
+        "outer_seam_max_height_m": 4.033742015963071e-07,
+        "gaussian_tangent_sigma_median_m": 0.003118200460448861,
+        "glb_sha256": "f0e9f6f4b0f25ebd187f32dd87294b603964b25a9f4ac9c4e7a77187e0b30a33",
+        "ply_sha256": "f607951ff5fe783bca072f68387315f3c29d24baf869bacb8378cd49314abb70",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0007018596337612478
+      }
+    },
+    {
+      "id": "factory_missing_20261120_000001_4afab717292f6782",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "5431f0f5a59e3bf37ecb4b8a3bfb35912e89191673388124fcb58c90b7e46cf4",
+        "mesh_area_m2": 7.069307327270508,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.3006999492645264,
+        "outer_seam_max_height_m": 1.4113941233517835e-06,
+        "gaussian_tangent_sigma_median_m": 0.003132748883217573,
+        "glb_sha256": "95bca0f31ac53f9199a4ffd0822de13e76f09006c1addefdce66a32de6dcb387",
+        "ply_sha256": "6c201a65dda8118f8d0fe0698430c6d6598a17d775b9fa7482f88fef8b80e0c2",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0006302467945422377
+      }
+    },
+    {
+      "id": "factory_missing_20261120_000004_8ba41a67059a18dc",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "bb8a1c94eda8ee676f0cd3c75464f8c78375344057752036feb23e067bacf72d",
+        "mesh_area_m2": 6.182010650634766,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.9629999995231628,
+        "outer_seam_max_height_m": 2.7625121674645925e-06,
+        "gaussian_tangent_sigma_median_m": 0.0029580118134617805,
+        "glb_sha256": "0f1fd328aa0bce01e785eec59e0b5679a1da0d91475e765ebc0e437d9dfd2474",
+        "ply_sha256": "ac334a4895a31faece4ae554c51a2167f627321eadd15493894a37278ffee8eb",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.000796292158361945
+      }
+    },
+    {
+      "id": "factory_missing_20261120_000007_6b61978511466731",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "a284cfe65f7809b2923894052a3b10b141c4730d6dfc00480fda169f11d491ba",
+        "mesh_area_m2": 7.944448947906494,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.342900037765503,
+        "outer_seam_max_height_m": 9.922125627781497e-07,
+        "gaussian_tangent_sigma_median_m": 0.003315398469567299,
+        "glb_sha256": "fad90d9fc85dd043b83d69b9f1656c041970448f72be8bed22fc50980800897b",
+        "ply_sha256": "2d724e4391d10b7f1bc90916d4b083363e46afd2d366eae4c0c0acd27e0d648a",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0007269010191873437
+      }
+    },
+    {
+      "id": "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "88f13bb0a22de643bfe674e1413e1c79081285badc85470c53965d87322ef4f1",
+        "mesh_area_m2": 6.962347507476807,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.0508999824523926,
+        "outer_seam_max_height_m": 5.325770757735881e-07,
+        "gaussian_tangent_sigma_median_m": 0.003128006821498275,
+        "glb_sha256": "f6f2ae9cd4bfc132e78a7c4f2d5e5777f186f4d20a89a33fabc0ee8510a5c3bf",
+        "ply_sha256": "8bf339849b6d2161c16f8fd97990068740fd98a4826ab5fd5b95d53077fb016d",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0007296856070282839
+      }
+    },
+    {
+      "id": "factory_missing_20261120_000013_57a135eb28005ff9",
+      "category": "missing",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "c79b22451e265349b3086efddd90a407eddd94ba98f64d42aba4323f7857dfbf",
+        "mesh_area_m2": 6.819127559661865,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.3595000505447388,
+        "outer_seam_max_height_m": 1.1980065437455778e-06,
+        "gaussian_tangent_sigma_median_m": 0.003069609869271517,
+        "glb_sha256": "41d1db28ceac2a91815fc4cab05b91cbbed09f5e9783e79e85b26c6c7a1cae32",
+        "ply_sha256": "f1145fa23629445681fabfdb538cda7f3bfa27b0c05c24a81bc2700179be48c0",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0005951688377066485
+      }
+    },
+    {
+      "id": "factory_pothole_20261119_000000_d3b40cc2dba384e3",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "118239f69914214212d319b81c5d369aba6b53fbb7c3a8425c391cf9f9cb35ea",
+        "mesh_area_m2": 1.767077922821045,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.10782011598348618,
+        "outer_seam_max_height_m": 4.995297899768048e-07,
+        "gaussian_tangent_sigma_median_m": 0.002624696586281061,
+        "glb_sha256": "67ab70159d38fa1655478350dc2a02c3e06b2c04797c804774614cbefe7affde",
+        "ply_sha256": "7bed0155bbec124b041dba270f31eba479c192502491de69804a0647f75fb337",
+        "gaussians": 137544,
+        "appearance_sh_fit_mae": 0.00031437493291580014
+      }
+    },
+    {
+      "id": "factory_pothole_20261119_000003_7b3b1987a07ecc49",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "45313775c4e7662f43e839ed9b1434efb9e878bb93f34ce5a192c074897ee3f4",
+        "mesh_area_m2": 5.569006443023682,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.1422143578529358,
+        "outer_seam_max_height_m": 2.0391396446939325e-06,
+        "gaussian_tangent_sigma_median_m": 0.0027700134087353945,
+        "glb_sha256": "8ba4f7d8c70900e7c194aa516a5d93f24d488cd6159a772f133a1a0e74ddcf90",
+        "ply_sha256": "d2d5a90a2899e42ead544953b64ecf3665203045e045a4c5a61727a63733a332",
+        "gaussians": 390649,
+        "appearance_sh_fit_mae": 0.000837874623054328
+      }
+    },
+    {
+      "id": "factory_pothole_20261119_000006_b4cb6f5815d68448",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "900c1e013567440594185d918aecc0280a2b7c7014c39125c0de4d57c603cfc4",
+        "mesh_area_m2": 1.0279433727264404,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.0731186792254448,
+        "outer_seam_max_height_m": 1.837383479141863e-06,
+        "gaussian_tangent_sigma_median_m": 0.0026246951892971992,
+        "glb_sha256": "b3a96795ea0a96582249ce9fb6863e6ae37e1631c69812225696492cc86362ea",
+        "ply_sha256": "39d712b988a353aee77773ed2637e33b12bc0f0923fb11accbd2e27fb6d92b21",
+        "gaussians": 79170,
+        "appearance_sh_fit_mae": 0.00048573153326287867
+      }
+    },
+    {
+      "id": "factory_pothole_20261119_000009_75172e61c8a78a65",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "433a02fec8354279cd87672f02b8ce2a602a86b348d470497c413820419cf17c",
+        "mesh_area_m2": 2.903670310974121,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.12067368626594543,
+        "outer_seam_max_height_m": 1.2364466783765238e-06,
+        "gaussian_tangent_sigma_median_m": 0.002624690067023039,
+        "glb_sha256": "c852e4703189cd3746711b01d8be745496a9c2a95b7a9a60e21f42e1486ea484",
+        "ply_sha256": "2a397d330512a3ec6fed41e41f6bf7c159363d0ce273516ac1d52078a971c614",
+        "gaussians": 227295,
+        "appearance_sh_fit_mae": 0.0006937830808705517
+      }
+    },
+    {
+      "id": "factory_pothole_20261119_000012_67a3e77cbfabf91a",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "15befb62b4173f5a424522ad12ce2446d2ed84574b165693806e8ee24e65c6cd",
+        "mesh_area_m2": 1.8045156002044678,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.12646916508674622,
+        "outer_seam_max_height_m": 3.9171362686829525e-07,
+        "gaussian_tangent_sigma_median_m": 0.002624694025143981,
+        "glb_sha256": "d5cc32e153d5c20a515fb371e3b01c3ff317c676497dd60898ff9e20f3b0d228",
+        "ply_sha256": "81caf6d3dd91b0eef877095507fac63e76721ca026595c2e3bbb65677720655e",
+        "gaussians": 141890,
+        "appearance_sh_fit_mae": 0.00035862957722403936
+      }
+    },
+    {
+      "id": "factory_pothole_20261120_000000_0a11ec168c15d5c8",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "06c5d24ebb108b4ac8109e4b9f65552a10f1b834c01046480ac9056c32c729ad",
+        "mesh_area_m2": 4.209613800048828,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.07403399795293808,
+        "outer_seam_max_height_m": 1.4267342294260743e-06,
+        "gaussian_tangent_sigma_median_m": 0.002624691464006901,
+        "glb_sha256": "1ccdfa38b8d1a624fbd0bb1b5fbedb284621e2c35c6e6e200c0c817df3c754b2",
+        "ply_sha256": "5a27f55bdc92b6ecaed8b21399c6e8c3952324658b0395cb555df5d9d53cad03",
+        "gaussians": 345444,
+        "appearance_sh_fit_mae": 0.0004878175505754453
+      }
+    },
+    {
+      "id": "factory_pothole_20261120_000003_85570e243c3138a2",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "85bbea844e30bbc8fd4ae025d2493bfa65fb1f925c84a873d74f616860dc81a1",
+        "mesh_area_m2": 5.384714603424072,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.14131729304790497,
+        "outer_seam_max_height_m": 6.918060648786195e-07,
+        "gaussian_tangent_sigma_median_m": 0.002723794663324952,
+        "glb_sha256": "a566bcfdc93e228fc9cfd2005eaeb8222c23016bf04f4d4d8987c64d3ea24c43",
+        "ply_sha256": "c1d367a93bb90bf99bf8a76596037649beba586b0472802af165b4d026f8c292",
+        "gaussians": 396749,
+        "appearance_sh_fit_mae": 0.00034804753260686994
+      }
+    },
+    {
+      "id": "factory_pothole_20261120_000006_a983f023288b5070",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "17b90d1f692ee81b36af061111f154a993e93149a4d7d15f5170a333f509b317",
+        "mesh_area_m2": 3.187683582305908,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.11643823236227036,
+        "outer_seam_max_height_m": 2.9566845114459284e-06,
+        "gaussian_tangent_sigma_median_m": 0.002624691464006901,
+        "glb_sha256": "5f0095fcf3320b881ff253f0d16bbf8f5bea6f8e38926d400d78405cc65f925c",
+        "ply_sha256": "d37b05d17f00264658d5840ce38e137c41593614248afbf72d1e7174d016c0ca",
+        "gaussians": 248229,
+        "appearance_sh_fit_mae": 0.0008371440089831594
+      }
+    },
+    {
+      "id": "factory_pothole_20261120_000009_8e562ac175ce4528",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "a96a83de81585d04609fed2b0874ece0b800592d68a5a1c2902d306960521dfb",
+        "mesh_area_m2": 1.333309531211853,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.11800811439752579,
+        "outer_seam_max_height_m": 2.7267526547802845e-06,
+        "gaussian_tangent_sigma_median_m": 0.0026247003115713596,
+        "glb_sha256": "f0405d8d5d69cae5c60a7bf83205f665b4eb698cd6b476ab65f4822ad1306f3f",
+        "ply_sha256": "524c11cad4ea7973c75fc64b80868b4a4a3b76ee90b2e978ff925c6b2951ac6f",
+        "gaussians": 104644,
+        "appearance_sh_fit_mae": 0.0005488128018831569
+      }
+    },
+    {
+      "id": "factory_pothole_20261120_000012_d799c1475b15c8a8",
+      "category": "pothole",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "cbfbf9e7fa4de220fee4fa7d7bc0fed05b2ca4267a4413d593cf6ecfe641c83d",
+        "mesh_area_m2": 2.470633029937744,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.08070862293243408,
+        "outer_seam_max_height_m": 1.0764565558929462e-06,
+        "gaussian_tangent_sigma_median_m": 0.0026246923953294754,
+        "glb_sha256": "862ec3cd3c537c946b97fd4c62b800d4aea149664ee53a932b35b89f4b9a992c",
+        "ply_sha256": "36391f83700b5a6d0154b62d57fb4c1c735d6a6c746b8f791a2c4ab66adc5c12",
+        "gaussians": 191497,
+        "appearance_sh_fit_mae": 0.0006307715326935673
+      }
+    },
+    {
+      "id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "fdb148350a4ae94224a17a99b99503157323ef92a15e289f052039b5ceb2d05c",
+        "mesh_area_m2": 8.824438095092773,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.0571000576019287,
+        "outer_seam_max_height_m": 2.5901567823893856e-06,
+        "gaussian_tangent_sigma_median_m": 0.004089171066880226,
+        "glb_sha256": "ac7bcad24c6b5d3aa47ef77013802c35b94baf9f0adeb3eae663182c5a596fd4",
+        "ply_sha256": "3982df35be68372067c079c03adcd4a1d221e686406138d1379f472822012387",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0008371931747920173
+      }
+    },
+    {
+      "id": "factory_raised_20261119_000005_8342d657505675c0",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "dd130ff204e9b5de324a746c612b09d2c846a0ad8cec9408ca6915e17a990bd9",
+        "mesh_area_m2": 7.62205696105957,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.9179999828338623,
+        "outer_seam_max_height_m": 2.506355940568028e-06,
+        "gaussian_tangent_sigma_median_m": 0.0037676673382520676,
+        "glb_sha256": "4e1493e3b9dcaf3eec2371dd2edb3f9a63d1f2763e0352e74bf6e1e30ce044f6",
+        "ply_sha256": "7080b1a7b25a8e341b39efd408b52d98ed8ee2a146222f343e003358a70d58f7",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0008135120460563471
+      }
+    },
+    {
+      "id": "factory_raised_20261119_000008_1dd67160bef05522",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "6539aa3185d884c0f0614a8142b1b36fce2def7a25647ecb0758f02d7391a145",
+        "mesh_area_m2": 10.318574905395508,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.0836000442504883,
+        "outer_seam_max_height_m": 1.0109656614076812e-06,
+        "gaussian_tangent_sigma_median_m": 0.004093554802238941,
+        "glb_sha256": "f2eb5f9ea7923ec0d85d4c282cd0fc350395efc87ea77c11de2f9e677d66c868",
+        "ply_sha256": "565fa48adbb4619371f048de4f0f3db38a7b64135d9a128872c637170daec865",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0006828818084379177
+      }
+    },
+    {
+      "id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "c21e7762a8651346d302f509f32af84a9add600c5599b8bd4175bbd26cdf35b3",
+        "mesh_area_m2": 7.457211017608643,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.9605000019073486,
+        "outer_seam_max_height_m": 3.0617650281783426e-07,
+        "gaussian_tangent_sigma_median_m": 0.0036689364351332188,
+        "glb_sha256": "893c6d74c192d7cbebf95a4e2fbfedea803395949a23522c6a4569736a4abe08",
+        "ply_sha256": "0858e42497b73f8a7103c26bf8194d43a06e5639a585f66c19d36e11f00c0908",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0005527966964070545
+      }
+    },
+    {
+      "id": "factory_raised_20261119_000014_285bd2e35a859ee1",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "af1a7c9a40407c88da0cdce29136b5b4bd5d56990844c44d662264d72cb64dd2",
+        "mesh_area_m2": 7.536069393157959,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.0003999471664429,
+        "outer_seam_max_height_m": 3.0924786642572144e-06,
+        "gaussian_tangent_sigma_median_m": 0.003662998555228114,
+        "glb_sha256": "183fe34371fd7978d33b2942946e806791dbbe4f1f0e6c1ef7b1e99a8b18b4c0",
+        "ply_sha256": "2b688ee4610d3e7bfa1d517292673c5004151f0060d3ffe4cc1adca0e9115294",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0006229910078605054
+      }
+    },
+    {
+      "id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "dfe8b027844b709b51618fb9677622212283845dfc4a3c05446a07ac9822bf92",
+        "mesh_area_m2": 6.534676551818848,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.9884999990463257,
+        "outer_seam_max_height_m": 1.2460387779356097e-06,
+        "gaussian_tangent_sigma_median_m": 0.0033195288851857185,
+        "glb_sha256": "bb6ed1d7e48277bf08dd5f63ba571590041d998001dd66f06e9ef56f5a717994",
+        "ply_sha256": "2aab03c17e6884b311199ffc01d3d215af76c69a5dd7146f100dc23b8e3eee73",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0005672120612287118
+      }
+    },
+    {
+      "id": "factory_raised_20261120_000005_a666133127c6f4ef",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "67218345d7f12827cd7aa452b827f64f72520f4afac2f9f47951d9fa5d34f772",
+        "mesh_area_m2": 7.283827781677246,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.1092000007629395,
+        "outer_seam_max_height_m": 1.3487574506143574e-06,
+        "gaussian_tangent_sigma_median_m": 0.0035410800483077765,
+        "glb_sha256": "11888821cbe42fbcef50404a37ba2fcc37f2d13372907ea76c605e8397f38eee",
+        "ply_sha256": "65698256b292f4bb82b652b8269c36d5811528d4a81dbe0f1ffe8397775c0a5c",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0007499968450411823
+      }
+    },
+    {
+      "id": "factory_raised_20261120_000008_4676785bab446fc9",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "e19d9254c11ef0caa91c8222cae0324fe8212eaa347c4499e5298cea81886eb8",
+        "mesh_area_m2": 12.763580322265625,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 1.187000036239624,
+        "outer_seam_max_height_m": 5.109163794259075e-07,
+        "gaussian_tangent_sigma_median_m": 0.004751353524625301,
+        "glb_sha256": "5428e4dd183fe72a60eba84ccdb753178215afdb4bed19c54497cdd07ebd0268",
+        "ply_sha256": "7241a05574fcb7d046e852f6ea2a64c7a08b10b96169716bab511ff451a4193e",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0006420946988785338
+      }
+    },
+    {
+      "id": "factory_raised_20261120_000011_c945a5a3b22954e4",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "6ed18e0661aba6f8af33cefaae7aaaeb51d4397a8f44e97e7a31365d0712ceff",
+        "mesh_area_m2": 7.488267421722412,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.9538999795913696,
+        "outer_seam_max_height_m": 2.4258670237031765e-06,
+        "gaussian_tangent_sigma_median_m": 0.00368145271204412,
+        "glb_sha256": "f4d974583fa058cc9e41b4ecd7f51fbe2ab859baabebcf484f619520e0aa922e",
+        "ply_sha256": "858bb468f7b362a3db3b3faf478c69a398194ac4ca2e64e0429521a21165e491",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0006554809066697988
+      }
+    },
+    {
+      "id": "factory_raised_20261120_000014_25f490d64cd5ca64",
+      "category": "raised",
+      "quality": {
+        "passed": true,
+        "geometry_sha256": "b6822645fed77ceb29922489b6bd66c713b8f1c09a84ecbeb835e7fd2b2682d7",
+        "mesh_area_m2": 6.760509967803955,
+        "degenerate_triangle_fraction": 0.0,
+        "deepest_surface_m": 0.9262999892234802,
+        "outer_seam_max_height_m": 1.694663637863414e-06,
+        "gaussian_tangent_sigma_median_m": 0.0034376441035419703,
+        "glb_sha256": "133b8b62e328a94a02af12babd9cc3f3e9527489901c8274d73896ff20a4221f",
+        "ply_sha256": "aa311cad1cc8e9d6a8e2fd557136e2ef8514d66bfde57cf727de9a093c7387ca",
+        "gaussians": 500000,
+        "appearance_sh_fit_mae": 0.0005033732514351205
+      }
+    }
+  ],
+  "scenes": [
+    {
+      "site": "034",
+      "cases": 10,
+      "source_checkpoint_sha256": "1f432d8c7d89df6e34ba3b9405e0e97cd2c201da15296d3c0b513b512e198883",
+      "road_guard_sha256": "c3ac2cc4023a05cbbcaec0ff68f6b739249bb68d54dde472c98acab7d163f374",
+      "independent_road_height": {
+        "held_out_lidar_frames": [
+          1,
+          4,
+          7,
+          10,
+          13,
+          16,
+          19,
+          22,
+          25,
+          28,
+          31,
+          34,
+          37,
+          40,
+          43,
+          46,
+          49,
+          52,
+          55,
+          58,
+          61,
+          64,
+          67,
+          70,
+          73,
+          76,
+          79
+        ],
+        "sampled_surfels": 10000,
+        "matched_ground_samples": 9946,
+        "median_absolute_height_error_m": 0.008364677429199219,
+        "p95_absolute_height_error_m": 0.03197002410888672,
+        "max_absolute_height_error_m": 0.28703927993774414,
+        "unmatched_samples_including_blind_zone": 54,
+        "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+      },
+      "case_road_checks": [
+        {
+          "case": "034_01",
+          "sha256": "c3ac2cc4023a05cbbcaec0ff68f6b739249bb68d54dde472c98acab7d163f374",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9946,
+            "median_absolute_height_error_m": 0.008364677429199219,
+            "p95_absolute_height_error_m": 0.03197002410888672,
+            "max_absolute_height_error_m": 0.28703927993774414,
+            "unmatched_samples_including_blind_zone": 54,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "034_02",
+          "sha256": "f0ab1c817c4338d6f0829343c95a37bde0afd652b6199d2eba635b25219eb858",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9942,
+            "median_absolute_height_error_m": 0.008499860763549805,
+            "p95_absolute_height_error_m": 0.030739784240722646,
+            "max_absolute_height_error_m": 0.2936382293701172,
+            "unmatched_samples_including_blind_zone": 58,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "034_03",
+          "sha256": "36530899e4d3c49142dcebfc2d671472341593cf30c500483d9c634a48b37eb5",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9925,
+            "median_absolute_height_error_m": 0.00845479965209961,
+            "p95_absolute_height_error_m": 0.0323209762573242,
+            "max_absolute_height_error_m": 0.28205060958862305,
+            "unmatched_samples_including_blind_zone": 75,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "034_04",
+          "sha256": "99a7ee447e1a77630a3788c66cb217aff72f741340220ebc416a1f7dbceede1c",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9946,
+            "median_absolute_height_error_m": 0.008246183395385742,
+            "p95_absolute_height_error_m": 0.03190410137176514,
+            "max_absolute_height_error_m": 0.2997312545776367,
+            "unmatched_samples_including_blind_zone": 54,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "034_05",
+          "sha256": "808ee53e78c136da7052e04be21b4aa0c32164fc37d9a7fd1e79a2990672bcdd",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9947,
+            "median_absolute_height_error_m": 0.008150100708007812,
+            "p95_absolute_height_error_m": 0.0309218883514404,
+            "max_absolute_height_error_m": 0.29529380798339844,
+            "unmatched_samples_including_blind_zone": 53,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "034_06",
+          "sha256": "efaf8253fac8bdc5c78932460b638876f8269e1472688306c25bd085b75a2601",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9934,
+            "median_absolute_height_error_m": 0.008394002914428711,
+            "p95_absolute_height_error_m": 0.030894875526428243,
+            "max_absolute_height_error_m": 0.2907404899597168,
+            "unmatched_samples_including_blind_zone": 66,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "034_07",
+          "sha256": "8fb3eeaa929fd399ccf8666a8b30feeb1345ccec78821625ed7d7e5134504e2d",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9933,
+            "median_absolute_height_error_m": 0.008224010467529297,
+            "p95_absolute_height_error_m": 0.031410980224609364,
+            "max_absolute_height_error_m": 0.29980993270874023,
+            "unmatched_samples_including_blind_zone": 67,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "034_08",
+          "sha256": "d065d61527617741f43cbf9d0c709d4aedbc6e7a96f96b863ce0f0f6a20d9116",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9945,
+            "median_absolute_height_error_m": 0.008306503295898438,
+            "p95_absolute_height_error_m": 0.03274984359741211,
+            "max_absolute_height_error_m": 0.2902050018310547,
+            "unmatched_samples_including_blind_zone": 55,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "034_09",
+          "sha256": "226565d516c20a0bc54d4f6150178f971cac1b7dde31e4e2c7554289ce97656c",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9948,
+            "median_absolute_height_error_m": 0.008419513702392578,
+            "p95_absolute_height_error_m": 0.030849099159240712,
+            "max_absolute_height_error_m": 0.2936382293701172,
+            "unmatched_samples_including_blind_zone": 52,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "034_10",
+          "sha256": "44984441d69fe38200bf3f4828bc3b3bdc1cf69c9cb6c060d432d53b690817ef",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9947,
+            "median_absolute_height_error_m": 0.008282184600830078,
+            "p95_absolute_height_error_m": 0.03159933090209958,
+            "max_absolute_height_error_m": 0.2895393371582031,
+            "unmatched_samples_including_blind_zone": 53,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        }
+      ]
+    },
+    {
+      "site": "109",
+      "cases": 10,
+      "source_checkpoint_sha256": "db055280f473fa1e8a3ad7f42d83b282261fd5b8e60643d0d2833b055089a03f",
+      "road_guard_sha256": "f383ebac6a6e5263cd036b0e52f565e494e52d267422a04aec444a42fc93cf30",
+      "independent_road_height": {
+        "held_out_lidar_frames": [
+          1,
+          4,
+          7,
+          10,
+          13,
+          16,
+          19,
+          22,
+          25,
+          28,
+          31,
+          34,
+          37,
+          40,
+          43,
+          46,
+          49,
+          52,
+          55,
+          58,
+          61,
+          64,
+          67,
+          70,
+          73,
+          76,
+          79
+        ],
+        "sampled_surfels": 10000,
+        "matched_ground_samples": 9516,
+        "median_absolute_height_error_m": 0.006582632660865784,
+        "p95_absolute_height_error_m": 0.0231398344039917,
+        "max_absolute_height_error_m": 0.10516315698623657,
+        "unmatched_samples_including_blind_zone": 484,
+        "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+      },
+      "case_road_checks": [
+        {
+          "case": "109_01",
+          "sha256": "f383ebac6a6e5263cd036b0e52f565e494e52d267422a04aec444a42fc93cf30",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9516,
+            "median_absolute_height_error_m": 0.006582632660865784,
+            "p95_absolute_height_error_m": 0.0231398344039917,
+            "max_absolute_height_error_m": 0.10516315698623657,
+            "unmatched_samples_including_blind_zone": 484,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "109_02",
+          "sha256": "174cb8a111b5039a401e201485c7ab46f7826129df7d4097bbf293997928782c",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9505,
+            "median_absolute_height_error_m": 0.006706893444061279,
+            "p95_absolute_height_error_m": 0.023446917533874487,
+            "max_absolute_height_error_m": 0.10033100843429565,
+            "unmatched_samples_including_blind_zone": 495,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "109_03",
+          "sha256": "a1d7d96d3894bf1d1c46aef96f751330de2fc863f43a57ccc8f95fd82bfc9e37",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9494,
+            "median_absolute_height_error_m": 0.006543755531311035,
+            "p95_absolute_height_error_m": 0.02310034036636353,
+            "max_absolute_height_error_m": 0.09699034690856934,
+            "unmatched_samples_including_blind_zone": 506,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "109_04",
+          "sha256": "bef3d996d653560b4bc5747876acf718150090e70c4e2a8ee7047ce397a5d7e6",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9493,
+            "median_absolute_height_error_m": 0.006674975156784058,
+            "p95_absolute_height_error_m": 0.02274773120880126,
+            "max_absolute_height_error_m": 0.0987669825553894,
+            "unmatched_samples_including_blind_zone": 507,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "109_05",
+          "sha256": "6a75f9dab155a7a500d459c540e7c3638609500c3a0067b7f97ec4e22ab27e0f",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9527,
+            "median_absolute_height_error_m": 0.006469130516052246,
+            "p95_absolute_height_error_m": 0.023561409115791316,
+            "max_absolute_height_error_m": 0.09929394721984863,
+            "unmatched_samples_including_blind_zone": 473,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "109_06",
+          "sha256": "f7cc5a47848d816cc10365edd0baec3482c55c47cfe91ea7649daf28713d3de5",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9460,
+            "median_absolute_height_error_m": 0.006609618663787842,
+            "p95_absolute_height_error_m": 0.02335482239723205,
+            "max_absolute_height_error_m": 0.09851020574569702,
+            "unmatched_samples_including_blind_zone": 540,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "109_07",
+          "sha256": "86e647436d97562c5b4a0475b58f864566355189b4f0d709e0db4a23447cf38a",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9476,
+            "median_absolute_height_error_m": 0.006458833813667297,
+            "p95_absolute_height_error_m": 0.02348649501800537,
+            "max_absolute_height_error_m": 0.10643994808197021,
+            "unmatched_samples_including_blind_zone": 524,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "109_08",
+          "sha256": "1a215ba483017b051e722d94a267ac22a7944e629a978dadfcbf805467b72867",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9515,
+            "median_absolute_height_error_m": 0.006609857082366943,
+            "p95_absolute_height_error_m": 0.023529028892517016,
+            "max_absolute_height_error_m": 0.1059543788433075,
+            "unmatched_samples_including_blind_zone": 485,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "109_09",
+          "sha256": "16db0cece666baa3281f082acd75e073892820822721dae8458a2648860c6287",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9480,
+            "median_absolute_height_error_m": 0.006836950778961182,
+            "p95_absolute_height_error_m": 0.022920018434524514,
+            "max_absolute_height_error_m": 0.10000568628311157,
+            "unmatched_samples_including_blind_zone": 520,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "109_10",
+          "sha256": "1293a10d634e2bb41ee2eb17f9bedcad32d930a80896ca45a08a1f9e8af9dec8",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 9500,
+            "median_absolute_height_error_m": 0.006756573915481567,
+            "p95_absolute_height_error_m": 0.022882698476314536,
+            "max_absolute_height_error_m": 0.10165685415267944,
+            "unmatched_samples_including_blind_zone": 500,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        }
+      ]
+    },
+    {
+      "site": "110",
+      "cases": 10,
+      "source_checkpoint_sha256": "aa077f4dbd9f50e28bb4bdaad2d0c0d9b61b860c86ba956ba8caae4c4e85d18b",
+      "road_guard_sha256": "0bfe13c5c13bbd24e88c00daebd5193fc7e2de663b9184afb5a7694c97aec3dc",
+      "independent_road_height": {
+        "held_out_lidar_frames": [
+          1,
+          4,
+          7,
+          10,
+          13,
+          16,
+          19,
+          22,
+          25,
+          28,
+          31,
+          34,
+          37,
+          40,
+          43,
+          46,
+          49,
+          52,
+          55,
+          58,
+          61,
+          64,
+          67,
+          70,
+          73,
+          76,
+          79
+        ],
+        "sampled_surfels": 10000,
+        "matched_ground_samples": 7535,
+        "median_absolute_height_error_m": 0.006132841110229492,
+        "p95_absolute_height_error_m": 0.01761228144168853,
+        "max_absolute_height_error_m": 0.09497776627540588,
+        "unmatched_samples_including_blind_zone": 2465,
+        "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+      },
+      "case_road_checks": [
+        {
+          "case": "110_01",
+          "sha256": "0bfe13c5c13bbd24e88c00daebd5193fc7e2de663b9184afb5a7694c97aec3dc",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7535,
+            "median_absolute_height_error_m": 0.006132841110229492,
+            "p95_absolute_height_error_m": 0.01761228144168853,
+            "max_absolute_height_error_m": 0.09497776627540588,
+            "unmatched_samples_including_blind_zone": 2465,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "110_02",
+          "sha256": "6fb9296b6bb103e690fe2cfca2728093e0e3f3afdc9c2c9ce632add5f4ab0e52",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7456,
+            "median_absolute_height_error_m": 0.006069660186767578,
+            "p95_absolute_height_error_m": 0.017796870321035385,
+            "max_absolute_height_error_m": 0.08707639575004578,
+            "unmatched_samples_including_blind_zone": 2544,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "110_03",
+          "sha256": "335f87f930291c0357072d435f0e656f923dac68bc0892522e2b02414ceae98c",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7545,
+            "median_absolute_height_error_m": 0.006345182657241821,
+            "p95_absolute_height_error_m": 0.01780862212181091,
+            "max_absolute_height_error_m": 0.11516368389129639,
+            "unmatched_samples_including_blind_zone": 2455,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "110_04",
+          "sha256": "2616b4cebbb435e04b3d8ddb56f7a313b3b5955705383249e9687dfa4aa9bdbf",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7537,
+            "median_absolute_height_error_m": 0.006213754415512085,
+            "p95_absolute_height_error_m": 0.018043065071105955,
+            "max_absolute_height_error_m": 0.11373785138130188,
+            "unmatched_samples_including_blind_zone": 2463,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "110_05",
+          "sha256": "d9edb19d09024658cd82379d8135c81093482c738b7b65839e88a385e52934ae",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7557,
+            "median_absolute_height_error_m": 0.006089657545089722,
+            "p95_absolute_height_error_m": 0.017697608470916747,
+            "max_absolute_height_error_m": 0.10539883375167847,
+            "unmatched_samples_including_blind_zone": 2443,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "110_06",
+          "sha256": "28bd2ab05b017a80fb8a35f8da508ff6979344ff6f6a5dbaaeea956973b8bcdc",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7521,
+            "median_absolute_height_error_m": 0.006149023771286011,
+            "p95_absolute_height_error_m": 0.017929181456565857,
+            "max_absolute_height_error_m": 0.11468914151191711,
+            "unmatched_samples_including_blind_zone": 2479,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "110_07",
+          "sha256": "535eebe8e79fce33f9afae4b00dc97572e3fb9fce97281f8af3b7901575179fc",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7485,
+            "median_absolute_height_error_m": 0.006204426288604736,
+            "p95_absolute_height_error_m": 0.017668539285659774,
+            "max_absolute_height_error_m": 0.11604771018028259,
+            "unmatched_samples_including_blind_zone": 2515,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "110_08",
+          "sha256": "39dd595728484d5a29a710d24ca38327d8e0ee63d0337810f70722a7079bd6f3",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7609,
+            "median_absolute_height_error_m": 0.006298482418060303,
+            "p95_absolute_height_error_m": 0.017983359098434442,
+            "max_absolute_height_error_m": 0.11645644903182983,
+            "unmatched_samples_including_blind_zone": 2391,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "110_09",
+          "sha256": "e6d8e0d1ea220f6104dddcafe36512e78f3c9a74fc62cb6f4f9f03f14eb83345",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7556,
+            "median_absolute_height_error_m": 0.006297066807746887,
+            "p95_absolute_height_error_m": 0.018133584409952164,
+            "max_absolute_height_error_m": 0.0910024344921112,
+            "unmatched_samples_including_blind_zone": 2444,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        },
+        {
+          "case": "110_10",
+          "sha256": "13bc7ad6b62219fab1a327527267d64e9650148242eb401432d1579c47ebb1e2",
+          "independent_height": {
+            "held_out_lidar_frames": [
+              1,
+              4,
+              7,
+              10,
+              13,
+              16,
+              19,
+              22,
+              25,
+              28,
+              31,
+              34,
+              37,
+              40,
+              43,
+              46,
+              49,
+              52,
+              55,
+              58,
+              61,
+              64,
+              67,
+              70,
+              73,
+              76,
+              79
+            ],
+            "sampled_surfels": 10000,
+            "matched_ground_samples": 7494,
+            "median_absolute_height_error_m": 0.00612032413482666,
+            "p95_absolute_height_error_m": 0.017956119775772092,
+            "max_absolute_height_error_m": 0.09125417470932007,
+            "unmatched_samples_including_blind_zone": 2506,
+            "scope": "Height check only where independent held-out LiDAR exists; blind-zone continuation remains inferred."
+          }
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case": "034_01",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_3_02",
+          "world_error_m": 1.9072389036978166e-06,
+          "rotation_matrix_error": 1.8660607686848962e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_054319",
+          "world_error_m": 1.90734763805267e-06,
+          "rotation_matrix_error": 2.146554237136833e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000000_0a11ec168c15d5c8",
+          "world_error_m": 1.9073385928436437e-06,
+          "rotation_matrix_error": 2.2250194720019323e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000001_4afab717292f6782",
+          "world_error_m": 1.9073472259378832e-06,
+          "rotation_matrix_error": 1.9541516863008646e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.3156685011574701
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+          "world_error_m": 1.9073432113714262e-06,
+          "rotation_matrix_error": 1.896727819753613e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 18992,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.03324404761905
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 31.872876984126986
+        }
+      ]
+    },
+    {
+      "case": "034_02",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_07",
+          "world_error_m": 1.907338457840524e-06,
+          "rotation_matrix_error": 1.8585878003296585e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250227_171044",
+          "world_error_m": 1.9073104269295982e-06,
+          "rotation_matrix_error": 2.0434512815192818e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000003_85570e243c3138a2",
+          "world_error_m": 1.9073422592441602e-06,
+          "rotation_matrix_error": 2.1630624560953216e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000004_8ba41a67059a18dc",
+          "world_error_m": 1.9073444761374958e-06,
+          "rotation_matrix_error": 2.2266730297787474e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9959758551307847,
+            "median_hit_local_height_m": -0.26656054261262363
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000005_a666133127c6f4ef",
+          "world_error_m": 1.9073480217457472e-06,
+          "rotation_matrix_error": 1.9651643876072988e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 243,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.21540641784668e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.0325
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 31.903095238095236
+        }
+      ]
+    },
+    {
+      "case": "034_03",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_3_03",
+          "world_error_m": 1.9073353740850507e-06,
+          "rotation_matrix_error": 2.0091894778473396e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_045716",
+          "world_error_m": 1.9073243251455096e-06,
+          "rotation_matrix_error": 1.9406352122497417e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000006_a983f023288b5070",
+          "world_error_m": 1.9073340311592801e-06,
+          "rotation_matrix_error": 2.1275735614945113e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000007_6b61978511466731",
+          "world_error_m": 1.9073468351393785e-06,
+          "rotation_matrix_error": 2.0894320343009531e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.3402045531069997
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+          "world_error_m": 1.9073480856945935e-06,
+          "rotation_matrix_error": 1.9810776019819898e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 22983,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 8.940696716308594e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.03702380952381
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 31.928680555555555
+        }
+      ]
+    },
+    {
+      "case": "034_04",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_3_01",
+          "world_error_m": 1.907327330741282e-06,
+          "rotation_matrix_error": 1.876584825588612e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_124307",
+          "world_error_m": 1.9073431190008705e-06,
+          "rotation_matrix_error": 2.0000189041025074e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000009_8e562ac175ce4528",
+          "world_error_m": 1.9073460606477965e-06,
+          "rotation_matrix_error": 2.2089388267143573e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+          "world_error_m": 1.90734589011754e-06,
+          "rotation_matrix_error": 1.9460606281995751e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.3714929225651284
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000011_c945a5a3b22954e4",
+          "world_error_m": 1.9073446111406156e-06,
+          "rotation_matrix_error": 1.8385361286177293e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 6842,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.21540641784668e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.03722222222222
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 31.903492063492063
+        }
+      ]
+    },
+    {
+      "case": "034_05",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_35",
+          "world_error_m": 1.9071584702601285e-06,
+          "rotation_matrix_error": 1.8230733891955175e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250227_170940",
+          "world_error_m": 1.9073455064244627e-06,
+          "rotation_matrix_error": 2.1111777201432425e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000012_d799c1475b15c8a8",
+          "world_error_m": 1.9073419679216386e-06,
+          "rotation_matrix_error": 2.1401315092317574e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000013_57a135eb28005ff9",
+          "world_error_m": 1.9073393602297983e-06,
+          "rotation_matrix_error": 1.9549764737614161e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9979879275653923,
+            "median_hit_local_height_m": -0.2613683566824204
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000014_25f490d64cd5ca64",
+          "world_error_m": 1.9073472117270285e-06,
+          "rotation_matrix_error": 2.1760716475971442e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 281,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 4.470348358154297e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.03077380952381
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.0702876984127
+        }
+      ]
+    },
+    {
+      "case": "034_06",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_1_03",
+          "world_error_m": 1.9073273165304272e-06,
+          "rotation_matrix_error": 1.8942394752752278e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_132557",
+          "world_error_m": 1.9073239982958512e-06,
+          "rotation_matrix_error": 2.1106787856384202e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000000_d3b40cc2dba384e3",
+          "world_error_m": 1.907344916673992e-06,
+          "rotation_matrix_error": 2.2213392375514118e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+          "world_error_m": 1.9073427282023658e-06,
+          "rotation_matrix_error": 2.0804913543337467e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.3281012686004493
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+          "world_error_m": 1.9073478867426275e-06,
+          "rotation_matrix_error": 2.186797332104362e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 550,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.03734126984127
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 31.950545634920633
+        }
+      ]
+    },
+    {
+      "case": "034_07",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_1_18",
+          "world_error_m": 1.907324154615253e-06,
+          "rotation_matrix_error": 2.0191541155734072e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_131813",
+          "world_error_m": 1.9073465935548484e-06,
+          "rotation_matrix_error": 2.006715776603496e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000003_7b3b1987a07ecc49",
+          "world_error_m": 1.9073366246402657e-06,
+          "rotation_matrix_error": 2.210202500185776e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000004_ec6ab7a51fc74884",
+          "world_error_m": 1.9073454495810438e-06,
+          "rotation_matrix_error": 1.9425522870819556e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.41591642487286884
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000005_8342d657505675c0",
+          "world_error_m": 1.9073464230245918e-06,
+          "rotation_matrix_error": 2.3504731980206195e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 651,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.038670634920635
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.162420634920636
+        }
+      ]
+    },
+    {
+      "case": "034_08",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_16",
+          "world_error_m": 1.9073481638542944e-06,
+          "rotation_matrix_error": 1.927911875837518e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250227_190609",
+          "world_error_m": 1.9073186265927689e-06,
+          "rotation_matrix_error": 2.0317230980948509e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000006_b4cb6f5815d68448",
+          "world_error_m": 1.9073264638791443e-06,
+          "rotation_matrix_error": 2.2027025994852956e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000007_4def79cf31fcbd38",
+          "world_error_m": 1.9073443837669402e-06,
+          "rotation_matrix_error": 1.897914625459407e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9899396378269618,
+            "median_hit_local_height_m": -0.24121130755535636
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+          "world_error_m": 1.9073472259378832e-06,
+          "rotation_matrix_error": 1.8443568336468097e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 15600,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 8.940696716308594e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.032698412698416
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 31.832410714285714
+        }
+      ]
+    },
+    {
+      "case": "034_09",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_24",
+          "world_error_m": 1.9073364612154364e-06,
+          "rotation_matrix_error": 2.0088164220943838e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_135233",
+          "world_error_m": 1.9073431261062979e-06,
+          "rotation_matrix_error": 2.058946898808589e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000009_75172e61c8a78a65",
+          "world_error_m": 1.9073413710657405e-06,
+          "rotation_matrix_error": 2.117562168391096e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000010_afeed0ac3cee14f6",
+          "world_error_m": 1.907347439100704e-06,
+          "rotation_matrix_error": 1.946683613179151e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.26944980345233244
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+          "world_error_m": 1.9073315726814144e-06,
+          "rotation_matrix_error": 1.8935062473524056e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 24168,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 8.940696716308594e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.03579365079365
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 31.90235119047619
+        }
+      ]
+    },
+    {
+      "case": "034_10",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_08",
+          "world_error_m": 1.9073339529995792e-06,
+          "rotation_matrix_error": 1.9410398371944027e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_050151",
+          "world_error_m": 1.9071191346142768e-06,
+          "rotation_matrix_error": 2.077572846814757e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000012_67a3e77cbfabf91a",
+          "world_error_m": 1.9073453643159155e-06,
+          "rotation_matrix_error": 2.1660887258856398e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000013_55d3b0a942a15712",
+          "world_error_m": 1.907335139605948e-06,
+          "rotation_matrix_error": 2.0196696273733217e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.34996795579135553
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000014_285bd2e35a859ee1",
+          "world_error_m": 1.9073460180152324e-06,
+          "rotation_matrix_error": 2.122323840281215e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 888,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 6.705522537231445e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 32.029761904761905
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 31.84385912698413
+        }
+      ]
+    },
+    {
+      "case": "109_01",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_3_02",
+          "world_error_m": 1.9073068600050647e-06,
+          "rotation_matrix_error": 1.6357104298814207e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_054319",
+          "world_error_m": 1.9073241688261078e-06,
+          "rotation_matrix_error": 9.395919620125426e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000000_0a11ec168c15d5c8",
+          "world_error_m": 1.9073483912279698e-06,
+          "rotation_matrix_error": 1.9522305799019035e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000001_4afab717292f6782",
+          "world_error_m": 1.9073482988574142e-06,
+          "rotation_matrix_error": 1.97369563553762e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.3154911027226859
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+          "world_error_m": 1.9073476948960888e-06,
+          "rotation_matrix_error": 1.9268419290674466e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 18992,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 8.940696716308594e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.72527777777778
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.71860119047619
+        }
+      ]
+    },
+    {
+      "case": "109_02",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_07",
+          "world_error_m": 1.9073100432365209e-06,
+          "rotation_matrix_error": 9.822866359199267e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250227_171044",
+          "world_error_m": 1.9073314021511578e-06,
+          "rotation_matrix_error": 1.327140335960486e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000003_85570e243c3138a2",
+          "world_error_m": 1.9073425221449725e-06,
+          "rotation_matrix_error": 1.840190424484689e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000004_8ba41a67059a18dc",
+          "world_error_m": 1.907344795881727e-06,
+          "rotation_matrix_error": 2.3318749870632205e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.993963782696177,
+            "median_hit_local_height_m": -0.2667698056475438
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000005_a666133127c6f4ef",
+          "world_error_m": 1.9073467498742502e-06,
+          "rotation_matrix_error": 1.974802992799063e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 243,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.72325396825397
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.72593253968254
+        }
+      ]
+    },
+    {
+      "case": "109_03",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_3_03",
+          "world_error_m": 1.907333533779365e-06,
+          "rotation_matrix_error": 1.4619519508873857e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_045716",
+          "world_error_m": 1.9073317787388078e-06,
+          "rotation_matrix_error": 9.242093346184532e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000006_a983f023288b5070",
+          "world_error_m": 1.9073481638542944e-06,
+          "rotation_matrix_error": 1.5122732588412902e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000007_6b61978511466731",
+          "world_error_m": 1.9073409163183896e-06,
+          "rotation_matrix_error": 1.9805061692024228e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.3398813519452217
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+          "world_error_m": 1.9073484409659613e-06,
+          "rotation_matrix_error": 2.0124091670153943e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 22983,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 8.940696716308594e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.725426587301584
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.72315476190476
+        }
+      ]
+    },
+    {
+      "case": "109_04",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_3_01",
+          "world_error_m": 1.9073436803296318e-06,
+          "rotation_matrix_error": 1.3657040875969528e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_124307",
+          "world_error_m": 1.9073159123195182e-06,
+          "rotation_matrix_error": 1.0315741083566365e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000009_8e562ac175ce4528",
+          "world_error_m": 1.907348334384551e-06,
+          "rotation_matrix_error": 1.8566216472559738e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+          "world_error_m": 1.907342074503049e-06,
+          "rotation_matrix_error": 2.010282069003777e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.37141291359855055
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000011_c945a5a3b22954e4",
+          "world_error_m": 1.9073457693252749e-06,
+          "rotation_matrix_error": 1.9293471313630572e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 6842,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.72114087301587
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.71436507936508
+        }
+      ]
+    },
+    {
+      "case": "109_05",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_35",
+          "world_error_m": 1.9073176602546482e-06,
+          "rotation_matrix_error": 9.99207491192422e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250227_170940",
+          "world_error_m": 1.9073456769547192e-06,
+          "rotation_matrix_error": 9.277189183531931e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000012_d799c1475b15c8a8",
+          "world_error_m": 1.9073485830745085e-06,
+          "rotation_matrix_error": 1.891566799860911e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000013_57a135eb28005ff9",
+          "world_error_m": 1.9073472969921568e-06,
+          "rotation_matrix_error": 2.165402526732585e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9959758551307847,
+            "median_hit_local_height_m": -0.2627685448058794
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000014_25f490d64cd5ca64",
+          "world_error_m": 1.9073478512154907e-06,
+          "rotation_matrix_error": 2.178658466064909e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 281,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.21540641784668e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.73164682539682
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.70540674603175
+        }
+      ]
+    },
+    {
+      "case": "109_06",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_1_03",
+          "world_error_m": 1.9072951928933435e-06,
+          "rotation_matrix_error": 1.722116362906298e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_132557",
+          "world_error_m": 1.907317773941486e-06,
+          "rotation_matrix_error": 1.469674393850262e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000000_d3b40cc2dba384e3",
+          "world_error_m": 1.9073481283271576e-06,
+          "rotation_matrix_error": 1.515438324134477e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+          "world_error_m": 1.9073480999054482e-06,
+          "rotation_matrix_error": 2.0442524442665366e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.3284471546397069
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+          "world_error_m": 1.9073469701424983e-06,
+          "rotation_matrix_error": 1.9955816875361077e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 550,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.73000992063492
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.7366369047619
+        }
+      ]
+    },
+    {
+      "case": "109_07",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_1_18",
+          "world_error_m": 1.9073295831617543e-06,
+          "rotation_matrix_error": 1.6771836716666932e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_131813",
+          "world_error_m": 1.9073275794312394e-06,
+          "rotation_matrix_error": 8.955030461610392e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000003_7b3b1987a07ecc49",
+          "world_error_m": 1.9073379533551815e-06,
+          "rotation_matrix_error": 1.4872040254160224e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000004_ec6ab7a51fc74884",
+          "world_error_m": 1.907348455176816e-06,
+          "rotation_matrix_error": 2.0438547310153155e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.4155857130722213
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000005_8342d657505675c0",
+          "world_error_m": 1.9073450729933938e-06,
+          "rotation_matrix_error": 2.0064467922548124e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 651,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.7294246031746
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.70747023809524
+        }
+      ]
+    },
+    {
+      "case": "109_08",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_16",
+          "world_error_m": 1.9073437371730506e-06,
+          "rotation_matrix_error": 1.0677097836420124e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250227_190609",
+          "world_error_m": 1.9073313595185937e-06,
+          "rotation_matrix_error": 1.0075599299330662e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000006_b4cb6f5815d68448",
+          "world_error_m": 1.9073446537731797e-06,
+          "rotation_matrix_error": 2.004678544553773e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000007_4def79cf31fcbd38",
+          "world_error_m": 1.90734451877006e-06,
+          "rotation_matrix_error": 2.0203326109302644e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9879275653923542,
+            "median_hit_local_height_m": -0.24053585903572758
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+          "world_error_m": 1.9073473538355756e-06,
+          "rotation_matrix_error": 1.9923682638423035e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 15600,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.735079365079365
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.71133928571429
+        }
+      ]
+    },
+    {
+      "case": "109_09",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_24",
+          "world_error_m": 1.90734414218241e-06,
+          "rotation_matrix_error": 1.0992562204936718e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_135233",
+          "world_error_m": 1.907347780161217e-06,
+          "rotation_matrix_error": 9.571918890838305e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000009_75172e61c8a78a65",
+          "world_error_m": 1.9073484054388246e-06,
+          "rotation_matrix_error": 1.6488146686866045e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000010_afeed0ac3cee14f6",
+          "world_error_m": 1.9073480999054482e-06,
+          "rotation_matrix_error": 2.0417150416868202e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.2674481594976154
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+          "world_error_m": 1.9073483841225425e-06,
+          "rotation_matrix_error": 1.9604858835647887e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 24168,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 8.940696716308594e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.72251984126984
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.71019841269841
+        }
+      ]
+    },
+    {
+      "case": "109_10",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_08",
+          "world_error_m": 1.9073449095685646e-06,
+          "rotation_matrix_error": 1.0730346267084911e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_050151",
+          "world_error_m": 1.9070497430107025e-06,
+          "rotation_matrix_error": 1.2434464263799683e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000012_67a3e77cbfabf91a",
+          "world_error_m": 1.9073395378654823e-06,
+          "rotation_matrix_error": 1.883997451240793e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000013_55d3b0a942a15712",
+          "world_error_m": 1.9073422663495876e-06,
+          "rotation_matrix_error": 2.0862842260022108e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.35145594385242945
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000014_285bd2e35a859ee1",
+          "world_error_m": 1.9073458545904032e-06,
+          "rotation_matrix_error": 2.1826584482853573e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 888,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 3.725290298461914e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.72257936507936
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 34.69244047619048
+        }
+      ]
+    },
+    {
+      "case": "110_01",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_3_02",
+          "world_error_m": 2.3841475016439517e-07,
+          "rotation_matrix_error": 1.67643799453554e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_054319",
+          "world_error_m": 4.7683129089648446e-07,
+          "rotation_matrix_error": 8.561000075513192e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000000_0a11ec168c15d5c8",
+          "world_error_m": 4.7683686688060334e-07,
+          "rotation_matrix_error": 1.9986053576958457e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000001_4afab717292f6782",
+          "world_error_m": 4.7683711024149034e-07,
+          "rotation_matrix_error": 1.958985963307347e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9879275653923542,
+            "median_hit_local_height_m": -0.287347918071712
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+          "world_error_m": 4.7683692194766536e-07,
+          "rotation_matrix_error": 2.1585061123208238e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 18992,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.00592261904762
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.0302380952381
+        }
+      ]
+    },
+    {
+      "case": "110_02",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_07",
+          "world_error_m": 2.384172672620366e-07,
+          "rotation_matrix_error": 1.0215049595085901e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250227_171044",
+          "world_error_m": 4.768369681329432e-07,
+          "rotation_matrix_error": 1.0501946363927761e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000003_85570e243c3138a2",
+          "world_error_m": 4.7683646542395763e-07,
+          "rotation_matrix_error": 1.596979173504407e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000004_8ba41a67059a18dc",
+          "world_error_m": 4.7683654180730173e-07,
+          "rotation_matrix_error": 1.9809137356829876e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9738430583501007,
+            "median_hit_local_height_m": -0.2379879872265888
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000005_a666133127c6f4ef",
+          "world_error_m": 4.768366945739899e-07,
+          "rotation_matrix_error": 2.0168496549580195e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 243,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.01340277777778
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.219652777777775
+        }
+      ]
+    },
+    {
+      "case": "110_03",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_3_03",
+          "world_error_m": 2.3841488960840707e-07,
+          "rotation_matrix_error": 1.7917198685823976e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_045716",
+          "world_error_m": 4.7683198012293815e-07,
+          "rotation_matrix_error": 9.025400637963088e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000006_a983f023288b5070",
+          "world_error_m": 4.768365311491607e-07,
+          "rotation_matrix_error": 1.760536973982596e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000007_6b61978511466731",
+          "world_error_m": 4.7683621851035696e-07,
+          "rotation_matrix_error": 2.04327310834862e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 0.994328922495274,
+            "median_hit_local_height_m": -0.3069668516846207
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+          "world_error_m": 4.7683574955215136e-07,
+          "rotation_matrix_error": 1.8978512561496075e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 22983,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 8.940696716308594e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.00418650793651
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.06588293650794
+        }
+      ]
+    },
+    {
+      "case": "110_04",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_3_01",
+          "world_error_m": 2.384174973002473e-07,
+          "rotation_matrix_error": 1.6091459498213112e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_124307",
+          "world_error_m": 4.768329926463366e-07,
+          "rotation_matrix_error": 9.319733929036289e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000009_8e562ac175ce4528",
+          "world_error_m": 4.76832623164114e-07,
+          "rotation_matrix_error": 1.9403232902337475e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+          "world_error_m": 4.7683662351971634e-07,
+          "rotation_matrix_error": 2.0028638310354285e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 0.998109640831758,
+            "median_hit_local_height_m": -0.34454464892754033
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000011_c945a5a3b22954e4",
+          "world_error_m": 4.76836760299193e-07,
+          "rotation_matrix_error": 1.8671545287674007e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 6842,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.005674603174604
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.005873015873014
+        }
+      ]
+    },
+    {
+      "case": "110_05",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_35",
+          "world_error_m": 2.3841654783751665e-07,
+          "rotation_matrix_error": 1.1430788710020678e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250227_170940",
+          "world_error_m": 4.768280454925389e-07,
+          "rotation_matrix_error": 8.970978693234599e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261120_000012_d799c1475b15c8a8",
+          "world_error_m": 4.768371262287019e-07,
+          "rotation_matrix_error": 1.6054630636030964e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261120_000013_57a135eb28005ff9",
+          "world_error_m": 4.768366892449194e-07,
+          "rotation_matrix_error": 1.8775490569222786e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9798792756539235,
+            "median_hit_local_height_m": -0.2407458047823574
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261120_000014_25f490d64cd5ca64",
+          "world_error_m": 4.7683700721279365e-07,
+          "rotation_matrix_error": 2.202956840280379e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 281,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.21540641784668e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.01031746031746
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.42611111111111
+        }
+      ]
+    },
+    {
+      "case": "110_06",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_1_03",
+          "world_error_m": 2.3841704521743168e-07,
+          "rotation_matrix_error": 1.445293517920998e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_132557",
+          "world_error_m": 4.768366483887121e-07,
+          "rotation_matrix_error": 1.3786386687808516e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000000_d3b40cc2dba384e3",
+          "world_error_m": 4.768360035711794e-07,
+          "rotation_matrix_error": 1.6741033592726495e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+          "world_error_m": 4.768363606189041e-07,
+          "rotation_matrix_error": 1.9946135569257062e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9919517102615694,
+            "median_hit_local_height_m": -0.2993485251936287
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+          "world_error_m": 4.768366075325048e-07,
+          "rotation_matrix_error": 2.1301850789030852e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 550,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.960464477539063e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.01006944444445
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.26498015873016
+        }
+      ]
+    },
+    {
+      "case": "110_07",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_1_18",
+          "world_error_m": 2.3841659846368657e-07,
+          "rotation_matrix_error": 1.587212447029529e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_131813",
+          "world_error_m": 4.7681113812814147e-07,
+          "rotation_matrix_error": 8.210555269005937e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000003_7b3b1987a07ecc49",
+          "world_error_m": 4.768358827789143e-07,
+          "rotation_matrix_error": 1.721713951408077e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000004_ec6ab7a51fc74884",
+          "world_error_m": 4.768368970786696e-07,
+          "rotation_matrix_error": 2.1273430317325648e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 1.0,
+            "median_hit_local_height_m": -0.384992955606994
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000005_8342d657505675c0",
+          "world_error_m": 4.7683709780699246e-07,
+          "rotation_matrix_error": 2.2144612868250924e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 651,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 5.21540641784668e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.00340277777778
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.57628968253968
+        }
+      ]
+    },
+    {
+      "case": "110_08",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_16",
+          "world_error_m": 2.3841772378574433e-07,
+          "rotation_matrix_error": 1.0464539274002149e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250227_190609",
+          "world_error_m": 4.76835543494758e-07,
+          "rotation_matrix_error": 9.306250037255381e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000006_b4cb6f5815d68448",
+          "world_error_m": 4.768346162364878e-07,
+          "rotation_matrix_error": 1.8494141779124007e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000007_4def79cf31fcbd38",
+          "world_error_m": 4.768369006313833e-07,
+          "rotation_matrix_error": 2.3070505422023713e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9678068410462777,
+            "median_hit_local_height_m": -0.22111223144988645
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+          "world_error_m": 4.7683604620374354e-07,
+          "rotation_matrix_error": 2.0718257243146354e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 15600,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 8.940696716308594e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.007331349206346
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 40.96671626984127
+        }
+      ]
+    },
+    {
+      "case": "110_09",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_24",
+          "world_error_m": 2.3841632224019804e-07,
+          "rotation_matrix_error": 1.371010205919454e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_135233",
+          "world_error_m": 4.7683458959113523e-07,
+          "rotation_matrix_error": 8.879592261479274e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000009_75172e61c8a78a65",
+          "world_error_m": 4.768349661787852e-07,
+          "rotation_matrix_error": 1.62664247238542e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000010_afeed0ac3cee14f6",
+          "world_error_m": 4.76836516938306e-07,
+          "rotation_matrix_error": 2.1496228317166577e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 529,
+            "below_road_7cm_fraction": 0.9924385633270322,
+            "median_hit_local_height_m": -0.24513960257484507
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+          "world_error_m": 4.768363908169704e-07,
+          "rotation_matrix_error": 1.950991940259661e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 24168,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 8.940696716308594e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.00515873015873
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.01808531746032
+        }
+      ]
+    },
+    {
+      "case": "110_10",
+      "checks": [
+        {
+          "asset_id": "stereo_pothole_fan_2_08",
+          "world_error_m": 2.3841635332644273e-07,
+          "rotation_matrix_error": 9.144786600190358e-08,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "rgbd_pothole_20250305_050151",
+          "world_error_m": 4.7673188241503794e-07,
+          "rotation_matrix_error": 1.060205999103836e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_pothole_20261119_000012_67a3e77cbfabf91a",
+          "world_error_m": 4.768365897689364e-07,
+          "rotation_matrix_error": 2.047813239536289e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_missing_20261119_000013_55d3b0a942a15712",
+          "world_error_m": 4.768365950980069e-07,
+          "rotation_matrix_error": 1.99582005207255e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": {
+            "rays": 497,
+            "below_road_7cm_fraction": 0.9959758551307847,
+            "median_hit_local_height_m": -0.32520966039247345
+          },
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": null
+        },
+        {
+          "asset_id": "factory_raised_20261119_000014_285bd2e35a859ee1",
+          "world_error_m": 4.768351651307512e-07,
+          "rotation_matrix_error": 2.395269119159771e-07,
+          "physical_scales_unchanged": true,
+          "footprint_color_coverage": 1.0,
+          "cavity": null,
+          "reload_max_pixel_error": 0,
+          "metal_material_preservation": {
+            "downward_surface_points": 888,
+            "maximum_rgb_error_from_exposure_corrected_canonical": 3.725290298461914e-08
+          }
+        }
+      ],
+      "actor_sky_equal": true,
+      "retained_background_parameters_equal": true,
+      "global_motion": [
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.00962301587302
+        },
+        {
+          "unique_scene_frames": 40,
+          "scene_pixel_change": 41.1559126984127
+        }
+      ]
+    }
+  ],
+  "videos": [],
+  "technical_checks_passed": true,
+  "new_asset_count": 30,
+  "native_scene_versions": 30,
+  "actual_placements": 150,
+  "unique_asset_scene_pairs": 150,
+  "all_physical_scale_1": true,
+  "category_unique_assets": {
+    "stereo": 10,
+    "rgbd": 10,
+    "pothole": 10,
+    "missing": 10,
+    "raised": 10
+  },
+  "new_asset_materials": [
+    "aged_asphalt",
+    "chip_seal",
+    "concrete",
+    "fine_asphalt"
+  ],
+  "caveat": "File/geometry/motion checks do not constitute a photorealism rating."
+}

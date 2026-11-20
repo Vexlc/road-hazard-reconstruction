@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "videos": [
+    {
+      "file": "30个设计资产_4x4环绕.mp4",
+      "decoded_all_frames": 192,
+      "source_size": [
+        2560,
+        1920
+      ],
+      "fps": 24.0,
+      "half_orbit_pixel_change": [
+        4.7288713455200195,
+        3.4336068630218506
+      ]
+    },
+    {
+      "file": "材质与接触遮蔽_三维检查对照.mp4",
+      "decoded_all_frames": 192,
+      "source_size": [
+        1920,
+        640
+      ],
+      "fps": 24.0,
+      "half_orbit_pixel_change": []
+    }
+  ]
+}
