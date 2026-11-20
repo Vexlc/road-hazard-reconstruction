@@ -1,0 +1,399 @@
+{
+  "passed": true,
+  "checked_native_well_placements": 60,
+  "checked_camera_angles": 1440,
+  "framing_checks": [
+    {
+      "case": "034_01",
+      "asset_id": "factory_missing_20261120_000001_4afab717292f6782",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 83.9962743195386
+    },
+    {
+      "case": "034_01",
+      "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 91.08484430146052
+    },
+    {
+      "case": "034_02",
+      "asset_id": "factory_missing_20261120_000004_8ba41a67059a18dc",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 84.54179441719265
+    },
+    {
+      "case": "034_02",
+      "asset_id": "factory_raised_20261120_000005_a666133127c6f4ef",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 68.39609824008369
+    },
+    {
+      "case": "034_03",
+      "asset_id": "factory_missing_20261120_000007_6b61978511466731",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 81.52960440268066
+    },
+    {
+      "case": "034_03",
+      "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 68.54220811616187
+    },
+    {
+      "case": "034_04",
+      "asset_id": "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 79.9506150748822
+    },
+    {
+      "case": "034_04",
+      "asset_id": "factory_raised_20261120_000011_c945a5a3b22954e4",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 80.18737143785955
+    },
+    {
+      "case": "034_05",
+      "asset_id": "factory_missing_20261120_000013_57a135eb28005ff9",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 92.35103820374411
+    },
+    {
+      "case": "034_05",
+      "asset_id": "factory_raised_20261120_000014_25f490d64cd5ca64",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 64.45250495575795
+    },
+    {
+      "case": "034_06",
+      "asset_id": "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 79.12833334489153
+    },
+    {
+      "case": "034_06",
+      "asset_id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 60.87606432972501
+    },
+    {
+      "case": "034_07",
+      "asset_id": "factory_missing_20261119_000004_ec6ab7a51fc74884",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 73.34980177300429
+    },
+    {
+      "case": "034_07",
+      "asset_id": "factory_raised_20261119_000005_8342d657505675c0",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 57.8145529589076
+    },
+    {
+      "case": "034_08",
+      "asset_id": "factory_missing_20261119_000007_4def79cf31fcbd38",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 84.3545144159475
+    },
+    {
+      "case": "034_08",
+      "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 101.28521316291159
+    },
+    {
+      "case": "034_09",
+      "asset_id": "factory_missing_20261119_000010_afeed0ac3cee14f6",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 90.29296818759428
+    },
+    {
+      "case": "034_09",
+      "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 88.88651081655217
+    },
+    {
+      "case": "034_10",
+      "asset_id": "factory_missing_20261119_000013_55d3b0a942a15712",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 74.75918825762233
+    },
+    {
+      "case": "034_10",
+      "asset_id": "factory_raised_20261119_000014_285bd2e35a859ee1",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 58.8794289695619
+    },
+    {
+      "case": "109_01",
+      "asset_id": "factory_missing_20261120_000001_4afab717292f6782",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 83.8310819811411
+    },
+    {
+      "case": "109_01",
+      "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 92.34065931335806
+    },
+    {
+      "case": "109_02",
+      "asset_id": "factory_missing_20261120_000004_8ba41a67059a18dc",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 84.26951335924508
+    },
+    {
+      "case": "109_02",
+      "asset_id": "factory_raised_20261120_000005_a666133127c6f4ef",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 69.37068606859032
+    },
+    {
+      "case": "109_03",
+      "asset_id": "factory_missing_20261120_000007_6b61978511466731",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 81.61830146358477
+    },
+    {
+      "case": "109_03",
+      "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 68.51592937773637
+    },
+    {
+      "case": "109_04",
+      "asset_id": "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 79.99785183915913
+    },
+    {
+      "case": "109_04",
+      "asset_id": "factory_raised_20261120_000011_c945a5a3b22954e4",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 80.25896746671646
+    },
+    {
+      "case": "109_05",
+      "asset_id": "factory_missing_20261120_000013_57a135eb28005ff9",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 92.20696469706127
+    },
+    {
+      "case": "109_05",
+      "asset_id": "factory_raised_20261120_000014_25f490d64cd5ca64",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 64.88722980461375
+    },
+    {
+      "case": "109_06",
+      "asset_id": "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 78.94067330427333
+    },
+    {
+      "case": "109_06",
+      "asset_id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 60.604461606401514
+    },
+    {
+      "case": "109_07",
+      "asset_id": "factory_missing_20261119_000004_ec6ab7a51fc74884",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 73.1570710813449
+    },
+    {
+      "case": "109_07",
+      "asset_id": "factory_raised_20261119_000005_8342d657505675c0",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 58.16311790474424
+    },
+    {
+      "case": "109_08",
+      "asset_id": "factory_missing_20261119_000007_4def79cf31fcbd38",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 84.17184905023078
+    },
+    {
+      "case": "109_08",
+      "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 99.58092610536886
+    },
+    {
+      "case": "109_09",
+      "asset_id": "factory_missing_20261119_000010_afeed0ac3cee14f6",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 90.03578137628188
+    },
+    {
+      "case": "109_09",
+      "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 89.25407591134024
+    },
+    {
+      "case": "109_10",
+      "asset_id": "factory_missing_20261119_000013_55d3b0a942a15712",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 74.55668096825337
+    },
+    {
+      "case": "109_10",
+      "asset_id": "factory_raised_20261119_000014_285bd2e35a859ee1",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 58.90802859483972
+    },
+    {
+      "case": "110_01",
+      "asset_id": "factory_missing_20261120_000001_4afab717292f6782",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 85.5443458005094
+    },
+    {
+      "case": "110_01",
+      "asset_id": "factory_raised_20261120_000002_aa720cb47959b3b4",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 90.67885007590172
+    },
+    {
+      "case": "110_02",
+      "asset_id": "factory_missing_20261120_000004_8ba41a67059a18dc",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 86.87194233968381
+    },
+    {
+      "case": "110_02",
+      "asset_id": "factory_raised_20261120_000005_a666133127c6f4ef",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 67.87636224911296
+    },
+    {
+      "case": "110_03",
+      "asset_id": "factory_missing_20261120_000007_6b61978511466731",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 82.76615691119775
+    },
+    {
+      "case": "110_03",
+      "asset_id": "factory_raised_20261120_000008_4676785bab446fc9",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 68.87609294782703
+    },
+    {
+      "case": "110_04",
+      "asset_id": "factory_missing_20261120_000010_7e5acdffc6b7ebf0",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 80.71538793045596
+    },
+    {
+      "case": "110_04",
+      "asset_id": "factory_raised_20261120_000011_c945a5a3b22954e4",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 81.39913892686013
+    },
+    {
+      "case": "110_05",
+      "asset_id": "factory_missing_20261120_000013_57a135eb28005ff9",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 93.70350940037741
+    },
+    {
+      "case": "110_05",
+      "asset_id": "factory_raised_20261120_000014_25f490d64cd5ca64",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 64.99117259433262
+    },
+    {
+      "case": "110_06",
+      "asset_id": "factory_missing_20261119_000001_c4a7e0c5cd3d63f2",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 80.84101832600942
+    },
+    {
+      "case": "110_06",
+      "asset_id": "factory_raised_20261119_000002_f8c6c6f77add2a0f",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 59.964701600040144
+    },
+    {
+      "case": "110_07",
+      "asset_id": "factory_missing_20261119_000004_ec6ab7a51fc74884",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 74.14454108955715
+    },
+    {
+      "case": "110_07",
+      "asset_id": "factory_raised_20261119_000005_8342d657505675c0",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 58.35947232094952
+    },
+    {
+      "case": "110_08",
+      "asset_id": "factory_missing_20261119_000007_4def79cf31fcbd38",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 86.38307666998094
+    },
+    {
+      "case": "110_08",
+      "asset_id": "factory_raised_20261119_000008_1dd67160bef05522",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 100.83542306033814
+    },
+    {
+      "case": "110_09",
+      "asset_id": "factory_missing_20261119_000010_afeed0ac3cee14f6",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 91.18675962136382
+    },
+    {
+      "case": "110_09",
+      "asset_id": "factory_raised_20261119_000011_46c8fd9e3ec0aaa7",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 87.96251328861422
+    },
+    {
+      "case": "110_10",
+      "asset_id": "factory_missing_20261119_000013_55d3b0a942a15712",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 76.45606859180623
+    },
+    {
+      "case": "110_10",
+      "asset_id": "factory_raised_20261119_000014_285bd2e35a859ee1",
+      "angles": 24,
+      "minimum_structural_vertex_margin_px": 59.26593156189051
+    }
+  ],
+  "example_case": "109_10",
+  "example_original_clipped_vertices_per_frame": [
+    17048,
+    17186,
+    17285,
+    17375,
+    17448,
+    17497,
+    17533,
+    17545,
+    17558,
+    17546,
+    17506,
+    17465,
+    17411,
+    17324,
+    17237,
+    17131,
+    16995,
+    16847,
+    16698,
+    16537,
+    16339,
+    16151,
+    15940,
+    15728
+  ],
+  "example_new_clipped_structural_vertices": 0,
+  "native_checkpoint_byte_unchanged": true,
+  "checkpoint_sha256": "b1f2000e9ebaa174108de3edbffbf89b002628f986b9c05613ef393985443adf",
+  "method": "Fit the full frame/lid bounding box with 15mm geometric padding and 28px image margin. No asset scaling.",
+  "scope": "Camera-fit preview. Existing v3 native checkpoints and five review videos are unchanged; this does not improve background sharpness or lighting."
+}

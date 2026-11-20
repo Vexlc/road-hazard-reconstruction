@@ -38,5 +38,10 @@
     "实拍资产跨帧去重和RGB-D实物尺度校准待做",
     "部分竖起井盖在局部近景存在边缘裁切，下一版相机取景需要修正"
   ],
-  "cloud_sync": "upload_in_progress"
+  "cloud_sync": "see catalog/downloads.json and factory-v3 cloud-upload report",
+  "camera_fitting_preview_verified": {
+    "well_placements": 60,
+    "angles": 1440,
+    "main_pipeline_integrated": false
+  }
 }

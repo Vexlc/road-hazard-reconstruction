@@ -89,3 +89,9 @@ python scripts/hazard_factory/migrate_all.py --job work/hazard_factory_v3/migrat
 恢复工具现在按扩展名及文件头区分ZIP与zstd；大型tar.zst中的NPZ末尾记录曾导致ZIP探测误识别，该问题已用本版实际归档恢复测试覆盖。
 
 另一个源码目录的30份恢复检查点与原文件字节一致，重新迁入3份第10组场景得到30张像素完全一致的前后图；仍是同一物理机器，不能当作跨硬件验证。所有1200个行车帧已执行低视角井壁探针，最多6个微弱残留像素继续保留复查标记。部分竖起井盖的局部近景有边缘裁切，尚未修正。
+
+## 完整井盖取景预览
+
+camera_fit.py 根据完整井框、井盖的几何包围盒和15mm外扩量求解相机距离，保留28px画面边距。review_framing.py 已对60处井类放置、1440个观察角度检查几何范围，原生检查点保持不变；109_10的2秒实渲染对照中，原固定距离镜头裁切井盖上沿，新镜头显示完整井盖。此预览尚未集成到五类综合视频或联合迁入主入口，不能据此声称主入口已修正局部裁切。
+
+运行时设置 HAZARD_FACTORY_JOB、ROAD_BATCH_WORK、FRAMING_REVIEW_OUTPUT；用相应配置运行 review_framing.py --config /absolute/pandaset_109.yaml mode trajectory。FRAMING_REVIEW_CASE 默认为109_10。该脚本只写入指定预览输出目录，不改变原生场景。
