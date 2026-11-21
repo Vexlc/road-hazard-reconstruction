@@ -1,7 +1,6 @@
 """Publish a matched photo, orthophoto, held-out projection, GLB and transfer plate."""
 import argparse
 import importlib.util
-import json
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
@@ -31,12 +30,16 @@ def render(run,site,report,out):
         with Image.open(path) as im:
             thumb=ImageOps.contain(im.convert('RGB'),(w,h),Image.Resampling.LANCZOS)
             page.paste(thumb,(x+(w-thumb.width)//2,y+(h-thumb.height)//2))
-    text(30,19,'从实拍道路重建一套可动井盖',42,True)
-    text(31,80,f"PandaSet {fit['sequence']}   ·   外圈直径 {fit['frame_diameter_m']:.3f} m   ·   盖面直径 {fit['lid_diameter_m']:.3f} m",22)
+    text(30,19,'从实拍道路重建带修补圈的小型盖板' if 'apron_xy_extent_m' in fit else '从实拍道路重建一套可动井盖',42,True)
+    detail=f"盖面直径 {fit['lid_diameter_m']:.3f} m"
+    if 'apron_xy_extent_m' in fit:
+        w,h=fit['apron_xy_extent_m']
+        detail=f"修补圈 {w:.3f} × {h:.3f} m"
+    text(31,80,f"PandaSet {fit['sequence']}   ·   金属外缘直径 {fit['frame_diameter_m']:.3f} m   ·   "+detail,22)
     xcols=[30,488,946]
     key=fit['heldout_frames'][0]
     source_images=[bundle/'references/capture.png',bundle/'references/frame.png',run/'reprojection'/(key+'-registered.png')]
-    source_names=['前视原图　拟合帧 '+fit['fit_frames'][0].rsplit('_',1)[1],'双帧融合　盖面正射纹理','留出前视帧 '+key.rsplit('_',1)[1]+'　GLB 外圈回投']
+    source_names=['前视原图　拟合帧 '+fit['fit_frames'][0].rsplit('_',1)[1],'双帧融合　正射纹理','留出前视帧 '+key.rsplit('_',1)[1]+'　GLB 外圈回投']
     for x,title,img in zip(xcols,source_names,source_images):
         text(x,134,title,20,True)
         panel(img,x,170,440,174,'#dedfd7')
@@ -47,7 +50,8 @@ def render(run,site,report,out):
         panel(bundle/'views'/(key+'_inspection.jpg'),x,464,440,250,'#e7e7df')
         panel(roads/(key+'.png'),x,787,440,163,'#dedfd7')
     text(30,735,f"迁入 PandaSet {site}　·　相同世界坐标、前视第 {match['frame']} 帧、相同裁切",22,True)
-    text(30,972,'实拍记录了落座状态。掀开与缺盖为派生状态，井深、盖厚和遮挡面采用设计值。',20)
+    designed='、'.join(s['label'] for s in states[1:])
+    text(30,972,'实拍记录了落座状态。'+designed+'为派生状态，井深、盖厚和遮挡面采用设计值。',20)
     text(30,1014,'PandaSet · Scale AI, Inc. and Hesai Photonics Technology Co., Ltd. · CC BY 4.0 and PandaSet Dataset Terms.',15)
     page.save(out,quality=94,subsampling=0)
 

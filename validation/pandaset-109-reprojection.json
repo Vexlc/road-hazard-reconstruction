@@ -1,0 +1,73 @@
+{
+  "asset": "A107",
+  "glb_sha256": "93e9c652759cca1fac03c96dfbda805407f4e0274561a6c337f6b0cb0ec34b12",
+  "capture_spec_sha256": "64e812c476535554a9d71627e5d6b45324320d411f62be2a3eb48a5c51eff98d",
+  "model_input_sha256": "0a68e452e5ca05a3e46e26b3acf8c8d3c282e98d85ea95229372de58c3f1180c",
+  "camera_mask_iou": {
+    "front_camera_26": {
+      "native_pose": {
+        "frame_edge": 0.6211764705882353,
+        "apron_edge": 0.8606597203476759
+      },
+      "locally_registered": {
+        "frame_edge": 0.7686075615860888,
+        "apron_edge": 0.939700896185934
+      }
+    },
+    "front_camera_24": {
+      "native_pose": {
+        "frame_edge": 0.2836141216868763,
+        "apron_edge": 0.6606204583566239
+      },
+      "locally_registered": {
+        "frame_edge": 0.7730843337779754,
+        "apron_edge": 0.9180571244150395
+      }
+    }
+  },
+  "lidar": {
+    "19": {
+      "points": 0
+    },
+    "20": {
+      "points": 0
+    },
+    "21": {
+      "points": 6,
+      "median_abs_error_m": 0.017264602083450833,
+      "p95_abs_error_m": 0.019926263213451853
+    },
+    "22": {
+      "points": 0
+    },
+    "23": {
+      "points": 13,
+      "median_abs_error_m": 0.016863512955019425,
+      "p95_abs_error_m": 0.02933667671517179
+    },
+    "26": {
+      "points": 19,
+      "median_abs_error_m": 0.0023848136397704757,
+      "p95_abs_error_m": 0.005018530137607894
+    },
+    "29": {
+      "points": 0
+    }
+  },
+  "heldout_lid_returns": 38,
+  "lidar_abs_error_median_m": 0.004819272691373321,
+  "lidar_abs_error_p95_m": 0.027947389148134005,
+  "frame_diameter_m": 0.3467413758037927,
+  "lid_diameter_m": 0.3407413758037927,
+  "lid_face_above_road_m": 0.022603644193785966,
+  "heldout_apron_returns": 265,
+  "apron_median_abs_height_error_m": 0.009272887761288963,
+  "apron_p95_abs_height_error_m": 0.027267009556285558,
+  "displaced_support": {
+    "A108": {
+      "support_samples": 24261,
+      "minimum_clearance_m": 0.0,
+      "samples_within_1mm": 121
+    }
+  }
+}

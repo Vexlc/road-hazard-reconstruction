@@ -87,5 +87,32 @@
     "Lid rolled edge"
   ],
   "metric_scale": "calibrated_rgb_lidar_with_designed_completion",
-  "source_image_count": 1
+  "source_image_count": 2,
+  "component_reference_rasters": 1,
+  "input_frames": [
+    "front_camera_13",
+    "front_camera_11"
+  ],
+  "registration_frames": [
+    "front_camera_04",
+    "back_camera_29",
+    "back_camera_33"
+  ],
+  "independent_frames": [
+    "front_camera_12",
+    "front_camera_08",
+    "back_camera_30",
+    "back_camera_35"
+  ],
+  "transfer_sensors": {
+    "sites": 1,
+    "placements": 3,
+    "frames": 240,
+    "placements_with_both_lidars": 3,
+    "changed_returns": 4512,
+    "camera_views": {
+      "front_camera": 3,
+      "back_camera": 3
+    }
+  }
 }

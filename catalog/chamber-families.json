@@ -11,5 +11,13 @@
     "audit": "validation/pandaset-034-family.json",
     "reprojection": "validation/pandaset-034-reprojection.json",
     "note": "PandaSet 034 中同一处井盖的前视照片提供花纹与边界，激光点提供路面基准与落座高度。井口净径、井深、盖厚和遮挡面采用设计值。掀开与缺盖为同一资产的派生状态。"
+  },
+  {
+    "run": "runs/pandaset-109-apron",
+    "method": "实拍 RGB + 激光雷达",
+    "audit": "validation/pandaset-109-family.json",
+    "reprojection": "validation/pandaset-109-reprojection.json",
+    "note": "PandaSet 109 的小型金属盖板和浅色修补圈来自同一处设施。实拍边界和激光点给出外径、修补圈轮廓与表面高度。内侧盖缝分辨率有限，盖面直径按 3 毫米径向间隙设计。井深与遮挡面按设计补全，错位与缺盖为派生状态。",
+    "asset_label": "道路小盖板"
   }
 ]

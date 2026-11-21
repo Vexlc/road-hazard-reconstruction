@@ -76,7 +76,8 @@ function showCapture() {
   photo("captureImage",view.images[mode],selected.captureAsset+" 落座实拍核验 · "+view.label);
   const legend = {photo:"原始相机裁切",native:"黄线为人工外圈，粉线为原始位姿下的 GLB 轮廓",registered:"黄线为人工外圈，青线为局部配准后的 GLB 轮廓"};
   el("captureLegend").textContent = legend[mode];
-  el("captureScore").textContent = "原始位姿 IoU "+view.native.toFixed(3)+"　局部配准 IoU "+view.registered.toFixed(3);
+  const scores = "金属外缘 IoU　原始 "+view.native.toFixed(3)+" / 配准 "+view.registered.toFixed(3);
+  el("captureScore").textContent = view.apronNative == null ? scores : scores+"　修补圈 IoU　原始 "+view.apronNative.toFixed(3)+" / 配准 "+view.apronRegistered.toFixed(3);
 }
 function showStates() {
   const bar = el("states");
@@ -104,8 +105,9 @@ function inspect(id) {
   el("note").textContent = selected.note || notes[selected.method];
   el("metrics").replaceChildren();
   if (selected.captureViews) {
-    metric("实测外圈 / 盖面直径（米）",selected.frameDiameter.toFixed(3)+" / "+selected.lidDiameter.toFixed(3));
+    metric(selected.lidDesigned ? "实测外圈 / 设计盖面直径（米）" : "实测外圈 / 盖面直径（米）",selected.frameDiameter.toFixed(3)+" / "+selected.lidDiameter.toFixed(3));
   }
+  if (selected.apronExtent) metric("实测修补圈宽 × 长（米）",selected.apronExtent.map(v=>v.toFixed(3)).join(" × "));
   metric(selected.captureViews ? "设计井口宽 × 长（米）" : "宽 × 长（米）",selected.width.toFixed(2)+" × "+selected.length.toFixed(2));
   metric(selected.depthLabel+"（米）",selected.depth.toFixed(3));
   metric("三角面",selected.triangles.toLocaleString());

@@ -15,7 +15,7 @@ CENTER = 239.5
 RADIUS = 157.0
 
 
-def cardinal_homography(size, landmarks):
+def cardinal_homography(size, landmarks, radius=RADIUS):
     """Inverse homography from the canonical disk's four cardinal points into source RGB."""
     source_xy = np.asarray(landmarks, dtype=float)
     if source_xy.shape != (4, 2) or not np.isfinite(source_xy).all():
@@ -25,7 +25,7 @@ def cardinal_homography(size, landmarks):
     edges = np.roll(source_xy, -1, axis=0) - source_xy
     if (np.cross(edges, np.roll(edges, -1, axis=0)) <= 0).any():
         raise ValueError("The four cyclic landmarks must form a convex quadrilateral")
-    base = np.array([[-1,0],[0,-1],[1,0],[0,1]]) * RADIUS + CENTER
+    base = np.array([[-1,0],[0,-1],[1,0],[0,1]]) * radius + CENTER
     equations, values = [], []
     for (x,y),(u,v) in zip(base,source_xy):
         equations.extend([[x,y,1,0,0,0,-u*x,-u*y], [0,0,0,x,y,1,-v*x,-v*y]])
@@ -33,8 +33,8 @@ def cardinal_homography(size, landmarks):
     return np.append(np.linalg.solve(equations,values),1).reshape(3,3)
 
 
-def rectify(image, landmarks, pixels=800):
-    matrix = cardinal_homography(image.size,landmarks)
+def rectify(image, landmarks, pixels=800, radius=RADIUS):
+    matrix = cardinal_homography(image.size,landmarks,radius)
     y,x = np.mgrid[0:pixels,0:pixels] * (479/(pixels-1))
     projected = matrix @ np.stack([x.ravel(), y.ravel(), np.ones(x.size)])
     if projected[2].min() <= 0 <= projected[2].max():
@@ -55,18 +55,44 @@ def lid_pose(radius, angle, offset, z):
     return transform
 
 
+def slide_support(shaft, cover, offset):
+    """Find the first vertical contact of the displaced rigid ribs with the frame or road."""
+    import bpy  # Registers Blender's bundled mathutils module in standalone Python.
+    from mathutils.bvhtree import BVHTree
+    points=[]; faces=[]
+    for name,vertices,indices,*_ in shaft.parts:
+        if name not in ('Road around the aperture','Chipped concrete collar','Cast ring and cover seat'):
+            continue
+        faces.extend((indices+len(points)).tolist())
+        points.extend(vertices.tolist())
+    tree=BVHTree.FromPolygons(points,faces,all_triangles=True)
+    underside=next(part[1] for part in cover.parts if part[0]=='Lid underside with casting ribs')
+    highest=max(p[2] for p in points)+1.
+    offsets=[]
+    for x,y,z in underside:
+        hit,*_=tree.ray_cast((x+offset[0],y+offset[1],highest),(0,0,-1))
+        if hit is not None:
+            offsets.append(hit.z-z)
+    if not offsets:
+        raise ValueError('The displaced lid has no contact with the frame or road')
+    return float(max(offsets)),len(offsets)
+
+
 def reconstruct(config):
     refs = ROOT/'references'
     cache = ROOT/'mesh_cache'
     cache.mkdir(exist_ok=True)
     maps, hashes, images, sizes = {}, {}, {}, {}
     patch = None
+    frame_radius=float(config['frame'].get('canonical_radius',RADIUS))
+    if not np.isfinite(frame_radius) or not 2 <= frame_radius <= CENTER:
+        raise ValueError('Invalid canonical frame radius')
     needs_cover = any(not state.get('absent') for state in config['states'])
     for role in (('frame','lid') if needs_cover else ('frame',)):
         path = refs/(role+'.png')
         with Image.open(path) as image:
             sizes[role] = image.size
-            images[role], maps[role] = rectify(image, config[role]['landmarks_xy'])
+            images[role], maps[role] = rectify(image,config[role]['landmarks_xy'],radius=frame_radius if role=='frame' else RADIUS)
             if role == 'frame' and 'pavement_patch_xyxy' in config[role]:
                 x0,y0,x1,y1 = config[role]['pavement_patch_xyxy']
                 if not (0 <= x0 < x1 <= image.width and 0 <= y0 < y1 <= image.height and min(x1-x0,y1-y0) >= 32):
@@ -74,11 +100,11 @@ def reconstruct(config):
                 patch = np.asarray(image.convert('RGB').crop((x0,y0,x1,y1)))
         hashes[role] = hashlib.sha256(path.read_bytes()).hexdigest()
         Image.fromarray(images[role]).save(refs/(role+'_ortho.png'))
-    write_json(ROOT/'calibration/registration.json',dict(canonical_479px_to_source=maps, center=CENTER, radius=RADIUS))
+    write_json(ROOT/'calibration/registration.json',dict(canonical_479px_to_source=maps, center=CENTER, radius=frame_radius, lid_radius=RADIUS))
     gauge = None
     if 'rgbd' in config:
         from chamber_depth import calibrate
-        gauge = calibrate(config, sizes['frame'], maps['frame'], refs, CENTER, RADIUS)
+        gauge = calibrate(config, sizes['frame'], maps['frame'], refs, CENTER, frame_radius)
         write_json(ROOT/'calibration/depth_measurements.json',gauge)
         config = dict(config,**gauge['measured'])
     measured_pose = None
@@ -111,8 +137,8 @@ def reconstruct(config):
                for s in config['states']]
     if any(v.shape != (2,) or not np.isfinite(v).all() for v in offsets):
         raise ValueError("offset_m must be a finite XY translation")
-    inner_radius = RADIUS*aperture/frame
-    outer = [CENTER,CENTER,RADIUS,RADIUS]
+    inner_radius = frame_radius*aperture/frame
+    outer = [CENTER,CENTER,frame_radius,frame_radius]
     cfg = dict(shape='round', model='missing', width=frame, length=frame, depth=depth, outer=outer,
                inner=[CENTER,CENTER,inner_radius,inner_radius], collar=1.06,
                patch_half_extent_m=max(np.abs(v).max()+lid/2+.15 for v in offsets),
@@ -124,6 +150,9 @@ def reconstruct(config):
         capture=json.loads((ROOT/'calibration'/config['capture_record']).read_text())
         if not np.allclose([frame,lid],[capture['frame_diameter_m'],capture['lid_diameter_m']],rtol=0,atol=1e-8):
             raise ValueError('Survey diameters disagree with the fitted road capture')
+        if 'apron_radius_m' in capture:
+            cfg.update(apron_radius_m=capture['apron_radius_m'],apron_heights_m=capture['apron_heights_m'],
+                       collar=max(capture['apron_radius_m'])/(frame/2))
         face_z=capture['lid_face_above_road_m']
         if not np.isfinite(face_z) or not (-.06 < face_z-thick-.010 < face_z < .05):
             raise ValueError('The photographed seated face must fit the local iron seat profile')
@@ -145,8 +174,13 @@ def reconstruct(config):
         # A projective warp has no observations outside the photo. Keep the cast
         # ring and collar, then feather into measured asphalt without mirroring a second rim.
         y,x = np.indices(images['frame'].shape[:2])*(479/(images['frame'].shape[0]-1))
-        radius = np.hypot(x-CENTER,y-CENTER)/RADIUS
-        opacity = smooth((1.13-radius)/.07)[:,:,None]
+        radius = np.hypot(x-CENTER,y-CENTER)/frame_radius
+        keep_radius=1.13
+        if 'apron_radius_m' in cfg:
+            azimuth=np.arctan2(CENTER-y,x-CENTER)
+            profile=cfg['apron_radius_m']
+            keep_radius=np.interp(azimuth,np.arange(len(profile))*2*np.pi/len(profile),profile,period=2*np.pi)/(frame/2)+.16
+        opacity = smooth((keep_radius-radius)/.07)[:,:,None]
         h,w = images['frame'].shape[:2]
         frame_image = np.uint8(images['frame']*opacity + grain[:h,:w]*(1-opacity))
         Image.fromarray(frame_image).save(refs/'frame_ortho.png')
@@ -154,7 +188,8 @@ def reconstruct(config):
     cover = Mesh()
     if needs_cover:
         # Texture from the rectified cover, separate from the photo which registers the cast frame.
-        lid_config = dict(cfg,model='survey',lid=dict(type='displaced',ellipse=outer,diameter=lid,thickness=thick))
+        lid_outer=[CENTER,CENTER,RADIUS,RADIUS]
+        lid_config = dict(cfg,model='survey',outer=lid_outer,lid=dict(type='displaced',ellipse=lid_outer,diameter=lid,thickness=thick))
         chambers.lid_model(cover,'A00',lid_config,images['lid'],frame/2,frame/2)
     extent = field['width']/2
     y,x = np.meshgrid(np.linspace(extent,-extent,field['alpha'].shape[0]),
@@ -170,6 +205,7 @@ def reconstruct(config):
         mesh.materials.update(shaft.materials)
         result = dict(field)
         matrix = None
+        contacts = None
         if not absent:
             # The canonical disc's lowest ribs are at Z=0. Its near edge bears on the
             # iron seat when lifted; a sliding disc clears the raised frame before resting on asphalt.
@@ -180,6 +216,8 @@ def reconstruct(config):
                 matrix=np.asarray(measured_pose['transform'])
             else:
                 matrix = lid_pose(lid/2,angle,offset,clearance)
+                if capture and offset.any() and angle==0:
+                    matrix[2,3],contacts=slide_support(shaft,cover,offset)
                 if capture and not offset.any():
                     # Rotate around the seated face's edge in its measured plane.
                     home=np.array([0.,0.,thick+.010])
@@ -197,12 +235,21 @@ def reconstruct(config):
                     state=state['label'],lid_angle_degrees=None if absent else angle,lid_offset_m=None if absent else offset.tolist(),
                     lid_diameter_m=lid if needs_cover else None,lid_thickness_m=thick if needs_cover else None, lid_transform=None if absent else matrix.tolist(),
                     seed=193501, provenance='calibration/survey.json')
+        if contacts is not None:
+            meta['lid_support']=dict(method='vertical contact between underside vertices and fixed mesh triangles',hits=contacts,lift_m=float(matrix[2,3]))
         if capture:
             meta.update(scale_kind='calibrated_rgb_lidar_with_designed_completion',
                         measurement_record='calibration/capture-fit.json',
                         metric_observations={k:capture[k] for k in ('frame_diameter_m','lid_diameter_m','lid_face_above_road_m')},
                         pose_source='observed_seated' if not absent and not angle and not offset.any() else 'designed_variant',
                         geometry_source='Photographed outer edge and lid seam on a lidar-fitted road plane. Closed face height from laser returns. Aperture, hidden shaft, relief and underside are design completions.')
+            if 'lid_diameter_source' in capture:
+                meta['metric_observations'].pop('lid_diameter_m')
+                meta['lid_diameter_source']=capture['lid_diameter_source']
+            if 'apron_xy_extent_m' in capture:
+                meta['metric_observations']['apron_xy_extent_m']=capture['apron_xy_extent_m']
+                meta['metric_observations']['apron_radial_heights_m']=capture['apron_heights_m']
+                meta['geometry_source']='Visible metal perimeter, polygonal road repair and laser face and repair heights. Inner seam, aperture, shaft, underside and alternative states use designed completion.'
         if measured_pose:
             meta.update(scale_kind='registered_depth_with_designed_completion',measurement_record='calibration/observed_pose.json',
                         metric_observations=dict(frame_diameter_m=frame,lid_diameter_m=lid))

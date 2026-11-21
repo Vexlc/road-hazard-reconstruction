@@ -1,0 +1,114 @@
+{
+  "family": "pandaset-109-service-cover",
+  "component_sha256": {
+    "frame": "b1308bfd3773674eb0479edc3d1596447f90c254c62b5bfdf6c93433dccf1793",
+    "lid": "b1308bfd3773674eb0479edc3d1596447f90c254c62b5bfdf6c93433dccf1793"
+  },
+  "assets": {
+    "A107": {
+      "state": "小盖板落座",
+      "triangles": 274560,
+      "gaussians": 405295,
+      "highest_z_m": 0.024603644385933876,
+      "max_vertex_residual_m": 0.0,
+      "scenes": {
+        "034": {
+          "case": "034_107",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    },
+    "A108": {
+      "state": "盖板错位",
+      "triangles": 274560,
+      "gaussians": 405504,
+      "highest_z_m": 0.05200080946087837,
+      "max_vertex_residual_m": 1.3560056688621813e-08,
+      "scenes": {
+        "034": {
+          "case": "034_108",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    },
+    "M107": {
+      "state": "盖板缺失",
+      "triangles": 130944,
+      "gaussians": 292523,
+      "highest_z_m": 0.024603644385933876,
+      "max_vertex_residual_m": 0.0,
+      "scenes": {
+        "034": {
+          "case": "034_109",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    }
+  },
+  "common_anchors": {
+    "034": [
+      [
+        -36.16243798230243,
+        -5.790768920867825,
+        -5.150513699017868
+      ],
+      [
+        [
+          -0.15583637906672923,
+          -0.9776676350399915,
+          -0.14100006508750496
+        ],
+        [
+          0.9875661737497854,
+          -0.15719661918618416,
+          -0.00150843682079268
+        ],
+        [
+          -0.02068998367759607,
+          -0.13948196410914124,
+          0.9900084374709527
+        ]
+      ],
+      30,
+      "01"
+    ]
+  },
+  "verified_parts": [
+    "Road around the aperture",
+    "Chipped concrete collar",
+    "Cast ring and cover seat",
+    "Inspection shaft",
+    "Shaft bottom",
+    "Lid face",
+    "Lid underside with casting ribs",
+    "Lid rolled edge"
+  ],
+  "metric_scale": "calibrated_rgb_lidar_with_designed_completion",
+  "source_image_count": 2,
+  "component_reference_rasters": 1,
+  "input_frames": [
+    "front_camera_27",
+    "front_camera_25"
+  ],
+  "registration_frames": [
+    "front_camera_22"
+  ],
+  "independent_frames": [
+    "front_camera_26",
+    "front_camera_24"
+  ],
+  "transfer_sensors": {
+    "sites": 1,
+    "placements": 3,
+    "frames": 240,
+    "placements_with_both_lidars": 3,
+    "changed_returns": 5487,
+    "camera_views": {
+      "front_camera": 3,
+      "back_camera": 3
+    }
+  }
+}

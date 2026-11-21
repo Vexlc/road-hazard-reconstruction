@@ -42,6 +42,8 @@ def project(world, camera):
 
 def ellipse(params, samples=256):
     u,v,a,b,deg = params
+    if not np.isfinite(params).all() or not 0 < b <= a:
+        raise ValueError('Expected a finite pixel ellipse with positive ordered radii')
     angle = np.deg2rad(deg)
     t = np.arange(samples)*(2*np.pi/samples)
     return np.c_[a*np.cos(t),b*np.sin(t)] @ np.array([[np.cos(angle),np.sin(angle)],[-np.sin(angle),np.cos(angle)]]) + [u,v]
@@ -67,6 +69,71 @@ def fit_road(points):
     center = keep.mean(axis=0)
     normal = np.linalg.svd(keep-center,full_matrices=False)[2][-1]
     return center, normal*np.sign(normal[2]), len(keep)
+
+
+def apron_profile(rows, cameras, center, basis, correction, edge_height):
+    """Intersect each labelled repair polygon with 144 radial lines in the road plane."""
+    angles=np.arange(144)*(2*np.pi/144)
+    directions=np.c_[np.cos(angles),np.sin(angles)]
+    profiles=[]
+    def cross(a,b):
+        return a[...,0]*b[...,1]-a[...,1]*b[...,0]
+    for row in rows:
+        cam=cameras[row['frame']]
+        vertices=np.asarray(row['apron_edge'],float)
+        if vertices.ndim!=2 or vertices.shape[1]!=2 or len(vertices)<3 or not np.isfinite(vertices).all():
+            raise ValueError('Expected a finite repair polygon with at least three pixel coordinates')
+        px=vertices-correction(cam)
+        verts=(intersections(px,cam,center+edge_height*basis[:,2],basis[:,2])-center)@basis[:,:2]
+        edges=np.roll(verts,-1,axis=0)-verts
+        denom=cross(directions[:,None,:],edges)
+        with np.errstate(divide='ignore',invalid='ignore'):
+            dist=cross(verts,edges)/denom
+            fraction=cross(verts,directions[:,None,:])/denom
+        good=(dist>0)&(fraction>=0)&(fraction<=1)
+        radii=np.min(np.where(good,dist,np.inf),axis=1)
+        if not np.isfinite(radii).all():
+            raise ValueError('Repair boundary must surround the metal component')
+        profiles.append(radii)
+    return np.mean(profiles,axis=0)
+
+
+def estimate_circles(rows, cameras, origin, basis, level, clearance):
+    """Fit concentric metric outlines using the pixel uncertainty of each observed edge."""
+    normal=basis[:,2]
+    seam_observed=all('lid_seam' in row for row in rows)
+    if any('lid_seam' in row for row in rows)!=seam_observed:
+        raise ValueError('Mark the lid seam consistently across the geometry fitting photographs')
+    measured_edges=EDGES if seam_observed else EDGES[:1]
+    samples = [(cameras[row['frame']],i,ellipse(row[key],96)) for row in rows for i,key in enumerate(measured_edges)]
+    def on_plane(cam,px):
+        return (intersections(px,cam,origin+level*normal,normal)-origin) @ basis[:,:2]
+    lifted = [on_plane(cam,px) for cam,i,px in samples]
+    c0 = np.median(lifted[0],axis=0)
+    r0 = [np.median(np.linalg.norm(arr-c0,axis=1)) for arr in lifted[:len(measured_edges)]]
+    # Convert the radial constraint to first-order pixel distance. Image noise
+    # near the top/bottom of a foreshortened ellipse has higher metric uncertainty.
+    terms = [(xy,on_plane(cam,px+[.1,0])-xy,on_plane(cam,px+[0,.1])-xy,i)
+             for (cam,i,px),xy in zip(samples,lifted)]
+    def residual(p):
+        errors=[]
+        for xy,du,dv,i in terms:
+            delta=xy-p[:2]
+            distance=np.linalg.norm(delta,axis=1)
+            gradient=delta/distance[:,None]
+            scale=np.hypot((du*gradient).sum(1),(dv*gradient).sum(1))/.1
+            errors.extend((distance-p[i+2])/scale)
+        return errors
+    solution=least_squares(residual,[*c0,*r0],loss='soft_l1',f_scale=1.)
+    fitted=solution.x
+    if not seam_observed:
+        clearance=float(clearance)
+        if not 0 < clearance < .03:
+            raise ValueError('An unresolved lid seam needs a positive designed radial clearance below 30 mm')
+        fitted=np.r_[fitted,fitted[2]-clearance]
+    if not solution.success or not 0 < fitted[3] < fitted[2]:
+        raise ValueError('Invalid fitted circle radii')
+    return fitted
 
 
 def fit(spec, raw, out):
@@ -122,7 +189,11 @@ def fit(spec, raw, out):
     dist = np.linalg.norm(xyz[:,:2]-approx[:2],axis=1)
     # Ring outside the photographed fixture; excludes other elevations at the same XY.
     radius = np.linalg.norm(intersections(np.array([[u-a,v],[u+a,v]]), camera, approx, np.array([0,0,1]))[0]-approx)
-    road = xyz[(dist>radius*1.4)&(dist<max(1.6,radius*3.2))&(np.abs(xyz[:,2]-approx[2])<.25)]
+    minimum=radius*1.4
+    if 'apron_edge' in primary:
+        approx_outline=intersections(np.array(primary['apron_edge']),camera,approx,np.array([0,0,1]))
+        minimum=max(minimum,1.12*np.linalg.norm(approx_outline[:,:2]-approx[:2],axis=1).max())
+    road = xyz[(dist>minimum)&(dist<max(1.6,radius*3.2,minimum+.6))&(np.abs(xyz[:,2]-approx[2])<.25)]
     origin, normal, n_road = fit_road(road)
     if normal[2] < .85:
         raise ValueError('Expected a road-like laser plane')
@@ -132,30 +203,9 @@ def fit(spec, raw, out):
     basis = np.column_stack([axis,np.cross(normal,axis),normal])
     plane_xy = (xyz-origin) @ basis[:,:2]
 
+    seam_observed='lid_seam' in primary
     def estimate(level):
-        samples = [(cameras[row['frame']],i,ellipse(row[key],96)) for row in fit_rows for i,key in enumerate(EDGES)]
-        def on_plane(cam,px):
-            return (intersections(px,cam,origin+level*normal,normal)-origin) @ basis[:,:2]
-        lifted = [on_plane(cam,px) for cam,i,px in samples]
-        c0 = np.median(lifted[0],axis=0)
-        r0 = [np.median(np.linalg.norm(arr-c0,axis=1)) for arr in lifted[:2]]
-        # Convert the radial constraint to first-order pixel distance. Image noise
-        # near the top/bottom of a foreshortened ellipse has higher metric uncertainty.
-        terms = [(xy,on_plane(cam,px+[.1,0])-xy,on_plane(cam,px+[0,.1])-xy,i)
-                 for (cam,i,px),xy in zip(samples,lifted)]
-        def residual(p):
-            errors=[]
-            for xy,du,dv,i in terms:
-                delta=xy-p[:2]
-                distance=np.linalg.norm(delta,axis=1)
-                gradient=delta/distance[:,None]
-                scale=np.hypot((du*gradient).sum(1),(dv*gradient).sum(1))/.1
-                errors.extend((distance-p[i+2])/scale)
-            return errors
-        solution=least_squares(residual,[*c0,*r0],loss='soft_l1',f_scale=1.)
-        if not solution.success or not 0 < solution.x[3] < solution.x[2]:
-            raise ValueError('Invalid fitted circle radii')
-        return solution.x
+        return estimate_circles(fit_rows,cameras,origin,basis,level,spec.get('lid_radius_clearance_design_m',0.))
     first = estimate(0.)
     heights = (xyz-origin) @ normal
     middle = (np.linalg.norm(plane_xy-first[:2],axis=1) < first[3]*.8) & (abs(heights)<.15)
@@ -190,6 +240,36 @@ def fit(spec, raw, out):
         alignment[name]=np.linalg.lstsq(design,shifts,rcond=None)[0]
     def adjustment(name,cam):
         return predictor(cam)@alignment[name] if name in alignment else np.zeros(2)
+    apron=None
+    radius_px=157.
+    if any('apron_edge' in r for r in fit_rows):
+        if not all('apron_edge' in r for r in fit_rows):
+            raise ValueError('Annotate the apron in each geometry fitting frame')
+        def radial_fraction(x,y):
+            theta=np.arctan2(y,x)
+            boundary=np.interp(theta,np.arange(len(apron))*(2*np.pi/len(apron)),apron,period=2*np.pi)
+            return (np.hypot(x,y)-outer)/(boundary-outer)
+        rel_xy=plane_xy-[cx,cy]
+        knots=np.linspace(0.,1.,5)
+        edge_height=0.
+        # A raised patch's boundary pixels intersect a different plane from the
+        # surrounding asphalt. Alternate the polygon lift and laser height estimates.
+        for _ in range(5):
+            apron=apron_profile(fit_rows,cameras,center,basis,lambda cam: adjustment(spec['camera'],cam),edge_height)
+            if np.min(apron)<=outer:
+                raise ValueError('The measured pavement repair must surround the entire casting')
+            fraction=radial_fraction(*rel_xy.T)
+            support=[]; profile=[]
+            for knot in knots:
+                keep=(abs(fraction-knot)<=.18)&(fraction>=0)&(fraction<=1)&(abs(heights)<.12)
+                if keep.sum()<5:
+                    raise ValueError('Insufficient laser support on the repair border')
+                profile.append(float(np.median(heights[keep])))
+                support.append(int(keep.sum()))
+            if abs(profile[-1]-edge_height)<.0001:
+                break
+            edge_height=profile[-1]
+        radius_px=min(radius_px,180*outer/np.max(apron))
     scores = {}
     for row in fit_rows+reg_rows+test_rows:
         f = row['frame']
@@ -219,7 +299,8 @@ def fit(spec, raw, out):
                 scores[key_frame][key][method]=dict(mask_iou=float((aa&pp).sum()/(aa|pp).sum()),
                     median_boundary_px=float(np.median(distance)),p95_boundary_px=float(np.percentile(distance,95)))
             if key=='frame_edge':
-                box=tuple(np.round([annotation[:,0].min()-27,annotation[:,1].min()-27,annotation[:,0].max()+27,annotation[:,1].max()+27]).astype(int))
+                boundary=np.asarray(row.get('apron_edge',annotation))
+                box=tuple(np.round([*np.maximum(0,boundary.min(0)-27),*np.minimum([im.shape[1],im.shape[0]],boundary.max(0)+27)]).astype(int))
                 crop=Image.fromarray(im[:,:,::-1]).crop(box)
                 crop.save(out/(key_frame+'.png'))
                 if row in test_rows:
@@ -229,17 +310,27 @@ def fit(spec, raw, out):
     # Warp only the two fitting photographs, with higher pixel-area views weighted more.
     pixels=480
     y,x=np.indices((pixels,pixels),dtype=float)
-    ortho=grid_world((x-239.5)*outer/157,(239.5-y)*outer/157)
+    map_x=(x-239.5)*outer/radius_px
+    map_y=(239.5-y)*outer/radius_px
+    ortho=grid_world(map_x,map_y)
+    if apron is not None:
+        fraction=radial_fraction(map_x,map_y)
+        relief=np.interp(fraction,knots,profile)
+        relief=np.where(fraction<0,level,relief*np.clip(1-(fraction-1)*4,0,1))
+        ortho+=(relief-level)[:,:,None]*normal
     maps=[]; weights=[]
     for f in training:
         cam=cameras[f]
         uv=(project(ortho,cam)+adjustment(spec['camera'],cam)).astype('f4')
         rgb=cv2.imread(str(camera_root/f'{f:02}.jpg'))[:,:,::-1]
-        if not ((uv.min(axis=(0,1))>=0).all() and (uv.max(axis=(0,1))<[rgb.shape[1]-1,rgb.shape[0]-1]).all()):
-            raise ValueError('The texture extends outside a fitting photograph')
+        valid=(uv>=0).all(axis=2)&(uv<[rgb.shape[1]-1,rgb.shape[0]-1]).all(axis=2)
         maps.append(cv2.remap(rgb,uv,None,cv2.INTER_LINEAR))
-        weights.append(abs(cv2.contourArea(render_circle(outer,cam).astype('f4'))))
-    Image.fromarray(np.uint8(np.round(np.average(maps,axis=0,weights=weights)))).save(out/'surface.png')
+        weights.append(valid*abs(cv2.contourArea(render_circle(outer,cam).astype('f4'))))
+    weights=np.array(weights)
+    if not np.all(weights.sum(axis=0)>0):
+        raise ValueError('No fitting photograph covers part of the requested orthophoto')
+    fused=np.sum(np.asarray(maps)*weights[:,:,:,None],axis=0)/weights.sum(axis=0)[:,:,None]
+    Image.fromarray(np.uint8(np.round(fused))).save(out/'surface.png')
     checks={}
     for f in spec['holdout_scans']:
         cloud=road_scan(f)
@@ -258,14 +349,21 @@ def fit(spec, raw, out):
                 fit_lid_p10_p90_height_m=np.percentile(heights[middle],[10,90]).tolist(),
                 center_world_m=center.tolist(),basis_columns=basis.tolist(),frame_diameter_m=float(2*outer),
                 lid_diameter_m=float(2*inner),lid_face_above_road_m=level,pixel_checks=scores,raw_sha256=hashes)
+    if not seam_observed:
+        report['lid_diameter_source']='designed_radial_clearance'
+    if apron is not None:
+        angle=np.arange(len(apron))*(2*np.pi/len(apron))
+        xy=apron[:,None]*np.c_[np.cos(angle),np.sin(angle)]
+        report.update(apron_radius_m=apron.tolist(),apron_xy_extent_m=np.ptp(xy,axis=0).tolist(),
+                      apron_heights_m=profile,apron_height_samples=support)
     save(out/'capture-fit.json',report)
     def landmarks(radius):
         return [[239.5-radius,239.5],[239.5,239.5-radius],[239.5+radius,239.5],[239.5,239.5+radius]]
     save(out/'survey.json',dict(family=spec['family'],credit='PandaSet, Scale AI, Inc. and Hesai Photonics Technology Co., Ltd. CC BY 4.0 and PandaSet Dataset Terms.',
         source_url='https://pandaset.org/',license_url='https://creativecommons.org/licenses/by/4.0/',
         modifications='Annotated, road-plane registered and blended fitting photographs. Geometry below the observed surface and alternative lid states are designed.',
-        capture_record='capture-fit.json',capture_crop=label(primary)+'.png',frame=dict(image='surface.png',landmarks_xy=landmarks(157),pavement_patch_xyxy=[8,8,76,76]),
-        lid=dict(image='surface.png',landmarks_xy=landmarks(157*inner/outer)),
+        capture_record='capture-fit.json',capture_crop=label(primary)+'.png',frame=dict(image='surface.png',landmarks_xy=landmarks(radius_px),canonical_radius=radius_px,pavement_patch_xyxy=[8,8,76,76]),
+        lid=dict(image='surface.png',landmarks_xy=landmarks(radius_px*inner/outer)),
         frame_diameter_m=2*outer,lid_diameter_m=2*inner,aperture_diameter_m=2*inner*.94,
         shaft_depth_m=spec['shaft_depth_design_m'],lid_thickness_m=spec['lid_thickness_design_m'],states=spec['states']))
 

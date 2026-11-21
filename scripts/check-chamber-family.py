@@ -114,9 +114,23 @@ def check(root):
             sites[site]=dict(case=scene['id'],slot=p['slot'],reload_max_pixel_error=p['reload_max_pixel_error'])
         assets[key]=dict(state=state['label'],triangles=checks[key]['triangles'],gaussians=checks[key].get('gaussians'),
                          highest_z_m=meta['highest_z_m'],max_vertex_residual_m=max_error,scenes=sites)
-    return dict(family=spec['family'],component_sha256=source_hashes,assets=assets,common_anchors=anchors,
+    report=dict(family=spec['family'],component_sha256=source_hashes,assets=assets,common_anchors=anchors,
                 verified_parts=list(template),metric_scale=meta['scale_kind'],
                 source_image_count=len(set(source_hashes.values())))
+    if 'capture_record' in spec:
+        capture=read(bundle/'calibration'/spec['capture_record'])
+        report.update(component_reference_rasters=report['source_image_count'],source_image_count=len(capture['fit_frames']),
+                      input_frames=capture['fit_frames'],registration_frames=capture['registration_fit_frames'],
+                      independent_frames=capture['heldout_frames'])
+    sensors=root/'sensors/checks'
+    if (sensors/'scan_audit.json').is_file() and (sensors/'camera_audit.json').is_file():
+        beams=read(sensors/'scan_audit.json')
+        photos=read(sensors/'camera_audit.json')
+        report['transfer_sensors']=dict(sites=beams['sites'],placements=beams['placements'],frames=beams['counts']['case_frames'],
+            placements_with_both_lidars=beams['placements_with_both_lidars'],changed_returns=beams['counts']['replacements'],
+            camera_views=photos['camera_counts'])
+    return report
+
 
 
 if __name__=='__main__':

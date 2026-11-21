@@ -263,16 +263,26 @@ def build(mesh, key, cfg, layout, grain_atlas):
     u,v=contour(theta,shape)
     squ,sqv=contour(theta,'rect')
     lum=luminance(roadimg); bump=gaussian_filter(lum,1.2)-gaussian_filter(lum,5.2)
+    def apron_ratio(angle):
+        profile=cfg['apron_radius_m']
+        return np.interp(angle,np.arange(len(profile))*2*np.pi/len(profile),profile,period=2*np.pi)/sx
+    border=apron_ratio(theta) if 'apron_radius_m' in cfg else collar
     def road_band(name,outx,outy,inx,iny,rows,road):
         t=np.linspace(0,1,rows)[:,None]
         x=outx*(1-t)+inx*t; y=outy*(1-t)+iny*t
         uv=np.stack([.5+x/(2*extent),.5+y/(2*extent)],-1)
         z=lookup(bump,uv[:,:,0],1-uv[:,:,1],scale=1.)*(.0078 if collar>1 else .004)
         z[0]=0;z[-1]=0
+        if 'apron_heights_m' in cfg:
+            heights=cfg['apron_heights_m']
+            if road:
+                z+=heights[-1]*smooth(1-np.hypot(x-inx,y-iny)/.10)
+            else:
+                z+=np.interp(1-t,np.linspace(0,1,len(heights)),heights)
         sheet(mesh,name,np.stack([x,y,z],-1),uv,pavement,road=road)
-    road_band('Road around the aperture',extent*squ,extent*sqv,sx*collar*u,sy*collar*v,43,True)
+    road_band('Road around the aperture',extent*squ,extent*sqv,sx*border*u,sy*border*v,43,True)
     if collar>1:
-        road_band('Chipped concrete collar',sx*collar*u,sy*collar*v,sx*u,sy*v,38,False)
+        road_band('Chipped concrete collar',sx*border*u,sy*border*v,sx*u,sy*v,38,False)
     tx=np.linspace(0,2*np.pi,1537)
     tu,tv=contour(tx,shape)
     if cfg['model']=='raised':tu=abs(tu)
@@ -307,7 +317,7 @@ def build(mesh, key, cfg, layout, grain_atlas):
         rxx=np.array([sx,sx-.15*gap,(sx+seat_radius)/2,seat_radius+2*gap,seat_radius+gap,seat_radius+gap,seat_radius+gap,
                       seat_radius+gap,seat_radius-gap,ix,ix])
         ryy=rxx
-        z=np.array([0.,face+.001,face+.002,face+.002,face+.001,face-.002,
+        z=np.array([cfg.get('apron_heights_m',[0.])[0],face+.001,face+.002,face+.002,face+.001,face-.002,
                     shelf+.002,shelf,shelf,shelf,-.060])
     rz=np.broadcast_to(z[:,None],(len(z),len(theta)))
     xyz=np.stack([rxx[:,None]*u,ryy[:,None]*v,rz],-1)
@@ -321,12 +331,13 @@ def build(mesh, key, cfg, layout, grain_atlas):
     def radius(a,b):
         return np.hypot(a,b) if shape=='round' else np.maximum(abs(a),abs(b))
     signed=radius(x/sx,y/sy)
-    alpha=smooth(((collar+.35)-signed)*min(sx,sy)/.092)
+    grid_border=apron_ratio(np.arctan2(y,x)) if 'apron_radius_m' in cfg else collar
+    alpha=smooth(((grid_border+.35)-signed)*min(sx,sy)/.092)
     if cfg['model']=='offset':
         alpha=np.maximum(alpha,smooth((lid_r+.125-np.hypot(x-lid_x,y-lid_y))/.092))
     aperture=radius(x/ix,y/iy)<1.
     h=np.where(aperture,-cfg['depth'],0)
-    field={'height':h,'alpha':alpha,'width':extent*2,'length':extent*2,'defect_mask':(signed<collar),'opening_mask':aperture}
+    field={'height':h,'alpha':alpha,'width':extent*2,'length':extent*2,'defect_mask':(signed<grid_border),'opening_mask':aperture}
     result={'width_m':ix*2,'length_m':iy*2,'frame_width_m':sx*2,'frame_length_m':sy*2,'depth_design_m':cfg['depth'],
             'exponent':2. if shape=='round' else 16.,'state':cfg.get('lid',{}).get('type','open'),
             'geometry_source':'image-registered rim and aperture, photometric wall unwrapping and fitted solid lid',

@@ -1,59 +1,71 @@
 {
-  "records": 1351,
-  "with_removable_cover": 181,
-  "valid_top_samples": 12187000,
+  "records": 1354,
+  "with_removable_cover": 183,
+  "valid_top_samples": 12215155,
   "checked_meshes": {
     "A104": {
       "independent_rays": 192,
       "max_error_m": 2.4683570861827597e-05
     },
+    "A108": {
+      "independent_rays": 192,
+      "max_error_m": 2.4525070190406506e-05
+    },
     "A93": {
       "independent_rays": 192,
-      "max_error_m": 2.4927711486766313e-05
+      "max_error_m": 2.480745315547317e-05
     },
     "P90": {
       "independent_rays": 96,
-      "max_error_m": 2.4964904785151898e-05
+      "max_error_m": 2.4587631225578277e-05
     },
     "P102": {
       "independent_rays": 96,
-      "max_error_m": 7.0495605468748335e-06
+      "max_error_m": 1.0090065002441723e-05
     },
     "rgbd_pothole_20250227_135438": {
       "independent_rays": 96,
-      "max_error_m": 2.4885559082026e-05
+      "max_error_m": 2.472248077392547e-05
     },
     "model_raised_rectangular_removed_side_chip_seal": {
       "independent_rays": 192,
-      "max_error_m": 2.4930667877232082e-05
+      "max_error_m": 2.4793148040824775e-05
     },
     "stereo_pothole_fan_1_03": {
       "independent_rays": 96,
-      "max_error_m": 2.4939203262332177e-05
+      "max_error_m": 2.494311332702087e-05
     },
     "M13": {
       "independent_rays": 96,
-      "max_error_m": 2.4862575530915088e-05
+      "max_error_m": 2.453308105476726e-05
     },
     "P13": {
       "independent_rays": 96,
-      "max_error_m": 2.453298568724782e-05
+      "max_error_m": 2.4735164642325502e-05
     },
     "A105": {
       "independent_rays": 192,
-      "max_error_m": 2.4899196624850184e-05
+      "max_error_m": 2.4632263183499425e-05
+    },
+    "A107": {
+      "independent_rays": 192,
+      "max_error_m": 2.484679222108932e-05
     },
     "A95": {
       "independent_rays": 192,
-      "max_error_m": 2.492666244502395e-05
+      "max_error_m": 2.4707412719759958e-05
     },
     "M104": {
       "independent_rays": 96,
-      "max_error_m": 2.487897872915923e-05
+      "max_error_m": 2.392530441275298e-05
+    },
+    "M107": {
+      "independent_rays": 96,
+      "max_error_m": 2.4497556686375876e-05
     },
     "M91": {
       "independent_rays": 96,
-      "max_error_m": 2.4485588073774878e-05
+      "max_error_m": 2.4782562255909468e-05
     }
   },
   "pitch_m_min_median_max": [

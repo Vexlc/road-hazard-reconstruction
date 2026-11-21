@@ -189,3 +189,5 @@ work/envs/streetcrafter/bin/python scripts/check-road-cover.py \
 ~~~
 
 采集清单将几何与纹理拟合帧、附加配准帧、留出帧分别列出。相机的局部像素平移按深度倒数拟合，仅用于这处静态目标，原始相机位姿保留。验收程序直接读取落座 GLB，对前后视留出照片做逐像素射线求交，再用独立原始扫描的盖面点核验网格高度。图谱可分别查看实拍、原始位姿及局部配准三个画面。[采集标注](../gen2hole/examples/pandaset-034/capture.json) · [拟合记录](../validation/pandaset-034-fit.json) · [导出网格核验](../validation/pandaset-034-reprojection.json)
+
+PandaSet 109 的 A107、A108、M107 使用同一入口。金属组件外径约 0.347 米，浅色修补圈约 0.799 × 0.838 米。可在各拟合帧中增加 `apron_edge` 像素多边形，程序结合原始激光点估计修补圈的米制边界和五个径向高度。盖缝无法分辨时可用 `lid_radius_clearance_design_m` 指定径向间隙，图册单独标出设计盖面直径。错位盖板按盖背加强筋与路面、修补圈或底座的首次接触落位。用同一套命令替换采集清单和输出路径即可复建。[109 采集标注](../gen2hole/examples/pandaset-109/capture.json) · [留出帧、修补圈和盖背接触核验](../validation/pandaset-109-reprojection.json)
