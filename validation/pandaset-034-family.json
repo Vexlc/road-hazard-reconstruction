@@ -1,0 +1,91 @@
+{
+  "family": "pandaset-034-patterned-cover",
+  "component_sha256": {
+    "frame": "7cfcc1a3c624724ecb9eab9ec6b862766d8dcff3998707abd28c12e90111c36c",
+    "lid": "7cfcc1a3c624724ecb9eab9ec6b862766d8dcff3998707abd28c12e90111c36c"
+  },
+  "assets": {
+    "A104": {
+      "state": "实拍落座",
+      "triangles": 275328,
+      "gaussians": 629093,
+      "highest_z_m": 0.00016329906065948308,
+      "max_vertex_residual_m": 0.0,
+      "scenes": {
+        "109": {
+          "case": "109_104",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    },
+    "A105": {
+      "state": "掀开 55°",
+      "triangles": 275328,
+      "gaussians": 629093,
+      "highest_z_m": 0.5878246426582336,
+      "max_vertex_residual_m": 2.5521088908853073e-08,
+      "scenes": {
+        "109": {
+          "case": "109_105",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    },
+    "M104": {
+      "state": "缺盖",
+      "triangles": 131712,
+      "gaussians": 520046,
+      "highest_z_m": 0.00016329906065948308,
+      "max_vertex_residual_m": 0.0,
+      "scenes": {
+        "109": {
+          "case": "109_106",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    }
+  },
+  "common_anchors": {
+    "109": [
+      [
+        -38.60890679637467,
+        39.414138021219195,
+        -0.5507427847349833
+      ],
+      [
+        [
+          0.7022745068784205,
+          -0.7111999369127098,
+          0.031704364431875125
+        ],
+        [
+          0.7101220131204765,
+          0.7029704320496952,
+          0.03948794937176009
+        ],
+        [
+          -0.05037105786454429,
+          -0.005217413077624456,
+          0.998716944449419
+        ]
+      ],
+      27,
+      "01"
+    ]
+  },
+  "verified_parts": [
+    "Road around the aperture",
+    "Chipped concrete collar",
+    "Cast ring and cover seat",
+    "Inspection shaft",
+    "Shaft bottom",
+    "Lid face",
+    "Lid underside with casting ribs",
+    "Lid rolled edge"
+  ],
+  "metric_scale": "calibrated_rgb_lidar_with_designed_completion",
+  "source_image_count": 1
+}

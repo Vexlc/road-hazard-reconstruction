@@ -56,6 +56,14 @@ def build_bundle(args,survey,envs,paths,ids,run):
                 shutil.copy2(original,refs/name)
                 sensor[key] = name
         survey = dict(survey,**{group:sensor})
+    if 'capture_record' in survey:
+        shutil.copyfile(args.survey.parent/survey['capture_record'],bundle/'calibration/capture-fit.json')
+        shutil.copyfile(args.survey.parent/survey['capture_crop'],refs/'capture.png')
+        for source in ('annotations.json','Dataset-Terms.txt'):
+            original=args.survey.parent/source
+            if original.is_file():
+                shutil.copyfile(original,bundle/'calibration'/source)
+        survey=dict(survey,capture_record='capture-fit.json',capture_crop='capture.png')
     save(bundle/'calibration/survey.json',survey)
     code = bundle/'rebuild'
     for directory in ('common','series'):

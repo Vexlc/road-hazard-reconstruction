@@ -118,6 +118,23 @@ def reconstruct(config):
                patch_half_extent_m=max(np.abs(v).max()+lid/2+.15 for v in offsets),
                wall_end=[CENTER,CENTER+.22*inner_radius,.55*inner_radius,.50*inner_radius],
                bottom_photo=[CENTER,CENTER+.23*inner_radius,.33*inner_radius,.32*inner_radius])
+    capture=None
+    layout={'frame_ortho':cfg}
+    if 'capture_record' in config:
+        capture=json.loads((ROOT/'calibration'/config['capture_record']).read_text())
+        if not np.allclose([frame,lid],[capture['frame_diameter_m'],capture['lid_diameter_m']],rtol=0,atol=1e-8):
+            raise ValueError('Survey diameters disagree with the fitted road capture')
+        face_z=capture['lid_face_above_road_m']
+        if not np.isfinite(face_z) or not (-.06 < face_z-thick-.010 < face_z < .05):
+            raise ValueError('The photographed seated face must fit the local iron seat profile')
+        cfg.update(closed_seat=dict(radius=lid/2,face_z=face_z,thickness=thick),wall_source='designed_lining')
+        # The photographed lid hides the entire shaft. Supply a neutral concrete
+        # material here so that surface lettering never appears on the shaft wall.
+        rng=np.random.default_rng(193501)
+        grey=np.clip(rng.normal(76,8,(480,480)),38,112)
+        lining=np.uint8(grey[:,:,None]*np.array([1.03,1.,.96]))
+        Image.fromarray(lining).save(refs/'designed_lining.png')
+        layout['designed_lining']=cfg
     shaft = Mesh()
     grain_source = images['frame']
     if patch is not None:
@@ -133,7 +150,7 @@ def reconstruct(config):
         h,w = images['frame'].shape[:2]
         frame_image = np.uint8(images['frame']*opacity + grain[:h,:w]*(1-opacity))
         Image.fromarray(frame_image).save(refs/'frame_ortho.png')
-    field, fit = chambers.build(shaft,'frame_ortho',cfg,{'frame_ortho':cfg},grain)
+    field, fit = chambers.build(shaft,'frame_ortho',cfg,layout,grain)
     cover = Mesh()
     if needs_cover:
         # Texture from the rectified cover, separate from the photo which registers the cast frame.
@@ -163,6 +180,10 @@ def reconstruct(config):
                 matrix=np.asarray(measured_pose['transform'])
             else:
                 matrix = lid_pose(lid/2,angle,offset,clearance)
+                if capture and not offset.any():
+                    # Rotate around the seated face's edge in its measured plane.
+                    home=np.array([0.,0.,thick+.010])
+                    matrix[:3,3]+=np.array([0.,0.,face_z])-matrix[:3,:3]@home
             mesh.materials.update(cover.materials)
             for name,vertices,indices,uv,material,road in cover.parts:
                 mesh.parts.append((name,(vertices@matrix[:3,:3].T+matrix[:3,3]).astype('f4'),indices,uv,material,road))
@@ -176,6 +197,12 @@ def reconstruct(config):
                     state=state['label'],lid_angle_degrees=None if absent else angle,lid_offset_m=None if absent else offset.tolist(),
                     lid_diameter_m=lid if needs_cover else None,lid_thickness_m=thick if needs_cover else None, lid_transform=None if absent else matrix.tolist(),
                     seed=193501, provenance='calibration/survey.json')
+        if capture:
+            meta.update(scale_kind='calibrated_rgb_lidar_with_designed_completion',
+                        measurement_record='calibration/capture-fit.json',
+                        metric_observations={k:capture[k] for k in ('frame_diameter_m','lid_diameter_m','lid_face_above_road_m')},
+                        pose_source='observed_seated' if not absent and not angle and not offset.any() else 'designed_variant',
+                        geometry_source='Photographed outer edge and lid seam on a lidar-fitted road plane. Closed face height from laser returns. Aperture, hidden shaft, relief and underside are design completions.')
         if measured_pose:
             meta.update(scale_kind='registered_depth_with_designed_completion',measurement_record='calibration/observed_pose.json',
                         metric_observations=dict(frame_diameter_m=frame,lid_diameter_m=lid))

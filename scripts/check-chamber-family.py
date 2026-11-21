@@ -92,6 +92,8 @@ def check(root):
                 angle = np.radians(state['angle_deg'])
                 rotation = np.array([[np.cos(angle),0,-np.sin(angle)],[0,1,0],[np.sin(angle),0,np.cos(angle)]])
                 pivot = np.array([-lid_diameter/2,0,0])
+                if 'capture_record' in spec and not any(state['offset_m']):
+                    pivot[2]=spec['lid_thickness_m']+.010
                 require(np.allclose(t[:3,:3],rotation,atol=1e-12),key+' commanded angle')
                 require(np.allclose((rotation@pivot+t[:3,3]-pivot)[:2],state['offset_m'],atol=1e-12),key+' commanded translation')
         for name,(vertices,signature) in parts.items():
@@ -113,7 +115,7 @@ def check(root):
         assets[key]=dict(state=state['label'],triangles=checks[key]['triangles'],gaussians=checks[key].get('gaussians'),
                          highest_z_m=meta['highest_z_m'],max_vertex_residual_m=max_error,scenes=sites)
     return dict(family=spec['family'],component_sha256=source_hashes,assets=assets,common_anchors=anchors,
-                verified_parts=list(template),metric_scale='registered_depth_with_designed_completion' if 'rgbd' in spec else 'designed',
+                verified_parts=list(template),metric_scale=meta['scale_kind'],
                 source_image_count=len(set(source_hashes.values())))
 
 

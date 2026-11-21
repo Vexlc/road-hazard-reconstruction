@@ -171,3 +171,21 @@ work/envs/assets/bin/python scripts/check-crack-assets.py --run runs/my-cracks
 ~~~bash
 work/envs/streetcrafter/bin/python scripts/reproject-chamber-pose.py --run runs/my-calibration --asset A98 --figure runs/my-calibration/reprojection.jpg --report runs/my-calibration/reprojection.json
 ~~~
+
+## 从自驾相机和原始激光点重建落座井盖
+
+PandaSet 034 的 A104 使用前视第 13、11 帧的外圈和盖缝椭圆。原始激光点已在世界坐标系中，邻近路面确定局部基准面，盖面内的点确定落座高度。两张照片按投影面积加权融合纹理。A105 与 M104 共用该井体，分别演示掀开 55° 与缺盖。井口净径、盖厚、井壁、井深与盖背采用设计值。
+
+从仓库根目录运行以下命令，两个输出目录应为空缺路径。
+
+~~~bash
+work/envs/streetcrafter/bin/python gen2hole/fit_road_cover.py \
+  --raw tools/multiscene/data/raw --capture gen2hole/examples/pandaset-034/capture.json \
+  --out runs/my-034-input
+python gen2hole/survey.py --survey runs/my-034-input/survey.json --out runs/my-034 --preview
+work/envs/streetcrafter/bin/python scripts/check-road-cover.py \
+  --capture gen2hole/examples/pandaset-034/capture.json --raw tools/multiscene/data/raw \
+  --run runs/my-034 --out runs/my-034/reprojection.json
+~~~
+
+采集清单将几何与纹理拟合帧、附加配准帧、留出帧分别列出。相机的局部像素平移按深度倒数拟合，仅用于这处静态目标，原始相机位姿保留。验收程序直接读取落座 GLB，对前后视留出照片做逐像素射线求交，再用独立原始扫描的盖面点核验网格高度。图谱可分别查看实拍、原始位姿及局部配准三个画面。[采集标注](../gen2hole/examples/pandaset-034/capture.json) · [拟合记录](../validation/pandaset-034-fit.json) · [导出网格核验](../validation/pandaset-034-reprojection.json)

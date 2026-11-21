@@ -154,6 +154,16 @@ def photo_families():
             for key in match['states']:
                 paired.setdefault(key,[]).append(dict(label=f"{match['site']} · 前视 · 同帧 {match['frame']}",
                     site=match['site'],camera='front',before=link(path.parent/'before.png'),after=link(path.parent/(key+'.png'))))
+        capture_views=[]
+        if 'reprojection' in info:
+            repro=read(ROOT/info['reprojection'])
+            capture_fit=read(bundle/'calibration/capture-fit.json')
+            for frame,methods in repro['camera_mask_iou'].items():
+                prefix,number=frame.rsplit('_',1)
+                camera={'front_camera':'前视','back_camera':'后视'}.get(prefix,prefix)
+                images={name:link(run/'reprojection'/(frame+'-'+name+'.png')) for name in ('photo','native','registered')}
+                capture_views.append(dict(label=f"{camera} · 帧 {int(number)}",images=images,
+                    native=methods['native_pose']['frame_edge'],registered=methods['locally_registered']['frame_edge']))
         for meta in read(bundle / 'assets/asset_manifest.json'):
             key = meta['id']
             if key in rows:
@@ -164,6 +174,13 @@ def photo_families():
                        audit=link(ROOT / info['audit']), reverse=link(bundle/'views'/(key+'_reverse.jpg')),
                        credit=spec.get('source_url'), note=info['note'], triangles=sum(meta['geometry_parts'].values()),
                        scenes=paired.get(key,[])+shots.get(key,[])+scenes.get(key,[]))
+            if capture_views:
+                row.update(reference=link(bundle/'references/capture.png'),lidReference=link(bundle/'references/frame.png'),
+                           sourceLabels=['前视实拍裁切','两帧融合的正射纹理'],captureViews=capture_views,
+                           fit=link(bundle/'calibration/capture-fit.json'),reprojection=link(ROOT/info['reprojection']),
+                           captureAsset=repro['asset'],frameDiameter=capture_fit['frame_diameter_m'],
+                           lidDiameter=capture_fit['lid_diameter_m'],laserCount=repro['heldout_lid_returns'],
+                           laserMedianMM=repro['lidar_abs_error_median_m']*1000)
             if meta['lid_angle_degrees'] == 0 and meta['lid_offset_m'] == [0,0]:
                 row['category']='落座参照'
             if (sensor_root/'checks/scan_audit.json').is_file():
@@ -210,7 +227,7 @@ def main():
             row["orbit"] = link(orbit)
         if row.get("related"):
             rows[row["related"]]["related"] = row["id"]
-    featured = ["A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["A104","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

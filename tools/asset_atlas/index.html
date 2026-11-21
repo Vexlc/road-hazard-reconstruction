@@ -16,6 +16,12 @@
     </div>
     <div class="details"><dl id="metrics"></dl><div id="downloads"></div></div>
     <p class="note" id="note"></p>
+    <details id="capturePanel" hidden>
+      <summary>查看落座模型在真实留出帧上的投影</summary>
+      <p id="captureInfo"></p>
+      <div class="capture-controls"><label>观测帧 <select id="captureView"></select></label><label>显示 <select id="captureMode"><option value="photo">实拍原图</option><option value="native">原始位姿</option><option value="registered">局部配准</option></select></label></div>
+      <figure><a id="captureImageLink" target="_blank"><img id="captureImage" alt=""></a><figcaption><span id="captureLegend"></span><output id="captureScore"></output></figcaption></figure>
+    </details>
     <details id="reliefPanel" hidden>
       <summary>查看网格高程与剖面</summary>
       <div id="reliefContent" hidden>

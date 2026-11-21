@@ -34,7 +34,7 @@ function showScene() {
   }
   el("downloads").replaceChildren();
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
-  for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],["前视视频","video"],[selected.family ? "几何一致性核验" : "轮廓评估","audit"],["雷达核验","scan"]])
+  for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],["前视视频","video"],[selected.family ? "几何一致性核验" : "轮廓评估","audit"],["雷达核验","scan"],["实拍拟合记录","fit"],["留出帧核验","reprojection"]])
     if (selected[key]) download(name,selected[key]);
   if (selected.credit) download("照片出处",selected.credit);
   if (selected.related) download(selected.method==="实拍 RGB" ? "同源 RGB-D" : "同源单目 RGB","#"+selected.related);
@@ -62,12 +62,21 @@ const notes = {
 function showSource() {
   el("sourcePanel").hidden = !selected.reference;
   if (!selected.reference) return;
-  const title = selected.lidReference ? (lidSource ? "盖面原图" : "井圈原图")
+  const labels = selected.sourceLabels || ["井圈原图","盖面原图"];
+  const title = selected.lidReference ? labels[Number(lidSource)]
     : selected.method==="生成 RGB" ? "生成参考图" : "实拍 RGB 裁切";
   photo("source",lidSource ? selected.lidReference : selected.reference,title);
   el("sourceLabel").textContent = title;
   el("switchSource").hidden = !selected.lidReference;
-  el("switchSource").textContent = lidSource ? "查看井圈原图" : "查看盖面原图";
+  el("switchSource").textContent = "查看"+labels[Number(!lidSource)];
+}
+function showCapture() {
+  const view = selected.captureViews[Number(el("captureView").value)];
+  const mode = el("captureMode").value;
+  photo("captureImage",view.images[mode],selected.captureAsset+" 落座实拍核验 · "+view.label);
+  const legend = {photo:"原始相机裁切",native:"黄线为人工外圈，粉线为原始位姿下的 GLB 轮廓",registered:"黄线为人工外圈，青线为局部配准后的 GLB 轮廓"};
+  el("captureLegend").textContent = legend[mode];
+  el("captureScore").textContent = "原始位姿 IoU "+view.native.toFixed(3)+"　局部配准 IoU "+view.registered.toFixed(3);
 }
 function showStates() {
   const bar = el("states");
@@ -94,13 +103,23 @@ function inspect(id) {
   el("sourceType").textContent = selected.category+" / "+selected.method;
   el("note").textContent = selected.note || notes[selected.method];
   el("metrics").replaceChildren();
-  metric("宽 × 长（米）",selected.width.toFixed(2)+" × "+selected.length.toFixed(2));
+  if (selected.captureViews) {
+    metric("实测外圈 / 盖面直径（米）",selected.frameDiameter.toFixed(3)+" / "+selected.lidDiameter.toFixed(3));
+  }
+  metric(selected.captureViews ? "设计井口宽 × 长（米）" : "宽 × 长（米）",selected.width.toFixed(2)+" × "+selected.length.toFixed(2));
   metric(selected.depthLabel+"（米）",selected.depth.toFixed(3));
   metric("三角面",selected.triangles.toLocaleString());
   metric("高斯点",selected.gaussians.toLocaleString());
   showModel();
   showSource();
   showStates();
+  el("capturePanel").hidden = !selected.captureViews;
+  if (selected.captureViews) {
+    el("captureView").replaceChildren(...selected.captureViews.map((r,i)=>new Option(r.label,String(i))));
+    el("captureMode").value="registered";
+    el("captureInfo").textContent=selected.captureAsset+" 为原场景实拍落座状态。局部配准参数来自其他帧。"+selected.laserCount+" 个留出激光点相对盖面网格的高度绝对误差中位数为 "+selected.laserMedianMM.toFixed(1)+" 毫米。";
+    showCapture();
+  }
   window.showAssetRelief(selected);
   el("roadPanel").hidden = !selected.scenes.length;
   el("scene").replaceChildren(...selected.scenes.map((s,i) => new Option(s.label,String(i))));
@@ -172,6 +191,7 @@ if (assets.length) {
   el("before").onclick=()=>{before=!before; showScene();};
   el("scene").onchange=()=>{before=false; showScene();};
   el("spin").onclick=()=>{spinning=!spinning; showModel();};
+  el("captureView").onchange=el("captureMode").onchange=showCapture;
   el("switchSource").onclick=()=>{lidSource=!lidSource; showSource();};
   el("rotate").onclick=()=>{reverse=!reverse; showModel();};
   window.addEventListener("hashchange",()=>{const id=decodeURIComponent(location.hash.slice(1));if (byId.has(id)) {inspect(id); renderCards();}});

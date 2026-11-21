@@ -4,5 +4,12 @@
     "method": "实拍 RGB",
     "audit": "validation/photo-chamber-BD.json",
     "note": "井圈取自实拍图 D，盖面取自另一处井盖的实拍图 B。六个状态共用同一井体，盖面以刚体运动。井深、绝对尺寸、遮挡面与姿态由设计给定。"
+  },
+  {
+    "run": "runs/pandaset-034-metric",
+    "method": "实拍 RGB + 激光雷达",
+    "audit": "validation/pandaset-034-family.json",
+    "reprojection": "validation/pandaset-034-reprojection.json",
+    "note": "PandaSet 034 中同一处井盖的前视照片提供花纹与边界，激光点提供路面基准与落座高度。井口净径、井深、盖厚和遮挡面采用设计值。掀开与缺盖为同一资产的派生状态。"
   }
 ]

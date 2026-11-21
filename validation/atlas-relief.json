@@ -1,47 +1,59 @@
 {
-  "records": 1348,
-  "with_removable_cover": 179,
-  "valid_top_samples": 12158791,
+  "records": 1351,
+  "with_removable_cover": 181,
+  "valid_top_samples": 12187000,
   "checked_meshes": {
+    "A104": {
+      "independent_rays": 192,
+      "max_error_m": 2.4683570861827597e-05
+    },
     "A93": {
       "independent_rays": 192,
-      "max_error_m": 2.492923736574504e-05
+      "max_error_m": 2.4927711486766313e-05
     },
     "P90": {
       "independent_rays": 96,
-      "max_error_m": 2.3698902130137034e-05
+      "max_error_m": 2.4964904785151898e-05
     },
     "P102": {
       "independent_rays": 96,
-      "max_error_m": 2.048540115356587e-05
+      "max_error_m": 7.0495605468748335e-06
     },
     "rgbd_pothole_20250227_135438": {
       "independent_rays": 96,
-      "max_error_m": 2.47989654540981e-05
+      "max_error_m": 2.4885559082026e-05
     },
     "model_raised_rectangular_removed_side_chip_seal": {
       "independent_rays": 192,
-      "max_error_m": 2.506341934216394e-05
+      "max_error_m": 2.4930667877232082e-05
     },
     "stereo_pothole_fan_1_03": {
       "independent_rays": 96,
-      "max_error_m": 2.408223152160216e-05
+      "max_error_m": 2.4939203262332177e-05
     },
     "M13": {
       "independent_rays": 96,
-      "max_error_m": 2.4556255340479893e-05
+      "max_error_m": 2.4862575530915088e-05
     },
     "P13": {
       "independent_rays": 96,
-      "max_error_m": 2.3852443695071557e-05
+      "max_error_m": 2.453298568724782e-05
+    },
+    "A105": {
+      "independent_rays": 192,
+      "max_error_m": 2.4899196624850184e-05
     },
     "A95": {
       "independent_rays": 192,
-      "max_error_m": 2.4868106841990922e-05
+      "max_error_m": 2.492666244502395e-05
+    },
+    "M104": {
+      "independent_rays": 96,
+      "max_error_m": 2.487897872915923e-05
     },
     "M91": {
       "independent_rays": 96,
-      "max_error_m": 2.4688243865922388e-05
+      "max_error_m": 2.4485588073774878e-05
     }
   },
   "pitch_m_min_median_max": [

@@ -145,6 +145,8 @@ def lid_model(mesh,key,cfg,img,szx,szy):
         return np.stack([hinge_x+t*np.cos(angle)-z*np.sin(angle),hinge_y+y,dz+t*np.sin(angle)+z*np.cos(angle)],-1)
     xx, yy = np.meshgrid(np.linspace(-1,1,1024),np.linspace(1,-1,1024))
     pix=top_uv(xx*.80,yy*.89) if kind=='side_hinge' else top_uv(xx*.975,yy*.975)
+    if cfg.get('closed_seat'):
+        pix=top_uv(xx,yy)
     face_img=lookup(img,pix[:,:,0],pix[:,:,1])
     observed_face=face_img
     if rect and angle>np.pi/2:
@@ -277,6 +279,10 @@ def build(mesh, key, cfg, layout, grain_atlas):
     if cfg['model']=='hatch':tv=-abs(tv)
     rt=np.linspace(0,1,146)
     frame_rgb=image_at_outline(img,cfg['outer'],cfg['inner'],tu,tv,rt)
+    if 'closed_seat' in cfg:
+        factor=cfg['closed_seat']['radius']/sx
+        seam=[cx,cy,ex*factor,ey*factor]
+        frame_rgb=image_at_outline(img,cfg['outer'],seam,tu,tv,np.minimum(rt/.48,1.))
     # The vertical throat has little area in a nadir photograph. Map its side
     # in independent horizontal and depth coordinates using the supplementary iron.
     rux,ruy=np.meshgrid(np.linspace(0,1,len(tx)),rt)
@@ -290,6 +296,19 @@ def build(mesh, key, cfg, layout, grain_atlas):
     blend=np.array([0,.025,.10,.22,.43,.49,.62,.83,.92,1,1])
     z=np.array([0,.002,.005,.006,.005,.002,-.010,-.012,-.013,-.020,-.060])
     rxx=(1-blend)*sx+blend*ix; ryy=(1-blend)*sy+blend*iy
+    if 'closed_seat' in cfg:
+        seat=cfg['closed_seat']
+        # Follow the photographed outer band down to a recessed shelf. The
+        # supporting lip sits below the ribs and clears the lid's rolled edge.
+        seat_radius=seat['radius']
+        gap=min(.002,(sx-seat_radius)/4)
+        face=seat['face_z']
+        shelf=face-seat['thickness']-.010
+        rxx=np.array([sx,sx-.15*gap,(sx+seat_radius)/2,seat_radius+2*gap,seat_radius+gap,seat_radius+gap,seat_radius+gap,
+                      seat_radius+gap,seat_radius-gap,ix,ix])
+        ryy=rxx
+        z=np.array([0.,face+.001,face+.002,face+.002,face+.001,face-.002,
+                    shelf+.002,shelf,shelf,shelf,-.060])
     rz=np.broadcast_to(z[:,None],(len(z),len(theta)))
     xyz=np.stack([rxx[:,None]*u,ryy[:,None]*v,rz],-1)
     sheet(mesh,'Cast ring and cover seat',xyz,sheet_uv(theta,np.array([0,.03,.12,.24,.42,.50,.60,.78,.89,.96,1])),rim)

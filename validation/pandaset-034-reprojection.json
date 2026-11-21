@@ -1,0 +1,78 @@
+{
+  "asset": "A104",
+  "glb_sha256": "f58f56e9ca8d615707430c7b5be0ccac874ce9c000dc9eb87f3e14cda215aca7",
+  "capture_spec_sha256": "2fc14174fad86011914ff0dcfdf0834ef479adfeb718c9e4428ed4175d9c66b1",
+  "model_input_sha256": "0860917d282a0c2187b477ccee3e28e262959ad3b477bb3e6c9b554664344f0d",
+  "camera_mask_iou": {
+    "front_camera_12": {
+      "native_pose": {
+        "frame_edge": 0.9433994748848621,
+        "lid_seam": 0.8911469579575765
+      },
+      "locally_registered": {
+        "frame_edge": 0.9558903160129091,
+        "lid_seam": 0.9259120358994918
+      }
+    },
+    "front_camera_08": {
+      "native_pose": {
+        "frame_edge": 0.6276702622673435,
+        "lid_seam": 0.5421334482334113
+      },
+      "locally_registered": {
+        "frame_edge": 0.9298680126657679,
+        "lid_seam": 0.8715075451964739
+      }
+    },
+    "back_camera_30": {
+      "native_pose": {
+        "frame_edge": 0.11726667310105202
+      },
+      "locally_registered": {
+        "frame_edge": 0.8411324956258946
+      }
+    },
+    "back_camera_35": {
+      "native_pose": {
+        "frame_edge": 0.06441080439299496
+      },
+      "locally_registered": {
+        "frame_edge": 0.8140124160648676
+      }
+    }
+  },
+  "lidar": {
+    "7": {
+      "points": 37,
+      "median_abs_error_m": 0.018177897741593573,
+      "p95_abs_error_m": 0.02338214903846527
+    },
+    "8": {
+      "points": 44,
+      "median_abs_error_m": 0.0022687506377071093,
+      "p95_abs_error_m": 0.006493626820391369
+    },
+    "9": {
+      "points": 64,
+      "median_abs_error_m": 0.005236548730219573,
+      "p95_abs_error_m": 0.008302600046406603
+    },
+    "12": {
+      "points": 137,
+      "median_abs_error_m": 0.0031121806282524006,
+      "p95_abs_error_m": 0.008608016097044455
+    },
+    "15": {
+      "points": 0
+    },
+    "16": {
+      "points": 0
+    }
+  },
+  "heldout_lid_returns": 282,
+  "lidar_abs_error_median_m": 0.003995904540590037,
+  "lidar_abs_error_p95_m": 0.019963606972433042,
+  "frame_diameter_m": 0.7933602635883508,
+  "lid_diameter_m": 0.7237330212775334,
+  "lid_face_above_road_m": -0.004723388152381484
+}
