@@ -1,0 +1,55 @@
+{
+  "heldout_interior_replaced": {
+    "P110": {
+      "10": {
+        "overwritten_pixels": 28149,
+        "identical_road_descriptors": 11812
+      },
+      "13": {
+        "overwritten_pixels": 24757,
+        "identical_road_descriptors": 11853
+      }
+    },
+    "P111": {
+      "20250305_113235": {
+        "overwritten_pixels": 41641,
+        "identical_road_descriptors": 3792
+      }
+    },
+    "P112": {
+      "20250305_133021": {
+        "overwritten_pixels": 30642,
+        "identical_road_descriptors": 3169
+      }
+    },
+    "P113": {
+      "20250305_135425": {
+        "overwritten_pixels": 61405,
+        "identical_road_descriptors": 3357
+      }
+    },
+    "P114": {
+      "05": {
+        "overwritten_pixels": 19572,
+        "identical_road_descriptors": 11764
+      }
+    }
+  },
+  "normalized_files": {
+    "id": "P112",
+    "glb_sha256": "28f2e49e748184222d89e01800567de4cafc98dbcc614952e122a0ccd7861b92",
+    "heldout_metrics_identical": true
+  },
+  "distinct_pit": {
+    "fit": [
+      "20250305_052438",
+      "20250305_052530"
+    ],
+    "holdout": [
+      "20250305_052434"
+    ],
+    "road_inliers": 69,
+    "rejected_for_missing_target_overlap": true,
+    "destination_absent": true
+  }
+}

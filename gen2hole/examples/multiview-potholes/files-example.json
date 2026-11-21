@@ -1,0 +1,15 @@
+[
+  {
+    "id": "P120",
+    "label": "双坑采集示例",
+    "source": "files",
+    "anchor": "wide",
+    "fit": ["left", "right"],
+    "holdout": ["wide"],
+    "frames": {
+      "left":  {"rgb": "left.png",  "depth": "left-z-mm.npy",  "mask": "left-pits.png",  "depth_scale": 0.001, "fx_fy_cx_cy": [520, 520, 319.5, 239.5]},
+      "right": {"rgb": "right.png", "depth": "right-z-mm.npy", "mask": "right-pits.png", "depth_scale": 0.001, "fx_fy_cx_cy": [520, 520, 319.5, 239.5]},
+      "wide":  {"rgb": "wide.png",  "depth": "wide-z-mm.npy",  "mask": "wide-pits.png",  "depth_scale": 0.001, "fx_fy_cx_cy": [520, 520, 319.5, 239.5]}
+    }
+  }
+]

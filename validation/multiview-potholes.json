@@ -1,0 +1,505 @@
+{
+  "P110": {
+    "glb_sha256": "73bdc416aba7646d1cd9196c048554b30ad9220e7ccda288ed5bc0df6c9b851e",
+    "source": "FanStereo",
+    "fit": [
+      "09",
+      "11",
+      "12"
+    ],
+    "anchor": "09",
+    "component_count": 1,
+    "glb_centers_local_m": [
+      [
+        -0.004212697954303166,
+        -0.0003930319607143725
+      ]
+    ],
+    "glb_center_spacing_m": null,
+    "heldout": {
+      "10": {
+        "exported_glb": {
+          "mask_iou": 0.8324048282265553,
+          "mask_recall": 0.8917545916373584,
+          "mask_precision": 0.9259655464974732,
+          "reference_component_recall": [
+            0.8917545916373584
+          ],
+          "visible_pit_depth_samples": 19099,
+          "depth_abs_median_mm": 1.2174248695373535,
+          "depth_abs_p95_mm": 16.951895141601543,
+          "annotated_target_touches_image_border": false
+        },
+        "material_reprojection": {
+          "pixels": 12705,
+          "base_color_size_px": [
+            506,
+            506
+          ],
+          "raw_rgb_mae_0_255": 9.169303894042969,
+          "gray_correlation": 0.7882413864135742,
+          "highpass_gray_correlation": 0.24647386372089386
+        },
+        "single_fit_frame_controls": {
+          "09": {
+            "mask_iou": 0.5950157833527164,
+            "mask_recall": 0.6361504849195353,
+            "mask_precision": 0.9019795496902231,
+            "reference_component_recall": [
+              0.6361504849195353
+            ],
+            "visible_pit_depth_samples": 14480,
+            "depth_abs_median_mm": 0.8946061134338379,
+            "depth_abs_p95_mm": 4.472753405570983,
+            "annotated_target_touches_image_border": false
+          },
+          "11": {
+            "mask_iou": 0.6875456220237061,
+            "mask_recall": 0.7026892607197414,
+            "mask_precision": 0.9696078431372549,
+            "reference_component_recall": [
+              0.7026892607197414
+            ],
+            "visible_pit_depth_samples": 17475,
+            "depth_abs_median_mm": 0.8264780044555664,
+            "depth_abs_p95_mm": 3.4333944320678675,
+            "annotated_target_touches_image_border": false
+          },
+          "12": {
+            "mask_iou": 0.44402156676181415,
+            "mask_recall": 0.49735336956907883,
+            "mask_precision": 0.8054772452678212,
+            "reference_component_recall": [
+              0.49735336956907883
+            ],
+            "visible_pit_depth_samples": 11204,
+            "depth_abs_median_mm": 1.210719347000122,
+            "depth_abs_p95_mm": 14.49503946304322,
+            "annotated_target_touches_image_border": false
+          }
+        },
+        "control_renderer_glb_iou": 1.0,
+        "heldout_centers_local_m": [
+          [
+            0.005442041190393942,
+            0.0035783160725410424
+          ]
+        ],
+        "heldout_center_spacing_m": null
+      },
+      "13": {
+        "exported_glb": {
+          "mask_iou": 0.8456997337654821,
+          "mask_recall": 0.8853253625237306,
+          "mask_precision": 0.9497356790016466,
+          "reference_component_recall": [
+            0.8853253625237306
+          ],
+          "visible_pit_depth_samples": 16881,
+          "depth_abs_median_mm": 3.251016139984131,
+          "depth_abs_p95_mm": 11.270880699157715,
+          "annotated_target_touches_image_border": false
+        },
+        "material_reprojection": {
+          "pixels": 11212,
+          "base_color_size_px": [
+            506,
+            506
+          ],
+          "raw_rgb_mae_0_255": 16.50434112548828,
+          "gray_correlation": 0.05787587910890579,
+          "highpass_gray_correlation": 0.00283580319955945
+        },
+        "single_fit_frame_controls": {
+          "09": {
+            "mask_iou": 0.3704953644439272,
+            "mask_recall": 0.3857898776103728,
+            "mask_precision": 0.9033386928970017,
+            "reference_component_recall": [
+              0.3857898776103728
+            ],
+            "visible_pit_depth_samples": 5796,
+            "depth_abs_median_mm": 1.2243092060089111,
+            "depth_abs_p95_mm": 20.545377731323242,
+            "annotated_target_touches_image_border": false
+          },
+          "11": {
+            "mask_iou": 0.3359742794809967,
+            "mask_recall": 0.3545663852647736,
+            "mask_precision": 0.864998029168309,
+            "reference_component_recall": [
+              0.3545663852647736
+            ],
+            "visible_pit_depth_samples": 6051,
+            "depth_abs_median_mm": 1.9611716270446777,
+            "depth_abs_p95_mm": 42.408525466918945,
+            "annotated_target_touches_image_border": false
+          },
+          "12": {
+            "mask_iou": 0.33450813323005424,
+            "mask_recall": 0.3488710263763784,
+            "mask_precision": 0.8904123711340206,
+            "reference_component_recall": [
+              0.3488710263763784
+            ],
+            "visible_pit_depth_samples": 4334,
+            "depth_abs_median_mm": 3.4937262535095215,
+            "depth_abs_p95_mm": 16.98119421005249,
+            "annotated_target_touches_image_border": false
+          }
+        },
+        "control_renderer_glb_iou": 1.0,
+        "heldout_centers_local_m": [
+          [
+            -0.002517122613825764,
+            -0.0059561125188801935
+          ]
+        ],
+        "heldout_center_spacing_m": null
+      }
+    }
+  },
+  "P111": {
+    "glb_sha256": "bc8e45616a92654710c2c1dde12a871e9ada2824d93942f36bbb06b52d4923ea",
+    "source": "PothRGBD",
+    "fit": [
+      "20250305_113238",
+      "20250305_113241"
+    ],
+    "anchor": "20250305_113235",
+    "component_count": 1,
+    "glb_centers_local_m": [
+      [
+        -0.014207526819813132,
+        0.014386807986811778
+      ]
+    ],
+    "glb_center_spacing_m": null,
+    "heldout": {
+      "20250305_113235": {
+        "exported_glb": {
+          "mask_iou": 0.773132309650728,
+          "mask_recall": 0.9334550082851036,
+          "mask_precision": 0.8182296600357857,
+          "reference_component_recall": [
+            0.9334550082851036
+          ],
+          "visible_pit_depth_samples": 38870,
+          "depth_abs_median_mm": 2.2125244140625,
+          "depth_abs_p95_mm": 5.648168921470642,
+          "annotated_target_touches_image_border": false
+        },
+        "material_reprojection": {
+          "pixels": 34502,
+          "base_color_size_px": [
+            1049,
+            1049
+          ],
+          "raw_rgb_mae_0_255": 13.459094047546387,
+          "gray_correlation": 0.8401721119880676,
+          "highpass_gray_correlation": 0.3745732009410858
+        },
+        "single_fit_frame_controls": {
+          "20250305_113238": {
+            "mask_iou": 0.455967706304099,
+            "mask_recall": 0.5452318628275017,
+            "mask_precision": 0.7358050298159191,
+            "reference_component_recall": [
+              0.5452318628275017
+            ],
+            "visible_pit_depth_samples": 22704,
+            "depth_abs_median_mm": 1.9187629222869873,
+            "depth_abs_p95_mm": 4.850840568542477,
+            "annotated_target_touches_image_border": false
+          },
+          "20250305_113241": {
+            "mask_iou": 0.38516927144813257,
+            "mask_recall": 0.3918013496313729,
+            "mask_precision": 0.9579027712541099,
+            "reference_component_recall": [
+              0.3918013496313729
+            ],
+            "visible_pit_depth_samples": 16315,
+            "depth_abs_median_mm": 2.780914306640625,
+            "depth_abs_p95_mm": 6.812900304794311,
+            "annotated_target_touches_image_border": false
+          }
+        },
+        "control_renderer_glb_iou": 1.0,
+        "heldout_centers_local_m": [
+          [
+            -0.029110868325712462,
+            0.03884749461600694
+          ]
+        ],
+        "heldout_center_spacing_m": null
+      }
+    }
+  },
+  "P112": {
+    "glb_sha256": "28f2e49e748184222d89e01800567de4cafc98dbcc614952e122a0ccd7861b92",
+    "source": "PothRGBD",
+    "fit": [
+      "20250305_133014",
+      "20250305_133018"
+    ],
+    "anchor": "20250305_133021",
+    "component_count": 2,
+    "glb_centers_local_m": [
+      [
+        -0.3008930315751463,
+        0.06658614158565743
+      ],
+      [
+        0.3265773898127534,
+        -0.09090316686445883
+      ]
+    ],
+    "glb_center_spacing_m": 0.6469327723904581,
+    "heldout": {
+      "20250305_133021": {
+        "exported_glb": {
+          "mask_iou": 0.8976946551046923,
+          "mask_recall": 0.9696168657398342,
+          "mask_precision": 0.9236771746564696,
+          "reference_component_recall": [
+            0.9624256163219043,
+            0.9793798568900516
+          ],
+          "visible_pit_depth_samples": 29711,
+          "depth_abs_median_mm": 2.009451389312744,
+          "depth_abs_p95_mm": 5.530416965484619,
+          "annotated_target_touches_image_border": false
+        },
+        "material_reprojection": {
+          "pixels": 25764,
+          "base_color_size_px": [
+            1280,
+            1280
+          ],
+          "raw_rgb_mae_0_255": 19.674739837646484,
+          "gray_correlation": 0.7320747971534729,
+          "highpass_gray_correlation": 0.5197762846946716
+        },
+        "single_fit_frame_controls": {
+          "20250305_133014": {
+            "mask_iou": 0.3976666562685217,
+            "mask_recall": 0.41603028522942365,
+            "mask_precision": 0.9000917884628963,
+            "reference_component_recall": [
+              0.0,
+              0.9808417327075479
+            ],
+            "visible_pit_depth_samples": 12748,
+            "depth_abs_median_mm": 1.8391609191894531,
+            "depth_abs_p95_mm": 5.7956844568252555,
+            "annotated_target_touches_image_border": false
+          },
+          "20250305_133018": {
+            "mask_iou": 0.5363751184085885,
+            "mask_recall": 0.5543698192024019,
+            "mask_precision": 0.9429364418540106,
+            "reference_component_recall": [
+              0.0,
+              0.96270898271465
+            ],
+            "visible_pit_depth_samples": 16987,
+            "depth_abs_median_mm": 2.127707004547119,
+            "depth_abs_p95_mm": 5.364251136779785,
+            "annotated_target_touches_image_border": false
+          }
+        },
+        "control_renderer_glb_iou": 1.0,
+        "heldout_centers_local_m": [
+          [
+            -0.3045536176743786,
+            0.0658220410565696
+          ],
+          [
+            0.32297905232275687,
+            -0.08603787763289374
+          ]
+        ],
+        "heldout_center_spacing_m": 0.6456459454051455
+      }
+    }
+  },
+  "P113": {
+    "glb_sha256": "6a1722010412816451b652505f4cc9d7a4203448b46fb12021e112eb15175c52",
+    "source": "PothRGBD",
+    "fit": [
+      "20250305_135431",
+      "20250305_135440"
+    ],
+    "anchor": "20250305_135425",
+    "component_count": 2,
+    "glb_centers_local_m": [
+      [
+        -0.2645217782367549,
+        0.12698059595079297
+      ],
+      [
+        0.18405908943109303,
+        -0.14338970734524545
+      ]
+    ],
+    "glb_center_spacing_m": 0.5237603418950608,
+    "heldout": {
+      "20250305_135425": {
+        "exported_glb": {
+          "mask_iou": 0.8705432263390164,
+          "mask_recall": 0.8930705968569335,
+          "mask_precision": 0.9718402211667966,
+          "reference_component_recall": [
+            0.8616723236894563,
+            0.9410698842811843
+          ],
+          "visible_pit_depth_samples": 54839,
+          "depth_abs_median_mm": 2.714395523071289,
+          "depth_abs_p95_mm": 7.611429691314695,
+          "annotated_target_touches_image_border": false
+        },
+        "material_reprojection": {
+          "pixels": 49869,
+          "base_color_size_px": [
+            1280,
+            1280
+          ],
+          "raw_rgb_mae_0_255": 18.24360466003418,
+          "gray_correlation": 0.7592433094978333,
+          "highpass_gray_correlation": 0.6258410215377808
+        },
+        "single_fit_frame_controls": {
+          "20250305_135431": {
+            "mask_iou": 0.519290048346799,
+            "mask_recall": 0.5212604836739679,
+            "mask_precision": 0.9927731770106386,
+            "reference_component_recall": [
+              0.0,
+              0.8622380259684285
+            ],
+            "visible_pit_depth_samples": 32008,
+            "depth_abs_median_mm": 2.403438091278076,
+            "depth_abs_p95_mm": 7.560330629348755,
+            "annotated_target_touches_image_border": false
+          },
+          "20250305_135440": {
+            "mask_iou": 0.36344212892836075,
+            "mask_recall": 0.3712075563879163,
+            "mask_precision": 0.9455737160872811,
+            "reference_component_recall": [
+              0.0,
+              0.9386813820368158
+            ],
+            "visible_pit_depth_samples": 22794,
+            "depth_abs_median_mm": 3.2302141189575195,
+            "depth_abs_p95_mm": 7.7592551708221436,
+            "annotated_target_touches_image_border": false
+          }
+        },
+        "control_renderer_glb_iou": 1.0,
+        "heldout_centers_local_m": [
+          [
+            -0.28038075265877316,
+            0.12151882082204062
+          ],
+          [
+            0.1641707023599732,
+            -0.15272800639704825
+          ]
+        ],
+        "heldout_center_spacing_m": 0.522338317950178
+      }
+    }
+  },
+  "P114": {
+    "glb_sha256": "a7f0c3aa3a54542b906471050a7d1705d55780392c80515a1af441be6c31e0cc",
+    "source": "FanStereo",
+    "fit": [
+      "01",
+      "03",
+      "04"
+    ],
+    "anchor": "03",
+    "component_count": 1,
+    "glb_centers_local_m": [
+      [
+        -0.0015920868031999,
+        0.0021076492875173668
+      ]
+    ],
+    "glb_center_spacing_m": null,
+    "heldout": {
+      "05": {
+        "exported_glb": {
+          "mask_iou": 0.8534734659251579,
+          "mask_recall": 0.9252503576537912,
+          "mask_precision": 0.9166793216907112,
+          "reference_component_recall": [
+            0.9252503576537912
+          ],
+          "visible_pit_depth_samples": 15167,
+          "depth_abs_median_mm": 1.0673999786376953,
+          "depth_abs_p95_mm": 4.328030347824095,
+          "annotated_target_touches_image_border": false
+        },
+        "material_reprojection": {
+          "pixels": 11331,
+          "base_color_size_px": [
+            490,
+            490
+          ],
+          "raw_rgb_mae_0_255": 23.443208694458008,
+          "gray_correlation": 0.8537536263465881,
+          "highpass_gray_correlation": 0.08091635257005692
+        },
+        "single_fit_frame_controls": {
+          "01": {
+            "mask_iou": 0.5188880658794823,
+            "mask_recall": 0.6084712855099121,
+            "mask_precision": 0.7789769754055468,
+            "reference_component_recall": [
+              0.6084712855099121
+            ],
+            "visible_pit_depth_samples": 9102,
+            "depth_abs_median_mm": 1.5689432621002197,
+            "depth_abs_p95_mm": 6.134840846061706,
+            "annotated_target_touches_image_border": false
+          },
+          "03": {
+            "mask_iou": 0.8056379123723469,
+            "mask_recall": 0.8746678929082362,
+            "mask_precision": 0.9107788891253458,
+            "reference_component_recall": [
+              0.8746678929082362
+            ],
+            "visible_pit_depth_samples": 14691,
+            "depth_abs_median_mm": 1.0783076286315918,
+            "depth_abs_p95_mm": 4.433125257492065,
+            "annotated_target_touches_image_border": false
+          },
+          "04": {
+            "mask_iou": 0.8006079604825687,
+            "mask_recall": 0.8612303290414879,
+            "mask_precision": 0.919184207656233,
+            "reference_component_recall": [
+              0.8612303290414879
+            ],
+            "visible_pit_depth_samples": 14619,
+            "depth_abs_median_mm": 1.0358095169067383,
+            "depth_abs_p95_mm": 4.782688617706286,
+            "annotated_target_touches_image_border": false
+          }
+        },
+        "control_renderer_glb_iou": 1.0,
+        "heldout_centers_local_m": [
+          [
+            0.0031931745084578167,
+            0.0033505333735448202
+          ]
+        ],
+        "heldout_center_spacing_m": null
+      }
+    }
+  }
+}

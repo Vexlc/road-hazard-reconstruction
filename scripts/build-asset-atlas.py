@@ -214,9 +214,73 @@ def crack_examples():
     return rows
 
 
+def multiview_potholes():
+    run=ROOT/'runs/multiview-pit-survey'
+    if not run.is_dir():
+        return {}
+    bundle=run/'series'
+    report=read(run/'evaluation/measurements.json')
+    shots=camera_views(run/'sensors')
+    street_dir=run/'evaluation/streets'
+    street_frames=read(street_dir/'frames.json') if (street_dir/'frames.json').exists() else {}
+    for path in sorted((bundle/'scenes').glob('*/scene.json')):
+        scene=read(path)
+        for placement in scene['placements']:
+            key=placement['asset_id']
+            video=link(path.parent/'global_before_after.mp4')
+            for shot in shots.get(key,[]):
+                if shot.get('site')==scene['site']:
+                    shot['video']=video
+            shots.setdefault(key,[]).append(dict(label=path.parent.name+' · 迁入近景',video=video,
+                after=link(path.parent/'pothole_after.png'),before=link(path.parent/'pothole_before.png')))
+            case=scene['id']
+            if case in street_frames:
+                frame=street_frames[case]['frame']
+                shots[key].insert(0,dict(label=f"{scene['site']} · 行车全景 · 帧 {frame}",video=video,
+                    after=link(street_dir/(case+'-after.jpg')),before=link(street_dir/(case+'-before.jpg'))))
+    rows={}
+    for meta in read(bundle/'assets/asset_manifest.json'):
+        key=meta['id']
+        case=report[key]
+        directory=run/'evaluation'/key
+        source=case['source']
+        method='多帧 RGB-D' if source=='PothRGBD' else '多帧双目'
+        row=entry(meta,bundle/'assets',method,meta['label'],bundle/'views'/(key+'_inspection.jpg'))
+        inputs=[dict(label='拟合帧 '+k,image=link(directory/'input'/(k+'.jpg'))) for k in case['fit']]
+        inputs.extend([dict(label='融合正射纹理',image=link(bundle/'references'/(key+'_ortho.png'))),
+                       dict(label='实测覆盖次数',image=link(directory/'input/support.png'))])
+        evidence=[]
+        for frame,data in case['heldout'].items():
+            dest=directory/frame
+            stats=data['exported_glb']
+            modes=[dict(label='融合 GLB 回投',image=link(dest/'contours.jpg'),iou=stats['mask_iou']),
+                   dict(label='实拍原图',image=link(dest/'photo.jpg')),
+                   dict(label='GLB 材质底色回投',image=link(dest/'base-color.jpg'),texture=True),
+                   dict(label='光轴深度误差',image=link(dest/'errors.jpg'),error=True)]
+            for k,single in data['single_fit_frame_controls'].items():
+                modes.append(dict(label='仅用帧 '+k,image=link(dest/('single-'+k+'.jpg')),iou=single['mask_iou']))
+            evidence.append(dict(frame=frame,modes=modes,median=stats['depth_abs_median_mm'],p95=stats['depth_abs_p95_mm'],
+                                 samples=stats['visible_pit_depth_samples'],spacing=data['heldout_center_spacing_m'],
+                                 colorError=data['material_reprojection'].get('raw_rgb_mae_0_255')))
+        note='仅用坑外路面纹理和深度配准相机。坑内几何与颜色来自拟合帧，留出帧用于复核。外围缺少观测的部分用邻近路面纹理补齐。'
+        appearance=read(bundle/'calibration'/(key+'_capture.json'))['photographic_texture']
+        note+=f" 坑内 {appearance['observed_pit_fraction']:.1%} 的纹理像素可直接投影到有效照片，其余使用基础表面颜色。"
+        if source=='PothRGBD':note+=' PothRGBD 的米制结果基于标称内参。'
+        row.update(depth=meta['depth_p95_m'],depthLabel='实测 P95 凹深',triangles=sum(meta['geometry_parts'].values()),
+                   reverse=link(bundle/'views'/(key+'_reverse.jpg')),reference=inputs[0]['image'],sourceViews=inputs,
+                   pitViews=evidence,spacing=case['glb_center_spacing_m'],sourceDataset=source,note=note,
+                   fit=link(bundle/'calibration'/(key+'_capture.json')),reprojection=link(run/'evaluation/measurements.json'),
+                   credit='https://github.com/ymyurdakul/PData' if source=='PothRGBD' else 'https://github.com/ruirangerfan/stereo_pothole_datasets',
+                   scenes=shots.get(key,[]))
+        if (run/'sensors/checks/scan_audit.json').is_file():
+            row['scan']=link(run/'sensors/checks/scan_audit.json')
+        rows[key]=row
+    return rows
+
+
 def main():
     rows = {}
-    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples()):
+    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), multiview_potholes()):
         if group.keys() & rows.keys():
             raise ValueError("Asset ID collision")
         rows.update(group)
@@ -229,7 +293,7 @@ def main():
             row["orbit"] = link(orbit)
         if row.get("related"):
             rows[row["related"]]["related"] = row["id"]
-    featured = ["A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["P112","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

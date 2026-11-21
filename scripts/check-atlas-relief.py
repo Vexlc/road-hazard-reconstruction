@@ -63,7 +63,7 @@ def compare(path,data,seed):
 
 def check():
     rows=json.loads((ATLAS/'catalog.js').read_text()[len('window.roadAssets='):-2])
-    reference={'A107','A108','M107','A104','A105','M104','A93','A95','M91','M13','P13','P102','P90','stereo_pothole_fan_1_03',
+    reference={'P110','P111','P112','P113','P114','A107','A108','M107','A104','A105','M104','A93','A95','M91','M13','P13','P102','P90','stereo_pothole_fan_1_03',
                'rgbd_pothole_20250227_135438','model_raised_rectangular_removed_side_chip_seal'}
     summary=dict(records=len(rows),with_removable_cover=0,valid_top_samples=0,pitch_m=[],checked_meshes={})
     for i,row in enumerate(rows):

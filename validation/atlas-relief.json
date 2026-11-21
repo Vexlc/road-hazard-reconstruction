@@ -1,71 +1,91 @@
 {
-  "records": 1354,
+  "records": 1359,
   "with_removable_cover": 183,
-  "valid_top_samples": 12215155,
+  "valid_top_samples": 12262200,
   "checked_meshes": {
+    "P112": {
+      "independent_rays": 96,
+      "max_error_m": 2.477836608886716e-05
+    },
     "A104": {
       "independent_rays": 192,
-      "max_error_m": 2.4683570861827597e-05
+      "max_error_m": 2.4572658538724035e-05
     },
     "A108": {
       "independent_rays": 192,
-      "max_error_m": 2.4525070190406506e-05
+      "max_error_m": 2.4868011474610263e-05
     },
     "A93": {
       "independent_rays": 192,
-      "max_error_m": 2.480745315547317e-05
+      "max_error_m": 2.4740600585992922e-05
     },
     "P90": {
       "independent_rays": 96,
-      "max_error_m": 2.4587631225578277e-05
+      "max_error_m": 2.283573150634044e-05
     },
     "P102": {
       "independent_rays": 96,
-      "max_error_m": 1.0090065002441723e-05
+      "max_error_m": 1.967239379882524e-06
     },
     "rgbd_pothole_20250227_135438": {
       "independent_rays": 96,
-      "max_error_m": 2.472248077392547e-05
+      "max_error_m": 2.4717140197749732e-05
     },
     "model_raised_rectangular_removed_side_chip_seal": {
       "independent_rays": 192,
-      "max_error_m": 2.4793148040824775e-05
+      "max_error_m": 2.4378299713134766e-05
     },
     "stereo_pothole_fan_1_03": {
       "independent_rays": 96,
-      "max_error_m": 2.494311332702087e-05
+      "max_error_m": 2.4880456924433747e-05
     },
     "M13": {
       "independent_rays": 96,
-      "max_error_m": 2.453308105476726e-05
+      "max_error_m": 2.4913883209132237e-05
     },
     "P13": {
       "independent_rays": 96,
-      "max_error_m": 2.4735164642325502e-05
+      "max_error_m": 2.4372959136959027e-05
     },
     "A105": {
       "independent_rays": 192,
-      "max_error_m": 2.4632263183499425e-05
+      "max_error_m": 2.4831295013516552e-05
     },
     "A107": {
       "independent_rays": 192,
-      "max_error_m": 2.484679222108932e-05
+      "max_error_m": 2.495398521423775e-05
     },
     "A95": {
       "independent_rays": 192,
-      "max_error_m": 2.4707412719759958e-05
+      "max_error_m": 2.4954128265530784e-05
     },
     "M104": {
       "independent_rays": 96,
-      "max_error_m": 2.392530441275298e-05
+      "max_error_m": 2.447366714486421e-05
     },
     "M107": {
       "independent_rays": 96,
-      "max_error_m": 2.4497556686375876e-05
+      "max_error_m": 2.4778890609755688e-05
     },
     "M91": {
       "independent_rays": 96,
-      "max_error_m": 2.4782562255909468e-05
+      "max_error_m": 2.412691116338017e-05
+    },
+    "P110": {
+      "independent_rays": 96,
+      "max_error_m": 2.4729061126708973e-05
+    },
+    "P111": {
+      "independent_rays": 96,
+      "max_error_m": 2.4719619750979138e-05
+    },
+    "P113": {
+      "independent_rays": 96,
+      "max_error_m": 2.4600887298583188e-05
+    },
+    "P114": {
+      "independent_rays": 96,
+      "max_error_m": 2.438859939575197e-05
     }
   },
   "pitch_m_min_median_max": [

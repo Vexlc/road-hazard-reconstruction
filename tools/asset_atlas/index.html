@@ -11,7 +11,7 @@
     <div id="states" aria-label="同一资产的状态" hidden></div>
     <div class="evidence">
       <figure class="model"><a id="modelLink" target="_blank"><img id="model" alt=""></a><figcaption><span id="modelLabel"></span><span><button id="spin" type="button">360° 环绕</button> <button id="rotate" type="button">切换视角</button></span></figcaption></figure>
-      <figure id="sourcePanel"><a id="sourceLink" target="_blank"><img id="source" alt=""></a><figcaption><span id="sourceLabel"></span><button id="switchSource" type="button" hidden>查看盖面原图</button></figcaption></figure>
+      <figure id="sourcePanel"><a id="sourceLink" target="_blank"><img id="source" alt=""></a><figcaption><span id="sourceLabel"></span><select id="sourceView" aria-label="选择资产输入观测" hidden></select><button id="switchSource" type="button" hidden>查看盖面原图</button></figcaption></figure>
       <figure id="roadPanel"><a id="roadLink" target="_blank"><img id="road" alt=""></a><figcaption><label>道路 <select id="scene"></select></label><button id="before" type="button">查看迁入前</button></figcaption></figure>
     </div>
     <div class="details"><dl id="metrics"></dl><div id="downloads"></div></div>
@@ -21,6 +21,12 @@
       <p id="captureInfo"></p>
       <div class="capture-controls"><label>观测帧 <select id="captureView"></select></label><label>显示 <select id="captureMode"><option value="photo">实拍原图</option><option value="native">原始位姿</option><option value="registered">局部配准</option></select></label></div>
       <figure><a id="captureImageLink" target="_blank"><img id="captureImage" alt=""></a><figcaption><span id="captureLegend"></span><output id="captureScore"></output></figcaption></figure>
+    </details>
+    <details id="pitPanel" hidden>
+      <summary>比较多帧与单帧重建在留出照片上的表现</summary>
+      <div class="capture-controls"><label>留出帧 <select id="pitFrame"></select></label><label>对照 <select id="pitMode"></select></label></div>
+      <figure><a id="pitImageLink" target="_blank"><img id="pitImage" alt=""></a><figcaption><span id="pitLegend"></span><output id="pitScore"></output></figcaption></figure>
+      <p id="pitDepth"></p>
     </details>
     <details id="reliefPanel" hidden>
       <summary>查看网格高程与剖面</summary>

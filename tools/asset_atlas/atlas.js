@@ -34,8 +34,10 @@ function showScene() {
   }
   el("downloads").replaceChildren();
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
-  for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],["前视视频","video"],[selected.family ? "几何一致性核验" : "轮廓评估","audit"],["雷达核验","scan"],["实拍拟合记录","fit"],["留出帧核验","reprojection"]])
+  for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.family ? "几何一致性核验" : "轮廓评估","audit"],["雷达核验","scan"],["实拍拟合记录","fit"],["留出帧核验","reprojection"]])
     if (selected[key]) download(name,selected[key]);
+  const video = view?.video || selected.video;
+  if (video) download("前视视频",video);
   if (selected.credit) download("照片出处",selected.credit);
   if (selected.related) download(selected.method==="实拍 RGB" ? "同源 RGB-D" : "同源单目 RGB","#"+selected.related);
   if (selected.sensor && view) {
@@ -62,6 +64,14 @@ const notes = {
 function showSource() {
   el("sourcePanel").hidden = !selected.reference;
   if (!selected.reference) return;
+  el("sourceView").hidden = !selected.sourceViews;
+  if (selected.sourceViews) {
+    const item = selected.sourceViews[Number(el("sourceView").value)];
+    photo("source",item.image,item.label);
+    el("sourceLabel").textContent = item.label === "实测覆盖次数" ? "灰 0 · 黄 1 · 绿 2 · 紫 ≥3" : "输入与纹理";
+    el("switchSource").hidden = true;
+    return;
+  }
   const labels = selected.sourceLabels || ["井圈原图","盖面原图"];
   const title = selected.lidReference ? labels[Number(lidSource)]
     : selected.method==="生成 RGB" ? "生成参考图" : "实拍 RGB 裁切";
@@ -78,6 +88,18 @@ function showCapture() {
   el("captureLegend").textContent = legend[mode];
   const scores = "金属外缘 IoU　原始 "+view.native.toFixed(3)+" / 配准 "+view.registered.toFixed(3);
   el("captureScore").textContent = view.apronNative == null ? scores : scores+"　修补圈 IoU　原始 "+view.apronNative.toFixed(3)+" / 配准 "+view.apronRegistered.toFixed(3);
+}
+function showPitView(resetModes) {
+  const view = selected.pitViews[Number(el("pitFrame").value)];
+  if (resetModes) el("pitMode").replaceChildren(...view.modes.map((m,i)=>new Option(m.label,String(i))));
+  const m = view.modes[Number(el("pitMode").value)];
+  photo("pitImage",m.image,view.frame+" · "+m.label);
+  el("pitLegend").textContent = m.error ? "深度绝对误差　黑紫接近 0，橙黄接近 35 毫米，灰色为比较范围以外" :
+    m.iou != null ? "黄线为原始标注，青线为模型回投" : m.texture ? "坑内像素取自 GLB 内嵌材质，周围为留出照片" : "独立观测的实拍照片";
+  el("pitScore").textContent = m.iou != null ? "坑缘 IoU "+m.iou.toFixed(3) : m.texture && view.colorError != null ? "RGB 平均绝对误差 "+view.colorError.toFixed(1)+" / 255" : "";
+  let text = "融合 GLB 与留出实测深度的重合区有 "+view.samples.toLocaleString()+" 个像素。深度绝对误差中位数 "+view.median.toFixed(1)+" 毫米，P95 为 "+view.p95.toFixed(1)+" 毫米。";
+  if (view.spacing != null) text += " 留出深度估计的双坑中心距为 "+view.spacing.toFixed(3)+" 米。";
+  el("pitDepth").textContent = text;
 }
 function showStates() {
   const bar = el("states");
@@ -113,7 +135,14 @@ function inspect(id) {
   metric("三角面",selected.triangles.toLocaleString());
   metric("高斯点",selected.gaussians.toLocaleString());
   showModel();
+  el("sourceView").replaceChildren(...(selected.sourceViews || []).map((v,i)=>new Option(v.label,String(i))));
   showSource();
+  el("pitPanel").hidden = !selected.pitViews;
+  if (selected.pitViews) {
+    if (selected.spacing != null) metric("双坑中心距（米）",selected.spacing.toFixed(3));
+    el("pitFrame").replaceChildren(...selected.pitViews.map((v,i)=>new Option(v.frame,String(i))));
+    showPitView(true);
+  }
   showStates();
   el("capturePanel").hidden = !selected.captureViews;
   if (selected.captureViews) {
@@ -193,6 +222,9 @@ if (assets.length) {
   el("before").onclick=()=>{before=!before; showScene();};
   el("scene").onchange=()=>{before=false; showScene();};
   el("spin").onclick=()=>{spinning=!spinning; showModel();};
+  el("sourceView").onchange=showSource;
+  el("pitFrame").onchange=()=>showPitView(true);
+  el("pitMode").onchange=()=>showPitView(false);
   el("captureView").onchange=el("captureMode").onchange=showCapture;
   el("switchSource").onclick=()=>{lidSource=!lidSource; showSource();};
   el("rotate").onclick=()=>{reverse=!reverse; showModel();};

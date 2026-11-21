@@ -191,3 +191,31 @@ work/envs/streetcrafter/bin/python scripts/check-road-cover.py \
 采集清单将几何与纹理拟合帧、附加配准帧、留出帧分别列出。相机的局部像素平移按深度倒数拟合，仅用于这处静态目标，原始相机位姿保留。验收程序直接读取落座 GLB，对前后视留出照片做逐像素射线求交，再用独立原始扫描的盖面点核验网格高度。图谱可分别查看实拍、原始位姿及局部配准三个画面。[采集标注](../gen2hole/examples/pandaset-034/capture.json) · [拟合记录](../validation/pandaset-034-fit.json) · [导出网格核验](../validation/pandaset-034-reprojection.json)
 
 PandaSet 109 的 A107、A108、M107 使用同一入口。金属组件外径约 0.347 米，浅色修补圈约 0.799 × 0.838 米。可在各拟合帧中增加 `apron_edge` 像素多边形，程序结合原始激光点估计修补圈的米制边界和五个径向高度。盖缝无法分辨时可用 `lid_radius_clearance_design_m` 指定径向间隙，图册单独标出设计盖面直径。错位盖板按盖背加强筋与路面、修补圈或底座的首次接触落位。用同一套命令替换采集清单和输出路径即可复建。[109 采集标注](../gen2hole/examples/pandaset-109/capture.json) · [留出帧、修补圈和盖背接触核验](../validation/pandaset-109-reprojection.json)
+
+## 多帧实拍重建同一组坑洞
+
+近景可以各自拍到病害的一部分。选择一个能与各帧通过坑外路面配准的机位作为 `anchor`，在每帧标出所有可见坑体。P112 的两张近景各记录一个坑，两帧都用全景的外围路面定位。导出的 GLB 含有两处独立坑缘，比较全景标注时，单帧重建的轮廓交并比（IoU）分别为 0.398、0.536，融合后为 0.898。[原图与回投](figures/double-pothole.jpg)
+
+~~~bash
+work/envs/streetcrafter/bin/python gen2hole/multiview_pits.py \
+  --survey gen2hole/examples/multiview-potholes/survey.json --out runs/my-pit-survey --preview
+~~~
+
+`fit` 列出参与表面与纹理融合的帧，`holdout` 列出用于检验的帧。拍摄时应让坑外有可匹配的纹理与有效深度。程序在提取相机配准特征前遮去坑内照片，再用坑外三维点估计相对位姿。各拟合帧提供米制凹深、坑缘和颜色。正射纹理优先使用分辨率高、与融合表面深度相符的观测。未拍全的外围路面用邻近沥青纹理补齐，图谱的「实测覆盖次数」可查看各格点有几帧几何观测。
+
+自带数据使用 `source: "files"`。复制[文件清单示例](../gen2hole/examples/multiview-potholes/files-example.json)，将路径改为相对该 JSON 的原图、深度和掩膜。每帧三者必须像素对齐，深度取相机光轴方向的 Z 值，可用单通道 PNG 或二维 NPY。毫米深度使用 `depth_scale: 0.001`，米使用 `1.0`。二值掩膜非零处标病害，`fx_fy_cx_cy` 使用该图实际针孔内参（像素），示例数值只演示格式。将上述命令的 `--survey` 替换为新清单即可重建。输出目录须为新路径。
+
+每个 `series/assets/pothole/<ID>/` 含 GLB、Gaussian PLY 和米制表面。留出核验使用导出的 GLB、实际 UV 和内嵌底色，与每帧的轮廓、光轴深度、照片进行比较，另用每张拟合帧单独重建作为对照。结果与回投图保存在 `evaluation/`。PothRGBD 使用标称内参，双坑中心距的毫米级吻合描述同一套标定下的观测。FanStereo 使用原始 XYZ 点阵恢复投影，其中 P114 的拟合帧 03、04 机位很接近。两个小坑的可直接回投纹理覆盖约 79% 和 87%，三组较大坑均超过 99%。[五组图版](figures/multiview-potholes.jpg) · [六个留出帧的测量记录](../validation/multiview-potholes.json) · [留出像素隔离与异坑反例](../validation/multiview-pit-inputs.json)
+
+从项目根目录运行以下命令，可在同一处 PandaSet 109 道路放置五组病害，并把 P113 放到第二段路。模拟时沿实拍激光束计算更换路面后的返回距离。核验同时检查模型摘要、原生检查点回读、资产尺度和可见相机帧。这六次放置共有 480 个案例帧，10 组前后对照中前视 6 组、后视 4 组。图谱另附每处放置的完整行车画面，黄色框和放大区来自同一帧。[迁入核验](../validation/multiview-pit-transfer.json)
+
+~~~bash
+for n in 110 111 112 113 114; do
+  python gen2hole/downstream/place.py --bundle runs/my-pit-survey/series --site 109 --group "$n" --assets "P$n" --front
+done
+python gen2hole/downstream/place.py --bundle runs/my-pit-survey/series --site 034 --group 113 --assets P113 --front
+python gen2hole/downstream/simulate.py --run runs/my-pit-survey --out runs/my-pit-survey/sensors
+python scripts/check-pit-transfer.py --run runs/my-pit-survey --out runs/my-pit-survey/transfer.json
+work/envs/streetcrafter/bin/python scripts/check-pit-inputs.py --run runs/my-pit-survey --out runs/my-pit-survey/input-checks.json
+work/envs/assets/bin/python scripts/render-pit-survey.py --run runs/my-pit-survey --out runs/my-pit-survey/figures
+~~~
