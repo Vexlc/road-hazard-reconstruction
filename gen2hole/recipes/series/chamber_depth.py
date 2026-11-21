@@ -22,9 +22,9 @@ def rays(xy, intrinsics):
     return np.column_stack(((x-cx)/fx,(y-cy)/fy,np.ones(len(x))))
 
 
-def fit_road(points, tolerance):
+def fit_plane(points, tolerance):
     if len(points)<100:
-        raise ValueError("Fewer than 100 valid road depth samples")
+        raise ValueError("Fewer than 100 valid planar depth samples")
     rng = np.random.default_rng(1949)
     sample = points[rng.choice(len(points),min(4096,len(points)),replace=False)]
     best = 0
@@ -39,7 +39,7 @@ def fit_road(points, tolerance):
         if count>best:
             best,normal,offset=count,n,n@a
     if best < .6*len(sample):
-        raise ValueError("Insufficient consensus around one local road plane")
+        raise ValueError("Insufficient consensus around one surface plane")
     for _ in range(3):
         keep=abs(points@normal-offset)<tolerance
         inliers=points[keep]
@@ -53,7 +53,7 @@ def fit_road(points, tolerance):
                               rms_m=float(np.sqrt(np.mean(residuals[keep]**2))))
 
 
-def diameter(landmarks, intrinsics, normal, offset, size):
+def cardinal_points(landmarks, intrinsics, normal, offset, size):
     xy=np.asarray(landmarks,dtype=float)
     if xy.shape!=(4,2) or not np.isfinite(xy).all() or (xy<0).any() or (xy>=size).any():
         raise ValueError("Four in-frame cardinal rim landmarks are required")
@@ -61,7 +61,11 @@ def diameter(landmarks, intrinsics, normal, offset, size):
     denominator=lines@normal
     if denominator.min() <= .025:
         raise ValueError("The photographed rim lies near or behind the road-plane horizon")
-    points=lines*(offset/denominator[:,None])
+    return lines*(offset/denominator[:,None])
+
+
+def diameter(landmarks, intrinsics, normal, offset, size):
+    points=cardinal_points(landmarks,intrinsics,normal,offset,size)
     axes=points[2:]-points[:2]
     spans=np.linalg.norm(axes,axis=1)
     value=float(spans.mean())
@@ -93,7 +97,7 @@ def calibrate(spec, rgb_size, matrix, ref_dir, center, radius):
     if len(ix)>60000:
         ix=np.random.default_rng(230).choice(ix,60000,replace=False)
     points=rays(image_xy[ix],intrinsics)*depth[y[ix],x[ix],None]
-    n,d,quality=fit_road(points,tol)
+    n,d,quality=fit_plane(points,tol)
     measured,observations={},{}
     for field,marks in [('frame_diameter_m','landmarks_xy'),('aperture_diameter_m','aperture_landmarks_xy')]:
         if marks in spec['frame']:
@@ -120,3 +124,71 @@ def calibrate(spec, rgb_size, matrix, ref_dir, center, radius):
     return dict(source_kind=survey['source_kind'],measured=measured,observations=observations,
                 road_plane=dict(normal_camera=n.tolist(),offset_m=float(d),**quality),
                 registered_inputs_sha256=hashes,intrinsics_px=intrinsics.tolist())
+
+def component_basis(points):
+    # X points from left to right; Y from bottom to top. These are the component
+    # axes marked by the operator, including azimuth about the local road normal.
+    x=points[2]-points[0]
+    y=points[1]-points[3]
+    x=x/np.linalg.norm(x)
+    y=y/np.linalg.norm(y)
+    if abs(x@y)>.20:
+        raise ValueError("Opposing cardinal landmarks do not form perpendicular diameters")
+    y-=x*(x@y)
+    y/=np.linalg.norm(y)
+    return np.column_stack([x,y,np.cross(x,y)])
+
+
+def observed_cover(spec, original_size, matrix, refs, center, radius, thickness):
+    # A separate capture can observe the deployed cover from a different camera.
+    # Its own rim datum re-registers that camera to the same component axes.
+    capture=spec['pose_capture']
+    rim=capture['frame_landmarks_xy']
+    road=calibrate(dict(rgbd=capture,frame=dict(landmarks_xy=rim)),original_size,matrix,refs,center,radius)
+    n,d=road['road_plane']['normal_camera'],road['road_plane']['offset_m']
+    intr=road['intrinsics_px']
+    frame=cardinal_points(rim,intr,n,d,original_size)
+    frame_axes=component_basis(frame)
+    if frame_axes[:,2]@np.asarray(n)>-.98:
+        raise ValueError("The road-frame landmark order must yield an upward Z axis")
+    z=registered_depth(refs/capture['depth'],capture['metres_per_unit'])
+    mask_file=refs/capture['lid_mask']
+    with Image.open(mask_file) as im:mask=np.asarray(im.convert('L'))>0
+    if mask.shape!=z.shape:raise ValueError("Cover mask and registered optical Z differ in shape")
+    y,x=np.where(mask&np.isfinite(z)&(z>0))
+    valid_coverage=float(len(x)/max(1,mask.sum()))
+    if not mask.any() or valid_coverage<.4:raise ValueError("Insufficient visible lid depth coverage")
+    if len(x)>60000:
+        ix=np.random.default_rng(230).choice(len(x),60000,replace=False)
+        x,y=x[ix],y[ix]
+    cloud=rays(np.column_stack((x,y)),intr)*z[y,x,None]
+    tolerance=float(capture.get('plane_tolerance_m',.015))
+    normal,offset,quality=fit_plane(cloud,tolerance)
+    marks=capture['lid_landmarks_xy']
+    points=cardinal_points(marks,intr,normal,offset,original_size)
+    lid_diameter,diameters=diameter(marks,intr,normal,offset,original_size)
+    lid_axes=component_basis(points)
+    if lid_axes[:,2]@normal>-.98:
+        raise ValueError("The annotated surface must show the tread face with its four ordered cardinal points")
+    planar=cloud[abs(cloud@normal-offset)<tolerance]
+    local_xy=(planar-points.mean(axis=0))@lid_axes[:,:2]
+    inside=float(np.mean(np.linalg.norm(local_xy,axis=1)<=lid_diameter*.56))
+    if inside<.80:raise ValueError("Depth mask and annotated cover perimeter disagree")
+    quality.update(valid_mask_fraction=valid_coverage,inliers_inside_perimeter_fraction=inside)
+    rotation=frame_axes.T@lid_axes
+    lid_center=frame_axes.T@(points.mean(axis=0)-frame.mean(axis=0))
+    t=np.eye(4)
+    t[:3,:3]=rotation
+    t[:3,3]=lid_center-rotation@np.array([0.,0.,thickness+.010])
+    angle=float(np.degrees(np.arccos(np.clip(rotation[2,2],-1,1))))
+    if angle>95:raise ValueError("Observed cover face is beyond this recipe's near-vertical range")
+    hashes=road['registered_inputs_sha256']|{'lid_mask':hashlib.sha256(mask_file.read_bytes()).hexdigest(),
+            'image':hashlib.sha256((refs/capture['image']).read_bytes()).hexdigest()}
+    frame_to_camera=np.eye(4)
+    frame_to_camera[:3,:3]=frame_axes
+    frame_to_camera[:3,3]=frame.mean(axis=0)
+    return dict(frame_to_camera=frame_to_camera.tolist(),intrinsics_px=intr,camera_size=list(original_size),
+                transform=t.tolist(),angle_degrees=angle,face_center_local_m=lid_center.tolist(),
+                lid_diameter_m=lid_diameter,diameter_fit=diameters,face_plane=quality,road_plane=road['road_plane'],
+                frame_diameter_m=road['measured']['frame_diameter_m'],source_kind=capture['source_kind'],
+                registered_inputs_sha256=hashes)

@@ -146,3 +146,28 @@ work/envs/assets/bin/python scripts/check-crack-assets.py --run runs/my-cracks
 ~~~
 
 图谱将它们显示为裂缝。现有道路回放继续使用三个传感器大类，裂缝共用路面凹陷标签，资产元数据中的 `surface_class=crack` 保留具体形态。实拍来源为 Rossini 等人的沥青路面数据，三份裁切的原始文件名、坐标及摘要保存在示例的 `sources.json` 中。[原始数据与授权](https://doi.org/10.5281/zenodo.20040434)
+
+## 从观测恢复井盖姿态
+
+如果还有同一设施开盖时的标定 RGB-D，可以在 survey JSON 添加 `pose_capture`。它使用自己的相机内参和路面井圈控制点，可以从另一机位拍摄。标记可见盖板**上表面**的二值掩膜和四个边缘点。井圈与盖面的控制点都按各自部件上的左、上、右、下顺序标注，方向要与用来提取纹理的对应部件一致。程序分别拟合局部路面和盖面，恢复盖面中心、完整三维旋转、盖板直径及倾角。
+
+~~~json
+{
+  "image": "deployed_rgb.png",
+  "depth": "deployed_z_mm.png",
+  "lid_mask": "deployed_top.png",
+  "metres_per_unit": 0.001,
+  "intrinsics_px": [540.0, 532.0, 319.5, 239.5],
+  "source_kind": "sensor_capture",
+  "frame_landmarks_xy": [[166,232],[316,137],[457,238],[314,340]],
+  "lid_landmarks_xy": [[245,246],[295,177],[367,207],[306,281]]
+}
+~~~
+
+把这个对象放在 `pose_capture` 下，将对应状态设为 `{"id":"A98","label":"观测开盖","pose_from_capture":true}`。上述像素坐标仅演示字段格式。可运行前述标定样例生成器获得一套相互配准、可以直接复跑的 RGB、深度、掩膜和控制点。厚度与不可见底面继续使用设计值。
+
+[受控回投图](figures/registered-lid-pose.jpg)使用带噪声和缺测的合成姿态观测。独立设定盖面倾角为 56°，重建得到 56.004°。用导出的 GLB 回投输入相机，盖面轮廓 IoU 为 0.9994，共同有效像素的深度绝对差中位数为 1.45 mm。它验证了同视角配准和几何实现。真实传感器采集的倾角精度仍需现场基准验证。
+
+~~~bash
+work/envs/streetcrafter/bin/python scripts/reproject-chamber-pose.py --run runs/my-calibration --asset A98 --figure runs/my-calibration/reprojection.jpg --report runs/my-calibration/reprojection.json
+~~~

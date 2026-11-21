@@ -1,0 +1,29 @@
+{
+  "source_kind": "synthetic_benchmark",
+  "asset": "A98",
+  "glb_sha256": "50504426ef534959bd9342d30f78c43a8d2e724488959713ea1328b6d6eda737",
+  "annotated_pixels": 30809,
+  "glb_visible_tread_pixels": 30806,
+  "common_valid_depth_pixels": 27823,
+  "mask_iou": 0.9994483385254413,
+  "mask_recall": 0.9996754195202701,
+  "mask_precision": 0.999772771538012,
+  "absolute_optical_z_error_median_m": 0.0014451255798340057,
+  "absolute_optical_z_error_p90_m": 0.0038043952941893442,
+  "estimated_angle_deg": 56.003753317337555,
+  "note": "Reprojection of the exported textured relief into the pose-fitting view; same-view consistency.",
+  "road_replay": {
+    "case": "109_98",
+    "world_error_m": 1.9073481638542944e-06,
+    "size_multiplier": 1.0,
+    "checkpoint_reload_max_pixel_error": 0,
+    "camera_views": 2,
+    "lidar": {
+      "case_frames": 80,
+      "raw_scans": 80,
+      "original_returns": 12883348,
+      "replacements": 4731,
+      "no_return": 0
+    }
+  }
+}

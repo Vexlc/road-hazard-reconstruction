@@ -52,3 +52,5 @@ __pycache__/
 /gen2hole/inputs/**/*.npz
 /gen2hole/models/**/*.safetensors
 /tools/asset_atlas/catalog.js
+
+/tools/asset_atlas/relief/

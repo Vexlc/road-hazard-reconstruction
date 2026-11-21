@@ -44,17 +44,18 @@ def build_bundle(args,survey,envs,paths,ids,run):
     for name,path in paths.items():
         shutil.copy2(path,refs/(name+'.png'))
     shutil.copy2(ROOT/'inputs/shared/back.png', refs/'back.png')
-    if 'rgbd' in survey:
-        sensor = dict(survey['rgbd'])
+    for group,fields in [('rgbd',('depth','bottom_mask')),('pose_capture',('image','depth','lid_mask'))]:
+        if group not in survey:continue
+        sensor = dict(survey[group])
         if sensor.get('source_kind') not in ('sensor_capture','synthetic_benchmark'):
-            raise ValueError("rgbd.source_kind must identify sensor_capture or synthetic_benchmark")
-        for key in ('depth','bottom_mask'):
+            raise ValueError(f"{group}.source_kind must identify sensor_capture or synthetic_benchmark")
+        for key in fields:
             if key in sensor:
                 original = args.survey.parent/sensor[key]
-                name = 'registered_'+key+original.suffix.lower()
+                name = group+'_'+key+original.suffix.lower()
                 shutil.copy2(original,refs/name)
                 sensor[key] = name
-        survey = dict(survey,rgbd=sensor)
+        survey = dict(survey,**{group:sensor})
     save(bundle/'calibration/survey.json',survey)
     code = bundle/'rebuild'
     for directory in ('common','series'):

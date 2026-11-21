@@ -75,7 +75,7 @@ def render(run,site,out):
     ids=[s['id'] for s in spec['states']]
     folder,match=shared_frame(bundle,site,ids)
     W=1680;gap=18;margin=36;cw=(W-2*margin-2*gap)//3
-    H=425+((len(ids)+2)//3)*620
+    H=470+((len(ids)+2)//3)*620
     paper='#f4f3ed';ink='#233c30'
     page=Image.new('RGB',(W,H),paper);draw=ImageDraw.Draw(page)
     def words(x,y,text,size,bold=False,fill=ink):
@@ -108,6 +108,10 @@ def render(run,site,out):
             words(x+cw-160,y+3,tag,23)
         picture(bundle/'views'/(key+'_inspection.jpg'),(x,y+42,cw,338),contain=True)
         picture(folder/(key+'.png'),(x,y+386,cw,219),contain=True)
+    if spec.get('credit'):
+        credit=spec.get('plate_credit',spec['credit'])
+        width=ImageFont.truetype(FONT,16,index=2).getlength(credit)
+        words(margin,H-31,credit,min(16,int(16*(W-2*margin)/max(1,width))))
     out.parent.mkdir(parents=True,exist_ok=True)
     page.save(out,quality=94,subsampling=0)
     return match
@@ -119,7 +123,7 @@ def road_matrix(run,sites,out):
     ids=[s['id'] for s in spec['states']]
     config=read(ROOT/'gen2hole/config/local.json')
     cell=420;left=154;step=148
-    page=Image.new('RGB',(left+len(sites)*(cell+10)+24,329+(len(ids)+1)*step),'#f4f3ed')
+    page=Image.new('RGB',(left+len(sites)*(cell+10)+24,369+(len(ids)+1)*step),'#f4f3ed')
     draw=ImageDraw.Draw(page)
     def word(x,y,text,size,bold=False):
         draw.text((x,y),text,font=ImageFont.truetype(BOLD if bold else FONT,size,index=2),fill='#233c30',anchor='lt')
@@ -140,6 +144,10 @@ def road_matrix(run,sites,out):
             with Image.open(folder/(key+'.png')) as im:
                 thumb=ImageOps.contain(im,(cell,step-7),Image.Resampling.LANCZOS)
                 page.paste(thumb,(x+(cell-thumb.width)//2,329+i*step))
+    if spec.get('credit'):
+        credit=spec.get('plate_credit',spec['credit'])+' 道路画面来自 PandaSet。'
+        width=ImageFont.truetype(FONT,15,index=2).getlength(credit)
+        word(26,page.height-29,credit,min(15,int(15*(page.width-52)/max(1,width))))
     out.parent.mkdir(parents=True,exist_ok=True)
     page.save(out,quality=94,subsampling=0)
 

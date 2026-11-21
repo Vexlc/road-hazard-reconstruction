@@ -101,6 +101,7 @@ function inspect(id) {
   showModel();
   showSource();
   showStates();
+  window.showAssetRelief(selected);
   el("roadPanel").hidden = !selected.scenes.length;
   el("scene").replaceChildren(...selected.scenes.map((s,i) => new Option(s.label,String(i))));
   showScene();

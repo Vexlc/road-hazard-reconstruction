@@ -15,12 +15,12 @@ CENTER = 239.5
 RADIUS = 157.0
 
 
-def rectify(image, landmarks, pixels=800):
+def cardinal_homography(size, landmarks):
     """Inverse homography from the canonical disk's four cardinal points into source RGB."""
     source_xy = np.asarray(landmarks, dtype=float)
     if source_xy.shape != (4, 2) or not np.isfinite(source_xy).all():
         raise ValueError("Expected left, top, right and bottom pixel coordinates")
-    if (source_xy < 0).any() or (source_xy >= [image.width, image.height]).any():
+    if (source_xy < 0).any() or (source_xy >= size).any():
         raise ValueError("A landmark lies outside its source image")
     edges = np.roll(source_xy, -1, axis=0) - source_xy
     if (np.cross(edges, np.roll(edges, -1, axis=0)) <= 0).any():
@@ -30,7 +30,11 @@ def rectify(image, landmarks, pixels=800):
     for (x,y),(u,v) in zip(base,source_xy):
         equations.extend([[x,y,1,0,0,0,-u*x,-u*y], [0,0,0,x,y,1,-v*x,-v*y]])
         values.extend([u,v])
-    matrix = np.append(np.linalg.solve(equations,values),1).reshape(3,3)
+    return np.append(np.linalg.solve(equations,values),1).reshape(3,3)
+
+
+def rectify(image, landmarks, pixels=800):
+    matrix = cardinal_homography(image.size,landmarks)
     y,x = np.mgrid[0:pixels,0:pixels] * (479/(pixels-1))
     projected = matrix @ np.stack([x.ravel(), y.ravel(), np.ones(x.size)])
     if projected[2].min() <= 0 <= projected[2].max():
@@ -77,6 +81,25 @@ def reconstruct(config):
         gauge = calibrate(config, sizes['frame'], maps['frame'], refs, CENTER, RADIUS)
         write_json(ROOT/'calibration/depth_measurements.json',gauge)
         config = dict(config,**gauge['measured'])
+    measured_pose = None
+    observed_states = [s for s in config['states'] if s.get('pose_from_capture')]
+    if bool(observed_states) != ('pose_capture' in config):
+        raise ValueError("Provide pose_capture and reference it from a state with pose_from_capture")
+    if observed_states:
+        from chamber_depth import observed_cover
+        for state in observed_states:
+            if state.get('absent') or 'offset_m' in state or 'angle_deg' in state:
+                raise ValueError("An observed lid state takes its pose from its capture")
+        capture=config['pose_capture']
+        with Image.open(refs/capture['image']) as im:
+            matrix=cardinal_homography(im.size,capture['frame_landmarks_xy'])
+            measured_pose=observed_cover(config,im.size,matrix,refs,CENTER,RADIUS,float(config['lid_thickness_m']))
+        diameter=measured_pose['frame_diameter_m']
+        if gauge and abs(diameter-config['frame_diameter_m'])>max(.01,.05*diameter):
+            raise ValueError("Frame diameters across the two registered depth captures disagree")
+        config=dict(config,lid_diameter_m=measured_pose['lid_diameter_m'])
+        if gauge is None:config['frame_diameter_m']=diameter
+        write_json(ROOT/'calibration/observed_pose.json',measured_pose)
     frame, aperture, depth = (float(config[k]) for k in ('frame_diameter_m','aperture_diameter_m','shaft_depth_m'))
     if not np.isfinite([frame,aperture,depth]).all() or not (0 < aperture < frame and depth > .060):
         raise ValueError("Expected a positive aperture smaller than the frame and a shaft deeper than its seat")
@@ -84,7 +107,8 @@ def reconstruct(config):
     thick = float(config['lid_thickness_m']) if needs_cover else 0.
     if needs_cover and not (aperture < lid < frame and 0 < thick < depth):
         raise ValueError("Cover must fit its seat and have positive thickness")
-    offsets = [np.asarray(s.get('offset_m',[0,0]),float) for s in config['states']]
+    offsets = [np.asarray(measured_pose['face_center_local_m'][:2] if s.get('pose_from_capture') else s.get('offset_m',[0,0]),float)
+               for s in config['states']]
     if any(v.shape != (2,) or not np.isfinite(v).all() for v in offsets):
         raise ValueError("offset_m must be a finite XY translation")
     inner_radius = RADIUS*aperture/frame
@@ -134,7 +158,11 @@ def reconstruct(config):
             # iron seat when lifted; a sliding disc clears the raised frame before resting on asphalt.
             ring_profile = np.linalg.norm(offset)
             clearance = .006 if 0 < ring_profile < (frame+lid)/2 else 0.
-            matrix = lid_pose(lid/2,angle,offset,clearance)
+            if state.get('pose_from_capture'):
+                angle=measured_pose['angle_degrees']
+                matrix=np.asarray(measured_pose['transform'])
+            else:
+                matrix = lid_pose(lid/2,angle,offset,clearance)
             mesh.materials.update(cover.materials)
             for name,vertices,indices,uv,material,road in cover.parts:
                 mesh.parts.append((name,(vertices@matrix[:3,:3].T+matrix[:3,3]).astype('f4'),indices,uv,material,road))
@@ -148,8 +176,15 @@ def reconstruct(config):
                     state=state['label'],lid_angle_degrees=None if absent else angle,lid_offset_m=None if absent else offset.tolist(),
                     lid_diameter_m=lid if needs_cover else None,lid_thickness_m=thick if needs_cover else None, lid_transform=None if absent else matrix.tolist(),
                     seed=193501, provenance='calibration/survey.json')
+        if measured_pose:
+            meta.update(scale_kind='registered_depth_with_designed_completion',measurement_record='calibration/observed_pose.json',
+                        metric_observations=dict(frame_diameter_m=frame,lid_diameter_m=lid))
+        if state.get('pose_from_capture'):
+            meta.update(pose_source='registered_depth',pose_source_kind=measured_pose['source_kind'],
+                        pose_observations='calibration/observed_pose.json',lid_face_center_m=measured_pose['face_center_local_m'],
+                        lid_offset_reference='observed face centre relative to frame centre, in road XY metres')
         if gauge:
-            meta.update(scale_kind='registered_depth_with_designed_completion',metric_observations=gauge['measured'],
+            meta.update(scale_kind='registered_depth_with_designed_completion',metric_observations=dict(meta.get('metric_observations',{}),**gauge['measured']),
                         depth_source_kind=gauge['source_kind'],measurement_record='calibration/depth_measurements.json')
             if 'shaft_depth_m' in gauge['measured']:
                 meta['depth_measured_m'] = gauge['measured']['shaft_depth_m']

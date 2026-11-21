@@ -16,11 +16,18 @@
     </div>
     <div class="details"><dl id="metrics"></dl><div id="downloads"></div></div>
     <p class="note" id="note"></p>
+    <details id="reliefPanel" hidden>
+      <summary>查看网格高程与剖面</summary>
+      <div id="reliefContent" hidden>
+        <div id="reliefPlots"><figure><canvas id="reliefMap" width="380" height="274" aria-label="资产俯视高程，点击选择截线"></canvas><figcaption id="reliefLegend"></figcaption></figure><figure><canvas id="reliefChart" width="650" height="274" aria-label="所选截线的米制高程剖面"></canvas><figcaption id="reliefScale"></figcaption></figure></div>
+        <div id="reliefControls"><label>截线位置 <input id="reliefRow" type="range" min="0" max="96"></label><output id="reliefReadout"></output></div>
+      </div><p id="reliefStatus" role="status"></p>
+    </details>
   </article>
   <section id="library"><details id="coverage"><summary>按病害形态查看来源覆盖</summary><div class="tablewrap"><table id="coverageTable"><caption>各类资产记录数，点击数量筛选。不同采集帧和同一井体的不同姿态分别计数。</caption></table></div></details><div class="sectionhead"><h2>资产目录</h2><span id="count" role="status"></span></div>
     <div class="filters"><label>检索<input id="query" type="search" placeholder="编号、形态或材质"></label><label>重建方式<select id="method"><option value="">所有方式</option></select></label><label>病害类别<select id="category"><option value="">所有类别</option></select></label></div>
     <div id="cards"></div><div class="pager"><button id="prev">上一页</button><output id="page"></output><button id="next">下一页</button></div>
   </section>
 </main>
-<script src="catalog.js"></script><script src="atlas.js"></script>
+<script src="catalog.js"></script><script src="relief.js"></script><script src="atlas.js"></script>
 </html>

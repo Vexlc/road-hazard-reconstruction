@@ -56,6 +56,9 @@ def check(root):
     roles = ('frame','lid') if any(not s.get('absent') for s in spec['states']) else ('frame',)
     source_hashes = {s:hashlib.sha256((bundle/'references'/(s+'.png')).read_bytes()).hexdigest() for s in roles}
     checks = read(bundle/'checks.json')
+    lid_diameter=spec.get('lid_diameter_m')
+    if 'pose_capture' in spec:
+        lid_diameter=read(bundle/'calibration/observed_pose.json')['lid_diameter_m']
     template = {}
     assets = {}
     all_scenes = {}
@@ -80,11 +83,17 @@ def check(root):
         max_error = 0.
         if not absent:
             t = np.asarray(meta['lid_transform'])
-            angle = np.radians(state['angle_deg'])
-            rotation = np.array([[np.cos(angle),0,-np.sin(angle)],[0,1,0],[np.sin(angle),0,np.cos(angle)]])
-            pivot = np.array([-spec['lid_diameter_m']/2,0,0])
-            require(np.allclose(t[:3,:3],rotation,atol=1e-12),key+' commanded angle')
-            require(np.allclose((rotation@pivot+t[:3,3]-pivot)[:2],state['offset_m'],atol=1e-12),key+' commanded translation')
+            if state.get('pose_from_capture'):
+                observed=read(bundle/'calibration/observed_pose.json')
+                require(np.allclose(t,observed['transform'],atol=1e-12),key+' measured pose')
+                require(np.allclose(t[:3,:3].T@t[:3,:3],np.eye(3),atol=1e-8) and
+                        np.linalg.det(t[:3,:3])>.999999,key+' observed rigid transform')
+            else:
+                angle = np.radians(state['angle_deg'])
+                rotation = np.array([[np.cos(angle),0,-np.sin(angle)],[0,1,0],[np.sin(angle),0,np.cos(angle)]])
+                pivot = np.array([-lid_diameter/2,0,0])
+                require(np.allclose(t[:3,:3],rotation,atol=1e-12),key+' commanded angle')
+                require(np.allclose((rotation@pivot+t[:3,3]-pivot)[:2],state['offset_m'],atol=1e-12),key+' commanded translation')
         for name,(vertices,signature) in parts.items():
             xyz = (vertices-t[:3,3])@t[:3,:3] if name in lid_parts else vertices
             if name not in template:

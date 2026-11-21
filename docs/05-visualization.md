@@ -76,3 +76,16 @@ python scripts/serve-asset-atlas.py
 work/envs/assets/bin/python scripts/render-chamber-family.py --run runs/photo-chamber-BD-v2 --sites 034 109 110 --out docs/figures/chamber-road-transfer.jpg
 work/envs/assets/bin/python scripts/render-crack-plate.py --run runs/photo-cracks --out docs/figures/photo-cracks.jpg
 ~~~
+
+## 全库网格高程与剖面
+
+在资产详情展开「查看网格高程与剖面」。左图显示从上往下投射到实际 GLB 的首个交点，可点击俯视图或移动滑块换截线。右图以米为单位显示截面。蓝色低于资产路面原点，棕色高于原点，灰色表示射线没有交点。对于有独立盖板的资产，虚线表示移除盖板与铰链后射线首先遇到的固定部件。剖面描述资产几何，尺寸的测量或设计来源仍以该条目的元数据为准。
+
+常规网格使用 97 × 97 个采样点，细裂缝使用 193 × 193 个采样点。每件资产的实际采样间距显示在图下，窄于该间距的结构可能落在两条射线之间。以下命令可生成或恢复本机剖面数据，再将其加入离线索引。
+
+~~~bash
+python scripts/build-asset-atlas.py
+OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 work/envs/streetcrafter/bin/python scripts/build-asset-relief.py --resume
+python scripts/build-asset-atlas.py
+work/envs/assets/bin/python scripts/check-atlas-relief.py
+~~~

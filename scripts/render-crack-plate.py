@@ -23,7 +23,7 @@ def profile(sheet,draw,meta,field,x,y,w,h):
     mask=field['defect_mask']>.5
     n=mask.shape[0];pitch=float(field['width'])/(n-1)
     # Choose a depth-bearing pixel away from the crop border, then intersect
-    # the visible fissure along its shorter horizontal/vertical mask chord.
+    # the fissure between two road shoulders using its sampled depth profile.
     inside=mask.copy()
     cut=int(n*.12)
     inside[:cut]=inside[-cut:]=False;inside[:,:cut]=inside[:,-cut:]=False

@@ -202,6 +202,9 @@ def main():
             raise ValueError("Asset ID collision")
         rows.update(group)
     for row in rows.values():
+        relief = ATLAS / "relief" / (row["id"] + ".js")
+        if relief.is_file():
+            row["relief"] = link(relief)
         orbit = ATLAS / "orbits" / (row["id"] + ".webp")
         if orbit.is_file():
             row["orbit"] = link(orbit)

@@ -1,4 +1,12 @@
 {
+  "observed_pose": {
+    "actual_angle_deg": 56,
+    "recovered_angle_deg": 56.003753317337555,
+    "rotation_error_deg": 0.009680905766943294,
+    "face_center_error_m": 2.015630309213727e-05,
+    "exported_glb_face_diameter_error_m": 3.967495609269456e-06,
+    "exported_glb_to_true_plane_p95_m": 0.000534829823155561
+  },
   "source_kind": "synthetic_benchmark",
   "truth_m": {
     "frame_diameter_m": 0.814,
@@ -61,23 +69,37 @@
       "sha256": {
         "asset.glb": "f24e0bb4f1e310fa805ca32cb3e4d15beb98ad76956e55b8393d18249c9ffbb3",
         "surface.npz": "4a0247d1152817e8a0c35b6f8312958182d8fdd152fa97a135f7a54fcdd6ad3e",
-        "metadata.json": "c848541197fe31b85110851c4e57e2a245943f906bb18be41bc296d681564b40",
+        "metadata.json": "c13bc5ac78689a3224aac88289b41f94804ca80f56fb5cc893f77205b151a258",
         "asset.ply": "0c2473453bf9c54af65e316aadb41a5943c2e25468008775469d8e5304561aaa",
         "splat_material.npz": "13bd31f7b271cf0e1fe7af5218da740e6f33eeeb218c0b83bde9aed80ac793b0"
       }
     },
     "A97": {
       "triangles": 275328,
-      "geometry_sha256": "b29fad40d07353fa4b3a8f464c4079ec7c7fb43f6d6d11a9e4ea5cc392e3ea3e",
+      "geometry_sha256": "dba35595ed45f3422ed892a4f1ae6092ee2d4f72ba933b77af4715a64cc71c61",
       "lowest_z_m": -0.710064172744751,
-      "highest_z_m": 0.5484504103660583,
+      "highest_z_m": 0.54844731092453,
       "gaussians": 629015,
       "sha256": {
-        "asset.glb": "7f3ca4d2b717265241226cec9d35bf27c70ce26f90ccb5322aec59a36e0d8383",
+        "asset.glb": "ef1e9e2fcc1d28bd16b8939b26d6d194380ac563c04173ea5520e3df7f8fa440",
         "surface.npz": "4a0247d1152817e8a0c35b6f8312958182d8fdd152fa97a135f7a54fcdd6ad3e",
-        "metadata.json": "6e75327af9def453c1fe4ed4cd56da1bcbb96fad690fd1d0eac04a8306f07862",
-        "asset.ply": "81a50d537bcdc5af3c4dcb9f351abd578920e045c872025c3d4917e78b54080c",
-        "splat_material.npz": "1ab9c954e8f5afcacd194e5a7feb6695edb9bfc679cf7606f7cf06d704e626e8"
+        "metadata.json": "9a443176332b710a91460e91cc45efd8f4f74da73c247ac706dbb728022bc608",
+        "asset.ply": "462a7e1f27c9e8aace39719d6e503b56d7f3c8e59248af82a10bbc273a901b1d",
+        "splat_material.npz": "c355fd5fd4b907fa9347000bc4b6d1a82bbbfce6c7a2cfd0641da927dee212be"
+      }
+    },
+    "A98": {
+      "triangles": 275328,
+      "geometry_sha256": "87a36184048d62fb9ce2775b7746e166f753df1e099a26ffdd5535204a1e0178",
+      "lowest_z_m": -0.710064172744751,
+      "highest_z_m": 0.5940739512443542,
+      "gaussians": 629018,
+      "sha256": {
+        "asset.glb": "50504426ef534959bd9342d30f78c43a8d2e724488959713ea1328b6d6eda737",
+        "surface.npz": "3d9894b6a36b38b479d4331be52203ce786940d7e5445a839cb1f7376337c4ea",
+        "metadata.json": "e6d75961b3b3488c9ae8d1cbbfb5c8eedaae35c39b3700bc50e072503b96c3fa",
+        "asset.ply": "630815693b741a10a42d7ab24e96679d7b9c486ff97d99bf7609e190af8c6b14",
+        "splat_material.npz": "dd4a49044716a9a00dd65ad63f70df920aa25deedfd10e185c4023bf4ea695c8"
       }
     }
   },
