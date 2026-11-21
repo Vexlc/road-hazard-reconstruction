@@ -40,6 +40,8 @@ def main(args):
          'annotated_road_cache':str(work/'annotated_road'),'visibility_stride':1,'visibility_width':640,
          'material_contact':True,'contact_occlusion_strength':.6}
     atomic_json(work/'migration_job.json',job)
+    # Image-based placement consumes this copy alongside the v3 output.
+    atomic_json(out/'本机运行配置.json',job)
     relocated=[]
     for folder in sorted((out/'迁入场景').glob('*_*')):
         site=folder.name.split('_')[0];config=folder/'render_config.yaml';complete=folder/'complete.json'

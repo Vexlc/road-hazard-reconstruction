@@ -1,0 +1,60 @@
+{
+  "current": "2026-11-21",
+  "releases": {
+    "2026-11-21": {
+      "code_tag": "roadgs-2026.11.21",
+      "directory": "data/releases/2026-11-21",
+      "checksums": "catalog/roadgs-2026-11-21.sha256",
+      "files": 5926,
+      "bytes": 58304563851,
+      "counts": {
+        "image_assets": 109,
+        "pothole": 37,
+        "missing": 36,
+        "raised": 36,
+        "roads": [
+          "034",
+          "109",
+          "110"
+        ],
+        "native_cases": 111,
+        "placements": 327,
+        "camera_pairs": 654,
+        "lidar_case_frames": 8880
+      },
+      "packages": {
+        "image9": {
+          "directory": "道路病害图生三维",
+          "archive": "路面病害_九件图生资产.zip",
+          "archive_bytes": 418539671,
+          "archive_sha256": "5f9ff1a93ffbd3a61ce2c7e28bda53c2432eb9c56bca79d46eff1890761d7ffe",
+          "inputs": [
+            "references",
+            "calibration",
+            "scenes/placement_plan.json"
+          ]
+        },
+        "image100": {
+          "directory": "道路病害图生三维_新增100",
+          "archive": "路面病害_新增100件图生三维资产.zip",
+          "archive_bytes": 4767504595,
+          "archive_sha256": "ee301087a72c9ac5eada6c209f85965bb6a40523836d279a638fe67833f5b1fa",
+          "inputs": [
+            "references",
+            "calibration",
+            "scenes/placement_plan.json"
+          ]
+        },
+        "sensors": {
+          "directory": "道路病害_传感器与几何增强",
+          "archive": "路面病害_传感器与几何增强.zip",
+          "archive_bytes": 1201827820,
+          "archive_sha256": "e83dcad005fa95db2aedf91beea4272560ed93ec567498670cb36d58bd655c7d",
+          "inputs": [
+            "使用说明.txt"
+          ]
+        }
+      }
+    }
+  }
+}

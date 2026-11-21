@@ -41,3 +41,7 @@ __pycache__/
 /tools/multiscene/pandaset_???.yaml
 *.lock
 *.log
+
+# Local release data, historical deliverables and independent experiments.
+/data/
+/runs/

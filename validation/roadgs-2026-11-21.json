@@ -1,0 +1,72 @@
+{
+  "release": "2026-11-21",
+  "source_tree_sha256_verified": {
+    "files": 5926,
+    "bytes": 58304563851,
+    "manifest": "catalog/roadgs-2026-11-21.sha256"
+  },
+  "observed_release_counts": {
+    "image_assets": 109,
+    "missing": 36,
+    "pothole": 37,
+    "raised": 36,
+    "roads": [
+      "034",
+      "109",
+      "110"
+    ],
+    "native_cases": 111,
+    "placements": 327,
+    "camera_pairs": 654,
+    "lidar_case_frames": 8880
+  },
+  "batches": {
+    "image9": {
+      "assets": 9,
+      "checkpoints": 9
+    },
+    "image100": {
+      "assets": 100,
+      "checkpoints": 102
+    }
+  },
+  "rebuilt_asset": {
+    "id": "P04",
+    "triangles": 320000,
+    "gaussians": 422664,
+    "matches_release_sha256": {
+      "asset.glb": "b30621fafed8f4cea3bb2497335aad683ecba54650fa2323d2ea155dcb535381",
+      "asset.ply": "2a1c97a3fecf04715cf0d76255d750ae87e32848e4e05fbcbb44fdc181232ba2",
+      "splat_material.npz": "bf11761b9f3236b03be058de1975cecef99e471ea4b60f498881382083b9a1bb",
+      "surface.npz": "06233b5619bd65ea6bf16a299685f64a52b454d7ce62cc0d8ee6465ace417b2d",
+      "metadata.json": "e2a18d2504a2f5ec33ac3061406a280ddd2fb0d065f914f2d84ccb253088b70c"
+    }
+  },
+  "native_replay_matches_original_raw_rgb": [
+    {
+      "case": "034_01",
+      "frame": 36,
+      "background_gaussians": 3489734,
+      "raw_rgb_sha256": "f3a06fc7c1cb8224adb61125ae76e962c15355135144c4f3cd1b37423fd36a0c",
+      "video_reference_rgb_mae": 1.4263567924499512,
+      "video_reference_psnr_db": 42.52812015331494
+    },
+    {
+      "case": "110_37",
+      "frame": 3,
+      "background_gaussians": 2581476,
+      "raw_rgb_sha256": "a53aaf069aaf11785de9ec5010a05b695851c9bdc4df07385fead167ba4ead85",
+      "video_reference_rgb_mae": 1.5849305391311646,
+      "video_reference_psnr_db": 40.82456000834087
+    }
+  ],
+  "lidar_replay": {
+    "case": "034_13",
+    "source_frame": 46,
+    "crop_asset": "A13",
+    "crop_margin_m": 2,
+    "matched_source_rows": 5624,
+    "replaced_returns": 351
+  },
+  "legacy_checkpoints_shared_with_source": 150
+}
