@@ -1,0 +1,219 @@
+{
+  "merge": {
+    "source": "former sibling gen2hole",
+    "destination": "gen2hole",
+    "preserved_entries_on_rename": 788,
+    "old_root_absent": true,
+    "source_config_and_input_mappings_verified": 66220
+  },
+  "cleanup": {
+    "previous_cleanup_files": 40277,
+    "previous_exclusive_bytes": 300844855296,
+    "files_unlinked": 73167,
+    "by_reason": {
+      "build or download cache": 27169,
+      "browser cache": 305,
+      "installed binary or distribution": 803,
+      "installed executable": 13,
+      "same digest in merged project": 680,
+      "verified original in merged project": 43569,
+      "same inode in merged project": 1,
+      "smoke render": 7,
+      "document QA raster": 224,
+      "installed platform binary": 7,
+      "browser test cache": 381,
+      "test runtime installer": 6,
+      "verified duplicate model cache": 2
+    },
+    "exclusive_allocated_bytes_unlinked": 27777556480,
+    "dates_allocated_bytes_before": {
+      "2026-11-18": 25694900224,
+      "2026-11-19": 9031856128,
+      "2026-11-21": 210591744
+    },
+    "dates_allocated_bytes_after": {
+      "2026-11-18": 1438007296,
+      "2026-11-19": 173060096,
+      "2026-11-21": 40124416
+    },
+    "original_source_hashes_verified": 48553,
+    "source_paths_relocated": 627,
+    "fan_stereo_git": "data/history/retained-road-sources-2026-11-22/upstream-git/FanStereo.git",
+    "fan_stereo_head": "a6cc8e7354da4503b0ee03d15058df131a645195"
+  },
+  "archive_audit": {
+    "catalogued_inputs": 302,
+    "generated_glb_and_ply": 218,
+    "release_files": 5926,
+    "release_bytes": 58304563851,
+    "additional_model_hash_checks": {
+      "outputs/road_hazard_expansion": {
+        "records": 1199,
+        "files": 2398,
+        "bytes": 13320252205
+      },
+      "outputs/道路病害_稳定生成与迁移_v3/资产库": {
+        "records": 30,
+        "files": 60,
+        "bytes": 1364499759
+      }
+    }
+  },
+  "atlas": {
+    "records": 1339,
+    "records_by_method": {
+      "生成 RGB": 109,
+      "实拍 RGB": 1,
+      "实拍 RGB-D": 822,
+      "程序化": 342,
+      "实拍双目": 65
+    },
+    "records_with_scene": 1339,
+    "linked_scene_views": 2006,
+    "glb_orbits": {
+      "A13": {
+        "views": 24,
+        "step_degrees": 15,
+        "width": 540,
+        "height": 360
+      },
+      "M13": {
+        "views": 24,
+        "step_degrees": 15,
+        "width": 540,
+        "height": 360
+      },
+      "P13": {
+        "views": 24,
+        "step_degrees": 15,
+        "width": 540,
+        "height": 360
+      },
+      "P90": {
+        "views": 24,
+        "step_degrees": 15,
+        "width": 540,
+        "height": 360
+      }
+    },
+    "browser_checks": [
+      "offline file URL",
+      "desktop and mobile layout",
+      "filters and pagination",
+      "same-capture RGB to RGB-D navigation",
+      "forward/reverse model inspection",
+      "360-degree playback and stop",
+      "camera selection and before/after toggle"
+    ]
+  },
+  "isolated_from_historical_dates": {
+    "generated_rgb_rebuild_matches_published_glb_and_ply": {
+      "M13": true,
+      "P13": true,
+      "A13": true
+    },
+    "historical_five_rebuild": {
+      "model_missing_oval_broken_flange_aged_asphalt": {
+        "byte_match": {
+          "glb": true,
+          "ply": true
+        },
+        "points": 122000,
+        "numeric_checks_passed": true,
+        "max_xyz_component_error_m": 0.0
+      },
+      "model_pothole_bowled_aged_asphalt_01": {
+        "byte_match": {
+          "glb": true,
+          "ply": true
+        },
+        "points": 32240,
+        "numeric_checks_passed": true,
+        "max_xyz_component_error_m": 0.0
+      },
+      "model_raised_oval_ajar14_aged_asphalt": {
+        "byte_match": {
+          "glb": true,
+          "ply": true
+        },
+        "points": 122000,
+        "numeric_checks_passed": true,
+        "max_xyz_component_error_m": 0.0
+      },
+      "rgbd_pothole_20250227_135438": {
+        "byte_match": {
+          "glb": true,
+          "ply": true
+        },
+        "points": 111429,
+        "numeric_checks_passed": true,
+        "max_xyz_component_error_m": 0.0
+      },
+      "stereo_pothole_fan_1_01": {
+        "byte_match": {
+          "glb": false,
+          "ply": false
+        },
+        "points": 43178,
+        "numeric_checks_passed": true,
+        "max_xyz_component_error_m": 2.7325295377522707e-06
+      }
+    },
+    "loose_rgbd_files": {
+      "asset": "rgbd_pothole_20250227_135438",
+      "input_mask": "rasterized held-out PothRGBD polygon for supervised RGB-D input",
+      "matches_published": {
+        "glb": true,
+        "ply": true
+      }
+    },
+    "rgb_only_p90": {
+      "mask_audit": "validation/rgb-box-P90.json",
+      "camera_views": {
+        "front_camera": 1,
+        "back_camera": 1
+      },
+      "lidar": {
+        "case_frames": 80,
+        "raw_scans": 80,
+        "original_returns": 14770793,
+        "replacements": 1337,
+        "no_return": 0
+      },
+      "independent_geometry": {
+        "reader": "trimesh GLB scene graph",
+        "intersector": "Blender mathutils.bvhtree",
+        "assets": 1,
+        "real_beam_samples": 6,
+        "vertical_grid_samples": 21,
+        "range_p99_m": 2.390736460000653e-06,
+        "range_max_m": 2.392919673965821e-06,
+        "grid_height_p99_m": 3.5762786865234375e-07,
+        "grid_height_max_m": 3.5762786865234375e-07,
+        "nearest_part_disagreements": [],
+        "per_asset": {
+          "P90": {
+            "samples": 6,
+            "max_range_error_m": 2.392919673965821e-06
+          }
+        }
+      },
+      "reloaded_frame": {
+        "case": "034_90",
+        "frame": 36,
+        "background_gaussians": 1500820,
+        "raw_rgb_sha256": "2083c2a031c078c33da1f463031954d3f70965b9485aa0e8a96b75bbaaa06f86",
+        "video_reference_rgb_mae": 1.4286149740219116,
+        "video_reference_psnr_db": 42.52870741356986
+      }
+    }
+  },
+  "historical_stereo_scope": {
+    "published_assets_with_prior_reconstruction_differences": 13,
+    "source": "validation/stereo-reconstruction-differences.json",
+    "tested_from_that_list_in_this_pass": [
+      "stereo_pothole_fan_1_01"
+    ],
+    "full_appearance_revalidation_completed": false
+  }
+}

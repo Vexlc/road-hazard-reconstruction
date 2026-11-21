@@ -42,6 +42,16 @@ def measurements(source_bytes, depth_bytes, label_bytes, focal):
         if len(polygon) >= 3:
             paint.polygon([tuple(x) for x in polygon * [cols-1, rows-1]], fill=255)
     mask = np.asarray(mask_image) > 0
+    return project_rgbd(color, raw, mask, (focal, focal, (cols-1)*.5, (rows-1)*.5), Z_SCALE)
+
+
+def project_rgbd(color, raw, mask, intrinsics, metres_per_unit):
+    if raw.shape != color.shape[:2] or mask.shape != raw.shape:
+        raise ValueError("RGB, depth and mask must have matching resolution")
+    fx, fy, cx, cy = intrinsics
+    if not all(np.isfinite((fx, fy, cx, cy, metres_per_unit))) or min(fx, fy, metres_per_unit) <= 0:
+        raise ValueError("Invalid pinhole calibration or depth scale")
+    rows, cols = raw.shape
     components, count = ndimage.label(mask)
     if not count:
         raise ValueError("Empty polygon mask")
@@ -52,7 +62,7 @@ def measurements(source_bytes, depth_bytes, label_bytes, focal):
         raise ValueError("Pothole is too small in the source image")
     if main[[0,-1], :].sum() + main[:, [0,-1]].sum() > 12:
         raise ValueError("The source frame cuts off the pothole")
-    z = raw.astype("f4") * Z_SCALE
+    z = raw.astype("f4") * metres_per_unit
     valid = (z > .24) & (z < 3.8)
     edge_area = ndimage.binary_dilation(main, iterations=18) & ~mask
     if not np.any(edge_area) or np.mean(valid[main]) < .82 or np.mean(valid[edge_area]) < .7:
@@ -66,7 +76,7 @@ def measurements(source_bytes, depth_bytes, label_bytes, focal):
     z[valid] = filtered[valid]
     z[~valid] = 0
     v, u = np.indices((rows, cols), dtype="f4")
-    xyz = np.stack([(u-(cols-1)*.5)*z/focal, (v-(rows-1)*.5)*z/focal, z], axis=-1)
+    xyz = np.stack([(u-cx)*z/fx, (v-cy)*z/fy, z], axis=-1)
     return color, mask, xyz
 
 
@@ -92,11 +102,37 @@ def build(job):
     temp.mkdir(exist_ok=True, parents=True)
     tmp_samples = scratch / (identifier+".npz")
     metadata = {k: {"filename": input_names[k], "sha256": sha256(data[k]).hexdigest()} for k in data}
+    try:
+        detail, quality = reconstruct_checked(frames, temp, tmp_samples, metadata, f"{SOURCE} / {stamp}", Z_SCALE)
+    except ValueError as error:
+        shutil.rmtree(temp)
+        tmp_samples.unlink(missing_ok=True)
+        return {"id": identifier, "rejection": error.args[0]}
+    width, length = detail["pothole_extent_xy_m_p0_4_to_p99_6"]
+    d95 = detail["depth_mm_p50_p95_p99_in_mask"][1]
+    result = {
+        "id": identifier, "category": "rgbd", "family": stamp, "material": "captured_rgb",
+        "source": SOURCE, "source_frame": stamp, "source_data_card": DATA_CARD, "source_paper": PAPER,
+        "width_m": width, "length_m": length, "depth_p95_m": d95/1000, "units": "metres",
+        "geometry_source": "real_realsense_depth_with_nominal_intrinsics", "mesh_name": "pothole.glb",
+        "measured_support_in_mask": detail["stereo_near_sample_coverage_in_mask"],
+        "pinhole_nominal_fx_fy_px": focal, "depth_input_metres_per_unit": Z_SCALE,
+        "quality_checks": quality,
+        "limitations": ["Nominal camera intrinsics. Width, length and depth estimates are approximate.",
+                        "The source provides one visible surface and may include multiple frames of a defect."]
+    }
+    (temp / "metadata.json").write_text(json.dumps(result, indent=2) + "\n")
+    tmp_samples.replace(samples / f"{identifier}.npz")
+    temp.replace(final)
+    return result
+
+
+def reconstruct_checked(frames, temp, tmp_samples, metadata, source, metres_per_unit):
     reasons = []
     for border in (.085, .050):
-        configuration = SimpleNamespace(output=temp, samples=tmp_samples, metres_per_unit=Z_SCALE,
+        configuration = SimpleNamespace(output=temp, samples=tmp_samples, metres_per_unit=metres_per_unit,
                                         border=border, spacing_m=.0023, maximum_grid_size=340, tree_workers=1,
-                                        input_metadata=metadata, source=f"{SOURCE} / {stamp}")
+                                        input_metadata=metadata, source=source)
         try:
             with redirect_stdout(StringIO()):
                 detail = reconstruct(configuration, frames)
@@ -116,24 +152,8 @@ def build(job):
         if not all(quality.values()):
             reasons.append(", ".join(k for k, b in quality.items() if not b))
             continue
-        result = {
-            "id": identifier, "category": "rgbd", "family": stamp, "material": "captured_rgb",
-            "source": SOURCE, "source_frame": stamp, "source_data_card": DATA_CARD, "source_paper": PAPER,
-            "width_m": width, "length_m": length, "depth_p95_m": d95/1000, "units": "metres",
-            "geometry_source": "real_realsense_depth_with_nominal_intrinsics", "mesh_name": "pothole.glb",
-            "measured_support_in_mask": detail["stereo_near_sample_coverage_in_mask"],
-            "pinhole_nominal_fx_fy_px": focal, "depth_input_metres_per_unit": Z_SCALE,
-            "quality_checks": quality,
-            "limitations": ["Nominal camera intrinsics. Width, length and depth estimates are approximate.",
-                            "The source provides one visible surface and may include multiple frames of a defect."]
-        }
-        (temp / "metadata.json").write_text(json.dumps(result, indent=2) + "\n")
-        tmp_samples.replace(samples / f"{identifier}.npz")
-        temp.replace(final)
-        return result
-    shutil.rmtree(temp)
-    tmp_samples.unlink(missing_ok=True)
-    return {"id": identifier, "rejection": reasons}
+        return detail, quality
+    raise ValueError(reasons)
 
 
 def main():

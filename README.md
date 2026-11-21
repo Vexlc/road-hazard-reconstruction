@@ -2,21 +2,32 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**[打开离线路面病害资产图谱](tools/asset_atlas/index.html)**。按编号、重建方式或病害形态查找资产，查看原图、模型斜视、米制尺寸和对应的 PandaSet 道路画面。图谱收录 822 条实拍 RGB-D、65 条实拍双目、342 件程序化、109 件生成 RGB 和 1 件实拍单目样例，共 1,339 条。采集帧可能来自同一处病害。
+
+![不同坑洞、缺盖井与异常井盖的实际 GLB 渲染](docs/figures/asset-diversity.jpg)
+
+[跨来源重建与道路对照图](docs/figures/reconstruction-evidence.jpg)展示同一 ID 的参考图、模型、中心剖面和迁入效果。实拍单目 P90 和 RGB-D 样例使用同一帧，便于对照从设计尺寸和从深度测量得到的差异。
+
 **当前本地基线为 2026-11-21。** 首批 9 件和追加 100 件合计 109 件，包含 37 个坑洞、36 个缺盖井和 36 个异常井盖。它们在 034、109、110 三段实拍道路上形成 111 个原生场景、327 次放置、654 组前后视相机对照和 8,880 个雷达案例帧。资产参考图由模型生成，绝对尺寸和遮挡面采用设计值。
 
 | 想做什么 | 本地入口 |
 | --- | --- |
+| 从自己的 RGB 参考图重建坑洞、敞井、掀盖或移位井盖 | [单图重建与新设计](gen2hole/docs/new-assets.md) |
+| 从自己的对齐 RGB、深度与掩膜重建坑洞 | [RGB-D 文件入口](docs/02-asset-reconstruction.md#自带-rgb-d-文件) |
 | 看同一病害在相机、点云和剖面中的变化 | [离线传感器对照页](data/releases/2026-11-21/道路病害_传感器与几何增强/传感器对照.html) |
 | 按编号打开新增资产的原图、GLB 和 Gaussian PLY | [100 件资产浏览页](data/releases/2026-11-21/道路病害图生三维_新增100/资产浏览.html) |
 | 查看首批九件的模型与场景 | [九件资产索引](data/releases/2026-11-21/道路病害图生三维/资产与场景索引.md) |
 | 修改算法、开始实验、切回旧版 | [开发与版本管理](docs/11-development.md) |
 | 查四段对话、历史版本、原目录和复现记录 | [整合来源](docs/12-integration.md) · [本次校验](validation/roadgs-2026-11-21.json) |
 
-在项目根目录查看当前版本或完整校验本地交付。完整校验会读取约 58.3 GB。
+在项目根目录重建本地图谱索引、查看当前版本或完整校验本地交付。完整校验会读取约 58.3 GB。
 
 ~~~bash
+python scripts/build-asset-atlas.py
 python scripts/roadgs.py info
 python scripts/roadgs.py verify
 ~~~
 
 Git 保存代码、配置模板、清单和验证记录。模型、原始传感器数据、检查点、视频、环境和实验目录保存在本机。单独克隆 Git 后，需要恢复对应版本的数据目录才能打开上表中的离线页面或回放场景。[数据版本清单](catalog/roadgs-releases.json)
+
+图谱使用本机资产与场景文件，可直接在浏览器打开。P13、M13、A13、P90 提供固定取景的 360° 环绕，均从同一 GLB 渲染 24 个方向。可用 `work/envs/assets/bin/python scripts/render-asset-orbits.py` 重画。重画两张图版时运行 `work/envs/assets/bin/python scripts/render-asset-plates.py`。本次合并后的复跑结果见[验证记录](validation/merged-assets-2026-11-22.json)。

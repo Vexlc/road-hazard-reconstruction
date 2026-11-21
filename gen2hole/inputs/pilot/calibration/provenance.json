@@ -1,0 +1,70 @@
+{
+  "image_generation": "Codex built-in image_gen; one separate call per named reference",
+  "depth_model": {
+    "id": "depth-anything/Depth-Anything-V2-Small-hf",
+    "revision": "5426e4f0f36572d16453bbda7a8389317b1bef99",
+    "weights_sha256": "3152477ce0d8d6978d76b995120de97cb5b928701fd0f817769f59e249a16b70",
+    "source": "https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf/tree/5426e4f0f36572d16453bbda7a8389317b1bef99"
+  },
+  "references": {
+    "back.png": "a808ac5411d9d03bf4d658a1a73a4b3e48bc69673a7d078ac7d8899ebc2d5a12",
+    "brick.png": "b2f433276a4b96bd42e35a390019c90bacf4d251baa40d00b2e34a4e6a0bbc58",
+    "fracture.png": "622460de17d305b4b14b407578fa421653705083570bf38c4acf2b17bbdab37c",
+    "hatch.png": "b09530f36f0563700c65521e1e5c25873642d5a28b3b67078bebbc063b94c091",
+    "missing.png": "cd9bf51e66dd8e703c9d75a75f6b9b9140bc97c36ea203dddf634b1d1fe43fab",
+    "offset.png": "f227f3b02e0ff25eaf0a023d49779f303f4ff46cd02f8c77a1c20b8b055e76c3",
+    "pothole.png": "3d43e0129288fbd8bf834121a9ad4730b077ee7ff1e1398e7f9e4b909c72ef26",
+    "prompts.json": "49bd7f8eb6782cdd47c63fd8d3f63ef94d01f5851b87130e973ccf5f2da520cb",
+    "raised.png": "3c50aa049272994fa9f44bca257eb08403e0d4bc0b336b2c96508a7cca3fce60",
+    "spall.png": "a1f0b0bc17ce2181b51d9c7e9a7d735e1a53c585e79932b825defa61669099eb",
+    "square.png": "7a46cbcf13d38c94981c1c9a6b8da7e7e11a0c8be633f064586474d9e299c988",
+    "squareback.png": "9b7630fd90904d0663649ad4a059c74838f454d9142068b470322b98ddf1e64d",
+    "wet.png": "6b37b8182eec6f15b3bff1671aed2176268959589020754ad4ee079490a5acd7"
+  },
+  "calibration": {
+    "layout.json": "1c98bd315321800af78d650e5cbc2ead58706cbe38ee772720672c64d830d902",
+    "pothole_depth.npz": "5021ff5e30a5dc6c62829bba7b11295149cc7321c076057b56b0e91067c7b774",
+    "pothole_outline.png": "91676e6f4a7c5089b5565b0534746dfdb2a7c9dabe32ca6f88804fc3cd37ed71",
+    "spall_depth.npz": "05ea3190f1e0eabf42adf4be558c60d930240831a8d257d11551b9d27be3a0ca",
+    "spall_outline.png": "92b9f6b1b5b24893c0ad9d0dafe99c4caa93834ca5676152356c2430b0a38ef8",
+    "wet_depth.npz": "ed09204b58bcc7c5ab4e562486bf556b0c9d77afbdb8e45bda697fee486f7f30",
+    "wet_outline.png": "92954ad3d8ed117807567790b92f404891996c1c42b8d199aa491e09d3664dfd",
+    "wet_water.png": "b0c620e2dd2bdbd70da9def58ce9ab382adc759e96411018e64f467dad53a715"
+  },
+  "reconstruction_scripts": {
+    "audit_assets.py": "cd6b19865b3f96f7224ff51fd9c20926325e0bd5ba24063157f36f22f81cf958",
+    "build.py": "9a522adae8488ac2b9e49719f1e966a11e86e492ed3fd4424411c9bf4d41c75e",
+    "chambers.py": "9d4f3c831324462eea32c7d7c83f5693508cc2ac07b8a510a6d2153f19a669e6",
+    "check_views.py": "65bb3bf222170ca9d61cd13ea3ae55be1be441e8a3143b4f6a6d4a914a1b0ba2",
+    "deploy.py": "22cae09fa1467d46834754e5f192123ea0f6062d79d0b307c550bcfaace0ca2b",
+    "estimate_depth.py": "f9ae71e30c0521f2d4dc6db582ce7000084d7f02d4f7ccef42baa18f0eaa295a",
+    "export_splats.py": "7f0f6e5fb31f9c70bda829f069eee280922e7ab6111937dc6f6ab698ca3bb106",
+    "fracture_wall.py": "a9ed0caa32e71b4ca6495e76d3195e5b0dcfb480ae49c6c1bdf51c65c8a729e4",
+    "mesh_io.py": "2585fc474ba8342850d1506bdf815a4af17ffbb9d88afdd88719314a1c7fd7ad",
+    "native_entry.py": "043653c7a3159f54be30ec139a6638c13930b563da905eb68e0348d816f685ef",
+    "pavement.py": "02d7f8299bc0cd26f09bdc068a600ce58325b4f28c53559486ca0b627596a413",
+    "render_mesh.py": "d59c3fee7ea2f4ededeaa39147a4b6d0983bec9b0d7d905b7d5bfa66cb25d6a0",
+    "replay.py": "f6a803371846c64b841f94e4d7df7a39df849cc77e661dc02c9532847ecdfd2f",
+    "sensor_views.py": "b4d8b86d3b9845c0829bf7263ddfcfa14ee58a369b54fd8f5bb74fda5bbe23f1",
+    "trace_masks.py": "6d04c66e678693c4aacdf09e68bdc0e58ce9f18eec20fd140389d73e90b856c9"
+  },
+  "host_pipeline_sources": {
+    "v3_migration": "2a85447d2dffd1d1f8a94bde71aff79d0d04343b7f7646e6722fd786d1295d1d",
+    "v3_road_guard": "3b554ca81f8f5ec401ebd7db93b8d754fcbd7afea8e599055896835790ee2bab",
+    "road_sampling": "13c86ca86a29ecba3c02ca0f5a26c31fbe8f9fada748a9984ab5fbc9e1334211",
+    "SH_export": "be35ef0eb7585484045409e0f024a2970ca593e9840cf2a0f49c9dcfb5cde318",
+    "v3_splat_occlusion": "a75270ad0e695ab71fc66a74a00a3f37f4d8174a2fe3a082a5d4d9a65013f64a"
+  },
+  "supporting_reference_uses": {
+    "fracture.png": "Steep pavement faces with surface-space UVs; concrete variant inherits its own aggregate tint.",
+    "back.png": "Iron underside, edge and frame details. Round cover back is registered to the radial ribs.",
+    "squareback.png": "Square cover underside and ribs.",
+    "missing.png": "Completes unseen round shaft behind leaning lid.",
+    "square.png": "Completes unseen square chamber behind hatch."
+  },
+  "units": "metres",
+  "glb_up": "Y",
+  "gaussian_up": "Z",
+  "runtime_gpu": "NVIDIA GeForce RTX 4070 Ti SUPER, 16376 MiB reported by nvidia-smi",
+  "scale_source": "Assigned scene dimensions; the photos are generated and have no measured metric scale."
+}

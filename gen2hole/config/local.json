@@ -1,0 +1,9 @@
+{
+  "mesh_python": "/home/xiaosz/0_test/02_projects/I2hole2road/work/envs/assets/bin/python",
+  "compute_python": "/home/xiaosz/0_test/02_projects/I2hole2road/work/envs/streetcrafter/bin/python",
+  "depth_pythonpath": "/home/xiaosz/0_test/02_projects/I2hole2road/work/factory-extra-deps",
+  "road_project": "/home/xiaosz/0_test/02_projects/I2hole2road",
+  "road_config": "/home/xiaosz/0_test/02_projects/I2hole2road/outputs/道路病害_稳定生成与迁移_v3/本机运行配置.json",
+  "pandaset_raw": "/home/xiaosz/0_test/02_projects/I2hole2road/tools/multiscene/data/raw",
+  "pandaset_processed": "/home/xiaosz/0_test/02_projects/I2hole2road/tools/multiscene/data/processed"
+}

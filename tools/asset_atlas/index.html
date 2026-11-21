@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>路面病害资产图谱 · RoadGS</title>
+<link rel="stylesheet" href="style.css">
+<header><div class="bar"><a class="brand" href="#A13">Road<span>GS</span></a><nav><a href="#library">资产目录 ↓</a><a href="../../docs/02-asset-reconstruction.md">重建方法 ↗</a></nav></div></header>
+<main>
+  <div class="heading"><h1>路面病害资产图谱</h1><p id="summary" aria-live="polite"></p></div>
+  <article id="detail" hidden tabindex="-1">
+    <div class="detailhead"><div><span class="mono" id="assetKey"></span><h2 id="assetTitle"></h2></div><span id="sourceType"></span></div>
+    <div class="evidence">
+      <figure class="model"><a id="modelLink" target="_blank"><img id="model" alt=""></a><figcaption><span id="modelLabel"></span><span><button id="spin" type="button">360° 环绕</button> <button id="rotate" type="button">切换视角</button></span></figcaption></figure>
+      <figure id="sourcePanel"><a id="sourceLink" target="_blank"><img id="source" alt=""></a><figcaption id="sourceLabel"></figcaption></figure>
+      <figure id="roadPanel"><a id="roadLink" target="_blank"><img id="road" alt=""></a><figcaption><label>道路 <select id="scene"></select></label><button id="before" type="button">查看迁入前</button></figcaption></figure>
+    </div>
+    <div class="details"><dl id="metrics"></dl><div id="downloads"></div></div>
+    <p class="note" id="note"></p>
+  </article>
+  <section id="library"><div class="sectionhead"><h2>资产目录</h2><span id="count" role="status"></span></div>
+    <div class="filters"><label>检索<input id="query" type="search" placeholder="编号、形态或材质"></label><label>重建方式<select id="method"><option value="">所有方式</option></select></label><label>病害类别<select id="category"><option value="">所有类别</option></select></label></div>
+    <div id="cards"></div><div class="pager"><button id="prev">上一页</button><output id="page"></output><button id="next">下一页</button></div>
+  </section>
+</main>
+<script src="catalog.js"></script><script src="atlas.js"></script>
+</html>

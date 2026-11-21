@@ -30,3 +30,15 @@ git show archive/fu-xi-2026-11-20:README.md
 本机重新生成了 P04。GLB、Gaussian PLY、路面场、逐点材质和元数据均与交付逐字节相同。034_01 和 110_37 两个原生场景分别覆盖首批和新增批，重渲染帧的 RGB 哈希与原冷启动记录一致。A13 的雷达局部回放在前后两次导出中匹配了 5,624 个原始点行号，其中 351 个回波位置发生变化。其余场景沿用原交付验证记录，本次整合进行了文件级全量核验。[本机结果](../validation/roadgs-2026-11-21.json)
 
 本阶段的 Git 提交、标签和新增数据交付均保存在本机。旧版本的公开下载记录保留了当时的状态。[既有存储记录](09-storage-plan.md)
+
+## 11 月 22 日清理后的入口
+
+从图像设计坑洞、缺盖井和异常井盖时，用仓库内的 [Gen2Hole 重建流程](../gen2hole/docs/pipeline.md)。从实拍 RGB-D、双目数据或程序化配方重建时，用本项目的[五类资产入口](02-asset-reconstruction.md)。两者共用本项目的道路环境、PandaSet 数据与发布目录。
+
+11 月 18、19、21 日三个 Codex 目录保留了原位置的代码。道路实验里仅在旧目录找到的源码、配置和说明另收进[历史源码和配置](../data/history/retained-road-sources-2026-11-22/历史源码和配置.zip)。[文件来源索引](../data/history/retained-road-sources-2026-11-22/文件来源.jsonl.gz)按旧路径记录 SHA-256 和保存位置。旧发布包里单独保存的脚本和配置按日期另存，原始输入的补充副本也在[同一归档目录](../data/history/retained-road-sources-2026-11-22/)。
+
+旧目录的模型、视频、检查点、重复打包和下载缓存按文件清理。可查阅[逐文件清单](../data/history/retained-road-sources-2026-11-22/已清理文件.jsonl.gz)和[清理与重建核验结果](../data/history/retained-road-sources-2026-11-22/清理核验.json)。
+
+Gen2Hole 已连同参考图、深度权重、建模配方和已运行案例迁入本仓库的 [gen2hole](../gen2hole/README.md)。原同级目录已移除。`gen2hole/published` 在仓库内指向同一份发布树。按来源检索现有资产可打开[统一图谱](../tools/asset_atlas/index.html)。
+
+本轮追加清理 73,167 个文件，按最后一个硬链接被删除时的已分配块统计，另释放 25.87 GiB。三个日期目录独立计量约为 1.34 GiB、165 MiB 和 38 MiB。剩余内容包括代码、配置、Git 历史及其他工作的原始文档。Fan Stereo 的 Git 对象保存在合并工程的历史目录，旧检出通过 gitdir 文件访问同一提交。原位置的 48,553 个源码文件逐个复核通过。[本轮逐文件记录](../data/history/retained-road-sources-2026-11-22/合并后清理文件.jsonl.gz) · [两轮清理汇总](../data/history/retained-road-sources-2026-11-22/清理核验.json)

@@ -1,0 +1,50 @@
+{
+  "asset": "P90",
+  "source_asset": "rgbd_pothole_20250227_135438",
+  "crop_xyxy": [
+    80,
+    0,
+    560,
+    480
+  ],
+  "validation_mask": {
+    "filename": "labels/20250227_135438_color_png.rf.984e9768eb679052fd79e702413a94c5.txt",
+    "sha256": "b471eb744e1253925e58fb5a87ff7fd4f52f55122aa6a09890a8a8f6ea789304"
+  },
+  "rgb_box_480": [
+    135,
+    77,
+    448,
+    420
+  ],
+  "geometry": "designed_bowl",
+  "design_depth_m": 0.11,
+  "unguided": {
+    "intersection": 456,
+    "union": 73029,
+    "iou": 0.006244094811650167,
+    "precision": 0.06168831168831169,
+    "recall": 0.006899369070854705
+  },
+  "rgb_box": {
+    "intersection": 61617,
+    "union": 66936,
+    "iou": 0.9205360344209395,
+    "precision": 0.9865033621517771,
+    "recall": 0.932277245699242
+  },
+  "rebuilt": {
+    "triangles": 320000,
+    "geometry_sha256": "22ddedd594e58b6be1e681c056f27db99ebc8a530f19c954684f0dd241aa4e1d",
+    "lowest_z_m": -0.11900000274181366,
+    "highest_z_m": 0.007262874860316515,
+    "gaussians": 552953,
+    "sha256": {
+      "asset.glb": "4a1a271eef3c28ea02768874971896f0c5877ef012502d9485ce1973f843bd27",
+      "surface.npz": "be303596d8867a2656c07b610d1f84e50fc4a345d6585456d6be9063b6a62772",
+      "metadata.json": "39c27eeeff6e38c7a13bb90df538224d6031605d11d929e8aa708f7db9a5ed9c",
+      "asset.ply": "30b57c77f3c5d862a12465edfda7bc2d45f6951d61a32f06a152d80bf54802a3",
+      "splat_material.npz": "aaca3195a5167ca9230ad99b6f90b07509e0f76b0b1a52f82c77633f757498ef"
+    }
+  }
+}

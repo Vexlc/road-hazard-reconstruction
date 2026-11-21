@@ -33,6 +33,18 @@ work/envs/assets/bin/python scripts/reconstruct-assets.py --category rgbd
 
 源码：`batch_rgbd.py` 与共享的 `reconstruct_pothole.py`。每条成品的 `capture_metadata.json` 记录输入成员名、SHA-256、路面平面残差和深度分位数。
 
+### 自带 RGB-D 文件
+
+在仓库根目录运行下列入口可重建清单以外的干坑。提供同一相机坐标系中已配准的 RGB、光轴深度和二值病害掩膜。深度支持单通道图像或数值 NPY，掩膜中非零像素表示病害。用采集标定替换示例内参，`--depth-scale` 表示一个深度单位对应多少米。主点默认取图像中心，可显式传入 `--cx`、`--cy`。
+
+~~~bash
+work/envs/assets/bin/python scripts/reconstruct-rgbd.py --id survey_001 \
+  --rgb capture/color.jpg --depth capture/depth.npy --mask capture/mask.png \
+  --fx 462 --fy 462 --depth-scale 0.001 --out runs/survey-001
+~~~
+
+程序沿用实拍 RGB-D 库的有效深度、道路平面与凹陷支持度检查，选用最大连通病害。结果写入新目录，包含资产清单、纹理 GLB、Gaussian PLY、路面场、预览和三份输入的指纹。仅需网格时加 `--mesh-only`。本次用独立文件重建 20250227_135438，GLB 与 PLY 均与历史交付逐字节相同。
+
 ## 3. 程序化坑洞：120 条
 
 10 种形态 × 4 种路面外观 × 3 个确定性变体。形态为剥落、碗状坑、深度破损、月牙坑、车辙长坑、连通坑、群坑、修补破损、板角破损和积水坑。`variant_catalog.py` 确定每个 ID 的尺寸、深度和随机种子；`make_variants.py` 生成不规则坑口、破碎骨料、裂缝与路面高度场。积水变体另生成水面几何。

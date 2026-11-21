@@ -1,0 +1,12 @@
+[
+  {
+    "id": "P90",
+    "label": "实拍干坑 · 方框引导",
+    "category": "pothole",
+    "model": "pothole",
+    "span": 1.25,
+    "depth": 0.11,
+    "prompt": "PothRGBD RGB capture 20250227_135438, unannotated center square crop, using the example design span and depth.",
+    "depth_profile": "designed_bowl"
+  }
+]

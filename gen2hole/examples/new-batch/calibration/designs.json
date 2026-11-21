@@ -1,0 +1,35 @@
+[
+  {
+    "id": "P38",
+    "label": "偏心砾石坑",
+    "category": "pothole",
+    "model": "pothole",
+    "span": 1.25,
+    "depth": 0.11,
+    "prompt": "One photorealistic square road-survey photograph. The camera looks straight down, perpendicular to a level grey asphalt road. A single irregular dry pothole with an off-centre gravel floor and a stepped broken edge occupies about two thirds of the image width. Show its complete boundary and an unbroken band of intact asphalt on all sides. Natural overcast diffuse light and sharp material detail. No markings, labels, people, vehicles, tools or watermark."
+  },
+  {
+    "id": "M38",
+    "label": "混凝土内衬敞井",
+    "category": "missing",
+    "model": "missing",
+    "shape": "round",
+    "width": 0.84,
+    "length": 0.84,
+    "depth": 0.95,
+    "prompt": "One square photorealistic road-survey photograph from exactly overhead. A fully uncovered circular manhole with a cast iron rim and weathered concrete lining, centered in level mid-grey asphalt. Clearly resolve the inner aperture, outer frame and descending wall. Keep the whole rim inside the frame with intact asphalt on all sides. Neutral diffuse daylight, no cover elsewhere, no text, tools or people."
+  },
+  {
+    "id": "A38",
+    "label": "左铰斜纹圆盖",
+    "category": "raised",
+    "model": "raised",
+    "shape": "round",
+    "width": 0.84,
+    "length": 0.84,
+    "depth": 0.95,
+    "angle": 60,
+    "donor": "M38",
+    "prompt": "One square photorealistic field-survey photograph from exactly overhead. A circular cast iron manhole cover with diagonal worn tread is hinged on the LEFT of a circular opening and tilted about 60 degrees. In overhead projection the lid forms a vertical ellipse over the left half of the shaft. The right half, concrete wall and supporting iron rim remain visible. Show the entire assembly surrounded by intact grey asphalt. Neutral overcast light, no text, people, tools or vehicles."
+  }
+]
