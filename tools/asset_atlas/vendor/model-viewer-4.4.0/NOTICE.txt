@@ -1,0 +1,5 @@
+This directory contains the unmodified UMD distribution from @google/model-viewer 4.4.0, published by Google.
+Project: https://github.com/google/model-viewer
+Package: https://www.npmjs.com/package/@google/model-viewer/v/4.4.0
+Tarball integrity: sha512-8z1SB5sPlzKoak5mdx/D31brBakPYm3Qi31EfAucHAUrtrHHCbabypkKvSwReYhUpPaxyJ46oT47uWE/hrs1Zw==
+See LICENSE and the notices in model-viewer-umd.min.js.

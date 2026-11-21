@@ -57,3 +57,22 @@ bash scripts/presentation.sh verify
 ```
 
 这条路线不加载道路模型或执行 GPU 渲染，只检查已经下载的最终视频。
+
+## 同一井体在同一位置切换状态
+
+[六态实拍井盖图版](figures/photo-chamber-BD.jpg)和[本地图谱](../tools/asset_atlas/index.html#A93)覆盖落座参照、微开 18°、掀开 68°、小幅错位、移至井旁和缺盖。图版的模型斜视分别取景，道路画面统一使用 034 前视第 30 帧和同一像素区域，按同一比例缩放。道路迁入后取自已回放的高斯渲染视频。来源照片、设计尺寸和姿态可从模型元数据追溯。
+
+~~~bash
+work/envs/assets/bin/python scripts/render-chamber-family.py --run runs/photo-chamber-BD-v2 --site 034 --out docs/figures/photo-chamber-BD.jpg
+python scripts/build-asset-atlas.py
+~~~
+
+[三个路段的同帧井盖对照](figures/chamber-road-transfer.jpg)保留每一列的相机取景和锚点，上方可看完整原始相机画面中的位置。[裂缝图版](figures/photo-cracks.jpg)展示同一资产的原图、GLB、模型截面与道路画面。黄色截线对应其右侧 150 mm 的剖面。
+
+启动本机预览服务后，打开终端打印的地址，在资产详情点击「交互三维」。可拖动、缩放、切换斜视、俯视和侧视，也可在同一窗口换井盖状态。三维查看器随仓库提供。直接双击 HTML 时，浏览器也可以通过文件选择器读取本机 GLB。
+
+~~~bash
+python scripts/serve-asset-atlas.py
+work/envs/assets/bin/python scripts/render-chamber-family.py --run runs/photo-chamber-BD-v2 --sites 034 109 110 --out docs/figures/chamber-road-transfer.jpg
+work/envs/assets/bin/python scripts/render-crack-plate.py --run runs/photo-cracks --out docs/figures/photo-cracks.jpg
+~~~

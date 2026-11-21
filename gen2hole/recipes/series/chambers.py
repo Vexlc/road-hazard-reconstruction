@@ -229,7 +229,7 @@ def build(mesh, key, cfg, layout, grain_atlas):
     cx,cy,ex,ey=cfg['outer']
     ix,iy=sx*cfg['inner'][2]/ex,sy*cfg['inner'][3]/ey
     collar=cfg.get('collar',1.)
-    extent=max(sx,sy)*max(1.87,collar+.58)
+    extent=max(max(sx,sy)*max(1.87,collar+.58), cfg.get('patch_half_extent_m', 0.))
     if cfg['model']=='offset':
         lid_x=(cfg['lid']['ellipse'][0]-cx)*sx/ex
         lid_y=(cy-cfg['lid']['ellipse'][1])*sy/ey

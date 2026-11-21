@@ -1,0 +1,165 @@
+"""Reconstruct a round chamber and pose a rigid photographed lid in local Z-up metres."""
+import argparse
+import hashlib
+import json
+
+import numpy as np
+from PIL import Image
+from scipy.ndimage import map_coordinates
+
+import chambers
+from mesh_io import Mesh, ROOT, intact_pavement, smooth, write_json
+
+
+CENTER = 239.5
+RADIUS = 157.0
+
+
+def rectify(image, landmarks, pixels=800):
+    """Inverse homography from the canonical disk's four cardinal points into source RGB."""
+    source_xy = np.asarray(landmarks, dtype=float)
+    if source_xy.shape != (4, 2) or not np.isfinite(source_xy).all():
+        raise ValueError("Expected left, top, right and bottom pixel coordinates")
+    if (source_xy < 0).any() or (source_xy >= [image.width, image.height]).any():
+        raise ValueError("A landmark lies outside its source image")
+    edges = np.roll(source_xy, -1, axis=0) - source_xy
+    if (np.cross(edges, np.roll(edges, -1, axis=0)) <= 0).any():
+        raise ValueError("The four cyclic landmarks must form a convex quadrilateral")
+    base = np.array([[-1,0],[0,-1],[1,0],[0,1]]) * RADIUS + CENTER
+    equations, values = [], []
+    for (x,y),(u,v) in zip(base,source_xy):
+        equations.extend([[x,y,1,0,0,0,-u*x,-u*y], [0,0,0,x,y,1,-v*x,-v*y]])
+        values.extend([u,v])
+    matrix = np.append(np.linalg.solve(equations,values),1).reshape(3,3)
+    y,x = np.mgrid[0:pixels,0:pixels] * (479/(pixels-1))
+    projected = matrix @ np.stack([x.ravel(), y.ravel(), np.ones(x.size)])
+    if projected[2].min() <= 0 <= projected[2].max():
+        raise ValueError("Rectification crosses the projective horizon")
+    u,v = (projected[:2] / projected[2]).reshape(2,pixels,pixels)
+    rgb = np.asarray(image.convert('RGB'))
+    rectified = np.stack([map_coordinates(rgb[:,:,c], [v,u], order=1, mode='reflect') for c in range(3)], axis=-1)
+    return rectified, matrix.tolist()
+
+
+def lid_pose(radius, angle, offset, z):
+    a = np.deg2rad(angle)
+    rotation = np.array([[np.cos(a),0,-np.sin(a)],[0,1,0],[np.sin(a),0,np.cos(a)]])
+    pivot = np.array([-radius,0,0])
+    transform = np.eye(4)
+    transform[:3,:3] = rotation
+    transform[:3,3] = pivot - rotation @ pivot + [*offset,z]
+    return transform
+
+
+def reconstruct(config):
+    refs = ROOT/'references'
+    cache = ROOT/'mesh_cache'
+    cache.mkdir(exist_ok=True)
+    maps, hashes, images, sizes = {}, {}, {}, {}
+    patch = None
+    needs_cover = any(not state.get('absent') for state in config['states'])
+    for role in (('frame','lid') if needs_cover else ('frame',)):
+        path = refs/(role+'.png')
+        with Image.open(path) as image:
+            sizes[role] = image.size
+            images[role], maps[role] = rectify(image, config[role]['landmarks_xy'])
+            if role == 'frame' and 'pavement_patch_xyxy' in config[role]:
+                x0,y0,x1,y1 = config[role]['pavement_patch_xyxy']
+                if not (0 <= x0 < x1 <= image.width and 0 <= y0 < y1 <= image.height and min(x1-x0,y1-y0) >= 32):
+                    raise ValueError("The intact road patch must be inside the photograph and at least 32 pixels across")
+                patch = np.asarray(image.convert('RGB').crop((x0,y0,x1,y1)))
+        hashes[role] = hashlib.sha256(path.read_bytes()).hexdigest()
+        Image.fromarray(images[role]).save(refs/(role+'_ortho.png'))
+    write_json(ROOT/'calibration/registration.json',dict(canonical_479px_to_source=maps, center=CENTER, radius=RADIUS))
+    gauge = None
+    if 'rgbd' in config:
+        from chamber_depth import calibrate
+        gauge = calibrate(config, sizes['frame'], maps['frame'], refs, CENTER, RADIUS)
+        write_json(ROOT/'calibration/depth_measurements.json',gauge)
+        config = dict(config,**gauge['measured'])
+    frame, aperture, depth = (float(config[k]) for k in ('frame_diameter_m','aperture_diameter_m','shaft_depth_m'))
+    if not np.isfinite([frame,aperture,depth]).all() or not (0 < aperture < frame and depth > .060):
+        raise ValueError("Expected a positive aperture smaller than the frame and a shaft deeper than its seat")
+    lid = float(config['lid_diameter_m']) if needs_cover else 0.
+    thick = float(config['lid_thickness_m']) if needs_cover else 0.
+    if needs_cover and not (aperture < lid < frame and 0 < thick < depth):
+        raise ValueError("Cover must fit its seat and have positive thickness")
+    offsets = [np.asarray(s.get('offset_m',[0,0]),float) for s in config['states']]
+    if any(v.shape != (2,) or not np.isfinite(v).all() for v in offsets):
+        raise ValueError("offset_m must be a finite XY translation")
+    inner_radius = RADIUS*aperture/frame
+    outer = [CENTER,CENTER,RADIUS,RADIUS]
+    cfg = dict(shape='round', model='missing', width=frame, length=frame, depth=depth, outer=outer,
+               inner=[CENTER,CENTER,inner_radius,inner_radius], collar=1.06,
+               patch_half_extent_m=max(np.abs(v).max()+lid/2+.15 for v in offsets),
+               wall_end=[CENTER,CENTER+.22*inner_radius,.55*inner_radius,.50*inner_radius],
+               bottom_photo=[CENTER,CENTER+.23*inner_radius,.33*inner_radius,.32*inner_radius])
+    shaft = Mesh()
+    grain_source = images['frame']
+    if patch is not None:
+        height, width = grain_source.shape[:2]
+        grain_source = np.pad(patch,((0,height),(0,width),(0,0)),mode='reflect')[:height,:width]
+    grain = intact_pavement(grain_source,'frame_ortho',cfg)
+    if patch is not None:
+        # A projective warp has no observations outside the photo. Keep the cast
+        # ring and collar, then feather into measured asphalt without mirroring a second rim.
+        y,x = np.indices(images['frame'].shape[:2])*(479/(images['frame'].shape[0]-1))
+        radius = np.hypot(x-CENTER,y-CENTER)/RADIUS
+        opacity = smooth((1.13-radius)/.07)[:,:,None]
+        h,w = images['frame'].shape[:2]
+        frame_image = np.uint8(images['frame']*opacity + grain[:h,:w]*(1-opacity))
+        Image.fromarray(frame_image).save(refs/'frame_ortho.png')
+    field, fit = chambers.build(shaft,'frame_ortho',cfg,{'frame_ortho':cfg},grain)
+    cover = Mesh()
+    if needs_cover:
+        # Texture from the rectified cover, separate from the photo which registers the cast frame.
+        lid_config = dict(cfg,model='survey',lid=dict(type='displaced',ellipse=outer,diameter=lid,thickness=thick))
+        chambers.lid_model(cover,'A00',lid_config,images['lid'],frame/2,frame/2)
+    extent = field['width']/2
+    y,x = np.meshgrid(np.linspace(extent,-extent,field['alpha'].shape[0]),
+                      np.linspace(-extent,extent,field['alpha'].shape[1]),indexing='ij')
+    for state,offset in zip(config['states'],offsets):
+        key = state['id']
+        absent = state.get('absent',False)
+        angle = float(state.get('angle_deg',0))
+        if not np.isfinite(angle) or not 0 <= angle <= 90 or (absent and (angle or offset.any())):
+            raise ValueError(f"Invalid cover pose for {key}")
+        mesh = Mesh()
+        mesh.parts.extend(shaft.parts)
+        mesh.materials.update(shaft.materials)
+        result = dict(field)
+        matrix = None
+        if not absent:
+            # The canonical disc's lowest ribs are at Z=0. Its near edge bears on the
+            # iron seat when lifted; a sliding disc clears the raised frame before resting on asphalt.
+            ring_profile = np.linalg.norm(offset)
+            clearance = .006 if 0 < ring_profile < (frame+lid)/2 else 0.
+            matrix = lid_pose(lid/2,angle,offset,clearance)
+            mesh.materials.update(cover.materials)
+            for name,vertices,indices,uv,material,road in cover.parts:
+                mesh.parts.append((name,(vertices@matrix[:3,:3].T+matrix[:3,3]).astype('f4'),indices,uv,material,road))
+            if offset.any():
+                dist = np.hypot(x-offset[0],y-offset[1])
+                result['alpha'] = np.maximum(field['alpha'],smooth((lid/2+.11-dist)/.09))
+        meta = dict(fit,id=key,label=state['label'],category='missing' if absent else 'raised',family=config['family'],
+                    recipe_version='photo-component-v1',scale_kind='designed_metric',source_image='references/frame.png',
+                    source_sha256=hashes['frame'],component_source_sha256=hashes,
+                    geometry_source='Four planar landmarks per component; round frame and lid; designed shaft and hidden faces',
+                    state=state['label'],lid_angle_degrees=None if absent else angle,lid_offset_m=None if absent else offset.tolist(),
+                    lid_diameter_m=lid if needs_cover else None,lid_thickness_m=thick if needs_cover else None, lid_transform=None if absent else matrix.tolist(),
+                    seed=193501, provenance='calibration/survey.json')
+        if gauge:
+            meta.update(scale_kind='registered_depth_with_designed_completion',metric_observations=gauge['measured'],
+                        depth_source_kind=gauge['source_kind'],measurement_record='calibration/depth_measurements.json')
+            if 'shaft_depth_m' in gauge['measured']:
+                meta['depth_measured_m'] = gauge['measured']['shaft_depth_m']
+                del meta['depth_design_m']
+        Image.fromarray(grain).save(cache/(key+'_ground.jpg'),quality=96,subsampling=0)
+        mesh.save(ROOT/'assets'/meta['category']/key,cache,meta,result)
+        print(key,meta['label'],flush=True)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.parse_args()
+    reconstruct(json.loads((ROOT/'calibration/survey.json').read_text()))

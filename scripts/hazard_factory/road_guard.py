@@ -39,7 +39,7 @@ def support_hulls(anchors,cases,models,cameras):
         if selected[0]['category'] not in ('missing','raised'):continue
         width=max(m['width_m'] for m in selected)
         length=max(m['length_m'] for m in selected)
-        depth=max(m['depth_design_m'] for m in selected)
+        depth=max((m['depth_measured_m'] if 'depth_measured_m' in m else m['depth_design_m']) for m in selected)
         theta=np.linspace(0,2*np.pi,33)[:-1]
         shape=np.c_[np.cos(theta)*width*.70,np.sin(theta)*length*.70]
         samples=np.concatenate([np.c_[shape,np.full(len(shape),z)] for z in (-.07,-depth)])

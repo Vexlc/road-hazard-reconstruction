@@ -1,0 +1,245 @@
+{
+  "family": "survey-round-BD",
+  "component_sha256": {
+    "frame": "99cbfa7fd5e9dc0f1cc941deb5b86184c1971c729f571210a5b1ea34916c846d",
+    "lid": "e15c034be757d8ebcc16df606dd8ab0cfa22eb46e24e7f63a018d30581b5540b"
+  },
+  "assets": {
+    "A91": {
+      "state": "落座",
+      "triangles": 275328,
+      "gaussians": 629154,
+      "highest_z_m": 0.04109284654259682,
+      "max_vertex_residual_m": 0.0,
+      "scenes": {
+        "109": {
+          "case": "109_91",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "034": {
+          "case": "034_91",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "110": {
+          "case": "110_91",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    },
+    "A92": {
+      "state": "微开",
+      "triangles": 275328,
+      "gaussians": 629154,
+      "highest_z_m": 0.2498963177204132,
+      "max_vertex_residual_m": 1.626958084921526e-08,
+      "scenes": {
+        "109": {
+          "case": "109_92",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "110": {
+          "case": "110_92",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "034": {
+          "case": "034_92",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    },
+    "A93": {
+      "state": "掀开",
+      "triangles": 275328,
+      "gaussians": 629154,
+      "highest_z_m": 0.65742427110672,
+      "max_vertex_residual_m": 3.030637826806348e-08,
+      "scenes": {
+        "109": {
+          "case": "109_93",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "110": {
+          "case": "110_93",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "034": {
+          "case": "034_93",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    },
+    "A94": {
+      "state": "错位",
+      "triangles": 275328,
+      "gaussians": 629006,
+      "highest_z_m": 0.047092847526073456,
+      "max_vertex_residual_m": 2.26497650079871e-08,
+      "scenes": {
+        "034": {
+          "case": "034_94",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "110": {
+          "case": "110_94",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "109": {
+          "case": "109_94",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    },
+    "A95": {
+      "state": "移至井旁",
+      "triangles": 275328,
+      "gaussians": 628732,
+      "highest_z_m": 0.04109284654259682,
+      "max_vertex_residual_m": 5.8412551906528165e-08,
+      "scenes": {
+        "034": {
+          "case": "034_95",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "110": {
+          "case": "110_95",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "109": {
+          "case": "109_95",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    },
+    "M91": {
+      "state": "缺盖",
+      "triangles": 131712,
+      "gaussians": 526488,
+      "highest_z_m": 0.006000000052154064,
+      "max_vertex_residual_m": 0.0,
+      "scenes": {
+        "110": {
+          "case": "110_96",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "034": {
+          "case": "034_96",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        },
+        "109": {
+          "case": "109_96",
+          "slot": "01",
+          "reload_max_pixel_error": 0
+        }
+      }
+    }
+  },
+  "common_anchors": {
+    "109": [
+      [
+        -38.60890679637467,
+        39.414138021219195,
+        -0.5507427847349833
+      ],
+      [
+        [
+          0.7022745068784205,
+          -0.7111999369127098,
+          0.031704364431875125
+        ],
+        [
+          0.7101220131204765,
+          0.7029704320496952,
+          0.03948794937176009
+        ],
+        [
+          -0.05037105786454429,
+          -0.005217413077624456,
+          0.998716944449419
+        ]
+      ],
+      27,
+      "01"
+    ],
+    "034": [
+      [
+        -36.16243798230243,
+        -5.790768920867825,
+        -5.150513699017868
+      ],
+      [
+        [
+          -0.15583637906672923,
+          -0.9776676350399915,
+          -0.14100006508750496
+        ],
+        [
+          0.9875661737497854,
+          -0.15719661918618416,
+          -0.00150843682079268
+        ],
+        [
+          -0.02068998367759607,
+          -0.13948196410914124,
+          0.9900084374709527
+        ]
+      ],
+      30,
+      "01"
+    ],
+    "110": [
+      [
+        -6.3658642180972524,
+        7.811166801899868,
+        -0.39056069473516075
+      ],
+      [
+        [
+          0.7284105888580494,
+          -0.6848261160723442,
+          0.020765470973171586
+        ],
+        [
+          0.6843889193400311,
+          0.7286964707999772,
+          0.024764097565672313
+        ],
+        [
+          -0.032090826166585464,
+          -0.003826772651433873,
+          0.9994776309087763
+        ]
+      ],
+      0,
+      "01"
+    ]
+  },
+  "verified_parts": [
+    "Road around the aperture",
+    "Chipped concrete collar",
+    "Cast ring and cover seat",
+    "Inspection shaft",
+    "Shaft bottom",
+    "Lid face",
+    "Lid underside with casting ribs",
+    "Lid rolled edge"
+  ],
+  "metric_scale": "designed",
+  "source_image_count": 2
+}

@@ -190,6 +190,9 @@ def prepare_inputs(bundle, source, edition, rows, raw):
         spec = plan[key] if edition == "series" else layout[key]
         if spec["category"] != "pothole":
             continue
+        if spec.get("depth_profile") == "masked_groove":
+            shutil.copy2(original / (key + "_outline.png"), cal)
+            continue
         if raw and spec.get("depth_profile") == "designed_bowl":
             continue
         pits.append(key)

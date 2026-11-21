@@ -1,0 +1,38 @@
+[
+  {
+    "id": "P101",
+    "category": "pothole",
+    "model": "crack",
+    "family": "斜向单缝",
+    "label": "斜向单缝",
+    "depth_profile": "masked_groove",
+    "span": 1.45,
+    "depth": 0.014,
+    "wall_slope": 1.7,
+    "prompt": "Real asphalt RGB with a registered human-annotated crack mask."
+  },
+  {
+    "id": "P102",
+    "category": "pothole",
+    "model": "crack",
+    "family": "分叉裂缝",
+    "label": "分叉裂缝",
+    "depth_profile": "masked_groove",
+    "span": 1.55,
+    "depth": 0.018,
+    "wall_slope": 1.7,
+    "prompt": "Real asphalt RGB with a registered human-annotated crack mask."
+  },
+  {
+    "id": "P103",
+    "category": "pothole",
+    "model": "crack",
+    "family": "并行与交汇裂缝",
+    "label": "并行与交汇裂缝",
+    "depth_profile": "masked_groove",
+    "span": 1.6,
+    "depth": 0.022,
+    "wall_slope": 1.7,
+    "prompt": "Real asphalt RGB with a registered human-annotated crack mask."
+  }
+]

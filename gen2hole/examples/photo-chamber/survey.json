@@ -1,0 +1,19 @@
+{
+  "family": "survey-round-BD",
+  "credit": "Dongping Zhang, Xuecheng Yu, Li Yang, Daying Quan, Hongmei Mi and Ke Yan (2023). Data-Augmented Deep Learning Models for Abnormal Road Manhole Cover Detection, Sensors 23(5), 2676, Figure 5. CC BY 4.0.",
+  "source_url": "https://www.mdpi.com/1424-8220/23/5/2676#fig_body_display_sensors-23-02676-f005",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Panels D and B cropped, rectified, sampled and assembled. The photos show different installations. Shaft, cover thickness, underside, pose and absolute dimensions are designed.",
+  "frame": {"image":"frame.png","pavement_patch_xyxy":[208,590,493,698],"landmarks_xy":[[50,321],[344,95],[727,350],[439,569]]},
+  "lid": {"image":"lid.png","landmarks_xy":[[91,311],[391,200],[717,318],[398,416]]},
+  "frame_diameter_m": 0.75, "aperture_diameter_m": 0.652, "lid_diameter_m": 0.694,
+  "lid_thickness_m": 0.028, "shaft_depth_m": 1.05,
+  "states": [
+    {"id":"A91","label":"落座","angle_deg":0,"offset_m":[0,0]},
+    {"id":"A92","label":"微开","angle_deg":18,"offset_m":[0,0]},
+    {"id":"A93","label":"掀开","angle_deg":68,"offset_m":[0,0]},
+    {"id":"A94","label":"错位","angle_deg":0,"offset_m":[0.18,-0.05]},
+    {"id":"A95","label":"移至井旁","angle_deg":0,"offset_m":[0.78,0.04]},
+    {"id":"M91","label":"缺盖","absent":true}
+  ]
+}

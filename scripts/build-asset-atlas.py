@@ -35,7 +35,9 @@ def link(path):
 
 def entry(row, base, method, label, preview):
     shape = "P95 凹深" if row["category"] in METHODS else "设计深度"
-    depth = row["depth_p95_m"] if row["category"] in METHODS else row["depth_design_m"]
+    depth = row["depth_p95_m"] if row["category"] in METHODS else row.get("depth_measured_m", row.get("depth_design_m"))
+    if "depth_measured_m" in row:
+        shape = "可见井底深度"
     return dict(id=row["id"], label=label, category=CATEGORIES[row["category"]], method=method,
                 preview=link(preview), width=row["width_m"], length=row["length_m"], depth=depth,
                 depthLabel=shape, gaussians=row["gaussians"],
@@ -127,9 +129,75 @@ def real_rgb():
     return {name: row}
 
 
+def photo_families():
+    rows = {}
+    for info in read(ROOT / 'catalog/chamber-families.json'):
+        run = ROOT / info['run']
+        if not run.exists():
+            continue
+        bundle = run / 'series'
+        spec = read(bundle / 'calibration/survey.json')
+        state_ids = [s['id'] for s in spec['states']]
+        scenes = {}
+        for path in sorted((bundle / 'scenes').glob('*/scene.json')):
+            for placed in read(path)['placements']:
+                cat = placed['category']
+                scenes.setdefault(placed['asset_id'],[]).append(dict(label=path.parent.name+" · 迁入近景",
+                    after=link(path.parent/(cat+'_after.png')),before=link(path.parent/(cat+'_before.png'))))
+        sensor_root = run/'sensors'
+        if (run/'sensors-multisite/checks/camera_audit.json').is_file():
+            sensor_root = run/'sensors-multisite'
+        shots = camera_views(sensor_root)
+        paired = {}
+        for path in sorted((bundle/'comparison').glob('*/comparison.json')):
+            match = read(path)
+            for key in match['states']:
+                paired.setdefault(key,[]).append(dict(label=f"{match['site']} · 前视 · 同帧 {match['frame']}",
+                    site=match['site'],camera='front',before=link(path.parent/'before.png'),after=link(path.parent/(key+'.png'))))
+        for meta in read(bundle / 'assets/asset_manifest.json'):
+            key = meta['id']
+            if key in rows:
+                raise ValueError(f"Asset ID collision: {key}")
+            row = entry(meta, bundle/'assets', info['method'], meta['label'], bundle/'views'/(key+'_inspection.jpg'))
+            row.update(family=spec['family'], states=state_ids, label='圆井 · '+meta['label'], state=meta['label'],
+                       reference=link(bundle/'references/frame.png'), lidReference=link(bundle/'references/lid.png'),
+                       audit=link(ROOT / info['audit']), reverse=link(bundle/'views'/(key+'_reverse.jpg')),
+                       credit=spec.get('source_url'), note=info['note'], triangles=sum(meta['geometry_parts'].values()),
+                       scenes=paired.get(key,[])+shots.get(key,[])+scenes.get(key,[]))
+            if meta['lid_angle_degrees'] == 0 and meta['lid_offset_m'] == [0,0]:
+                row['category']='落座参照'
+            if (sensor_root/'checks/scan_audit.json').is_file():
+                row['scan']=link(sensor_root/'checks/scan_audit.json')
+            rows[key]=row
+    return rows
+
+
+def crack_examples():
+    root = ROOT/'runs/photo-cracks'
+    if not root.exists():
+        return {}
+    bundle = root/'series'
+    provenance = read(GEN/'examples/photo-cracks/sources.json')
+    shots = camera_views(root/'sensors')
+    rows = {}
+    for meta in read(bundle/'assets/asset_manifest.json'):
+        key=meta['id']
+        row=entry(meta,bundle/'assets',"实拍 RGB",meta['label'],bundle/'views'/(key+'_inspection.jpg'))
+        row.update(category="裂缝",depthLabel="设计深度上限",triangles=sum(meta['geometry_parts'].values()),
+                   note="实拍 RGB 和人工像素掩膜给出缝迹与分叉。裁切图按设计跨度映射到局部平面，沟槽剖面与深度由设计给定。",
+                   reference=link(bundle/meta['source_image']),mask=link(bundle/'calibration'/(key+'_outline.png')),
+                   reverse=link(bundle/'views'/(key+'_reverse.jpg')),credit=provenance['source'],scenes=shots.get(key,[]))
+        for path in sorted((bundle/'scenes').glob('*/scene.json')):
+            if key in read(path)['assets']:
+                row['scenes'].append(dict(label=path.parent.name+' · 迁入近景',after=link(path.parent/'pothole_after.png'),
+                    before=link(path.parent/'pothole_before.png')))
+        rows[key]=row
+    return rows
+
+
 def main():
     rows = {}
-    for group in (generated(), captured_and_designed(), real_rgb()):
+    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples()):
         if group.keys() & rows.keys():
             raise ValueError("Asset ID collision")
         rows.update(group)
@@ -139,7 +207,7 @@ def main():
             row["orbit"] = link(orbit)
         if row.get("related"):
             rows[row["related"]]["related"] = row["id"]
-    featured = ["A13","P90","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

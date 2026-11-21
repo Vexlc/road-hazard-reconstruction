@@ -1,0 +1,53 @@
+{
+  "P101": {
+    "source_mask_pixels": 7640,
+    "components": 1,
+    "triangles": 816642,
+    "gaussians": 256559,
+    "source_mask_vs_glb_interior_iou": 1.0,
+    "mesh_vs_field_max_m": 0.0,
+    "deepest_vertex_m": 0.014000000432133675,
+    "design_limit_m": 0.014,
+    "scenes": [
+      {
+        "case": "034_101",
+        "ply_sha256": "534eaa168bb43e238d45caf3b25f8f4bccf1ab68ba97217c6eba37817adc5ed5",
+        "world_error_m": 1.9073476664743794e-06
+      }
+    ]
+  },
+  "P102": {
+    "source_mask_pixels": 12355,
+    "components": 1,
+    "triangles": 816642,
+    "gaussians": 256989,
+    "source_mask_vs_glb_interior_iou": 1.0,
+    "mesh_vs_field_max_m": 0.0,
+    "deepest_vertex_m": 0.017999999225139618,
+    "design_limit_m": 0.018,
+    "scenes": [
+      {
+        "case": "034_102",
+        "ply_sha256": "85258f42a5b8a86c06e0ba83fa7207d27fc5d3e7c286e3642ceaf81fbeb87c75",
+        "world_error_m": 1.9073427566240753e-06
+      }
+    ]
+  },
+  "P103": {
+    "source_mask_pixels": 20811,
+    "components": 2,
+    "triangles": 816642,
+    "gaussians": 257360,
+    "source_mask_vs_glb_interior_iou": 1.0,
+    "mesh_vs_field_max_m": 0.0,
+    "deepest_vertex_m": 0.02199999988079071,
+    "design_limit_m": 0.022,
+    "scenes": [
+      {
+        "case": "034_103",
+        "ply_sha256": "74ef85289fc5379c1e137eb54feb97c08f7ad52e6564f7d764e76b72338f44c3",
+        "world_error_m": 1.9073326669172275e-06
+      }
+    ]
+  }
+}

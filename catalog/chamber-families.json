@@ -1,0 +1,8 @@
+[
+  {
+    "run": "runs/photo-chamber-BD-v2",
+    "method": "实拍 RGB",
+    "audit": "validation/photo-chamber-BD.json",
+    "note": "井圈取自实拍图 D，盖面取自另一处井盖的实拍图 B。六个状态共用同一井体，盖面以刚体运动。井深、绝对尺寸、遮挡面与姿态由设计给定。"
+  }
+]

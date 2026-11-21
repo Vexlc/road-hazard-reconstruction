@@ -31,7 +31,10 @@ def main():
         grain = intact_pavement(rgb, key, cfg)
         model_id = cfg["id"]
         Image.fromarray(grain).save(args.cache / (model_id + "_ground.jpg"), quality=96, subsampling=0)
-        if cfg["category"] == "pothole":
+        if cfg.get("depth_profile") == "masked_groove":
+            from crack_surface import build as build_crack
+            field, fit = build_crack(mesh,key,cfg)
+        elif cfg["category"] == "pothole":
             # The pilot used the source filename as its material/model subtype.
             field, fit = pavement.build(mesh, key, dict(model=key) | cfg, grain)
         else:

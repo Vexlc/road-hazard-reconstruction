@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>三维模型 · RoadGS</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="vendor/model-viewer-4.4.0/model-viewer-umd.min.js"></script>
+<header><div class="bar"><a class="brand" href="index.html">Road<span>GS</span></a><nav><a id="back" href="index.html">返回资产图谱</a></nav></div></header>
+<main>
+  <div class="heading"><h1 id="title">三维模型</h1><span id="key" class="mono"></span></div>
+  <div id="states" aria-label="切换井盖状态" hidden></div>
+  <p class="modelinfo" id="status" role="status"></p>
+  <model-viewer id="mesh" camera-controls touch-action="pan-y" interaction-prompt="none" exposure="1" shadow-intensity="0.3" camera-orbit="20deg 48deg auto" aria-label="三维资产，可拖动旋转、滚轮缩放"></model-viewer>
+  <div class="modelcontrols">
+    <button type="button" id="reset">恢复斜视</button><button type="button" id="top">俯视</button><button type="button" id="side">侧视</button>
+    <button type="button" id="rotateModel" aria-pressed="false">自动旋转</button>
+    <a id="glb" hidden>打开 GLB</a>
+    <label id="fileLabel" hidden>选择本机 GLB <input id="file" type="file" accept=".glb,model/gltf-binary"></label>
+  </div>
+</main>
+<script src="catalog.js"></script><script defer src="model.js"></script>
+</html>

@@ -50,14 +50,19 @@ def place(args, bundle, work):
         raise ValueError("每个道路锚点对应一个类别，同组中每类最多选一件")
     if any("ply" not in r for r in rows):
         raise ValueError("迁入需要 3DGS，请使用完整 build 输出")
+    if args.anchor_category and len(rows) != 1:
+        raise ValueError("--anchor-category 适用于一个锚点上的单个资产")
+    anchor_categories = [args.anchor_category] if args.anchor_category else categories
     groups = [{"number": args.group, "assets": [r["id"] for r in rows]}]
     allocation = work / "case_plan.json"
-    if allocation.exists() and read(allocation)["groups"] != groups:
-        raise ValueError("此路段的组号已有其他资产，请选择新组号")
-    save(allocation, dict(schema=1, groups=groups))
+    if allocation.exists():
+        old = read(allocation)
+        if old["groups"] != groups or old.get("anchor_categories", categories) != anchor_categories:
+            raise ValueError("此路段的组号已有其他资产或锚点，请选择新组号")
+    save(allocation, dict(schema=1, groups=groups, anchor_categories=anchor_categories))
     plan = dict(category_order=categories, drive_start_by_site=original["drive_start_by_site"],
                 slots_by_site={s: [original["slots_by_site"][s][indices[CATEGORIES.index(c)]]
-                                   for c in categories] for s, indices in SLOTS.items()})
+                                   for c in anchor_categories] for s, indices in SLOTS.items()})
     save(work / "plan.json", plan)
     shutil.copytree(Path(road["work"]) / "road_masks", work / "road_masks", dirs_exist_ok=True)
     adapter = HERE / "native_entry.py"
@@ -93,6 +98,7 @@ def main():
     p.add_argument("--bundle", type=Path, required=True, help="例如 runs/demo/series")
     p.add_argument("--site", choices=SLOTS, required=True)
     p.add_argument("--group", type=int, required=True)
+    p.add_argument("--anchor-category", choices=CATEGORIES, help="单个资产使用该类别的固定锚点，便于比较同一位置的不同状态")
     p.add_argument("--front", action="store_true", help="另输出 40 帧前视视频、掩膜和包围框")
     p.add_argument("--assets", nargs="+", help="覆盖默认发布组合，按本次构建中的 ID 选择")
     p.add_argument("--config", type=Path, default=HERE.parent / "config/local.json")

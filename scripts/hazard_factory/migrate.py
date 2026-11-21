@@ -69,7 +69,7 @@ def volume_cut(anchor, source, model):
     axes = np.einsum('ij,njk->nik', anchor.basis.T, rot)*scales[:, None, :]
     covariance = axes@axes.transpose(0, 2, 1)
     sigma = np.sqrt(np.maximum(np.diagonal(covariance, axis1=1, axis2=2), 0))
-    depth = model.get('depth_design_m', model.get('depth_p95_m', .1))
+    depth = model.get('depth_measured_m', model.get('depth_design_m', model.get('depth_p95_m', .1)))
     low = -max(depth+.15, .25)
     half = np.array([float(surface['width']), float(surface['length'])])*.5
     eligible = np.all(abs(local[:, :2]) < half+3*sigma[:, :2]+.025, axis=1)

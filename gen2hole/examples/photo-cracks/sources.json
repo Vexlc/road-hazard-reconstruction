@@ -1,0 +1,65 @@
+{
+  "title": "Asphalt Pavement Crack Segmentation Dataset for Mobile Road Distress Assessment",
+  "creators": [
+    "Diego Rossini",
+    "Leonardo Iacussi",
+    "Emanuele Zappa",
+    "Alfredo Cigada",
+    "Paolo Chiariotti"
+  ],
+  "version": "v1",
+  "source": "https://doi.org/10.5281/zenodo.20040434",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Square crops; binary masks converted to 0/255. Width scale and V-groove depth are designed.",
+  "records": [
+    {
+      "id": "P101",
+      "original_image": "test/images/B_00310.jpg",
+      "original_mask": "test/masks/B_00310.png",
+      "source_sha256": {
+        "images-B_00310.jpg": "dc82ccb6c1dd53aee1360a18215cd1a996da2febdd8860036f6dd0e18bfe3a85",
+        "masks-B_00310.png": "f212951a38abbe7f9a91e2b92285aa123ca50c42daeaa9fe934350f6d8bdad4e"
+      },
+      "crop_xyxy": [
+        995,
+        135,
+        1635,
+        775
+      ],
+      "mask_pixels": 7640
+    },
+    {
+      "id": "P102",
+      "original_image": "test/images/B_00138.jpg",
+      "original_mask": "test/masks/B_00138.png",
+      "source_sha256": {
+        "images-B_00138.jpg": "c40be4fc88f9c100da409686f5636aa544ea5b4db77d467ee188d7906f345850",
+        "masks-B_00138.png": "92ac2a3efcec5cc3e997688768b897ae6cf2fa3a572a9cc2e5ba6d141167a5d6"
+      },
+      "crop_xyxy": [
+        505,
+        204,
+        1145,
+        844
+      ],
+      "mask_pixels": 12355
+    },
+    {
+      "id": "P103",
+      "original_image": "test/images/B_00524.jpg",
+      "original_mask": "test/masks/B_00524.png",
+      "source_sha256": {
+        "images-B_00524.jpg": "c51b83e0b71c636b2234104691865ab379c2b50486a8fe267091ca6ce9c78e44",
+        "masks-B_00524.png": "6f081be68848dbd06f5f46d7fa36ea2eadfed8bae85c66491adc447dff3832da"
+      },
+      "crop_xyxy": [
+        1000,
+        120,
+        1640,
+        760
+      ],
+      "mask_pixels": 20811
+    }
+  ]
+}

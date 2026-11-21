@@ -42,6 +42,8 @@ def verify_asset(directory, manifest_row, run):
     require(all(manifest_row.get(key) == value for key, value in meta.items()), f"{name}: manifest vs metadata")
     require(meta["units"] == "metres" and meta["glb_up"] == "Y" and meta["gaussian_up"] == "Z", f"{name}: units/axes")
     require(sha(ROOT / meta["source_image"]) == meta["source_sha256"], f"{name}: source image")
+    if meta.get("depth_profile") == "masked_groove":
+        require(sha(ROOT/"calibration"/(name+"_outline.png")) == meta["mask_sha256"], f"{name}: source crack mask")
     mesh = directory / "asset.glb"
     geometry_hash, faces, bottom, top = glb(mesh)
     require(faces == sum(meta["geometry_parts"].values()) and bottom < 0, f"{name}: triangle count/road datum")

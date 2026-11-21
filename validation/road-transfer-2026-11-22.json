@@ -1,0 +1,137 @@
+{
+  "photographed_chamber_states": {
+    "data": "runs/photo-chamber-BD-v2/sensors-multisite",
+    "lidar_simulation": {
+      "counts": {
+        "case_frames": 1440,
+        "raw_scans": 240,
+        "original_returns": 40594552,
+        "replacements": 35507,
+        "no_return": 0
+      },
+      "sites": 3,
+      "cases": 18,
+      "placements": 18,
+      "placements_with_both_lidars": 18,
+      "by_surface": {
+        "lid face": 14296,
+        "lid edge": 6716,
+        "cast ring and seat": 9649,
+        "concrete collar": 1442,
+        "shaft wall": 3404
+      },
+      "by_sensor": {
+        "1": 27871,
+        "0": 7636
+      }
+    },
+    "camera_simulation": {
+      "views": 36,
+      "camera_counts": {
+        "front_camera": 18,
+        "back_camera": 18
+      },
+      "skipped": [],
+      "target_pixels": {
+        "min": 1711.0,
+        "p10": 2467.5,
+        "median": 5454.5,
+        "p90": 12120.0,
+        "max": 15902.0
+      }
+    },
+    "independent_glb_queries": {
+      "real_beam_samples": 194,
+      "vertical_grid_samples": 231,
+      "range_max_m": 6.740332899823898e-06,
+      "grid_height_max_m": 7.152557373046875e-07,
+      "nearest_part_disagreements": []
+    }
+  },
+  "photographed_cracks": {
+    "data": "runs/photo-cracks/sensors",
+    "lidar_simulation": {
+      "counts": {
+        "case_frames": 240,
+        "raw_scans": 80,
+        "original_returns": 14770793,
+        "replacements": 742,
+        "no_return": 0
+      },
+      "sites": 1,
+      "cases": 3,
+      "placements": 3,
+      "placements_with_both_lidars": 3,
+      "by_surface": {
+        "fracture bed and lip": 742
+      },
+      "by_sensor": {
+        "0": 127,
+        "1": 615
+      }
+    },
+    "camera_simulation": {
+      "views": 6,
+      "camera_counts": {
+        "front_camera": 3,
+        "back_camera": 3
+      },
+      "skipped": [],
+      "target_pixels": {
+        "min": 163.0,
+        "p10": 281.0,
+        "median": 619.0,
+        "p90": 1811.0,
+        "max": 2257.0
+      }
+    },
+    "independent_glb_queries": {
+      "real_beam_samples": 12,
+      "vertical_grid_samples": 42,
+      "range_max_m": 5.300614361658518e-06,
+      "grid_height_max_m": 4.172325134277344e-07,
+      "nearest_part_disagreements": []
+    }
+  },
+  "matched_chamber_frames": {
+    "034": {
+      "frame": 30,
+      "crop_xyxy": [
+        954,
+        821,
+        1489,
+        1049
+      ],
+      "source_size": [
+        1920,
+        1080
+      ]
+    },
+    "110": {
+      "frame": 1,
+      "crop_xyxy": [
+        963,
+        799,
+        1470,
+        1015
+      ],
+      "source_size": [
+        1920,
+        1080
+      ]
+    },
+    "109": {
+      "frame": 29,
+      "crop_xyxy": [
+        963,
+        787,
+        1430,
+        986
+      ],
+      "source_size": [
+        1920,
+        1080
+      ]
+    }
+  }
+}

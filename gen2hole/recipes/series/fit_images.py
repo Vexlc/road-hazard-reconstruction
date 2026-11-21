@@ -43,6 +43,15 @@ def fit_rgb_bowl(cfg, image, shape, patch):
 
 
 def fit_pit(cfg,img,full,patch):
+    if cfg.get('depth_profile') == 'masked_groove':
+        path=CAL/(cfg['id']+'_outline.png')
+        with Image.open(path) as image:
+            mask=np.asarray(image.convert('L'))>0
+        if mask.shape!=full[:2] or not mask.any() or mask.all():
+            raise ValueError(f"Invalid registered crack mask {path}")
+        Image.fromarray(np.uint8(mask)*255).save(path)
+        cfg.update(outline=path.name, family=cfg.get('family','crack_network'))
+        return cfg
     if cfg.get('depth_profile') == 'designed_bowl':
         return fit_rgb_bowl(cfg,img,full,patch)
     if cfg.get('depth_profile') is not None:
@@ -219,7 +228,7 @@ def main():
         k=cfg['id']
         if a.ids and k not in a.ids:continue
         if not (ROOT/'references'/(k+'.png')).exists():continue
-        if k[0]=='P' and cfg.get('depth_profile')!='designed_bowl' and not (CAL/(k+'_depth.npz')).exists():continue
+        if k[0]=='P' and cfg.get('depth_profile') not in ('designed_bowl','masked_groove') and not (CAL/(k+'_depth.npz')).exists():continue
         if (CAL/(k+'_fit.json')).exists() and not a.redo:continue
         fit(cfg,overrides.get(k,{}));print(k,flush=True)
     sync()

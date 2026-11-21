@@ -1,0 +1,85 @@
+{
+  "source_kind": "synthetic_benchmark",
+  "truth_m": {
+    "frame_diameter_m": 0.814,
+    "aperture_diameter_m": 0.65,
+    "shaft_depth_m": 0.71
+  },
+  "estimated_m": {
+    "frame_diameter_m": 0.8139943587370833,
+    "aperture_diameter_m": 0.649995495304704,
+    "shaft_depth_m": 0.7100641717121468
+  },
+  "absolute_error_m": {
+    "frame_diameter_m": 5.641262916689094e-06,
+    "aperture_diameter_m": 4.5046952960037245e-06,
+    "shaft_depth_m": 6.417171214678774e-05
+  },
+  "road_plane": {
+    "normal_camera": [
+      -1.2451687004246524e-05,
+      0.45880099994132406,
+      0.8885390493938895
+    ],
+    "offset_m": 1.7199970422927544,
+    "inlier_fraction": 0.962089889951661,
+    "inliers": 46772,
+    "samples": 48615,
+    "rms_m": 0.001694739240399746
+  },
+  "observations": {
+    "frame_diameter_m": {
+      "opposite_spans_m": [
+        0.8139950203876237,
+        0.8139936970865429
+      ],
+      "diameter_midpoint_separation_m": 1.3630274784529363e-06
+    },
+    "aperture_diameter_m": {
+      "opposite_spans_m": [
+        0.6499960236487368,
+        0.6499949669606713
+      ],
+      "diameter_midpoint_separation_m": 8.691255450801627e-07
+    },
+    "shaft_depth_m": {
+      "samples": 6790,
+      "coverage": 0.8729750578554898,
+      "p10_p90_m": [
+        0.7077916150751319,
+        0.7125207806908034
+      ]
+    }
+  },
+  "format_checks": {
+    "M97": {
+      "triangles": 131712,
+      "geometry_sha256": "307dfe162273e42ef6fd1de6101d9fabbe487cb70e93a6f1d0f04a2684ae7230",
+      "lowest_z_m": -0.710064172744751,
+      "highest_z_m": 0.006000000052154064,
+      "gaussians": 493435,
+      "sha256": {
+        "asset.glb": "f24e0bb4f1e310fa805ca32cb3e4d15beb98ad76956e55b8393d18249c9ffbb3",
+        "surface.npz": "4a0247d1152817e8a0c35b6f8312958182d8fdd152fa97a135f7a54fcdd6ad3e",
+        "metadata.json": "c848541197fe31b85110851c4e57e2a245943f906bb18be41bc296d681564b40",
+        "asset.ply": "0c2473453bf9c54af65e316aadb41a5943c2e25468008775469d8e5304561aaa",
+        "splat_material.npz": "13bd31f7b271cf0e1fe7af5218da740e6f33eeeb218c0b83bde9aed80ac793b0"
+      }
+    },
+    "A97": {
+      "triangles": 275328,
+      "geometry_sha256": "b29fad40d07353fa4b3a8f464c4079ec7c7fb43f6d6d11a9e4ea5cc392e3ea3e",
+      "lowest_z_m": -0.710064172744751,
+      "highest_z_m": 0.5484504103660583,
+      "gaussians": 629015,
+      "sha256": {
+        "asset.glb": "7f3ca4d2b717265241226cec9d35bf27c70ce26f90ccb5322aec59a36e0d8383",
+        "surface.npz": "4a0247d1152817e8a0c35b6f8312958182d8fdd152fa97a135f7a54fcdd6ad3e",
+        "metadata.json": "6e75327af9def453c1fe4ed4cd56da1bcbb96fad690fd1d0eac04a8306f07862",
+        "asset.ply": "81a50d537bcdc5af3c4dcb9f351abd578920e045c872025c3d4917e78b54080c",
+        "splat_material.npz": "1ab9c954e8f5afcacd194e5a7feb6695edb9bfc679cf7606f7cf06d704e626e8"
+      }
+    }
+  },
+  "limitations": "Analytic synthetic fixture with optical-Z noise, dropout and outliers."
+}
