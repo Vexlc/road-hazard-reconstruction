@@ -154,6 +154,11 @@ function inspect(id) {
   }
   if (selected.apronExtent) metric("实测修补圈宽 × 长（米）",selected.apronExtent.map(v=>v.toFixed(3)).join(" × "));
   if (selected.panelSize) {
+    if (selected.installationGrade) {
+      const g = selected.installationGrade;
+      metric("井框外缘相对路面（毫米）",g.rim_range_m.map(v=>(1000*v).toFixed(1)).join(" 至 "));
+      metric("座圈倾角（度）",g.tilt_deg.toFixed(1));
+    }
     if (selected.throughHoles > 0 || selected.retainedVolume != null) {
       metric("盖板宽 × 长（米）",selected.panelSize.map(v=>v.toFixed(3)).join(" × "));
       metric("盖板厚度（毫米）",(selected.lidThickness*1000).toFixed(1));

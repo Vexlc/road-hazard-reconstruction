@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "gen2hole/downstream/sensors"))
 from road_geometry import Surface, glb_triangles, read_json, sha256 as file_hash
 from cover_fragments import check_fragments
+from cover_grade import check_grade, check_source_relief
 
 
 def require(ok, why):
@@ -287,6 +288,7 @@ def check(run, with_sensors):
     baseline = None
     baseline_id = None
     changes = []
+    reference_ring = None
     for state in spec['states']:
         key = state['id']
         absent = state.get('absent', False)
@@ -308,12 +310,26 @@ def check(run, with_sensors):
                 lids.append((part, vertices, faces))
             else:
                 sig = sha256(vertices.tobytes() + faces.tobytes()).hexdigest()
-                require(stock.setdefault(part, sig) == sig, key + ' changed fixed shaft')
+                if 'installation_grade' not in state or part == 7:
+                    require(stock.setdefault(part, sig) == sig, key + ' changed fixed shaft')
                 known.add(part)
-        require(known == {1, 5, 6, 7} and (not lids) == absent, key + ' unexpected cover or shaft')
+        fixed = known - {8} if 'installation_grade' in state else known
+        require(fixed == {1, 5, 6, 7} and (not lids) == absent, key + ' unexpected cover or shaft')
         result = dict(
             glb_sha256=checks[key]['sha256']['asset.glb'], ply_sha256=checks[key]['sha256']['asset.ply']
         )
+        if 'installation_grade' in state:
+            if reference_ring is None:
+                neutral = next((s for s in spec['states'] if not s.get('absent')
+                                and s.get('installation_grade', {}).get('center_z_m') == 0
+                                and s['installation_grade']['tilt_deg'] == 0), None)
+                require(neutral is not None, 'A grade comparison requires a flush seated reference')
+                reference_glb = bundle/'assets'/'raised'/neutral['id']/'asset.glb'
+                report['grade_reference'] = neutral['id']
+                reference_ring = next((v, f) for part, v, f in glb_triangles(reference_glb) if part == 5)
+            result['grade'] = check_grade(glb, all_parts, folder/'surface.npz', reference_ring, profile, state)
+            if key == report['grade_reference'] and 'displacement' in profile:
+                report['grade_source_relief'] = check_source_relief(bundle, glb, profile, trace, dest)
         if state.get('fragment'):
             require(lids and not absent and meta['fragment_location'] == state['fragment']['location'],
                     key + ' missing fractured cover')
@@ -321,7 +337,7 @@ def check(run, with_sensors):
             solid = topology(lids)
             require(solid['through_holes'] == meta['through_holes'], key + ' topology vs annotations')
             result['solid'] = solid
-            lid = Surface(glb, exclude=(1, 5, 6, 7))
+            lid = Surface(glb, exclude=(1, 5, 6, 7, 8))
             result['source_footprint'] = photo_check(bundle, profile, trace, meta, lid, dest)
             if any(meta['lid_offset_m']):
                 fixed = Surface(glb, exclude=(6, 7, 9, 10, 11))
@@ -436,13 +452,29 @@ def check(run, with_sensors):
             )
         require(set(a['asset'] for a in placed.values()) == set(results), "Missing transferred state")
         comparisons = {}
-        camera_folder = 'matched_camera' if 'fracture_path_uv' in profile else 'camera'
+        camera_folder = 'matched_camera' if 'fracture_path_uv' in profile or reference_ring is not None else 'camera'
         for base, base_info in placed.items():
             if base_info['asset'] != baseline_id:
                 continue
             for case, other in placed.items():
                 if case != base and other['site'] == base_info['site']:
                     comparisons[case] = compare_cases(run, other['site'], base, case, camera_folder=camera_folder)
+        if reference_ring is not None:
+            # Isolate removal from grade: keep the very same sunk ring in both sensor replays.
+            grade_by_id = {s['id']: s for s in spec['states']}
+            removal = {}
+            for case, entry in placed.items():
+                missing = grade_by_id[entry['asset']]
+                if not missing.get('absent'):
+                    continue
+                for base, other in placed.items():
+                    seated = grade_by_id[other['asset']]
+                    if (other['site'] == entry['site'] and not seated.get('absent') and
+                            seated['installation_grade'] == missing['installation_grade']):
+                        pair = compare_cases(run, entry['site'], base, case, image_suffix='same-grade-removal',
+                                             camera_folder=camera_folder)
+                        removal[case] = pair
+            report['removal_at_same_grade'] = removal
         if 'fracture_path_uv' in profile:
             lost = {s['id'] for s in spec['states'] if s.get('fragment', {}).get('location') == 'missing'}
             relocated = {s['id'] for s in spec['states'] if s.get('fragment', {}).get('location') in ('floor','road')}

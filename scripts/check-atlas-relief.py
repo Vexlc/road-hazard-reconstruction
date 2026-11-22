@@ -75,6 +75,8 @@ def check():
             if (d['under'][ok]>top[ok]+d['step']).any():raise ValueError(row['id'])
         summary['valid_top_samples']+=int(np.isfinite(top).sum())
         summary['pitch_m'].append(max(abs(d['x'][1]-d['x'][0]),abs(d['y'][1]-d['y'][0]))/(n-1))
+        if row.get('installationGrade'):
+            reference.add(row['id'])
         if row.get('water'):
             reference.add(row['id'])
             if 'under' not in d or not (top - d['under'] > .001).any():raise ValueError('No water column for '+row['id'])

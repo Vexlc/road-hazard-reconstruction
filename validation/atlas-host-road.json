@@ -466,6 +466,314 @@
         }
       }
     },
+    "A138": {
+      "sources": {
+        "glb": "e1af61e077c5458a6c98d10e9f8dfaa10753edb1dc0a33143caff2c300b3e331",
+        "ply": "c13e4c9db3dd0174071ca3554b7074a08fc7d4bb8de41b9f0bc33fdc75da9a21"
+      },
+      "views": {
+        "low": {
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.8369700542087373,
+            "target": [
+              0,
+              -0.027249999111518264,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 257089,
+          "exterior_raw_probe_pixels": 32748,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 14999,
+          "interior_raw_probe_pixels": 0,
+          "interior_host_probe_pixels": 0,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "oblique": {
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 1.8369700542087373,
+            "target": [
+              0,
+              -0.027249999111518264,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 227928,
+          "exterior_raw_probe_pixels": 15357,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 43768,
+          "interior_raw_probe_pixels": 0,
+          "interior_host_probe_pixels": 0,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "top": {
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.8369700542087373,
+            "target": [
+              0,
+              -0.027249999111518264,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 205204,
+          "exterior_raw_probe_pixels": 0,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 66004,
+          "interior_raw_probe_pixels": 674,
+          "interior_host_probe_pixels": 674,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        }
+      }
+    },
+    "A139": {
+      "sources": {
+        "glb": "c1a59e2a4b042e3cea9adbfcda3ef70bd48fc79ecf07ee873c58abd3fd4d4da5",
+        "ply": "9fdb1bb1e70461e5743ce1f3a9facdbb1d765db59544530bf836c5e499db4810"
+      },
+      "views": {
+        "low": {
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.8921153619906192,
+            "target": [
+              0,
+              -0.051500000059604645,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 258808,
+          "exterior_raw_probe_pixels": 33831,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 13360,
+          "interior_raw_probe_pixels": 0,
+          "interior_host_probe_pixels": 0,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "oblique": {
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 1.8921153619906192,
+            "target": [
+              0,
+              -0.051500000059604645,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 230417,
+          "exterior_raw_probe_pixels": 17152,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 41351,
+          "interior_raw_probe_pixels": 18,
+          "interior_host_probe_pixels": 18,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "top": {
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.8921153619906192,
+            "target": [
+              0,
+              -0.051500000059604645,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 207484,
+          "exterior_raw_probe_pixels": 0,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 63772,
+          "interior_raw_probe_pixels": 904,
+          "interior_host_probe_pixels": 904,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        }
+      }
+    },
+    "A140": {
+      "sources": {
+        "glb": "0451f4319eec8bcee578f40d97e8b4a952b391ecc05a726525073e6883268da6",
+        "ply": "25647e252f1ec3a6290bd000cc91d589e5fb6e3c3833d863ed0ecd8528920d9f"
+      },
+      "views": {
+        "low": {
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.8369700585401407,
+            "target": [
+              0,
+              0.004750000312924385,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 256102,
+          "exterior_raw_probe_pixels": 29516,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 15994,
+          "interior_raw_probe_pixels": 0,
+          "interior_host_probe_pixels": 0,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "oblique": {
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 1.8369700585401407,
+            "target": [
+              0,
+              0.004750000312924385,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 228320,
+          "exterior_raw_probe_pixels": 13362,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 43392,
+          "interior_raw_probe_pixels": 0,
+          "interior_host_probe_pixels": 0,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "top": {
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.8369700585401407,
+            "target": [
+              0,
+              0.004750000312924385,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 207620,
+          "exterior_raw_probe_pixels": 0,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 63652,
+          "interior_raw_probe_pixels": 684,
+          "interior_host_probe_pixels": 684,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        }
+      }
+    },
+    "A141": {
+      "sources": {
+        "glb": "a5eceaf1b969c0c76e10fe0e848e3dec2f1488f3280faef18ed2e4202b0791a8",
+        "ply": "1b47171cdaf62c2dd839fb17005f46217fbc853d129b011e14634558dd6ef196"
+      },
+      "views": {
+        "low": {
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.9101754827933055,
+            "target": [
+              0,
+              -0.059054289013147354,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 259364,
+          "exterior_raw_probe_pixels": 34943,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 12820,
+          "interior_raw_probe_pixels": 0,
+          "interior_host_probe_pixels": 0,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "oblique": {
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 1.9101754827933055,
+            "target": [
+              0,
+              -0.059054289013147354,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 231325,
+          "exterior_raw_probe_pixels": 17667,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 40467,
+          "interior_raw_probe_pixels": 42,
+          "interior_host_probe_pixels": 42,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "top": {
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.9101754827933055,
+            "target": [
+              0,
+              -0.059054289013147354,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 208454,
+          "exterior_raw_probe_pixels": 0,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 62834,
+          "interior_raw_probe_pixels": 854,
+          "interior_host_probe_pixels": 854,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        }
+      }
+    },
     "M10": {
       "sources": {
         "glb": "c706893c6abbf85a2f297aca394cbf44075965f961108722ef78622958cf1a96",
@@ -692,6 +1000,83 @@
           "interior_pixels": 98784,
           "interior_raw_probe_pixels": 70379,
           "interior_host_probe_pixels": 70379,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        }
+      }
+    },
+    "M138": {
+      "sources": {
+        "glb": "2a8a8179cba212606136cb258595be869601e304619e72febb0ec4f38b4989de",
+        "ply": "2760fdc027bed93b3859f711521c8c4feeb187228d6ba57237a4be21cd5cd5da"
+      },
+      "views": {
+        "low": {
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.8921153619906192,
+            "target": [
+              0,
+              -0.051500000059604645,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 258808,
+          "exterior_raw_probe_pixels": 33804,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 13360,
+          "interior_raw_probe_pixels": 6603,
+          "interior_host_probe_pixels": 6603,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "oblique": {
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 1.8921153619906192,
+            "target": [
+              0,
+              -0.051500000059604645,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 230417,
+          "exterior_raw_probe_pixels": 17118,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 41351,
+          "interior_raw_probe_pixels": 29960,
+          "interior_host_probe_pixels": 29960,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0
+        },
+        "top": {
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.8921153619906192,
+            "target": [
+              0,
+              -0.051500000059604645,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 207484,
+          "exterior_raw_probe_pixels": 0,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 63772,
+          "interior_raw_probe_pixels": 46402,
+          "interior_host_probe_pixels": 46402,
           "interior_max_rgb_change": 0,
           "interior_probe_max_rgb_change": 0
         }

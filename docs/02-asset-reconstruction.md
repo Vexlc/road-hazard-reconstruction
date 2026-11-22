@@ -360,7 +360,7 @@ work/envs/streetcrafter/bin/python scripts/render-scanned-cracks.py --run "$run"
 
 ## 原始高斯资产与网格的同机位对照
 
-图谱收录的 1,384 个 PLY 共有 191,499,749 个高斯。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
+图谱收录的 1,389 个 PLY 共有 194,457,423 个高斯。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
 
 浏览器按 PLY 中的三轴对数尺度、WXYZ 四元数和不透明度恢复各向异性高斯。渲染使用完整点集和原始一阶球谐颜色，按当前透视机位投影协方差、补偿屏幕滤波造成的不透明度变化，再按深度合成。能写入半浮点缓冲区的设备使用 16 位浮点颜色累积。GPU 与浏览器共享米制尺度，原始 PLY 为 Z 向上，GLB 为 Y 向上。[gsplat 光栅化说明](https://docs.gsplat.studio/main/apis/rasterization.html)
 
@@ -376,7 +376,7 @@ python scripts/serve-asset-atlas.py
 
 「核对高斯与网格的深度」提供固定机位的网格、高斯和像素级绝对差。网格深度取射线首次命中的正面。高斯深度为沿光线的透明度加权期望。图中计入不透明度大于 85%、共同命中且远离网格轮廓的像素。可将统计范围切换到井圈、井壁、盖板、水面或周边路面。数字描述两种资产表示的一致程度。[逐机位与逐部件核验](../validation/atlas-gaussians.json)
 
-浏览器解码器已逐个读入并排序全库 1,384 个 PLY。两批覆盖 11 种来源或重建方法的样本共有 23 件资产、65 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 54 组同机位对照](../validation/atlas-pit-gaussians.json)
+浏览器解码器已逐个读入并排序全库 1,389 个 PLY。三批覆盖 11 种来源或重建方法的样本共有 28 件资产、80 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 54 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json)
 
 矩形敞井 M11 的低角度画面中，井圈、井壁和周边路面的差异相距很大。GLB 的路面网格遮住地下结构，独立高斯资产的路面边缘逐渐透明，部分像素仍收到地下井壁的颜色与深度。迁入画面使用宿主路面和遮挡几何。可对照俯视、斜视和低角度三组图，区分部件本身和道路过渡区的贡献。[敞井深度图版](figures/gaussian-shaft-depth.jpg)
 
@@ -402,17 +402,18 @@ python scripts/build-asset-atlas.py
 
 ### 井类资产的开孔路面
 
-308 件带井体的资产可加铺一层沥青。打开 M11 后拖动旋转，可观察矩形井口内的结构和路面遮挡。也可切换 A119 掀盖、A128 井旁断片或 A117 断条雨水篦。勾选「标出地下 7.5 cm 以下的结构」会把对应高斯染为洋红色，盖板上的孔和篦条间的可见部分随相机移动。页面底部保留同编号资产的实景道路观测。[矩形敞井](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#M11) · [掀盖](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#A119) · [六例对照](figures/gaussian-road-openings.jpg)
+313 件带井体的资产可加铺一层沥青。打开 M11 后拖动旋转，可观察矩形井口内的结构和路面遮挡。也可切换 A119 掀盖、A128 井旁断片或 A117 断条雨水篦。勾选「标出地下 7.5 cm 以下的结构」会把对应高斯染为洋红色，盖板上的孔和篦条间的可见部分随相机移动。页面底部保留同编号资产的实景道路观测。[矩形敞井](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#M11) · [掀盖](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#A119) · [六例对照](figures/gaussian-road-openings.jpg)
 
 每个开孔取自该资产 GLB 铺面三角形的内边界。导出程序焊接纹理接缝并以 0.25 毫米容差简化轮廓，浏览器按 GLB 指纹选择轮廓。观察者位于路面上方时，浏览器逐像素计算视线与水平面的交点，仅允许地下高斯通过开孔显现。路面比资产的标称零高程低 3 毫米，以保留铺面颗粒。示范路面按 3 米幅宽平铺 Rob Tuytel 的 CC0 沥青扫描材质。PandaSet 的车载视图使用各自路段实际的道路、放置位置和相机。[沥青来源与指纹](../gen2hole/examples/scanned-cracks/survey.json)
 
-在 10 件资产的 30 个机位，用原始 GLB 铺面三角形独立求交，并排除两像素边界。地下染色前后，任一 RGB 通道相差超过 8 级计作一个响应像素。全部机位累计的井口外响应从 412,881 个降到 0。井口内纳入核验的 1,174,743 个像素在铺路前后逐通道相同。这项检查衡量开孔遮挡和透视一致性。[逐机位核验记录](../validation/atlas-host-road.json)
+在 15 件井类资产的 45 个机位，用原始 GLB 铺面三角形独立求交，并排除两像素边界。地下染色前后，任一 RGB 通道相差超过 8 级计作一个响应像素。全部机位累计的井口外响应从 658,379 个降到 0。井口内纳入核验的 1,775,639 个像素在铺路前后逐通道相同。这项检查衡量开孔遮挡和透视一致性。[逐机位核验记录](../validation/atlas-host-road.json)
 
 在仓库根目录运行以下命令可复现。浏览器捕获默认使用 SwiftShader，具备原生 OpenGL 的 Linux 工作站可设置 `ATLAS_CHROME_ANGLE=gl`。
 
 ~~~bash
 work/envs/streetcrafter/bin/python scripts/build-gaussian-road.py
-node scripts/capture-atlas-gaussians.cjs runs/atlas-host-road --road M11 M10 A119 A128 A125 model_raised_rectangular_removed_side_chip_seal A104 A105 M104 A117
+node scripts/capture-atlas-gaussians.cjs runs/atlas-host-road --road M11 M10 A119 A128 A125 model_raised_rectangular_removed_side_chip_seal A104 A105 M104 A117 A138 A139 A140 A141 M138
+work/envs/streetcrafter/bin/python scripts/check-atlas-gaussians.py --captures runs/atlas-host-road --ids A138 A139 A140 A141 M138 --evidence runs/atlas-host-road/geometry --out validation/atlas-grade-gaussians.json
 work/envs/streetcrafter/bin/python scripts/check-gaussian-road.py
 work/envs/streetcrafter/bin/python scripts/render-gaussian-road.py
 python scripts/build-asset-atlas.py
@@ -451,4 +452,35 @@ work/envs/streetcrafter/bin/python scripts/build-capture-driving-views.py
 work/envs/streetcrafter/bin/python scripts/build-capture-driving-views.py --verify
 python scripts/build-asset-atlas.py
 work/envs/streetcrafter/bin/python scripts/render-pit-road.py
+~~~
+
+## 井盖与路面的安装高差
+
+Manhole Cover 010 的摄影测量彩色图、位移图和透明度图来自同一次采集。图幅约 1 米，盖面直径约 0.669 米。沿位移图上的环状低洼区提取 24 个孔口，再沿每个孔缘生成有厚度的侧壁。四个有盖状态的网格都包含 24 个贯穿孔，投回原图的孔口交并比为 0.936。设计参数包括 7 毫米盖面起伏幅度、40 毫米盖厚、720 毫米井深与各状态的安装高差。[来源与 CC0 许可](https://ambientcg.com/view?id=ManholeCover010) · [源文件提取与轮廓恢复](../gen2hole/examples/perforated-covers/grade/prepare.py) · [尺度与姿态](../gen2hole/examples/perforated-covers/grade/survey.json)
+
+| 资产 | 状态 | 井框外缘相对周围路面 |
+| --- | --- | --- |
+| A138 | 齐平参照 | 0 毫米 |
+| A139 | 整圈沉降 | −45 毫米 |
+| A140 | 整圈凸起 | +32 毫米 |
+| A141 | 单侧沉降 | −65.1 至 −4.9 毫米，倾角 4.5° |
+| M138 | 沉降后缺盖 | −45 毫米，保留 A139 的座圈和井体 |
+
+在各盖面网格顶点约 2.73 个原图像素的采样邻域之外，还有 34,455 个像素可以独立核对表面起伏。按同一设计幅度换算，网格与源位移的相关系数为 0.905，绝对误差中位数为 0.056 毫米，95 分位为 0.791 毫米。这项比较衡量相对源位移的复现精度。
+
+落座盖板与井框一起作刚体运动。外侧路面与井底固定，井框边缘和路面之间的立面随高差露出。每个有盖状态沿座圈取 128 个承托点，用两个独立部件的射线交点核对间隙。各状态还在首交表面和移除盖板后的基底各抽取 6,400 个位置，比对两套几何引擎给出的高程。展开图谱的「网格高程与剖面」，点选盖面后切换状态，读数保留同一局部坐标，并显示与齐平盖面的高差。[几何、相机与雷达报告](../validation/grade-cover.json) · [交互剖面](http://127.0.0.1:8765/tools/asset_atlas/index.html#A141)
+
+五种状态各核验了俯视、斜视和低角度三个机位。A141 的高斯期望深度与网格首交深度的中位绝对差，在俯视为 0.14 毫米，在低角度为 13.43 毫米。读取井框高差请使用网格剖面。[三个机位的逐部件记录](../validation/atlas-grade-gaussians.json)
+
+五态分别迁到 PandaSet 109 的同一锚点。前视使用第 39 帧，后视使用第 50 帧，场景内比例为 1。单独比较 A139 与 M138 时，移除盖板使前视的 3,594 个像素及后视的 922 个像素发生可核验的部件或深度变化，深度阈值为 1 厘米。两部激光雷达合计有 426 束模拟回波距离变化超过 1 厘米。点开图谱中的「同位前视」或「同位后视」照片可查看完整车载画面，原始照片的对应区域经逐像素核对。[资产与车载机位图版](figures/cover-grade.jpg) · [同高差缺盖条目](http://127.0.0.1:8765/tools/asset_atlas/index.html#M138)
+
+~~~bash
+python gen2hole/survey.py --survey gen2hole/examples/perforated-covers/grade/survey.json --out work/grade-rebuild --preview
+for pair in '138 A138' '139 A139' '140 A140' '141 A141' '142 M138'; do
+  read -r group asset <<< "$pair"
+  python gen2hole/downstream/place.py --bundle work/grade-rebuild/series --site 109 --anchor-category raised --group "$group" --assets "$asset"
+done
+python gen2hole/downstream/simulate.py --run work/grade-rebuild --out work/grade-rebuild/sensors
+work/envs/streetcrafter/bin/python scripts/check-perforated-covers.py --run work/grade-rebuild --with-sensors --out work/grade-rebuild/grade.json
+work/envs/streetcrafter/bin/python scripts/render-cover-grade.py --run work/grade-rebuild --report work/grade-rebuild/grade.json --out work/grade-rebuild/grade.jpg
 ~~~

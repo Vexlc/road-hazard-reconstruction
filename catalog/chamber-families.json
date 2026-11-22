@@ -41,5 +41,12 @@
     "audit": "validation/split-iron-cover.json",
     "note": "完整井盖的纹理、相对起伏及 14 个孔取自摄影测量图。盖径按 0.62 米赋值，断线、井深、盖厚和碎片位置为设计值。不同状态共用井体和原始盖面三角形。",
     "visibility": "validation/split-iron-visibility.json"
+  },
+  {
+    "run": "runs/grade-cover",
+    "method": "实拍摄影测量",
+    "asset_label": "井盖与路面高差",
+    "audit": "validation/grade-cover.json",
+    "note": "混凝土盖芯、铸铁圈和 24 个孔缘取自同一份摄影测量。平面大小按来源公布的约 1 米图幅换算。齐平、整体沉降、整体凸起和单侧沉降共用同一块落座盖板，缺盖状态保留沉降座圈。高差、盖面起伏幅度、盖厚和井深为设计值。"
   }
 ]

@@ -69,7 +69,10 @@ def verify_asset(directory, manifest_row, run):
         mask = "water_mask" if meta["category"] == "pothole" else "opening_mask"
         require(field[mask].shape == height.shape, f"{name}: {mask}")
         if mask == "opening_mask":
-            require((height[field[mask] > 0.5] < 0).any(), f"{name}: shaft opening")
+            substrate = field["substrate_height"] if "substrate_height" in field else height
+            require(substrate.shape == height.shape and (substrate[field[mask] > 0.5] < 0).any(), f"{name}: shaft opening")
+            if "substrate_height" in field:
+                require(np.all(height >= substrate - 2e-5), f"{name}: cover surface below its substrate")
     files = ["asset.glb", "surface.npz", "metadata.json"]
     record = dict(triangles=faces, geometry_sha256=geometry_hash, lowest_z_m=bottom, highest_z_m=top)
     if not run["mesh_only"]:

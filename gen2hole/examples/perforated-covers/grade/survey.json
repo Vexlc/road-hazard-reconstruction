@@ -1,0 +1,31 @@
+{
+  "family": "vented-concrete-infill-grade",
+  "source_url": "https://ambientcg.com/view?id=ManholeCover010",
+  "credit": "ambientCG, Manhole Cover 010, CC0. Registered colour, displacement and opacity. The published map covers approximately 1 × 1 metre.",
+  "frame": {"image": "photo.png"},
+  "perforations": {
+    "shape": "round",
+    "corners_xy": [[166,169],[850,169],[850,853],[166,853]],
+    "mask": "openings.png",
+    "displacement": "relief.png",
+    "surround_mask": "surround.png",
+    "lining": "../lining.jpg",
+    "road_patch_xyxy": [455,33,511,94],
+    "edge_patch_xyxy": [490,208,508,219],
+    "size_m": [0.6686217008797654,0.6686217008797654],
+    "frame_band_m": 0.04887585532746823,
+    "relief_span_m": 0.007,
+    "seat_overlap_m": 0.012,
+    "thickness_m": 0.040,
+    "shaft_depth_m": 0.72,
+    "photographed_surround": true,
+    "scale_source": "684 px lid and 50 px frame band on a 1024 px source, scaled to the published approximate one-metre width. Relief amplitude, installation heights, thickness and hidden surfaces are design values."
+  },
+  "states": [
+    {"id": "A138", "label": "齐平", "installation_grade": {"center_z_m": 0, "tilt_deg": 0, "uphill_deg": 0}},
+    {"id": "A139", "label": "整圈沉降", "installation_grade": {"center_z_m": -0.045, "tilt_deg": 0, "uphill_deg": 0}},
+    {"id": "A140", "label": "整圈凸起", "installation_grade": {"center_z_m": 0.032, "tilt_deg": 0, "uphill_deg": 0}},
+    {"id": "A141", "label": "单侧沉降", "installation_grade": {"center_z_m": -0.035, "tilt_deg": 4.5, "uphill_deg": 30}},
+    {"id": "M138", "label": "沉降后缺盖", "absent": true, "installation_grade": {"center_z_m": -0.045, "tilt_deg": 0, "uphill_deg": 0}}
+  ]
+}

@@ -201,6 +201,11 @@ def trace(spec):
         )
         radius = np.max(abs(uv - 0.5), axis=2)
         fade = np.clip(margin / 20, 0, 1) * np.clip((1.01 - radius) / 0.13, 0, 1)
+        if 'surround_mask' in profile:
+            opacity = np.asarray(Image.open(refs / profile['surround_mask']).convert('L'))
+            if opacity.shape != photo.shape[:2]:
+                raise ValueError('The pavement opacity must match the source photograph')
+            fade *= cv2.remap(opacity, coords, None, cv2.INTER_LINEAR).astype('f4') / 255
         if 'pavement' in profile:
             pos = (uv - 0.5) * size
             rim = pos / (size / 2 + band)

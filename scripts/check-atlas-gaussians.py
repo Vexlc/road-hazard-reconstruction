@@ -31,6 +31,7 @@ def read_surface(path):
             ('Road', 'apron'),
             ('Fracture', 'pit_or_crack'),
             ('Cast ring', 'rim'),
+            ('Chipped concrete collar', 'collar'),
             ('Lid', 'cover'),
             ('Hinge', 'hinge'),
             ('Inspection shaft', 'wall'),
@@ -156,6 +157,7 @@ def compare(surface, gaussians, info, gaussian_file, mesh_file, evidence):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--captures', type=Path, required=True)
+    parser.add_argument('--ids', nargs='+', help='Audit these captured assets and verify the full preview inventory')
     parser.add_argument('--previews', type=Path, default=ROOT / 'runs/atlas-gaussians')
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--evidence', type=Path, default=ROOT / 'runs/atlas-gaussian-checks/geometry')
@@ -166,7 +168,11 @@ def main():
     by_key = {}
     for path in sorted(args.captures.glob('*.json')):
         observation = json.loads(path.read_text())
+        if args.ids and observation['key'] not in args.ids:
+            continue
         by_key.setdefault(observation['key'], []).append((path, observation))
+    if args.ids and set(args.ids) != set(by_key):
+        raise ValueError('Missing requested browser captures')
     if not by_key:
         raise ValueError('No browser captures')
     args.evidence.mkdir(parents=True, exist_ok=True)

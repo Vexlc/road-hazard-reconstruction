@@ -3,7 +3,8 @@
   const get=id=>document.getElementById(id);
   const panel=get("reliefPanel"), slider=get("reliefRow"), map=get("reliefMap"), chart=get("reliefChart");
   const cache=new Map(), pending=new Set();
-  let current,grid,heat,rect,range,selectedCol=null;
+  const records=new Map((window.roadAssets || []).map(row=>[row.id,row]));
+  let current,grid,heat,rect,range,selectedCol=null,probe=null;
   const legendColor={paper:"#f5f4ed",below:"#254974",above:"#a34826",line:"#afbaae"};
   function decode(encoded,low,step,n) {
     const raw=atob(encoded), values=new Float32Array(n*n);
@@ -19,6 +20,7 @@
   }
   function color(z) {
     if (!Number.isFinite(z)) return [203,206,199];
+    if (current.gradeReference && get("nearGrade").checked && z<range[0]) return [39,52,66];
     const end=z<0 ? [36,78,119] : [169,71,34];
     const mix=Math.sqrt(Math.min(1,Math.abs(z)/(z<0 ? -range[0] : range[1])));
     return [239,238,220].map((v,i)=>Math.round(v+(end[i]-v)*mix));
@@ -29,12 +31,18 @@
     for (const field of under ? [top,under] : [top]) {
       for (const z of field) if (Number.isFinite(z)) {lo=Math.min(lo,z);hi=Math.max(hi,z);}
     }
-    range=[Math.min(lo,-.001),Math.max(hi,.001)];
+    const gradeZoom=current.gradeReference && get("nearGrade").checked;
+    range=gradeZoom ? [-.08,.045] : [Math.min(lo,-.001),Math.max(hi,.001)];
     heat=document.createElement("canvas");heat.width=heat.height=n;
     const g=heat.getContext("2d"), image=g.createImageData(n,n);
     for (let i=0;i<top.length;i++) image.data.set([...color(top[i]),255],4*i);
     g.putImageData(image,0,0);
     slider.max=String(n-1);slider.value=String((n-1)/2);selectedCol=null;
+    if (current.gradeReference && probe) {
+      const sample=(value,extent)=>Math.max(0,Math.min(n-1,Math.round((value-extent[0])/(extent[1]-extent[0])*(n-1))));
+      slider.value=String(sample(probe.y,grid.y));
+      selectedCol=probe.x==null ? null : sample(probe.x,grid.x);
+    }
     if (current.water && under) {
       let deepest=null, depth=0;
       for (let i=0;i<top.length;i++) {
@@ -45,6 +53,10 @@
     }
     get("reliefLegend").textContent="俯视首个交点 · 蓝色低于路面，棕色高于路面，灰色无交点";
     get("reliefScale").textContent=current.water ? "实线为首个交点，虚线为实拍重建的坑底。高程沿资产本地竖轴读取。" : under ? "实线为首个交点，虚线为移除井盖后的固定部件。" : "实线为从上方投射到网格的首个交点。";
+    if (current.gradeReference) {
+      get("reliefScale").textContent="蓝线为当前表面"+(current.id===current.gradeReference ? "" : "，橙色虚线为齐平状态的同一截线")+"。切换状态保留取样位置。";
+      if (gradeZoom) get("reliefLegend").textContent="相对路面 −80 至 +45 mm · 深色为低于显示范围的交点";
+    }
     get("reliefContent").hidden=false;
     const pitch=Math.max(Math.abs(grid.x[1]-grid.x[0]), Math.abs(grid.y[1]-grid.y[0]))/(n-1);
     get("reliefStatus").textContent="网格采样间隔约 "+(1000*pitch).toFixed(1)+" mm。点击俯视图或移动滑块可查看不同截线。";
@@ -79,50 +91,74 @@
       ctx.strokeStyle=stroke;ctx.lineWidth=2.5;ctx.setLineDash(dash);ctx.beginPath();let pen=false;
       for (let i=0;i<n;i++) {
         const z=field[row*n+i],px=L+i/(n-1)*(R-L);
-        if (!Number.isFinite(z)) {pen=false;continue;}
+        if (!Number.isFinite(z) || z<floor || z>ceil) {pen=false;continue;}
         if (pen) ctx.lineTo(px,py(z));else ctx.moveTo(px,py(z));pen=true;
       }
       ctx.stroke();ctx.setLineDash([]);
     }
-    if (under) trace(under,"#8a6b60",[6,4]);
+    const ref=cache.get(current.gradeReference);
+    const aligned=ref && ref.n===n && ref.x.every((v,i)=>Math.abs(v-x[i])<1e-7) && ref.y.every((v,i)=>Math.abs(v-y[i])<1e-7);
+    if (under && !current.gradeReference) trace(under,"#8a6b60",[6,4]);
     trace(top,legendColor.below,[]);
+    if (aligned && current.id!==current.gradeReference) trace(ref.top,"#ab602d",[5,5]);
     let message="Y "+metres(y[0]+row/(n-1)*(y[1]-y[0]));
     if (selectedCol!==null) {
       const i=row*n+selectedCol;
       message+="　X "+metres(x[0]+selectedCol/(n-1)*(x[1]-x[0]))+"　表面 "+metres(top[i]);
       if (under) message+=(current.water ? "　坑底 " : "　固定部件 ")+metres(under[i]);
+      if (aligned && current.id!==current.gradeReference && Number.isFinite(top[i]-ref.top[i])) {
+        message+="　相对齐平 "+((top[i]-ref.top[i])*1000).toFixed(1)+" mm";
+      }
       if (current.water) message+="　铅直水深 "+((top[i]-under[i])*current.water.up_local[2]*1000).toFixed(1)+" mm";
     }
     get("reliefReadout").textContent=message;
   }
-  function request() {
-    if (!panel.open || !current?.relief) return;
-    if (cache.has(current.id)) {grid=cache.get(current.id);prepare();return;}
-    if (pending.has(current.id)) return;
-    get("reliefStatus").textContent="正在读取网格高程…";
-    const id=current.id,s=document.createElement("script");pending.add(id);s.src=current.relief;
+  function loadGrid(record) {
+    if (!record?.relief || cache.has(record.id) || pending.has(record.id)) return;
+    const id=record.id,s=document.createElement("script");pending.add(id);s.src=record.relief;
     s.onload=()=>{pending.delete(id);s.remove();};
     s.onerror=()=>{pending.delete(id);s.remove();if (id===current?.id) get("reliefStatus").textContent="此资产的高程文件读取失败。";};
     document.head.append(s);
   }
+  function request() {
+    if (!panel.open || !current?.relief) return;
+    if (current.gradeReference) loadGrid(records.get(current.gradeReference));
+    if (cache.has(current.id)) {grid=cache.get(current.id);prepare();return;}
+    get("reliefStatus").textContent="正在读取网格高程…";
+    loadGrid(current);
+  }
   window.roadRelief=(id,data)=>{
     const value={...data,top:decode(data.top,data.low,data.step,data.n),
       under:data.under ? decode(data.under,data.low,data.step,data.n) : null};
-    if (cache.size>=6) cache.delete(cache.keys().next().value);
+    if (cache.size>=6 && !cache.has(id)) {
+      const oldest=Array.from(cache.keys()).find(key=>key!==current?.id && key!==current?.gradeReference);
+      cache.delete(oldest);
+    }
     cache.set(id,value);
     if (id===current?.id && panel.open) {grid=value;prepare();}
+    else if (id===current?.gradeReference && panel.open && grid) draw();
   };
+  function remember() {
+    if (!current?.gradeReference || !grid) return;
+    const coordinate=(index,extent)=>extent[0]+index/(grid.n-1)*(extent[1]-extent[0]);
+    probe={y:coordinate(Number(slider.value),grid.y),x:selectedCol==null ? null : coordinate(selectedCol,grid.x)};
+  }
   window.showAssetRelief=row=>{
+    if (!row.gradeReference || row.gradeReference!==current?.gradeReference) {
+      probe=null;get("nearGrade").checked=true;
+    } else remember();
     current=row;grid=null;get("reliefContent").hidden=true;get("reliefStatus").textContent="";
+    get("gradeRange").hidden=!row.gradeReference;
     panel.hidden=!row.relief;request();
   };
   panel.addEventListener("toggle",request);
-  slider.addEventListener("input",()=>{selectedCol=null;draw();});
+  get("nearGrade").addEventListener("change",()=>{if (grid) {remember();prepare();}});
+  slider.addEventListener("input",()=>{selectedCol=null;remember();draw();});
   map.addEventListener("pointerdown",e=>{
     if (!grid || !rect) return;
     const box=map.getBoundingClientRect(), px=(e.clientX-box.left)*map.width/box.width, py=(e.clientY-box.top)*map.height/box.height;
     const [l,t,w,h]=rect;
     if (px<l || px>=l+w || py<t || py>=t+h) return;
-    slider.value=String(Math.floor((py-t)/h*grid.n));selectedCol=Math.floor((px-l)/w*grid.n);draw();
+    slider.value=String(Math.floor((py-t)/h*grid.n));selectedCol=Math.floor((px-l)/w*grid.n);remember();draw();
   });
 })();

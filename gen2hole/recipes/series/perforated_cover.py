@@ -203,7 +203,44 @@ def fragment_pose(piece, state, profile):
     return pose
 
 
-def shaft_mesh(profile, trace):
+def installation_pose(grade):
+    z, tilt, heading = (float(grade[k]) for k in ('center_z_m', 'tilt_deg', 'uphill_deg'))
+    if not np.isfinite([z, tilt, heading]).all() or not 0 <= tilt < 90:
+        raise ValueError('Invalid installed frame height or tilt')
+    angle, bearing = np.deg2rad([tilt, heading])
+    direction = np.array([np.cos(bearing), np.sin(bearing)])
+    pose = np.eye(4)
+    pose[:2, :2] += (np.cos(angle) - 1) * np.outer(direction, direction)
+    pose[2, :2] = np.sin(angle) * direction
+    pose[:2, 2] = -pose[2, :2]
+    pose[2, 2] = np.cos(angle)
+    pose[2, 3] = z
+    return pose
+
+
+def sample_surface(parts, field):
+    """First vertical hit on the delivered triangles. The substrate stays available under the lid."""
+    from mathutils.bvhtree import BVHTree
+
+    vertices, faces = [], []
+    for _, v, f, *_ in parts:
+        faces.extend((f + len(vertices)).tolist())
+        vertices.extend(v.tolist())
+    tree = BVHTree.FromPolygons(vertices, faces, all_triangles=True)
+    start = float(np.max(np.asarray(vertices)[:, 2]) + 1)
+    axis = np.linspace(-field['width']/2, field['width']/2, len(field['height']))
+    height = np.zeros_like(field['height'], dtype='f4')
+    # The outermost cells coincide with the fixed pavement boundary at zero.
+    for j, y in enumerate(-axis[1:-1], start=1):
+        for i, x in enumerate(axis[1:-1], start=1):
+            hit = tree.ray_cast((x, y, start), (0, 0, -1))[0]
+            if hit is None:
+                raise ValueError('Open seam in the installed cover or pavement')
+            height[j, i] = hit.z
+    return height
+
+
+def shaft_mesh(profile, trace, pose=None):
     size = np.array(profile["size_m"])
     band, seat, t, depth = [
         float(profile[k]) for k in ("frame_band_m", "seat_overlap_m", "thickness_m", "shaft_depth_m")
@@ -225,10 +262,12 @@ def shaft_mesh(profile, trace):
     concrete = mesh.material("Designed concrete well", lining, 0.94, 0.0, 1.8)
     floor = mesh.material("Designed shaft floor", np.uint8(liner * 0.66), 0.97, 0.0, 1.5)
 
-    def band_part(name, levels, material, texture="photo", road=False):
+    def band_part(name, levels, material, texture="photo", road=False, transform=None):
         xy = np.stack([p for p, _ in levels])
-        heights = np.stack([np.full(len(ts), z) for _, z in levels])
+        heights = np.stack([np.broadcast_to(z, (len(ts),)) for _, z in levels])
         xyz = np.dstack([xy, heights])
+        if transform is not None:
+            xyz = xyz @ transform[:3, :3].T + transform[:3, 3]
         if texture == "photo":
             uv = 0.5 + xy / span
         else:
@@ -240,8 +279,18 @@ def shaft_mesh(profile, trace):
     outer = outline * (radius + band)
     rim = outline * (radius + clear)
     shelf = outline * (radius - seat)
-    levels = [((1 - f) * square * span / 2 + f * outer, 0) for f in np.linspace(0, 1, 17)]
+    top_edge = np.c_[outer, np.zeros(len(ts))]
+    wall_edge = np.c_[shelf, np.full(len(ts), -t - 0.018)]
+    if pose is not None:
+        top_edge = top_edge @ pose[:3, :3].T + pose[:3, 3]
+        wall_edge = wall_edge @ pose[:3, :3].T + pose[:3, 3]
+        if wall_edge[:, 2].min() <= -depth or (abs(top_edge[:, :2]).max() >= span/2):
+            raise ValueError('The installed frame exceeds the designed shaft or pavement bounds')
+    levels = [((1 - f) * square * span / 2 + f * top_edge[:, :2], 0) for f in np.linspace(0, 1, 17)]
     band_part("Road around the aperture", levels, pavement, road=True)
+    if np.any(top_edge[:, 2]):
+        band_part("Chipped concrete collar", [(top_edge[:, :2], 0), (top_edge[:, :2], top_edge[:, 2])],
+                  concrete, "strip")
     band_part(
         "Cast ring and cover seat",
         [
@@ -254,8 +303,9 @@ def shaft_mesh(profile, trace):
         ],
         pavement if profile["photographed_surround"] else iron,
         "photo" if profile["photographed_surround"] else "strip",
+        transform=pose,
     )
-    band_part("Inspection shaft", [(shelf, -t - 0.018), (shelf, -depth)], concrete, "strip")
+    band_part("Inspection shaft", [(wall_edge[:, :2], wall_edge[:, 2]), (shelf, -depth)], concrete, "strip")
     xy = np.vstack([[0, 0], shelf[:-1]])
     idx = np.arange(1, len(xy))
     mesh.add(
@@ -299,7 +349,7 @@ def build():
     split = None
     if 'fracture_path_uv' in profile:
         split = [cover_mesh(profile, trace['openings_uv'], piece) for piece in ('retained', 'fragment')]
-    stock, field = shaft_mesh(profile, trace)
+    base_stock, base_field = shaft_mesh(profile, trace)
     mask_hash = digest(ROOT / "references" / profile["mask"])
     photo_hash = digest(ROOT / "references/frame.png")
     size = np.asarray(profile["size_m"])
@@ -307,6 +357,9 @@ def build():
     cache.mkdir(exist_ok=True)
     for state in cfg["states"]:
         key = state["id"]
+        grade = state.get('installation_grade')
+        installation = installation_pose(grade) if grade is not None else None
+        stock, field = shaft_mesh(profile, trace, installation) if grade is not None else (base_stock, base_field)
         changed = trace["broken_openings_uv"].get(key)
         lid, stats = cover_mesh(profile, changed) if changed else intact
         absent = state.get("absent", False)
@@ -314,6 +367,8 @@ def build():
         offset = np.asarray(state.get("offset_m", [0, 0]), dtype=float)
         fragment = state.get('fragment')
         fracture = {}
+        if installation is not None and (angle or offset.any() or fragment is not None):
+            raise ValueError('Installation grade requires a seated or missing lid')
         if fragment is not None:
             if split is None or absent or changed or angle or offset.any():
                 raise ValueError('A split cover requires a seated panel and a traced fracture')
@@ -338,6 +393,8 @@ def build():
         pose = None
         if not absent:
             pose = lid_pose(size[0] / 2, angle, offset, 0)
+            if installation is not None:
+                pose = installation @ pose
             if offset.any():
                 # Compute first contact with the fixed road, flange or seat under the moved cover.
                 from mathutils.bvhtree import BVHTree
@@ -388,6 +445,9 @@ def build():
                 distance = distance_transform_edt(np.asarray(mask) == 0) * field['width'] / (n - 1)
                 result['alpha'] = np.maximum(field['alpha'], smooth((0.045 - distance) / 0.04))
         category = "missing" if absent else "raised"
+        if installation is not None:
+            result['substrate_height'] = sample_surface(stock.parts, field)
+            result['height'] = result['substrate_height'] if absent else sample_surface(mesh.parts, field)
         if absent:
             stats = dict(
                 reference_through_holes=stats["through_holes"],
@@ -422,6 +482,8 @@ def build():
             **fracture,
             **stats,
         )
+        if installation is not None:
+            meta.update(installation_grade=grade, frame_transform=installation.tolist())
         Image.fromarray(pixels("pavement.jpg")).save(cache / (key + "_ground.jpg"), quality=94)
         mesh.save(ROOT / "assets" / category / key, cache, meta, result)
         print(key, stats, flush=True)

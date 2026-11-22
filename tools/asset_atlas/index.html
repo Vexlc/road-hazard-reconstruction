@@ -32,7 +32,7 @@
       <summary>查看网格高程与剖面</summary>
       <div id="reliefContent" hidden>
         <div id="reliefPlots"><figure><canvas id="reliefMap" width="380" height="274" aria-label="资产俯视高程，点击选择截线"></canvas><figcaption id="reliefLegend"></figcaption></figure><figure><canvas id="reliefChart" width="650" height="274" aria-label="所选截线的米制高程剖面"></canvas><figcaption id="reliefScale"></figcaption></figure></div>
-        <div id="reliefControls"><label>截线位置 <input id="reliefRow" type="range" min="0" max="96"></label><output id="reliefReadout"></output></div>
+        <div id="reliefControls"><label>截线位置 <input id="reliefRow" type="range" min="0" max="96"></label><label id="gradeRange" hidden><input id="nearGrade" type="checkbox" checked> 放大路面附近高差</label><output id="reliefReadout"></output></div>
       </div><p id="reliefStatus" role="status"></p>
     </details>
   </article>

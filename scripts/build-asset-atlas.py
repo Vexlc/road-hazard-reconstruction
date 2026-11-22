@@ -148,6 +148,26 @@ def add_perforated_views(row, run, profile, meta, family_audit, seated, visibili
         ('实拍原图', run / 'series/references/frame.png', '原始参考图'),
         ('盖面正射图', run / 'series/references/lid_ortho.png', '盖面在正射坐标下的源纹理'),
     ]
+    if 'grade' in audit:
+        row['installationGrade'] = audit['grade']
+        row['gradeReference'] = family_audit['grade_reference']
+        views.insert(1, ('相对路面高程与剖面', source / key / 'grade.png',
+                         '黑线为同方向剖面。井框高度从交付网格读取，以周围路面为零。深井和通孔低于剖面显示范围。'))
+        if 'grade_source_relief' in family_audit:
+            measured = family_audit['grade_source_relief']
+            views.append(('齐平原盖的留出起伏', source / row['gradeReference'] / 'source-relief.png',
+                f"按设计幅度换算的 {measured['heldout_source_pixels']:,} 个留出像素。青、浅绿、橙、红依次表示误差低于 0.5、0.5–1、1–2、至少 2 毫米。暗处没有取样。"))
+        frames = source/'camera/frames.json'
+        if frames.is_file():
+            matched = []
+            for shot in read(frames)[key]:
+                camera = shot['camera'].split('_')[0]
+                label = '前视' if camera == 'front' else '后视'
+                matched.append(dict(label=f"{shot['site']} · 同位{label} · 帧 {shot['frame']}", camera=camera, site=shot['site'],
+                    before=link(run/shot['before']), after=link(run/shot['after']),
+                    fullBefore=link(run/shot['full_before']), fullAfter=link(run/shot['full_after']),
+                    note="五态使用相同标定机位和裁切范围。点图打开完整车载照片，模型位于裁切区域内。"))
+            row['scenes'][:0] = matched
     footprint = key if 'solid' in audit else seated
     if footprint:
         note = '黄线为标注，青线为 GLB 孔口投影。'
@@ -251,6 +271,15 @@ def add_perforated_views(row, run, profile, meta, family_audit, seated, visibili
                     note=f"黄线为断条区域。青点为完整时的命中点，橙点为断条后的命中点。图中配对激光束的模拟距离差为 {distances} 毫米。",
                 )
             )
+    for case, diff in family_audit.get('removal_at_same_grade', {}).items():
+        placed = family_audit['placements'][case]
+        if placed['asset'] != key:
+            continue
+        for camera, shot in diff['cameras'].items():
+            title = '前视' if camera == 'front_camera' else '后视'
+            row['scenes'].append(dict(label=f"{placed['site']} · {title} · 同高差移除盖板 · 帧 {shot['frame']}",
+                after=link(source/key/shot['image']),
+                note=f"左为沉降后仍有盖板，右为在原位移除盖板。井框和路面完全相同，黄色区域有 {shot['changed_pixels']:,} 个像素发生部件或深度变化。"))
 
 
 def photo_families():
@@ -729,6 +758,11 @@ def main():
     road_folder = ROOT / 'runs/atlas-host-road'
     road_report = ROOT / 'validation/atlas-host-road.json'
     road_checks = read(road_report)['audited_assets'] if road_folder.is_dir() and road_report.is_file() else {}
+    grade_report = ROOT / 'validation/atlas-grade-gaussians.json'
+    grade_depths = read(grade_report)['browser_vs_cuda_and_glb'] if grade_report.is_file() else {}
+    depth_evidence = [(audit_folder/'browser', audit_folder/'geometry', checks),
+                      (pit_geometry/'browser', pit_geometry/'geometry', pit_depths),
+                      (road_folder, road_folder/'geometry', grade_depths)]
     pit_folder = ROOT / 'runs/atlas-pit-road/browser'
     pit_report = ROOT / 'validation/atlas-pit-road.json'
     pit_checks = read(pit_report)['audited_assets'] if pit_folder.is_dir() and pit_report.is_file() else {}
@@ -759,7 +793,7 @@ def main():
                     note=f"实车标定机位的场景渲染。标注坑面有 {shot['eligible_pixels']:,} 个可核验像素，其中 {shot['changed_pixels']:,} 个出现可辨变化。点图查看完整前视画面。"))
             row['scenes'][:0] = frames
         audits = {}
-        for folder, result in ((audit_folder, checks), (pit_geometry, pit_depths)):
+        for base, geometry, result in depth_evidence:
             depth = result.get(row['id'])
             if not row.get('gaussianSources') or not depth or depth.get('sources') != row['gaussianSources']:
                 continue
@@ -768,8 +802,7 @@ def main():
                 if not measurement:
                     continue
                 stem = row['id'] + '-' + mode
-                base = folder/'browser'
-                mesh, cloud, difference = base/(stem+'-mesh.png'), base/(stem+'-gaussian.png'), folder/'geometry'/(stem+'.png')
+                mesh, cloud, difference = base/(stem+'-mesh.png'), base/(stem+'-gaussian.png'), geometry/(stem+'.png')
                 if not all(path.is_file() for path in (mesh,cloud,difference)):
                     continue
                 audits[mode] = dict(mode=mode, camera=measurement['camera'], mesh=link(mesh),
@@ -806,7 +839,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["A141","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]
