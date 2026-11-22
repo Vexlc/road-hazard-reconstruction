@@ -39,8 +39,10 @@ def crop_part(mesh, faces, offset):
     )
 
 
-def export_checked(path, parts, offset):
+def export_checked(path, parts, offset, *, metadata=None):
     scene = trimesh.Scene()
+    if metadata:
+        scene.metadata.update(metadata)
     for name, (parent, faces) in parts.items():
         scene.add_geometry(crop_part(parent, faces, offset), geom_name=name, node_name=name)
     blob = trimesh.exchange.gltf.export_glb(scene, include_normals=True)

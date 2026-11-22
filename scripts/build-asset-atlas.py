@@ -365,6 +365,76 @@ def photo_families():
     return rows
 
 
+def polygon_covers():
+    run = ROOT / "runs/hexagonal-access"
+    if not run.is_dir():
+        return {}
+    bundle = run / "series"
+    audit = ROOT / "validation/hexagonal-cover.json"
+    metrics = read(audit)
+    survey = read(bundle / "calibration/survey.json")
+    family = [s["id"] for s in survey["states"]]
+    evaluation = run / "evaluation"
+    frames = evaluation / "camera/frames.json"
+    full = read(frames) if frames.is_file() else {}
+    traffic = ROOT / "validation/hexagonal-cover-transfer.json"
+    visibility = read(traffic).get("visible_parts", {}) if traffic.is_file() else {}
+    lid_index = bundle / "assets/lids.json"
+    lids = read(lid_index) if lid_index.is_file() else {}
+    scenes = {}
+    for scene in sorted((bundle / "scenes").glob("*/scene.json")):
+        (p,) = read(scene)["placements"]
+        scenes.setdefault(p["asset_id"], []).append(dict(label=scene.parent.name + " · 迁入近景",
+            after=link(scene.parent / (p["category"]+"_after.png")),
+            before=link(scene.parent / (p["category"]+"_before.png"))))
+    rows = {}
+    for meta in read(bundle / "assets/asset_manifest.json"):
+        key = meta["id"]
+        row = entry(meta, bundle/"assets", "实拍 RGB", "六边形井盖 · "+meta["state"],
+                    bundle/"views"/(key+"_inspection.jpg"))
+        evidence = metrics["states"][key]
+        source = bundle / "references/frame.png"
+        note = "实拍中可见六条盖边及六处凹口。参考跨度、盖厚、井深和异常姿态采用设计值。照片及改编模型署名 Stephen Craven / Geograph，CC BY-SA 2.0。"
+        row.update(family=survey["family"], states=family, state=meta["state"], category="六边形井盖",
+                   reference=link(source), reverse=link(bundle/"views"/(key+"_reverse.jpg")),
+                   credit=survey["source_url"], sourceLicense=survey["license_url"], note=note,
+                   panelSize=meta["panel_size_m"], lidThickness=meta["lid_thickness_m"],
+                   angularCover=True, absentCover=key == metrics["missing"], wellVisible=evidence["visible_floor_fraction"],
+                   width=metrics["aperture_span_m"][0], length=metrics["aperture_span_m"][1],
+                   triangles=sum(meta["geometry_parts"].values()), audit=link(audit))
+        views = [
+            ("原始照片", source, "Stephen Craven / Geograph，CC BY-SA 2.0"),
+            ("铸纹与盖边凹口", evaluation/"source-landmarks.png", "青色为拟合点，黄色为同图留出点，红线为六处凹口。"),
+            ("校正透视的盖面", evaluation/"orthophoto.png", "按校正后的长宽比显示，参考宽度为 0.68 米。"),
+            ("井口俯视", evaluation/key/"plan.png", "金色为盖面，褐色为盖边，灰蓝为井框，深蓝为可见井底。")]
+        row["sourceViews"] = [dict(label=name, image=link(path), note=caption) for name,path,caption in views]
+        for shot in full.get(key, []):
+            camera = shot["camera"].split("_")[0]
+            label = "前视" if camera == "front" else "后视"
+            pose = f"{shot['site']}-{shot['camera']}"
+            row["scenes"].append(dict(label=f"{shot['site']} · 同机位{label} · 帧 {shot['frame']}",
+                camera=camera, site=shot["site"], before=link(run/shot["before"]), after=link(run/shot["after"]),
+                synchronizedView=pose+"-"+str(shot["frame"]),
+                fullBefore=link(run/shot["full_before"]), fullAfter=link(run/shot["full_after"]),
+                note="四态使用同一标定机位与裁切范围，点图可查看整幅照片。"))
+            part = visibility.get(key, {}).get(pose)
+            if part:
+                if part["frame"] != shot["frame"]:
+                    raise ValueError("Part visibility uses a different camera frame")
+                counts = part["pixels"]
+                row["scenes"][-1].update(parts=link(run/part["image"]),
+                    partsNote=f"黄·盖面 {counts['9']:,}，粉·盖背 {counts['10']:,}，褐·盖边 {counts['11']:,}，灰·井框 {counts['5']:,}，青·井壁 {counts['6']:,}，蓝·井底 {counts['7']:,} 像素。")
+        row["scenes"].extend(scenes.get(key, []))
+        if traffic.is_file():
+            row.update(scan=link(traffic), scanLabel="同机位与同束雷达核验")
+        if key in lids:
+            if lids[key]["parent_sha256"] != evidence["glb_sha256"]:
+                raise ValueError("Stale standalone lid for "+key)
+            row["lidModel"] = link(bundle / lids[key]["file"])
+        rows[key] = row
+    return rows
+
+
 def crack_examples():
     root = ROOT/'runs/photo-cracks'
     if not root.exists():
@@ -943,7 +1013,7 @@ def standing_water(rows):
 def main():
     rows = {}
     shared = shared_profile_modes()
-    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), scanned_cracks(), faulted_slabs(),
+    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), polygon_covers(), crack_examples(), scanned_cracks(), faulted_slabs(),
                   multiview_potholes(shared, ROOT/'runs/multiview-pit-survey'),
                   multiview_potholes(shared, ROOT/'runs/paired-road-slots'), observed_surfaces(),
                   multiview_potholes(shared, ROOT/'runs/pit-depth-completion'), parallax_potholes(shared)):
@@ -978,6 +1048,10 @@ def main():
                       (audit_folder/'browser', audit_folder/'geometry', checks),
                       (pit_geometry/'browser', pit_geometry/'geometry', pit_depths),
                       (road_folder, road_folder/'geometry', grade_depths)]
+    angular_report = ROOT / 'validation/hexagonal-cover-gaussians.json'
+    if angular_report.is_file():
+        directory = ROOT / 'runs/hexagonal-access/evaluation'
+        depth_evidence.append((directory/'browser', directory/'gaussian-depth', read(angular_report)['browser_vs_cuda_and_glb']))
     pit_folder = ROOT / 'runs/atlas-pit-road/browser'
     pit_report = ROOT / 'validation/atlas-pit-road.json'
     pit_checks = read(pit_report)['audited_assets'] if pit_folder.is_dir() and pit_report.is_file() else {}

@@ -23,10 +23,12 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def check(run):
+def check(run, measured=None):
     bundle = run / "series"
     sensors = run / "sensors"
-    measured = read(run / "evaluation/measurements.json")
+    if measured is None:
+        measured = read(run / "evaluation/measurements.json")
+    folders = {p.parent.name: p.parent for p in (bundle / "assets").glob("*/*/metadata.json")}
     hashes = read(bundle / "checks.json")
     laser = read(sensors / "checks/scan_audit.json")
     cameras = read(sensors / "checks/camera_audit.json")
@@ -36,7 +38,7 @@ def check(run):
     scenes = {}
     anchors = {}
     for key, row in measured.items():
-        folder = bundle / "assets/pothole" / key
+        folder = folders[key]
         glb = digest(folder / "asset.glb")
         ply = digest(folder / "asset.ply")
         require(glb == hashes[key]["sha256"]["asset.glb"] == row["glb_sha256"], key + " GLB identity")

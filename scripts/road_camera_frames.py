@@ -1,6 +1,10 @@
 """Publish a full calibrated driver view with a detail of the same single-asset road instance."""
 
+import hashlib
 import json
+import shutil
+
+import numpy as np
 
 from PIL import Image, ImageDraw, ImageOps
 
@@ -60,3 +64,42 @@ def camera_frames(run, processed):
         frames[case] = dict(site=site, frame=frame, bbox=box, visible_pixels=row['class_pixels'][channel])
     (folder / 'frames.json').write_text(json.dumps(frames, indent=2) + '\n')
     return frames
+
+
+def full_driving_frames(run, cases, raw):
+    directory = run/'evaluation'/'camera'
+    directory.mkdir(parents=True, exist_ok=True)
+    records = {}
+    for key, case in cases:
+        folder = run/'sensors/matched_camera'/case
+        records.setdefault(key, [])
+        for shot in read(folder/'views.json'):
+            if not shot['available']:
+                continue
+            site, camera, number = shot['site'], shot['camera'], shot['frame']
+            original = raw/site/'camera'/camera/f'{number:02d}.jpg'
+            rect = shot['crop_xyxy']
+            with Image.open(original) as im, Image.open(folder/shot['before_stem']) as before:
+                frame = im.convert('RGB')
+                if list(frame.size) != shot['calibration_size'] or not np.array_equal(frame.crop(rect), before):
+                    raise ValueError('The camera patch does not match the original vehicle image')
+            before_file = directory/f'{site}-{camera}-{number}.jpg'
+            shutil.copyfile(original, before_file)
+            with Image.open(folder/shot['after_stem']) as after:
+                expected = np.asarray(after.convert('RGB'))
+                if frame.crop(rect).size != after.size:
+                    raise ValueError('The calibrated insertion changed crop size')
+                frame.paste(after, rect[:2])
+            after_file = directory/f'{key}-{site}-{camera}-{number}.webp'
+            frame.save(after_file, lossless=True, method=2)
+            with Image.open(after_file) as saved:
+                if not np.array_equal(saved, frame) or not np.array_equal(saved.crop(rect), expected):
+                    raise ValueError('The full vehicle frame changed after lossless encoding')
+            box = np.array(shot['xyxy_target_in_crop']) + [rect[0],rect[1]]*2
+            records[key].append(dict(camera=camera, site=site, frame=number, roi=rect, bbox=box.tolist(),
+                before=str((folder/shot['before_stem']).relative_to(run)), after=str((folder/shot['after_stem']).relative_to(run)),
+                full_before=str(before_file.relative_to(run)), full_after=str(after_file.relative_to(run)),
+                original_sha256=hashlib.sha256(before_file.read_bytes()).hexdigest(),
+                full_after_sha256=hashlib.sha256(after_file.read_bytes()).hexdigest()))
+    (directory/'frames.json').write_text(json.dumps(records, indent=2)+'\n')
+    return records

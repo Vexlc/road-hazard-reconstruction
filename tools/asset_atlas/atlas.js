@@ -4,6 +4,7 @@ const assets = window.roadAssets || [];
 const byId = new Map(assets.map(row => [row.id,row]));
 const pageSize = 12;
 let page = 0, selected, filtered = [], reverse = false, before = false, spinning = false, lidSource = false, cutaway = false, gaussian = false;
+let roadParts=false;
 
 function photo(id, path, title) {
   el(id).src = path;
@@ -28,10 +29,15 @@ function download(title, url) {
 function showScene() {
   const view = selected.scenes[Number(el("scene").value)];
   el("roadCompare").hidden = !view?.note;
-  el("roadCompare").textContent = view?.note || "";
+  el("roadCompare").textContent = (roadParts ? view?.partsNote : view?.note) || "";
+  el("roadParts").hidden = !view?.parts;
+  el("roadParts").textContent = roadParts ? "查看迁入画面" : "查看可见部件";
+  el("roadParts").setAttribute("aria-pressed", String(roadParts));
   if (view) {
-    photo("road", before ? view.before : view.after, view.label + (before ? (view.beforeLabel || " 迁入前") : (view.afterLabel || " 迁入后")));
-    el("roadLink").href=(before?view.fullBefore:view.fullAfter) || el("road").src;
+    const src=roadParts ? view.parts : before ? view.before : view.after;
+    const label=roadParts ? " 可见部件" : before ? (view.beforeLabel || " 迁入前") : (view.afterLabel || " 迁入后");
+    photo("road", src, view.label + label);
+    if (!roadParts) el("roadLink").href=(before?view.fullBefore:view.fullAfter) || el("road").src;
     el("before").hidden = !view.before;
     el("before").textContent = before ? (view.afterLabel || "查看迁入后") : (view.beforeLabel || "查看迁入前");
   }
@@ -43,6 +49,7 @@ function showScene() {
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
   if (selected.components) download("逐槽尺寸与复位坐标",selected.componentIndex);
   if (selected.blockModel) download("独立原位碎板 GLB",selected.blockModel);
+  if (selected.lidModel) download("独立盖板 GLB",selected.lidModel);
   if (selected.edgeSampling) {
     download("断边加密 PLY",selected.edgeSampling.ply);
     download("断边采样元数据",selected.edgeSampling.metadata);
@@ -53,6 +60,7 @@ function showScene() {
   const video = view?.video || selected.video;
   if (video) download("前视视频",video);
   if (selected.credit) download("照片出处",selected.credit);
+  if (selected.sourceLicense) download("照片与改编资产许可",selected.sourceLicense);
   if (selected.related) download(selected.relatedLabel || (selected.method==="实拍 RGB" ? "同源 RGB-D" : "同源单目 RGB"),"#"+selected.related);
   if (selected.sensor && view) {
     const params = new URLSearchParams({asset:selected.id,site:view.site,camera:view.camera});
@@ -139,9 +147,13 @@ function showStates() {
   }
 }
 function inspect(id) {
+  const previous=selected, shot=previous?.scenes[Number(el("scene").value)];
   selected = byId.get(id);
   if (!selected) return;
-  reverse = before = spinning = lidSource = cutaway = gaussian = false;
+  const sameView=shot?.synchronizedView && previous.family===selected.family
+    ? selected.scenes.findIndex(s=>s.synchronizedView===shot.synchronizedView) : -1;
+  if (sameView<0) before=roadParts=false;
+  reverse = spinning = lidSource = cutaway = gaussian = false;
   el("detail").hidden = false;
   el("assetKey").textContent = selected.id;
   el("assetTitle").textContent = selected.label;
@@ -172,6 +184,10 @@ function inspect(id) {
   }
   if (selected.apronExtent) metric("实测修补圈宽 × 长（米）",selected.apronExtent.map(v=>v.toFixed(3)).join(" × "));
   if (selected.panelSize) {
+    if (selected.angularCover) {
+      metric("参考盖板宽 × 长（米）",selected.panelSize.map(v=>v.toFixed(3)).join(" × "));
+      metric("设计盖板厚度（毫米）",(selected.lidThickness*1000).toFixed(1));
+    }
     if (selected.installationGrade) {
       const g = selected.installationGrade;
       metric("井框外缘相对路面（毫米）",g.rim_range_m.map(v=>(1000*v).toFixed(1)).join(" 至 "));
@@ -188,7 +204,8 @@ function inspect(id) {
         metric("贯穿孔 / 盖面开孔率",selected.throughHoles+" / "+(100*selected.openFace).toFixed(1)+"%");
       }
     }
-    metric("净井口俯视可见井壁或井底",(selected.wellVisible*100).toFixed(1)+"%");
+    metric(selected.angularCover ? "净井口俯视可见井底" : "净井口俯视可见井壁或井底",
+      (selected.wellVisible*100).toLocaleString("zh-CN",{maximumFractionDigits:selected.angularCover ? 3 : 1})+"%");
   }
   metric(selected.captureViews || selected.panelSize ? "设计井口宽 × 长（米）" : selected.scanGeometry ? "裂缝外接框宽 × 长（米）" : "宽 × 长（米）",selected.width.toFixed(2)+" × "+selected.length.toFixed(2));
   metric(selected.depthLabel+"（米）",selected.depth.toFixed(3));
@@ -217,6 +234,10 @@ function inspect(id) {
   window.showAssetRelief(selected);
   el("roadPanel").hidden = !selected.scenes.length;
   el("scene").replaceChildren(...selected.scenes.map((s,i) => new Option(s.label,String(i))));
+  if (sameView>=0) {
+    el("scene").value=String(sameView);
+    roadParts=roadParts && Boolean(selected.scenes[sameView].parts);
+  }
   showScene();
 }
 function renderCards() {
@@ -283,8 +304,9 @@ if (assets.length) {
   showCoverage();
   for (const key of ["method","category","query"]) el(key).addEventListener("input",filter);
   el("prev").onclick=()=>{page--; renderCards();}; el("next").onclick=()=>{page++; renderCards();};
-  el("before").onclick=()=>{before=!before; showScene();};
-  el("scene").onchange=()=>{before=false; showScene();};
+  el("before").onclick=()=>{before=!before; roadParts=false; showScene();};
+  el("roadParts").onclick=()=>{roadParts=!roadParts; before=false; showScene();};
+  el("scene").onchange=()=>{before=false; roadParts=false; showScene();};
   el("representation").onclick=()=>{gaussian=!gaussian; spinning=cutaway=false; showModel();};
   el("spin").onclick=()=>{spinning=!spinning; showModel();};
   el("cutaway").onclick=()=>{cutaway=!cutaway; spinning=false; showModel();};

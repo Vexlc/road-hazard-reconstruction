@@ -48,7 +48,7 @@ def main():
         for survey in surveys:
             if survey.is_file():
                 spec = json.loads(survey.read_text())
-                if isinstance(spec, dict) and any({'fragment','input_liters','installation_grade'} & s.keys() for s in spec.get('states', [])):
+                if isinstance(spec, dict) and any({'fragment','input_liters','installation_grade','yaw_deg'} & s.keys() for s in spec.get('states', [])):
                     run(compute, "render_pairs.py", *common, "--raw", raw, "--proc", processed, *span, "--matched-family")
                     break
         run(compute, "verify_scans.py", *common, "--raw", raw)

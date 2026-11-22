@@ -82,6 +82,9 @@ def measure_side(quad, unit, config):
 
 
 def trace(spec):
+    if spec["perforations"]["shape"] == "polygon":
+        from trace_polygon import trace as polygon
+        return polygon(spec)
     refs = ROOT / "references"
     calibration = ROOT / "calibration"
     profile = spec["perforations"]

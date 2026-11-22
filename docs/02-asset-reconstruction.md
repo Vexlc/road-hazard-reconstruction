@@ -449,7 +449,7 @@ work/envs/streetcrafter/bin/python scripts/render-scanned-cracks.py --run "$run"
 
 ## 原始高斯资产与网格的同机位对照
 
-主目录的 1,398 个 PLY 共有 196,864,158 个高斯。四个碎板状态还提供断边加密 PLY，复用同编号的网格。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
+主目录的 1,402 个 PLY 共有 199,102,976 个高斯。四个碎板状态还提供断边加密 PLY，复用同编号的网格。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
 
 浏览器按 PLY 中的三轴对数尺度、WXYZ 四元数和不透明度恢复各向异性高斯。渲染使用完整点集和原始一阶球谐颜色，按当前透视机位投影协方差、补偿屏幕滤波造成的不透明度变化，再按深度合成。能写入半浮点缓冲区的设备使用 16 位浮点颜色累积。GPU 与浏览器共享米制尺度，原始 PLY 为 Z 向上，GLB 为 Y 向上。[gsplat 光栅化说明](https://docs.gsplat.studio/main/apis/rasterization.html)
 
@@ -465,7 +465,7 @@ python scripts/serve-asset-atlas.py
 
 「核对高斯与网格的深度」提供固定机位的网格、高斯和像素级绝对差。网格深度取射线首次命中的正面。高斯深度为沿光线的透明度加权期望。图中计入不透明度大于 85%、共同命中且远离网格轮廓的像素。可将统计范围切换到井圈、井壁、盖板、水面或周边路面。数字描述两种资产表示的一致程度。[逐机位与逐部件核验](../validation/atlas-gaussians.json)
 
-浏览器解码器已逐个读入并排序全库 1,398 个 PLY。四批覆盖 12 种来源或重建方法的样本共有 34 件资产、102 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json) · [碎板四态的 16 组同机位对照](../validation/atlas-slab-gaussians.json) · [同组机位的加密采样对照](../validation/atlas-slab-edge-gaussians.json)
+浏览器解码器已逐个读入并排序全库 1,402 个 PLY。五批覆盖 12 种来源或重建方法的样本共有 38 件资产、114 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json) · [碎板四态的 16 组同机位对照](../validation/atlas-slab-gaussians.json) · [同组机位的加密采样对照](../validation/atlas-slab-edge-gaussians.json) · [六边形井盖的 12 组同机位对照](../validation/hexagonal-cover-gaussians.json)
 
 矩形敞井 M11 的低角度画面中，井圈、井壁和周边路面的差异相距很大。GLB 的路面网格遮住地下结构，独立高斯资产的路面边缘逐渐透明，部分像素仍收到地下井壁的颜色与深度。迁入画面使用宿主路面和遮挡几何。可对照俯视、斜视和低角度三组图，区分部件本身和道路过渡区的贡献。[敞井深度图版](figures/gaussian-shaft-depth.jpg)
 
@@ -491,7 +491,7 @@ python scripts/build-asset-atlas.py
 
 ### 井类资产的开孔路面
 
-313 件带井体的资产可加铺一层沥青。打开 M11 后拖动旋转，可观察矩形井口内的结构和路面遮挡。也可切换 A119 掀盖、A128 井旁断片或 A117 断条雨水篦。勾选「标出地下 7.5 cm 以下的结构」会把对应高斯染为洋红色，盖板上的孔和篦条间的可见部分随相机移动。页面底部保留同编号资产的实景道路观测。[矩形敞井](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#M11) · [掀盖](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#A119) · [六例对照](figures/gaussian-road-openings.jpg)
+317 件带井体的资产可加铺一层沥青。打开 M11 后拖动旋转，可观察矩形井口内的结构和路面遮挡。也可切换 A119 掀盖、A128 井旁断片或 A117 断条雨水篦。勾选「标出地下 7.5 cm 以下的结构」会把对应高斯染为洋红色，盖板上的孔和篦条间的可见部分随相机移动。页面底部保留同编号资产的实景道路观测。[矩形敞井](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#M11) · [掀盖](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#A119) · [六例对照](figures/gaussian-road-openings.jpg)
 
 每个开孔取自该资产 GLB 铺面三角形的内边界。导出程序焊接纹理接缝并以 0.25 毫米容差简化轮廓，浏览器按 GLB 指纹选择轮廓。观察者位于路面上方时，浏览器逐像素计算视线与水平面的交点，仅允许地下高斯通过开孔显现。路面比资产的标称零高程低 3 毫米，以保留铺面颗粒。示范路面按 3 米幅宽平铺 Rob Tuytel 的 CC0 沥青扫描材质。PandaSet 的车载视图使用各自路段实际的道路、放置位置和相机。[沥青来源与指纹](../gen2hole/examples/scanned-cracks/survey.json)
 
@@ -683,4 +683,30 @@ python scripts/build-asset-atlas.py
 CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/build-matched-road-views.py --out runs/check-road-views
 work/envs/assets/bin/python scripts/check-matched-road-views.py --run runs/check-road-views --out runs/check-road-views/verification.json
 work/envs/assets/bin/python scripts/render-matched-road-plate.py --run runs/check-road-views --out runs/check-road-views/assets.jpg --beam-figure runs/check-road-views/lidar.jpg
+~~~
+
+## 从单张照片重建六边形井盖
+
+Stephen Craven 的照片摄于伦敦 Southwark。六处凹口与盖边相通，盖面铸纹与轮廓来自原照。用 24 个重复铸纹交点校正平面透视，在同图另外 14 个交点上，95% 的回投误差在 2.35 像素以内。按 0.68 米参考宽度换算，盖面外接框约 0.680 × 0.609 米。38 毫米盖厚、0.72 米井深、隐藏托座、异常姿态和旋转轴采用设计值。[照片与原始作者](https://www.geograph.org.uk/photo/3739078) · [照片及改编模型的 CC BY-SA 2.0 许可](https://creativecommons.org/licenses/by-sa/2.0/) · [实拍标记与配方](../gen2hole/examples/polygon-cover/survey.json)
+
+三个有盖状态可点击「单独看盖板」，绕到盖底检查凹口侧壁，也可下载该姿态的独立盖板 GLB。独立件保留装配坐标、三角面、顶点法线和三种材质贴图，文件内包含照片署名与许可。
+
+四态共用同一井体。检查程序直接读取 GLB，核对固定部件顶点、三角面、UV 和贴图，并在逆变换等价的坐标系内核对盖板。三种有盖状态均为闭合实体，盖面与背面沿六处凹口的侧壁连接。以缺盖时可直视井底的 73,365 条竖直射线为分母，落座可见约 0.005%，错转可见 4.68%，掀盖可见 34.42%，缺盖为 100%。平转 30° 的盖板在约 2 毫米间距的网格中有 1,963 个采样点接触井框顶面。掀盖的转轴固定在被选中的实拍盖边。[四态图版](figures/hexagonal-cover.jpg) · [几何与凹口核验](../validation/hexagonal-cover.json)
+
+在 PandaSet 034、109 分别对四态按同一位置、朝向与尺寸放置。每次回放 80 帧，两路段合计读取 160 帧原始扫描。034 使用前视第 30 帧和后视第 46 帧，109 使用前视第 29 帧和后视第 40 帧。前后视的每组四态都使用相同的原始照片、内外参和像素裁切。以落座为参照，034 中错转、掀起、缺盖分别使 1,834、8,891、1,025 条原始激光束的模拟量程变化超过 1 厘米，109 对应 1,098、5,154、635 条。驾驶视角能看到多少井底随相机角度与遮挡而变。图谱中的井底百分数对应模型正上方的视角。车载画面的「查看可见部件」按射线首个交点分色。掀盖后，034 后视有 3,808 个盖背像素，109 后视有 3,410 个。两个路段缺盖时的四张前后视画面中，井底可见像素均为零。切换状态会保留所选机位和部件显示。[同机位图像及同束回波报告](../validation/hexagonal-cover-transfer.json) · [查看原照、剖面与完整道路照片](http://127.0.0.1:8765/tools/asset_atlas/index.html#A153)
+
+从项目根目录复现以下命令，输出目录须是新路径。M151 单独使用第 154 组场景，以便与 A151 复用同一路面锚点。
+
+~~~bash
+run=runs/my-hexagonal-access
+python gen2hole/survey.py --survey gen2hole/examples/polygon-cover/survey.json --out "$run" --preview
+for site in 034 109; do
+  for pair in A151:151 A152:152 A153:153 M151:154; do
+    python gen2hole/downstream/place.py --bundle "$run/series" --site "$site" --group "${pair#*:}" --assets "${pair%:*}" --anchor-category pothole
+  done
+done
+python gen2hole/downstream/simulate.py --run "$run" --out "$run/sensors"
+work/envs/assets/bin/python gen2hole/export_lids.py --bundle "$run/series"
+work/envs/streetcrafter/bin/python scripts/check-polygon-cover.py --run "$run" --out "$run/geometry.json" --transfer-out "$run/transfer.json"
+work/envs/streetcrafter/bin/python scripts/render-polygon-cover.py --run "$run" --audit "$run/geometry.json" --transfer "$run/transfer.json" --out "$run/hexagonal-cover.jpg"
 ~~~

@@ -1,6 +1,6 @@
 {
-  "decoded_assets": 1398,
-  "sorted_points": 196864158,
+  "decoded_assets": 1402,
+  "sorted_points": 199102976,
   "methods": {
     "实拍 RGB-D": 825,
     "实拍碎板＋设计状态": 4,
@@ -8,7 +8,7 @@
     "实拍摄影测量": 17,
     "实拍坑底＋模拟积水": 5,
     "双张实拍 RGB": 4,
-    "实拍 RGB": 14,
+    "实拍 RGB": 18,
     "多帧 RGB-D": 3,
     "实拍 RGB + 激光雷达": 6,
     "生成 RGB": 109,

@@ -6,6 +6,8 @@
 
 **[统一资产图谱](../tools/asset_atlas/index.html)** 可以按实例比较生成参考、三维视角与同帧道路迁入。实拍单目粗框重建的例子见[实拍批次](examples/real-rgb/)与[轮廓评估](../validation/rgb-box-P90.json)。
 
+六边形井盖示例由单张实拍恢复轮廓、六处边缘凹口和盖面纹理，可派生落座、平面错转、沿边掀起和缺盖四态。[输入照片、许可与标记](examples/polygon-cover/ATTRIBUTION.md) · [几何核验与两段道路回放](../docs/02-asset-reconstruction.md#从单张照片重建六边形井盖)
+
 ## 从哪开始
 
 | 想做的事 | 入口 |

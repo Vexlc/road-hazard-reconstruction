@@ -1,0 +1,105 @@
+{
+  "seated": "A151",
+  "missing": "M151",
+  "photo": {
+    "fit_junctions": 24,
+    "heldout_junctions": 14,
+    "heldout_p95_px": 2.3496325612068176,
+    "notch_core_pixels": [
+      77,
+      112,
+      72,
+      226,
+      202,
+      163
+    ],
+    "source_sha256": "1e40ef3d8d0e3070c028efb7fcc7649bab5fad9f31a1121f55c5a7bbfd8a436e"
+  },
+  "aperture_span_m": [
+    0.6489795446395874,
+    0.5809246301651001
+  ],
+  "panel_span_m": [
+    0.68,
+    0.609056451721536
+  ],
+  "sample_pitch_m": 0.00200390625,
+  "aperture_reference_rays": 73365,
+  "states": {
+    "A151": {
+      "glb_sha256": "06bfda8e436aa06a0ce752cec14565feb2a14e09c3eec5171ed9fee7c63646c2",
+      "visible_floor_fraction": 5.4521910992980307e-05,
+      "detached_lid": {
+        "file": "assets/raised/A151/lid.glb",
+        "parts": [
+          "Lid aperture walls and perimeter",
+          "Lid face",
+          "Lid underside"
+        ],
+        "triangles": 152,
+        "maximum_vertex_error_m": 0.0,
+        "parent_sha256": "06bfda8e436aa06a0ce752cec14565feb2a14e09c3eec5171ed9fee7c63646c2",
+        "sha256": "eb7d96aacf7ad842e309affa0f13487757c323c179dcea556a12601b088a46b0"
+      },
+      "through_holes": 0,
+      "euler_characteristic": 2,
+      "connected_solids": 1,
+      "closed_oriented_mesh": true,
+      "metal_volume_m3": 0.012210334435172982,
+      "minimum_underside_clearance_mm": -0.0002384185791015625,
+      "seat_contact_samples": 6618
+    },
+    "A152": {
+      "glb_sha256": "d5af9572eacb587d6d806e62deba8178fb34ef9a6c2d48624ac4c1e4b01173fc",
+      "visible_floor_fraction": 0.04682069106522184,
+      "detached_lid": {
+        "file": "assets/raised/A152/lid.glb",
+        "parts": [
+          "Lid aperture walls and perimeter",
+          "Lid face",
+          "Lid underside"
+        ],
+        "triangles": 152,
+        "maximum_vertex_error_m": 0.0,
+        "parent_sha256": "d5af9572eacb587d6d806e62deba8178fb34ef9a6c2d48624ac4c1e4b01173fc",
+        "sha256": "bae1efad25fe500e9fb32bafac947cb61215d97a58d379acb9c9f2f64d1dcdec"
+      },
+      "verified_yaw_degrees": 29.999999999999996,
+      "through_holes": 0,
+      "euler_characteristic": 2,
+      "connected_solids": 1,
+      "closed_oriented_mesh": true,
+      "metal_volume_m3": 0.012210335088305331,
+      "minimum_underside_clearance_mm": -0.0002384185791015625,
+      "seat_contact_samples": 1963
+    },
+    "A153": {
+      "glb_sha256": "7a0a9438f4f921c08cfd62701b0f1ae0b49df4c144b8f1dcae7405ff0c4cc873",
+      "visible_floor_fraction": 0.3441559326654399,
+      "detached_lid": {
+        "file": "assets/raised/A153/lid.glb",
+        "parts": [
+          "Lid aperture walls and perimeter",
+          "Lid face",
+          "Lid underside"
+        ],
+        "triangles": 152,
+        "maximum_vertex_error_m": 0.0,
+        "parent_sha256": "7a0a9438f4f921c08cfd62701b0f1ae0b49df4c144b8f1dcae7405ff0c4cc873",
+        "sha256": "f99da946044554793926cd1c8dfb9b67baa61775b55fe6a2e24ea799d7a77b08"
+      },
+      "verified_edge_tilt_degrees": 51.99999999999999,
+      "through_holes": 0,
+      "euler_characteristic": 2,
+      "connected_solids": 1,
+      "closed_oriented_mesh": true,
+      "metal_volume_m3": 0.012210336120946548,
+      "minimum_underside_clearance_mm": 14.639854431152344,
+      "seat_contact_samples": 0
+    },
+    "M151": {
+      "glb_sha256": "acaaabaace5f7e419ac1c7c597162dfc09788bdd18abce0f673b29ac6d1228b2",
+      "visible_floor_fraction": 1.0
+    }
+  }
+}

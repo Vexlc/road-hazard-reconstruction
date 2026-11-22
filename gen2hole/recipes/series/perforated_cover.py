@@ -47,10 +47,12 @@ def cover_mesh(profile, openings, piece=None):
         outer = np.column_stack([np.cos(t), np.sin(t)]) * size / 2
         if any((np.linalg.norm(loop / (size / 2), axis=1) >= 1).any() for loop in hole_loops):
             raise ValueError("An opening crosses the round lid's edge")
+    elif shape == "polygon":
+        outer = (np.asarray(profile["lid_boundary_uv"]) - .5) * size * [1, -1]
     elif shape == "rect":
         outer = np.array([[-1, -1], [1, -1], [1, 1], [-1, 1]]) * size / 2
     else:
-        raise ValueError("Supported cover outlines are round and rect")
+        raise ValueError("Supported cover outlines are round, rectangular and polygonal")
     loops = [outer, *hole_loops]
     cut = fracture_polygon(profile) if 'fracture_path_uv' in profile else None
     if cut is not None:
@@ -70,7 +72,15 @@ def cover_mesh(profile, openings, piece=None):
         vertices = np.vstack([vertices, np.column_stack([gx.ravel(), gy.ravel()])])
     # Request the constrained triangulation of the convex hull. Classify triangle centroids
     # in the original loops, so even multiple nonconvex openings stay open.
-    points, _, faces, *_ = delaunay_2d_cdt(vertices.tolist(), edges, [], 0, 1e-8, False)
+    boundary_faces = []
+    if shape == "polygon":
+        indices = list(range(len(outer)))
+        if np.cross(outer, np.roll(outer, -1, axis=0)).sum() < 0:
+            indices.reverse()
+        boundary_faces.append(indices)
+    points, _, faces, _, _, origins = delaunay_2d_cdt(
+        vertices.tolist(), edges, boundary_faces, 0, 1e-8, bool(boundary_faces)
+    )
     xy = np.asarray(points)
     triangles = np.asarray(faces, dtype="i4")
     centroids = xy[triangles].mean(axis=1)
@@ -89,7 +99,8 @@ def cover_mesh(profile, openings, piece=None):
         result[near] = hit
         return result
 
-    keep = inside(outer)
+    # CDT face provenance excludes exterior slivers on collinear notch endpoints.
+    keep = np.array([0 in source for source in origins]) if boundary_faces else inside(outer)
     for poly in hole_loops:
         keep &= ~inside(poly)
     tri = triangles[keep]
@@ -251,7 +262,13 @@ def shaft_mesh(profile, trace, pose=None):
     radius = size / 2
     span = trace["road_span_m"]
     ts = np.linspace(0, 2 * np.pi, 257)
-    outline = np.stack(contour(ts, profile["shape"]), axis=-1)
+    polygon = profile["shape"] == "polygon"
+    if polygon:
+        from polygon_seat import rings, field_distance
+        ts, bands = rings(profile, [band, band*.88, clear, -seat])
+    else:
+        outline = np.stack(contour(ts, profile["shape"]), axis=-1)
+        bands = {d: outline * (radius+d) for d in (band, band*.88, clear, -seat)}
     square = np.stack(contour(ts, "rect"), axis=-1)
     mesh = Mesh()
     pavement = mesh.material("Pavement", pixels("apron.png"), 0.91, 0, 1.8)
@@ -276,9 +293,7 @@ def shaft_mesh(profile, trace, pose=None):
             )
         sheet(mesh, name, xyz, uv, material, road=road)
 
-    outer = outline * (radius + band)
-    rim = outline * (radius + clear)
-    shelf = outline * (radius - seat)
+    outer, rim, shelf = (bands[d] for d in (band, clear, -seat))
     top_edge = np.c_[outer, np.zeros(len(ts))]
     wall_edge = np.c_[shelf, np.full(len(ts), -t - 0.018)]
     if pose is not None:
@@ -295,7 +310,7 @@ def shaft_mesh(profile, trace, pose=None):
         "Cast ring and cover seat",
         [
             (outer, 0),
-            (outline * (radius + band * 0.88), 0.0015),
+            (bands[band*.88], 0.0015),
             (rim, 0.0015),
             (rim, -t),
             (shelf, -t),
@@ -325,8 +340,13 @@ def shaft_mesh(profile, trace, pose=None):
             else np.maximum(abs(x / r[0]), abs(y / r[1]))
         )
 
-    opening = distance(radius - seat) < 1
-    distance_to_frame = (distance(radius + band) - 1) * min(radius + band)
+    if polygon:
+        signed = field_distance(profile, x, y)
+        opening = signed < -seat
+        distance_to_frame = signed - band
+    else:
+        opening = distance(radius - seat) < 1
+        distance_to_frame = (distance(radius + band) - 1) * min(radius + band)
     alpha = smooth((0.085 - distance_to_frame) / 0.075)
     field = dict(
         height=np.where(opening, -depth, 0),
@@ -345,12 +365,15 @@ def build():
     profile = cfg["perforations"]
     trace = json.loads((cal / "grate.json").read_text())
     profile = dict(profile, size_m=trace["size_m"], thickness_m=trace["thickness_m"])
+    polygon = profile["shape"] == "polygon"
+    if polygon:
+        profile.update({name:trace[name] for name in ("rim_uv","lid_boundary_uv")})
     intact = cover_mesh(profile, trace["openings_uv"])
     split = None
     if 'fracture_path_uv' in profile:
         split = [cover_mesh(profile, trace['openings_uv'], piece) for piece in ('retained', 'fragment')]
     base_stock, base_field = shaft_mesh(profile, trace)
-    mask_hash = digest(ROOT / "references" / profile["mask"])
+    mask_hash = digest(cal / "perimeter-recesses.png") if polygon else digest(ROOT / "references" / profile["mask"])
     photo_hash = digest(ROOT / "references/frame.png")
     size = np.asarray(profile["size_m"])
     cache = ROOT / "mesh_cache"
@@ -392,7 +415,11 @@ def build():
         result = dict(field)
         pose = None
         if not absent:
-            pose = lid_pose(size[0] / 2, angle, offset, 0)
+            if polygon:
+                from polygon_seat import panel_pose
+                pose = panel_pose(profile, state)
+            else:
+                pose = lid_pose(size[0] / 2, angle, offset, 0)
             if installation is not None:
                 pose = installation @ pose
             if offset.any():
@@ -445,7 +472,7 @@ def build():
                 distance = distance_transform_edt(np.asarray(mask) == 0) * field['width'] / (n - 1)
                 result['alpha'] = np.maximum(field['alpha'], smooth((0.045 - distance) / 0.04))
         category = "missing" if absent else "raised"
-        if installation is not None:
+        if installation is not None or polygon:
             result['substrate_height'] = sample_surface(stock.parts, field)
             result['height'] = result['substrate_height'] if absent else sample_surface(mesh.parts, field)
         if absent:
@@ -482,6 +509,11 @@ def build():
             **fracture,
             **stats,
         )
+        if polygon:
+            meta.update(recipe_version='polygon-cover-v1', perimeter_sides=len(profile['rim_uv']),
+                        perimeter_recesses=len(trace['recesses_uv']), yaw_degrees=float(state.get('yaw_deg',0)),
+                        geometry_source='Rectified photographed perimeter and edge recesses. Hidden seat, thickness, shaft, scale and non-seated poses use design values.',
+                        source_url=cfg['source_url'], credit=cfg['credit'], license_url=cfg['license_url'])
         if installation is not None:
             meta.update(installation_grade=grade, frame_transform=installation.tolist())
         Image.fromarray(pixels("pavement.jpg")).save(cache / (key + "_ground.jpg"), quality=94)

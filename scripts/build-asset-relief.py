@@ -99,6 +99,7 @@ def completion_profile(row, x, y, start, bounds):
 
 def build(row,dest,resume):
     key=row['id'];path=ATLAS/row['glb']
+    angular_lid = row.get('angularCover') and not row.get('absentCover')
     output=dest/(key+'.js')
     if resume and output.is_file() and not row.get('completionModels'):
         # Merely matching an identifier is insufficient when a user has rebuilt the GLB.
@@ -109,10 +110,10 @@ def build(row,dest,resume):
                 sha=hashlib.sha256()
                 for piece in iter(lambda:stream.read(4<<20),b''):sha.update(piece)
             if (name == key and grid.get('glb_sha256') == sha.hexdigest() and 'rangeOnly' not in grid
-                    and (not row.get('water') or 'under' in grid)):
+                    and (not (row.get('water') or angular_lid) or 'under' in grid)):
                 code=np.frombuffer(base64.b64decode(grid['top'],validate=True),'<u2').reshape(grid['n'],grid['n'])
                 return dict(id=key,samples=int(np.count_nonzero(code)),substrate='under' in grid)
-    full,under,lo,hi,digest=read_mesh(path,row['category'] in ('异常井盖','落座参照') or bool(row.get('throughHoles') or row.get('water') or row.get('slab')))
+    full,under,lo,hi,digest=read_mesh(path,row['category'] in ('异常井盖','落座参照') or bool(row.get('throughHoles') or row.get('water') or row.get('slab') or angular_lid))
     n=193 if row['category']=='裂缝' or row.get('slab') or row.get('panelSize') or row.get('water') or row.get('completionModels') else 97
     # The grid covers cell centres, avoiding ambiguous triangle intersections on exterior edges.
     xpitch=(hi[0]-lo[0])/n;ypitch=(hi[2]-lo[2])/n

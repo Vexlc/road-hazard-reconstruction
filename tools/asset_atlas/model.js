@@ -52,7 +52,7 @@ get("rotateModel").onclick=()=>{
 };
 viewer.addEventListener("load",()=>{
   get("clayModel").hidden=!(selectedRow?.scanGeometry || selectedRow?.slab || selectedRow?.components) || location.protocol==="file:";
-  status("拖动旋转，滚轮或双指缩放。"+(sectioned ? (selectedRow?.slab ? "当前显示从原位模型提取的碎板实体。" : selectedRow?.water ? "当前显示原始干坑。" : "当前剖开近侧井壁，保留盖面、碎片和井底。") : ""));
+  status("拖动旋转，滚轮或双指缩放。"+(sectioned ? (selectedRow?.lidModel ? "当前显示独立盖板，可旋转查看六处凹口与背面。" : selectedRow?.slab ? "当前显示从原位模型提取的碎板实体。" : selectedRow?.water ? "当前显示原始干坑。" : "当前剖开近侧井壁，保留盖面、碎片和井底。") : ""));
 });
 viewer.addEventListener("error",()=>{
   status("模型加载失败。可以选择本机 GLB 重新打开。");
@@ -67,6 +67,8 @@ get("file").onchange=()=>{
   get("clayModel").hidden=true;
   sectioned=false;
   selectedRow=null;
+  viewer.removeAttribute("min-camera-orbit");
+  viewer.removeAttribute("max-camera-orbit");
   get("componentControl").hidden=true;
   get("componentSize").hidden=true;
   get("completionControl").hidden=true;
@@ -80,21 +82,30 @@ get("file").onchange=()=>{
   status("正在读取所选模型…");
 };
 function displayModel(row, preservePose=false) {
+  if (row.angularCover) {
+    // Keep the same metric zoom limits when the surrounding pavement is removed.
+    const span=Math.max(...row.panelSize);
+    viewer.minCameraOrbit="auto 0deg "+(span*0.03)+"m";
+    viewer.maxCameraOrbit="auto 180deg "+(span*8)+"m";
+  } else {
+    viewer.removeAttribute("min-camera-orbit");
+    viewer.removeAttribute("max-camera-orbit");
+  }
   get("sectionModel").setAttribute("aria-pressed",String(sectioned));
-  get("sectionModel").textContent=row.blockModel ? (sectioned ? "还原路面" : "单独看原位碎板") : row.water ? (sectioned ? "恢复积水" : "排空积水") : (sectioned ? "还原井体" : "剖开井体");
+  get("sectionModel").textContent=row.lidModel ? (sectioned ? "还原井体" : "单独看盖板") : row.blockModel ? (sectioned ? "还原路面" : "单独看原位碎板") : row.water ? (sectioned ? "恢复积水" : "排空积水") : (sectioned ? "还原井体" : "剖开井体");
   if (preservePose && viewer.loaded) {
     const {theta,phi,radius}=viewer.getCameraOrbit(), target=viewer.getCameraTarget();
     viewer.cameraOrbit=theta+"rad "+phi+"rad "+radius+"m";
     viewer.cameraTarget=target.x+"m "+target.y+"m "+target.z+"m";
     viewer.fieldOfView=viewer.getFieldOfView()+"deg";
   }
-  viewer.poster=sectioned ? (row.blockPreview || row.dryPreview || row.cutaway) : row.preview;
+  viewer.poster=(sectioned && (row.blockPreview || row.dryPreview || row.cutaway)) || row.preview;
   const mode=get("completionMode").value;
   const component=row.components?.find(item=>item.id===get("componentMode").value);
   const size=get("componentSize");
   size.hidden=!component;
   if (component) size.textContent=component.id+"　槽口长 × 宽 "+(component.length*100).toFixed(1)+" × "+(component.width*100).toFixed(1)+" 厘米，槽缘附近路面至槽底的 P95 高差 "+(component.depth*1000).toFixed(1)+" 毫米。";
-  const src=component?.glb || row.regionModels?.[mode] || row.completionModels?.[mode] || (sectioned ? (row.blockModel || row.dryModel || row.cutawayModel) : row.glb);
+  const src=component?.glb || row.regionModels?.[mode] || row.completionModels?.[mode] || (sectioned ? (row.lidModel || row.blockModel || row.dryModel || row.cutawayModel) : row.glb);
   const legend=get("supportLegend");
   legend.hidden=!(row.completionModels && mode==="support") && !(row.regionModels && mode!=="completed");
   legend.textContent=row.regionModels ? row.regionLegend : "蓝灰为原始距离支持的格点，青色为彩照补出的格点，橙色为插值。浅灰为坑外路面。";
@@ -103,11 +114,11 @@ function displayModel(row, preservePose=false) {
   if (!preservePose) pose(sectioned && selectedRow?.cutawayModel ? "16deg 70deg auto" : "20deg 48deg auto");
 }
 get("sectionModel").onclick=()=>{
-  if (!selectedRow?.cutawayModel && !selectedRow?.dryModel && !selectedRow?.blockModel) return;
+  if (!selectedRow?.cutawayModel && !selectedRow?.dryModel && !selectedRow?.blockModel && !selectedRow?.lidModel) return;
   restoreTextures();
   sectioned=!sectioned;
   status("正在读取资产网格与纹理…");
-  displayModel(selectedRow, Boolean(selectedRow.water));
+  displayModel(selectedRow, Boolean(selectedRow.water || selectedRow.lidModel));
 };
 get("componentMode").onchange=()=>{
   if (!selectedRow?.components) return;
@@ -121,6 +132,7 @@ function openSelection() {
   const requested = decodeURIComponent(location.hash.slice(1));
   const row = inventory.get(requested);
   const sameSlab=Boolean(row?.slab && selectedRow?.slab && row.states.includes(selectedRow.id));
+  const sameAngularCover=Boolean(row?.angularCover && row.states.includes(selectedRow?.id));
   const sameBed=Boolean(row?.dryFamily && row.dryFamily===selectedRow?.dryFamily);
   const sameScan=Boolean(row?.scanGeometry && selectedRow?.scanGeometry && row.states.includes(selectedRow.id) && row.width===selectedRow.width && row.length===selectedRow.length);
   restoreTextures();
@@ -135,8 +147,8 @@ function openSelection() {
   get("componentSize").hidden=true;
   get("componentMode").replaceChildren(new Option("整组路面",""),...(row?.components || []).map(c=>new Option(c.id,c.id)));
   get("componentControl").hidden=!row?.components || location.protocol==="file:";
-  if (!sameCover || location.protocol==="file:") sectioned=false;
-  get("sectionModel").hidden=!(row?.cutawayModel || row?.dryModel || row?.blockModel) || location.protocol==="file:";
+  if (!(sameCover || (sameAngularCover && row.lidModel)) || location.protocol==="file:") sectioned=false;
+  get("sectionModel").hidden=!(row?.cutawayModel || row?.dryModel || row?.blockModel || row?.lidModel) || location.protocol==="file:";
   get("states").replaceChildren();
   get("states").hidden = !row?.states;
   get("fileLabel").hidden = Boolean(row) && location.protocol!=="file:";
@@ -162,7 +174,7 @@ function openSelection() {
     status(row ? "直接打开网页时，请选择对应的 GLB。使用项目的本地预览服务可直接加载所选资产。" : "选择一个本机 GLB 查看。");
   } else {
     status("正在读取资产网格与纹理…");
-    displayModel(row,sameBed || sameScan || sameSlab);
+    displayModel(row,sameBed || sameScan || sameSlab || sameAngularCover);
   }
 }
 window.addEventListener("hashchange",openSelection);

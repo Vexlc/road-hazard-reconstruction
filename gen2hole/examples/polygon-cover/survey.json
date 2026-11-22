@@ -1,0 +1,30 @@
+{
+  "family":"southwark-hexagonal-access",
+  "source_url":"https://www.geograph.org.uk/photo/3739078",
+  "credit":"A hexagonal manhole cover by Stephen Craven, CC BY-SA 2.0. Rectification, traced geometry, designed states and rendered derivatives by RoadGS under the same licence.",
+  "license_url":"https://creativecommons.org/licenses/by-sa/2.0/",
+  "frame":{"image":"source.jpg"},
+  "perforations":{
+    "shape":"polygon", "lining":"../perforated-covers/lining.jpg",
+    "reference_width_m":0.68, "thickness_m":0.038, "shaft_depth_m":0.72,
+    "frame_band_m":0.013, "seat_overlap_m":0.014, "photographed_surround":true,
+    "scale_source":"Planar homography from repeating hexagonal tread junctions. Horizontal span of 0.68 m is a design reference. Thickness, hidden seat, shaft and non-seated poses are designed.",
+    "road_patch_xyxy":[551,266,620,335],"edge_patch_xyxy":[246,234,261,244],
+    "tread":{"template_xy":[236,172],"template_half_size_xy":[10,9],"rough_horizontal_period_px":74.4,"rough_row_step_px":21.3,"correlation_min":0.71,"search_radius_px":16},
+    "rim_corners_xy":[[181,32],[405,31],[524,218],[458,437],[150,440],[61,225]],
+    "recesses_xy":[
+      [[282,33],[284,36],[289,37],[306,35],[309,32]],
+      [[457,115],[455,120],[464,134],[468,136],[471,135]],
+      [[493,311],[487,310],[478,333],[479,337],[483,339]],
+      [[318,438],[316,433],[313,431],[290,432],[286,435],[286,439]],
+      [[113,345],[117,340],[117,336],[109,317],[106,315],[100,317]],
+      [[116,136],[122,136],[125,133],[136,116],[134,112],[132,110]]
+    ]
+  },
+  "states":[
+    {"id":"A151","label":"沿六边落座","angle_deg":0},
+    {"id":"A152","label":"旋转 30° 后架在井框上","yaw_deg":30},
+    {"id":"A153","label":"沿前边掀起 52°","angle_deg":52,"pivot_edge":3},
+    {"id":"M151","label":"整盖缺失","absent":true}
+  ]
+}
