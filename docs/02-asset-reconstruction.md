@@ -399,3 +399,21 @@ work/envs/streetcrafter/bin/python scripts/check-atlas-gaussians.py --captures r
 work/envs/streetcrafter/bin/python scripts/render-gaussian-audit.py
 python scripts/build-asset-atlas.py
 ~~~
+
+### 井类资产的开孔路面
+
+308 件带井体的资产可加铺一层沥青。打开 M11 后拖动旋转，可观察矩形井口内的结构和路面遮挡。也可切换 A119 掀盖、A128 井旁断片或 A117 断条雨水篦。勾选「标出地下 7.5 cm 以下的结构」会把对应高斯染为洋红色，盖板上的孔和篦条间的可见部分随相机移动。页面底部保留同编号资产的实景道路观测。[矩形敞井](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#M11) · [掀盖](http://127.0.0.1:8765/tools/asset_atlas/splats.html?road=1#A119) · [六例对照](figures/gaussian-road-openings.jpg)
+
+每个开孔取自该资产 GLB 铺面三角形的内边界。导出程序焊接纹理接缝并以 0.25 毫米容差简化轮廓，浏览器按 GLB 指纹选择轮廓。观察者位于路面上方时，浏览器逐像素计算视线与水平面的交点，仅允许地下高斯通过开孔显现。路面比资产的标称零高程低 3 毫米，以保留铺面颗粒。示范路面按 3 米幅宽平铺 Rob Tuytel 的 CC0 沥青扫描材质。PandaSet 的车载视图使用各自路段实际的道路、放置位置和相机。[沥青来源与指纹](../gen2hole/examples/scanned-cracks/survey.json)
+
+在 10 件资产的 30 个机位，用原始 GLB 铺面三角形独立求交，并排除两像素边界。地下染色前后，任一 RGB 通道相差超过 8 级计作一个响应像素。全部机位累计的井口外响应从 412,881 个降到 0。井口内纳入核验的 1,174,743 个像素在铺路前后逐通道相同。这项检查衡量开孔遮挡和透视一致性。[逐机位核验记录](../validation/atlas-host-road.json)
+
+在仓库根目录运行以下命令可复现。浏览器捕获默认使用 SwiftShader，具备原生 OpenGL 的 Linux 工作站可设置 `ATLAS_CHROME_ANGLE=gl`。
+
+~~~bash
+work/envs/streetcrafter/bin/python scripts/build-gaussian-road.py
+node scripts/capture-atlas-gaussians.cjs runs/atlas-host-road --road M11 M10 A119 A128 A125 model_raised_rectangular_removed_side_chip_seal A104 A105 M104 A117
+work/envs/streetcrafter/bin/python scripts/check-gaussian-road.py
+work/envs/streetcrafter/bin/python scripts/render-gaussian-road.py
+python scripts/build-asset-atlas.py
+~~~

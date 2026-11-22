@@ -87,6 +87,7 @@ function setMode(next) {
   el("splatPoster").hidden=orderReady || !row?.gaussianPreview || mode==="meshMode";
   el("splitControl").hidden=el("splitLabels").hidden=el("boundary").hidden=mode!=="split";
   canvas.hidden=mode==="meshMode";
+  el("hostControls").hidden=mode==="meshMode" || !renderer?.mask || !orderReady;
   const split=el("divider").value;
   el("splatStage").style.setProperty("--split",split+"%");
   canvas.style.clipPath=mode==="split"?"inset(0 "+(100-split)+"% 0 0)":"";
@@ -108,6 +109,17 @@ function showAudit(resetPart) {
 }
 el("auditPose").onchange=()=>showAudit(true);
 el("auditPart").onchange=()=>showAudit(false);
+function showHostAudit() {
+  const shot=row?.roadAudit?.[Number(el("hostAuditPose").value)];
+  if (!shot) return;
+  for (const [index,id] of ["rawRoad","roadProbe","hostColour"].entries()) {
+    el(id+"Link").href=el(id).src=shot.images[index];
+  }
+  el("hostAuditReadout").textContent="地下高斯染色后，井口外的响应像素从 "+shot.exteriorRaw.toLocaleString()+" 个变为 "+shot.exteriorHost.toLocaleString()+
+    " 个。井口内 "+shot.interior.toLocaleString()+" 个核验像素在铺路前后的 RGB 通道最大差为 "+shot.change+" / 255。";
+}
+el("hostAuditPose").onchange=showHostAudit;
+el("roadAudit").ontoggle=()=>{if (el("roadAudit").open) showHostAudit();};
 el("useAuditPose").onclick=()=>{
   const c=row?.gaussianAudit?.[Number(el("auditPose").value)]?.camera;
   if (!c || !viewer.loaded) return;
@@ -133,9 +145,12 @@ function start(selected,files={}) {
   const epoch=++selection;
   const family=Boolean(selected?.states?.includes(row?.id) && (!selected.scanGeometry || (selected.width===row.width && selected.length===row.length)));
   const previous=family && viewer.loaded ? {orbit:viewer.getCameraOrbit(),target:viewer.getCameraTarget(),fov:viewer.getFieldOfView()} : null;
+  const hostRequested=family && renderer?.mask?el("hostRoad").checked:new URLSearchParams(location.search).get("road")==="1";
+  const traceRequested=family && el("traceUnder").checked;
   row=selected; meshFailed=false; bounds=null; sortedDirection=null; sorting=orderReady=errorState=false; recycled=null; initialPose=null;
   if (worker) worker.terminate();
-  worker=null; renderer?.clear();
+  worker=null; renderer?.clear();renderer?.setRoad(null);
+  el("hostRoad").checked=el("traceUnder").checked=false;
   viewer.removeAttribute("src");
   localUrls.forEach(URL.revokeObjectURL); localUrls=[];
   if (row?.gaussianPreview) el("splatPoster").src=row.gaussianPreview; else el("splatPoster").removeAttribute("src");
@@ -154,6 +169,8 @@ function start(selected,files={}) {
   el("gaussianAudit").open=false;
   el("auditPose").replaceChildren(...(row?.gaussianAudit || []).map((a,i)=>new Option(auditNames[a.mode],String(i))));
   if (row?.gaussianAudit) showAudit(true);
+  el("roadAudit").open=false;el("roadAudit").hidden=!row?.roadAudit;
+  el("hostAuditPose").replaceChildren(...(row?.roadAudit || []).map((a,i)=>new Option(auditNames[a.mode],String(i))));
   for (const id of ["top","side","reset","useAuditPose"]) el(id).disabled=true;
   setRoads();
   if (!files.ply && (!row || location.protocol==="file:")) {
@@ -173,6 +190,12 @@ function start(selected,files={}) {
     if (data.type==="error") { fail(data.message);return; }
     if (data.type==="cloud") {
       try { renderer.upload(data); } catch (err) { fail(err.message);return; }
+      const opening=window.gaussianRoad?.profiles[row?.id];
+      if (opening && opening.glb===row?.gaussianSources?.glb) {
+        renderer.setRoad(opening);
+        el("hostRoad").checked=Boolean(hostRequested);el("traceUnder").checked=Boolean(traceRequested);
+        updateRoadRendering();
+      }
       bounds=[data.lo,data.hi];
       for (const id of ["top","side","reset","useAuditPose"]) el(id).disabled=false;
       if (!meshUrl || meshFailed) viewer.src=localUrl(boundsModel(...bounds));
@@ -194,12 +217,29 @@ function start(selected,files={}) {
     } else if (data.type==="order") {
       renderer.setOrder(data.order);recycled=data.order.buffer;sortedDirection=data.forward;sorting=false;
       if (!orderReady) message("拖动旋转，滚轮或双指缩放。");
-      orderReady=true;el("splatPoster").hidden=true;repaint();
+      orderReady=true;el("splatPoster").hidden=true;
+      el("hostControls").hidden=mode==="meshMode" || !renderer.mask;
+      repaint();
     }
   };
   worker.postMessage({type:"load",url:row?new URL(row.ply,location.href).href:null,file:files.ply,
     textureLimit:renderer.limit,count:row?.gaussians});
 }
+async function updateRoadRendering() {
+  const epoch=selection;
+  renderer.traceUnder=el("traceUnder").checked;
+  renderer.roadActive=el("hostRoad").checked;
+  repaint();
+  if (!renderer.roadActive) return;
+  try {await renderer.loadRoadTexture(window.gaussianRoad);}
+  catch(err) {
+    if (epoch!==selection) return;
+    renderer.roadActive=el("hostRoad").checked=false;
+    message("无法读取路面材质。"+err.message);
+  }
+  repaint();
+}
+el("hostRoad").onchange=el("traceUnder").onchange=updateRoadRendering;
 for (const id of ["gaussian","meshMode","split"]) el(id).onclick=()=>setMode(id);
 el("divider").oninput=()=>setMode("split");
 el("reset").onclick=()=>pose();

@@ -22,7 +22,12 @@
     <button id="reset">恢复斜视</button><button id="top">俯视</button><button id="side">侧视</button>
     <label>打开本机 PLY，可同时选 GLB <input id="files" type="file" accept=".ply,.glb" multiple></label>
   </div>
-  <details id="gaussianAudit" hidden>
+  <div class="modelcontrols" id="hostControls" hidden>
+    <label><input type="checkbox" id="hostRoad"> 铺设开孔沥青路面</label>
+    <label><input type="checkbox" id="traceUnder"> 标出地下 7.5 cm 以下的结构</label>
+    <span class="modelinfo">从路面上方观察。开孔沿该资产网格的铺面内缘，沥青为摄影测量材质。</span>
+  </div>
+  <details id="gaussianAudit" class="auditPanel" hidden>
     <summary>核对高斯与网格的深度</summary>
     <div class="modelcontrols"><label>核验机位 <select id="auditPose"></select></label><label>统计范围 <select id="auditPart"></select></label><button id="useAuditPose">在三维视图中使用此机位</button></div>
     <div class="auditImages"><figure><a id="auditMeshLink"><img id="auditMesh" alt="核验机位的网格"></a><figcaption>GLB 网格</figcaption></figure>
@@ -31,7 +36,15 @@
     <div class="depthLegend" aria-label="绝对差图例"><span>低于 2 mm</span><span>2–10 mm</span><span>10–50 mm</span><span>至少 50 mm</span></div>
     <p id="auditReadout"></p><p class="modelinfo">网格采用首次命中的正面，高斯采用透明度加权的期望深度。彩色区域为网格内部且高斯不透明度超过 85% 的共同像素。</p>
   </details>
+  <details id="roadAudit" class="auditPanel" hidden>
+    <summary>核对铺路前后的遮挡</summary>
+    <div class="modelcontrols"><label>核验机位 <select id="hostAuditPose"></select></label></div>
+    <div class="auditImages"><figure><a id="rawRoadLink"><img id="rawRoad" alt="固定机位的独立高斯资产"></a><figcaption>独立高斯资产</figcaption></figure>
+      <figure><a id="roadProbeLink"><img id="roadProbe" alt="铺路后地下高斯染成洋红色的画面"></a><figcaption>铺路后标出地下结构</figcaption></figure>
+      <figure><a id="hostColourLink"><img id="hostColour" alt="恢复原始颜色后的开孔路面"></a><figcaption>铺路后恢复原色</figcaption></figure></div>
+    <p id="hostAuditReadout"></p>
+  </details>
   <figure id="roadPanel" hidden><a id="roadLink"><img id="road" alt="同一件资产迁入后的道路实景"></a><figcaption><label>迁入道路 <select id="roadShot"></select></label><button id="before">查看迁入前</button></figcaption></figure>
 </main>
-<script src="catalog.js"></script><script src="splat-worker.js"></script><script src="splat-renderer.js"></script><script defer src="splats.js"></script>
+<script src="catalog.js"></script><script src="road-host-data.js"></script><script src="splat-worker.js"></script><script src="splat-renderer.js"></script><script defer src="splats.js"></script>
 </html>

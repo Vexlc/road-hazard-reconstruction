@@ -7,7 +7,8 @@ const WebSocket = require("ws");
 
 const base = "http://127.0.0.1:8765/tools/asset_atlas/";
 const out = process.argv[2];
-const ids = process.argv.slice(3);
+const captureRoad = process.argv.includes("--road");
+const ids = process.argv.slice(3).filter(value=>value!=="--road");
 if (!out || !ids.length) throw Error("Usage: node scripts/capture-atlas-gaussians.cjs OUTPUT ID ...");
 const sleep = ms => new Promise(resolve=>setTimeout(resolve,ms));
 
@@ -15,7 +16,8 @@ async function capture() {
   fs.mkdirSync(out,{recursive:true});
   const profile = fs.mkdtempSync(path.join(os.tmpdir(),"roadgs-webgl-"));
   const chrome = spawn(process.env.CHROME || "google-chrome",["--headless=new","--no-sandbox","--disable-dev-shm-usage",
-    "--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader","--remote-debugging-port=0",
+    "--use-gl=angle","--use-angle="+(process.env.ATLAS_CHROME_ANGLE || "swiftshader"),
+    "--enable-gpu","--enable-unsafe-swiftshader","--remote-debugging-port=0",
     "--user-data-dir="+profile,"about:blank"],{stdio:"ignore"});
   let socket;
   try {
@@ -58,8 +60,10 @@ async function capture() {
       await ev("location.hash="+JSON.stringify(id));
       const settled='viewer.loaded && orderReady && !sorting && frame===0 && sortedDirection && camera().forward.every((v,i)=>Math.abs(v-sortedDirection[i])<1e-6)';
       await wait('row?.id==='+JSON.stringify(id)+' && '+settled);
+      await ev('pose();viewer.jumpCameraToGoal()');
+      await wait(settled+' && Math.abs(viewer.getCameraOrbit().phi-initialPose.phi)<0.0001');
       const poses=[["oblique",null]];
-      if(["P135","P130","M11","A119","A128"].includes(id)) poses.push(["low",[122,76]],["top",[0,0]]);
+      if(captureRoad || ["P135","P130","M11","A119","A128"].includes(id)) poses.push(["low",[122,76]],["top",[0,0]]);
       for (const [kind,angle] of poses) {
         if (angle) {
           await ev('pose('+angle.join(",")+');viewer.jumpCameraToGoal()');
@@ -69,12 +73,24 @@ async function capture() {
           const cam=camera();renderer.draw(cam,canvas.width,canvas.height);
           const orbit=viewer.getCameraOrbit(),t=viewer.getCameraTarget();
           return {img:canvas.toDataURL("image/png"),mesh:viewer.toDataURL("image/png"),
-            view:{key:row.id,mode:"${kind}",width:canvas.width,height:canvas.height,count:renderer.count,blend:renderer.floatTarget?"rgba16f":"rgba8",
+            view:{key:row.id,mode:"${kind}",width:canvas.width,height:canvas.height,count:renderer.count,blend:renderer.floatTarget?"rgba16f":"rgba8",sources:row.gaussianSources,
                   camera:{theta:orbit.theta-viewer.turntableRotation,phi:orbit.phi,radius:orbit.radius,
                     target:[t.x,t.y,t.z],fov:viewer.getFieldOfView()}}}
         })()`);
         const stem=id+"-"+kind;
         save(stem+"-gaussian.png",result.img);save(stem+"-mesh.png",result.mesh);
+        if(captureRoad) {
+          result.view.road_height_m=await ev("renderer.roadHeight");
+          await wait('!el("hostControls").hidden && !el("hostRoad").checked && !el("traceUnder").checked');
+          const toggle=id=>ev('el('+JSON.stringify(id)+').click()');
+          const snapshot=()=>ev('renderer.draw(camera(),canvas.width,canvas.height);canvas.toDataURL("image/png")');
+          await toggle("traceUnder");save(stem+"-probe.png",await snapshot());
+          await toggle("hostRoad");await wait("renderer.roadActive && renderer.asphalt");
+          save(stem+"-road-probe.png",await snapshot());
+          await toggle("traceUnder");save(stem+"-road.png",await snapshot());
+          await toggle("hostRoad");
+          if (await ev("renderer.gl.getError()")!==0) throw Error("WebGL error during road rendering");
+        }
         fs.writeFileSync(path.join(out,stem+".json"),JSON.stringify(result.view,null,2)+"\n");
       }
       await ev('el("split").click();el("divider").value=25;el("divider").dispatchEvent(new Event("input"))');

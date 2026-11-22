@@ -55,9 +55,9 @@ model-viewer{display:block;width:100%;height:min(65vh,740px);min-height:300px;ba
 
 #splatPoster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#dfe1d8;pointer-events:none}
 
-#gaussianAudit{padding:14px 0 20px;border-top:1px solid var(--line)}
-#gaussianAudit summary{cursor:pointer;color:var(--green)}
-#gaussianAudit .modelcontrols{margin:12px 0}#gaussianAudit p{font-size:14px}
+.auditPanel{padding:14px 0 20px;border-top:1px solid var(--line)}
+.auditPanel summary{cursor:pointer;color:var(--green)}
+.auditPanel .modelcontrols{margin:12px 0}.auditPanel p{font-size:14px}
 .auditImages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .auditImages figure{margin:0}.auditImages figure>a{background:#dfe1d8}
 .auditImages img{height:auto;width:100%;display:block}.auditImages figcaption{min-height:24px}

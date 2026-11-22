@@ -720,6 +720,9 @@ def main():
     audit_folder = ROOT/'runs/atlas-gaussian-checks'
     audit_report = ROOT/'validation/atlas-gaussians.json'
     checks = read(audit_report)['browser_vs_cuda_and_glb'] if audit_folder.exists() and audit_report.is_file() else {}
+    road_folder = ROOT / 'runs/atlas-host-road'
+    road_report = ROOT / 'validation/atlas-host-road.json'
+    road_checks = read(road_report)['audited_assets'] if road_folder.is_dir() and road_report.is_file() else {}
     for row in rows.values():
         if row['id'] in poses:
             view = poses[row['id']]
@@ -746,6 +749,18 @@ def main():
                     p95=measurement['gaussian_expected_vs_glb_depth_mm_p95']))
             if audits:
                 row['gaussianAudit'] = audits
+        road = road_checks.get(row['id'])
+        if road and row.get('gaussianSources') == road['sources']:
+            shots = []
+            for mode in ('oblique', 'low', 'top'):
+                view = road['views'][mode]
+                paths = [road_folder / f"{row['id']}-{mode}-{kind}.png" for kind in ('gaussian', 'road-probe', 'road')]
+                if all(p.is_file() for p in paths):
+                    shots.append(dict(mode=mode, images=[link(p) for p in paths],
+                                      exteriorRaw=view['exterior_raw_probe_pixels'], exteriorHost=view['exterior_host_probe_pixels'],
+                                      interior=view['interior_pixels'], change=view['interior_max_rgb_change']))
+            if shots:
+                row['roadAudit'] = shots
         relief = ATLAS / "relief" / (row["id"] + ".js")
         if relief.is_file():
             row["relief"] = link(relief)
