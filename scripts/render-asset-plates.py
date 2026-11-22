@@ -109,9 +109,62 @@ def diversity(rows):
     sheet.save(OUT/"asset-diversity.jpg",quality=91,subsampling=0)
 
 
+def road_portfolio(rows):
+    groups = [
+        ("坑洞与积水", [
+            ("P121", "方形浅坑", "109"), ("P112", "沿缝双坑", "109"),
+            ("P122", "裸露骨料深坑", "034"), ("P131", "同一深坑积水", "034")]),
+        ("井盖与井口", [
+            ("A93", "井盖掀开", "034"), ("A20", "圆盖横移", "109"),
+            ("M11", "矩形缺盖井", "110"), ("A128", "断片移至井旁", "109")]),
+        ("局部破损与道路构件", [
+            ("P102", "分叉裂缝", "034"), ("A117", "雨水篦断条", "109"),
+            ("A118", "铺石穿孔盖", "109"), ("A108", "修补圈内小盖错位", "034")]),
+    ]
+    w, margin, gap, panel = 1760, 36, 18, 408
+    sheet = Image.new("RGB", (w, 1596), PAPER)
+    draw = ImageDraw.Draw(sheet)
+    label(draw, (margin, 24), "道路病害资产与行车视角", 50, True)
+    label(draw, (margin, 104), "每件资产上方为带纹理的 GLB 模型，下方为同一资产迁入 PandaSet 后的前视相机局部。", 25, fill=SOFT)
+    for group, (title, assets) in enumerate(groups):
+        y = 170 + group * 465
+        label(draw, (margin, y), title, 28, True)
+        start = margin + 35 * len(title) + 28
+        draw.line((start, y + 18, w - margin, y + 18), fill=LINE, width=2)
+        for j, (key, caption, site) in enumerate(assets):
+            row = rows[key]
+            shot = next(s for s in row["scenes"] if s["label"].startswith(site+" · 前视 · 帧 ")
+                        and s["after"].endswith(key+"_front_after.webp"))
+            path = ATLAS / shot["after"]
+            evidence = next(v for v in json.loads((path.parent/"views.json").read_text())
+                            if v.get("available") and v["after_stem"] == path.name)
+            if evidence["asset_id"] != key or evidence["site"] != site:
+                raise ValueError("Mismatched driving image for " + key)
+            x = margin + j * (panel + gap)
+            label(draw, (x, y+49), key+"   "+caption, 24, True)
+            tile(sheet, ATLAS/row["preview"], (x, y+90, panel, 192))
+            # Use the original vehicle photograph pixels and the pixel bounds of
+            # this asset, preserving the full object at its true aspect ratio.
+            with Image.open(path) as im:
+                l, t, r, b = evidence["xyxy_target_in_crop"]
+                half = max((r-l)*.78, (b-t)*1.80, 32)
+                crop_width = min(im.width, int(half*2))
+                crop_height = min(im.height, max(round((b-t)*1.18), round(crop_width*112/panel)))
+                left = max(0, min(im.width-crop_width, (l+r-crop_width)//2))
+                top = max(0, min(im.height-crop_height, (t+b-crop_height)//2))
+                crop = im.crop((left, top, left+crop_width, top+crop_height)).convert("RGB")
+                view = ImageOps.contain(crop, (panel,112), Image.Resampling.LANCZOS)
+                draw.rectangle((x,y+287,x+panel-1,y+398),fill=LINE)
+                sheet.paste(view,(x+(panel-view.width)//2,y+287+(112-view.height)//2))
+            label(draw, (x,y+411), row["method"]+"   ·   "+site+" / 帧 "+str(evidence["frame"]), 18, fill=SOFT)
+    label(draw,(margin,1560),"P122 与 P131 共用坑底。井盖状态和注水量含设计参数；各图独立取景，米制尺寸与原始资料可按编号在图谱中查看。",18,fill=SOFT)
+    sheet.save(OUT/"road-asset-portfolio.jpg",quality=93,subsampling=0)
+
+
 if __name__=="__main__":
     OUT.mkdir(parents=True,exist_ok=True)
     catalog=json.loads((ATLAS/"catalog.js").read_text().removeprefix("window.roadAssets=").rstrip(";\n"))
     rows={r["id"]:r for r in catalog}
     plate(rows)
     diversity(rows)
+    road_portfolio(rows)

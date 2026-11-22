@@ -29,6 +29,9 @@ def build(key):
     mat = mesh.material('Photographed road surface', color, 0.94, 0.0, 1.8)
     mesh.add('Road adjoining the fracture', xyz, faces[~bed], uv, mat, road=True)
     mesh.add('Fracture lip and exposed bed', xyz, faces[bed], uv, mat)
+    if 'water' in meta:
+        from pit_water import add_water
+        meta['water'] = add_water(mesh, xyz, faces, field, color, meta['water'])
     cache = ROOT / 'mesh_cache'
     cache.mkdir(exist_ok=True)
     # The surrounding preview plane also uses the sampled intact-road texture.

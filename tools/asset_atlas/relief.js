@@ -35,8 +35,16 @@
     for (let i=0;i<top.length;i++) image.data.set([...color(top[i]),255],4*i);
     g.putImageData(image,0,0);
     slider.max=String(n-1);slider.value=String((n-1)/2);selectedCol=null;
+    if (current.water && under) {
+      let deepest=null, depth=0;
+      for (let i=0;i<top.length;i++) {
+        const column=top[i]-under[i];
+        if (column>depth) {deepest=i;depth=column;}
+      }
+      if (deepest!==null) {slider.value=String(Math.floor(deepest/n));selectedCol=deepest%n;}
+    }
     get("reliefLegend").textContent="俯视首个交点 · 蓝色低于路面，棕色高于路面，灰色无交点";
-    get("reliefScale").textContent=under ? "实线为首个交点，虚线为移除井盖后的固定部件。" : "实线为从上方投射到网格的首个交点。";
+    get("reliefScale").textContent=current.water ? "实线为首个交点，虚线为实拍重建的坑底。高程沿资产本地竖轴读取。" : under ? "实线为首个交点，虚线为移除井盖后的固定部件。" : "实线为从上方投射到网格的首个交点。";
     get("reliefContent").hidden=false;
     const pitch=Math.max(Math.abs(grid.x[1]-grid.x[0]), Math.abs(grid.y[1]-grid.y[0]))/(n-1);
     get("reliefStatus").textContent="网格采样间隔约 "+(1000*pitch).toFixed(1)+" mm。点击俯视图或移动滑块可查看不同截线。";
@@ -82,7 +90,8 @@
     if (selectedCol!==null) {
       const i=row*n+selectedCol;
       message+="　X "+metres(x[0]+selectedCol/(n-1)*(x[1]-x[0]))+"　表面 "+metres(top[i]);
-      if (under) message+="　固定部件 "+metres(under[i]);
+      if (under) message+=(current.water ? "　坑底 " : "　固定部件 ")+metres(under[i]);
+      if (current.water) message+="　铅直水深 "+((top[i]-under[i])*current.water.up_local[2]*1000).toFixed(1)+" mm";
     }
     get("reliefReadout").textContent=message;
   }

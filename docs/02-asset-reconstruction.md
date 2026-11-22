@@ -287,3 +287,31 @@ work/envs/streetcrafter/bin/python scripts/check-perforated-covers.py --run work
 ```
 
 完整的道路示例保存在 `runs/split-iron-cover`。用 `gen2hole/downstream/place.py --front` 将不同状态放入同一路段，再用 `gen2hole/downstream/simulate.py` 回放。断片家族会额外输出同帧前后视相机画面到 `sensors/matched_camera`。给几何检查加上 `--with-sensors` 可复核状态间的相机与回波差异。用 `scripts/check-fragment-visibility.py --run runs/split-iron-cover --out work/split-visibility.json` 可重新统计整个行车序列中碎片的可见像素。
+
+## 实拍坑底上的积水
+
+P129–P132 复用 P122 的双照片粗骨料深坑。P133 复用 P113 的多帧 RGB-D 双坑，在其中一个坑里加入 75 毫升水。每个状态都有独立水面三角网格、带实拍纹理的完整坑底、3DGS 和米制水深场。在图谱里选择「交互三维」后可以排空、恢复积水或切换同一坑的其他状态。展开高程剖面可读取首个交点和下方坑底，选中道路的「干湿对照」可比较同一相机像素。[坑底、岸线与剖面](figures/standing-water.jpg) · [道路相机对照](figures/standing-water-roads.jpg)
+
+| 资产 | 坑底 | PandaSet 路段 / 局部坡度 | 加入 | 留存 | 溢出 | 最大铅直水深 |
+|---|---|---|---:|---:|---:|---:|
+| P129 | P122 | 109 / 5.1% | 1 L | 1 L | 0 L | 35.1 mm |
+| P130 | P122 | 109 / 5.1% | 5 L | 5 L | 0 L | 66.6 mm |
+| P131 | P122 | 034 / 14.2% | 5 L | 5 L | 0 L | 84.6 mm |
+| P132 | P122 | 034 / 14.2% | 9 L | 6.444 L | 2.556 L | 93.9 mm |
+| P133 | P113 | 109 / 5.1% | 0.075 L | 0.075 L | 0 L | 7.5 mm |
+
+建模时读取目标锚点的世界竖直方向，沿原始网格边从注水点向低处寻找洼地。算法沿三角形边检查积水区域是否与路面片的外边界连通，求出首次外排的高程。对水位以下连通的三角形逐个沿岸线裁切，积分坑底与水面间的体积，再由注水量反求水位。超出容量的水计入溢出量。P133 的两个坑分别覆盖 25,847 和 22,558 个重建网格顶点，较大坑保持干燥；较小坑有 3,879 个病害顶点被水覆盖，岸线另延伸至周边 109 个路面顶点。[五态几何与观测覆盖核验](../validation/standing-water.json)
+
+干坑来自照片和深度观测。P122 用两幅 RGB 和一段已知路面长度恢复尺度，输入图像所对应的深度留作复核，两帧内的光轴深度绝对误差中位数分别为 20.6 和 18.1 毫米。P113 在未参与拟合的全景帧上，该值为 2.7 毫米。湿态的容量与水深是基于重建曲面的计算值。坑底材质与三角形在所有干湿 GLB 间完全相同；水面外观使用深度衰减后的实拍颜色和低粗糙度材质。原始资料拍摄的是干坑，湿态外观尚无对应实拍核验。
+
+五个状态均按原尺寸迁入目标路段。两段原始双雷达扫描各 80 帧，共回放 400 个案例帧。P130 在 109 前视第 29 帧占 1,612 个水面像素，相对同机位干坑，入水区域的光轴距离缩短中位数为 98.5 毫米。相同原始激光束中有 239 束从坑底改为先交水面，沿射线距离缩短中位数为 97.8 毫米。这里统计的是理想几何交点。真实水体的镜面反射、透射和激光丢点仍缺少湿态观测。[相机与雷达干湿对照](../validation/standing-water-observations.json) · [原生场景重载与扫描核验](../validation/standing-water-transfer.json)
+
+从项目根目录执行下面的命令。样例用已重建的干坑和目标道路的放置记录，支持为其他已导出的实拍高度场指定注水量、坑内注水点和场景竖轴。更换道路坡度时重新求解水面。输入多洼地在鞍点发生跃变、目标水量无法形成单个稳定连通水面时，构建会给出诊断。当前模型输出静止水面和累计溢出量。
+
+```bash
+work/envs/assets/bin/python gen2hole/examples/standing-water/check_solver.py
+python gen2hole/fill_pits.py --survey gen2hole/examples/standing-water/survey.json --out work/standing-water-demo --preview
+work/envs/streetcrafter/bin/python scripts/check-standing-water.py --run work/standing-water-demo --out work/standing-water-demo/evaluation/measurements.json
+```
+
+配方中的 `seed_uv` 使用正射图归一化坐标，原点在左上。`anchors` 可以指定相对于 `--runs` 的场景记录，也可以给出本地坐标中的单位竖轴，例如水平地面用 `[0,0,1]`。完整的几何检查从湿态 GLB 全部水面三角形的中心向干坑 GLB 发射射线，重新积分水量，同时检查岸线的每个边界顶点是否贴合原坑底。另起新目录完整重建五态，逐件比对了 GLB、Gaussian PLY、水深场和逐点材料标签，四类文件的 SHA-256 均可复现。[输入配方](../gen2hole/examples/standing-water/survey.json) · [独立检查代码](../scripts/check-standing-water.py)

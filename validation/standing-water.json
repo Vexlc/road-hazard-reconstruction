@@ -1,0 +1,173 @@
+{
+  "P129": {
+    "glb_sha256": "284d026faae77554a987919c842090acf0cc12dd7c22435fc3a782b8a0b87129",
+    "dry_source": "P122",
+    "dry_glb_sha256": "dd0d2916b0ed32e3fc076f00b25e1c6e401d9f23a4daf09d2f73641873bc15a3",
+    "dry_source_depth_checks": {
+      "20250305_134208": {
+        "role": "depth withheld from RGB fit",
+        "valid_pit_depth_pixels": 69546,
+        "depth_abs_median_mm": 20.62994384765625
+      },
+      "20250305_134212": {
+        "role": "depth withheld from RGB fit",
+        "valid_pit_depth_pixels": 102522,
+        "depth_abs_median_mm": 18.093555450439453
+      }
+    },
+    "wet_vertices_by_pit_largest_first": [
+      11969
+    ],
+    "dry_part_geometry_uv_texture_identical": true,
+    "surface_triangles": 25882,
+    "shoreline_vertices": 1914,
+    "max_shoreline_gap_m": 3.993511200062194e-07,
+    "max_surface_level_error_m": 4.0624774932940255e-09,
+    "integrated_liters": 1.0000002149694658,
+    "input_liters": 1,
+    "retained_liters": 1.0000000000039522,
+    "spilled_liters": 0.0,
+    "capacity_liters": 12.821285574379699,
+    "depth_max_mm": 35.06102348201792,
+    "surface_area_m2": 0.07487756505935236,
+    "wet_vertices_direct_source_support_fraction": 0.6146712340212215,
+    "site": "109",
+    "road_grade_percent": 5.070560381453629
+  },
+  "P130": {
+    "glb_sha256": "f613c99d1d2373e1a62a13db67979fbe0f458f040d585e8d3b55aa4b0828ccc2",
+    "dry_source": "P122",
+    "dry_glb_sha256": "dd0d2916b0ed32e3fc076f00b25e1c6e401d9f23a4daf09d2f73641873bc15a3",
+    "dry_source_depth_checks": {
+      "20250305_134208": {
+        "role": "depth withheld from RGB fit",
+        "valid_pit_depth_pixels": 69546,
+        "depth_abs_median_mm": 20.62994384765625
+      },
+      "20250305_134212": {
+        "role": "depth withheld from RGB fit",
+        "valid_pit_depth_pixels": 102522,
+        "depth_abs_median_mm": 18.093555450439453
+      }
+    },
+    "wet_vertices_by_pit_largest_first": [
+      28401
+    ],
+    "dry_part_geometry_uv_texture_identical": true,
+    "surface_triangles": 59456,
+    "shoreline_vertices": 2628,
+    "max_shoreline_gap_m": 4.2915344239391473e-07,
+    "max_surface_level_error_m": 2.541768087671592e-09,
+    "integrated_liters": 5.0000005159950565,
+    "input_liters": 5,
+    "retained_liters": 5.000000000013593,
+    "spilled_liters": 0.0,
+    "capacity_liters": 12.821285574379699,
+    "depth_max_mm": 66.61674448020423,
+    "surface_area_m2": 0.17738582062852606,
+    "wet_vertices_direct_source_support_fraction": 0.7316995880426745,
+    "site": "109",
+    "road_grade_percent": 5.070560381453629
+  },
+  "P131": {
+    "glb_sha256": "4bb540c4047bd438fa7cca0ac226cd8e0c6c4f16189530a399293f3a070eff9d",
+    "dry_source": "P122",
+    "dry_glb_sha256": "dd0d2916b0ed32e3fc076f00b25e1c6e401d9f23a4daf09d2f73641873bc15a3",
+    "dry_source_depth_checks": {
+      "20250305_134208": {
+        "role": "depth withheld from RGB fit",
+        "valid_pit_depth_pixels": 69546,
+        "depth_abs_median_mm": 20.62994384765625
+      },
+      "20250305_134212": {
+        "role": "depth withheld from RGB fit",
+        "valid_pit_depth_pixels": 102522,
+        "depth_abs_median_mm": 18.093555450439453
+      }
+    },
+    "wet_vertices_by_pit_largest_first": [
+      22454
+    ],
+    "dry_part_geometry_uv_texture_identical": true,
+    "surface_triangles": 46940,
+    "shoreline_vertices": 2012,
+    "max_shoreline_gap_m": 4.5895576478161004e-07,
+    "max_surface_level_error_m": 3.91889035111781e-09,
+    "integrated_liters": 5.000000344717925,
+    "input_liters": 5,
+    "retained_liters": 5.000000000000642,
+    "spilled_liters": 0.0,
+    "capacity_liters": 6.444077894336213,
+    "depth_max_mm": 84.60851749130983,
+    "surface_area_m2": 0.14148959038633324,
+    "wet_vertices_direct_source_support_fraction": 0.7126569876191324,
+    "site": "034",
+    "road_grade_percent": 14.243124426532228
+  },
+  "P132": {
+    "glb_sha256": "ab8f28f5a13f0a34e22e7cb8199436f2bc7f1a133b320a7a4203fbec91b6828f",
+    "dry_source": "P122",
+    "dry_glb_sha256": "dd0d2916b0ed32e3fc076f00b25e1c6e401d9f23a4daf09d2f73641873bc15a3",
+    "dry_source_depth_checks": {
+      "20250305_134208": {
+        "role": "depth withheld from RGB fit",
+        "valid_pit_depth_pixels": 69546,
+        "depth_abs_median_mm": 20.62994384765625
+      },
+      "20250305_134212": {
+        "role": "depth withheld from RGB fit",
+        "valid_pit_depth_pixels": 102522,
+        "depth_abs_median_mm": 18.093555450439453
+      }
+    },
+    "wet_vertices_by_pit_largest_first": [
+      25931
+    ],
+    "dry_part_geometry_uv_texture_identical": true,
+    "surface_triangles": 54184,
+    "shoreline_vertices": 2274,
+    "max_shoreline_gap_m": 4.887580871693054e-07,
+    "max_surface_level_error_m": 4.1507007969565635e-09,
+    "integrated_liters": 6.4440782689647795,
+    "input_liters": 9,
+    "retained_liters": 6.444077894336213,
+    "spilled_liters": 2.555922105663787,
+    "capacity_liters": 6.444077894336213,
+    "depth_max_mm": 93.93451227502057,
+    "surface_area_m2": 0.16364832844372268,
+    "wet_vertices_direct_source_support_fraction": 0.711272222436466,
+    "site": "034",
+    "road_grade_percent": 14.243124426532228
+  },
+  "P133": {
+    "glb_sha256": "692ac2bf93fe5e7940bdee824d45df1fb4adbf70c9c374bfa1a21289ca1fe02f",
+    "dry_source": "P113",
+    "dry_glb_sha256": "6a1722010412816451b652505f4cc9d7a4203448b46fb12021e112eb15175c52",
+    "dry_source_depth_checks": {
+      "20250305_135425": {
+        "role": "heldout RGB-D frame",
+        "valid_pit_depth_pixels": 54839,
+        "depth_abs_median_mm": 2.714395523071289
+      }
+    },
+    "wet_vertices_by_pit_largest_first": [
+      0,
+      3879
+    ],
+    "dry_part_geometry_uv_texture_identical": true,
+    "surface_triangles": 8762,
+    "shoreline_vertices": 784,
+    "max_shoreline_gap_m": 4.172325135387567e-08,
+    "max_surface_level_error_m": 1.2230835007981389e-09,
+    "integrated_liters": 0.07500021783078188,
+    "input_liters": 0.075,
+    "retained_liters": 0.07499999999979265,
+    "spilled_liters": 0.0,
+    "capacity_liters": 0.11082817862957713,
+    "depth_max_mm": 7.486689702944188,
+    "surface_area_m2": 0.024922592254653656,
+    "wet_vertices_direct_source_support_fraction": 1.0,
+    "site": "109",
+    "road_grade_percent": 5.070560381453629
+  }
+}

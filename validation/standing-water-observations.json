@@ -1,0 +1,232 @@
+{
+  "P131": {
+    "paired_dry_beams": 559,
+    "median_beam_advance_mm": 85.77537536621094,
+    "case": "034_131",
+    "site": "034",
+    "dry_source": "P122",
+    "camera": {
+      "front_camera": {
+        "frame": 30,
+        "crop_xyxy": [
+          993,
+          916,
+          1269,
+          1080
+        ],
+        "water_pixels": 3095,
+        "dry_case": "034_122",
+        "dry_photo": "P122_front_after.webp",
+        "paired_depth_pixels": 3095,
+        "median_optical_advance_mm": 80.1081657409668
+      },
+      "back_camera": {
+        "frame": 47,
+        "crop_xyxy": [
+          715,
+          682,
+          991,
+          846
+        ],
+        "water_pixels": 185,
+        "dry_case": "034_122",
+        "dry_photo": "P122_back_after.webp",
+        "paired_depth_pixels": 185,
+        "median_optical_advance_mm": 101.7756462097168
+      }
+    },
+    "water_up_world": [
+      0.0,
+      3.469446951953614e-18,
+      1.0000000000000002
+    ],
+    "water_beam_intersections": [
+      78,
+      481
+    ]
+  },
+  "P132": {
+    "paired_dry_beams": 655,
+    "median_beam_advance_mm": 105.95130920410156,
+    "case": "034_132",
+    "site": "034",
+    "dry_source": "P122",
+    "camera": {
+      "front_camera": {
+        "frame": 30,
+        "crop_xyxy": [
+          993,
+          916,
+          1269,
+          1080
+        ],
+        "water_pixels": 3562,
+        "dry_case": "034_122",
+        "dry_photo": "P122_front_after.webp",
+        "paired_depth_pixels": 3539,
+        "median_optical_advance_mm": 93.72806549072266
+      },
+      "back_camera": {
+        "frame": 47,
+        "crop_xyxy": [
+          715,
+          682,
+          991,
+          846
+        ],
+        "water_pixels": 269,
+        "dry_case": "034_122",
+        "dry_photo": "P122_back_after.webp",
+        "paired_depth_pixels": 268,
+        "median_optical_advance_mm": 125.86188316345215
+      }
+    },
+    "water_up_world": [
+      0.0,
+      3.469446951953614e-18,
+      1.0000000000000002
+    ],
+    "water_beam_intersections": [
+      92,
+      567
+    ]
+  },
+  "P129": {
+    "paired_dry_beams": 39,
+    "median_beam_advance_mm": 30.983924865722656,
+    "case": "109_129",
+    "site": "109",
+    "dry_source": "P122",
+    "camera": {
+      "front_camera": {
+        "frame": 29,
+        "crop_xyxy": [
+          980,
+          868,
+          1256,
+          1032
+        ],
+        "water_pixels": 563,
+        "dry_case": "109_122",
+        "dry_photo": "P122_front_after.webp",
+        "paired_depth_pixels": 563,
+        "median_optical_advance_mm": 37.90473937988281
+      },
+      "back_camera": {
+        "frame": 40,
+        "crop_xyxy": [
+          702,
+          699,
+          978,
+          863
+        ],
+        "water_pixels": 109,
+        "dry_case": "109_122",
+        "dry_photo": "P122_back_after.webp",
+        "paired_depth_pixels": 109,
+        "median_optical_advance_mm": 18.271923065185547
+      }
+    },
+    "water_up_world": [
+      3.903127820947816e-18,
+      -1.734723475976807e-18,
+      0.9999999999999999
+    ],
+    "water_beam_intersections": [
+      0,
+      39
+    ]
+  },
+  "P130": {
+    "paired_dry_beams": 239,
+    "median_beam_advance_mm": 97.82600402832031,
+    "case": "109_130",
+    "site": "109",
+    "dry_source": "P122",
+    "camera": {
+      "front_camera": {
+        "frame": 29,
+        "crop_xyxy": [
+          980,
+          868,
+          1256,
+          1032
+        ],
+        "water_pixels": 1612,
+        "dry_case": "109_122",
+        "dry_photo": "P122_front_after.webp",
+        "paired_depth_pixels": 1612,
+        "median_optical_advance_mm": 98.51312637329102
+      },
+      "back_camera": {
+        "frame": 40,
+        "crop_xyxy": [
+          702,
+          699,
+          978,
+          863
+        ],
+        "water_pixels": 609,
+        "dry_case": "109_122",
+        "dry_photo": "P122_back_after.webp",
+        "paired_depth_pixels": 609,
+        "median_optical_advance_mm": 62.38269805908203
+      }
+    },
+    "water_up_world": [
+      3.903127820947816e-18,
+      -1.734723475976807e-18,
+      0.9999999999999999
+    ],
+    "water_beam_intersections": [
+      49,
+      190
+    ]
+  },
+  "P133": {
+    "paired_dry_beams": 38,
+    "median_beam_advance_mm": 14.496326446533203,
+    "case": "109_133",
+    "site": "109",
+    "dry_source": "P113",
+    "camera": {
+      "front_camera": {
+        "frame": 29,
+        "crop_xyxy": [
+          934,
+          839,
+          1301,
+          1057
+        ],
+        "water_pixels": 188,
+        "dry_case": "109_113",
+        "dry_photo": "P113_front_after.webp",
+        "paired_depth_pixels": 188,
+        "median_optical_advance_mm": 10.985374450683594
+      },
+      "back_camera": {
+        "frame": 40,
+        "crop_xyxy": [
+          701,
+          693,
+          977,
+          857
+        ],
+        "water_pixels": 120,
+        "dry_case": "109_113",
+        "dry_photo": "P113_back_after.webp",
+        "paired_depth_pixels": 118,
+        "median_optical_advance_mm": 10.493278503417969
+      }
+    },
+    "water_up_world": [
+      3.903127820947816e-18,
+      -1.734723475976807e-18,
+      0.9999999999999999
+    ],
+    "water_beam_intersections": [
+      7,
+      31
+    ]
+  }
+}

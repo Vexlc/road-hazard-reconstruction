@@ -30,9 +30,9 @@ function showScene() {
   el("roadCompare").hidden = !view?.note;
   el("roadCompare").textContent = view?.note || "";
   if (view) {
-    photo("road", before ? view.before : view.after, view.label + (before ? " 迁入前" : " 迁入后"));
+    photo("road", before ? view.before : view.after, view.label + (before ? (view.beforeLabel || " 迁入前") : (view.afterLabel || " 迁入后")));
     el("before").hidden = !view.before;
-    el("before").textContent = before ? "查看迁入后" : "查看迁入前";
+    el("before").textContent = before ? (view.afterLabel || "查看迁入后") : (view.beforeLabel || "查看迁入前");
   }
   el("downloads").replaceChildren();
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
@@ -131,6 +131,13 @@ function inspect(id) {
   el("sourceType").textContent = selected.category+" / "+selected.method;
   el("note").textContent = selected.note || notes[selected.method];
   el("metrics").replaceChildren();
+  if (selected.water) {
+    const w=selected.water;
+    metric("加入 / 留存（升）",w.input_liters.toFixed(3)+" / "+w.retained_liters.toFixed(3));
+    metric("溢出（升）",w.spilled_liters.toFixed(3));
+    metric("最大水深（毫米）",(1000*w.max_water_depth_m).toFixed(1));
+    metric("水面面积（平方米）",w.surface_area_m2.toFixed(3));
+  }
   if (selected.captureViews) {
     metric(selected.lidDesigned ? "实测外圈 / 设计盖面直径（米）" : "实测外圈 / 盖面直径（米）",selected.frameDiameter.toFixed(3)+" / "+selected.lidDiameter.toFixed(3));
   }

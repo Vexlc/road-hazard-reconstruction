@@ -1,0 +1,17 @@
+{
+  "beds": {
+    "P122": {"run":"rgb-parallax","seed_uv":[0.4091,0.2656]},
+    "P113": {"run":"multiview-pit-survey","seed_uv":[0.4212,0.4212]}
+  },
+  "anchors": {
+    "109":"rgb-parallax/series/scenes/109_122/scene.json",
+    "034":"rgb-parallax/series/scenes/034_122/scene.json"
+  },
+  "states": [
+    {"id":"P129","bed":"P122","site":"109","input_liters":1,"label":"粗骨料深坑 · 一升积水"},
+    {"id":"P130","bed":"P122","site":"109","input_liters":5,"label":"粗骨料深坑 · 五升积水"},
+    {"id":"P131","bed":"P122","site":"034","input_liters":5,"label":"粗骨料深坑 · 陡坡五升积水"},
+    {"id":"P132","bed":"P122","site":"034","input_liters":9,"label":"粗骨料深坑 · 满溢"},
+    {"id":"P133","bed":"P113","site":"109","input_liters":0.075,"label":"相邻碎石浅坑 · 单侧积水"}
+  ]
+}

@@ -1,95 +1,104 @@
 {
-  "records": 1375,
+  "records": 1380,
   "with_removable_cover": 193,
-  "valid_top_samples": 12746431,
+  "with_water_surface": 5,
+  "valid_top_samples": 12932676,
   "checked_meshes": {
+    "P130": {
+      "independent_rays": 192,
+      "max_error_m": 2.4836730957031317e-05
+    },
     "A127": {
       "independent_rays": 192,
-      "max_error_m": 2.4203777313269725e-05
+      "max_error_m": 2.3420715332012065e-05
+    },
+    "P133": {
+      "independent_rays": 192,
+      "max_error_m": 2.49260425567617e-05
     },
     "P121": {
       "independent_rays": 96,
-      "max_error_m": 2.4204587936400845e-05
+      "max_error_m": 2.3701143264772545e-05
     },
     "A128": {
       "independent_rays": 192,
-      "max_error_m": 2.4259376525836984e-05
+      "max_error_m": 2.4804782867371422e-05
     },
     "A117": {
       "independent_rays": 192,
-      "max_error_m": 1.8833637237536394e-05
+      "max_error_m": 1.8893241882311784e-05
     },
     "P124": {
       "independent_rays": 96,
-      "max_error_m": 2.348289489745997e-05
+      "max_error_m": 2.4077987670900747e-05
     },
     "A119": {
       "independent_rays": 192,
-      "max_error_m": 2.390928268436454e-05
+      "max_error_m": 2.4940586089927663e-05
     },
     "P122": {
       "independent_rays": 96,
-      "max_error_m": 2.4946403503409154e-05
+      "max_error_m": 2.377882003784526e-05
     },
     "P112": {
       "independent_rays": 96,
-      "max_error_m": 2.475042343139805e-05
+      "max_error_m": 2.481002807617344e-05
     },
     "A116": {
       "independent_rays": 192,
-      "max_error_m": 2.409009933479478e-05
+      "max_error_m": 2.4849891662515056e-05
     },
     "M118": {
       "independent_rays": 96,
-      "max_error_m": 2.070398330689116e-05
+      "max_error_m": 1.682138442993253e-05
     },
     "A104": {
       "independent_rays": 192,
-      "max_error_m": 2.5001811981284483e-05
+      "max_error_m": 2.499818801871001e-05
     },
     "A108": {
       "independent_rays": 192,
-      "max_error_m": 2.5012493133524938e-05
+      "max_error_m": 2.5008487701372317e-05
     },
     "A93": {
       "independent_rays": 192,
-      "max_error_m": 2.472400665287644e-05
+      "max_error_m": 2.496967315668286e-05
     },
     "P90": {
       "independent_rays": 96,
-      "max_error_m": 2.459602355957269e-05
+      "max_error_m": 2.4067687988280073e-05
     },
     "P102": {
       "independent_rays": 96,
-      "max_error_m": 1.3478851318356883e-05
+      "max_error_m": 2.104043960571289e-05
     },
     "rgbd_pothole_20250227_135438": {
       "independent_rays": 96,
-      "max_error_m": 2.4939250946043323e-05
+      "max_error_m": 2.4887847900390003e-05
     },
     "model_raised_rectangular_removed_side_chip_seal": {
       "independent_rays": 192,
-      "max_error_m": 2.492542266852027e-05
+      "max_error_m": 2.4783325195176786e-05
     },
     "stereo_pothole_fan_1_03": {
       "independent_rays": 96,
-      "max_error_m": 2.4853181838993543e-05
+      "max_error_m": 2.4961614608763616e-05
     },
     "M13": {
       "independent_rays": 96,
-      "max_error_m": 2.5001621246412142e-05
+      "max_error_m": 2.4402332305828445e-05
     },
     "P13": {
       "independent_rays": 96,
-      "max_error_m": 2.4852848052980825e-05
+      "max_error_m": 2.4787998199465866e-05
     },
     "A105": {
       "independent_rays": 192,
-      "max_error_m": 2.492198944092916e-05
+      "max_error_m": 2.5069713592618115e-05
     },
     "A107": {
       "independent_rays": 192,
-      "max_error_m": 2.4879789352394432e-05
+      "max_error_m": 2.4923086166361852e-05
     },
     "A115": {
       "independent_rays": 192,
@@ -97,59 +106,71 @@
     },
     "A118": {
       "independent_rays": 192,
-      "max_error_m": 2.4394226074253567e-05
+      "max_error_m": 2.3104572296150927e-05
     },
     "A120": {
       "independent_rays": 192,
-      "max_error_m": 2.2363758087173835e-05
+      "max_error_m": 2.4472808837883164e-05
     },
     "A125": {
       "independent_rays": 192,
-      "max_error_m": 2.2684764862002105e-05
+      "max_error_m": 2.19468116759991e-05
     },
     "A126": {
       "independent_rays": 192,
-      "max_error_m": 2.436876296996182e-05
+      "max_error_m": 2.3097419738715708e-05
     },
     "A95": {
       "independent_rays": 192,
-      "max_error_m": 2.480745315547317e-05
+      "max_error_m": 2.484321594242722e-05
     },
     "M104": {
       "independent_rays": 96,
-      "max_error_m": 2.4223327636629932e-05
+      "max_error_m": 2.4461746215731495e-05
     },
     "M107": {
       "independent_rays": 96,
-      "max_error_m": 2.486348152158646e-05
+      "max_error_m": 2.4966955184946293e-05
     },
     "M115": {
       "independent_rays": 96,
-      "max_error_m": 1.8833637237536394e-05
+      "max_error_m": 1.8893241882311784e-05
     },
     "M91": {
       "independent_rays": 96,
-      "max_error_m": 2.447729110732766e-05
+      "max_error_m": 2.492666244502395e-05
     },
     "P110": {
       "independent_rays": 96,
-      "max_error_m": 2.496070861816857e-05
+      "max_error_m": 2.4972915649408567e-05
     },
     "P111": {
       "independent_rays": 96,
-      "max_error_m": 2.4617099761963662e-05
+      "max_error_m": 2.4880695343017234e-05
     },
     "P113": {
       "independent_rays": 96,
-      "max_error_m": 2.479295730590733e-05
+      "max_error_m": 2.4831295013426347e-05
     },
     "P114": {
       "independent_rays": 96,
-      "max_error_m": 2.4788570404055132e-05
+      "max_error_m": 2.4993801116944547e-05
     },
     "P123": {
       "independent_rays": 96,
-      "max_error_m": 2.331442832946562e-05
+      "max_error_m": 2.303490638733141e-05
+    },
+    "P129": {
+      "independent_rays": 192,
+      "max_error_m": 2.479286193847463e-05
+    },
+    "P131": {
+      "independent_rays": 192,
+      "max_error_m": 2.4669933319093618e-05
+    },
+    "P132": {
+      "independent_rays": 192,
+      "max_error_m": 2.476139068603722e-05
     }
   },
   "pitch_m_min_median_max": [

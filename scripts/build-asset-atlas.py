@@ -580,6 +580,61 @@ def parallax_potholes(shared):
     return rows
 
 
+def standing_water(rows):
+    run = ROOT / 'runs/standing-water'
+    if not run.is_dir():
+        return {}
+    bundle = run / 'series'
+    report = read(run / 'evaluation/measurements.json')
+    observations = read(run / 'evaluation/water-observations.json')
+    beds = read(bundle/'calibration/survey.json')['beds']
+    scenes = pit_road_views(run)
+    output, groups = {}, {}
+    for meta in read(bundle / 'assets/asset_manifest.json'):
+        key, bed, water = meta['id'], meta['dry_source_id'], meta['water']
+        dry = rows[bed]
+        evidence = run / 'evaluation' / key
+        row = entry(meta, bundle/'assets', '实拍坑底＋模拟积水', meta['label'], bundle/'views'/(key+'_inspection.jpg'))
+        obs = observations[key]
+        shots = scenes[key]
+        matched = run/'sensors/matched_camera'/obs['case']
+        for camera in read(matched/'views.json'):
+            if not camera['available']:
+                continue
+            view = obs['camera'][camera['camera']]
+            sensor = '前视' if camera['camera']=='front_camera' else '后视'
+            shots.append(dict(label=f"{water['site']} · {sensor}水面 · 帧 {view['frame']}",
+                              after=link(evidence/(camera['camera']+'.png')), before=link(matched/camera['after_stem']),
+                              note=f"青色为可见水面，共 {view['water_pixels']:,} 像素。可切换同帧迁入画面查看原色。",
+                              beforeLabel='查看原色画面', afterLabel='标出可见水面'))
+            dry_camera = ROOT/'runs'/beds[bed]['run']/'sensors/camera'/view['dry_case']/view['dry_photo']
+            depth = view['median_optical_advance_mm']
+            change = f"有 {view['paired_depth_pixels']:,} 个像素在两态都击中病害，积水使光轴距离缩短的中位数为 {depth:.1f} mm。" if depth is not None else ''
+            shots.append(dict(label=f"{water['site']} · {sensor}干湿对照 · 帧 {view['frame']}",
+                              after=link(matched/camera['after_stem']), before=link(dry_camera),
+                              note='干、湿两态共用原始照片、相机标定和道路锚点。'+change,
+                              beforeLabel='查看同机位干坑', afterLabel='查看同机位积水'))
+        groups.setdefault(bed,[bed]).append(key)
+        preview = link(evidence/'section.png')
+        row.update(water=water, family=bed, dryFamily=bed, dryModel=dry['glb'], dryPreview=dry['preview'],
+                   state=f"{water['site']} · {water['input_liters']:g} L", reference=preview,
+                   sourceViews=[dict(label='水面与坑底剖面',image=preview,note='青线标出计算岸线，剖面沿场景铅直方向标高。'),
+                                dict(label='同机位干坑 GLB',image=dry['preview'],note='原始干坑资产 '+bed),
+                                *dry['sourceViews']], reverse=link(bundle/'views'/(key+'_reverse.jpg')),
+                   depth=meta['depth_p95_m'],depthLabel='原坑 P95 凹深',triangles=sum(meta['geometry_parts'].values()),
+                   scenes=shots,audit=link(run/'evaluation/measurements.json'),scan=link(run/'evaluation/water-observations.json'),
+                   fit=dry['fit'], credit=dry.get('credit'),
+                   note=(f"坑底来自 {bed}（{dry['method']}）。目标路面坡度为 {report[key]['road_grade_percent']:.1f}%，"
+                         f"当前注水点的溢出容量为 {water['capacity_liters']:.3f} 升。水量为指定值，"
+                         "水面按场景重力求解。相机显示模拟外观，回波按理想几何交点计算。"))
+        output[key] = row
+    for bed, keys in groups.items():
+        rows[bed].update(states=keys,state='干坑 · '+bed,dryFamily=bed)
+        for key in keys[1:]:
+            output[key]['states'] = keys
+    return output
+
+
 def main():
     rows = {}
     shared = shared_profile_modes()
@@ -587,6 +642,10 @@ def main():
         if group.keys() & rows.keys():
             raise ValueError("Asset ID collision")
         rows.update(group)
+    wet = standing_water(rows)
+    if wet.keys() & rows.keys():
+        raise ValueError("Water state ID collision")
+    rows.update(wet)
     for row in rows.values():
         relief = ATLAS / "relief" / (row["id"] + ".js")
         if relief.is_file():
@@ -598,7 +657,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["A127","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["P130","A127","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

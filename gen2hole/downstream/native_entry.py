@@ -54,6 +54,11 @@ def ply_digest(path):
 
 @torch.no_grad()
 def fit_image_asset(anchor, model):
+    if model.get('water', {}).get('up_local') is not None:
+        up = anchor.basis @ np.array(model['water']['up_local'])
+        if not np.allclose(up, [0, 0, 1], atol=1e-5):
+            raise ValueError('Refill this bed with fill_pits.py using the destination road anchor')
+        anchor.record['water_up_world'] = up.tolist()
     verts,field=rb.read_asset(model)
     local=verts[:,:3]
     with np.load(Path(model['ply']).with_name('splat_material.npz')) as data:

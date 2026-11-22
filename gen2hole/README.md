@@ -13,6 +13,7 @@
 | 理解生图、拟合、分件建模、贴图和高斯采样 | [重建方法与逐阶段输入输出](docs/pipeline.md) |
 | 设计一个新病害并从头重建 | [新资产操作说明](docs/new-assets.md) · [三类设计样例](examples/new-batch/calibration/designs.json) |
 | 从实拍深度、双目点云或程序化配方重建 | [本仓库的五类重建入口](../docs/02-asset-reconstruction.md) |
+| 给重建坑底注水、比较道路坡度与溢出量 | [注水配方](examples/standing-water/survey.json) · [实拍坑底上的积水](../docs/02-asset-reconstruction.md#实拍坑底上的积水) |
 | 查找 11 月 18、19、21 日旧实验的源码、输入和清理记录 | [历史文件去向与核验](../docs/12-integration.md#11-月-22-日清理后的入口) |
 | 浏览 37 个坑洞、36 口缺盖井、36 件异常井盖 | [首批 9 件](published/道路病害图生三维/资产与场景索引.md) · [新增 100 件离线浏览页](published/道路病害图生三维_新增100/资产浏览.html) · [统一编号与文件指纹](catalog/assets.json) |
 | 看同一处病害在相机和雷达中的对应关系 | [离线传感器对照页](published/道路病害_传感器与几何增强/传感器对照.html) · [本次重建的道路视频](runs/demo/series/sensor_views/034_13/front_after.mp4) |

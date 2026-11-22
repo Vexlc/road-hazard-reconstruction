@@ -27,7 +27,7 @@ def cast_grid(scene, xx, yy, start):
 def read_mesh(path,separate):
     full=o3d.t.geometry.RaycastingScene(nthreads=2)
     underlying=o3d.t.geometry.RaycastingScene(nthreads=2) if separate else None
-    bounds=[];saw_lid=False;fixed_parts=0
+    bounds=[];saw_layer=False;fixed_parts=0
     with path.open('rb') as f, mmap.mmap(f.fileno(),0,access=mmap.ACCESS_READ) as blob:
         magic,version,total,js_size,tag=struct.unpack_from('<4sIIII',blob)
         if (magic,version,total,tag)!=(b'glTF',2,len(blob),0x4e4f534a):
@@ -46,23 +46,23 @@ def read_mesh(path,separate):
             node=header['nodes'][idx]
             if set(node)-{'name','mesh','extras'}:raise ValueError('Expected world-aligned atlas GLB '+str(path))
             mesh=header['meshes'][node['mesh']]
-            lid=mesh.get('name','').startswith(('Lid ','Hinge '))
-            saw_lid |= lid
+            layer=mesh.get('name','').startswith(('Lid ','Hinge ')) or mesh.get('name')=='Water surface'
+            saw_layer |= layer
             for primitive in mesh['primitives']:
                 if primitive.get('mode',4)!=4:raise ValueError('Only triangles can be queried')
                 xyz=accessor(primitive['attributes']['POSITION'])
                 faces=accessor(primitive['indices']).reshape(-1,3).astype('uint32')
                 bounds.append((xyz.min(axis=0),xyz.max(axis=0)))
                 pos=o3d.core.Tensor(xyz);tri=o3d.core.Tensor(faces)
-                if underlying is not None and not lid:
+                if underlying is not None and not layer:
                     underlying.add_triangles(pos,tri);fixed_parts+=1
                 else:
                     full.add_triangles(pos,tri)
         digest=hashlib.sha256(blob).hexdigest()
     lo=np.min([b[0] for b in bounds],axis=0);hi=np.max([b[1] for b in bounds],axis=0)
-    if underlying is not None and not saw_lid:
+    if underlying is not None and not saw_layer:
         full,underlying=underlying,None
-    return full,underlying if saw_lid and fixed_parts else None,lo,hi,digest
+    return full,underlying if saw_layer and fixed_parts else None,lo,hi,digest
 
 
 def encode(grid,low,step):
@@ -82,11 +82,11 @@ def build(row,dest,resume):
             with path.open('rb') as stream:
                 sha=hashlib.sha256()
                 for piece in iter(lambda:stream.read(4<<20),b''):sha.update(piece)
-            if name==key and grid.get('glb_sha256')==sha.hexdigest():
+            if name==key and grid.get('glb_sha256')==sha.hexdigest() and (not row.get('water') or 'under' in grid):
                 code=np.frombuffer(base64.b64decode(grid['top'],validate=True),'<u2').reshape(grid['n'],grid['n'])
                 return dict(id=key,samples=int(np.count_nonzero(code)),substrate='under' in grid)
-    full,under,lo,hi,digest=read_mesh(path,row['category'] in ('异常井盖','落座参照') or bool(row.get('throughHoles')))
-    n=193 if row['category']=='裂缝' or row.get('panelSize') else 97
+    full,under,lo,hi,digest=read_mesh(path,row['category'] in ('异常井盖','落座参照') or bool(row.get('throughHoles') or row.get('water')))
+    n=193 if row['category']=='裂缝' or row.get('panelSize') or row.get('water') else 97
     # The grid covers cell centres, avoiding ambiguous triangle intersections on exterior edges.
     xpitch=(hi[0]-lo[0])/n;ypitch=(hi[2]-lo[2])/n
     xs=np.linspace(lo[0]+xpitch/2,hi[0]-xpitch/2,n)
