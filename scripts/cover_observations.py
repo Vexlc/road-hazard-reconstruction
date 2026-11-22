@@ -174,9 +174,9 @@ def matched_camera(ref, alt, folder, dest):
     )
 
 
-def compare_cases(run, site, base, other):
+def compare_cases(run, site, base, other, *, image_suffix='difference', camera_folder='camera'):
     sensors = run / 'sensors'
-    source = sensors / 'camera'
+    source = sensors / camera_folder
     rows = [json.loads((source / case / 'views.json').read_text()) for case in (base, other)]
     reference = {v['camera']: v for v in rows[0] if v['available']}
     camera = {}
@@ -185,7 +185,7 @@ def compare_cases(run, site, base, other):
         ref = reference.get(name)
         if not shot['available'] or not ref or shot['frame'] != ref['frame']:
             continue
-        dest = run / 'evaluation' / shot['asset_id'] / (site + '-' + name + '-difference.png')
+        dest = run / 'evaluation' / shot['asset_id'] / (site + '-' + name + '-' + image_suffix + '.png')
         camera[name] = matched_camera(ref, shot, source, dest)
     amounts = [laser_rows(sensors / 'cases' / (case + '.npz')) for case in (base, other)]
     laser = laser_difference(*amounts)

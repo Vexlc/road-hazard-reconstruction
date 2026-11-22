@@ -33,5 +33,13 @@
     "asset_label": "铺石穿孔圆盖",
     "audit": "validation/cobble-cover.json",
     "note": "落座圆盖的石块、金属环及 16 个孔来自同一份摄影测量彩色图和位移图。平面尺寸按来源公布的 1.25 米图幅换算，一处孔缘跨过遮挡的树枝。起伏幅度、盖厚、井深与其他姿态采用设计值。"
+  },
+  {
+    "run": "runs/split-iron-cover",
+    "method": "实拍摄影测量",
+    "asset_label": "断片铸铁井盖",
+    "audit": "validation/split-iron-cover.json",
+    "note": "完整井盖的纹理、相对起伏及 14 个孔取自摄影测量图。盖径按 0.62 米赋值，断线、井深、盖厚和碎片位置为设计值。不同状态共用井体和原始盖面三角形。",
+    "visibility": "validation/split-iron-visibility.json"
   }
 ]

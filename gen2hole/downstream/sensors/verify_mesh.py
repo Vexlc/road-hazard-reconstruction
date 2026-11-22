@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 
-import bpy
+import bpy  # noqa: F401 -- registers the bundled mathutils module.
 import numpy as np
 import trimesh
 from mathutils.bvhtree import BVHTree
@@ -12,7 +12,8 @@ PART_NAMES={'Road around the aperture':1,'Road adjoining the fracture':1,'Fractu
             'Fracture sidewall in surface coordinates':3,'Water surface':4,'Cast ring and cover seat':5,
             'Inspection shaft':6,'Shaft bottom':7,'Chipped concrete collar':8,'Lid face':9,
             'Lid underside with casting ribs':10,'Lid rolled edge':11,
-            'Lid underside':10,'Lid aperture walls and perimeter':11}
+            'Lid underside':10,'Lid aperture walls and perimeter':11,
+            'Lid fragment face':9,'Lid fragment underside':10,'Lid fragment aperture walls and perimeter':11}
 
 
 def bvh(file):

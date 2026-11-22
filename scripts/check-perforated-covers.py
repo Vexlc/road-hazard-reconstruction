@@ -16,6 +16,7 @@ from cover_observations import compare_cases
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "gen2hole/downstream/sensors"))
 from road_geometry import Surface, glb_triangles, read_json, sha256 as file_hash
+from cover_fragments import check_fragments
 
 
 def require(ok, why):
@@ -313,7 +314,10 @@ def check(run, with_sensors):
         result = dict(
             glb_sha256=checks[key]['sha256']['asset.glb'], ply_sha256=checks[key]['sha256']['asset.ply']
         )
-        if lids:
+        if state.get('fragment'):
+            require(lids and not absent and meta['fragment_location'] == state['fragment']['location'],
+                    key + ' missing fractured cover')
+        elif lids:
             solid = topology(lids)
             require(solid['through_holes'] == meta['through_holes'], key + ' topology vs annotations')
             result['solid'] = solid
@@ -371,6 +375,12 @@ def check(run, with_sensors):
                 key + ' missing lid metadata',
             )
         full = Surface(glb)
+        if (dest/'cutaway.json').is_file():
+            inspection=read_json(dest/'cutaway.json')
+            require(inspection['source_glb_sha256']==result['glb_sha256']
+                    and inspection['cutaway_glb_sha256']==file_hash(dest/'cutaway.glb')
+                    and inspection['preserved_parts'], key+' stale inspection copy')
+            result['sectioned_model']=inspection
         result['views'] = [cross_section(full, meta, a, dest) for a in (0, 55)]
         results[key] = result
     if baseline is not None:
@@ -378,6 +388,9 @@ def check(run, with_sensors):
             results[key]['break_comparison'] = broken_web(
                 baseline, lid, meta, meta['break_polygon_uv'], dest
             )
+    if 'fracture_path_uv' in profile:
+        require(baseline_id is not None, 'A fracture comparison needs its intact reference')
+        check_fragments(run, baseline_id, results, topology)
     report['fixed_geometry_sha256_by_part'] = stock
     if with_sensors:
         sensors = run / 'sensors/checks'
@@ -423,12 +436,21 @@ def check(run, with_sensors):
             )
         require(set(a['asset'] for a in placed.values()) == set(results), "Missing transferred state")
         comparisons = {}
+        camera_folder = 'matched_camera' if 'fracture_path_uv' in profile else 'camera'
         for base, base_info in placed.items():
             if base_info['asset'] != baseline_id:
                 continue
             for case, other in placed.items():
                 if case != base and other['site'] == base_info['site']:
-                    comparisons[case] = compare_cases(run, other['site'], base, case)
+                    comparisons[case] = compare_cases(run, other['site'], base, case, camera_folder=camera_folder)
+        if 'fracture_path_uv' in profile:
+            lost = {s['id'] for s in spec['states'] if s.get('fragment', {}).get('location') == 'missing'}
+            relocated = {s['id'] for s in spec['states'] if s.get('fragment', {}).get('location') in ('floor','road')}
+            report['relative_to_missing_fragment'] = {
+                case: compare_cases(run, item['site'], base, case, image_suffix='fragment-location', camera_folder=camera_folder)
+                for base, missing in placed.items() if missing['asset'] in lost
+                for case, item in placed.items() if item['site'] == missing['site'] and item['asset'] in relocated
+            }
         report.update(
             placements=placed,
             relative_to_seated=comparisons,

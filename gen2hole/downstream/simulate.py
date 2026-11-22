@@ -44,6 +44,13 @@ def main():
             run(compute, "prepare_scans.py", *common, "--raw", raw, "--cache", cache, "--site", site)
         run(compute, "build_returns.py", *common, "--cache", cache, *span)
         run(compute, "render_pairs.py", *common, "--raw", raw, "--proc", processed, *span)
+        surveys = [root / e / 'calibration/survey.json' for e in editions]
+        for survey in surveys:
+            if survey.is_file():
+                spec = json.loads(survey.read_text())
+                if isinstance(spec, dict) and any('fragment' in s for s in spec.get('states', [])):
+                    run(compute, "render_pairs.py", *common, "--raw", raw, "--proc", processed, *span, "--matched-family")
+                    break
         run(compute, "verify_scans.py", *common, "--raw", raw)
         run(cfg["mesh_python"], "verify_mesh.py", *common)
         run(compute, "verify_views.py", *common, "--raw", raw)

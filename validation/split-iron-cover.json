@@ -1,0 +1,1135 @@
+{
+  "family": "split-iron-cover",
+  "source": "https://ambientcg.com/a/ManholeCover009",
+  "states": {
+    "A125": {
+      "glb_sha256": "7f3bf278defd8cbbeaa6839aba2cb95fba67a5ad90f7671b3e4cf1beec51a543",
+      "ply_sha256": "6773f488c98ab05082663069cc5c016068fe465102d7878898af44f5f60a8df7",
+      "solid": {
+        "through_holes": 14,
+        "euler_characteristic": -26,
+        "connected_solids": 1,
+        "closed_oriented_mesh": true,
+        "metal_volume_m3": 0.008687017028841802
+      },
+      "source_footprint": {
+        "source_holes": 14,
+        "opening_iou": 0.9495932184104227,
+        "minimum_opening_recall": 0.9328358208955224,
+        "tested_panel_pixels": 454233,
+        "source_open_pixels": 17552,
+        "model_open_pixels": 16716,
+        "design_break_included": false
+      },
+      "rigid_pose_max_residual_m": 0.0,
+      "sectioned_model": {
+        "source_glb_sha256": "7f3bf278defd8cbbeaa6839aba2cb95fba67a5ad90f7671b3e4cf1beec51a543",
+        "cutaway_glb_sha256": "25cf5e18085e599c01b40a190b50865f9b59fdf09b64cc28054ed076683d9c24",
+        "preserved_parts": {
+          "Lid aperture walls and perimeter": {
+            "triangles": 1038,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid underside": {
+            "triangles": 18809,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid face": {
+            "triangles": 18809,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Shaft bottom": {
+            "triangles": 256,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          }
+        },
+        "visible_halfspace": "y >= -0.012 m for the wall, seat and pavement",
+        "shaft_floor_intact": true
+      },
+      "views": [
+        {
+          "angle_from_normal_deg": 0,
+          "rays": 42617,
+          "visible_well_fraction": 0.039608606893962506,
+          "face_fraction": 0.9603913931060375,
+          "aperture_or_outer_edge_fraction": 0.0
+        },
+        {
+          "angle_from_normal_deg": 55,
+          "rays": 42617,
+          "visible_well_fraction": 0.0011732407255320646,
+          "face_fraction": 0.9634418189924209,
+          "aperture_or_outer_edge_fraction": 0.03538494028204707
+        }
+      ],
+      "section": {
+        "section_y_m": 0.010726,
+        "map_extent_xy_m": [
+          -0.41540000000000005,
+          0.687343316078186,
+          -0.3968,
+          0.3968
+        ],
+        "fragment_visible_surface_pixels": 0,
+        "ray_grid_size": [
+          720,
+          518
+        ]
+      }
+    },
+    "A126": {
+      "glb_sha256": "684c4d36798e94344232e80d50d7e0493327e6b06a722825c8969132a840114a",
+      "ply_sha256": "1bfe062089f2f8bdb5830f2079b7fb8b943f6d930f9a8c85445779de22431405",
+      "sectioned_model": {
+        "source_glb_sha256": "684c4d36798e94344232e80d50d7e0493327e6b06a722825c8969132a840114a",
+        "cutaway_glb_sha256": "0fc6c83b0dc3de3f16782d73f05ab4379f4900cf88848a9f989dcf4a1f7ed270",
+        "preserved_parts": {
+          "Lid aperture walls and perimeter": {
+            "triangles": 786,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid underside": {
+            "triangles": 13863,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid face": {
+            "triangles": 13863,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Shaft bottom": {
+            "triangles": 256,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          }
+        },
+        "visible_halfspace": "y >= -0.012 m for the wall, seat and pavement",
+        "shaft_floor_intact": true
+      },
+      "views": [
+        {
+          "angle_from_normal_deg": 0,
+          "rays": 42617,
+          "visible_well_fraction": 0.2840650444658235,
+          "face_fraction": 0.7159349555341765,
+          "aperture_or_outer_edge_fraction": 0.0
+        },
+        {
+          "angle_from_normal_deg": 55,
+          "rays": 42617,
+          "visible_well_fraction": 0.20304103996057912,
+          "face_fraction": 0.7172020555177512,
+          "aperture_or_outer_edge_fraction": 0.07105145833822184
+        }
+      ],
+      "section": {
+        "section_y_m": 0.010726,
+        "map_extent_xy_m": [
+          -0.41540000000000005,
+          0.687343316078186,
+          -0.3968,
+          0.3968
+        ],
+        "fragment_visible_surface_pixels": 0,
+        "ray_grid_size": [
+          720,
+          518
+        ]
+      },
+      "fracture": {
+        "retained_solid": {
+          "through_holes": 10,
+          "euler_characteristic": -18,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.006443612027428107
+        },
+        "retained_face_triangles": 13863,
+        "max_retained_vertex_error_m": 0.0,
+        "max_retained_uv_error": 0.0,
+        "retained_bearing": {
+          "contacts_within_0_2mm": 618,
+          "minimum_signed_gap_m": -1.2293457984924316e-07,
+          "uniform_density_centre_of_mass_m": [
+            -0.06697618838811682,
+            0.0027265824206723424,
+            -0.012979088901171559
+          ],
+          "centre_inside_support_margin_m": 0.20419189259351808
+        },
+        "fragment_location": "missing",
+        "retained_metal_volume_fraction": 0.7417519737827891,
+        "source_top_triangles": 18809
+      }
+    },
+    "A127": {
+      "glb_sha256": "eddfffccabee5846ea1345a779cb0ac36e71fdd2466d141e0b8f772b666c54cb",
+      "ply_sha256": "33878e8429d3970ea54079d6000ebee91b125d0f9bf5125c5fce3984ebb3cc5b",
+      "sectioned_model": {
+        "source_glb_sha256": "eddfffccabee5846ea1345a779cb0ac36e71fdd2466d141e0b8f772b666c54cb",
+        "cutaway_glb_sha256": "b8860ab57f732c073ca1c263af694c804852e81fea07de00448cdcd9fd5e3557",
+        "preserved_parts": {
+          "Lid fragment aperture walls and perimeter": {
+            "triangles": 340,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid fragment underside": {
+            "triangles": 4946,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid fragment face": {
+            "triangles": 4946,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid aperture walls and perimeter": {
+            "triangles": 786,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid underside": {
+            "triangles": 13863,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid face": {
+            "triangles": 13863,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Shaft bottom": {
+            "triangles": 256,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          }
+        },
+        "visible_halfspace": "y >= -0.012 m for the wall, seat and pavement",
+        "shaft_floor_intact": true
+      },
+      "views": [
+        {
+          "angle_from_normal_deg": 0,
+          "rays": 42617,
+          "visible_well_fraction": 0.16357322195368046,
+          "face_fraction": 0.8364267780463196,
+          "aperture_or_outer_edge_fraction": 0.0
+        },
+        {
+          "angle_from_normal_deg": 55,
+          "rays": 42617,
+          "visible_well_fraction": 0.20304103996057912,
+          "face_fraction": 0.7172020555177512,
+          "aperture_or_outer_edge_fraction": 0.07105145833822184
+        }
+      ],
+      "section": {
+        "section_y_m": 0.010726,
+        "map_extent_xy_m": [
+          -0.41540000000000005,
+          0.687343316078186,
+          -0.3968,
+          0.3968
+        ],
+        "fragment_visible_surface_pixels": 14298,
+        "ray_grid_size": [
+          720,
+          518
+        ]
+      },
+      "fracture": {
+        "retained_solid": {
+          "through_holes": 10,
+          "euler_characteristic": -18,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.006443612027428107
+        },
+        "retained_face_triangles": 13863,
+        "max_retained_vertex_error_m": 0.0,
+        "max_retained_uv_error": 0.0,
+        "retained_bearing": {
+          "contacts_within_0_2mm": 618,
+          "minimum_signed_gap_m": -1.2293457984924316e-07,
+          "uniform_density_centre_of_mass_m": [
+            -0.06697618838811682,
+            0.0027265824206723424,
+            -0.012979088901171559
+          ],
+          "centre_inside_support_margin_m": 0.20419189259351808
+        },
+        "fragment_location": "floor",
+        "fragment_solid": {
+          "through_holes": 2,
+          "euler_characteristic": -2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.002243406590547931
+        },
+        "fragment_face_triangles": 4946,
+        "max_fragment_vertex_error_m": 3.167460389527359e-08,
+        "max_fragment_uv_error": 0.0,
+        "volume_sum_error_m3": 1.5891342356605387e-09,
+        "fragment_bearing": {
+          "contacts_within_0_2mm": 2557,
+          "minimum_signed_gap_m": -1.7881393432617188e-07,
+          "uniform_density_centre_of_mass_m": [
+            0.10243198756475258,
+            -0.006987825030226104,
+            -0.5252687004491695
+          ],
+          "centre_inside_support_margin_m": 0.11458532955850279
+        },
+        "fragment_bottom_z_m": -0.5400000214576721,
+        "retained_metal_volume_fraction": 0.7417519737827891,
+        "source_top_triangles": 18809
+      }
+    },
+    "A128": {
+      "glb_sha256": "cec6a92f7d03dc4e6029a633ba027ff0147a6d85b25ebcf4c646770cadf049c5",
+      "ply_sha256": "d79a54d7848f7f2e5d504e736e0363b98671488d24e7122a6fdf27b36f34ef05",
+      "sectioned_model": {
+        "source_glb_sha256": "cec6a92f7d03dc4e6029a633ba027ff0147a6d85b25ebcf4c646770cadf049c5",
+        "cutaway_glb_sha256": "39ecb264d7de4acb4e57bab4638c08813a396a6305c3446a77b29536a2632eb8",
+        "preserved_parts": {
+          "Lid fragment aperture walls and perimeter": {
+            "triangles": 340,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid fragment underside": {
+            "triangles": 4946,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid fragment face": {
+            "triangles": 4946,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid aperture walls and perimeter": {
+            "triangles": 786,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid underside": {
+            "triangles": 13863,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Lid face": {
+            "triangles": 13863,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          },
+          "Shaft bottom": {
+            "triangles": 256,
+            "max_coordinate_error_m": 0.0,
+            "max_uv_error": 0.0
+          }
+        },
+        "visible_halfspace": "y >= -0.012 m for the wall, seat and pavement",
+        "shaft_floor_intact": true
+      },
+      "views": [
+        {
+          "angle_from_normal_deg": 0,
+          "rays": 42617,
+          "visible_well_fraction": 0.2840650444658235,
+          "face_fraction": 0.7159349555341765,
+          "aperture_or_outer_edge_fraction": 0.0
+        },
+        {
+          "angle_from_normal_deg": 55,
+          "rays": 42617,
+          "visible_well_fraction": 0.20304103996057912,
+          "face_fraction": 0.7172020555177512,
+          "aperture_or_outer_edge_fraction": 0.07105145833822184
+        }
+      ],
+      "section": {
+        "section_y_m": 0.010726,
+        "map_extent_xy_m": [
+          -0.41540000000000005,
+          0.687343316078186,
+          -0.3968,
+          0.3968
+        ],
+        "fragment_visible_surface_pixels": 32372,
+        "ray_grid_size": [
+          720,
+          518
+        ]
+      },
+      "fracture": {
+        "retained_solid": {
+          "through_holes": 10,
+          "euler_characteristic": -18,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.006443612027428107
+        },
+        "retained_face_triangles": 13863,
+        "max_retained_vertex_error_m": 0.0,
+        "max_retained_uv_error": 0.0,
+        "retained_bearing": {
+          "contacts_within_0_2mm": 618,
+          "minimum_signed_gap_m": -1.2293457984924316e-07,
+          "uniform_density_centre_of_mass_m": [
+            -0.06697618838811682,
+            0.0027265824206723424,
+            -0.012979088901171559
+          ],
+          "centre_inside_support_margin_m": 0.20419189259351808
+        },
+        "fragment_location": "road",
+        "fragment_solid": {
+          "through_holes": 2,
+          "euler_characteristic": -2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.0022434050034169798
+        },
+        "fragment_face_triangles": 4946,
+        "max_fragment_vertex_error_m": 3.0357869381163285e-08,
+        "max_fragment_uv_error": 0.0,
+        "volume_sum_error_m3": 2.0032846909101565e-12,
+        "fragment_bearing": {
+          "contacts_within_0_2mm": 2557,
+          "minimum_signed_gap_m": -1.200735511019957e-07,
+          "uniform_density_centre_of_mass_m": [
+            0.4891333987916149,
+            -0.009227897791335734,
+            0.01473130983466464
+          ],
+          "centre_inside_support_margin_m": 0.11458532224224577
+        },
+        "fragment_bottom_z_m": -8.642673243741683e-10,
+        "retained_metal_volume_fraction": 0.7417519737827891,
+        "source_top_triangles": 18809
+      }
+    }
+  },
+  "fixed_geometry_sha256_by_part": {
+    "1": "2d74e7ccc4d94d7ee6b462142a8da870b279ceb6a0e86de45dbe9bc6c649e918",
+    "5": "35294d7989b4830d08f6fd5c22343ebaa00aa6a3d31331ba01916f42e62e97f0",
+    "6": "0f859e6ea11f1aca8f3f90547e926106a0e7e53574414339647d7aeda4380e14",
+    "7": "43c8019e4d35fca77122208398eba9f1fff0d0632f5cfe27a1cafb80c6f8f566"
+  },
+  "relative_to_missing_fragment": {
+    "109_127": {
+      "reference_case": "109_126",
+      "alternative_case": "109_127",
+      "cameras": {
+        "front_camera": {
+          "frame": 38,
+          "crop_intersection_xyxy": [
+            903,
+            827,
+            1297,
+            1061
+          ],
+          "visible_asset_union_pixels": 3127,
+          "part_changed_pixels": 0,
+          "shared_surface_depth_change_over_1cm_pixels": 0,
+          "changed_pixels": 0,
+          "image": "109-front_camera-fragment-location.png"
+        },
+        "back_camera": {
+          "frame": 51,
+          "crop_intersection_xyxy": [
+            724,
+            650,
+            1000,
+            814
+          ],
+          "visible_asset_union_pixels": 757,
+          "part_changed_pixels": 0,
+          "shared_surface_depth_change_over_1cm_pixels": 0,
+          "changed_pixels": 0,
+          "image": "109-back_camera-fragment-location.png"
+        }
+      },
+      "lidar": {
+        "compared_edited_rows": 933,
+        "range_change_over_1cm": 0,
+        "by_sensor_over_1cm": [
+          0,
+          0
+        ],
+        "frames_over_1cm": 0,
+        "max_range_change_m": 0.0,
+        "hit_status_changes": 0,
+        "annotated_part_changes": 0,
+        "strongest_paired_hits": []
+      }
+    },
+    "109_128": {
+      "reference_case": "109_126",
+      "alternative_case": "109_128",
+      "cameras": {
+        "front_camera": {
+          "frame": 38,
+          "crop_intersection_xyxy": [
+            903,
+            827,
+            1297,
+            1061
+          ],
+          "visible_asset_union_pixels": 4027,
+          "part_changed_pixels": 900,
+          "shared_surface_depth_change_over_1cm_pixels": 0,
+          "changed_pixels": 900,
+          "image": "109-front_camera-fragment-location.png"
+        },
+        "back_camera": {
+          "frame": 51,
+          "crop_intersection_xyxy": [
+            724,
+            650,
+            1000,
+            814
+          ],
+          "visible_asset_union_pixels": 966,
+          "part_changed_pixels": 209,
+          "shared_surface_depth_change_over_1cm_pixels": 0,
+          "changed_pixels": 209,
+          "image": "109-back_camera-fragment-location.png"
+        }
+      },
+      "lidar": {
+        "compared_edited_rows": 1249,
+        "range_change_over_1cm": 315,
+        "by_sensor_over_1cm": [
+          53,
+          262
+        ],
+        "frames_over_1cm": 36,
+        "max_range_change_m": 1.3166465759277344,
+        "hit_status_changes": 0,
+        "annotated_part_changes": 316,
+        "strongest_paired_hits": []
+      }
+    }
+  },
+  "placements": {
+    "034_125": {
+      "asset": "A125",
+      "site": "034",
+      "frames": 80,
+      "returns_by_lidar": [
+        252,
+        1228
+      ],
+      "part_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        398,
+        0,
+        0,
+        0,
+        1072,
+        0,
+        10,
+        0
+      ]
+    },
+    "034_127": {
+      "asset": "A127",
+      "site": "034",
+      "frames": 80,
+      "returns_by_lidar": [
+        252,
+        1202
+      ],
+      "part_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        559,
+        51,
+        0,
+        0,
+        798,
+        0,
+        46,
+        0
+      ]
+    },
+    "109_125": {
+      "asset": "A125",
+      "site": "109",
+      "frames": 80,
+      "returns_by_lidar": [
+        159,
+        781
+      ],
+      "part_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        268,
+        0,
+        0,
+        0,
+        669,
+        0,
+        3,
+        0
+      ]
+    },
+    "109_126": {
+      "asset": "A126",
+      "site": "109",
+      "frames": 80,
+      "returns_by_lidar": [
+        159,
+        774
+      ],
+      "part_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        366,
+        46,
+        0,
+        0,
+        496,
+        0,
+        25,
+        0
+      ]
+    },
+    "109_127": {
+      "asset": "A127",
+      "site": "109",
+      "frames": 80,
+      "returns_by_lidar": [
+        159,
+        774
+      ],
+      "part_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        366,
+        46,
+        0,
+        0,
+        496,
+        0,
+        25,
+        0
+      ]
+    },
+    "109_128": {
+      "asset": "A128",
+      "site": "109",
+      "frames": 80,
+      "returns_by_lidar": [
+        212,
+        1037
+      ],
+      "part_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        366,
+        46,
+        0,
+        0,
+        689,
+        0,
+        148,
+        0
+      ]
+    }
+  },
+  "relative_to_seated": {
+    "034_127": {
+      "reference_case": "034_125",
+      "alternative_case": "034_127",
+      "cameras": {
+        "front_camera": {
+          "frame": 44,
+          "crop_intersection_xyxy": [
+            889,
+            834,
+            1303,
+            1080
+          ],
+          "visible_asset_union_pixels": 3568,
+          "part_changed_pixels": 672,
+          "shared_surface_depth_change_over_1cm_pixels": 653,
+          "changed_pixels": 672,
+          "image": "034-front_camera-difference.png"
+        },
+        "back_camera": {
+          "frame": 64,
+          "crop_intersection_xyxy": [
+            714,
+            693,
+            990,
+            857
+          ],
+          "visible_asset_union_pixels": 1234,
+          "part_changed_pixels": 230,
+          "shared_surface_depth_change_over_1cm_pixels": 223,
+          "changed_pixels": 230,
+          "image": "034-back_camera-difference.png"
+        }
+      },
+      "lidar": {
+        "compared_edited_rows": 1480,
+        "range_change_over_1cm": 271,
+        "by_sensor_over_1cm": [
+          51,
+          220
+        ],
+        "frames_over_1cm": 28,
+        "max_range_change_m": 0.5005097389221191,
+        "hit_status_changes": 0,
+        "annotated_part_changes": 277,
+        "strongest_paired_hits": [
+          {
+            "frame": 35,
+            "row": 151512,
+            "sensor": 1,
+            "delta_m": 0.47579383850097656,
+            "reference_world": [
+              -51.74772344888,
+              -8.112590268948807,
+              -7.313807927321027
+            ],
+            "alternative_world": [
+              -52.207193462718074,
+              -8.16442395317899,
+              -7.425963521654001
+            ],
+            "reference_part": 9,
+            "alternative_part": 6
+          },
+          {
+            "frame": 32,
+            "row": 148523,
+            "sensor": 1,
+            "delta_m": 0.4597511291503906,
+            "reference_world": [
+              -51.76180886129447,
+              -8.109093101408225,
+              -7.315489465741308
+            ],
+            "alternative_world": [
+              -52.20693289554695,
+              -8.162158425134765,
+              -7.4175632389420905
+            ],
+            "reference_part": 9,
+            "alternative_part": 5
+          }
+        ]
+      }
+    },
+    "109_126": {
+      "reference_case": "109_125",
+      "alternative_case": "109_126",
+      "cameras": {
+        "front_camera": {
+          "frame": 38,
+          "crop_intersection_xyxy": [
+            903,
+            827,
+            1297,
+            1061
+          ],
+          "visible_asset_union_pixels": 3127,
+          "part_changed_pixels": 591,
+          "shared_surface_depth_change_over_1cm_pixels": 574,
+          "changed_pixels": 592,
+          "image": "109-front_camera-difference.png"
+        },
+        "back_camera": {
+          "frame": 51,
+          "crop_intersection_xyxy": [
+            724,
+            650,
+            1000,
+            814
+          ],
+          "visible_asset_union_pixels": 757,
+          "part_changed_pixels": 137,
+          "shared_surface_depth_change_over_1cm_pixels": 134,
+          "changed_pixels": 138,
+          "image": "109-back_camera-difference.png"
+        }
+      },
+      "lidar": {
+        "compared_edited_rows": 940,
+        "range_change_over_1cm": 166,
+        "by_sensor_over_1cm": [
+          23,
+          143
+        ],
+        "frames_over_1cm": 21,
+        "max_range_change_m": 0.8320198059082031,
+        "hit_status_changes": 0,
+        "annotated_part_changes": 173,
+        "strongest_paired_hits": [
+          {
+            "frame": 37,
+            "row": 143257,
+            "sensor": 1,
+            "delta_m": 0.49446678161621094,
+            "reference_world": [
+              -49.70779310907187,
+              50.588645564514835,
+              -0.6463934418943794
+            ],
+            "alternative_world": [
+              -50.030720193427236,
+              50.95299674843334,
+              -0.7327888494397119
+            ],
+            "reference_part": 9,
+            "alternative_part": 6
+          },
+          {
+            "frame": 37,
+            "row": 143254,
+            "sensor": 1,
+            "delta_m": 0.4692058563232422,
+            "reference_world": [
+              -49.69667484985957,
+              50.60912342430117,
+              -0.6483505489570713
+            ],
+            "alternative_world": [
+              -50.00241329578221,
+              50.955465928538224,
+              -0.7303544339190243
+            ],
+            "reference_part": 9,
+            "alternative_part": 6
+          }
+        ]
+      }
+    },
+    "109_127": {
+      "reference_case": "109_125",
+      "alternative_case": "109_127",
+      "cameras": {
+        "front_camera": {
+          "frame": 38,
+          "crop_intersection_xyxy": [
+            903,
+            827,
+            1297,
+            1061
+          ],
+          "visible_asset_union_pixels": 3127,
+          "part_changed_pixels": 591,
+          "shared_surface_depth_change_over_1cm_pixels": 574,
+          "changed_pixels": 592,
+          "image": "109-front_camera-difference.png"
+        },
+        "back_camera": {
+          "frame": 51,
+          "crop_intersection_xyxy": [
+            724,
+            650,
+            1000,
+            814
+          ],
+          "visible_asset_union_pixels": 757,
+          "part_changed_pixels": 137,
+          "shared_surface_depth_change_over_1cm_pixels": 134,
+          "changed_pixels": 138,
+          "image": "109-back_camera-difference.png"
+        }
+      },
+      "lidar": {
+        "compared_edited_rows": 940,
+        "range_change_over_1cm": 166,
+        "by_sensor_over_1cm": [
+          23,
+          143
+        ],
+        "frames_over_1cm": 21,
+        "max_range_change_m": 0.8320198059082031,
+        "hit_status_changes": 0,
+        "annotated_part_changes": 173,
+        "strongest_paired_hits": [
+          {
+            "frame": 37,
+            "row": 143257,
+            "sensor": 1,
+            "delta_m": 0.49446678161621094,
+            "reference_world": [
+              -49.70779310907187,
+              50.588645564514835,
+              -0.6463934418943794
+            ],
+            "alternative_world": [
+              -50.030720193427236,
+              50.95299674843334,
+              -0.7327888494397119
+            ],
+            "reference_part": 9,
+            "alternative_part": 6
+          },
+          {
+            "frame": 37,
+            "row": 143254,
+            "sensor": 1,
+            "delta_m": 0.4692058563232422,
+            "reference_world": [
+              -49.69667484985957,
+              50.60912342430117,
+              -0.6483505489570713
+            ],
+            "alternative_world": [
+              -50.00241329578221,
+              50.955465928538224,
+              -0.7303544339190243
+            ],
+            "reference_part": 9,
+            "alternative_part": 6
+          }
+        ]
+      }
+    },
+    "109_128": {
+      "reference_case": "109_125",
+      "alternative_case": "109_128",
+      "cameras": {
+        "front_camera": {
+          "frame": 38,
+          "crop_intersection_xyxy": [
+            903,
+            827,
+            1297,
+            1061
+          ],
+          "visible_asset_union_pixels": 4027,
+          "part_changed_pixels": 1491,
+          "shared_surface_depth_change_over_1cm_pixels": 574,
+          "changed_pixels": 1492,
+          "image": "109-front_camera-difference.png"
+        },
+        "back_camera": {
+          "frame": 51,
+          "crop_intersection_xyxy": [
+            724,
+            650,
+            1000,
+            814
+          ],
+          "visible_asset_union_pixels": 966,
+          "part_changed_pixels": 346,
+          "shared_surface_depth_change_over_1cm_pixels": 134,
+          "changed_pixels": 347,
+          "image": "109-back_camera-difference.png"
+        }
+      },
+      "lidar": {
+        "compared_edited_rows": 1256,
+        "range_change_over_1cm": 481,
+        "by_sensor_over_1cm": [
+          76,
+          405
+        ],
+        "frames_over_1cm": 36,
+        "max_range_change_m": 1.3166465759277344,
+        "hit_status_changes": 0,
+        "annotated_part_changes": 489,
+        "strongest_paired_hits": [
+          {
+            "frame": 37,
+            "row": 143257,
+            "sensor": 1,
+            "delta_m": 0.49446678161621094,
+            "reference_world": [
+              -49.70779310907187,
+              50.588645564514835,
+              -0.6463934418943794
+            ],
+            "alternative_world": [
+              -50.030720193427236,
+              50.95299674843334,
+              -0.7327888494397119
+            ],
+            "reference_part": 9,
+            "alternative_part": 6
+          },
+          {
+            "frame": 37,
+            "row": 143254,
+            "sensor": 1,
+            "delta_m": 0.4692058563232422,
+            "reference_world": [
+              -49.69667484985957,
+              50.60912342430117,
+              -0.6483505489570713
+            ],
+            "alternative_world": [
+              -50.00241329578221,
+              50.955465928538224,
+              -0.7303544339190243
+            ],
+            "reference_part": 9,
+            "alternative_part": 6
+          }
+        ]
+      }
+    }
+  },
+  "same_road_anchors": {
+    "034": [
+      [
+        -51.96134900158761,
+        -8.31948610646006,
+        -7.344700583391781
+      ],
+      [
+        [
+          -0.15659741157373058,
+          -0.9782202118456376,
+          -0.13624414785627867
+        ],
+        [
+          0.9875363365235256,
+          -0.15728546656393816,
+          -0.005767673140735865
+        ],
+        [
+          -0.015787169920593928,
+          -0.13544924933140154,
+          0.9906585012613872
+        ]
+      ],
+      45,
+      "05"
+    ],
+    "109": [
+      [
+        -49.989610018762974,
+        50.660452713771626,
+        -0.6436153210217977
+      ],
+      [
+        [
+          0.7026154117756905,
+          -0.7111908713336491,
+          0.023219122872363822
+        ],
+        [
+          0.7104238242983579,
+          0.7029614713711317,
+          0.033810643842280004
+        ],
+        [
+          -0.04036797003284676,
+          -0.007260461377806601,
+          0.9991585022888053
+        ]
+      ],
+      39,
+      "05"
+    ]
+  },
+  "scan_audit": {
+    "counts": {
+      "case_frames": 480,
+      "raw_scans": 160,
+      "original_returns": 27654141,
+      "replacements": 6989,
+      "no_return": 0
+    },
+    "sites": 2,
+    "cases": 6,
+    "asset_count": 4,
+    "placements": 6,
+    "placements_with_both_lidars": 6,
+    "placements_without_returns": 0,
+    "case_frames_with_edits": 243,
+    "case_frames_without_edits": 237,
+    "by_category": {
+      "raised": 6989
+    },
+    "by_sensor": {
+      "0": 1193,
+      "1": 5796
+    },
+    "by_surface": {
+      "cast ring and seat": 2323,
+      "lid face": 4220,
+      "lid edge": 257,
+      "shaft wall": 189
+    },
+    "synthetic_local_height_range_m": {
+      "raised": [
+        -0.09276390075683594,
+        0.030881285667419434
+      ]
+    },
+    "occluded_nonroad_source_returns": 0,
+    "max_lateral_ray_error_m": 4.494870041582227e-07,
+    "max_source_range_error_m": 1.8305826472442277e-06,
+    "max_replay_range_error_m": 3.938755163801488e-06,
+    "max_local_height_error_m": 9.06826697066876e-16
+  },
+  "camera_crops": {
+    "front_camera": 6,
+    "back_camera": 6
+  },
+  "independent_geometry": {
+    "reader": "trimesh GLB scene graph",
+    "intersector": "Blender mathutils.bvhtree",
+    "assets": 4,
+    "real_beam_samples": 55,
+    "vertical_grid_samples": 116,
+    "range_p99_m": 4.42487537551273e-06,
+    "range_max_m": 6.467772809770622e-06,
+    "grid_height_p99_m": 5.275011062622067e-07,
+    "grid_height_max_m": 5.364418029785156e-07,
+    "nearest_part_disagreements": [],
+    "per_asset": {
+      "A125": {
+        "samples": 15,
+        "max_range_error_m": 6.467772809770622e-06
+      },
+      "A126": {
+        "samples": 10,
+        "max_range_error_m": 2.2439323217327e-06
+      },
+      "A127": {
+        "samples": 20,
+        "max_range_error_m": 2.2439323217327e-06
+      },
+      "A128": {
+        "samples": 10,
+        "max_range_error_m": 1.7625336905524591e-06
+      }
+    }
+  }
+}

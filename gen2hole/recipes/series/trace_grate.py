@@ -159,13 +159,30 @@ def trace(spec):
             raise ValueError("Displacement must be an aligned single-channel integer image")
         values = cv2.warpPerspective(source.astype("f4"), mapping, (n, n))
         np.save(calibration / "relief.npy", values)
-    road = image_patch(photo, profile["road_patch_xyxy"])
+    if 'pavement' in profile:
+        road = np.array(Image.open(refs / profile['pavement']).convert('RGB'))
+    else:
+        road = image_patch(photo, profile["road_patch_xyxy"])
     Image.fromarray(road).save(refs / "pavement.jpg", quality=95)
     Image.fromarray(image_patch(photo, profile["edge_patch_xyxy"])).save(refs / "iron.png")
     band = float(profile["frame_band_m"])
     offsets = np.array([s.get("offset_m", [0, 0]) for s in spec["states"]])
     span = float(np.max(size + 2 * np.maximum(band, abs(offsets).max(axis=0))) + 0.32)
     y, x = np.mgrid[:n, :n] / (n - 1)
+    for s in spec['states']:
+        fragment = s.get('fragment', {})
+        if fragment.get('location') == 'road':
+            path = np.asarray(profile['fracture_path_uv'])
+            metal = (mask == 0) & (x >= np.interp(y, path[:, 1], path[:, 0]))
+            if profile['shape'] == 'round':
+                metal &= (x - .5)**2 + (y - .5)**2 <= .25
+            if not metal.any():
+                raise ValueError('No fragment under the marked path')
+            xy = np.column_stack([x[metal] - .5, .5 - y[metal]]) * size
+            angle = np.deg2rad(fragment.get('yaw_deg', 0))
+            rot = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
+            moved = (xy - xy.mean(0)) @ rot.T + fragment['center_xy_m']
+            span = max(span, 2 * (np.abs(moved).max() + 0.10))
     uv = np.stack([0.5 + (x - 0.5) * span / size[0], 0.5 + (y - 0.5) * span / size[1]], -1).astype("f4")
     coords = cv2.perspectiveTransform(uv, cv2.getPerspectiveTransform(unit, quad))
     density = (cv2.contourArea(quad) / np.prod(size)) ** 0.5
@@ -184,6 +201,11 @@ def trace(spec):
         )
         radius = np.max(abs(uv - 0.5), axis=2)
         fade = np.clip(margin / 20, 0, 1) * np.clip((1.01 - radius) / 0.13, 0, 1)
+        if 'pavement' in profile:
+            pos = (uv - 0.5) * size
+            rim = pos / (size / 2 + band)
+            radius = np.linalg.norm(rim, axis=2) if profile['shape'] == 'round' else abs(rim).max(2)
+            fade *= np.clip((1.037 - radius) / 0.037, 0, 1)
         canvas = np.uint8(np.rint(src * fade[:, :, None] + canvas * (1 - fade[:, :, None])))
     Image.fromarray(canvas).save(refs / "apron.png")
     (calibration / "grate.json").write_text(

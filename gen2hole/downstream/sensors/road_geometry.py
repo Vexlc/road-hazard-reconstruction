@@ -17,7 +17,8 @@ EXACT_PARTS = {
     'Water surface': 4, 'Cast ring and cover seat': 5, 'Inspection shaft': 6,
     'Shaft bottom': 7, 'Chipped concrete collar': 8, 'Lid face': 9,
     'Lid underside with casting ribs': 10, 'Lid rolled edge': 11,
-    'Lid underside': 10, 'Lid aperture walls and perimeter': 11
+    'Lid underside': 10, 'Lid aperture walls and perimeter': 11,
+    'Lid fragment face': 9, 'Lid fragment underside': 10, 'Lid fragment aperture walls and perimeter': 11
 }
 CLASSES = {'pothole': 1, 'missing': 2, 'raised': 3}
 SITES = ('034', '109', '110')
@@ -78,7 +79,7 @@ def part_id(name):
     return 12 if name.startswith('Hinge ') else EXACT_PARTS[name]
 
 
-def glb_triangles(path):
+def glb_triangles(path, *, names=False, appearance=False):
     """Read the flat, uncompressed indexed meshes exported by the two reconstruction packages."""
     data = Path(path).read_bytes()
     magic, version, total, jsize, tag = struct.unpack_from('<4sIIII', data)
@@ -94,7 +95,7 @@ def glb_triangles(path):
         a = gltf['accessors'][i]
         view = gltf['bufferViews'][a['bufferView']]
         dtype = {5121:'u1', 5123:'<u2', 5125:'<u4', 5126:'<f4'}[a['componentType']]
-        size = {'VEC3': 3, 'SCALAR': 1}[a['type']]
+        size = {'VEC3': 3, 'VEC2': 2, 'SCALAR': 1}[a['type']]
         if view.get('byteStride', np.dtype(dtype).itemsize*size) != np.dtype(dtype).itemsize*size or 'sparse' in a:
             raise ValueError('Unexpected non-packed asset accessor')
         return np.frombuffer(binary, dtype=dtype, offset=view.get('byteOffset',0)+a.get('byteOffset',0),
@@ -110,17 +111,26 @@ def glb_triangles(path):
             p = accessor(primitive['attributes']['POSITION'])
             v = np.stack((p[:,0], -p[:,2], p[:,1]), axis=-1)
             f = accessor(primitive['indices']).reshape(-1, 3).astype(np.uint32)
-            yield part_id(mesh['name']), np.ascontiguousarray(v), f
+            part = (mesh['name'] if names else part_id(mesh['name']), np.ascontiguousarray(v), f)
+            if appearance:
+                uv = accessor(primitive['attributes']['TEXCOORD_0'])
+                material = gltf['materials'][primitive['material']]['pbrMetallicRoughness']
+                source = gltf['textures'][material['baseColorTexture']['index']]['source']
+                view = gltf['bufferViews'][gltf['images'][source]['bufferView']]
+                start = view.get('byteOffset', 0)
+                part += (uv, binary[start:start + view['byteLength']])
+            yield part
 
 
 class Surface:
-    def __init__(self, path, threads=2, exclude=()):
+    def __init__(self, path, threads=2, exclude=(), include_names=None):
         self.scene = o3d.t.geometry.RaycastingScene(nthreads=threads)
         self.threads = threads
         self.parts = []
         lo, hi = [], []
-        for part, v, tri in glb_triangles(path):
-            if part in exclude:
+        for name, v, tri in glb_triangles(path, names=True):
+            part = part_id(name)
+            if part in exclude or (include_names is not None and name not in include_names):
                 continue
             gid = self.scene.add_triangles(o3d.core.Tensor(v), o3d.core.Tensor(tri))
             assert gid == len(self.parts)

@@ -266,3 +266,24 @@ python gen2hole/downstream/place.py --bundle work/rgb-pair-demo/series --site 10
 四件资产按重建尺寸放到 PandaSet 109，方形浅坑和骨料深坑还放到了 034。六个场景重载后逐像素复现迁入画面，在两段各 80 帧的原始扫描上共回放 480 个案例帧。小型剥落坑 P124 只有前视有效，其两部激光雷达分别得到 0 和 5 个模拟回波。其余五次放置均有前后视对照和两部雷达的回波。[道路迁移图版](figures/photo-parallax.jpg) · [分场景记录](../validation/photo-parallax-transfer.json) · [PData 照片来源](https://github.com/ymyurdakul/PData) · [Fan 双目照片来源](https://github.com/ruirangerfan/stereo_pothole_datasets)
 
 从 P110 或 P124 打开第 10、13 帧的「双照片与多帧双目 · 同像素剖面」，可比较同一位置的两个模型。两个机位对两种重建都留出，截线上的高度统一以该帧实测路面为零。第 10 帧有 18,865 个双方均可见的坑内像素，P124 与 P110 的光轴深度绝对误差中位数分别为 4.35 和 1.22 毫米。第 13 帧共有 16,655 个这样的像素，对应误差为 4.23 和 3.29 毫米。P124 在建模时使用预先量好的坑外参考长度，P110 在建模时使用第 09、11、12 帧的双目深度。
+
+## 井盖断片与井内剖视
+
+同一块铸铁圆盖可以保留在座圈上，也可以只留下一部分。A125 使用完整盖板，A126 缺失断片，A127 的断片平放在井底，A128 的断片放在井旁路面。原始摄影测量资料记录了完整盖面。14 个孔由配准的彩色和相对位移图辨认，生成盖面的实心部分、通孔和孔壁。来源未提供绝对尺度，示例将盖径定为 0.62 米、盖厚定为 28 毫米、井深定为 0.54 米。断线、断片方位和不可见的井内结构由设计给定。[原始盖面](https://ambientcg.com/a/ManholeCover009) · [四态对照](figures/fractured-iron-cover.jpg)
+
+在输入的正射照片坐标中，`fracture_path_uv` 为从上向下的一条折线，原点在左上角，纵坐标严格递增，首尾延伸到盖面范围之外。折线右侧是可移走的部分。状态中的 `fragment.location` 可填 `missing`、`floor` 或 `road`。放下碎片时，`center_xy_m` 指定其投影面积中心的本地米制坐标，`yaw_deg` 给出绕竖轴的转角。构建时检查碎片能否放入净井口、井旁碎片是否避开固定座圈。断面两侧保留各自的实体侧壁，导出的 GLB 和 Gaussian PLY 均包含实际留在场景中的部件。[完整输入配置](../gen2hole/examples/perforated-covers/split-iron/survey.json)
+
+完整盖面的 18,809 个三角形中，13,863 个留在座圈上，另 4,946 个组成碎片。把碎片按刚体逆变换放回后，两部分在原盖面上的三角形刚好互补。三角形纹理坐标完全一致。两个碎块的封闭性、接触支承和体积分别从已导出的 GLB 核验。按均匀密度计算的重心投影均在接触点的凸包内。原盖的 14 个贯穿孔中，10 个完整保留在余盖上、2 个完整保留在碎片上，另 2 个被断线穿过，成为断面边缘缺口。图谱和「交互三维」都可切换井体剖视。剖视 GLB 只裁切近侧井壁、座圈和路面。逐件验证了盖板、断片、井底的三角形及纹理坐标均与原资产一致，全部部件的底色贴图逐像素一致。米制截面则直接由原网格三角形与竖直平面求交得到。[实体与支承核验](../validation/split-iron-cover.json)
+
+在 PandaSet 109 和 034 上完成六次原尺寸放置。两段路各 80 帧原始扫描共回放 480 个案例帧。相机在相同世界位置、标定参数、曝光帧和裁切上比较状态。在 109 的前视第 38 帧和后视第 51 帧，断片从缺失改为躺在井底，部件或光轴深度差超过 1 厘米的像素均为零。断片从缺失改放在井旁，两帧分别改变 900 和 209 个像素，整个路段有 315 束模拟回波距离差超过 1 厘米。两段道路的前后相机中，井底碎片的单独投影覆盖过像素，但每帧都被完整井体或余盖遮挡。图谱的道路选项可查看逐帧可见性，以及井旁碎片覆盖最多的原始相机照片。[自驾对照图](figures/fractured-cover-roads.jpg) · [逐帧计数](../validation/split-iron-visibility.json)
+
+原始 4K 颜色、位移和路面贴图存于本机素材库。可用以下第一条命令按 SHA-256 核对原始贴图，重制示例的四张输入图片。其余命令从发布的输入重建资产、剖视模型和几何检查。
+
+```bash
+work/envs/streetcrafter/bin/python gen2hole/examples/perforated-covers/split-iron/prepare.py --inputs work/reconstruction-inputs/pbr --out work/split-source
+python gen2hole/survey.py --survey gen2hole/examples/perforated-covers/split-iron/survey.json --out work/split-cover-demo --preview
+work/envs/assets/bin/python scripts/render-cover-cutaways.py --run work/split-cover-demo
+work/envs/streetcrafter/bin/python scripts/check-perforated-covers.py --run work/split-cover-demo --out work/split-cover-geometry.json
+```
+
+完整的道路示例保存在 `runs/split-iron-cover`。用 `gen2hole/downstream/place.py --front` 将不同状态放入同一路段，再用 `gen2hole/downstream/simulate.py` 回放。断片家族会额外输出同帧前后视相机画面到 `sensors/matched_camera`。给几何检查加上 `--with-sensors` 可复核状态间的相机与回波差异。用 `scripts/check-fragment-visibility.py --run runs/split-iron-cover --out work/split-visibility.json` 可重新统计整个行车序列中碎片的可见像素。

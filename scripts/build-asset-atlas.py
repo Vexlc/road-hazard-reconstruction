@@ -129,7 +129,7 @@ def real_rgb():
     return {name: row}
 
 
-def add_perforated_views(row, run, profile, meta, family_audit, seated):
+def add_perforated_views(row, run, profile, meta, family_audit, seated, visibility):
     key = meta["id"]
     audit = family_audit['states'][key]
     source = run / 'evaluation'
@@ -148,7 +148,9 @@ def add_perforated_views(row, run, profile, meta, family_audit, seated):
     footprint = key if 'solid' in audit else seated
     if footprint:
         note = '黄线为标注，青线为 GLB 孔口投影。'
-        if not meta['through_holes']:
+        if audit.get('fracture'):
+            note += '此处显示断裂前的完整盖板。'
+        elif not meta['through_holes']:
             note += '缺盖状态显示参考盖板。'
         views.append(('逐孔回投', source / footprint / 'openings.jpg', note))
     if seated and 'same_photo_side_check' in family_audit:
@@ -170,6 +172,18 @@ def add_perforated_views(row, run, profile, meta, family_audit, seated):
         views.append(
             ('断口放大', source / key / 'broken-web.png', '左为完整，右为断条。金色为金属，深蓝为贯穿孔')
         )
+    if 'section' in audit:
+        views.extend([
+            ('完整原盖与设计断线', source / seated / 'fracture-line.jpg', '青线为加在完整实拍盖面上的设计断线'),
+            ('俯视与井内截面', source / key / 'fracture-section.png', '金色为余盖，红色为碎片，蓝色为井壁和井底。右图沿左图黄线剖开。'),
+        ])
+        row.update(preview=link(source / key / 'aligned.jpg'), cutaway=link(source / key / 'cutaway.jpg'))
+        if (source / key / 'cutaway.glb').is_file():
+            row['cutawayModel'] = link(source / key / 'cutaway.glb')
+        fracture = audit.get('fracture')
+        if fracture:
+            row.update(retainedVolume=fracture['retained_metal_volume_fraction'],
+                       fragmentBottom=fracture.get('fragment_bottom_z_m'))
     for angle in (0, 55):
         views.append(
             (
@@ -179,6 +193,33 @@ def add_perforated_views(row, run, profile, meta, family_audit, seated):
             )
         )
     row['sourceViews'] = [dict(label=t, image=link(p), note=caption) for t, p, caption in views]
+    if visibility:
+        for case, record in visibility['cases'].items():
+            if record['asset'] != key:
+                continue
+            site = family_audit['placements'][case]['site']
+            cams = record['cameras']
+            frames = cams['front_camera']['frames']
+            caption = (f"共 {frames} 帧。扣除前景后，前视有 {cams['front_camera']['frames_with_unobstructed_pixel']} 帧可见碎片，"
+                       f"后视有 {cams['back_camera']['frames_with_unobstructed_pixel']} 帧可见。灰线为只投碎片，棕线含井体遮挡，绿线含场景前景遮挡。")
+            row['scenes'].append(dict(label=f'{site} · 碎片逐帧可见性', after=link(source / key / (site+'-visibility.png')),note=caption))
+            for cam, counts in cams.items():
+                peak = counts['peak_frame']
+                if peak is not None:
+                    label = '前视' if cam == 'front_camera' else '后视'
+                    row['scenes'].append(dict(label=f'{site} · {label}碎片投影 · 帧 {peak}',
+                        after=link(source / key / (site+'-'+cam+'-visible-piece.png')),
+                        note=f"橙色为该帧可见碎片的 {counts['peak_visible_pixels']:,} 个像素，背景为原始相机照片。"))
+    for case, diff in family_audit.get('relative_to_missing_fragment', {}).items():
+        placed = family_audit['placements'][case]
+        if placed['asset'] != key:
+            continue
+        for camera, shot in diff['cameras'].items():
+            title = '前视' if camera == 'front_camera' else '后视'
+            row['scenes'].append(dict(label=f"{placed['site']} · {title} · 与断片缺失对照 · 帧 {shot['frame']}",
+                after=link(source / key / shot['image']),
+                note=f"左为断片缺失，右为{row['state']}。黄色标出部件或深度改变超过阈值的 {shot['changed_pixels']:,} 个像素"
+                     f"（深度阈值 1 厘米）。同路段有 {diff['lidar']['range_change_over_1cm']:,} 束模拟回波距离差超过 1 厘米。"))
     for case, diff in family_audit.get('relative_to_seated', {}).items():
         placed = family_audit['placements'][case]
         if placed['asset'] != key:
@@ -221,8 +262,9 @@ def photo_families():
         perforated = 'perforations' in spec
         if perforated:
             perforation_audit = read(ROOT / info['audit'])
+            visibility = read(ROOT / info['visibility']) if 'visibility' in info else None
             seated = next((s['id'] for s in spec['states'] if not s.get('absent') and
-                           not s.get('angle_deg', 0) and not any(s.get('offset_m', [])) and not s.get('break_polygon_uv')), None)
+                           not s.get('angle_deg', 0) and not any(s.get('offset_m', [])) and not s.get('break_polygon_uv') and not s.get('fragment')), None)
         scenes = {}
         street_dir=run/'evaluation/streets'
         street_frames=read(street_dir/'frames.json') if (street_dir/'frames.json').exists() else {}
@@ -272,7 +314,7 @@ def photo_families():
                        scenes=driving.get(key,[])+paired.get(key,[])+shots.get(key,[])+scenes.get(key,[]))
             if perforated:
                 row['category'] = info['asset_label']
-                add_perforated_views(row, run, spec['perforations'], meta, perforation_audit, seated)
+                add_perforated_views(row, run, spec['perforations'], meta, perforation_audit, seated, visibility)
             else:
                 row['lidReference']=link(bundle/'references/lid.png')
             if capture_views:
@@ -556,7 +598,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["P121","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["A127","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

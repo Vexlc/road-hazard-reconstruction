@@ -26,7 +26,19 @@ def cross_area(points):
     return np.cross(points, np.roll(points, -1, axis=0)).sum() / 2
 
 
-def cover_mesh(profile, openings):
+def fracture_polygon(profile):
+    """The marked path runs from above the panel to below it in photograph UV."""
+    path = np.array(profile['fracture_path_uv'], dtype=float)
+    if (path.ndim != 2 or path.shape[1] != 2 or len(path) < 2 or not np.isfinite(path).all()
+            or path[0, 1] >= 0 or path[-1, 1] <= 1 or (np.diff(path[:, 1]) <= 0).any()
+            or ((path[:, 0] <= 0) | (path[:, 0] >= 1)).any()):
+        raise ValueError('Trace a top-to-bottom fracture with increasing image y')
+    uv = np.vstack([path, [1.1, path[-1, 1]], [1.1, path[0, 1]]])
+    w, h = profile['size_m']
+    return (uv - 0.5) * [w, -h]
+
+
+def cover_mesh(profile, openings, piece=None):
     size = np.array(profile["size_m"])
     hole_loops = [(np.array(c) - 0.5) * [size[0], -size[1]] for c in openings]
     shape = profile["shape"]
@@ -40,6 +52,9 @@ def cover_mesh(profile, openings):
     else:
         raise ValueError("Supported cover outlines are round and rect")
     loops = [outer, *hole_loops]
+    cut = fracture_polygon(profile) if 'fracture_path_uv' in profile else None
+    if cut is not None:
+        loops.append(cut)
     vertices = np.vstack(loops)
     edges = []
     start = 0
@@ -95,6 +110,14 @@ def cover_mesh(profile, openings):
             raise ValueError("No usable cover relief in the displacement map")
         height = (np.clip((measure - low) / (high - low), 0, 1) - 0.5) * float(profile["relief_span_m"])
     top = np.column_stack([xy, height])
+    projected_area = None
+    if cut is not None:
+        if piece:
+            in_fragment = inside(cut)[keep]
+            tri = tri[in_fragment if piece == 'fragment' else ~in_fragment]
+            if not len(tri):
+                raise ValueError('The marked fracture must divide the metal panel')
+        projected_area = abs(np.cross(xy[tri[:, 1]] - xy[tri[:, 0]], xy[tri[:, 2]] - xy[tri[:, 0]])).sum()/2
     thickness = float(profile["thickness_m"])
     bottom = np.column_stack([xy, np.full(len(xy), -thickness)])
     mesh = Mesh()
@@ -129,11 +152,55 @@ def cover_mesh(profile, openings):
         iron,
     )
     area = sum(abs(cross_area(c)) for c in hole_loops)
-    return mesh, dict(
+    stats = dict(
         through_holes=len(hole_loops),
         open_area_m2=float(area),
         open_face_fraction=float(area / abs(cross_area(outer))),
     )
+    if cut is not None:
+        stats['projected_metal_area_m2'] = float(projected_area)
+    if piece:
+        # For a connected planar triangulation the number of holes is 1 - (V - E + F).
+        stats.update(through_holes=1 - len(np.unique(tri)) + len(counts) - len(tri),
+                     open_area_m2=None, open_face_fraction=None)
+    return mesh, stats
+
+
+def fragment_pose(piece, state, profile):
+    location = state['location']
+    if location == 'missing':
+        return None
+    if location not in ('floor', 'road'):
+        raise ValueError('Place the fragment on the floor or road, or mark it missing')
+    _, v, f, *_ = piece.parts[0]
+    tri = v[f, :2].astype(float)
+    area = abs(np.cross(tri[:, 1] - tri[:, 0], tri[:, 2] - tri[:, 0]))
+    center = np.average(tri.mean(axis=1), weights=area, axis=0)
+    target = np.asarray(state['center_xy_m'], dtype=float)
+    yaw = np.deg2rad(float(state.get('yaw_deg', 0)))
+    if target.shape != (2,) or not np.isfinite(target).all() or not np.isfinite(yaw):
+        raise ValueError('Invalid fragment centre or rotation')
+    ca, sa = np.cos(yaw), np.sin(yaw)
+    pose = np.eye(4)
+    pose[:2, :2] = [[ca, -sa], [sa, ca]]
+    pose[:2, 3] = target - pose[:2, :2] @ center
+    pose[2, 3] = profile['thickness_m']
+    xy = v[:, :2] @ pose[:2, :2].T + pose[:2, 3]
+    radius = np.array(profile['size_m'])/2
+    if location == 'floor':
+        r = xy / (radius - profile['seat_overlap_m'])
+        extent = np.linalg.norm(r, axis=1) if profile['shape'] == 'round' else abs(r).max(axis=1)
+        if extent.max() >= 1:
+            raise ValueError('The fallen fragment intersects the shaft wall')
+        pose[2, 3] -= profile['shaft_depth_m']
+    else:
+        # Certify the whole fragment lies across a supporting tangent of the fixed frame.
+        axis = target / max(np.linalg.norm(target), 1e-12)
+        radius += profile['frame_band_m']
+        limit = np.linalg.norm(axis * radius) if profile['shape'] == 'round' else abs(axis * radius).sum()
+        if min(xy @ axis) <= limit:
+            raise ValueError('Road fragment overlaps the frame or open shaft')
+    return pose
 
 
 def shaft_mesh(profile, trace):
@@ -229,6 +296,9 @@ def build():
     trace = json.loads((cal / "grate.json").read_text())
     profile = dict(profile, size_m=trace["size_m"], thickness_m=trace["thickness_m"])
     intact = cover_mesh(profile, trace["openings_uv"])
+    split = None
+    if 'fracture_path_uv' in profile:
+        split = [cover_mesh(profile, trace['openings_uv'], piece) for piece in ('retained', 'fragment')]
     stock, field = shaft_mesh(profile, trace)
     mask_hash = digest(ROOT / "references" / profile["mask"])
     photo_hash = digest(ROOT / "references/frame.png")
@@ -242,6 +312,17 @@ def build():
         absent = state.get("absent", False)
         angle = float(state.get("angle_deg", 0))
         offset = np.asarray(state.get("offset_m", [0, 0]), dtype=float)
+        fragment = state.get('fragment')
+        fracture = {}
+        if fragment is not None:
+            if split is None or absent or changed or angle or offset.any():
+                raise ValueError('A split cover requires a seated panel and a traced fracture')
+            (lid, stats), (loose, loose_stats) = split
+            transform = fragment_pose(loose, fragment, profile)
+            fracture = dict(fragment_location=fragment['location'],
+                            fragment_transform=transform.tolist() if transform is not None else None,
+                            fragment_metal_area_m2=loose_stats['projected_metal_area_m2'],
+                            original_metal_area_m2=intact[1]['projected_metal_area_m2'])
         if (
             not np.isfinite(angle)
             or not 0 <= angle <= 90
@@ -287,6 +368,25 @@ def build():
                 x, y = np.meshgrid(a, -a)
                 d = np.maximum(abs(x - offset[0]) - size[0] / 2, abs(y - offset[1]) - size[1] / 2)
                 result["alpha"] = np.maximum(field["alpha"], smooth((0.065 - d) / 0.06))
+        if fragment is not None and transform is not None:
+            for name, v, f, uv, material, road in loose.parts:
+                moved = (v @ transform[:3, :3].T + transform[:3, 3]).astype('f4')
+                mesh.parts.append((name.replace('Lid ', 'Lid fragment ', 1), moved, f, uv, material, road))
+            if fragment['location'] == 'road':
+                # Preserve host road around the loose piece. Only its actual footprint needs an opaque apron.
+                from scipy.spatial import ConvexHull
+                from scipy.ndimage import distance_transform_edt
+                from PIL import ImageDraw
+
+                verts = next(v[:, :2] for name, v, *_ in mesh.parts if name == 'Lid fragment face')
+                n = result['height'].shape[0]
+                pos = (verts / [field['width'], -field['length']] + 0.5) * (n - 1)
+                if (pos < 2).any() or (pos > n - 3).any():
+                    raise ValueError('Detached piece extends beyond the road support grid')
+                mask = Image.new('L', (n, n))
+                ImageDraw.Draw(mask).polygon([tuple(v) for v in pos[ConvexHull(pos).vertices]], fill=255)
+                distance = distance_transform_edt(np.asarray(mask) == 0) * field['width'] / (n - 1)
+                result['alpha'] = np.maximum(field['alpha'], smooth((0.045 - distance) / 0.04))
         category = "missing" if absent else "raised"
         if absent:
             stats = dict(
@@ -319,6 +419,7 @@ def build():
             exponent=2.0 if profile["shape"] == "round" else 16.0,
             road_projection=[239.5, 239.5, 479 / field["width"], 479 / field["length"], 768],
             seed=504031,
+            **fracture,
             **stats,
         )
         Image.fromarray(pixels("pavement.jpg")).save(cache / (key + "_ground.jpg"), quality=94)

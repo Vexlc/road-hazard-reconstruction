@@ -11,7 +11,7 @@ from gsplat.rendering import rasterization, spherical_harmonics
 from camera_geometry import choices, crop_box, camera_hits, foreground, outline_points, track
 from prepare_scans import write_npz
 from sunlight import cast_shadows
-from road_geometry import Surface, load_inventory, save_json, sha256
+from road_geometry import Surface, load_inventory, save_json
 
 
 def gather(checkpoint, placements, assets):
@@ -80,19 +80,47 @@ def render(splats,pose,K,rect,src,depth,part,which,protected,models,site,camera)
     return out,alpha,gains,sun
 
 
+def shared_views(scenes, assets, raw):
+    """Choose one camera frame and crop seen by every state at the same road anchor."""
+    families = {}
+    for case, (_, info) in scenes.items():
+        (p,) = info['placements']
+        folder, meta = assets[p['asset_id']]
+        group = (info['site'], p['slot'], meta.get('family',p['asset_id']))
+        families.setdefault(group, []).append((case, p, outline_points(folder)))
+    result = {}
+    for (site, _, _), members in families.items():
+        for name in ('front_camera', 'back_camera'):
+            ranked = [{row[2]: row for row in choices(str(raw),site,p,points,[name])}
+                      for _, p, points in members]
+            common = set.intersection(*(set(options) for options in ranked))
+            if not common:
+                continue
+            frame = max(sorted(common),key=lambda i: min(options[i][0] for options in ranked))
+            boxes = np.array([options[frame][3] for options in ranked])
+            bounds = [*boxes[:,:2].min(0), *boxes[:,2:].max(0)]
+            for case, _, _ in members:
+                result[case,name] = [(0, name, frame, bounds)]
+    return result
+
+
 @torch.no_grad()
-def run(parent,out,raw,proc,first,last):
+def run(parent,out,raw,proc,first,last,matched_family=False):
     assets,scenes,_=load_inventory(parent)
-    dest=out/'camera';dest.mkdir(parents=True,exist_ok=True)
+    scenes = {case: record for case,record in scenes.items() if first <= int(case.split('_')[1]) <= last}
+    if matched_family:
+        scenes = {case: record for case,record in scenes.items() if len(record[1]['placements']) == 1}
+    common = shared_views(scenes,assets,raw) if matched_family else {}
+    dest=out/('matched_camera' if matched_family else 'camera');dest.mkdir(parents=True,exist_ok=True)
     for case,(source,info) in sorted(scenes.items(),key=lambda e:(int(e[0].split('_')[1]),e[0])):
-        if not first<=int(case.split('_')[1])<=last:continue
         folder=dest/case;folder.mkdir(exist_ok=True)
         site=info['site'];splats,models,points=gather(source.parent/'trained_model/iteration_7000.pth',info['placements'],assets)
         rows=[]
         for num,p in enumerate(info['placements'],1):
             aid=p['asset_id']
             for name in ('front_camera','back_camera'):
-                ranked=choices(str(raw),site,p,points[num-1],[name]);best=None
+                ranked = common.get((case,name),[]) if matched_family else choices(str(raw),site,p,points[num-1],[name])
+                best=None
                 times,poses,K,size=track(str(raw),site,name)
                 for _,_,frame,extent in ranked[:6]:
                     rect=crop_box(extent,size);pose=poses[frame]
@@ -143,4 +171,5 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for k in ['parent','out','raw','proc']:p.add_argument('--'+k,type=Path,required=True)
     p.add_argument('--first',type=int,default=1);p.add_argument('--last',type=int,default=37)
-    a=p.parse_args();run(a.parent,a.out,a.raw,a.proc,a.first,a.last)
+    p.add_argument('--matched-family',action='store_true',help='Write front and rear crops at a common frame for the states of each family')
+    a=p.parse_args();run(a.parent,a.out,a.raw,a.proc,a.first,a.last,a.matched_family)

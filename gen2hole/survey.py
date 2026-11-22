@@ -51,10 +51,10 @@ def build_bundle(args,survey,envs,paths,ids,run):
             shutil.copy2(path,refs/(name+'.png'))
     if 'perforations' in survey:
         profile = dict(survey['perforations'])
-        for name in ('mask', 'lining', 'displacement'):
+        for name in ('mask', 'lining', 'displacement', 'pavement'):
             if name in profile:
                 original = args.survey.parent / profile[name]
-                filename = name + original.suffix.lower()
+                filename = ('source_pavement' if name == 'pavement' else name) + original.suffix.lower()
                 shutil.copyfile(original, refs / filename)
                 profile[name] = filename
         survey = dict(survey, perforations=profile)

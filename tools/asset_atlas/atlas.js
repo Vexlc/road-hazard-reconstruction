@@ -3,7 +3,7 @@ const el = id => document.getElementById(id);
 const assets = window.roadAssets || [];
 const byId = new Map(assets.map(row => [row.id,row]));
 const pageSize = 12;
-let page = 0, selected, filtered = [], reverse = false, before = false, spinning = false, lidSource = false;
+let page = 0, selected, filtered = [], reverse = false, before = false, spinning = false, lidSource = false, cutaway = false;
 
 function photo(id, path, title) {
   el(id).src = path;
@@ -48,11 +48,14 @@ function showScene() {
   }
 }
 function showModel() {
-  const label = spinning ? "GLB · 环绕渲染" : selected.reverse ? (reverse ? "GLB · 背向斜视" : "GLB · 正向斜视") : "资产预览";
-  photo("model",spinning ? selected.orbit : reverse ? selected.reverse : selected.preview, selected.label+" "+label);
+  const label = cutaway ? "井壁剖开 · GLB 固定机位" : spinning ? "GLB · 环绕渲染" : selected.reverse ? (reverse ? "GLB · 背向斜视" : "GLB · 正向斜视") : "资产预览";
+  photo("model",cutaway ? selected.cutaway : spinning ? selected.orbit : reverse ? selected.reverse : selected.preview, selected.label+" "+label);
   el("modelLabel").textContent = label;
-  el("rotate").hidden = !selected.reverse || spinning;
-  el("spin").hidden = !selected.orbit;
+  el("rotate").hidden = !selected.reverse || spinning || cutaway;
+  el("spin").hidden = !selected.orbit || cutaway;
+  el("cutaway").hidden = !selected.cutaway;
+  el("cutaway").textContent = cutaway ? "还原井体" : "剖开井体";
+  el("cutaway").setAttribute("aria-pressed",String(cutaway));
   el("spin").textContent = spinning ? "停止环绕" : "360° 环绕";
   el("spin").setAttribute("aria-pressed",String(spinning));
 }
@@ -121,7 +124,7 @@ function showStates() {
 function inspect(id) {
   selected = byId.get(id);
   if (!selected) return;
-  reverse = before = spinning = lidSource = false;
+  reverse = before = spinning = lidSource = cutaway = false;
   el("detail").hidden = false;
   el("assetKey").textContent = selected.id;
   el("assetTitle").textContent = selected.label;
@@ -133,10 +136,16 @@ function inspect(id) {
   }
   if (selected.apronExtent) metric("实测修补圈宽 × 长（米）",selected.apronExtent.map(v=>v.toFixed(3)).join(" × "));
   if (selected.panelSize) {
-    if (selected.throughHoles > 0) {
+    if (selected.throughHoles > 0 || selected.retainedVolume != null) {
       metric("盖板宽 × 长（米）",selected.panelSize.map(v=>v.toFixed(3)).join(" × "));
       metric("盖板厚度（毫米）",(selected.lidThickness*1000).toFixed(1));
-      metric("贯穿孔 / 盖面开孔率",selected.throughHoles+" / "+(100*selected.openFace).toFixed(1)+"%");
+      if (selected.retainedVolume != null) {
+        metric("余盖贯穿孔",String(selected.throughHoles));
+        metric("留在座圈的金属体积",(100*selected.retainedVolume).toFixed(1)+"%");
+        if (selected.fragmentBottom != null) metric("碎片底面相对路面（米）", (Math.round(1000*selected.fragmentBottom)/1000).toFixed(3));
+      } else {
+        metric("贯穿孔 / 盖面开孔率",selected.throughHoles+" / "+(100*selected.openFace).toFixed(1)+"%");
+      }
     }
     metric("净井口俯视可见井壁或井底",(selected.wellVisible*100).toFixed(1)+"%");
   }
@@ -234,6 +243,7 @@ if (assets.length) {
   el("before").onclick=()=>{before=!before; showScene();};
   el("scene").onchange=()=>{before=false; showScene();};
   el("spin").onclick=()=>{spinning=!spinning; showModel();};
+  el("cutaway").onclick=()=>{cutaway=!cutaway; spinning=false; showModel();};
   el("sourceView").onchange=showSource;
   el("pitFrame").onchange=()=>showPitView(true);
   el("pitMode").onchange=()=>showPitView(false);

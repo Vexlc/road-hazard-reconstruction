@@ -2,14 +2,14 @@
 const get = id => document.getElementById(id);
 const viewer = get("mesh");
 const inventory = new Map((window.roadAssets || []).map(item=>[item.id,item]));
-let localUrl;
+let localUrl, selectedRow, sectioned=false;
 function status(message) { get("status").textContent=message; }
 function pose(orbit) {
   viewer.cameraTarget="auto auto auto";
   viewer.cameraOrbit=orbit;
   viewer.fieldOfView="auto";
 }
-get("reset").onclick=()=>pose("20deg 48deg auto");
+get("reset").onclick=()=>pose(sectioned ? "16deg 70deg auto" : "20deg 48deg auto");
 get("top").onclick=()=>pose("0deg 0deg auto");
 get("side").onclick=()=>pose("0deg 86deg auto");
 get("rotateModel").onclick=()=>{
@@ -18,7 +18,7 @@ get("rotateModel").onclick=()=>{
   get("rotateModel").textContent=viewer.autoRotate ? "停止旋转" : "自动旋转";
 };
 viewer.addEventListener("load",()=>{
-  status("拖动旋转，滚轮或双指缩放。");
+  status("拖动旋转，滚轮或双指缩放。"+(sectioned ? "当前剖开近侧井壁，保留盖面、碎片和井底。" : ""));
 });
 viewer.addEventListener("error",()=>{
   status("模型加载失败。可以选择本机 GLB 重新打开。");
@@ -29,14 +29,33 @@ get("file").onchange=()=>{
   if (!file) return;
   if (localUrl) URL.revokeObjectURL(localUrl);
   localUrl=URL.createObjectURL(file);
+  sectioned=false;
+  selectedRow=null;
+  get("sectionModel").hidden=true;
   viewer.src=localUrl;
   get("key").textContent=file.name;
   get("title").textContent="本机三维模型";
   status("正在读取所选模型…");
 };
+function displayModel(row) {
+  get("sectionModel").setAttribute("aria-pressed",String(sectioned));
+  get("sectionModel").textContent=sectioned ? "还原井体" : "剖开井体";
+  viewer.poster=sectioned ? row.cutaway : row.preview;
+  viewer.src=sectioned ? row.cutawayModel : row.glb;
+  pose(sectioned ? "16deg 70deg auto" : "20deg 48deg auto");
+}
+get("sectionModel").onclick=()=>{
+  if (!selectedRow?.cutawayModel) return;
+  sectioned=!sectioned;
+  status("正在读取资产网格与纹理…");
+  displayModel(selectedRow);
+};
 function openSelection() {
   const requested = decodeURIComponent(location.hash.slice(1));
   const row = inventory.get(requested);
+  selectedRow=row;
+  if (!row?.cutawayModel || location.protocol==="file:") sectioned=false;
+  get("sectionModel").hidden=!row?.cutawayModel || location.protocol==="file:";
   get("states").replaceChildren();
   get("states").hidden = !row?.states;
   get("fileLabel").hidden = Boolean(row) && location.protocol!=="file:";
@@ -60,7 +79,7 @@ function openSelection() {
     status(row ? "直接打开网页时，请选择对应的 GLB。使用项目的本地预览服务可直接加载所选资产。" : "选择一个本机 GLB 查看。");
   } else {
     status("正在读取资产网格与纹理…");
-    viewer.src=row.glb;
+    displayModel(row);
   }
 }
 window.addEventListener("hashchange",openSelection);
