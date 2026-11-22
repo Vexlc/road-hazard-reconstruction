@@ -1,0 +1,128 @@
+[
+  {
+    "id": "P121",
+    "source": "PothRGBD",
+    "mode": "rgb_parallax",
+    "label": "四边破损的方形浅坑",
+    "category_label": "方形浅坑",
+    "fit": [
+      "20250305_121446",
+      "20250305_121500"
+    ],
+    "fx_fy_cx_cy": [
+      462,
+      462,
+      319.5,
+      239.5
+    ],
+    "ruler": {
+      "pixels": [
+        [
+          80,
+          65
+        ],
+        [
+          560,
+          65
+        ]
+      ],
+      "length_m": 0.808312,
+      "provenance": "Distance between two intact-road pixels in the first RGB. Reference length from the median optical depth in each 9x9 exterior patch and nominal intrinsics. Only this single distance enters reconstruction."
+    }
+  },
+  {
+    "id": "P122",
+    "source": "PothRGBD",
+    "mode": "rgb_parallax",
+    "label": "粗骨料裸露的深坑",
+    "category_label": "坑洞",
+    "fit": [
+      "20250305_134208",
+      "20250305_134212"
+    ],
+    "fx_fy_cx_cy": [
+      462,
+      462,
+      319.5,
+      239.5
+    ],
+    "ruler": {
+      "pixels": [
+        [
+          80,
+          65
+        ],
+        [
+          560,
+          65
+        ]
+      ],
+      "length_m": 1.16022,
+      "provenance": "Distance between two intact-road pixels in the first RGB. Reference length from the median optical depth in each 9x9 exterior patch and nominal intrinsics. Only this single distance enters reconstruction."
+    }
+  },
+  {
+    "id": "P123",
+    "source": "PothRGBD",
+    "mode": "rgb_parallax",
+    "label": "弧形陡边坑",
+    "category_label": "坑洞",
+    "fit": [
+      "20250305_040311",
+      "20250305_040307"
+    ],
+    "fx_fy_cx_cy": [
+      462,
+      462,
+      319.5,
+      239.5
+    ],
+    "ruler": {
+      "pixels": [
+        [
+          80,
+          65
+        ],
+        [
+          560,
+          65
+        ]
+      ],
+      "length_m": 0.99786,
+      "provenance": "Distance between two intact-road pixels in the first RGB. Reference length from the median optical depth in each 9x9 exterior patch and nominal intrinsics. Only this single distance enters reconstruction."
+    }
+  },
+  {
+    "id": "P124",
+    "mode": "rgb_parallax",
+    "source": "FanStereo",
+    "dataset": "dataset1",
+    "label": "斑块状剥落坑",
+    "category_label": "坑洞",
+    "related": "P110",
+    "fit": [
+      "09",
+      "11"
+    ],
+    "fx_fy_cx_cy": [
+      1381.7506,
+      1381.7506,
+      721.32236,
+      564.47275
+    ],
+    "ruler": {
+      "pixels": [
+        [
+          450,
+          540
+        ],
+        [
+          1270,
+          540
+        ]
+      ],
+      "length_m": 0.373253,
+      "provenance": "One segment length from two exterior 9x9 median XYZ depths; camera intrinsics from the dataset1 projection calibration. Only RGB and labels are read during reconstruction."
+    }
+  }
+]

@@ -1,0 +1,753 @@
+{
+  "P121": {
+    "label": "四边破损的方形浅坑",
+    "glb_sha256": "8eb486eee8f898dc62cda336e37e32c184e15bfaec03f9a79cf0cc04e1390e10",
+    "source": "PothRGBD",
+    "fit": [
+      "20250305_121446",
+      "20250305_121500"
+    ],
+    "unseen_rgb": [],
+    "heldout_camera_fit": {},
+    "geometry": {
+      "width_m": 0.7768732406117425,
+      "length_m": 0.6120062506426911,
+      "depth_p95_m": 0.03610660220872337,
+      "max_depth_m": 0.12999985831810237,
+      "grid_pitch_m": 0.0024979846965007798,
+      "local_origin_in_anchor_m": [
+        0.04814774092013038,
+        -0.06815485534001409,
+        0.6994216765993466
+      ],
+      "local_axes_in_anchor_camera": [
+        [
+          0.9989310960481498,
+          1.734723475976807e-18,
+          -0.046224077579137025
+        ],
+        [
+          -0.0144963926158948,
+          -0.9495514512392585,
+          -0.31327607002537505
+        ],
+        [
+          -0.043892139947465644,
+          0.31361129037299956,
+          -0.9485364719405439
+        ]
+      ],
+      "rgb_supported_target_fraction": 0.6431465436639032,
+      "second_mask_iou": 0.9398419472749178,
+      "pit_components": 1
+    },
+    "scale": {
+      "pixels": [
+        [
+          80,
+          65
+        ],
+        [
+          560,
+          65
+        ]
+      ],
+      "length_m": 0.808312,
+      "provenance": "Distance between two intact-road pixels in the first RGB. Reference length from the median optical depth in each 9x9 exterior patch and nominal intrinsics. Only this single distance enters reconstruction."
+    },
+    "frames": {
+      "20250305_121446": {
+        "role": "texture_photo",
+        "input_depth_sha256": "06490bf752d1a1b5462745e7f938a394374cc36e306633ac40c49ee62997f66b",
+        "mask_iou": 0.9617383818202492,
+        "mask_recall": 0.9976662285579483,
+        "mask_precision": 0.9639069101091584,
+        "reference_component_recall": [
+          0.9976662285579483
+        ],
+        "visible_pit_depth_samples": 118415,
+        "depth_abs_median_mm": 4.740297794342041,
+        "depth_abs_p95_mm": 15.457373523712151,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 61696,
+        "sensor_road_rms_mm": 3.6706424393586703,
+        "overlap_points": 118415,
+        "relief_abs_median_mm": 8.354824475714937,
+        "relief_abs_p95_mm": 16.68136872246757,
+        "flat_relief_abs_median_mm": 21.443900383825294,
+        "flat_relief_abs_p95_mm": 26.46100588275314,
+        "sensor_concavity_p95_mm": 26.46100588275314,
+        "rendered_concavity_p95_mm": 36.105228648436544,
+        "section": {
+          "image_row": 227,
+          "image_x": [
+            59,
+            610
+          ],
+          "length_cm": 81.64966792636395,
+          "sensor_samples": 552
+        },
+        "material": {
+          "pixels": 112532,
+          "base_color_size_px": [
+            689,
+            689
+          ],
+          "raw_rgb_mae_0_255": 2.7013590335845947,
+          "gray_correlation": 0.9687711596488953,
+          "highpass_gray_correlation": 0.866521954536438
+        }
+      },
+      "20250305_121500": {
+        "role": "matching_photo",
+        "input_depth_sha256": "d0ecc8d7e6a46a1b16778dc230d53ecece08fc56781ecb79e37c5897859c05e6",
+        "mask_iou": 0.9247348167720231,
+        "mask_recall": 0.9660423988573813,
+        "mask_precision": 0.9558037805352451,
+        "reference_component_recall": [
+          0.9660423988573813
+        ],
+        "visible_pit_depth_samples": 120043,
+        "depth_abs_median_mm": 4.631519317626953,
+        "depth_abs_p95_mm": 15.222215652465815,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 57350,
+        "sensor_road_rms_mm": 2.398850138683444,
+        "overlap_points": 120043,
+        "relief_abs_median_mm": 7.986737741046905,
+        "relief_abs_p95_mm": 13.757758821436562,
+        "flat_relief_abs_median_mm": 21.977053711734335,
+        "flat_relief_abs_p95_mm": 26.848291058040754,
+        "sensor_concavity_p95_mm": 26.848291058040754,
+        "rendered_concavity_p95_mm": 36.07492401736113,
+        "section": {
+          "image_row": 240,
+          "image_x": [
+            41,
+            583
+          ],
+          "length_cm": 79.4583868992454,
+          "sensor_samples": 526
+        },
+        "material": {
+          "pixels": 113426,
+          "base_color_size_px": [
+            689,
+            689
+          ],
+          "raw_rgb_mae_0_255": 8.122908592224121,
+          "gray_correlation": 0.8755547404289246,
+          "highpass_gray_correlation": 0.6615211963653564
+        }
+      }
+    }
+  },
+  "P122": {
+    "label": "粗骨料裸露的深坑",
+    "glb_sha256": "dd0d2916b0ed32e3fc076f00b25e1c6e401d9f23a4daf09d2f73641873bc15a3",
+    "source": "PothRGBD",
+    "fit": [
+      "20250305_134208",
+      "20250305_134212"
+    ],
+    "unseen_rgb": [],
+    "heldout_camera_fit": {},
+    "geometry": {
+      "width_m": 0.6021252701335206,
+      "length_m": 0.7620257568079825,
+      "depth_p95_m": 0.10420898391925248,
+      "max_depth_m": 0.11912398805061854,
+      "grid_pitch_m": 0.002498445104288467,
+      "local_origin_in_anchor_m": [
+        -0.04676771357957418,
+        -0.06985484389548255,
+        0.9593170191891585
+      ],
+      "local_axes_in_anchor_camera": [
+        [
+          0.9710173360158775,
+          -6.938893903907228e-18,
+          0.23900906500931807
+        ],
+        [
+          0.05467710619622139,
+          -0.9734814825256389,
+          -0.2221355830066205
+        ],
+        [
+          0.23267089894233775,
+          0.2287658260747965,
+          -0.9452673958228329
+        ]
+      ],
+      "rgb_supported_target_fraction": 0.681450439438915,
+      "second_mask_iou": 0.9397751095864303,
+      "pit_components": 1
+    },
+    "scale": {
+      "pixels": [
+        [
+          80,
+          65
+        ],
+        [
+          560,
+          65
+        ]
+      ],
+      "length_m": 1.16022,
+      "provenance": "Distance between two intact-road pixels in the first RGB. Reference length from the median optical depth in each 9x9 exterior patch and nominal intrinsics. Only this single distance enters reconstruction."
+    },
+    "frames": {
+      "20250305_134208": {
+        "role": "texture_photo",
+        "input_depth_sha256": "12c39d36810401ae6544a4ae77514c40ea9ee52cf1baf6091bba583fd778b274",
+        "mask_iou": 0.9869300523649368,
+        "mask_recall": 0.9974899958405645,
+        "mask_precision": 0.9893871279804245,
+        "reference_component_recall": [
+          0.9974899958405645
+        ],
+        "visible_pit_depth_samples": 69546,
+        "depth_abs_median_mm": 20.62994384765625,
+        "depth_abs_p95_mm": 62.73885154724121,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 48107,
+        "sensor_road_rms_mm": 5.32492325457719,
+        "overlap_points": 69546,
+        "relief_abs_median_mm": 13.03933883825604,
+        "relief_abs_p95_mm": 44.55209775013278,
+        "flat_relief_abs_median_mm": 42.404093171768935,
+        "flat_relief_abs_p95_mm": 63.43763856391557,
+        "sensor_concavity_p95_mm": 63.43763856391557,
+        "rendered_concavity_p95_mm": 100.67437618420888,
+        "section": {
+          "image_row": 228,
+          "image_x": [
+            164,
+            461
+          ],
+          "length_cm": 63.63696599667821,
+          "sensor_samples": 298
+        },
+        "material": {
+          "pixels": 40170,
+          "base_color_size_px": [
+            502,
+            502
+          ],
+          "raw_rgb_mae_0_255": 9.118380546569824,
+          "gray_correlation": 0.9629718661308289,
+          "highpass_gray_correlation": 0.929092526435852
+        }
+      },
+      "20250305_134212": {
+        "role": "matching_photo",
+        "input_depth_sha256": "fc742bdaaf4041de830c072a5012f4136d8ec3c4146b5c1e972c9338b5ca306a",
+        "mask_iou": 0.9272219157268312,
+        "mask_recall": 0.9795719472577871,
+        "mask_precision": 0.9455045143916407,
+        "reference_component_recall": [
+          0.9795719472577871
+        ],
+        "visible_pit_depth_samples": 102522,
+        "depth_abs_median_mm": 18.093555450439453,
+        "depth_abs_p95_mm": 51.96504974365234,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 56180,
+        "sensor_road_rms_mm": 5.043661774318107,
+        "overlap_points": 102522,
+        "relief_abs_median_mm": 9.471198690484732,
+        "relief_abs_p95_mm": 48.59119310239902,
+        "flat_relief_abs_median_mm": 44.70617050480867,
+        "flat_relief_abs_p95_mm": 63.238243919463876,
+        "sensor_concavity_p95_mm": 63.238243919463876,
+        "rendered_concavity_p95_mm": 100.41308110523654,
+        "section": {
+          "image_row": 258,
+          "image_x": [
+            61,
+            615
+          ],
+          "length_cm": 97.74605798913898,
+          "sensor_samples": 555
+        },
+        "material": {
+          "pixels": 65768,
+          "base_color_size_px": [
+            502,
+            502
+          ],
+          "raw_rgb_mae_0_255": 17.25778579711914,
+          "gray_correlation": 0.9228315949440002,
+          "highpass_gray_correlation": 0.8092679381370544
+        }
+      }
+    }
+  },
+  "P123": {
+    "label": "弧形陡边坑",
+    "glb_sha256": "5667441e2aac83ee1f99d57d347497890e6ff6fe6f79e11df69788e7da17faa0",
+    "source": "PothRGBD",
+    "fit": [
+      "20250305_040311",
+      "20250305_040307"
+    ],
+    "unseen_rgb": [],
+    "heldout_camera_fit": {},
+    "geometry": {
+      "width_m": 0.6473134172004654,
+      "length_m": 0.46736528577794223,
+      "depth_p95_m": 0.07301605634898942,
+      "max_depth_m": 0.08207983708877101,
+      "grid_pitch_m": 0.0024992796030906,
+      "local_origin_in_anchor_m": [
+        0.01409943220740871,
+        -0.11808972846134946,
+        0.903604016911743
+      ],
+      "local_axes_in_anchor_camera": [
+        [
+          0.9961145166275172,
+          0.0,
+          0.08806741601709281
+        ],
+        [
+          0.01791193351494439,
+          -0.979098034730776,
+          -0.2025986204891044
+        ],
+        [
+          0.08622663394615322,
+          0.20338888461843713,
+          -0.975293765596799
+        ]
+      ],
+      "rgb_supported_target_fraction": 0.8792850285197944,
+      "second_mask_iou": 0.7720201220364246,
+      "pit_components": 1
+    },
+    "scale": {
+      "pixels": [
+        [
+          80,
+          65
+        ],
+        [
+          560,
+          65
+        ]
+      ],
+      "length_m": 0.99786,
+      "provenance": "Distance between two intact-road pixels in the first RGB. Reference length from the median optical depth in each 9x9 exterior patch and nominal intrinsics. Only this single distance enters reconstruction."
+    },
+    "frames": {
+      "20250305_040311": {
+        "role": "texture_photo",
+        "input_depth_sha256": "cd3cd8160c02dd694e65a17702a26067c8d606076afe03716018c7b74e5623fc",
+        "mask_iou": 0.9871115851123443,
+        "mask_recall": 0.99793497925842,
+        "mask_precision": 0.9891320098536444,
+        "reference_component_recall": [
+          0.99793497925842
+        ],
+        "visible_pit_depth_samples": 54608,
+        "depth_abs_median_mm": 8.313745498657227,
+        "depth_abs_p95_mm": 20.91701564788818,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 41875,
+        "sensor_road_rms_mm": 3.3932847335668805,
+        "overlap_points": 54608,
+        "relief_abs_median_mm": 12.650670342565979,
+        "relief_abs_p95_mm": 25.061619766599215,
+        "flat_relief_abs_median_mm": 34.33790100428651,
+        "flat_relief_abs_p95_mm": 54.32804681698043,
+        "sensor_concavity_p95_mm": 54.32804681698043,
+        "rendered_concavity_p95_mm": 72.65183328979377,
+        "section": {
+          "image_row": 187,
+          "image_x": [
+            121,
+            518
+          ],
+          "length_cm": 77.71023742230315,
+          "sensor_samples": 398
+        },
+        "material": {
+          "pixels": 51184,
+          "base_color_size_px": [
+            449,
+            449
+          ],
+          "raw_rgb_mae_0_255": 10.503418922424316,
+          "gray_correlation": 0.9575650095939636,
+          "highpass_gray_correlation": 0.9177232384681702
+        }
+      },
+      "20250305_040307": {
+        "role": "matching_photo",
+        "input_depth_sha256": "f88cbb875d621da2a54b0d5cbce72e1d0cc9c47c80edb72e2f91a250f64e0185",
+        "mask_iou": 0.7736464140602853,
+        "mask_recall": 0.8228091920139354,
+        "mask_precision": 0.9283055235359701,
+        "reference_component_recall": [
+          0.8228091920139354
+        ],
+        "visible_pit_depth_samples": 49125,
+        "depth_abs_median_mm": 8.482575416564941,
+        "depth_abs_p95_mm": 19.326221847534175,
+        "annotated_target_touches_image_border": true,
+        "sensor_road_points": 38750,
+        "sensor_road_rms_mm": 2.845175232331332,
+        "overlap_points": 49125,
+        "relief_abs_median_mm": 13.53584939817052,
+        "relief_abs_p95_mm": 24.905773140703435,
+        "flat_relief_abs_median_mm": 36.75809587786713,
+        "flat_relief_abs_p95_mm": 57.505178860124275,
+        "sensor_concavity_p95_mm": 57.505178860124275,
+        "rendered_concavity_p95_mm": 72.79276379638209,
+        "section": {
+          "image_row": 198,
+          "image_x": [
+            163,
+            446
+          ],
+          "length_cm": 56.29016045341193,
+          "sensor_samples": 284
+        },
+        "material": {
+          "pixels": 45555,
+          "base_color_size_px": [
+            449,
+            449
+          ],
+          "raw_rgb_mae_0_255": 14.661574363708496,
+          "gray_correlation": 0.9134025573730469,
+          "highpass_gray_correlation": 0.830288827419281
+        }
+      }
+    }
+  },
+  "P124": {
+    "label": "斑块状剥落坑",
+    "glb_sha256": "1e0c61b8161cdf9bb485d71c659c620e5b966c69d7a311b0626eb3e72600d100",
+    "source": "FanStereo",
+    "fit": [
+      "09",
+      "11"
+    ],
+    "unseen_rgb": [
+      "10",
+      "12",
+      "13"
+    ],
+    "heldout_camera_fit": {
+      "10": {
+        "exterior_inliers": 486,
+        "median_reprojection_px": 0.8449996578639242
+      },
+      "12": {
+        "exterior_inliers": 2413,
+        "median_reprojection_px": 0.5779947293868077
+      },
+      "13": {
+        "exterior_inliers": 23,
+        "median_reprojection_px": 0.925536095007748
+      }
+    },
+    "geometry": {
+      "width_m": 0.08128258298457204,
+      "length_m": 0.08266025388261562,
+      "depth_p95_m": 0.0437858290371812,
+      "max_depth_m": 0.049868644241725706,
+      "grid_pitch_m": 0.0013776708980435938,
+      "local_origin_in_anchor_m": [
+        0.046263458102166755,
+        0.08682817565203171,
+        0.5432666105748174
+      ],
+      "local_axes_in_anchor_camera": [
+        [
+          0.9995211929198689,
+          1.734723475976807e-18,
+          -0.030941637061447196
+        ],
+        [
+          -0.02072543037464273,
+          -0.742520509130748,
+          -0.6695026139276835
+        ],
+        [
+          -0.022974800104204593,
+          0.6698233300805632,
+          -0.7421649850538335
+        ]
+      ],
+      "rgb_supported_target_fraction": 0.577383408997111,
+      "second_mask_iou": 0.8950542822677925,
+      "pit_components": 1
+    },
+    "scale": {
+      "pixels": [
+        [
+          450,
+          540
+        ],
+        [
+          1270,
+          540
+        ]
+      ],
+      "length_m": 0.373253,
+      "provenance": "One segment length from two exterior 9x9 median XYZ depths; camera intrinsics from the dataset1 projection calibration. Only RGB and labels are read during reconstruction."
+    },
+    "frames": {
+      "09": {
+        "role": "texture_photo",
+        "input_depth_sha256": "2563953c023f804fc039d3020e770589c2306808dfdc8dc1615f933c5d162388",
+        "mask_iou": 0.960291734197731,
+        "mask_recall": 0.9841414221308233,
+        "mask_precision": 0.9753850977932819,
+        "reference_component_recall": [
+          0.9841803440775163
+        ],
+        "visible_pit_depth_samples": 17053,
+        "depth_abs_median_mm": 2.7942657470703125,
+        "depth_abs_p95_mm": 6.349635124206541,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 32114,
+        "sensor_road_rms_mm": 0.5423880105020235,
+        "overlap_points": 17053,
+        "relief_abs_median_mm": 0.9439735893883201,
+        "relief_abs_p95_mm": 3.9441998477856384,
+        "flat_relief_abs_median_mm": 15.838851782844273,
+        "flat_relief_abs_p95_mm": 44.07895272016742,
+        "sensor_concavity_p95_mm": 44.07895272016742,
+        "rendered_concavity_p95_mm": 43.51330952395205,
+        "section": {
+          "image_row": 791,
+          "image_x": [
+            714,
+            961
+          ],
+          "length_cm": 9.657590222079323,
+          "sensor_samples": 172
+        },
+        "material": {
+          "pixels": 7917,
+          "base_color_size_px": [
+            518,
+            518
+          ],
+          "raw_rgb_mae_0_255": 2.071828603744507,
+          "gray_correlation": 0.9710641503334045,
+          "highpass_gray_correlation": 0.8666043281555176
+        }
+      },
+      "11": {
+        "role": "matching_photo",
+        "input_depth_sha256": "e2a13e8a477b93eef20612e374c9c8a29e6d1358298c38ad6269148b1dbb74b4",
+        "mask_iou": 0.9310940576158142,
+        "mask_recall": 0.9766932186960003,
+        "mask_precision": 0.9522518080210388,
+        "reference_component_recall": [
+          0.9766932186960003
+        ],
+        "visible_pit_depth_samples": 17290,
+        "depth_abs_median_mm": 2.7836263179779053,
+        "depth_abs_p95_mm": 6.563693284988402,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 31869,
+        "sensor_road_rms_mm": 0.5399041133841361,
+        "overlap_points": 17290,
+        "relief_abs_median_mm": 0.8900396317185408,
+        "relief_abs_p95_mm": 4.066478499841176,
+        "flat_relief_abs_median_mm": 17.93470841973547,
+        "flat_relief_abs_p95_mm": 43.80059653140015,
+        "sensor_concavity_p95_mm": 43.80059653140015,
+        "rendered_concavity_p95_mm": 43.912544922843594,
+        "section": {
+          "image_row": 768,
+          "image_x": [
+            717,
+            956
+          ],
+          "length_cm": 9.531594867819338,
+          "sensor_samples": 182
+        },
+        "material": {
+          "pixels": 11148,
+          "base_color_size_px": [
+            518,
+            518
+          ],
+          "raw_rgb_mae_0_255": 2.7494020462036133,
+          "gray_correlation": 0.9580763578414917,
+          "highpass_gray_correlation": 0.7564531564712524
+        }
+      },
+      "10": {
+        "role": "new_view",
+        "input_depth_sha256": "d0c225689122b6e2af87f1911ee71170d44d5584089acfa6ec4e64550095abc6",
+        "mask_iou": 0.9403098368008833,
+        "mask_recall": 0.9681693843475789,
+        "mask_precision": 0.9703065475130843,
+        "reference_component_recall": [
+          0.9681693843475789
+        ],
+        "visible_pit_depth_samples": 19948,
+        "depth_abs_median_mm": 4.378527641296387,
+        "depth_abs_p95_mm": 16.755697154998774,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 33679,
+        "sensor_road_rms_mm": 0.516242572757107,
+        "overlap_points": 19948,
+        "relief_abs_median_mm": 1.1282418330860657,
+        "relief_abs_p95_mm": 11.663849132129968,
+        "flat_relief_abs_median_mm": 19.49667807109655,
+        "flat_relief_abs_p95_mm": 43.93993963189219,
+        "sensor_concavity_p95_mm": 43.93993963189219,
+        "rendered_concavity_p95_mm": 43.84975000788181,
+        "section": {
+          "image_row": 829,
+          "image_x": [
+            990,
+            1255
+          ],
+          "length_cm": 10.011242793396919,
+          "sensor_samples": 205
+        },
+        "same_pixel_comparison": {
+          "other_glb_sha256": "73bdc416aba7646d1cd9196c048554b30ad9220e7ccda288ed5bc0df6c9b851e",
+          "models": [
+            "P124",
+            "P110"
+          ],
+          "common_interior_pixels": 18865,
+          "median_abs_optical_error_mm": {
+            "P124": 4.346609115600586,
+            "P110": 1.2169480323791504
+          },
+          "median_abs_model_difference_mm": 3.803133964538574,
+          "section_image_row": 829,
+          "section_image_x": [
+            962,
+            1256
+          ]
+        },
+        "material": {
+          "pixels": 13061,
+          "base_color_size_px": [
+            518,
+            518
+          ],
+          "raw_rgb_mae_0_255": 7.242809295654297,
+          "gray_correlation": 0.8916624784469604,
+          "highpass_gray_correlation": 0.5633956789970398
+        }
+      },
+      "12": {
+        "role": "new_view",
+        "input_depth_sha256": "cec6fca3d469d5d3bc58c70bd3b73861dd2ac557bacad1dd71b3925e736c155f",
+        "mask_iou": 0.8975540588443814,
+        "mask_recall": 0.9415264478943943,
+        "mask_precision": 0.95053965274519,
+        "reference_component_recall": [
+          0.9415264478943943
+        ],
+        "visible_pit_depth_samples": 13458,
+        "depth_abs_median_mm": 1.6599595546722412,
+        "depth_abs_p95_mm": 6.442078948020934,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 30566,
+        "sensor_road_rms_mm": 0.558044475507302,
+        "overlap_points": 13458,
+        "relief_abs_median_mm": 1.0000163234235253,
+        "relief_abs_p95_mm": 4.515180854924458,
+        "flat_relief_abs_median_mm": 17.06085509362368,
+        "flat_relief_abs_p95_mm": 43.103986920918466,
+        "sensor_concavity_p95_mm": 43.103986920918466,
+        "rendered_concavity_p95_mm": 42.23983296139496,
+        "section": {
+          "image_row": 719,
+          "image_x": [
+            555,
+            815
+          ],
+          "length_cm": 10.802399798215742,
+          "sensor_samples": 186
+        },
+        "material": {
+          "pixels": 4520,
+          "base_color_size_px": [
+            518,
+            518
+          ],
+          "raw_rgb_mae_0_255": 7.424115180969238,
+          "gray_correlation": 0.9239478707313538,
+          "highpass_gray_correlation": 0.7761863470077515
+        }
+      },
+      "13": {
+        "role": "new_view",
+        "input_depth_sha256": "72bc82ef252fc8350e51970891e5e7e4c4d9c50389886e2f215d35aee59b6f37",
+        "mask_iou": 0.8566908120472742,
+        "mask_recall": 0.9076624792987842,
+        "mask_precision": 0.9384814567323756,
+        "reference_component_recall": [
+          0.9076624792987842
+        ],
+        "visible_pit_depth_samples": 17320,
+        "depth_abs_median_mm": 4.094272613525391,
+        "depth_abs_p95_mm": 11.300712823867796,
+        "annotated_target_touches_image_border": false,
+        "sensor_road_points": 32197,
+        "sensor_road_rms_mm": 0.569354504483889,
+        "overlap_points": 17320,
+        "relief_abs_median_mm": 2.6007532333798857,
+        "relief_abs_p95_mm": 8.563074750967369,
+        "flat_relief_abs_median_mm": 18.400146575394917,
+        "flat_relief_abs_p95_mm": 43.79711911148934,
+        "sensor_concavity_p95_mm": 43.79711911148934,
+        "rendered_concavity_p95_mm": 43.54102216782504,
+        "section": {
+          "image_row": 779,
+          "image_x": [
+            672,
+            921
+          ],
+          "length_cm": 10.000425022103425,
+          "sensor_samples": 190
+        },
+        "same_pixel_comparison": {
+          "other_glb_sha256": "73bdc416aba7646d1cd9196c048554b30ad9220e7ccda288ed5bc0df6c9b851e",
+          "models": [
+            "P124",
+            "P110"
+          ],
+          "common_interior_pixels": 16655,
+          "median_abs_optical_error_mm": {
+            "P124": 4.228532314300537,
+            "P110": 3.294825553894043
+          },
+          "median_abs_model_difference_mm": 1.7795562744140625,
+          "section_image_row": 779,
+          "section_image_x": [
+            656,
+            941
+          ]
+        },
+        "material": {
+          "pixels": 11579,
+          "base_color_size_px": [
+            518,
+            518
+          ],
+          "raw_rgb_mae_0_255": 13.173331260681152,
+          "gray_correlation": 0.22658269107341766,
+          "highpass_gray_correlation": 0.03377779945731163
+        }
+      }
+    }
+  }
+}

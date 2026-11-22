@@ -1,0 +1,24 @@
+{
+  "images_only": {
+    "P121": {
+      "glb_sha256": "8eb486eee8f898dc62cda336e37e32c184e15bfaec03f9a79cf0cc04e1390e10",
+      "field_sha256": "7c937b79a6130af18b2956b2717ed05bd3121286038a585c182e5af62899ce4d"
+    },
+    "P122": {
+      "glb_sha256": "dd0d2916b0ed32e3fc076f00b25e1c6e401d9f23a4daf09d2f73641873bc15a3",
+      "field_sha256": "37d4b9b358105433d7a3b88d9433b0de4c673879856f44cbda9c39c1675d0881"
+    },
+    "P123": {
+      "glb_sha256": "5667441e2aac83ee1f99d57d347497890e6ff6fe6f79e11df69788e7da17faa0",
+      "field_sha256": "8a44af54d7d405c963c2ed9d4cdb28121960c502447eb709f05e7c5b913153f7"
+    },
+    "P124": {
+      "glb_sha256": "1e0c61b8161cdf9bb485d71c659c620e5b966c69d7a311b0626eb3e72600d100",
+      "field_sha256": "b7278d7d4da2205acd3e84ce25f39faaa54ef9d4d9c61ff485833a697c6b0586"
+    }
+  },
+  "identical_view_rejected": "No forward-facing plane with sufficient camera translation",
+  "interior_scale_reference_rejected": "The scale reference must lie on the intact road",
+  "unrelated_pair_rejected": "Insufficient matching road landmarks",
+  "verified_camera_scale_multiplier": 1.5
+}

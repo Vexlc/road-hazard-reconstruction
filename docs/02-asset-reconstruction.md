@@ -239,3 +239,30 @@ work/envs/streetcrafter/bin/python scripts/check-perforated-covers.py --run work
 在 PandaSet 109，两组资产的全部状态分别放到相同的道路位置。A117 和 A120 还迁到 034。共 10 次原生放置、20 组前后视相机对照和 800 个雷达案例帧，复用两段路的 160 帧原始扫描。断条、掀盖、移位、缺盖都属于由同一来源派生的状态。核验文件逐状态记录 GLB、Gaussian PLY 摘要、同源井体和回波命中部件。[雨水篦核验](../validation/yokota-grate.json) · [铺石圆盖核验](../validation/cobble-cover.json)
 
 图谱的道路菜单可以直接比较落座和异常状态。两幅图共享相机、帧、曝光来源和像素坐标，黄色标出可见部件改变或光轴深度差超过 1 厘米的像素。对 109 的断条篦子，前视第 29 帧有 10 个这样的像素，后视第 40 帧有 3 个。沿该路段 80 帧原始激光束逐行比较，两束的模拟距离差超过 1 厘米，分别约为 24.6 和 74.3 毫米。断条回波俯视图把两个状态的命中点投在同一张盖面纹理上。
+
+## 两张彩照重建坑底起伏
+
+从同一处病害的两个不同位置拍照，两张都要能看到坑底和有纹理的周边路面。在主照片中标记同一路面上的两个点，提供它们的实际间距、相机内参和两张图的病害掩膜。主照片决定纹理和可恢复的范围，第二张照片提供视差。相同位置仅转动相机无法恢复凹深。四个发布样例的尺度各来自坑外两个小区的参考距离。其中三组使用 PothRGBD 标称内参，另一组使用 Fan 数据的相机投影标定。构建入口仅读取 RGB、标注和尺度清单。[输入清单](../gen2hole/examples/photo-parallax/survey.json)
+
+算法匹配坑外路面特征以估计平面单应，用坑内和坑沿特征区分候选相机姿态。随后在各候选米制高度上比较两幅图的局部灰度纹理，交换机位重复匹配，剔除单向匹配与歧义像素。图谱用绿色标出有双向支持的网格，橙色标出插值区域。可在“米制剖面对照”中看到对应照片上的截线，以及同一位置的模型高度和传感器高度。
+
+| ID | 实拍形态 | 模型 P95 凹深 | 坑内双向匹配覆盖 |
+| --- | --- | ---: | ---: |
+| P121 | 四边破损的方形浅坑 | 36.1 毫米 | 64% |
+| P122 | 粗骨料裸露的深坑 | 104.2 毫米 | 68% |
+| P123 | 弧形陡边坑 | 73.0 毫米 | 88% |
+| P124 | 斑块状剥落坑 | 43.8 毫米 | 58% |
+
+用自己的彩照时，复制本地文件示例，替换图片、掩膜、内参、尺度点和间距。二值掩膜支持 0/1 和 0/255，白色为病害。两部相机可分别在各自的帧记录中填写 `fx_fy_cx_cy`。输入应为已去畸变的针孔图像。可用 `search_depth_m` 修改候选凹深上限，单位为米。对示例的四组资产，用仅包含彩照和掩膜的独立目录复跑，GLB 和路面场与发布结果逐字节一致。[自采文件示例](../gen2hole/examples/photo-parallax/files-example.json) · [独立复跑记录](../validation/photo-parallax-inputs.json)
+
+```bash
+work/envs/streetcrafter/bin/python gen2hole/multiview_pits.py --survey gen2hole/examples/photo-parallax/survey.json --out work/rgb-pair-demo --preview
+work/envs/streetcrafter/bin/python scripts/check-photo-parallax.py --run work/rgb-pair-demo --check gen2hole/examples/photo-parallax/check.json --compare-run runs/multiview-pit-survey
+python gen2hole/downstream/place.py --bundle work/rgb-pair-demo/series --site 109 --group 121 --assets P121 --front
+```
+
+核验时从导出的 GLB 向原相机逐像素求交，与原始传感器深度比较。光轴深度误差包含尺度与位姿偏差。相对路面高度误差则分别以模型周边路面和传感器拟合的周边路面为零。P124 还在完成建模后仅用坑外路面纹理定位三个留出机位，坑缘 IoU 为 0.857–0.940，坑内光轴深度绝对误差中位数为 1.7–4.4 毫米。其余三件在输入照片的机位用留出的深度检查，P122 两个机位的光轴误差中位数分别为 20.6 和 18.1 毫米。P110 与 P124 记录同一处剥落，可直接比较含深度和仅用彩照的两种重建。[逐机位核验](../validation/photo-parallax.json) · [留出机位图版](figures/photo-parallax-heldout.jpg)
+
+四件资产按重建尺寸放到 PandaSet 109，方形浅坑和骨料深坑还放到了 034。六个场景重载后逐像素复现迁入画面，在两段各 80 帧的原始扫描上共回放 480 个案例帧。小型剥落坑 P124 只有前视有效，其两部激光雷达分别得到 0 和 5 个模拟回波。其余五次放置均有前后视对照和两部雷达的回波。[道路迁移图版](figures/photo-parallax.jpg) · [分场景记录](../validation/photo-parallax-transfer.json) · [PData 照片来源](https://github.com/ymyurdakul/PData) · [Fan 双目照片来源](https://github.com/ruirangerfan/stereo_pothole_datasets)
+
+从 P110 或 P124 打开第 10、13 帧的「双照片与多帧双目 · 同像素剖面」，可比较同一位置的两个模型。两个机位对两种重建都留出，截线上的高度统一以该帧实测路面为零。第 10 帧有 18,865 个双方均可见的坑内像素，P124 与 P110 的光轴深度绝对误差中位数分别为 4.35 和 1.22 毫米。第 13 帧共有 16,655 个这样的像素，对应误差为 4.23 和 3.29 毫米。P124 在建模时使用预先量好的坑外参考长度，P110 在建模时使用第 09、11、12 帧的双目深度。

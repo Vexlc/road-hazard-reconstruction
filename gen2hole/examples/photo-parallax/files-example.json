@@ -1,0 +1,16 @@
+[
+  {
+    "id": "P125",
+    "label": "自采路面凹陷",
+    "mode": "rgb_parallax",
+    "source": "files",
+    "fit": ["left", "right"],
+    "fx_fy_cx_cy": [700.0, 700.0, 479.5, 269.5],
+    "frames": {
+      "left": {"rgb": "left.jpg", "mask": "left-mask.png"},
+      "right": {"rgb": "right.jpg", "mask": "right-mask.png"}
+    },
+    "ruler": {"pixels": [[90, 100], [630, 105]], "length_m": 0.55},
+    "search_depth_m": 0.22
+  }
+]

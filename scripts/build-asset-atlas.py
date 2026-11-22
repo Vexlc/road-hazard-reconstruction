@@ -314,12 +314,8 @@ def crack_examples():
     return rows
 
 
-def multiview_potholes():
-    run=ROOT/'runs/multiview-pit-survey'
-    if not run.is_dir():
-        return {}
+def pit_road_views(run):
     bundle=run/'series'
-    report=read(run/'evaluation/measurements.json')
     shots=camera_views(run/'sensors')
     street_dir=run/'evaluation/streets'
     street_frames=read(street_dir/'frames.json') if (street_dir/'frames.json').exists() else {}
@@ -338,6 +334,39 @@ def multiview_potholes():
                 frame=street_frames[case]['frame']
                 shots[key].insert(0,dict(label=f"{scene['site']} · 行车全景 · 帧 {frame}",video=video,
                     after=link(street_dir/(case+'-after.jpg')),before=link(street_dir/(case+'-before.jpg'))))
+    return shots
+
+
+def shared_profile_modes():
+    run = ROOT / 'runs/rgb-parallax/evaluation'
+    measurements = run / 'measurements.json'
+    modes = {}
+    if not measurements.is_file():
+        return modes
+    for key, case in read(measurements).items():
+        for name, frame in case['frames'].items():
+            result = frame.get('same_pixel_comparison')
+            if not result:
+                continue
+            a, b = result['models']
+            errors = result['median_abs_optical_error_mm']
+            mode = dict(label='双照片与多帧双目 · 同像素剖面',
+                        image=link(run / key / name / 'same-pixels.png'),
+                        note=(f"黄线为照片标注，青线为 {a}，紫线为 {b}。在相同的 "
+                              f"{result['common_interior_pixels']:,} 个坑内像素上，两模型的光轴深度绝对误差中位数"
+                              f"分别为 {errors[a]:.1f} 和 {errors[b]:.1f} 毫米。"))
+            for model in [a, b]:
+                modes[model, name] = mode
+    return modes
+
+
+def multiview_potholes(shared):
+    run=ROOT/'runs/multiview-pit-survey'
+    if not run.is_dir():
+        return {}
+    bundle=run/'series'
+    report=read(run/'evaluation/measurements.json')
+    shots=pit_road_views(run)
     rows={}
     for meta in read(bundle/'assets/asset_manifest.json'):
         key=meta['id']
@@ -359,6 +388,8 @@ def multiview_potholes():
                    dict(label='光轴深度误差',image=link(dest/'errors.jpg'),error=True)]
             for k,single in data['single_fit_frame_controls'].items():
                 modes.append(dict(label='仅用帧 '+k,image=link(dest/('single-'+k+'.jpg')),iou=single['mask_iou']))
+            if (key, frame) in shared:
+                modes.append(shared[key, frame])
             evidence.append(dict(frame=frame,modes=modes,median=stats['depth_abs_median_mm'],p95=stats['depth_abs_p95_mm'],
                                  samples=stats['visible_pit_depth_samples'],spacing=data['heldout_center_spacing_m'],
                                  colorError=data['material_reprojection'].get('raw_rgb_mae_0_255')))
@@ -378,9 +409,139 @@ def multiview_potholes():
     return rows
 
 
+def parallax_potholes(shared):
+    run = ROOT / 'runs/rgb-parallax'
+    if not run.is_dir():
+        return {}
+    bundle = run / 'series'
+    specs = {s['id']: s for s in read(bundle / 'calibration/survey.json')}
+    report = read(run / 'evaluation/measurements.json')
+    scenes = pit_road_views(run)
+    rows = {}
+    for meta in read(bundle / 'assets/asset_manifest.json'):
+        key = meta['id']
+        case = report[key]
+        spec = specs[key]
+        dest = run / 'evaluation' / key
+        row = entry(
+            meta,
+            bundle / 'assets',
+            '双张实拍 RGB',
+            meta['label'],
+            bundle / 'views' / (key + '_inspection.jpg'),
+        )
+        inputs = [
+            dict(
+                label='主照片 · ' + case['fit'][0],
+                image=link(bundle / 'references' / (key + '.png')),
+                note='此照片提供网格表面的颜色',
+            ),
+            dict(
+                label='第二张 · ' + case['fit'][1],
+                image=link(bundle / 'references' / (key + '_second.png')),
+                note='从另一机位拍摄同一处，灰度纹理用于双向匹配',
+            ),
+            dict(
+                label='尺度参考',
+                image=link(dest / 'scale.jpg'),
+                note=f"黄色两点的路面距离为 {spec['ruler']['length_m']:.3f} 米",
+            ),
+            dict(
+                label='双向匹配覆盖',
+                image=link(dest / 'support.jpg'),
+                note='绿色有双向纹理匹配，橙色为插值，灰色为周边路面',
+            ),
+            dict(
+                label='正射纹理',
+                image=link(bundle / 'references' / (key + '_ortho.png')),
+                note='按恢复的曲面将主照片投到资产坐标系',
+            ),
+        ]
+        evidence = []
+        for name in case['unseen_rgb'] + case['fit']:
+            data = case['frames'][name]
+            directory = dest / name
+            kind = {'new_view': '留出照片', 'texture_photo': '主照片', 'matching_photo': '第二张'}[
+                data['role']
+            ]
+            modes = [
+                dict(label='网格回投', image=link(directory / 'contours.jpg'), iou=data['mask_iou']),
+                dict(label='实拍原图', image=link(directory / 'photo.jpg'), note=kind),
+                dict(
+                    label='米制剖面对照',
+                    image=link(directory / 'section.png'),
+                    note='黄线为剖面位置，绿线为模型，棕点为传感器深度。两者各以周边路面为零。',
+                ),
+                dict(
+                    label='相对路面高度误差',
+                    image=link(directory / 'relief-error.png'),
+                    note='模型与传感器的相对高度绝对差，黑紫接近 0，橙黄接近 35 毫米。灰色为比较范围以外。',
+                ),
+                dict(label='光轴深度误差', image=link(directory / 'errors.jpg'), error=True),
+                dict(
+                    label='模型材质回投',
+                    image=link(directory / 'material.jpg'),
+                    texture=True,
+                    note='坑内颜色取自 GLB 材质，周围为同机位照片',
+                ),
+            ]
+            if (key, name) in shared:
+                modes.append(shared[key, name])
+            detail = (
+                f"同机位共比较 {data['overlap_points']:,} 个坑内像素。相对路面高度的绝对误差中位数为 "
+                f"{data['relief_abs_median_mm']:.1f} 毫米，同处平路对照为 {data['flat_relief_abs_median_mm']:.1f} 毫米。"
+                f"光轴深度的绝对误差中位数为 {data['depth_abs_median_mm']:.1f} 毫米。"
+            )
+            evidence.append(
+                dict(
+                    frame=kind + ' · ' + name,
+                    modes=modes,
+                    description=detail,
+                    colorError=data['material'].get('raw_rgb_mae_0_255'),
+                )
+            )
+        note = (
+            '两张不同机位的 RGB 照片提供几何与纹理。坑外平面和一段已知长度确定尺度，坑内按视差恢复，匹配不足处插值。'
+            '示例参考长度取自两个坑外小区的传感器深度，坑内深度用于事后复核。'
+        )
+        if case['unseen_rgb']:
+            note += f" 另有 {len(case['unseen_rgb'])} 张照片在建模完成后仅用坑外纹理定位。"
+        row.update(
+            category=spec['category_label'],
+            depth=meta['depth_p95_m'],
+            depthLabel='视差 P95 凹深',
+            triangles=sum(meta['geometry_parts'].values()),
+            note=note,
+            depthPanelTitle='对照双照片模型、深度观测和米制剖面',
+            reference=inputs[0]['image'],
+            sourceViews=inputs,
+            reverse=link(bundle / 'views' / (key + '_reverse.jpg')),
+            matchCoverage=meta['rgb_supported_target_fraction'],
+            pitViews=evidence,
+            fit=link(bundle / 'calibration' / (key + '_capture.json')),
+            reprojection=link(run / 'evaluation/measurements.json'),
+            reprojectionLabel='独立深度核验',
+            scenes=scenes.get(key, []),
+            credit='https://github.com/ymyurdakul/PData'
+            if spec['source'] == 'PothRGBD'
+            else 'https://github.com/ruirangerfan/stereo_pothole_datasets',
+        )
+        if 'related' in spec:
+            row.update(
+                related=spec['related'],
+                relatedLabel='同处含深度的重建',
+                reverseRelatedLabel='同处的双照片重建',
+            )
+        if (run / 'sensors/checks/scan_audit.json').is_file():
+            row['scan'] = link(run / 'sensors/checks/scan_audit.json')
+        rows[key] = row
+    return rows
+
+
 def main():
     rows = {}
-    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), multiview_potholes()):
+    shared = shared_profile_modes()
+    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), multiview_potholes(shared), parallax_potholes(shared)):
         if group.keys() & rows.keys():
             raise ValueError("Asset ID collision")
         rows.update(group)
@@ -393,7 +554,9 @@ def main():
             row["orbit"] = link(orbit)
         if row.get("related"):
             rows[row["related"]]["related"] = row["id"]
-    featured = ["A117","A119","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+            if row.get("reverseRelatedLabel"):
+                rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
+    featured = ["P121","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

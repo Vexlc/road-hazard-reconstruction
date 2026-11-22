@@ -36,12 +36,12 @@ function showScene() {
   }
   el("downloads").replaceChildren();
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
-  for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.family ? "几何一致性核验" : "轮廓评估","audit"],["雷达核验","scan"],["实拍拟合记录","fit"],["留出帧核验","reprojection"]])
+  for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.family ? "几何一致性核验" : "轮廓评估","audit"],["雷达核验","scan"],["实拍拟合记录","fit"],[selected.reprojectionLabel || "留出帧核验","reprojection"]])
     if (selected[key]) download(name,selected[key]);
   const video = view?.video || selected.video;
   if (video) download("前视视频",video);
   if (selected.credit) download("照片出处",selected.credit);
-  if (selected.related) download(selected.method==="实拍 RGB" ? "同源 RGB-D" : "同源单目 RGB","#"+selected.related);
+  if (selected.related) download(selected.relatedLabel || (selected.method==="实拍 RGB" ? "同源 RGB-D" : "同源单目 RGB"),"#"+selected.related);
   if (selected.sensor && view) {
     const params = new URLSearchParams({asset:selected.id,site:view.site,camera:view.camera});
     download("雷达与剖面",selected.sensor+"#"+params);
@@ -96,10 +96,10 @@ function showPitView(resetModes) {
   if (resetModes) el("pitMode").replaceChildren(...view.modes.map((m,i)=>new Option(m.label,String(i))));
   const m = view.modes[Number(el("pitMode").value)];
   photo("pitImage",m.image,view.frame+" · "+m.label);
-  el("pitLegend").textContent = m.error ? "深度绝对误差　黑紫接近 0，橙黄接近 35 毫米，灰色为比较范围以外" :
-    m.iou != null ? "黄线为原始标注，青线为模型回投" : m.texture ? "坑内像素取自 GLB 内嵌材质，周围为留出照片" : "独立观测的实拍照片";
+  el("pitLegend").textContent = m.note || (m.error ? "深度绝对误差　黑紫接近 0，橙黄接近 35 毫米，灰色为比较范围以外" :
+    m.iou != null ? "黄线为原始标注，青线为模型回投" : m.texture ? "坑内像素取自 GLB 内嵌材质，周围为留出照片" : "独立观测的实拍照片");
   el("pitScore").textContent = m.iou != null ? "坑缘 IoU "+m.iou.toFixed(3) : m.texture && view.colorError != null ? "RGB 平均绝对误差 "+view.colorError.toFixed(1)+" / 255" : "";
-  let text = "融合 GLB 与留出实测深度的重合区有 "+view.samples.toLocaleString()+" 个像素。深度绝对误差中位数 "+view.median.toFixed(1)+" 毫米，P95 为 "+view.p95.toFixed(1)+" 毫米。";
+  let text = view.description || ("融合 GLB 与留出实测深度的重合区有 "+view.samples.toLocaleString()+" 个像素。深度绝对误差中位数 "+view.median.toFixed(1)+" 毫米，P95 为 "+view.p95.toFixed(1)+" 毫米。");
   if (view.spacing != null) text += " 留出深度估计的双坑中心距为 "+view.spacing.toFixed(3)+" 米。";
   el("pitDepth").textContent = text;
 }
@@ -149,6 +149,8 @@ function inspect(id) {
   showSource();
   el("pitPanel").hidden = !selected.pitViews;
   if (selected.pitViews) {
+    el("pitHeading").textContent=selected.depthPanelTitle || "比较多帧与单帧重建在留出照片上的表现";
+    if (selected.matchCoverage!=null) metric("坑内双向匹配覆盖",(100*selected.matchCoverage).toFixed(1)+"%");
     if (selected.spacing != null) metric("双坑中心距（米）",selected.spacing.toFixed(3));
     el("pitFrame").replaceChildren(...selected.pitViews.map((v,i)=>new Option(v.frame,String(i))));
     showPitView(true);

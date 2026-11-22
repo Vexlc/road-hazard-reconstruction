@@ -1,4 +1,4 @@
-"""Reconstruct repeat RGB-D or stereo views of a pothole or a group of adjacent pits."""
+"""Reconstruct potholes from registered RGB-D, stereo captures or a pair of RGB photographs."""
 
 import argparse
 from hashlib import sha256
@@ -16,6 +16,7 @@ from PIL import Image
 from fuse_pit import fuse, photo_texture, road_texture
 from gen2hole import ROOT, run_step
 from pit_captures import read_views, registration
+from photo_parallax import build_pair
 
 
 def put(path, value):
@@ -27,6 +28,10 @@ def build(args, stage):
     keys = [s['id'] for s in specs]
     if len(set(keys)) != len(keys) or not keys or any(not re.fullmatch(r'P[0-9]{2,}', k) for k in keys):
         raise ValueError('Use a distinct pothole ID for each asset')
+    photo_pairs = sum(s.get('mode') == 'rgb_parallax' for s in specs)
+    calibration_mode = 'multiview_depth'
+    if photo_pairs:
+        calibration_mode = 'rgb_parallax' if photo_pairs == len(specs) else 'mixed_multiview'
     cfg = json.loads(args.config.read_text())
     bundle = stage / 'series'
     cal = bundle / 'calibration'
@@ -44,6 +49,9 @@ def build(args, stage):
         )
     for spec in specs:
         key = spec['id']
+        if spec.get('mode') == 'rgb_parallax':
+            build_pair(spec, args.source, args.catalog, args.survey.parent, bundle)
+            continue
         views = read_views(spec, args.source, args.catalog, args.survey.parent)
         poses, alignment = registration(spec, views)
         fitting = [views[k] for k in spec['fit']]
@@ -112,7 +120,7 @@ def build(args, stage):
         bundle / 'run.json',
         dict(
             edition='series',
-            calibration='multiview_depth',
+            calibration=calibration_mode,
             ids=keys,
             mesh_only=args.mesh_only,
             preview=args.preview,
@@ -144,6 +152,8 @@ def build(args, stage):
         )
     run_step(cfg['mesh_python'], rebuild / 'verify.py', [], env)
     put(stage / 'run.json', dict(editions=['series'], assets=keys))
+    if calibration_mode == 'rgb_parallax':
+        return
     evaluation = stage / 'evaluation'
     evaluation.mkdir(exist_ok=True)
     run_step(

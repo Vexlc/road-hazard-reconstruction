@@ -179,6 +179,8 @@ def run(args):
     specs = json.loads((bundle / 'calibration/survey.json').read_text())
     reports = {}
     for spec in specs:
+        if spec.get('mode')=='rgb_parallax':
+            continue
         key = spec['id']
         capture = json.loads((bundle / 'calibration' / (key + '_capture.json')).read_text())
         views = read_views(spec, args.source, args.catalog, args.files_base or bundle / 'calibration')

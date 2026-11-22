@@ -1,4 +1,5 @@
-"""Render four geometry-locked turntables from the actual GLBs for the local atlas."""
+"""Render fixed-camera turntables from the actual GLBs for the local atlas."""
+import argparse
 import json
 import math
 import os
@@ -49,16 +50,30 @@ def render(bundle, name):
                 frames.append(img.convert("RGB"))
         # Publish only a complete loop. Keep the immutable first frame as the initial angle.
         target = OUT/(name+".webp")
-        draft = OUT/(name+".tmp.webp")
-        frames[0].save(draft,save_all=True,append_images=frames[1:],duration=140,loop=0,quality=84,method=4)
-        draft.replace(target)
+        with TemporaryDirectory(dir=OUT, prefix=".orbit-") as publication:
+            draft = Path(publication)/target.name
+            frames[0].save(draft,save_all=True,append_images=frames[1:],duration=140,loop=0,quality=84,method=4)
+            draft.replace(target)
         print(name, target, flush=True)
 
 
 if __name__ == "__main__":
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--bundle",type=Path,help="series directory containing the asset manifest and mesh cache")
+    parser.add_argument("--ids",nargs="+",help="IDs in this bundle")
+    args=parser.parse_args()
+    if bool(args.bundle)!=bool(args.ids):
+        parser.error("Specify both --bundle and --ids")
+    if args.bundle:
+        records=json.loads((args.bundle/'assets/asset_manifest.json').read_text())
+        if not set(args.ids)<={r['id'] for r in records}:
+            parser.error("Some requested IDs are absent from the bundle")
+        jobs=[(args.bundle,key) for key in dict.fromkeys(args.ids)]
+    else:
+        jobs=[(ROOT/("runs/rgb-box-P90/series" if key=="P90" else "gen2hole/runs/demo/series"),key)
+              for key in ("A13","M13","P13","P90")]
     OUT.mkdir(parents=True,exist_ok=True)
-    for name in ("A13","M13","P13","P90"):
-        bundle = ROOT/("runs/rgb-box-P90/series" if name=="P90" else "gen2hole/runs/demo/series")
+    for bundle,name in jobs:
         render(bundle,name)
     sys.stdout.flush()
     sys.stderr.flush()

@@ -2,7 +2,9 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
-**[打开离线路面病害资产图谱](tools/asset_atlas/index.html)**。按编号、重建方式或病害形态查找资产，查看原图、模型斜视、米制尺寸和对应的 PandaSet 道路画面。图谱收录 822 条实拍 RGB-D、65 条实拍双目、342 件程序化、109 件生成 RGB、14 条实拍单目、6 条实拍相机加激光雷达、4 条摄影测量派生状态，以及 3 组多帧 RGB-D 和 2 组多帧双目重建，共 1,367 条。采集帧可能来自同一处病害。六种井盖状态共用一套井体与盖面。展开任一条目的「网格高程与剖面」，可以在俯视图上取截线，读取该处的米制高度。
+**[打开离线路面病害资产图谱](tools/asset_atlas/index.html)**。按编号、重建方式或病害形态查找资产，查看原图、模型斜视、米制尺寸和对应的 PandaSet 道路画面。图谱收录 822 条实拍 RGB-D、65 条实拍双目、342 件程序化、109 件生成 RGB、14 条实拍单目、6 条实拍相机加激光雷达、4 条摄影测量派生状态，4 组双张实拍 RGB，以及 3 组多帧 RGB-D 和 2 组多帧双目重建，共 1,371 条。采集帧可能来自同一处病害。六种井盖状态共用一套井体与盖面。展开任一条目的「网格高程与剖面」，可以在俯视图上取截线，读取该处的米制高度。
+
+两张普通彩照也能恢复坑底的米制起伏。方形浅坑 P121、骨料裸露深坑 P122、弧形陡边坑 P123 和小型剥落坑 P124 均已迁入自驾道路。可在图谱中切换两张原图、查看双向匹配覆盖，再将模型剖面与保留的传感器深度逐点比较。P124 还提供三个建模时未使用的机位，其中两个可在同一截线上对照双照片模型、双目模型和传感器深度。[双照片资产与自驾道路](docs/figures/photo-parallax.jpg) · [三个留出机位的剖面与回投](docs/figures/photo-parallax-heldout.jpg)
 
 雨水篦 A115 的 60 个孔均贯穿盖板。A117 断掉一段格条后，相邻两孔连通。A116 与 M115 展示同一井体的掀开和缺盖。铺石圆盖 A118 保留 16 个孔和盖面的实拍起伏，可在同一机位切换掀开、错位和缺盖。图谱中的「断口放大」「原机位侧壁」和完整前视画面可直接对照几何与道路外观。[矩形雨水篦图版](docs/figures/perforated-grate.jpg) · [穿孔圆盖图版](docs/figures/perforated-cobblestone.jpg)
 
@@ -30,6 +32,7 @@ P112 的两张近景各拍到一个坑。重建后，两个坑能在同一张留
 | 从实拍井圈和盖面重建可动圆井盖，可选标定深度 | [可动井盖与深度测井](docs/02-asset-reconstruction.md#两张实拍重建可动圆井盖) |
 | 从实拍盖板恢复真实通孔、断条与可动状态 | [雨水篦与穿孔盖板的输入和复建](docs/02-asset-reconstruction.md#从实拍盖板重建贯穿孔与断条) |
 | 从实拍图和裂缝掩膜重建分支沟槽 | [裂缝示例与输入格式](docs/02-asset-reconstruction.md#从实拍裂缝与像素掩膜重建) |
+| 用两张彩照、相机内参和一段已知路面长度重建凹陷 | [双照片视差重建与独立深度检查](docs/02-asset-reconstruction.md#两张彩照重建坑底起伏) |
 | 从多张不同角度或局部近景合成一个坑洞资产 | [多帧 RGB-D、双目与留出帧检查](docs/02-asset-reconstruction.md#多帧实拍重建同一组坑洞) |
 | 从自己的对齐 RGB、深度与掩膜重建坑洞 | [RGB-D 文件入口](docs/02-asset-reconstruction.md#自带-rgb-d-文件) |
 | 看同一病害在相机、点云和剖面中的变化 | [离线传感器对照页](data/releases/2026-11-21/道路病害_传感器与几何增强/传感器对照.html) |
@@ -48,4 +51,4 @@ python scripts/roadgs.py verify
 
 Git 保存代码、配置模板、清单和验证记录。模型、原始传感器数据、检查点、视频、环境和实验目录保存在本机。单独克隆 Git 后，需要恢复对应版本的数据目录才能打开上表中的离线页面或回放场景。[数据版本清单](catalog/roadgs-releases.json)
 
-图谱使用本机资产与场景文件，可直接在浏览器打开。P13、M13、A13、P90 提供固定取景的 360° 环绕，均从同一 GLB 渲染 24 个方向。可用 `work/envs/assets/bin/python scripts/render-asset-orbits.py` 重画。重画两张图版时运行 `work/envs/assets/bin/python scripts/render-asset-plates.py`。本次合并后的复跑结果见[验证记录](validation/merged-assets-2026-11-22.json)。
+图谱使用本机资产与场景文件，可直接在浏览器打开。十件资产提供固定取景的 360° 环绕，每件从自己的 GLB 渲染 24 个方向。四件双照片坑洞可用 `work/envs/assets/bin/python scripts/render-asset-orbits.py --bundle runs/rgb-parallax/series --ids P121 P122 P123 P124` 重画。A117 和 A119 可查看断条和掀盖的各侧外观。省略参数可重画最初的 P13、M13、A13 和 P90。[合并后的复跑记录](validation/merged-assets-2026-11-22.json)
