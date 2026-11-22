@@ -16,11 +16,13 @@ PART_NAMES={'Road around the aperture':1,'Road adjoining the fracture':1,'Fractu
             'Lid fragment face':9,'Lid fragment underside':10,'Lid fragment aperture walls and perimeter':11}
 
 
-def bvh(file):
+def bvh(file, include_part=None):
     scene=trimesh.load(file,force='scene',process=False)
     nodes=[];tri=[];ids=[];cursor=0
     for n in scene.graph.nodes_geometry:
         transform,name=scene.graph.get(n);part=12 if n.startswith('Hinge ') else PART_NAMES[n]
+        if include_part is not None and part != include_part:
+            continue
         geometry=scene.geometry[name]
         v=trimesh.transform_points(geometry.vertices,transform)
         nodes.append(np.stack([v[:,0],-v[:,2],v[:,1]],axis=1));tri.append(geometry.faces+cursor)

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>同位置道路资产对照 · RoadGS</title>
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="compare-road.css">
+<header><div class="bar"><a class="brand" href="index.html">Road<span>GS</span></a><nav><a href="index.html#library">资产目录</a></nav></div></header>
+<main id="roadComparison">
+  <div class="heading"><div><h1>同位置道路资产对照</h1><p>选择两件资产，比较它们在同一张车载照片中的原尺度外观。</p></div></div>
+  <p id="compareStatus" role="status">正在载入道路观测…</p>
+  <section id="comparison" hidden aria-label="道路资产对照">
+    <div class="road-controls"><label>道路位置<select id="place"></select></label><label>相机与距离<select id="shot"></select></label>
+      <label>示例组合<select id="preset"><option value="">自选资产</option></select></label></div>
+    <div class="road-frame">
+      <a id="contextLink" target="_blank" rel="noopener"><img id="context" alt="实拍全景，黄框标出原始裁切，放大时白框标出所选范围"><span id="focusWindow" hidden></span></a>
+      <div><h2 id="sceneTitle"></h2><p id="sceneCaption"></p><p id="sceneCrop"></p>
+        <div class="layer-choices"><label><input type="checkbox" id="zoom"> 同步放大病害</label><label><input type="checkbox" id="parts"> 标出网格部件</label><label><input type="checkbox" id="rays"> 叠加模拟雷达回波</label></div>
+        <div id="partLegend" aria-live="polite" hidden></div><p id="rayLegend" hidden>青点与相机命中同一部件，光轴深度相差不超过 5 厘米。橙圈为其余投到裁切内的回波。</p>
+      </div>
+    </div>
+    <section id="beamComparison" hidden aria-label="比较同一束模拟激光">
+      <h2>同一束激光落在哪里</h2><p id="beamSummary"></p>
+      <label id="beamChoice" hidden>原始扫描点 <select id="beam"></select></label><output id="beamDetails"></output>
+    </section>
+    <div id="alternatives"></div>
+    <p class="compare-footnote">道路局部共用相机内参、位姿和像素范围。网格部件按真实相机射线求交，高斯外观取自原生场景检查点。模拟激光沿采集时的光束重新求交。</p>
+  </section>
+</main>
+<template id="alternative"><section class="alternative">
+  <label class="pick"></label>
+  <div class="crop"><div class="image-plane"><img class="appearance" alt=""><img class="asset-layer" alt="" hidden><img class="mask" alt="" hidden><canvas class="returns" aria-hidden="true" hidden></canvas></div></div>
+  <div class="asset-readout"><p class="asset-id"></p><h2 class="label"></h2><p class="source"></p><p class="counts"></p><p class="lidar"></p>
+    <a class="details-link"></a></div>
+  <div class="asset-images"><a class="reference-link" target="_blank" rel="noopener"><img class="reference-image" alt=""><span></span></a>
+    <a class="model-link"><img class="model-preview" alt=""><span></span></a></div>
+</section></template>
+<script src="../../runs/road-comparisons/groups.js"></script><script src="compare-road.js"></script>
+</html>

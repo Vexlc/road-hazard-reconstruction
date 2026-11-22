@@ -523,3 +523,37 @@ python gen2hole/downstream/simulate.py --run work/grade-rebuild --out work/grade
 work/envs/streetcrafter/bin/python scripts/check-perforated-covers.py --run work/grade-rebuild --with-sensors --out work/grade-rebuild/grade.json
 work/envs/streetcrafter/bin/python scripts/render-cover-grade.py --run work/grade-rebuild --report work/grade-rebuild/grade.json --out work/grade-rebuild/grade.jpg
 ~~~
+
+## 同一车载机位比较不同资产
+
+在图谱打开「同位置道路资产对照」，先选道路位置，再选两件资产。同一栏也可以切回「原始路面」。两件资产共用原实拍帧、相机标定、放置中心和朝向，各自保留重建时的米制尺寸。下方并排显示重建参考图与独立模型。可点开原图，或旋转图谱内的三维模型。尺寸旁沿用原资产的深度定义，例如设计井深、实测坑底凹深或某条截线的深度。[八件资产的道路近景与远景](figures/matched-road-assets.jpg) · [离线对照页](../tools/asset_atlas/compare-road.html)
+
+当前有 163 件可对照资产，其中 162 件来自图谱，A98 是另列的合成 RGB-D 姿态标定样例。109 件来自生成的 RGB，其他来源包括实拍 RGB、双张彩照、多帧 RGB-D、双目、摄影测量和实拍相机加激光。PandaSet 034、109、110 的九处路面共保留 405 次原尺度放置。每个位置的前后相机各取可用的近处与远处帧。110 的位置 01 在记录开始时已经很近，只有一个可用的前视机位。合计 35 个机位、1,577 组单资产观测。
+
+以 109 的位置 01 为例，前视第 29 帧相机距资产中心 9.4 米，第 21 帧为 22.3 米。同一相机的两次裁切使用相同的原图像素宽高，保留了随车辆距离变化的视角大小。勾选「同步放大病害」，两栏会裁到能容纳这两件资产及其投影回波的范围。近处和远处仍用相同的像素跨度，全景中的白框标出放大区域。
+
+| 资产 | 近处可见部件像素 | 远处可见部件像素 |
+| --- | ---: | ---: |
+| 沿缝双坑 P112 | 1,327 | 97 |
+| 掀开的铺石盖 A119 | 8,357 | 692 |
+| 同井体缺盖 M118 | 5,178 | 361 |
+| 混凝土网裂与碎板 P135 | 4,645 | 341 |
+
+「标出网格部件」按相机射线的首次交点区分坑底、积水、井圈、盖面等表面。外观取自原生场景检查点中该资产的高斯，路面保留原照片。每个机位只保存一张无损原始裁切，每件资产另存有实际像素变化的透明图层。动态物体、已知静态前景和后视相机下方的车体按原回放遮挡规则处理。六组远处观测的可见网格面积为零，页面保留这些机位。
+
+「叠加模拟雷达回波」从原始扫描发射器、点行号和测距识别同一束光。只比较两个场景回放中都命中所选资产、且投进相机裁切的回波。点选图中回波或从列表选取行号，可读取原始实测距离和两种状态的模拟距离，地址栏会保留选择。青点表示相机射线命中同一部件，且相机光轴方向的深度相差不超过 5 厘米。两次返回的距离都从同一发射器沿光束方向计量。
+
+例如在上述近处前视帧中，A119 和 M118 有 297 束共同回波，其中 37 束相差超过 10 毫米。行 151811 在原实拍中返回 8.515 米，掀盖时先遇到盖板边缘，模拟返回 7.884 米，缺盖时先遇到井圈，模拟返回 8.478 米。位置相同、状态不同，沿这束光的距离相差 594.6 毫米。远处前视帧中，两态有 5 束共同回波，全部落在两态共有的几何上，模拟距离相同。[查看这束光](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-01&view=front-near&a=A119&b=M118&beam=151811&zoom=1) · [三幅对照图](figures/matched-road-lidar.jpg)
+
+在同一张近处前视照片里，干坑 P122 和积水坑 P130 的可见网格面积都是 3,346 像素。185 束共同回波中有 85 束相差超过 10 毫米。沿原始扫描行 154991，干坑命中坑底的距离为 8.459 米，注水后命中水面的距离为 8.296 米。这里按理想水面几何求交，实际水面的光学反射和雷达漏检取决于材质、波长与入射角。两种井盖断片位置则给出另一种结果。在 109 的位置 05 近处前视中，A127、A128 的 126 束共同回波全部返回相同距离。[同一个坑的干湿对照](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-01&view=front-near&a=P122&b=P130&beam=154991&zoom=1) · [断片落井与移至井旁](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-05&view=front-near&a=A127&b=A128&rays=1&zoom=1)
+
+独立核验重新读取实拍照片、标定、扫描与 GLB，抽查 30,303 条相机射线和 4,237 个模拟回波的相机深度。四条相机射线在轮廓边缘内外 0.001 像素范围内复核，两条位于几乎重合的盖面与边缘，逐部件求交的距离相差小于 0.05 毫米。与已有标定回放重合的 483 组观测共比较了 2,807,961 个部件像素，标签完全一致。所有机位累计有 206,403 个投影模拟回波，其中 199,623 个与相机命中同一部件且光轴深度相差不超过 5 厘米。有 132 组观测没有落进裁切的模拟回波。[逐位置与逐资产对的核验记录](../validation/matched-road-views.json)
+
+本地已恢复资产、场景检查点、传感器发布数据与 PandaSet 原始／预处理数据后，可执行以下命令复建。若只需一处，构建命令可追加 `--groups 109-01`。下方命令写入新的目录，图谱正式入口读取 `runs/road-comparisons/`。
+
+~~~bash
+python scripts/build-asset-atlas.py
+CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/build-matched-road-views.py --out runs/check-road-views
+work/envs/assets/bin/python scripts/check-matched-road-views.py --run runs/check-road-views --out runs/check-road-views/verification.json
+work/envs/assets/bin/python scripts/render-matched-road-plate.py --run runs/check-road-views --out runs/check-road-views/assets.jpg --beam-figure runs/check-road-views/lidar.jpg
+~~~

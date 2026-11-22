@@ -1,0 +1,603 @@
+{
+  "shared_beam_examples": {
+    "109-01/P112-A119": {
+      "front-near": {
+        "shared_projected_rows": 67,
+        "over_10mm": 66,
+        "max_difference_mm": 398.241,
+        "median_difference_mm": 208.937,
+        "farthest_apart": {
+          "scan_row": 153011,
+          "sensor": 1,
+          "first_part": 2,
+          "second_part": 11,
+          "original_m": 8.305379,
+          "first_m": 8.30775,
+          "second_m": 7.909509
+        }
+      },
+      "front-far": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      },
+      "back-near": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      },
+      "back-far": {
+        "shared_projected_rows": 2,
+        "over_10mm": 2,
+        "max_difference_mm": 280.89,
+        "median_difference_mm": 237.5695,
+        "farthest_apart": {
+          "scan_row": 1274,
+          "sensor": 0,
+          "first_part": 2,
+          "second_part": 5,
+          "original_m": 23.339243,
+          "first_m": 23.571756,
+          "second_m": 23.852646
+        }
+      }
+    },
+    "109-01/A119-M118": {
+      "front-near": {
+        "shared_projected_rows": 297,
+        "over_10mm": 37,
+        "max_difference_mm": 594.633,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 151811,
+          "sensor": 1,
+          "first_part": 11,
+          "second_part": 5,
+          "original_m": 8.515364,
+          "first_m": 7.883772,
+          "second_m": 8.478405
+        }
+      },
+      "front-far": {
+        "shared_projected_rows": 5,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 133959,
+          "sensor": 1,
+          "first_part": 5,
+          "second_part": 5,
+          "original_m": 22.875303,
+          "first_m": 22.643526,
+          "second_m": 22.643526
+        }
+      },
+      "back-near": {
+        "shared_projected_rows": 13,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 101881,
+          "sensor": 0,
+          "first_part": 5,
+          "second_part": 5,
+          "original_m": 9.797891,
+          "first_m": 9.835118,
+          "second_m": 9.835118
+        }
+      },
+      "back-far": {
+        "shared_projected_rows": 8,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 1224,
+          "sensor": 0,
+          "first_part": 5,
+          "second_part": 5,
+          "original_m": 23.371235,
+          "first_m": 23.899422,
+          "second_m": 23.899422
+        }
+      }
+    },
+    "109-01/P122-P130": {
+      "front-near": {
+        "shared_projected_rows": 185,
+        "over_10mm": 85,
+        "max_difference_mm": 162.87,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 154991,
+          "sensor": 1,
+          "first_part": 2,
+          "second_part": 4,
+          "original_m": 8.110304,
+          "first_m": 8.459322,
+          "second_m": 8.296452
+        }
+      },
+      "front-far": {
+        "shared_projected_rows": 2,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 133974,
+          "sensor": 1,
+          "first_part": 2,
+          "second_part": 2,
+          "original_m": 22.925369,
+          "first_m": 22.919218,
+          "second_m": 22.919218
+        }
+      },
+      "back-near": {
+        "shared_projected_rows": 10,
+        "over_10mm": 10,
+        "max_difference_mm": 135.067,
+        "median_difference_mm": 114.96600000000001,
+        "farthest_apart": {
+          "scan_row": 102046,
+          "sensor": 0,
+          "first_part": 2,
+          "second_part": 4,
+          "original_m": 9.777935,
+          "first_m": 10.164972,
+          "second_m": 10.029905
+        }
+      },
+      "back-far": {
+        "shared_projected_rows": 5,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 1224,
+          "sensor": 0,
+          "first_part": 2,
+          "second_part": 2,
+          "original_m": 23.371235,
+          "first_m": 23.873459,
+          "second_m": 23.873459
+        }
+      }
+    },
+    "034-01/A117-P135": {
+      "front-near": {
+        "shared_projected_rows": 36,
+        "over_10mm": 24,
+        "max_difference_mm": 100.587,
+        "median_difference_mm": 17.7735,
+        "farthest_apart": {
+          "scan_row": 174785,
+          "sensor": 1,
+          "first_part": 11,
+          "second_part": 2,
+          "original_m": 8.001013,
+          "first_m": 8.105209,
+          "second_m": 8.004622
+        }
+      },
+      "front-far": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      },
+      "back-near": {
+        "shared_projected_rows": 1,
+        "over_10mm": 1,
+        "max_difference_mm": 28.952,
+        "median_difference_mm": 28.952,
+        "farthest_apart": {
+          "scan_row": 112297,
+          "sensor": 0,
+          "first_part": 11,
+          "second_part": 2,
+          "original_m": 10.092628,
+          "first_m": 10.172099,
+          "second_m": 10.143147
+        }
+      },
+      "back-far": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      }
+    },
+    "109-05/P143-M138": {
+      "front-near": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      },
+      "front-far": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      },
+      "back-near": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      },
+      "back-far": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      }
+    },
+    "109-05/A127-A128": {
+      "front-near": {
+        "shared_projected_rows": 126,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 146548,
+          "sensor": 1,
+          "first_part": 5,
+          "second_part": 5,
+          "original_m": 9.926783,
+          "first_m": 9.94135,
+          "second_m": 9.94135
+        }
+      },
+      "front-far": {
+        "shared_projected_rows": 26,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 52634,
+          "sensor": 0,
+          "first_part": 5,
+          "second_part": 5,
+          "original_m": 21.735558,
+          "first_m": 21.879963,
+          "second_m": 21.879963
+        }
+      },
+      "back-near": {
+        "shared_projected_rows": 9,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 103056,
+          "sensor": 0,
+          "first_part": 5,
+          "second_part": 5,
+          "original_m": 13.052601,
+          "first_m": 13.052861,
+          "second_m": 13.052861
+        }
+      },
+      "back-far": {
+        "shared_projected_rows": 5,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 2,
+          "sensor": 0,
+          "first_part": 9,
+          "second_part": 9,
+          "original_m": 23.359194,
+          "first_m": 23.242735,
+          "second_m": 23.242735
+        }
+      }
+    },
+    "110-01/P02_wet_wheel_track-A93": {
+      "front-near": {
+        "shared_projected_rows": 194,
+        "over_10mm": 190,
+        "max_difference_mm": 659.042,
+        "median_difference_mm": 184.394,
+        "farthest_apart": {
+          "scan_row": 150030,
+          "sensor": 1,
+          "first_part": 3,
+          "second_part": 11,
+          "original_m": 8.600822,
+          "first_m": 8.647087,
+          "second_m": 7.988045
+        }
+      },
+      "back-near": {
+        "shared_projected_rows": 14,
+        "over_10mm": 13,
+        "max_difference_mm": 168.126,
+        "median_difference_mm": 116.678,
+        "farthest_apart": {
+          "scan_row": 100480,
+          "sensor": 0,
+          "first_part": 3,
+          "second_part": 5,
+          "original_m": 10.828546,
+          "first_m": 10.983267,
+          "second_m": 11.151393
+        }
+      },
+      "back-far": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      }
+    },
+    "109-03/M11-M03_brick_lined": {
+      "front-near": {
+        "shared_projected_rows": 420,
+        "over_10mm": 373,
+        "max_difference_mm": 510.659,
+        "median_difference_mm": 41.4855,
+        "farthest_apart": {
+          "scan_row": 155741,
+          "sensor": 1,
+          "first_part": 6,
+          "second_part": 5,
+          "original_m": 7.953689,
+          "first_m": 8.413385,
+          "second_m": 7.902726
+        }
+      },
+      "front-far": {
+        "shared_projected_rows": 20,
+        "over_10mm": 18,
+        "max_difference_mm": 360.394,
+        "median_difference_mm": 41.706,
+        "farthest_apart": {
+          "scan_row": 130231,
+          "sensor": 1,
+          "first_part": 5,
+          "second_part": 5,
+          "original_m": 21.255257,
+          "first_m": 21.393158,
+          "second_m": 21.032764
+        }
+      },
+      "back-near": {
+        "shared_projected_rows": 24,
+        "over_10mm": 22,
+        "max_difference_mm": 422.728,
+        "median_difference_mm": 42.1545,
+        "farthest_apart": {
+          "scan_row": 101940,
+          "sensor": 0,
+          "first_part": 6,
+          "second_part": 5,
+          "original_m": 10.359042,
+          "first_m": 10.828666,
+          "second_m": 10.405938
+        }
+      },
+      "back-far": {
+        "shared_projected_rows": 5,
+        "over_10mm": 4,
+        "max_difference_mm": 377.918,
+        "median_difference_mm": 75.714,
+        "farthest_apart": {
+          "scan_row": 465,
+          "sensor": 0,
+          "first_part": 5,
+          "second_part": 5,
+          "original_m": 22.323898,
+          "first_m": 22.68511,
+          "second_m": 22.307192
+        }
+      }
+    }
+  },
+  "assets": 163,
+  "reconstruction_methods": {
+    "生成 RGB": 109,
+    "实拍 RGB + 激光雷达": 6,
+    "实拍 RGB": 14,
+    "实拍摄影测量": 17,
+    "合成 RGB-D 标定样例": 1,
+    "多帧双目": 4,
+    "多帧 RGB-D": 3,
+    "双张实拍 RGB": 4,
+    "实拍坑底＋模拟积水": 5
+  },
+  "locations": 9,
+  "camera_poses": 35,
+  "metrics": {
+    "camera_subpixel_boundaries": 4,
+    "camera_coincident_parts": 2,
+    "projected_beams": 206403,
+    "views_without_projected_beams": 132,
+    "same_part_beams": 200542,
+    "same_part_within_50mm": 199623,
+    "laser_depth_checks": 4237,
+    "laser_subpixel_boundaries": 0,
+    "laser_coincident_parts": 0,
+    "views": 1577,
+    "visible_pixels": 4978184,
+    "changed_pixels": 5608234,
+    "empty_mesh_views": 6,
+    "camera_ray_checks": 30303,
+    "placements": 405,
+    "previous_camera_overlaps": 483,
+    "previous_part_pixels": 2807961,
+    "previous_part_differences": 0
+  },
+  "max_center_ray_depth_error_mm": 0.22314080421637073,
+  "by_location": {
+    "034-05": {
+      "camera_subpixel_boundaries": 1,
+      "camera_coincident_parts": 1,
+      "projected_beams": 30540,
+      "views_without_projected_beams": 6,
+      "same_part_beams": 29934,
+      "same_part_within_50mm": 29697,
+      "laser_depth_checks": 577,
+      "laser_subpixel_boundaries": 0,
+      "laser_coincident_parts": 0,
+      "views": 160,
+      "visible_pixels": 714582,
+      "changed_pixels": 789019,
+      "empty_mesh_views": 2,
+      "camera_ray_checks": 4518,
+      "placements": 40,
+      "previous_camera_overlaps": 4,
+      "previous_part_pixels": 9604,
+      "previous_part_differences": 0
+    },
+    "109-05": {
+      "camera_subpixel_boundaries": 0,
+      "camera_coincident_parts": 0,
+      "projected_beams": 29674,
+      "views_without_projected_beams": 7,
+      "same_part_beams": 29031,
+      "same_part_within_50mm": 28811,
+      "laser_depth_checks": 590,
+      "laser_subpixel_boundaries": 0,
+      "laser_coincident_parts": 0,
+      "views": 188,
+      "visible_pixels": 651624,
+      "changed_pixels": 739278,
+      "empty_mesh_views": 0,
+      "camera_ray_checks": 5063,
+      "placements": 47,
+      "previous_camera_overlaps": 8,
+      "previous_part_pixels": 16645,
+      "previous_part_differences": 0
+    },
+    "110-04": {
+      "camera_subpixel_boundaries": 1,
+      "camera_coincident_parts": 0,
+      "projected_beams": 42653,
+      "views_without_projected_beams": 0,
+      "same_part_beams": 41912,
+      "same_part_within_50mm": 41782,
+      "laser_depth_checks": 777,
+      "laser_subpixel_boundaries": 0,
+      "laser_coincident_parts": 0,
+      "previous_camera_overlaps": 37,
+      "previous_part_pixels": 754385,
+      "previous_part_differences": 0,
+      "views": 144,
+      "visible_pixels": 1005645,
+      "changed_pixels": 1184776,
+      "empty_mesh_views": 0,
+      "camera_ray_checks": 4673,
+      "placements": 36
+    },
+    "109-01": {
+      "camera_subpixel_boundaries": 1,
+      "camera_coincident_parts": 0,
+      "projected_beams": 20981,
+      "views_without_projected_beams": 62,
+      "same_part_beams": 20029,
+      "same_part_within_50mm": 19954,
+      "laser_depth_checks": 496,
+      "laser_subpixel_boundaries": 0,
+      "laser_coincident_parts": 0,
+      "previous_camera_overlaps": 131,
+      "previous_part_pixels": 463558,
+      "previous_part_differences": 0,
+      "views": 284,
+      "visible_pixels": 502908,
+      "changed_pixels": 601082,
+      "empty_mesh_views": 4,
+      "camera_ray_checks": 4321,
+      "placements": 71
+    },
+    "034-01": {
+      "camera_subpixel_boundaries": 0,
+      "camera_coincident_parts": 0,
+      "projected_beams": 19703,
+      "views_without_projected_beams": 15,
+      "same_part_beams": 18697,
+      "same_part_within_50mm": 18620,
+      "laser_depth_checks": 469,
+      "laser_subpixel_boundaries": 0,
+      "laser_coincident_parts": 0,
+      "views": 240,
+      "visible_pixels": 412180,
+      "changed_pixels": 474142,
+      "empty_mesh_views": 0,
+      "camera_ray_checks": 3605,
+      "placements": 60,
+      "previous_camera_overlaps": 13,
+      "previous_part_pixels": 23681,
+      "previous_part_differences": 0
+    },
+    "110-01": {
+      "camera_subpixel_boundaries": 1,
+      "camera_coincident_parts": 1,
+      "projected_beams": 14883,
+      "views_without_projected_beams": 14,
+      "same_part_beams": 14213,
+      "same_part_within_50mm": 14198,
+      "laser_depth_checks": 306,
+      "laser_subpixel_boundaries": 0,
+      "laser_coincident_parts": 0,
+      "previous_camera_overlaps": 86,
+      "previous_part_pixels": 360851,
+      "previous_part_differences": 0,
+      "views": 129,
+      "visible_pixels": 364705,
+      "changed_pixels": 424408,
+      "empty_mesh_views": 0,
+      "camera_ray_checks": 2109,
+      "placements": 43
+    },
+    "034-03": {
+      "camera_subpixel_boundaries": 0,
+      "camera_coincident_parts": 0,
+      "projected_beams": 6110,
+      "views_without_projected_beams": 25,
+      "same_part_beams": 5820,
+      "same_part_within_50mm": 5793,
+      "laser_depth_checks": 168,
+      "laser_subpixel_boundaries": 0,
+      "laser_coincident_parts": 0,
+      "previous_camera_overlaps": 60,
+      "previous_part_pixels": 451848,
+      "previous_part_differences": 0,
+      "views": 144,
+      "visible_pixels": 497260,
+      "changed_pixels": 520506,
+      "empty_mesh_views": 0,
+      "camera_ray_checks": 1985,
+      "placements": 36
+    },
+    "109-03": {
+      "camera_subpixel_boundaries": 0,
+      "camera_coincident_parts": 0,
+      "projected_beams": 18091,
+      "views_without_projected_beams": 0,
+      "same_part_beams": 17761,
+      "same_part_within_50mm": 17662,
+      "laser_depth_checks": 388,
+      "laser_subpixel_boundaries": 0,
+      "laser_coincident_parts": 0,
+      "previous_camera_overlaps": 72,
+      "previous_part_pixels": 348039,
+      "previous_part_differences": 0,
+      "views": 144,
+      "visible_pixels": 370587,
+      "changed_pixels": 392204,
+      "empty_mesh_views": 0,
+      "camera_ray_checks": 1951,
+      "placements": 36
+    },
+    "110-02": {
+      "camera_subpixel_boundaries": 0,
+      "camera_coincident_parts": 0,
+      "projected_beams": 23768,
+      "views_without_projected_beams": 3,
+      "same_part_beams": 23145,
+      "same_part_within_50mm": 23106,
+      "laser_depth_checks": 466,
+      "laser_subpixel_boundaries": 0,
+      "laser_coincident_parts": 0,
+      "previous_camera_overlaps": 72,
+      "previous_part_pixels": 379350,
+      "previous_part_differences": 0,
+      "views": 144,
+      "visible_pixels": 458693,
+      "changed_pixels": 482819,
+      "empty_mesh_views": 0,
+      "camera_ray_checks": 2078,
+      "placements": 36
+    }
+  }
+}

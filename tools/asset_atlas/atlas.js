@@ -36,6 +36,10 @@ function showScene() {
     el("before").textContent = before ? (view.afterLabel || "查看迁入后") : (view.beforeLabel || "查看迁入前");
   }
   el("downloads").replaceChildren();
+  if (selected.matchedRoad) {
+    const group=selected.matchedRoad.find(g=>g.startsWith("109-")) || selected.matchedRoad[0];
+    download("同位置对照其他资产","compare-road.html#"+new URLSearchParams({group,a:selected.id}));
+  }
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
   download("3DGS 与网格对照","splats.html#"+encodeURIComponent(selected.id));
   for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.auditLabel || (selected.family ? "几何一致性核验" : "轮廓评估"),"audit"],[selected.scanLabel || "雷达核验","scan"],["实拍拟合记录","fit"],[selected.reprojectionLabel || "留出帧核验","reprojection"]])
@@ -257,6 +261,7 @@ function showCoverage() {
 if (assets.length) {
   for (const key of ["method","category"])
     for (const item of new Set(assets.map(r => r[key]))) el(key).add(new Option(item,item));
+  el("compareRoadLink").hidden=!assets.some(row=>row.matchedRoad);
   el("summary").textContent=assets.length.toLocaleString()+" 件资产记录 · "+new Set(assets.map(r=>r.method)).size+" 种重建方式";
   inspect(byId.has(decodeURIComponent(location.hash.slice(1))) ? decodeURIComponent(location.hash.slice(1)) : assets[0].id);
   filter();

@@ -807,6 +807,8 @@ def main():
     driving_dir = ROOT / 'runs/capture-driving'
     driving_manifest = driving_dir / 'views.json'
     driving = read(driving_manifest) if driving_manifest.is_file() else {}
+    matched_path = ROOT / 'runs/road-comparisons/index.json'
+    matched = read(matched_path) if matched_path.is_file() else {}
     for row in rows.values():
         pit_profile = ROOT / 'runs/atlas-pit-road/profiles' / (row['id'] + '.js')
         if pit_profile.is_file():
@@ -818,6 +820,11 @@ def main():
             row['gaussianPreview'] = link(gaussian_folder/(row['id']+'.webp'))
             row['gaussianCamera'] = dict(view['camera'], aspect=view['width']/view['height'])
             row['gaussianSources'] = {k:view[k+'_sha256'] for k in ('ply','glb')}
+        groups = matched.get(row['id'], {})
+        locations = sorted(g for g, fingerprint in groups.items()
+                           if fingerprint == row.get('gaussianSources', {}).get('glb'))
+        if locations:
+            row['matchedRoad'] = locations
         vehicle = driving.get(row['id'])
         if vehicle and vehicle['glb_sha256'] == row.get('gaussianSources',{}).get('glb'):
             frames=[]

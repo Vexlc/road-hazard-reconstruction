@@ -6,6 +6,8 @@ RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资�
 
 ![十二件道路病害的 GLB 模型与同一资产的行车相机局部](docs/figures/road-asset-portfolio.jpg)
 
+**同位置道路资产对照**覆盖 163 件资产在三段道路上的 405 次放置。选定位置和车载照片后，可并排切换双坑、积水、井盖掀开、缺盖、断条雨水篦和路面网裂，也可以把其中一栏切回原始路面。切到远处时保留相同的原图像素跨度。打开模拟雷达回波，点选同一束激光，能读出它先碰到盖板边缘还是井圈。[八件模型的近处与远处画面](docs/figures/matched-road-assets.jpg) · [打开掀盖与缺盖对照](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-01&view=front-near&a=A119&b=M118&beam=151811&zoom=1) · [实测与模拟回波图](docs/figures/matched-road-lidar.jpg) · [覆盖范围与复现](docs/02-asset-reconstruction.md#同一车载机位比较不同资产)
+
 P142 和 P143 是两处约 9 厘米宽的实拍坑洞。双目深度在陡壁和坑底有缺口，两张以上照片从不同方向看到同一位置时，可以多恢复一部分坑面。打开三维模型，可在相同视角切换仅用距离图、加入彩照和标出高程来源的网格。留出照片同时展示改善和误差增大的位置。[实拍、模型与两段道路](docs/figures/pit-depth-completion.jpg) · [在同一截线上量坑壁](docs/figures/pit-depth-sections.jpg) · [切换三种网格](http://127.0.0.1:8765/tools/asset_atlas/model.html#P143) · [逐机位结果](docs/02-asset-reconstruction.md#用彩照补回双目深度缺口)
 
 A138–A141、M138 展示同一块混凝土芯井盖的齐平、整圈下沉、整圈凸起、单侧下沉和沉降后缺盖。图谱中点选盖面任一位置，切换状态可读取该点相对齐平状态的高差。五态在 PandaSet 109 使用相同机位，还能点开前后视的整幅照片。[五态、米制高程及道路全景](docs/figures/cover-grade.jpg) · [交互剖面](http://127.0.0.1:8765/tools/asset_atlas/index.html#A141) · [重建与核验](docs/02-asset-reconstruction.md#井盖与路面的安装高差)
