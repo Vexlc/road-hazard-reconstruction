@@ -3,6 +3,39 @@ const get = id => document.getElementById(id);
 const viewer = get("mesh");
 const inventory = new Map((window.roadAssets || []).map(item=>[item.id,item]));
 let localUrl, selectedRow, sectioned=false;
+let clayMaterials=[];
+function restoreTextures() {
+  for (const {pbr,color,metal,rough,slots} of clayMaterials) {
+    for (const [slot,texture] of slots) slot.setTexture(texture);
+    pbr.setBaseColorFactor(color);
+    pbr.setMetallicFactor(metal);
+    pbr.setRoughnessFactor(rough);
+  }
+  clayMaterials=[];
+  get("clayModel").setAttribute("aria-pressed","false");
+  get("clayModel").textContent="查看无纹理网格";
+}
+get("clayModel").onclick=()=>{
+  if (!viewer.loaded || !selectedRow?.scanGeometry) return;
+  if (clayMaterials.length) {
+    restoreTextures();
+    status("已恢复扫描纹理。");
+    return;
+  }
+  for (const material of viewer.model.materials) {
+    const pbr=material.pbrMetallicRoughness;
+    const slots=[pbr.baseColorTexture,pbr.metallicRoughnessTexture,material.normalTexture,material.occlusionTexture]
+      .filter(slot=>slot?.texture).map(slot=>[slot,slot.texture]);
+    clayMaterials.push({pbr,color:Array.from(pbr.baseColorFactor),metal:pbr.metallicFactor,rough:pbr.roughnessFactor,slots});
+    for (const [slot] of slots) slot.setTexture(null);
+    pbr.setBaseColorFactor([0.42,0.42,0.40,1]);
+    pbr.setMetallicFactor(0);
+    pbr.setRoughnessFactor(0.94);
+  }
+  get("clayModel").setAttribute("aria-pressed","true");
+  get("clayModel").textContent="恢复扫描纹理";
+  status("当前显示无纹理网格，可旋转查看裂缝边缘和底部。");
+};
 function status(message) { get("status").textContent=message; }
 function pose(orbit) {
   viewer.cameraTarget="auto auto auto";
@@ -18,6 +51,7 @@ get("rotateModel").onclick=()=>{
   get("rotateModel").textContent=viewer.autoRotate ? "停止旋转" : "自动旋转";
 };
 viewer.addEventListener("load",()=>{
+  get("clayModel").hidden=!selectedRow?.scanGeometry || location.protocol==="file:";
   status("拖动旋转，滚轮或双指缩放。"+(sectioned ? (selectedRow?.water ? "当前显示原始干坑。" : "当前剖开近侧井壁，保留盖面、碎片和井底。") : ""));
 });
 viewer.addEventListener("error",()=>{
@@ -29,6 +63,8 @@ get("file").onchange=()=>{
   if (!file) return;
   if (localUrl) URL.revokeObjectURL(localUrl);
   localUrl=URL.createObjectURL(file);
+  restoreTextures();
+  get("clayModel").hidden=true;
   sectioned=false;
   selectedRow=null;
   get("sectionModel").hidden=true;
@@ -60,8 +96,12 @@ function openSelection() {
   const requested = decodeURIComponent(location.hash.slice(1));
   const row = inventory.get(requested);
   const sameBed=Boolean(row?.dryFamily && row.dryFamily===selectedRow?.dryFamily);
+  const sameScan=Boolean(row?.scanGeometry && selectedRow?.scanGeometry && row.states.includes(selectedRow.id) && row.width===selectedRow.width && row.length===selectedRow.length);
+  restoreTextures();
+  get("clayModel").hidden=true;
+  const sameCover=Boolean(row?.cutawayModel && selectedRow?.cutawayModel && row.states?.includes(selectedRow.id));
   selectedRow=row;
-  if (!row?.cutawayModel || location.protocol==="file:") sectioned=false;
+  if (!sameCover || location.protocol==="file:") sectioned=false;
   get("sectionModel").hidden=!(row?.cutawayModel || row?.dryModel) || location.protocol==="file:";
   get("states").replaceChildren();
   get("states").hidden = !row?.states;
@@ -86,7 +126,7 @@ function openSelection() {
     status(row ? "直接打开网页时，请选择对应的 GLB。使用项目的本地预览服务可直接加载所选资产。" : "选择一个本机 GLB 查看。");
   } else {
     status("正在读取资产网格与纹理…");
-    displayModel(row,sameBed);
+    displayModel(row,sameBed || sameScan);
   }
 }
 window.addEventListener("hashchange",openSelection);

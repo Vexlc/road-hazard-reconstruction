@@ -36,7 +36,7 @@ function showScene() {
   }
   el("downloads").replaceChildren();
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
-  for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.family ? "几何一致性核验" : "轮廓评估","audit"],["雷达核验","scan"],["实拍拟合记录","fit"],[selected.reprojectionLabel || "留出帧核验","reprojection"]])
+  for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.auditLabel || (selected.family ? "几何一致性核验" : "轮廓评估"),"audit"],[selected.scanLabel || "雷达核验","scan"],["实拍拟合记录","fit"],[selected.reprojectionLabel || "留出帧核验","reprojection"]])
     if (selected[key]) download(name,selected[key]);
   const video = view?.video || selected.video;
   if (video) download("前视视频",video);
@@ -131,6 +131,12 @@ function inspect(id) {
   el("sourceType").textContent = selected.category+" / "+selected.method;
   el("note").textContent = selected.note || notes[selected.method];
   el("metrics").replaceChildren();
+  if (selected.scanGeometry) {
+    const g=selected.scanGeometry;
+    metric("网格间距（毫米）",g.pitch.toFixed(2));
+    metric("留出缝内距作者位移的中位误差（毫米）",g.median.toFixed(3));
+    metric("原图闭合板块（≥25 cm²）",String(g.islands));
+  }
   if (selected.water) {
     const w=selected.water;
     metric("加入 / 留存（升）",w.input_liters.toFixed(3)+" / "+w.retained_liters.toFixed(3));
@@ -156,7 +162,7 @@ function inspect(id) {
     }
     metric("净井口俯视可见井壁或井底",(selected.wellVisible*100).toFixed(1)+"%");
   }
-  metric(selected.captureViews || selected.panelSize ? "设计井口宽 × 长（米）" : "宽 × 长（米）",selected.width.toFixed(2)+" × "+selected.length.toFixed(2));
+  metric(selected.captureViews || selected.panelSize ? "设计井口宽 × 长（米）" : selected.scanGeometry ? "裂缝外接框宽 × 长（米）" : "宽 × 长（米）",selected.width.toFixed(2)+" × "+selected.length.toFixed(2));
   metric(selected.depthLabel+"（米）",selected.depth.toFixed(3));
   metric("三角面",selected.triangles.toLocaleString());
   metric("高斯点",selected.gaussians.toLocaleString());

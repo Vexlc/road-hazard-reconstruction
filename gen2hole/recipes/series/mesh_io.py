@@ -145,9 +145,14 @@ class Mesh:
     def __init__(self):
         self.materials = {}
         self.parts = []
+        self.lossless_color = set()
 
-    def material(self, key, rgb, rough, metal, bump=3.):
+    def material(self, key, rgb, rough, metal, bump=3., *, lossless_color=False):
         self.materials[key] = (np.asarray(rgb, dtype="u1"), float(rough), float(metal), float(bump))
+        if lossless_color:
+            self.lossless_color.add(key)
+        else:
+            self.lossless_color.discard(key)
         return key
 
     def add(self, name, xyz, faces, uv, material, road=False):
@@ -170,7 +175,7 @@ class Mesh:
         for key, (rgb, rough, metal, bump) in self.materials.items():
             normal, orm = material_maps(rgb, rough, metal, bump)
             mat[key] = trimesh.visual.material.PBRMaterial(
-                name=key, baseColorTexture=jpeg(rgb, 96), normalTexture=jpeg(normal),
+                name=key, baseColorTexture=Image.fromarray(rgb) if key in self.lossless_color else jpeg(rgb, 96), normalTexture=jpeg(normal),
                 metallicRoughnessTexture=jpeg(orm, 92), roughnessFactor=1., metallicFactor=1.,
                 doubleSided=False)
         xyz, faces, uv, materials, parts, road = [], [], [], [], [], []

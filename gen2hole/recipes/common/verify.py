@@ -42,7 +42,7 @@ def verify_asset(directory, manifest_row, run):
     require(all(manifest_row.get(key) == value for key, value in meta.items()), f"{name}: manifest vs metadata")
     require(meta["units"] == "metres" and meta["glb_up"] == "Y" and meta["gaussian_up"] == "Z", f"{name}: units/axes")
     require(sha(ROOT / meta["source_image"]) == meta["source_sha256"], f"{name}: source image")
-    if meta.get("depth_profile") == "masked_groove":
+    if meta.get("depth_profile") in ("masked_groove", "scanned_relief"):
         require(sha(ROOT/"calibration"/(name+"_outline.png")) == meta["mask_sha256"], f"{name}: source crack mask")
     mesh = directory / "asset.glb"
     geometry_hash, faces, bottom, top = glb(mesh)
@@ -54,6 +54,18 @@ def verify_asset(directory, manifest_row, run):
         require(all(np.isfinite(field[k]).all() for k in field.files), f"{name}: nonfinite field")
         require(float(field["width"]) > 0 and float(field["length"]) > 0, f"{name}: field extent")
         require(alpha.min() >= 0 and alpha.max() <= 1 and (defect > 0.5).any(), f"{name}: cutout/blend")
+        if meta.get("depth_profile") == "scanned_relief":
+            with np.load(ROOT/"calibration"/(name+"_samples.npz"), allow_pickle=False) as samples:
+                measured = samples["height"]
+            span = float(field["width"])
+            pitch = meta["source_grid_pitch_m"]
+            require(measured.shape == height.shape and np.isfinite(measured).all(), f"{name}: scan samples")
+            require(np.isclose(span, (height.shape[1]-1)*pitch), f"{name}: scan spacing")
+            axis = np.arange(len(height))
+            distance = np.minimum(axis, len(axis) - 1 - axis) * pitch
+            t = np.clip(np.minimum.outer(distance, distance) / max(.012, 4*pitch), 0, 1)
+            expected = measured * t**2 * (3 - 2*t)
+            require(np.allclose(height, expected, rtol=0, atol=1e-7), f"{name}: scan heights vs metric field")
         mask = "water_mask" if meta["category"] == "pothole" else "opening_mask"
         require(field[mask].shape == height.shape, f"{name}: {mask}")
         if mask == "opening_mask":

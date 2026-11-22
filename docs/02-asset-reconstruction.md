@@ -315,3 +315,45 @@ work/envs/streetcrafter/bin/python scripts/check-standing-water.py --run work/st
 ```
 
 配方中的 `seed_uv` 使用正射图归一化坐标，原点在左上。`anchors` 可以指定相对于 `--runs` 的场景记录，也可以给出本地坐标中的单位竖轴，例如水平地面用 `[0,0,1]`。完整的几何检查从湿态 GLB 全部水面三角形的中心向干坑 GLB 发射射线，重新积分水量，同时检查岸线的每个边界顶点是否贴合原坑底。另起新目录完整重建五态，逐件比对了 GLB、Gaussian PLY、水深场和逐点材料标签，四类文件的 SHA-256 均可复现。[输入配方](../gen2hole/examples/standing-water/survey.json) · [独立检查代码](../scripts/check-standing-water.py)
+
+## 从道路扫描重建裂缝
+
+P134–P137 来自两份 CC0 道路扫描。混凝土整片和加密局部保留同一批碎板的空间关系。沥青纵缝的两个版本共享原图、网格平面坐标和裂缝掩膜，各自采用一种竖向尺度。项目从作者的 Blender 材质读取连接到输出节点的位移比例与中点，并按来源给出的铺面宽度把像素换算为米。[沥青原图与材质](https://polyhaven.com/a/asphalt_02) · [混凝土原图与材质](https://polyhaven.com/a/cracked_concrete) · [输入文件指纹及裁切](../gen2hole/examples/scanned-cracks/survey.json)
+
+| 资产 | 取景边长 | 网格间距 | 示例截线凹深 | 留出缝内与作者位移的中位绝对误差 |
+| --- | ---: | ---: | ---: | ---: |
+| P134 沥青纵缝，作者材质尺度 | 1.125 m | 2.93 mm | 22.23 mm | 0.496 mm |
+| P137 同一纵缝，法线估计尺度 | 1.125 m | 2.93 mm | 4.84 mm | 4.147 mm |
+| P135 混凝土网裂整片 | 1.750 m | 3.91 mm | 2.19 mm | 0.107 mm |
+| P136 网裂局部加密 | 0.750 m | 1.95 mm | 2.17 mm | 0.040 mm |
+
+程序只用颜色找暗缝，从稀疏位移样本网格恢复凹陷、断边和周边路面，外圈渐变接入宿主路面。原图的纹理坐标与导出 GLB 逐点核对，解码后四个模型的 RGB 均与原裁切逐像素相同。PLY 从各自带纹理的网格表面采样。图谱里的「无纹理网格」和可旋转三维模型里的「查看无纹理网格」都能单独检查几何。[资产图版](figures/scanned-cracks.jpg)
+
+核验向导出 GLB 发射竖直射线，与未进入建模格点的源位移像素比较，排除与宿主接合的渐变外圈。在 P136 局部的同一组 62,055 个缝内像素上，P135 和 P136 的误差中位数分别为 0.109 和 0.040 mm。P134 的材质尺度能较好复现作者位移，P137 取其 0.218 倍，更符合该材质的法线方向。尺度用交错的图块估计，另外 4,152 个缝内像素的法线夹角中位数从 34.44° 降到 9.04°。这些误差描述对源扫描的复现。沥青裂缝的真实深度仍需独立现场测量。[逐项几何与法线核验](../validation/scanned-cracks.json)
+
+四件资产在 PandaSet 034 和 109 上共做七次原尺寸放置，每段道路使用固定位置。载入场景检查点后的图像逐像素一致，两部激光雷达共回放 560 个放置帧。对 14 个前后视机位，将源图板块身份与相机可见网格逐像素对应。P135 源图中有 12 个被裂缝完全包围且面积至少 25 cm² 的板块，路段 034 前、后视各保留 1 个闭合轮廓，109 前视保留 3 个、后视 1 个。计数要求区域至少 3 个像素、其中至少 80% 属于同一源板块，并覆盖该板块可见投影的至少一半。这衡量给定机位下的几何可分辨程度。[相机原色与几何标记](figures/scanned-crack-roads.jpg) · [逐机位与雷达命中](../validation/scanned-crack-visibility.json) · [放置身份与重载核验](../validation/scanned-crack-transfer.json)
+
+P134 和 P137 在每个路段的位置、相机姿态、帧和实拍底图逐项对齐。在图谱中选「纵缝深度对照」可以切换两套网格的原色画面。对同一批原始射线回放，两种深度让 034 的 170 束、109 的 77 束模拟回波量程相差超过 1 cm。相机光轴深度和雷达斜距还受视角及遮挡影响。[同一截线与两个道路机位的深度差异](figures/asphalt-crack-depth.jpg)
+
+从仓库根目录运行以下命令。每次构建选择新的输入准备目录和运行目录。下列路段与资产组合可复现图版中的七次放置。
+
+~~~bash
+src=work/reconstruction-inputs/scanned-pavement
+prep=work/prepared-crack-demo
+run=work/scanned-crack-demo
+python gen2hole/examples/scanned-cracks/download.py --out "$src"
+work/envs/streetcrafter/bin/python gen2hole/examples/scanned-cracks/prepare.py --inputs "$src" --out "$prep"
+python gen2hole/gen2hole.py build --inputs "$prep" --preview --out "$run" P134 P135 P136 P137
+work/envs/streetcrafter/bin/python scripts/check-scanned-cracks.py --run "$run" --inputs "$src" --out "$run/evaluation/measurements.json"
+work/envs/assets/bin/python scripts/render-scanned-mesh.py --run "$run" P134 P135 P136 P137
+for site in 034 109; do
+  for id in P134 P135 P136 P137; do
+    if [ "$site/$id" = "034/P136" ]; then continue; fi
+    python gen2hole/downstream/place.py --bundle "$run/series" --site "$site" --group "${id#P}" --assets "$id" --front
+  done
+done
+python gen2hole/downstream/simulate.py --run "$run" --out "$run/sensors"
+work/envs/streetcrafter/bin/python scripts/check-crack-visibility.py --run "$run" --out "$run/evaluation/visibility.json"
+python scripts/check-pit-transfer.py --run "$run" --out "$run/evaluation/transfer.json"
+work/envs/streetcrafter/bin/python scripts/render-scanned-cracks.py --run "$run" --out "$run/figures"
+~~~

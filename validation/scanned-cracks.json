@@ -1,0 +1,407 @@
+{
+  "P134": {
+    "glb_sha256": "fc4dc0033ebc8385d99d28bf110ca90351bdc1d47af5712689410febcb995aa4",
+    "capture": "asphalt_02",
+    "source_url": "https://polyhaven.com/a/asphalt_02",
+    "source_texel_m": 0.0014648438664153218,
+    "mesh_pitch_m": 0.0029296877328306437,
+    "relative_vertical_factor": 1.0,
+    "material_scale_m": 0.07000000029802322,
+    "effective_scale_m": 0.07000000029802322,
+    "holdout_crack_normals": {
+      "pixels": 4152,
+      "median_deg": 34.44239842472692,
+      "p95_deg": 56.45973556423401
+    },
+    "authored_displacement_error": {
+      "pixels": 17354,
+      "median_mm": 0.4961775562113352,
+      "p95_mm": 2.046205851006687,
+      "rmse_mm": 0.9826948538522694
+    },
+    "section_depth_below_shoulders_mm": 22.230066061019897,
+    "section_endpoints_xy_px": [
+      [
+        92,
+        426
+      ],
+      [
+        292,
+        426
+      ]
+    ],
+    "withheld_source_texels": 418880,
+    "source_crack_vs_mesh_part_iou": 0.8935929130613927,
+    "fitted_groove_slope_depth_m": [
+      0.9475833918314388,
+      0.00884916788003393
+    ],
+    "metrics": {
+      "crack": {
+        "mesh": {
+          "pixels": 17354,
+          "median_mm": 0.4961775562113352,
+          "p95_mm": 2.046205851006687,
+          "rmse_mm": 0.9826948538522694
+        },
+        "shoulder_control": {
+          "pixels": 17354,
+          "median_mm": 5.319783508600705,
+          "p95_mm": 20.733752140651376,
+          "rmse_mm": 9.970978236540137
+        },
+        "fitted_groove": {
+          "pixels": 17354,
+          "median_mm": 4.070175036593556,
+          "p95_mm": 13.713860319178831,
+          "rmse_mm": 6.607096180772798
+        },
+        "normal_error_median_deg": 33.74416719182761,
+        "flat_normal_error_median_deg": 16.731967126708224
+      },
+      "road": {
+        "mesh": {
+          "pixels": 401526,
+          "median_mm": 0.37330102749398875,
+          "p95_mm": 1.550940097112004,
+          "rmse_mm": 0.7440780438099018
+        },
+        "shoulder_control": {
+          "pixels": 401526,
+          "median_mm": 1.5847190629187526,
+          "p95_mm": 5.11844137537021,
+          "rmse_mm": 2.6587239033940295
+        },
+        "fitted_groove": {
+          "pixels": 401526,
+          "median_mm": 1.5852934787917201,
+          "p95_mm": 5.115779872081213,
+          "rmse_mm": 2.6574917734570445
+        },
+        "normal_error_median_deg": 26.55391357606628,
+        "flat_normal_error_median_deg": 11.017652426316303
+      }
+    },
+    "enclosed_islands": {
+      "min_area_m2": 0.0025,
+      "count": 0,
+      "areas_m2": []
+    },
+    "texture_rgb_mae_0_255": 0.0,
+    "matched_detail": null
+  },
+  "P135": {
+    "glb_sha256": "2cefbcf3d8d0dd74a06edb8f131ff0649d32656f9dc6eed768beceb9e72751d2",
+    "capture": "cracked_concrete",
+    "source_url": "https://polyhaven.com/a/cracked_concrete",
+    "source_texel_m": 0.0009765625,
+    "mesh_pitch_m": 0.00390625,
+    "relative_vertical_factor": 1.0,
+    "material_scale_m": 0.029999999329447746,
+    "effective_scale_m": 0.029999999329447746,
+    "holdout_crack_normals": {
+      "pixels": 96031,
+      "median_deg": 10.574340952243471,
+      "p95_deg": 34.42645149324335
+    },
+    "authored_displacement_error": {
+      "pixels": 319537,
+      "median_mm": 0.10724900597166698,
+      "p95_mm": 0.6768002644738232,
+      "rmse_mm": 0.3216032115418048
+    },
+    "section_depth_below_shoulders_mm": 2.1915820928720326,
+    "section_endpoints_xy_px": [
+      [
+        1124,
+        904
+      ],
+      [
+        1124,
+        1164
+      ]
+    ],
+    "withheld_source_texels": 2875032,
+    "source_crack_vs_mesh_part_iou": 0.7699781335660609,
+    "fitted_groove_slope_depth_m": [
+      0.32570037958850795,
+      0.013
+    ],
+    "metrics": {
+      "crack": {
+        "mesh": {
+          "pixels": 319537,
+          "median_mm": 0.10724900597166698,
+          "p95_mm": 0.6768002644738232,
+          "rmse_mm": 0.3216032115418048
+        },
+        "shoulder_control": {
+          "pixels": 319537,
+          "median_mm": 1.4981528983608774,
+          "p95_mm": 3.8988121536787435,
+          "rmse_mm": 2.0742412932425807
+        },
+        "fitted_groove": {
+          "pixels": 319537,
+          "median_mm": 0.7678064336096229,
+          "p95_mm": 2.59211797897766,
+          "rmse_mm": 1.2756613465530449
+        },
+        "normal_error_median_deg": 10.54872600823031,
+        "flat_normal_error_median_deg": 16.14573159855374
+      },
+      "road": {
+        "mesh": {
+          "pixels": 2555495,
+          "median_mm": 0.026126420571403176,
+          "p95_mm": 0.11924083038347129,
+          "rmse_mm": 0.089462071982985
+        },
+        "shoulder_control": {
+          "pixels": 2555495,
+          "median_mm": 0.07515715606193481,
+          "p95_mm": 0.570013294355203,
+          "rmse_mm": 0.3223998748929646
+        },
+        "fitted_groove": {
+          "pixels": 2555495,
+          "median_mm": 0.07533569244999369,
+          "p95_mm": 0.5781135394447543,
+          "rmse_mm": 0.31673954263762444
+        },
+        "normal_error_median_deg": 3.3266963115734547,
+        "flat_normal_error_median_deg": 3.60345315347629
+      }
+    },
+    "enclosed_islands": {
+      "min_area_m2": 0.0025,
+      "count": 12,
+      "areas_m2": [
+        0.07287406921386719,
+        0.034076690673828125,
+        0.030315399169921875,
+        0.013170242309570312,
+        0.00878143310546875,
+        0.008017539978027344,
+        0.006793975830078125,
+        0.004894256591796875,
+        0.0047245025634765625,
+        0.004115104675292969,
+        0.0038299560546875,
+        0.0030117034912109375
+      ]
+    },
+    "texture_rgb_mae_0_255": 0.0,
+    "matched_detail": null
+  },
+  "P136": {
+    "glb_sha256": "e2ab9ff03dc3eb777768d8bc006134906029a7e6d95de919df5630fa9b8f077a",
+    "capture": "cracked_concrete",
+    "source_url": "https://polyhaven.com/a/cracked_concrete",
+    "source_texel_m": 0.0009765625,
+    "mesh_pitch_m": 0.001953125,
+    "relative_vertical_factor": 1.0,
+    "material_scale_m": 0.029999999329447746,
+    "effective_scale_m": 0.029999999329447746,
+    "holdout_crack_normals": {
+      "pixels": 15287,
+      "median_deg": 7.625519035209488,
+      "p95_deg": 25.128722781154785
+    },
+    "authored_displacement_error": {
+      "pixels": 62055,
+      "median_mm": 0.0395802383569583,
+      "p95_mm": 0.2902649647190595,
+      "rmse_mm": 0.14612404970663326
+    },
+    "section_depth_below_shoulders_mm": 2.1674926464374247,
+    "section_endpoints_xy_px": [
+      [
+        420,
+        280
+      ],
+      [
+        420,
+        540
+      ]
+    ],
+    "withheld_source_texels": 407008,
+    "source_crack_vs_mesh_part_iou": 0.8692003810377675,
+    "fitted_groove_slope_depth_m": [
+      0.36024332984476715,
+      0.013
+    ],
+    "metrics": {
+      "crack": {
+        "mesh": {
+          "pixels": 62055,
+          "median_mm": 0.0395802383569583,
+          "p95_mm": 0.2902649647190595,
+          "rmse_mm": 0.14612404970663326
+        },
+        "shoulder_control": {
+          "pixels": 62055,
+          "median_mm": 1.801286364552046,
+          "p95_mm": 4.08773056566228,
+          "rmse_mm": 2.2612411651318274
+        },
+        "fitted_groove": {
+          "pixels": 62055,
+          "median_mm": 0.7766624687327641,
+          "p95_mm": 2.703866686155498,
+          "rmse_mm": 1.3111563539193047
+        },
+        "normal_error_median_deg": 7.733053174204505,
+        "flat_normal_error_median_deg": 16.451219376020187
+      },
+      "road": {
+        "mesh": {
+          "pixels": 344953,
+          "median_mm": 0.013933392396215011,
+          "p95_mm": 0.06454736742719892,
+          "rmse_mm": 0.047076605100132576
+        },
+        "shoulder_control": {
+          "pixels": 344953,
+          "median_mm": 0.10558211588410014,
+          "p95_mm": 0.8123715009450012,
+          "rmse_mm": 0.435005373966553
+        },
+        "fitted_groove": {
+          "pixels": 344953,
+          "median_mm": 0.10559033902292057,
+          "p95_mm": 0.8081531762737405,
+          "rmse_mm": 0.43101884720959543
+        },
+        "normal_error_median_deg": 2.896369366677465,
+        "flat_normal_error_median_deg": 3.826768538561699
+      }
+    },
+    "enclosed_islands": {
+      "min_area_m2": 0.0025,
+      "count": 3,
+      "areas_m2": [
+        0.030315399169921875,
+        0.013170242309570312,
+        0.00878143310546875
+      ]
+    },
+    "texture_rgb_mae_0_255": 0.0,
+    "matched_detail": {
+      "parent": "P135",
+      "parent_error": {
+        "pixels": 62055,
+        "median_mm": 0.10931521750290156,
+        "p95_mm": 0.641436818009863,
+        "rmse_mm": 0.3008420076313991
+      },
+      "detail_error": {
+        "pixels": 62055,
+        "median_mm": 0.0395802383569583,
+        "p95_mm": 0.2902649647190595,
+        "rmse_mm": 0.14612404970663326
+      },
+      "glb_disagreement": {
+        "pixels": 62055,
+        "median_mm": 0.07927417755126953,
+        "p95_mm": 0.4847019910812374,
+        "rmse_mm": 0.23024404048919678
+      },
+      "source_origin_in_parent_px": [
+        704,
+        624
+      ]
+    }
+  },
+  "P137": {
+    "glb_sha256": "afae012b79a0eb2af8795bb0e54405e41cf1fdd18ca1cbc79e48b98459a10049",
+    "capture": "asphalt_02",
+    "source_url": "https://polyhaven.com/a/asphalt_02",
+    "source_texel_m": 0.0014648438664153218,
+    "mesh_pitch_m": 0.0029296877328306437,
+    "relative_vertical_factor": 0.21787369954364555,
+    "material_scale_m": 0.07000000029802322,
+    "effective_scale_m": 0.01525115903298661,
+    "holdout_crack_normals": {
+      "pixels": 4152,
+      "median_deg": 9.038049722948605,
+      "p95_deg": 25.476941459379614
+    },
+    "authored_displacement_error": {
+      "pixels": 17354,
+      "median_mm": 4.146994526406976,
+      "p95_mm": 14.381969237222826,
+      "rmse_mm": 6.713110791000705
+    },
+    "section_depth_below_shoulders_mm": 4.843355417251587,
+    "section_endpoints_xy_px": [
+      [
+        92,
+        426
+      ],
+      [
+        292,
+        426
+      ]
+    ],
+    "withheld_source_texels": 418880,
+    "source_crack_vs_mesh_part_iou": 0.8920474991003958,
+    "fitted_groove_slope_depth_m": [
+      0.2254742175086609,
+      0.0019884862513662033
+    ],
+    "metrics": {
+      "crack": {
+        "mesh": {
+          "pixels": 17354,
+          "median_mm": 0.10812741606828247,
+          "p95_mm": 0.44582092174556376,
+          "rmse_mm": 0.21410376761479052
+        },
+        "shoulder_control": {
+          "pixels": 17354,
+          "median_mm": 1.1590408632460256,
+          "p95_mm": 4.517339298924332,
+          "rmse_mm": 2.1724139160961937
+        },
+        "fitted_groove": {
+          "pixels": 17354,
+          "median_mm": 0.9067295105600846,
+          "p95_mm": 2.9175452998556315,
+          "rmse_mm": 1.4284433855381289
+        },
+        "normal_error_median_deg": 8.788464506450424,
+        "flat_normal_error_median_deg": 16.768157504534923
+      },
+      "road": {
+        "mesh": {
+          "pixels": 401526,
+          "median_mm": 0.08132364521726554,
+          "p95_mm": 0.3379224891968698,
+          "rmse_mm": 0.1621150218644177
+        },
+        "shoulder_control": {
+          "pixels": 401526,
+          "median_mm": 0.3452685890808188,
+          "p95_mm": 1.115173758253804,
+          "rmse_mm": 0.5792660130983924
+        },
+        "fitted_groove": {
+          "pixels": 401526,
+          "median_mm": 0.3454141698771584,
+          "p95_mm": 1.1145476945812582,
+          "rmse_mm": 0.5789789131266446
+        },
+        "normal_error_median_deg": 7.355676727656075,
+        "flat_normal_error_median_deg": 11.00630613905783
+      }
+    },
+    "enclosed_islands": {
+      "min_area_m2": 0.0025,
+      "count": 0,
+      "areas_m2": []
+    },
+    "texture_rgb_mae_0_255": 0.0,
+    "matched_detail": null
+  }
+}

@@ -379,6 +379,75 @@ def pit_road_views(run):
     return shots
 
 
+def scanned_cracks():
+    run = ROOT / 'runs/scanned-cracks'
+    if not run.exists():
+        return {}
+    bundle = run / 'series'
+    evaluation = run / 'evaluation'
+    measurements = read(evaluation / 'measurements.json')
+    visibility = read(evaluation / 'visibility.json')
+    shots = pit_road_views(run)
+    states = {'P134': '材质标尺', 'P137': '法线定标', 'P135': '网裂整片', 'P136': '交汇局部'}
+    rows = {}
+    for meta in read(bundle / 'assets/asset_manifest.json'):
+        key = meta['id']
+        data = measurements[key]
+        asphalt = data['capture'] == 'asphalt_02'
+        folder = evaluation / key
+        original = bundle / meta['source_image']
+        caption = ('两件纵缝使用相同的裂缝、平面尺寸和贴图。P134 沿用作者位移尺度，P137 在交替区域用法线估计竖向尺度。两种深度均缺少现场量测。'
+                   if asphalt else '实拍纹理与发布的位移图共用坐标。整片与局部使用同一基准面，局部网格间距减半。可在图中逐点比较同一区域的剖面。')
+        row = entry(meta, bundle / 'assets', '实拍摄影测量', meta['label'], bundle / 'views' / (key+'_inspection.jpg'))
+        sources = [('截线与取景', folder/'transect.jpg', '黄线为示例截线。' + ('青框为 P136 的取景。' if key=='P135' else '')),
+                   ('几何剖面', folder/'section.jpg', '比较源位移、导出网格与拟合 V 形沟槽的高度。'),
+                   ('无纹理网格', folder/'clay.jpg', '同一 GLB 的裸网格。低角度光照显示真实网格起伏。'),
+                   ('原始颜色', original, 'Poly Haven 实拍彩色纹理。')]
+        row.update(category='裂缝', depthLabel='示例截线凹深', depth=data['section_depth_below_shoulders_mm']/1000,
+                   triangles=sum(meta['geometry_parts'].values()), scanGeometry=dict(pitch=1000*data['mesh_pitch_m'],
+                      median=data['authored_displacement_error']['median_mm'], islands=data['enclosed_islands']['count']),
+                   note=caption, reference=link(original), reverse=link(bundle/'views'/(key+'_reverse.jpg')),
+                   mask=link(bundle/'calibration'/(key+'_outline.png')), audit=link(evaluation/'measurements.json'),
+                   scan=link(evaluation/'visibility.json'), auditLabel='扫描源与网格核验', scanLabel='相机与雷达可见性',
+                   scenes=shots[key], credit=data['source_url'], states=['P134','P137'] if asphalt else ['P135','P136'],
+                   state=states[key], sourceViews=[dict(label=t,image=link(path),note=note) for t,path,note in sources])
+        for case, obs in visibility.items():
+            if obs['asset'] != key:
+                continue
+            camera = run/'sensors/camera'/case
+            for shot in read(camera/'views.json'):
+                name = shot['camera']
+                if not shot['available']:
+                    continue
+                result = obs['cameras'][name]
+                side = '前视' if name == 'front_camera' else '后视'
+                row['scenes'].append(dict(label=f"{obs['site']} · {side}裂缝投影 · 帧 {shot['frame']}",
+                    after=link(folder/case/(name+'.png')), before=link(camera/shot['after_stem']),
+                    beforeLabel='查看原色画面', afterLabel='标出裂缝边界',
+                    note=f"黄线覆盖 {result['visible_crack_pixels']:,} 个可见缝内像素。青色标出仍闭合且与源图匹配的板块，共 {len(result['enclosed_islands'])} 个。"))
+        if asphalt:
+            for obs in visibility.values():
+                compare = obs.get('scale_comparison')
+                if not compare:
+                    continue
+                for name, shot in compare['cameras'].items():
+                    base_case = compare['reference_case']
+                    alt_case = compare['alternative_case']
+                    paths = []
+                    for source_case in [base_case, alt_case]:
+                        camera = run/'sensors/camera'/source_case
+                        frame = next(v for v in read(camera/'views.json') if v['available'] and v['camera']==name)
+                        if frame['crop_xyxy']!=shot['crop_intersection_xyxy']:
+                            raise ValueError('The scale comparison needs identical camera crops at '+source_case)
+                        paths.append(link(camera/frame['after_stem']))
+                    side = '前视' if name=='front_camera' else '后视'
+                    row['scenes'].append(dict(label=f"{obs['site']} · {side}纵缝深度对照 · 帧 {shot['frame']}",
+                        before=paths[0], after=paths[1], beforeLabel='切换材质标尺', afterLabel='切换法线定标',
+                        note=f"相同相机像素中有 {shot['shared_surface_depth_change_over_1cm_pixels']} 处同时命中两套网格，光轴深度相差超过 1 cm。该路段 80 帧内有 {compare['lidar']['range_change_over_1cm']} 束模拟雷达射线量程相差超过 1 cm。"))
+        rows[key] = row
+    return rows
+
+
 def shared_profile_modes():
     run = ROOT / 'runs/rgb-parallax/evaluation'
     measurements = run / 'measurements.json'
@@ -638,7 +707,7 @@ def standing_water(rows):
 def main():
     rows = {}
     shared = shared_profile_modes()
-    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), multiview_potholes(shared), parallax_potholes(shared)):
+    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), scanned_cracks(), multiview_potholes(shared), parallax_potholes(shared)):
         if group.keys() & rows.keys():
             raise ValueError("Asset ID collision")
         rows.update(group)
@@ -657,7 +726,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["P130","A127","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

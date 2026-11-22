@@ -1,0 +1,130 @@
+{
+  "license": "CC0-1.0",
+  "materials": {
+    "asphalt_02": {
+      "page": "https://polyhaven.com/a/asphalt_02",
+      "author": "Rob Tuytel",
+      "dimensions_mm": [
+        3000.000238418579,
+        3000
+      ],
+      "files": {
+        "Diffuse": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_02/asphalt_02_diff_2k.jpg",
+          "bytes": 3075676,
+          "sha256": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c"
+        },
+        "Displacement": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/asphalt_02/asphalt_02_disp_2k.png",
+          "bytes": 8503947,
+          "sha256": "b054079f3d7fc876d4aef72ba72b36543213d63fb4c7d71e1c9ccfc903690f40"
+        },
+        "nor_gl": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/asphalt_02/asphalt_02_nor_gl_2k.exr",
+          "bytes": 9624239,
+          "sha256": "a1066a2cc063967f09836c664beee285176b46c7cfc4cb17e5aa192d711a0858"
+        },
+        "blend": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/2k/asphalt_02/asphalt_02_2k.blend",
+          "bytes": 273236,
+          "sha256": "51fcf3c22c17c45f3a7ae3b7b997317da861c99fd6ebd7fd9fa0c163773d1d42"
+        }
+      }
+    },
+    "cracked_concrete": {
+      "page": "https://polyhaven.com/a/cracked_concrete",
+      "author": "Dimitrios Savva",
+      "dimensions_mm": [
+        2000,
+        2000
+      ],
+      "files": {
+        "Diffuse": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/cracked_concrete/cracked_concrete_diff_2k.jpg",
+          "bytes": 3496468,
+          "sha256": "207fee85d76a51b03c1c4ce49dc6ca3f40600ee169c64e8fc2115267870aa97b"
+        },
+        "Displacement": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/cracked_concrete/cracked_concrete_disp_2k.png",
+          "bytes": 6012115,
+          "sha256": "0f1ea8c85ab0c183ee7bc15c125b57fc249497b5de7b0f453a3eb4a009a0ef9b"
+        },
+        "nor_gl": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/cracked_concrete/cracked_concrete_nor_gl_2k.exr",
+          "bytes": 7388625,
+          "sha256": "fc94a2ab21a6646ef9a517e582186bd58fa0cc3c5f8df70ea8933b1b29456502"
+        },
+        "blend": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/2k/cracked_concrete/cracked_concrete_2k.blend",
+          "bytes": 217050,
+          "sha256": "1f6955d2b662cd8a5235f7a93833b76c2273f7ee7072a504e2fd032e20f16a84"
+        }
+      }
+    }
+  },
+  "states": [
+    {
+      "id": "P134",
+      "label": "沥青纵向开裂",
+      "material": "asphalt_02",
+      "origin_col_row": [
+        48,
+        512
+      ],
+      "intervals": 768,
+      "step": 2,
+      "mask_scores": [
+        15,
+        25
+      ]
+    },
+    {
+      "id": "P135",
+      "label": "混凝土网裂与碎板",
+      "material": "cracked_concrete",
+      "origin_col_row": [
+        96,
+        96
+      ],
+      "intervals": 1792,
+      "step": 4,
+      "mask_scores": [
+        10,
+        18
+      ]
+    },
+    {
+      "id": "P136",
+      "label": "网裂交汇处的破碎边缘",
+      "material": "cracked_concrete",
+      "origin_col_row": [
+        800,
+        720
+      ],
+      "intervals": 768,
+      "step": 2,
+      "mask_scores": [
+        10,
+        18
+      ],
+      "parent": "P135"
+    },
+    {
+      "id": "P137",
+      "label": "沥青纵缝 · 法线定标",
+      "material": "asphalt_02",
+      "origin_col_row": [
+        48,
+        512
+      ],
+      "intervals": 768,
+      "step": 2,
+      "mask_scores": [
+        15,
+        25
+      ],
+      "height_calibration": "normal_fit",
+      "paired": "P134"
+    }
+  ]
+}

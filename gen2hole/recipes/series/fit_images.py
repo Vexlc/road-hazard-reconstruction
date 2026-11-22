@@ -43,7 +43,7 @@ def fit_rgb_bowl(cfg, image, shape, patch):
 
 
 def fit_pit(cfg,img,full,patch):
-    if cfg.get('depth_profile') == 'masked_groove':
+    if cfg.get('depth_profile') in ('masked_groove','scanned_relief'):
         path=CAL/(cfg['id']+'_outline.png')
         with Image.open(path) as image:
             mask=np.asarray(image.convert('L'))>0
@@ -228,7 +228,7 @@ def main():
         k=cfg['id']
         if a.ids and k not in a.ids:continue
         if not (ROOT/'references'/(k+'.png')).exists():continue
-        if k[0]=='P' and cfg.get('depth_profile') not in ('designed_bowl','masked_groove') and not (CAL/(k+'_depth.npz')).exists():continue
+        if k[0]=='P' and cfg.get('depth_profile') not in ('designed_bowl','masked_groove','scanned_relief') and not (CAL/(k+'_depth.npz')).exists():continue
         if (CAL/(k+'_fit.json')).exists() and not a.redo:continue
         fit(cfg,overrides.get(k,{}));print(k,flush=True)
     sync()

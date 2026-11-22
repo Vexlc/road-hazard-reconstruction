@@ -31,7 +31,7 @@ def main():
         grain = intact_pavement(rgb, key, cfg)
         model_id = cfg["id"]
         Image.fromarray(grain).save(args.cache / (model_id + "_ground.jpg"), quality=96, subsampling=0)
-        if cfg.get("depth_profile") == "masked_groove":
+        if cfg.get("depth_profile") in ("masked_groove", "scanned_relief"):
             from crack_surface import build as build_crack
             field, fit = build_crack(mesh,key,cfg)
         elif cfg["category"] == "pothole":
@@ -48,6 +48,9 @@ def main():
                     family=cfg.get("family", cfg.get("shape")), source_image=str(ref),
                     source_sha256=hashlib.sha256((ROOT / ref).read_bytes()).hexdigest(),
                     recipe_version=recipe, scale_kind="designed_metric", seed=seed, **fit)
+        if cfg.get("depth_profile") == "scanned_relief":
+            meta.update(recipe_version="scanned-pavement-v1",
+                        scale_kind="normal_constrained_metric" if "normal_scale_fit" in fit else "source_material_metric")
         mesh.save(ROOT / "assets" / cfg["category"] / model_id, args.cache, meta, field)
         print(f"{model_id}: {sum(meta['geometry_parts'].values()):,} triangles", flush=True)
 
