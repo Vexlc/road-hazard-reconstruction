@@ -135,6 +135,11 @@ def run(args):
     specs = json.loads((bundle / 'calibration/survey.json').read_text())
     reports = {}
     for spec in specs:
+        if spec.get('mode') == 'single_rgbd':
+            from single_depth_eval import evaluate
+
+            reports[spec['id']] = evaluate(args, spec)
+            continue
         if spec.get('mode')=='rgb_parallax':
             continue
         key = spec['id']

@@ -706,6 +706,56 @@ def multiview_potholes(shared, run):
     return rows
 
 
+def observed_surfaces():
+    run = ROOT/'runs/observed-pavement'
+    if not run.is_dir():
+        return {}
+    bundle = run/'series'
+    measured = read(run/'evaluation/measurements.json')
+    shots = pit_road_views(run)
+    output = {}
+    for meta in read(bundle/'assets/asset_manifest.json'):
+        key = meta['id']
+        score = measured[key]
+        frame, = score['fit']
+        folder = run/'evaluation'/key
+        comparison = bundle/'comparison'/key
+        rim = 'Fracture inset rim' in meta['region_names']
+        isolated = '单独查看缺口边缘' if rim else '单独查看碎片可见面'
+        legend = ('金色是从缺口边界向内 18 毫米的路面投影区域。' if rim else
+                  '青色是依实拍轮廓划分的九块碎片可见面，交替着色便于分辨相邻碎片。')
+        views = [dict(label='拟合原图 · '+frame,image=link(bundle/'references'/(key+'.png'))),
+                 dict(label='网格部位回投',image=link(folder/'labels.jpg'),note=legend),
+                 dict(label='留出量程位置',image=link(folder/'reserved.jpg'),
+                      note='黄点标出预先从原始深度中去掉的坑内像素。照片、内参和轮廓来自同一次曝光。')]
+        if (folder/'isolated-render.jpg').is_file():
+            views.append(dict(label=isolated,image=link(folder/'isolated-render.jpg')))
+        scenes = shots.get(key,[])
+        evidence = folder/'road-parts.json'
+        if evidence.is_file():
+            for obs in read(evidence):
+                scenes.append(dict(label=f"{obs['site']} · {obs['direction']} · 可见部位 · 帧 {obs['frame']}",
+                    after=link(folder/obs['overlay']), before=link(folder/obs['texture']),
+                    beforeLabel='查看同像素迁入外观', afterLabel='查看部位回投',
+                    note=f"当前裁切有 {obs['part_pixels']:,} 个首个交点属于"+('缺口内缘。' if rim else '碎片可见面。')+'颜色来自模型部位标签。'))
+        err=score['withheld_mesh']
+        row=entry(meta,bundle/'assets','实拍 RGB-D',meta['label'],bundle/'views'/(key+'_inspection.jpg'))
+        row.update(depth=meta['depth_p95_m'],depthLabel='重建 P95 凹深',triangles=sum(meta['geometry_parts'].values()),
+                   sourceViews=views,reference=views[0]['image'],reverse=link(bundle/'views'/(key+'_reverse.jpg')),
+                   regionModels={name:link(comparison/(name+'.glb')) for name in ('labels','isolated')},
+                   isolatedLabel=isolated,regionLegend=legend,
+                   note=(legend+f" 同机位留出的 {err['samples']:,} 个坑内量程，光轴深度绝对误差中位数为 "
+                         f"{err['median_mm']:.3f} 毫米，P95 为 {err['p95_mm']:.3f} 毫米。米制尺寸采用标称内参。"),
+                   related='rgbd_pothole_'+frame,relatedLabel='同帧原始 RGB-D 重建',
+                   reverseRelatedLabel='同源部位网格与预留量程核对',
+                   fit=link(bundle/'calibration'/(key+'_capture.json')),reprojection=link(run/'evaluation/measurements.json'),
+                   reprojectionLabel='同机位预留深度核验',credit='https://github.com/ymyurdakul/PData',scenes=scenes)
+        if (run/'sensors/checks/scan_audit.json').is_file():
+            row['scan']=link(run/'sensors/checks/scan_audit.json')
+        output[key]=row
+    return output
+
+
 def parallax_potholes(shared):
     run = ROOT / 'runs/rgb-parallax'
     if not run.is_dir():
@@ -895,7 +945,7 @@ def main():
     shared = shared_profile_modes()
     for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), scanned_cracks(), faulted_slabs(),
                   multiview_potholes(shared, ROOT/'runs/multiview-pit-survey'),
-                  multiview_potholes(shared, ROOT/'runs/paired-road-slots'),
+                  multiview_potholes(shared, ROOT/'runs/paired-road-slots'), observed_surfaces(),
                   multiview_potholes(shared, ROOT/'runs/pit-depth-completion'), parallax_potholes(shared)):
         if group.keys() & rows.keys():
             raise ValueError("Asset ID collision")
@@ -994,7 +1044,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["P148","P145","P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["P150","P149","P148","P145","P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

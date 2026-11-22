@@ -1,0 +1,220 @@
+{
+  "P149": {
+    "sha256": "c3227e22c39a0404ac15ed01ac29855042e6d054d974ef2a0e792fb331d69866",
+    "camera": [
+      {
+        "site": "034",
+        "case": "034_149",
+        "frame": 30,
+        "direction": "前视",
+        "part_pixels": 434,
+        "per_mesh": {
+          "Fracture inset rim": 434
+        },
+        "texture": "034_149-front-texture.png",
+        "overlay": "034_149-front-parts.png",
+        "crop_in_replay": [
+          57,
+          62,
+          221,
+          115
+        ]
+      },
+      {
+        "site": "034",
+        "case": "034_149",
+        "frame": 46,
+        "direction": "后视",
+        "part_pixels": 185,
+        "per_mesh": {
+          "Fracture inset rim": 185
+        },
+        "texture": "034_149-back-texture.png",
+        "overlay": "034_149-back-parts.png",
+        "crop_in_replay": [
+          84,
+          61,
+          192,
+          103
+        ]
+      },
+      {
+        "site": "109",
+        "case": "109_149",
+        "frame": 30,
+        "direction": "前视",
+        "part_pixels": 513,
+        "per_mesh": {
+          "Fracture inset rim": 513
+        },
+        "texture": "109_149-front-texture.png",
+        "overlay": "109_149-front-parts.png",
+        "crop_in_replay": [
+          54,
+          97,
+          221,
+          155
+        ]
+      },
+      {
+        "site": "109",
+        "case": "109_149",
+        "frame": 40,
+        "direction": "后视",
+        "part_pixels": 155,
+        "per_mesh": {
+          "Fracture inset rim": 155
+        },
+        "texture": "109_149-back-texture.png",
+        "overlay": "109_149-back-parts.png",
+        "crop_in_replay": [
+          87,
+          62,
+          189,
+          102
+        ]
+      }
+    ],
+    "lidar": {
+      "034_149": {
+        "Fracture inset rim": 117
+      },
+      "109_149": {
+        "Fracture inset rim": 87
+      }
+    }
+  },
+  "P150": {
+    "sha256": "622e753ce2ae90166aaba83bdd0a4ddb3759ed34371a48d5c6487099705b1f38",
+    "camera": [
+      {
+        "site": "034",
+        "case": "034_150",
+        "frame": 30,
+        "direction": "前视",
+        "part_pixels": 856,
+        "per_mesh": {
+          "Fracture debris 01": 298,
+          "Fracture debris 02": 200,
+          "Fracture debris 03": 70,
+          "Fracture debris 04": 79,
+          "Fracture debris 05": 41,
+          "Fracture debris 06": 92,
+          "Fracture debris 07": 54,
+          "Fracture debris 08": 22,
+          "Fracture debris 09": 0
+        },
+        "texture": "034_150-front-texture.png",
+        "overlay": "034_150-front-parts.png",
+        "crop_in_replay": [
+          50,
+          68,
+          240,
+          124
+        ]
+      },
+      {
+        "site": "034",
+        "case": "034_150",
+        "frame": 46,
+        "direction": "后视",
+        "part_pixels": 368,
+        "per_mesh": {
+          "Fracture debris 01": 141,
+          "Fracture debris 02": 37,
+          "Fracture debris 03": 32,
+          "Fracture debris 04": 33,
+          "Fracture debris 05": 25,
+          "Fracture debris 06": 51,
+          "Fracture debris 07": 22,
+          "Fracture debris 08": 7,
+          "Fracture debris 09": 20
+        },
+        "texture": "034_150-back-texture.png",
+        "overlay": "034_150-back-parts.png",
+        "crop_in_replay": [
+          79,
+          59,
+          198,
+          104
+        ]
+      },
+      {
+        "site": "109",
+        "case": "109_150",
+        "frame": 30,
+        "direction": "前视",
+        "part_pixels": 1036,
+        "per_mesh": {
+          "Fracture debris 01": 363,
+          "Fracture debris 02": 235,
+          "Fracture debris 03": 86,
+          "Fracture debris 04": 98,
+          "Fracture debris 05": 53,
+          "Fracture debris 06": 114,
+          "Fracture debris 07": 61,
+          "Fracture debris 08": 25,
+          "Fracture debris 09": 1
+        },
+        "texture": "109_150-front-texture.png",
+        "overlay": "109_150-front-parts.png",
+        "crop_in_replay": [
+          53,
+          112,
+          250,
+          173
+        ]
+      },
+      {
+        "site": "109",
+        "case": "109_150",
+        "frame": 40,
+        "direction": "后视",
+        "part_pixels": 308,
+        "per_mesh": {
+          "Fracture debris 01": 121,
+          "Fracture debris 02": 25,
+          "Fracture debris 03": 25,
+          "Fracture debris 04": 29,
+          "Fracture debris 05": 21,
+          "Fracture debris 06": 43,
+          "Fracture debris 07": 19,
+          "Fracture debris 08": 6,
+          "Fracture debris 09": 19
+        },
+        "texture": "109_150-back-texture.png",
+        "overlay": "109_150-back-parts.png",
+        "crop_in_replay": [
+          81,
+          61,
+          195,
+          102
+        ]
+      }
+    ],
+    "lidar": {
+      "034_150": {
+        "Fracture debris 01": 29,
+        "Fracture debris 02": 31,
+        "Fracture debris 03": 5,
+        "Fracture debris 04": 3,
+        "Fracture debris 05": 3,
+        "Fracture debris 06": 12,
+        "Fracture debris 07": 4,
+        "Fracture debris 08": 1,
+        "Fracture debris 09": 2
+      },
+      "109_150": {
+        "Fracture debris 01": 26,
+        "Fracture debris 02": 24,
+        "Fracture debris 03": 8,
+        "Fracture debris 04": 2,
+        "Fracture debris 05": 0,
+        "Fracture debris 06": 5,
+        "Fracture debris 07": 2,
+        "Fracture debris 08": 4,
+        "Fracture debris 09": 0
+      }
+    }
+  }
+}

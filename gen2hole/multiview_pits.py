@@ -30,6 +30,8 @@ def build(args, stage):
         raise ValueError('Use a distinct pothole ID for each asset')
     photo_pairs = sum(s.get('mode') == 'rgb_parallax' for s in specs)
     calibration_mode = 'multiview_depth'
+    if all(s.get('mode') == 'single_rgbd' for s in specs):
+        calibration_mode = 'single_rgbd'
     if photo_pairs:
         calibration_mode = 'rgb_parallax' if photo_pairs == len(specs) else 'mixed_multiview'
     cfg = json.loads(args.config.read_text())
@@ -53,8 +55,18 @@ def build(args, stage):
             build_pair(spec, args.source, args.catalog, args.survey.parent, bundle)
             continue
         views = read_views(spec, args.source, args.catalog, args.survey.parent)
-        poses, alignment = registration(spec, views)
-        fitting = [views[k] for k in spec['fit']]
+        single = spec.get('mode') == 'single_rgbd'
+        if single:
+            if 'depth_completion' in spec:
+                raise ValueError('Photographic depth completion needs multiple fitting images')
+            from single_depth_surfaces import split_depth, surface_regions
+
+            training, reserved = split_depth(views[spec['anchor']])
+            poses, alignment = {training.key: np.eye(4)}, {}
+            fitting = [training]
+        else:
+            poses, alignment = registration(spec, views)
+            fitting = [views[k] for k in spec['fit']]
         completion = spec.get('depth_completion')
         fine = {}
         if completion is not None:
@@ -63,6 +75,8 @@ def build(args, stage):
                 raise ValueError('Expected positive grid spacing and support radius')
             fine = dict(spacing=pitch, reach_cells=reach)
         field, color, stats = fuse(fitting, poses, completion=completion, **fine)
+        if single and 'surface_regions' in spec:
+            field['region_ids'], stats['region_names'] = surface_regions(spec['surface_regions'], fitting[0], field, stats)
         if completion is not None:
             control, _, control_stats = fuse(fitting, poses, **fine)
             if not np.array_equal(control['width'], field['width']) or not np.array_equal(control['view_count'], field['view_count']):
@@ -94,6 +108,9 @@ def build(args, stage):
             pose_constraint='Road features at least 8 pixels outside all labelled pit masks',
             withheld='Held-out interior depth, color, and labels do not enter the surface, texture or road plane. Exterior features locate its camera.',
         )
+        if single:
+            record.update(pose_constraint='Fitting camera defines the sole source frame', withheld='Original ranges in 4x4 sensor blocks are zeroed before all geometry and texture fitting. RGB and the source outline remain available.',
+                          reserved_depth_pixels=int(reserved.sum()), reserved_pit_depth_pixels=int((reserved & primary.mask).sum()))
         put(cal / (key + '_capture.json'), record)
         source = str(Path('references') / (key + '.png'))
         if spec['source'] == 'PothRGBD':
@@ -110,10 +127,10 @@ def build(args, stage):
             category='pothole',
             family=key,
             state='measured',
-            recipe_version='multiview-depth-v1',
+            recipe_version='single-depth-holdout-v1' if single else 'multiview-depth-v1',
             source_image=source,
             source_sha256=sha256((bundle / source).read_bytes()).hexdigest(),
-            geometry_source='Road-plane-aligned metric height field from registered fitting captures',
+            geometry_source='Road-plane-aligned metric height field from one RGB-D capture' if single else 'Road-plane-aligned metric height field from registered fitting captures',
             scale_kind=calibration,
             measurement_record='calibration/' + key + '_capture.json',
             seed=307101 + int(key[1:]),

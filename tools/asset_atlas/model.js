@@ -94,8 +94,10 @@ function displayModel(row, preservePose=false) {
   const size=get("componentSize");
   size.hidden=!component;
   if (component) size.textContent=component.id+"　槽口长 × 宽 "+(component.length*100).toFixed(1)+" × "+(component.width*100).toFixed(1)+" 厘米，槽缘附近路面至槽底的 P95 高差 "+(component.depth*1000).toFixed(1)+" 毫米。";
-  const src=component?.glb || row.completionModels?.[mode] || (sectioned ? (row.blockModel || row.dryModel || row.cutawayModel) : row.glb);
-  get("supportLegend").hidden=!(row.completionModels && mode==="support");
+  const src=component?.glb || row.regionModels?.[mode] || row.completionModels?.[mode] || (sectioned ? (row.blockModel || row.dryModel || row.cutawayModel) : row.glb);
+  const legend=get("supportLegend");
+  legend.hidden=!(row.completionModels && mode==="support") && !(row.regionModels && mode!=="completed");
+  legend.textContent=row.regionModels ? row.regionLegend : "蓝灰为原始距离支持的格点，青色为彩照补出的格点，橙色为插值。浅灰为坑外路面。";
   get("glb").href=src;
   viewer.src=src;
   if (!preservePose) pose(sectioned && selectedRow?.cutawayModel ? "16deg 70deg auto" : "20deg 48deg auto");
@@ -113,7 +115,7 @@ get("componentMode").onchange=()=>{
   displayModel(selectedRow);
 };
 get("completionMode").onchange=()=>{
-  if (selectedRow?.completionModels) displayModel(selectedRow,true);
+  if (selectedRow?.completionModels || selectedRow?.regionModels) displayModel(selectedRow,true);
 };
 function openSelection() {
   const requested = decodeURIComponent(location.hash.slice(1));
@@ -124,8 +126,10 @@ function openSelection() {
   restoreTextures();
   get("clayModel").hidden=true;
   const sameCover=Boolean(row?.cutawayModel && selectedRow?.cutawayModel && row.states?.includes(selectedRow.id));
-  get("completionMode").value="completed";
-  get("completionControl").hidden=!row?.completionModels || location.protocol==="file:";
+  const options=row?.regionModels ? [["实拍纹理整坑","completed"],["部位分色","labels"],[row.isolatedLabel,"isolated"]]
+    : [["距离图与彩照补深","completed"],["仅用距离图","rangeOnly"],["查看高程来源","support"]];
+  get("completionMode").replaceChildren(...options.map(([name,value])=>new Option(name,value)));
+  get("completionControl").hidden=!(row?.completionModels || row?.regionModels) || location.protocol==="file:";
   get("supportLegend").hidden=true;
   selectedRow=row;
   get("componentSize").hidden=true;

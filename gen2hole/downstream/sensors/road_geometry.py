@@ -11,9 +11,9 @@ PACKAGE_NAMES = ('道路病害图生三维', '道路病害图生三维_新增100
 PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidewall',
          'water surface', 'cast ring and seat', 'shaft wall', 'shaft bottom',
          'concrete collar', 'lid face', 'lid underside', 'lid edge', 'hinge',
-         'pavement block top', 'pavement block edge', 'pavement block underside', 'subgrade', 'socket wall')
+         'pavement block top', 'pavement block edge', 'pavement block underside', 'subgrade', 'socket wall', 'visible debris face', 'opening inner rim')
 EXACT_PARTS = {
-    'Road around the aperture': 1, 'Road adjoining the fracture': 1,
+    'Fracture inset rim': 19, 'Road around the aperture': 1, 'Road adjoining the fracture': 1,
     'Fracture lip and exposed bed': 2, 'Fracture sidewall in surface coordinates': 3,
     'Water surface': 4, 'Cast ring and cover seat': 5, 'Inspection shaft': 6,
     'Shaft bottom': 7, 'Chipped concrete collar': 8, 'Lid face': 9,
@@ -79,6 +79,8 @@ def load_inventory(parent):
 
 
 def part_id(name):
+    if name.startswith('Fracture debris '):
+        return 18
     return 12 if name.startswith('Hinge ') else EXACT_PARTS[name]
 
 

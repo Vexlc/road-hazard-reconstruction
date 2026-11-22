@@ -78,7 +78,8 @@ def read_views(spec, source, catalog, base):
     if (
         len(keys) != len(spec['fit']) + len(spec['holdout'])
         or not spec['fit']
-        or not spec['holdout']
+        or (not spec['holdout'] and spec.get('mode') != 'single_rgbd')
+        or (spec.get('mode') == 'single_rgbd' and (len(spec['fit']) != 1 or spec['holdout']))
         or spec['anchor'] not in keys
     ):
         raise ValueError('Use distinct fit and held-out frames and an anchor in those frames')

@@ -1,0 +1,245 @@
+{
+  "assets": {
+    "P149": {
+      "glb_sha256": "2f70cf63e467183fb7654890d0ebad1c919308d9fa7b574976584e8868b0da77",
+      "ply_sha256": "0555577600f684b59373d568ec2408e5fa0f67f474e2a8bebc696bcd75adab27",
+      "sites": [
+        "034",
+        "109"
+      ]
+    },
+    "P150": {
+      "glb_sha256": "e646acfffba553745955ba3a38551d276781c326b3f8f37a583ecf7583ed7d0d",
+      "ply_sha256": "bcd18160b793f321401f679647074098118bf855532bba1111ff10a655e743ee",
+      "sites": [
+        "034",
+        "109"
+      ]
+    }
+  },
+  "scenes": {
+    "034_149": {
+      "asset": "P149",
+      "native_checkpoint_reloaded": true,
+      "size_multiplier": 1.0,
+      "reload_max_pixel_error": 0,
+      "frames": 80,
+      "simulated_returns_by_lidar": [
+        87,
+        324
+      ],
+      "camera_frames": {
+        "front_camera": 30,
+        "back_camera": 46
+      }
+    },
+    "034_150": {
+      "asset": "P150",
+      "native_checkpoint_reloaded": true,
+      "size_multiplier": 1.0,
+      "reload_max_pixel_error": 0,
+      "frames": 80,
+      "simulated_returns_by_lidar": [
+        105,
+        397
+      ],
+      "camera_frames": {
+        "front_camera": 30,
+        "back_camera": 46
+      }
+    },
+    "109_149": {
+      "asset": "P149",
+      "native_checkpoint_reloaded": true,
+      "size_multiplier": 1.0,
+      "reload_max_pixel_error": 0,
+      "frames": 80,
+      "simulated_returns_by_lidar": [
+        47,
+        264
+      ],
+      "camera_frames": {
+        "front_camera": 30,
+        "back_camera": 40
+      }
+    },
+    "109_150": {
+      "asset": "P150",
+      "native_checkpoint_reloaded": true,
+      "size_multiplier": 1.0,
+      "reload_max_pixel_error": 0,
+      "frames": 80,
+      "simulated_returns_by_lidar": [
+        61,
+        283
+      ],
+      "camera_frames": {
+        "front_camera": 30,
+        "back_camera": 40
+      }
+    }
+  },
+  "common_site_anchors": {
+    "034": [
+      [
+        -36.16243798230243,
+        -5.790768920867825,
+        -5.150513699017868
+      ],
+      [
+        [
+          -0.15583637906672923,
+          -0.9776676350399915,
+          -0.14100006508750496
+        ],
+        [
+          0.9875661737497854,
+          -0.15719661918618416,
+          -0.00150843682079268
+        ],
+        [
+          -0.02068998367759607,
+          -0.13948196410914124,
+          0.9900084374709527
+        ]
+      ],
+      "01",
+      30
+    ],
+    "109": [
+      [
+        -38.60890679637467,
+        39.414138021219195,
+        -0.5507427847349833
+      ],
+      [
+        [
+          0.7022745068784205,
+          -0.7111999369127098,
+          0.031704364431875125
+        ],
+        [
+          0.7101220131204765,
+          0.7029704320496952,
+          0.03948794937176009
+        ],
+        [
+          -0.05037105786454429,
+          -0.005217413077624456,
+          0.998716944449419
+        ]
+      ],
+      "01",
+      27
+    ]
+  },
+  "scans": {
+    "counts": {
+      "case_frames": 320,
+      "raw_scans": 160,
+      "original_returns": 27654141,
+      "replacements": 1568,
+      "no_return": 0
+    },
+    "sites": 2,
+    "cases": 4,
+    "asset_count": 2,
+    "placements": 4,
+    "placements_with_both_lidars": 4,
+    "placements_without_returns": 0,
+    "case_frames_with_edits": 101,
+    "case_frames_without_edits": 219,
+    "by_category": {
+      "pothole": 1568
+    },
+    "by_sensor": {
+      "1": 1268,
+      "0": 300
+    },
+    "by_surface": {
+      "fracture bed and lip": 1203,
+      "opening inner rim": 204,
+      "visible debris face": 161
+    },
+    "synthetic_local_height_range_m": {
+      "pothole": [
+        -0.03551948070526123,
+        0.006241440773010254
+      ]
+    },
+    "occluded_nonroad_source_returns": 0,
+    "max_lateral_ray_error_m": 4.813539016657007e-07,
+    "max_source_range_error_m": 1.8942192738791164e-06,
+    "max_replay_range_error_m": 2.693790115415595e-06,
+    "max_local_height_error_m": 8.98586760555986e-16
+  },
+  "cameras": {
+    "views": 8,
+    "camera_counts": {
+      "front_camera": 4,
+      "back_camera": 4
+    },
+    "skipped": [],
+    "protected_pixels": {
+      "1": 0,
+      "2": 0,
+      "4": 50152
+    },
+    "direct_shadow_views": {},
+    "direct_shadow_pixels": {},
+    "target_pixels": {
+      "min": 534.0,
+      "p10": 620.8,
+      "median": 1718.0,
+      "p90": 3356.1,
+      "max": 3802.0
+    },
+    "gaussian_alpha_above_48pct_coverage": {
+      "min": 0.90824,
+      "p10": 0.918217,
+      "median": 0.998542,
+      "p90": 0.999816,
+      "max": 1.0
+    },
+    "target_rgb_difference_8bit": {
+      "min": 20.01165,
+      "p10": 22.310835,
+      "median": 30.217707,
+      "p90": 45.871076,
+      "max": 49.70644
+    },
+    "shared_front_frame_count": 0,
+    "legacy_gaussian_silhouette_vs_mesh_iou": null,
+    "smallest_front_iou": [],
+    "same_part_reprojection_counts": {
+      "target_lidar_returns_at_capture": 0,
+      "inside_crop_and_in_front": 0,
+      "same_visible_mesh_part": 0
+    },
+    "signed_lidar_minus_camera_depth_m": null,
+    "absolute_depth_error_under_5cm": 0,
+    "note": "Different physical emitters can see different parts or different faces of the same part. These are pixel-depth comparisons, not calibration ground truth."
+  },
+  "independent_geometry": {
+    "reader": "trimesh GLB scene graph",
+    "intersector": "Blender mathutils.bvhtree",
+    "assets": 2,
+    "real_beam_samples": 24,
+    "vertical_grid_samples": 42,
+    "range_p99_m": 3.565879177003239e-06,
+    "range_max_m": 3.858285001712147e-06,
+    "grid_height_p99_m": 4.2796134948730425e-07,
+    "grid_height_max_m": 4.76837158203125e-07,
+    "nearest_part_disagreements": [],
+    "per_asset": {
+      "P149": {
+        "samples": 12,
+        "max_range_error_m": 3.858285001712147e-06
+      },
+      "P150": {
+        "samples": 12,
+        "max_range_error_m": 2.586955329064722e-06
+      }
+    }
+  }
+}
