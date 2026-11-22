@@ -42,3 +42,5 @@ git show archive/fu-xi-2026-11-20:README.md
 Gen2Hole 已连同参考图、深度权重、建模配方和已运行案例迁入本仓库的 [gen2hole](../gen2hole/README.md)。原同级目录已移除。`gen2hole/published` 在仓库内指向同一份发布树。按来源检索现有资产可打开[统一图谱](../tools/asset_atlas/index.html)。
 
 本轮追加清理 73,167 个文件，按最后一个硬链接被删除时的已分配块统计，另释放 25.87 GiB。三个日期目录独立计量约为 1.34 GiB、165 MiB 和 38 MiB。剩余内容包括代码、配置、Git 历史及其他工作的原始文档。Fan Stereo 的 Git 对象保存在合并工程的历史目录，旧检出通过 gitdir 文件访问同一提交。原位置的 48,553 个源码文件逐个复核通过。[本轮逐文件记录](../data/history/retained-road-sources-2026-11-22/合并后清理文件.jsonl.gz) · [两轮清理汇总](../data/history/retained-road-sources-2026-11-22/清理核验.json)
+
+复查 11 月 18 日的临时 Chrome 测试配置时，另清出两份内容相同的证书吊销列表缓存，共释放 18.19 MiB。两份文件各占独立磁盘块。[文件路径和指纹](../validation/legacy-test-cache-cleanup.json)

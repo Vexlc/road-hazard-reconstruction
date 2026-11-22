@@ -39,7 +39,12 @@
     "original_source_hashes_verified": 48553,
     "source_paths_relocated": 627,
     "fan_stereo_git": "data/history/retained-road-sources-2026-11-22/upstream-git/FanStereo.git",
-    "fan_stereo_head": "a6cc8e7354da4503b0ee03d15058df131a645195"
+    "fan_stereo_head": "a6cc8e7354da4503b0ee03d15058df131a645195",
+    "additional_test_profile_cache": {
+      "files": 2,
+      "allocated_bytes": 19070976,
+      "manifest": "validation/legacy-test-cache-cleanup.json"
+    }
   },
   "archive_audit": {
     "catalogued_inputs": 302,

@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/home/xiaosz/Documents/Codex/2026-11-18/handoff-ubuntu-codex-pwa-codex-codex/work/chrome-qa/CertificateRevocation/10911/crl-set",
+    "bytes": 9535209,
+    "allocated_bytes": 9535488,
+    "sha256": "e263f2715be7b3d53c6ee9f113c9d65a73d068fd83e6dfa540c13242126d16ef"
+  },
+  {
+    "path": "/home/xiaosz/Documents/Codex/2026-11-18/handoff-ubuntu-codex-pwa-codex-codex/work/chrome-run.5e8jcApW/CertificateRevocation/10911/crl-set",
+    "bytes": 9535209,
+    "allocated_bytes": 9535488,
+    "sha256": "e263f2715be7b3d53c6ee9f113c9d65a73d068fd83e6dfa540c13242126d16ef"
+  }
+]
