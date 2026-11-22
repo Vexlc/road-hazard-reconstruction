@@ -55,7 +55,21 @@ def build(args, stage):
         views = read_views(spec, args.source, args.catalog, args.survey.parent)
         poses, alignment = registration(spec, views)
         fitting = [views[k] for k in spec['fit']]
-        field, color, stats = fuse(fitting, poses)
+        completion = spec.get('depth_completion')
+        fine = {}
+        if completion is not None:
+            pitch, reach = float(completion['grid_pitch_m']), float(completion['support_radius_cells'])
+            if not np.isfinite([pitch, reach]).all() or pitch <= 0 or reach <= 0:
+                raise ValueError('Expected positive grid spacing and support radius')
+            fine = dict(spacing=pitch, reach_cells=reach)
+        field, color, stats = fuse(fitting, poses, completion=completion, **fine)
+        if completion is not None:
+            control, _, control_stats = fuse(fitting, poses, **fine)
+            if not np.array_equal(control['width'], field['width']) or not np.array_equal(control['view_count'], field['view_count']):
+                raise ValueError('The range-only control must use the same grid and native measurements')
+            np.savez_compressed(cal / (key + '_range_only.npz'), height=control['height'], width=control['width'],
+                                defect_mask=control['defect_mask'])
+            put(cal / (key + '_range_only.json'), control_stats)
         primary = fitting[0]
         Image.fromarray(primary.rgb).save(refs / (key + '.png'))
         Image.fromarray(np.uint8(primary.mask) * 255).save(cal / (key + '_outline.png'))

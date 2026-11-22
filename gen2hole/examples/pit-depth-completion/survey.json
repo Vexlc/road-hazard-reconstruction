@@ -1,0 +1,14 @@
+[
+  {
+    "id": "P142", "label": "陡壁三角形坑洞", "source": "FanStereo", "dataset": "dataset1",
+    "anchor": "03", "fit": ["03", "04", "07"], "holdout": ["01", "05"],
+    "pose_parents": {"05": "07"},
+    "depth_completion": {"search_depth_m": 0.11, "grid_pitch_m": 0.0008, "support_radius_cells": 1.5}
+  },
+  {
+    "id": "P143", "label": "粗粒坑壁凹坑", "source": "FanStereo", "dataset": "dataset1",
+    "anchor": "17", "fit": ["17", "18"], "holdout": ["16", "19"],
+    "pose_parents": {"19": "18"},
+    "depth_completion": {"search_depth_m": 0.11, "grid_pitch_m": 0.0008, "support_radius_cells": 1.5}
+  }
+]

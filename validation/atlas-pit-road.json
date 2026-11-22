@@ -1472,6 +1472,216 @@
       "contact": "bed_triangles",
       "blend_width_m": 0.021739232512862038
     },
+    "P142": {
+      "sources": {
+        "glb": "285d799656b75c62ccfe8fc2bf6a3daa24ca676684ad7d754fd72104961a3329",
+        "ply": "1afe95a45f57f78b3bb19dadf029d8af04ec3fc9caf3bb1a36e6ef143e33d3f4"
+      },
+      "views": {
+        "low": {
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 0.2737914527937584,
+            "target": [
+              -0.000798247754573822,
+              -0.015351588372141123,
+              -0.001197371631860733
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 268338,
+          "exterior_raw_probe_pixels": 5513,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 3864,
+          "interior_raw_probe_pixels": 0,
+          "interior_host_probe_pixels": 0,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0,
+          "native_opening_pixels": 4987,
+          "browser_opening_pixels": 4992,
+          "footprint_iou": 0.9902273633825289,
+          "opening_extra_in_exterior": 0,
+          "opening_missing_in_interior": 0,
+          "far_mesh_pixels": 60916,
+          "apron_before_pixels": 33778,
+          "apron_after_pixels": 0
+        },
+        "oblique": {
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 0.2737914527937584,
+            "target": [
+              -0.000798247754573822,
+              -0.015351588372141123,
+              -0.001197371631860733
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 255519,
+          "exterior_raw_probe_pixels": 728,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 15676,
+          "interior_raw_probe_pixels": 5026,
+          "interior_host_probe_pixels": 5026,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0,
+          "native_opening_pixels": 17321,
+          "browser_opening_pixels": 17337,
+          "footprint_iou": 0.9894380345559957,
+          "opening_extra_in_exterior": 0,
+          "opening_missing_in_interior": 0,
+          "far_mesh_pixels": 167170,
+          "apron_before_pixels": 106702,
+          "apron_after_pixels": 0
+        },
+        "top": {
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 0.2737914527937584,
+            "target": [
+              -0.000798247754573822,
+              -0.015351588372141123,
+              -0.001197371631860733
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 247225,
+          "exterior_raw_probe_pixels": 62,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 23393,
+          "interior_raw_probe_pixels": 11548,
+          "interior_host_probe_pixels": 11548,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0,
+          "native_opening_pixels": 25328,
+          "browser_opening_pixels": 25384,
+          "footprint_iou": 0.9914392303161201,
+          "opening_extra_in_exterior": 0,
+          "opening_missing_in_interior": 0,
+          "far_mesh_pixels": 159079,
+          "apron_before_pixels": 120584,
+          "apron_after_pixels": 0
+        }
+      },
+      "road_height_m": -0.0022322063446044925,
+      "tracer_below_m": -0.022322063446044923,
+      "contact": "bed_triangles",
+      "blend_width_m": 0.004184746883185963
+    },
+    "P143": {
+      "sources": {
+        "glb": "b9511ea9d293c2c87968bad54993d2ec9e3bcd7d0f0f5bb05f37e180acbd77b5",
+        "ply": "5b65970a753a9b8f1bbfb887e4bc2ad27a50d83db6b034faec2693c7fcd6a97d"
+      },
+      "views": {
+        "low": {
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 0.28760749524514007,
+            "target": [
+              0.003192216157913208,
+              -0.01698507647961378,
+              0.000399027019739151
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 267402,
+          "exterior_raw_probe_pixels": 5331,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 5253,
+          "interior_raw_probe_pixels": 0,
+          "interior_host_probe_pixels": 0,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0,
+          "native_opening_pixels": 6177,
+          "browser_opening_pixels": 6192,
+          "footprint_iou": 0.9972549652833844,
+          "opening_extra_in_exterior": 0,
+          "opening_missing_in_interior": 0,
+          "far_mesh_pixels": 52692,
+          "apron_before_pixels": 26513,
+          "apron_after_pixels": 0
+        },
+        "oblique": {
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 0.28760749524514007,
+            "target": [
+              0.003192216157913208,
+              -0.01698507647961378,
+              0.000399027019739151
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 247362,
+          "exterior_raw_probe_pixels": 0,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 24504,
+          "interior_raw_probe_pixels": 8417,
+          "interior_host_probe_pixels": 8417,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0,
+          "native_opening_pixels": 25825,
+          "browser_opening_pixels": 25862,
+          "footprint_iou": 0.9968706536856745,
+          "opening_extra_in_exterior": 0,
+          "opening_missing_in_interior": 0,
+          "far_mesh_pixels": 152322,
+          "apron_before_pixels": 91841,
+          "apron_after_pixels": 0
+        },
+        "top": {
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 0.28760749524514007,
+            "target": [
+              0.003192216157913208,
+              -0.01698507647961378,
+              0.000399027019739151
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 237640,
+          "exterior_raw_probe_pixels": 0,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 33856,
+          "interior_raw_probe_pixels": 12873,
+          "interior_host_probe_pixels": 12873,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0,
+          "native_opening_pixels": 35359,
+          "browser_opening_pixels": 35380,
+          "footprint_iou": 0.9973176723042607,
+          "opening_extra_in_exterior": 0,
+          "opening_missing_in_interior": 0,
+          "far_mesh_pixels": 144617,
+          "apron_before_pixels": 100709,
+          "apron_after_pixels": 0
+        }
+      },
+      "road_height_m": -0.002121173083782196,
+      "tracer_below_m": -0.02121173083782196,
+      "contact": "bed_triangles",
+      "blend_width_m": 0.0051745335096017205
+    },
     "P90": {
       "sources": {
         "glb": "4a1a271eef3c28ea02768874971896f0c5877ef012502d9485ce1973f843bd27",

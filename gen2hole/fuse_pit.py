@@ -55,19 +55,21 @@ def local_frame(samples):
     return center + basis[:, :2] @ ((hi + lo) / 2), basis, hi - lo, rms
 
 
-def sample_height(xyz, center, basis, grid, pitch, limit):
+def sample_height(xyz, center, basis, grid, pitch, limit, reach=None, optional=False):
     points = (xyz - center) @ basis
     extent = np.max(abs(grid), axis=(0, 1)) + 0.018
     inside = (np.abs(points[:, :2]) < extent).all(1) & (abs(points[:, 2]) < limit)
     local = points[inside]
     if len(local) < 80:
+        if optional:
+            return np.full(grid.shape[:2], np.nan)
         raise ValueError('Too few aligned surface samples inside the patch')
     distance, idx = cKDTree(local[:, :2]).query(grid, k=5, workers=2)
     z = local[idx, 2]
     med = np.median(z, axis=2)
     w = (abs(z - med[:, :, None]) < 0.014) / (distance**2 + (0.5 * pitch) ** 2)
     value = (z * w).sum(2) / w.sum(2)
-    valid = distance[:, :, 0] < max(0.006, 2.2 * pitch)
+    valid = distance[:, :, 0] < (max(0.006, 2.2 * pitch) if reach is None else reach)
     return np.where(valid, value, np.nan)
 
 
@@ -118,7 +120,7 @@ def road_texture(color, observed, mask):
     )
 
 
-def fuse(views, poses, spacing=0.0025):
+def fuse(views, poses, spacing=0.0025, reach_cells=None, completion=None):
     samples = [depth_samples(v, poses[v.key]) for v in views]
     center, basis, size, rms = local_frame(samples)
     border = np.clip(size.max() * 0.16, 0.055, 0.14)
@@ -132,14 +134,40 @@ def fuse(views, poses, spacing=0.0025):
         0.16,
         2 * max(np.percentile(abs((xyz[mask] - center) @ basis[:, 2]), 98) for xyz, mask, _ in samples),
     )
+    reach = reach_cells * pitch if reach_cells is not None else None
     heights = np.stack(
-        [sample_height(xyz, center, basis, grid, pitch, height_limit) for xyz, _, _ in samples]
+        [sample_height(xyz, center, basis, grid, pitch, height_limit, reach) for xyz, _, _ in samples]
     )
     count = np.isfinite(heights).sum(0)
     supported = count > 0
+    native = supported.copy()
+    records = {}
     with warnings.catch_warnings():
         warnings.filterwarnings('ignore', message='All-NaN slice encountered', category=RuntimeWarning)
         height = np.nanmedian(heights, axis=0)
+        if completion is not None:
+            from pit_depth_completion import recover_depth
+
+            enhanced, records = recover_depth(
+                views, poses, center, basis[:, 2], completion['search_depth_m']
+            )
+            extra = np.full_like(heights, np.nan)
+            for i, (raw, repaired) in enumerate(zip(views, enhanced)):
+                v, u = np.nonzero((raw.depth == 0) & (repaired.depth > 0))
+                if len(v) < 80:
+                    continue
+                points = transform(raw.xyz(np.c_[u, v], repaired.depth[v, u]), poses[raw.key])
+                extra[i] = sample_height(
+                    points, center, basis, grid, pitch, height_limit, reach, optional=True
+                )
+            inferred = np.nanmedian(extra, axis=0)
+            # Direct range always wins. Conflicting photographic estimates leave the cell unobserved.
+            consistent = np.nanmax(extra, axis=0)-np.nanmin(extra, axis=0) < 0.010
+            photo = ~native & np.isfinite(inferred) & consistent
+            height[photo] = inferred[photo]
+            supported |= photo
+            heights = np.where(np.isfinite(heights), heights, np.where(photo, extra, np.nan))
+            views = enhanced
     nearest = ndimage.distance_transform_edt(~supported, return_distances=False, return_indices=True)
     height = ndimage.median_filter(height[tuple(nearest)], 3)
     local = np.dstack([grid, height])
@@ -198,20 +226,26 @@ def fuse(views, poses, spacing=0.0025):
         local_origin_in_anchor_m=center.tolist(),
         local_axes_in_anchor_camera=basis.tolist(),
     )
-    return (
-        dict(
-            height=height.astype('f4'),
-            defect_mask=mask,
-            water_mask=np.zeros_like(mask),
-            alpha=alpha.astype('f4'),
-            view_count=count.astype('u1'),
-            color_observed=observed,
-            width=width,
-            length=width,
-        ),
-        color,
-        stats,
+    field = dict(
+        height=height.astype('f4'),
+        defect_mask=mask,
+        water_mask=np.zeros_like(mask),
+        alpha=alpha.astype('f4'),
+        view_count=count.astype('u1'),
+        color_observed=observed,
+        width=width,
+        length=width,
     )
+    if completion is not None:
+        field['support_kind'] = native.astype('u1') + 2 * photo.astype('u1')
+        stats.update(
+            depth_completion=records,
+            native_pit_cells=int((mask & native).sum()),
+            photo_only_pit_cells=int((mask & photo).sum()),
+            interpolated_pit_cells=int((mask & ~supported).sum()),
+            measured_pit_fraction=float(native[mask].mean()),
+        )
+    return field, color, stats
 
 
 def photo_texture(views, poses, field, base, frame):

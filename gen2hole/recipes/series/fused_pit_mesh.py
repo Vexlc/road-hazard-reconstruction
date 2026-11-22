@@ -1,17 +1,14 @@
 """Build the native mesh directly from the recovered metric surface and photographed colors."""
 
+import argparse
 import json
-import sys
+
 import numpy as np
 from PIL import Image
 from mesh_io import Mesh, ROOT, grid_faces
 
 
-def build(key):
-    calibration = ROOT / 'calibration'
-    meta = json.loads((calibration / (key + '.json')).read_text())
-    field = dict(np.load(calibration / (key + '.npz'), allow_pickle=False))
-    color = np.array(Image.open(ROOT / 'references' / (key + '_ortho.png')).convert('RGB'))
+def surface_mesh(field, color, meta, diagnostic=False):
     h = field['height']
     width = float(field['width'])
     y, x = np.meshgrid(
@@ -26,21 +23,55 @@ def build(key):
         faces = faces[:, [0, 2, 1]]
     bed = field['defect_mask'].ravel()[faces].mean(1) > 0.5
     mesh = Mesh()
-    mat = mesh.material('Photographed road surface', color, 0.94, 0.0, 1.8)
+    if diagnostic:
+        mat = mesh.material('Height sample source', color, 0.94, 0.0, 0.0, lossless_color=True)
+    else:
+        mat = mesh.material('Photographed road surface', color, 0.94, 0.0, 1.8)
     mesh.add('Road adjoining the fracture', xyz, faces[~bed], uv, mat, road=True)
     mesh.add('Fracture lip and exposed bed', xyz, faces[bed], uv, mat)
     if 'water' in meta:
         from pit_water import add_water
+
         meta['water'] = add_water(mesh, xyz, faces, field, color, meta['water'])
+    return mesh
+
+
+def build(key, comparisons_only=False):
+    calibration = ROOT / 'calibration'
+    meta = json.loads((calibration / (key + '.json')).read_text())
+    with np.load(calibration / (key + '.npz'), allow_pickle=False) as data:
+        field = dict(data)
+    with Image.open(ROOT / 'references' / (key + '_ortho.png')) as image:
+        color = np.array(image.convert('RGB'))
+    if 'support_kind' in field:
+        dest = ROOT / 'comparison' / key
+        dest.mkdir(parents=True, exist_ok=True)
+        with np.load(calibration / (key + '_range_only.npz'), allow_pickle=False) as baseline:
+            (dest / 'range-only.glb').write_bytes(surface_mesh(baseline, color, {}).glb_bytes())
+        palette = np.uint8([[230, 145, 68], [67, 91, 112], [59, 193, 188]])
+        colors = palette[field['support_kind']]
+        colors[~field['defect_mask']] = [220, 220, 210]
+        mesh = surface_mesh(field, colors, {}, diagnostic=True)
+        (dest / 'support.glb').write_bytes(mesh.glb_bytes())
+    elif comparisons_only:
+        raise ValueError('No depth completion fields for ' + key)
+    if comparisons_only:
+        return
+    mesh = surface_mesh(field, color, meta)
+    width = float(field['width'])
     cache = ROOT / 'mesh_cache'
     cache.mkdir(exist_ok=True)
     # The surrounding preview plane also uses the sampled intact-road texture.
     with Image.open(ROOT / 'references' / (key + '_pavement.jpg')) as grain:
         grain.save(cache / (key + '_ground.jpg'), quality=94)
-    meta['road_projection'] = [239.5, 239.5, 479 / width, 479 / width, len(h)]
+    meta['road_projection'] = [239.5, 239.5, 479 / width, 479 / width, len(field['height'])]
     mesh.save(ROOT / 'assets/pothole' / key, cache, meta, field)
 
 
 if __name__ == '__main__':
-    for key in sys.argv[1:]:
-        build(key)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('keys', nargs='+')
+    parser.add_argument('--comparisons-only', action='store_true')
+    args = parser.parse_args()
+    for key in args.keys:
+        build(key, args.comparisons_only)

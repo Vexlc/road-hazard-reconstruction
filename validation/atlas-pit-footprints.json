@@ -1,7 +1,7 @@
 {
-  "assets": 1076,
+  "assets": 1078,
   "smallest_opening_pixels": 17247,
-  "profiles_sha256": "bdd390e52ac44ca9e7eaf6db64f6e11d6ceda18724b759d43a662230046952f9",
+  "profiles_sha256": "f6090c15c7210a02f2e82f13a7c63356db264dad77b56495b4302db2ec5e375d",
   "methods": {
     "实拍摄影测量": 4,
     "实拍坑底＋模拟积水": 5,
@@ -12,14 +12,14 @@
     "实拍 RGB-D": 822,
     "实拍双目": 65,
     "程序化": 130,
-    "多帧双目": 2
+    "多帧双目": 4
   },
   "cutouts": {
-    "bed_triangles": 59,
+    "bed_triangles": 61,
     "capture_annotation": 887,
     "height_intersection": 130
   },
-  "profile_bytes": 16816711,
+  "profile_bytes": 16837628,
   "max_pitch_mm": 3.155919723212719,
   "max_profile_bytes": 310183,
   "capture_grid_max_height_error_mm": 0,

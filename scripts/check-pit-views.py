@@ -2,12 +2,12 @@
 
 import argparse
 import json
+from itertools import zip_longest
 from pathlib import Path
 import sys
 
 import cv2
 import numpy as np
-import open3d as o3d
 from PIL import Image
 from scipy import ndimage
 
@@ -15,54 +15,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / 'gen2hole'), str(ROOT / 'gen2hole/downstream/sensors')]
 from fuse_pit import fuse
 from pit_captures import read_views
-from road_geometry import Surface, sha256
+from road_geometry import Surface, glb_triangles, sha256
+from pit_projection import SingleView, camera_image
 from pit_texture_eval import compare, read_texture
-
-
-class SingleView:
-    """One fitting frame rebuilt with the same surface estimator and mask-to-triangle rule."""
-
-    def __init__(self, field):
-        z = field['height']
-        width = field['width']
-        x = np.linspace(-width / 2, width / 2, len(z))
-        xx, yy = np.meshgrid(x, -x)
-        points = np.dstack((xx, yy, z)).reshape(-1, 3).astype('f4')
-        ids = np.arange(z.size, dtype='u4').reshape(z.shape)
-        a, b, c, d = ids[:-1, :-1], ids[:-1, 1:], ids[1:, :-1], ids[1:, 1:]
-        tri = np.stack([np.stack([a, c, b], -1), np.stack([c, d, b], -1)], -2).reshape(-1, 3)
-        is_pit = field['defect_mask'].ravel()[tri].mean(1) > 0.5
-        self.scene = o3d.t.geometry.RaycastingScene(nthreads=2)
-        self.scene.add_triangles(o3d.core.Tensor(points), o3d.core.Tensor(tri))
-        self.is_pit = is_pit
-
-    def cast(self, eye, rays):
-        result = self.scene.cast_rays(
-            o3d.core.Tensor(np.ascontiguousarray(np.column_stack((eye, rays)), dtype='f4')), nthreads=2
-        )
-        depth = result['t_hit'].numpy()
-        hits = np.isfinite(depth)
-        parts = np.zeros(len(hits), 'u1')
-        parts[hits] = 1 + self.is_pit[result['primitive_ids'].numpy()[hits]]
-        return depth, parts, None
-
-
-def camera_image(view, pose, surface, frame):
-    basis = np.array(frame['local_axes_in_anchor_camera'])
-    center = np.array(frame['local_origin_in_anchor_m'])
-    eye = (pose[:3, 3] - center) @ basis
-    rows, cols = view.mask.shape
-    depth = np.empty((rows, cols), 'f4')
-    label = np.zeros((rows, cols), bool)
-    projection = np.linalg.inv(view.K).T @ pose[:3, :3].T @ basis
-    for top in range(0, rows, 64):
-        bottom = min(top + 64, rows)
-        y, x = np.mgrid[top:bottom, 0:cols]
-        directions = np.c_[x.ravel(), y.ravel(), np.ones(x.size)] @ projection
-        dist, part, _ = surface.cast(np.broadcast_to(eye, directions.shape), directions)
-        depth[top:bottom] = dist.reshape(x.shape)
-        label[top:bottom] = part.reshape(x.shape) == 2
-    return depth, label
+from pit_completion_eval import source_regions, paired_errors
 
 
 def summary(view, depth, model):
@@ -197,6 +153,24 @@ def run(args):
             texture = read_texture(glb, width)
             centers = model_centers(product, field)
             inputs_panel(args.run / 'evaluation' / key / 'input', [views[k] for k in spec['fit']], field)
+            if 'depth_completion' in spec:
+                support = {k:field[k] for k in ['support_kind','defect_mask','width']}
+                source_regions([views[k] for k in spec['fit']], poses, capture['geometry'],
+                               spec['depth_completion'], field, args.run/'evaluation'/key/'input')
+                comparison = bundle / 'comparison' / key
+                baseline = comparison / 'range-only.glb'
+                diagnostic = comparison / 'support.glb'
+                range_only = Surface(baseline)
+                if not np.array_equal(read_texture(baseline, width), texture):
+                    raise ValueError('The range-only comparison must share the published texture')
+                for left, right in zip_longest(glb_triangles(glb), glb_triangles(diagnostic)):
+                    if left is None or right is None or any(not np.array_equal(a, b) for a, b in zip(left, right)):
+                        raise ValueError('Height-source mesh differs from the published surface')
+                colors = np.uint8([[230, 145, 68], [67, 91, 112], [59, 193, 188]])
+                expected = colors[support['support_kind'].astype(int)]
+                expected[support['defect_mask'] < 0.5] = [220, 220, 210]
+                if not np.array_equal(read_texture(diagnostic, width), expected):
+                    raise ValueError('Height-source mesh texture disagrees with the measured support')
 
         controls = {}
         for k in spec['fit']:
@@ -260,6 +234,10 @@ def run(args):
                 heldout_centers_local_m=observed_centers,
                 heldout_center_spacing_m=separation(observed_centers),
             )
+            if 'depth_completion' in spec:
+                base, _ = camera_image(v, poses[k], range_only, capture['geometry'])
+                rows[k]['paired_completion'] = paired_errors(v, poses[k], capture['geometry'], support,
+                                                             depth, base, crop, folder)
         reports[key] = dict(
             glb_sha256=sha256(glb),
             source=spec['source'],
@@ -270,6 +248,8 @@ def run(args):
             glb_center_spacing_m=separation(centers),
             heldout=rows,
         )
+        if 'depth_completion' in spec:
+            reports[key]['comparison_glb_sha256'] = {p.name: sha256(p) for p in (baseline, diagnostic)}
         print(key, k, stats, flush=True)
     args.out.write_text(json.dumps(reports, ensure_ascii=False, indent=2, allow_nan=False) + '\n')
 

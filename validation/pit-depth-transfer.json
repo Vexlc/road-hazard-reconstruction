@@ -1,0 +1,289 @@
+{
+  "assets": {
+    "P142": {
+      "glb_sha256": "285d799656b75c62ccfe8fc2bf6a3daa24ca676684ad7d754fd72104961a3329",
+      "ply_sha256": "1afe95a45f57f78b3bb19dadf029d8af04ec3fc9caf3bb1a36e6ef143e33d3f4",
+      "sites": [
+        "034",
+        "109"
+      ]
+    },
+    "P143": {
+      "glb_sha256": "b9511ea9d293c2c87968bad54993d2ec9e3bcd7d0f0f5bb05f37e180acbd77b5",
+      "ply_sha256": "5b65970a753a9b8f1bbfb887e4bc2ad27a50d83db6b034faec2693c7fcd6a97d",
+      "sites": [
+        "034",
+        "109"
+      ]
+    }
+  },
+  "scenes": {
+    "034_142": {
+      "asset": "P142",
+      "native_checkpoint_reloaded": true,
+      "size_multiplier": 1.0,
+      "reload_max_pixel_error": 0,
+      "frames": 80,
+      "simulated_returns_by_lidar": [
+        1,
+        16
+      ],
+      "camera_frames": {
+        "front_camera": 46
+      }
+    },
+    "034_143": {
+      "asset": "P143",
+      "native_checkpoint_reloaded": true,
+      "size_multiplier": 1.0,
+      "reload_max_pixel_error": 0,
+      "frames": 80,
+      "simulated_returns_by_lidar": [
+        1,
+        12
+      ],
+      "camera_frames": {
+        "front_camera": 46
+      }
+    },
+    "109_142": {
+      "asset": "P142",
+      "native_checkpoint_reloaded": true,
+      "size_multiplier": 1.0,
+      "reload_max_pixel_error": 0,
+      "frames": 80,
+      "simulated_returns_by_lidar": [
+        1,
+        5
+      ],
+      "camera_frames": {
+        "front_camera": 39
+      }
+    },
+    "109_143": {
+      "asset": "P143",
+      "native_checkpoint_reloaded": true,
+      "size_multiplier": 1.0,
+      "reload_max_pixel_error": 0,
+      "frames": 80,
+      "simulated_returns_by_lidar": [
+        1,
+        5
+      ],
+      "camera_frames": {
+        "front_camera": 39,
+        "back_camera": 49
+      }
+    }
+  },
+  "common_site_anchors": {
+    "034": [
+      [
+        -51.96134900158761,
+        -8.31948610646006,
+        -7.344700583391781
+      ],
+      [
+        [
+          -0.15659741157373058,
+          -0.9782202118456376,
+          -0.13624414785627867
+        ],
+        [
+          0.9875363365235256,
+          -0.15728546656393816,
+          -0.005767673140735865
+        ],
+        [
+          -0.015787169920593928,
+          -0.13544924933140154,
+          0.9906585012613872
+        ]
+      ],
+      "05",
+      45
+    ],
+    "109": [
+      [
+        -49.989610018762974,
+        50.660452713771626,
+        -0.6436153210217977
+      ],
+      [
+        [
+          0.7026154117756905,
+          -0.7111908713336491,
+          0.023219122872363822
+        ],
+        [
+          0.7104238242983579,
+          0.7029614713711317,
+          0.033810643842280004
+        ],
+        [
+          -0.04036797003284676,
+          -0.007260461377806601,
+          0.9991585022888053
+        ]
+      ],
+      "05",
+      39
+    ]
+  },
+  "scans": {
+    "counts": {
+      "case_frames": 320,
+      "raw_scans": 160,
+      "original_returns": 27654141,
+      "replacements": 42,
+      "no_return": 0
+    },
+    "sites": 2,
+    "cases": 4,
+    "asset_count": 2,
+    "placements": 4,
+    "placements_with_both_lidars": 4,
+    "placements_without_returns": 0,
+    "case_frames_with_edits": 16,
+    "case_frames_without_edits": 304,
+    "by_category": {
+      "pothole": 42
+    },
+    "by_sensor": {
+      "1": 38,
+      "0": 4
+    },
+    "by_surface": {
+      "fracture bed and lip": 42
+    },
+    "synthetic_local_height_range_m": {
+      "pothole": [
+        -0.01428687572479248,
+        0.010118722915649414
+      ]
+    },
+    "occluded_nonroad_source_returns": 0,
+    "max_lateral_ray_error_m": 2.9952591725276855e-07,
+    "max_source_range_error_m": 5.722783207318116e-07,
+    "max_replay_range_error_m": 1.4559193068919285e-06,
+    "max_local_height_error_m": 6.028164079019405e-16
+  },
+  "cameras": {
+    "views": 5,
+    "camera_counts": {
+      "front_camera": 4,
+      "back_camera": 1
+    },
+    "skipped": [
+      [
+        "034_142",
+        "P142",
+        "back_camera"
+      ],
+      [
+        "034_143",
+        "P143",
+        "back_camera"
+      ],
+      [
+        "109_142",
+        "P142",
+        "back_camera"
+      ]
+    ],
+    "protected_pixels": {
+      "1": 0,
+      "2": 0,
+      "4": 19425
+    },
+    "direct_shadow_views": {},
+    "direct_shadow_pixels": {},
+    "target_pixels": {
+      "min": 36.0,
+      "p10": 39.2,
+      "median": 53.0,
+      "p90": 67.8,
+      "max": 75.0
+    },
+    "gaussian_alpha_above_48pct_coverage": {
+      "min": 0.716981,
+      "p10": 0.734189,
+      "median": 0.772727,
+      "p90": 0.859649,
+      "max": 0.877193
+    },
+    "target_rgb_difference_8bit": {
+      "min": 15.177778,
+      "p10": 18.897861,
+      "median": 30.259264,
+      "p90": 53.555689,
+      "max": 58.659092
+    },
+    "shared_front_frame_count": 4,
+    "legacy_gaussian_silhouette_vs_mesh_iou": {
+      "min": 0.596491,
+      "p10": 0.598496,
+      "median": 0.629174,
+      "p90": 0.693653,
+      "max": 0.710145
+    },
+    "smallest_front_iou": [
+      [
+        0.5964912280701754,
+        "109_142",
+        "P142"
+      ],
+      [
+        0.6031746031746031,
+        "109_143",
+        "P143"
+      ],
+      [
+        0.6551724137931034,
+        "034_143",
+        "P143"
+      ],
+      [
+        0.7101449275362319,
+        "034_142",
+        "P142"
+      ]
+    ],
+    "same_part_reprojection_counts": {
+      "target_lidar_returns_at_capture": 8,
+      "inside_crop_and_in_front": 8,
+      "same_visible_mesh_part": 7
+    },
+    "signed_lidar_minus_camera_depth_m": {
+      "min": -0.0683,
+      "p10": -0.027277,
+      "median": 0.000302,
+      "p90": 0.000894,
+      "max": 0.000977
+    },
+    "absolute_depth_error_under_5cm": 6,
+    "note": "Different physical emitters can see different parts or different faces of the same part. These are pixel-depth comparisons, not calibration ground truth."
+  },
+  "independent_geometry": {
+    "reader": "trimesh GLB scene graph",
+    "intersector": "Blender mathutils.bvhtree",
+    "assets": 2,
+    "real_beam_samples": 14,
+    "vertical_grid_samples": 28,
+    "range_p99_m": 2.064017070946278e-06,
+    "range_max_m": 2.064853459771143e-06,
+    "grid_height_p99_m": 6.508827209472657e-07,
+    "grid_height_max_m": 7.152557373046875e-07,
+    "nearest_part_disagreements": [],
+    "per_asset": {
+      "P142": {
+        "samples": 7,
+        "max_range_error_m": 2.064853459771143e-06
+      },
+      "P143": {
+        "samples": 7,
+        "max_range_error_m": 1.7779209180446287e-06
+      }
+    }
+  }
+}

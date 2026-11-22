@@ -1,0 +1,165 @@
+{
+  "P142": {
+    "patch_center_xy_m": [
+      0.0,
+      0.00878071743249893
+    ],
+    "patch_width_m": 0.024601683666788263,
+    "frames": {
+      "03": {
+        "hidden_direct_pixels": 3138,
+        "paired_rays": 3138,
+        "photo_supported": 2305,
+        "whole_patch": {
+          "range_only": {
+            "median_mm": 13.499916076660156,
+            "mean_mm": 15.118277549743652,
+            "p95_mm": 30.239569664001458
+          },
+          "completed": {
+            "median_mm": 10.312885284423828,
+            "mean_mm": 24.22321319580078,
+            "p95_mm": 55.95722923278805
+          }
+        },
+        "photographic": {
+          "range_only": {
+            "median_mm": 12.473880767822266,
+            "mean_mm": 14.187891006469727,
+            "p95_mm": 28.55986442565917
+          },
+          "completed": {
+            "median_mm": 18.99063491821289,
+            "mean_mm": 25.756874084472656,
+            "p95_mm": 55.641101837158125
+          }
+        }
+      },
+      "04": {
+        "hidden_direct_pixels": 2048,
+        "paired_rays": 2048,
+        "photo_supported": 1371,
+        "whole_patch": {
+          "range_only": {
+            "median_mm": 19.419403076171875,
+            "mean_mm": 18.78574562072754,
+            "p95_mm": 30.70716562271118
+          },
+          "completed": {
+            "median_mm": 23.414939880371094,
+            "mean_mm": 26.922077178955078,
+            "p95_mm": 57.20957012176513
+          }
+        },
+        "photographic": {
+          "range_only": {
+            "median_mm": 19.607067108154297,
+            "mean_mm": 18.631052017211914,
+            "p95_mm": 29.59400463104248
+          },
+          "completed": {
+            "median_mm": 24.983346939086914,
+            "mean_mm": 26.768781661987305,
+            "p95_mm": 56.56833839416504
+          }
+        }
+      },
+      "07": {
+        "hidden_direct_pixels": 1195,
+        "paired_rays": 1195,
+        "photo_supported": 904,
+        "whole_patch": {
+          "range_only": {
+            "median_mm": 22.663116455078125,
+            "mean_mm": 21.88218879699707,
+            "p95_mm": 31.201076889038085
+          },
+          "completed": {
+            "median_mm": 8.45944881439209,
+            "mean_mm": 10.368714332580566,
+            "p95_mm": 40.19389038085937
+          }
+        },
+        "photographic": {
+          "range_only": {
+            "median_mm": 21.796287536621094,
+            "mean_mm": 21.39870834350586,
+            "p95_mm": 31.23385553359985
+          },
+          "completed": {
+            "median_mm": 8.101373672485352,
+            "mean_mm": 9.552512168884277,
+            "p95_mm": 11.431143093109116
+          }
+        }
+      }
+    }
+  },
+  "P143": {
+    "patch_center_xy_m": [
+      0.0031922163907438517,
+      -0.00798054097685963
+    ],
+    "patch_width_m": 0.036375599920280305,
+    "frames": {
+      "17": {
+        "hidden_direct_pixels": 3157,
+        "paired_rays": 3157,
+        "photo_supported": 3148,
+        "whole_patch": {
+          "range_only": {
+            "median_mm": 37.19693374633789,
+            "mean_mm": 30.45981216430664,
+            "p95_mm": 45.318519592285156
+          },
+          "completed": {
+            "median_mm": 10.954559326171875,
+            "mean_mm": 12.99666690826416,
+            "p95_mm": 30.512868881225582
+          }
+        },
+        "photographic": {
+          "range_only": {
+            "median_mm": 37.217674255371094,
+            "mean_mm": 30.465824127197266,
+            "p95_mm": 45.319807052612305
+          },
+          "completed": {
+            "median_mm": 10.954349517822266,
+            "mean_mm": 12.980925559997559,
+            "p95_mm": 30.410328197479235
+          }
+        }
+      },
+      "18": {
+        "hidden_direct_pixels": 4750,
+        "paired_rays": 4750,
+        "photo_supported": 4689,
+        "whole_patch": {
+          "range_only": {
+            "median_mm": 30.320703506469727,
+            "mean_mm": 28.044313430786133,
+            "p95_mm": 43.38356304168701
+          },
+          "completed": {
+            "median_mm": 11.531472206115723,
+            "mean_mm": 11.839261054992676,
+            "p95_mm": 14.024603366851807
+          }
+        },
+        "photographic": {
+          "range_only": {
+            "median_mm": 30.037403106689453,
+            "mean_mm": 27.90227699279785,
+            "p95_mm": 43.31924743652343
+          },
+          "completed": {
+            "median_mm": 11.52747917175293,
+            "mean_mm": 11.837827682495117,
+            "p95_mm": 14.069056320190429
+          }
+        }
+      }
+    }
+  }
+}

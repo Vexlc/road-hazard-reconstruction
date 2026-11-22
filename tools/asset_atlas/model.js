@@ -67,6 +67,9 @@ get("file").onchange=()=>{
   get("clayModel").hidden=true;
   sectioned=false;
   selectedRow=null;
+  get("completionControl").hidden=true;
+  get("supportLegend").hidden=true;
+  get("glb").hidden=true;
   get("splats").hidden=true;
   get("sectionModel").hidden=true;
   viewer.src=localUrl;
@@ -84,7 +87,11 @@ function displayModel(row, preservePose=false) {
     viewer.fieldOfView=viewer.getFieldOfView()+"deg";
   }
   viewer.poster=sectioned ? (row.dryPreview || row.cutaway) : row.preview;
-  viewer.src=sectioned ? (row.dryModel || row.cutawayModel) : row.glb;
+  const mode=get("completionMode").value;
+  const src=row.completionModels?.[mode] || (sectioned ? (row.dryModel || row.cutawayModel) : row.glb);
+  get("supportLegend").hidden=!(row.completionModels && mode==="support");
+  get("glb").href=src;
+  viewer.src=src;
   if (!preservePose) pose(sectioned && selectedRow?.cutawayModel ? "16deg 70deg auto" : "20deg 48deg auto");
 }
 get("sectionModel").onclick=()=>{
@@ -92,6 +99,9 @@ get("sectionModel").onclick=()=>{
   sectioned=!sectioned;
   status("正在读取资产网格与纹理…");
   displayModel(selectedRow, Boolean(selectedRow.water));
+};
+get("completionMode").onchange=()=>{
+  if (selectedRow?.completionModels) displayModel(selectedRow,true);
 };
 function openSelection() {
   const requested = decodeURIComponent(location.hash.slice(1));
@@ -101,6 +111,9 @@ function openSelection() {
   restoreTextures();
   get("clayModel").hidden=true;
   const sameCover=Boolean(row?.cutawayModel && selectedRow?.cutawayModel && row.states?.includes(selectedRow.id));
+  get("completionMode").value="completed";
+  get("completionControl").hidden=!row?.completionModels || location.protocol==="file:";
+  get("supportLegend").hidden=true;
   selectedRow=row;
   if (!sameCover || location.protocol==="file:") sectioned=false;
   get("sectionModel").hidden=!(row?.cutawayModel || row?.dryModel) || location.protocol==="file:";

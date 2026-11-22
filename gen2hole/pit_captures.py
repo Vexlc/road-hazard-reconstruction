@@ -263,10 +263,24 @@ def align(view, ref, features_view, features_ref):
 
 def registration(spec, views):
     ref = views[spec['anchor']]
-    fs = features(ref)
+    parents = spec.get('pose_parents', {})
+    if any(k == ref.key or k not in views or p not in spec['fit'] for k, p in parents.items()):
+        raise ValueError('Registration parents must be fitting views and cannot override the anchor')
+    parent_features = {ref.key: features(ref)}
+    required = set(parents.values())
     poses = {ref.key: np.eye(4)}
     report = {}
-    for key, view in views.items():
-        if key != ref.key:
-            poses[key], report[key] = align(view, ref, features(view), fs)
+    while len(poses) < len(views):
+        ready = [k for k in views if k not in poses and parents.get(k, ref.key) in poses]
+        if not ready:
+            raise ValueError('Cycle in the road-camera registration paths')
+        for key in ready:
+            parent = parents.get(key, ref.key)
+            current = features(views[key])
+            step, report[key] = align(views[key], views[parent], current, parent_features[parent])
+            if key in required:
+                parent_features[key] = current
+            poses[key] = poses[parent] @ step
+            if parents:
+                report[key]['parent'] = parent
     return poses, report

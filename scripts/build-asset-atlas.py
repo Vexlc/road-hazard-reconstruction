@@ -503,12 +503,13 @@ def shared_profile_modes():
     return modes
 
 
-def multiview_potholes(shared):
-    run=ROOT/'runs/multiview-pit-survey'
+def multiview_potholes(shared, run):
     if not run.is_dir():
         return {}
     bundle=run/'series'
     report=read(run/'evaluation/measurements.json')
+    blind_path = run / 'evaluation/blind-patches.json'
+    blind_cases = read(blind_path) if blind_path.exists() else {}
     shots=pit_road_views(run)
     rows={}
     for meta in read(bundle/'assets/asset_manifest.json'):
@@ -521,6 +522,28 @@ def multiview_potholes(shared):
         inputs=[dict(label='拟合帧 '+k,image=link(directory/'input'/(k+'.jpg'))) for k in case['fit']]
         inputs.extend([dict(label='融合正射纹理',image=link(bundle/'references'/(key+'_ortho.png'))),
                        dict(label='实测覆盖次数',image=link(directory/'input/support.png'))])
+        if 'depth_completion' in meta:
+            dest = bundle / 'comparison' / key
+            row['completionModels'] = {name: link(dest / file) for name, file in
+                                       [('rangeOnly', 'range-only.glb'), ('support', 'support.glb')]}
+            inputs.append(dict(label='网格高程来源', image=link(directory/'input/range-coverage.png'),
+                note='蓝灰为原始距离观测，青色为仅由照片补出的格点，橙色为仍需插值的区域。'))
+            for name, record in meta['depth_completion'].items():
+                for suffix, title in [('missing','原始深度缺口'),('recovered','照片补深')]:
+                    inputs.append(dict(label=name+' · '+title, image=link(directory/'input'/(name+'-'+suffix+'.png')),
+                        note=f"原有 {record['missing_target_pixels']:,} 个坑内像素缺深度，照片双向匹配补出 {record['recovered_target_pixels']:,} 个。橙色为缺口，青色为通过匹配的像素。"))
+            if key in blind_cases:
+                blind = blind_cases[key]
+                for name, record in blind['frames'].items():
+                    if not record['paired_rays']:
+                        continue
+                    errors = record['whole_patch']
+                    inputs.append(dict(label=name+' · 人工遮去实测深度',
+                        image=link(directory/'controlled'/(name+'.png')),
+                        note=(f"所有拟合帧均遮去同一块约 {blind['patch_width_m']*1000:.1f} 毫米宽区域的深度。"
+                              f"用本帧原有的 {record['paired_rays']:,} 个深度像素复核，青色为照片支持，橙色为其他。"
+                              f"只用剩余距离与加入彩照后的整块绝对误差中位数为 "
+                              f"{errors['range_only']['median_mm']:.1f} 和 {errors['completed']['median_mm']:.1f} 毫米。")))
         evidence=[]
         for frame,data in case['heldout'].items():
             dest=directory/frame
@@ -533,6 +556,15 @@ def multiview_potholes(shared):
                 modes.append(dict(label='仅用帧 '+k,image=link(dest/('single-'+k+'.jpg')),iou=single['mask_iou']))
             if (key, frame) in shared:
                 modes.append(shared[key, frame])
+            if 'paired_completion' in data:
+                pairs = data['paired_completion']['photographic']
+                n = pairs['paired_rays']
+                note = (f"留出帧中有 {n:,} 个实测像素投到仅由彩照恢复的坑内格点。")
+                if n:
+                    note += (f"在同一批射线上，只用距离图和补深后模型的深度绝对误差中位数分别为 "
+                             f"{pairs['range_only']['median_mm']:.1f} 和 {pairs['completed']['median_mm']:.1f} 毫米。"
+                             "青色为误差减小超过 1 毫米，红色为误差增大超过 1 毫米，浅黄为其余。")
+                modes.append(dict(label='缺深度区域 · 同像素对照', image=link(dest/'completion-errors.png'),note=note))
             evidence.append(dict(frame=frame,modes=modes,median=stats['depth_abs_median_mm'],p95=stats['depth_abs_p95_mm'],
                                  samples=stats['visible_pit_depth_samples'],spacing=data['heldout_center_spacing_m'],
                                  colorError=data['material_reprojection'].get('raw_rgb_mae_0_255')))
@@ -540,7 +572,11 @@ def multiview_potholes(shared):
         appearance=read(bundle/'calibration'/(key+'_capture.json'))['photographic_texture']
         note+=f" 坑内 {appearance['observed_pit_fraction']:.1%} 的纹理像素可直接投影到有效照片，其余使用基础表面颜色。"
         if source=='PothRGBD':note+=' PothRGBD 的米制结果基于标称内参。'
-        row.update(depth=meta['depth_p95_m'],depthLabel='实测 P95 凹深',triangles=sum(meta['geometry_parts'].values()),
+        if 'depth_completion' in meta:
+            note += (f" 在 {meta['native_pit_cells']:,} 个原始距离支持的坑内格点之外，"
+                     f"双向照片匹配另支持 {meta['photo_only_pit_cells']:,} 个格点，"
+                     f"还有 {meta['interpolated_pit_cells']:,} 个使用插值。")
+        row.update(depth=meta['depth_p95_m'],depthLabel='重建 P95 凹深' if 'depth_completion' in meta else '实测 P95 凹深',triangles=sum(meta['geometry_parts'].values()),
                    reverse=link(bundle/'views'/(key+'_reverse.jpg')),reference=inputs[0]['image'],sourceViews=inputs,
                    pitViews=evidence,spacing=case['glb_center_spacing_m'],sourceDataset=source,note=note,
                    fit=link(bundle/'calibration'/(key+'_capture.json')),reprojection=link(run/'evaluation/measurements.json'),
@@ -739,7 +775,9 @@ def standing_water(rows):
 def main():
     rows = {}
     shared = shared_profile_modes()
-    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), scanned_cracks(), multiview_potholes(shared), parallax_potholes(shared)):
+    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), scanned_cracks(),
+                  multiview_potholes(shared, ROOT/'runs/multiview-pit-survey'),
+                  multiview_potholes(shared, ROOT/'runs/pit-depth-completion'), parallax_potholes(shared)):
         if group.keys() & rows.keys():
             raise ValueError("Asset ID collision")
         rows.update(group)
@@ -839,7 +877,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["A141","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

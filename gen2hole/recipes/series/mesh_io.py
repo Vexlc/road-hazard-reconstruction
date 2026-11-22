@@ -166,11 +166,8 @@ class Mesh:
             raise ValueError("Empty mesh part " + name)
         self.parts.append((name, xyz[used], inverse.reshape(-1, 3).astype("i4"), uv[used], material, road))
 
-    def save(self, dest, cache, meta, field):
-        dest.mkdir(parents=True, exist_ok=True)
-        cache.mkdir(parents=True, exist_ok=True)
+    def glb_bytes(self):
         scene = trimesh.Scene()
-        keys = list(self.materials)
         mat = {}
         for key, (rgb, rough, metal, bump) in self.materials.items():
             normal, orm = material_maps(rgb, rough, metal, bump)
@@ -178,20 +175,26 @@ class Mesh:
                 name=key, baseColorTexture=Image.fromarray(rgb) if key in self.lossless_color else jpeg(rgb, 96), normalTexture=jpeg(normal),
                 metallicRoughnessTexture=jpeg(orm, 92), roughnessFactor=1., metallicFactor=1.,
                 doubleSided=False)
-        xyz, faces, uv, materials, parts, road = [], [], [], [], [], []
-        cursor = 0
-        for i, (name, points, indices, coords, key, is_road) in enumerate(self.parts):
+        for name, points, indices, coords, key, _ in self.parts:
             oriented = points[:, [0, 2, 1]] * [1, 1, -1]
             mesh = trimesh.Trimesh(oriented, indices, process=False,
                                    visual=trimesh.visual.TextureVisuals(uv=coords, material=mat[key]))
             scene.add_geometry(mesh, node_name=name, geom_name=name)
+        return trimesh.exchange.gltf.export_glb(scene, include_normals=True)
+
+    def save(self, dest, cache, meta, field):
+        dest.mkdir(parents=True, exist_ok=True)
+        cache.mkdir(parents=True, exist_ok=True)
+        (dest / "asset.glb").write_bytes(self.glb_bytes())
+        keys = list(self.materials)
+        xyz, faces, uv, materials, parts, road = [], [], [], [], [], []
+        cursor = 0
+        for i, (name, points, indices, coords, key, is_road) in enumerate(self.parts):
             xyz.append(points); uv.append(coords); faces.append(indices + cursor)
             cursor += len(points)
             materials.append(np.full(len(indices), keys.index(key), 'u1'))
             parts.append(np.full(len(indices), i, 'i2'))
             road.append(np.full(len(indices), is_road, 'u1'))
-        glb = trimesh.exchange.gltf.export_glb(scene, include_normals=True)
-        (dest / "asset.glb").write_bytes(glb)
         np.savez_compressed(dest / "surface.npz", **{k:np.asarray(v, dtype="f4") for k,v in field.items()})
         np.savez(cache / (meta['id'] + ".npz"), xyz=np.concatenate(xyz), faces=np.concatenate(faces),
                  uv=np.concatenate(uv), face_part=np.concatenate(parts), part_names=np.array([p[0] for p in self.parts]),
