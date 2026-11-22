@@ -17,8 +17,13 @@
 
 每个包的 SHA-256 和实际云盘文件链接见 `catalog/downloads.json`。该校验使用服务端哈希元数据，并未把全部 17.54 GB 再下载一遍；用户下载后仍由 `scripts/packages.py` 校验 SHA-256。
 
-GitHub 仓库已公开且没有 README；Google Drive 已设置为“知道链接的任何人可查看”，允许下载、不允许编辑，且未开启搜索发现。45 个包的权限核验与免登录下载抽查记录见 `validation/drive-sharing-verification.json`。模型、数据、虚拟环境、缓存和视频不进入 Git 历史。
+GitHub 仓库已公开，当前入口见[项目首页](../README.md)；Google Drive 已设置为“知道链接的任何人可查看”，允许下载、不允许编辑，且未开启搜索发现。45 个包的权限核验与免登录下载抽查记录见 `validation/drive-sharing-verification.json`。模型、数据、虚拟环境、缓存和视频不进入 Git 历史。
 
 ## 2026-11-20 增量同步状态
 
-新增计划44个文件、7423907081字节；目前核验并加入下载清单8个文件、860753016字节。下载清单当前包含原45项和这8项，共53项。剩余36项没有标记为已上传；本版云端验证见 validation/factory-v3-cloud-upload-partial.json。共享上传客户端触发Google API每分钟请求配额，正在调整传输通道。
+新增计划44个文件、7423907081字节；目前核验并加入下载清单8个文件、860753016字节。当时的下载清单包含原45项和这8项，共53项。剩余36项没有标记为已上传；本版云端验证见 validation/factory-v3-cloud-upload-partial.json。共享上传客户端触发Google API每分钟请求配额，正在调整传输通道。
+
+
+## 生成图资产的复现输入
+
+109 件生成 RGB 资产的输入包为 471,110,229 字节。云盘存放 29 个顺序卷，Git 中的下载清单记录每一卷的 Drive 文件 ID、大小与 SHA-256。下载器在本机拼合 ZIP 后再核对整包。重建代码、尺寸、拟合修订与三张共用纹理保存在 Git。[云盘输入分卷](https://drive.google.com/drive/folders/12y0agwLAAcPllCtBWqWOc2rctY19gG42) · [命令与适用范围](13-reproduce-and-transfer.md)

@@ -41,6 +41,10 @@ python scripts/verify-assets.py --category stereo
 
 浏览器可直接通过上述共享链接下载。如需使用 rclone 批量下载，先在自己的电脑运行 `rclone config` 授权 Google Drive，然后使用清单中的文件夹 ID。上传机器的授权文件、浏览器登录信息与令牌不包含在项目内。
 
+## 生成 RGB 的原图和拟合输入
+
+分组 `gen2hole-inputs-109` 包含两批生成 RGB 的原图、轮廓与缓存深度。运行 `python scripts/packages.py fetch --group gen2hole-inputs-109` 可自动获取、拼合和核对所有卷，再用 `restore` 解压至本机。[逐步复现](13-reproduce-and-transfer.md) · [Google Drive 分卷](https://drive.google.com/drive/folders/12y0agwLAAcPllCtBWqWOc2rctY19gG42)
+
 ## 2026-11-20 资产工厂更新
 
 本版已在本机验证五类各10条资产记录、三条道路150处原尺度放置。云端同步尚未完成：44个新增文件中8个已通过服务器SHA-256、大小和公开只读权限检查，其余36个暂不进入可下载清单。准确状态见 catalog/factory-v3-download-status.json，复现说明见 docs/10-factory.md。不要把本机生成完成视为已全部上传。

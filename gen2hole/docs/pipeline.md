@@ -74,7 +74,7 @@ Depth Anything V2 Small 对原图及其水平翻转分别推理，在 518 和 77
 
 ## 运行环境
 
-`gen2hole.py` 的调度、目录查询和指纹核对只依赖 Python 标准库。配置使用 [config/local.json](../config/local.json) 中的绝对路径。`python gen2hole.py --config /path/to/local.json build ...` 可使用另一套配置。`place.py` 和 `simulate.py` 接受 `--config`，`downstream/replay.py` 接受 `--runtime`。
+`gen2hole.py` 的调度、目录查询和指纹核对只依赖 Python 标准库。在仓库根目录运行 `python scripts/configure-gen2hole.py`，生成 `gen2hole/config/local.json` 中的本机绝对路径。`python gen2hole.py --config /path/to/local.json build ...` 可使用另一套配置。`place.py` 和 `simulate.py` 接受 `--config`，`downstream/replay.py` 接受 `--runtime`。
 
 | 阶段 | 本机已验证环境与外部输入 |
 |---|---|

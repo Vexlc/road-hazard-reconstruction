@@ -668,6 +668,219 @@
       "cloud_hash_verified": true,
       "cloud_sha256_verified": true,
       "public_readonly_verified": true
+    },
+    {
+      "file": "roadgs-generated-inputs-109.zip",
+      "group": "gen2hole-inputs-109",
+      "bytes": 471110229,
+      "sha256": "9ed232597b6c5c0913e5516994fff1a9b3a16e7c42e3ce196b0138b8b97035a6",
+      "restore_to": "gen2hole",
+      "url": "https://drive.google.com/drive/folders/12y0agwLAAcPllCtBWqWOc2rctY19gG42",
+      "parts": [
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-00",
+          "id": "1EB03tKoriwtinpzS5D3QIoNwam7Yb9-p",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1EB03tKoriwtinpzS5D3QIoNwam7Yb9-p/view?usp=drivesdk",
+          "sha256": "f8a3304b997873021b634db38cca12260a53dbcc06285f5775883afb67f8559e"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-01",
+          "id": "1okqZNfAGDPfojiOnQPJ4I7zWzc7-EjW7",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1okqZNfAGDPfojiOnQPJ4I7zWzc7-EjW7/view?usp=drivesdk",
+          "sha256": "b9c200861bb35b660b926395070416e0d8c2aeb0d3180fa3efa9877d2e0aa236"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-02",
+          "id": "1WX6J4g8kMHTptEuPZ6c83mprJPgzT2Y8",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1WX6J4g8kMHTptEuPZ6c83mprJPgzT2Y8/view?usp=drivesdk",
+          "sha256": "a9dca59656224d100b10ba3bcfde9d27d56f1a530dc6cde1d4925a14e4a5bb3c"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-03",
+          "id": "1PmvLEp8txfjKswA8vELasrdO3jmL5O7H",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1PmvLEp8txfjKswA8vELasrdO3jmL5O7H/view?usp=drivesdk",
+          "sha256": "a44e0f8d2147ff1ceb1bb0ab8476ba531732ff1bd50282ead44ed3aa3c72bf93"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-04",
+          "id": "1IEBmbzQbwD1Yl0S7trv_0G8NJGBGkFqM",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1IEBmbzQbwD1Yl0S7trv_0G8NJGBGkFqM/view?usp=drivesdk",
+          "sha256": "0d09866553b6dadf35f64cb5c6d28420c407cf6dcea22887ef1a65b4347c43be"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-05",
+          "id": "15UKJ8PwHFWT02FK0NK2wuT7bg3Nod-VV",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/15UKJ8PwHFWT02FK0NK2wuT7bg3Nod-VV/view?usp=drivesdk",
+          "sha256": "8e997aa5de6471a65b3b1b4f36d175c23226b5b56a91aa065c18868ae74c849d"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-06",
+          "id": "1Xjilu51UXWTQtfVAf6iMoI4gU16kwnHK",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1Xjilu51UXWTQtfVAf6iMoI4gU16kwnHK/view?usp=drivesdk",
+          "sha256": "699b03c506aaa32814d3b3a30557f3d4f23ff2d727d39a6928d5bee3065eb442"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-07",
+          "id": "1hp62sUIDlouBNJ4zhjfS_gFhXOd-UCUi",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1hp62sUIDlouBNJ4zhjfS_gFhXOd-UCUi/view?usp=drivesdk",
+          "sha256": "01039c0d697dd74f37bd3f52b343d5db561088779da158ab7aa63a2873eccad5"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-08",
+          "id": "1wNNsWQArCvbI2EqjP0Q2aeKm0DAXsiW9",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1wNNsWQArCvbI2EqjP0Q2aeKm0DAXsiW9/view?usp=drivesdk",
+          "sha256": "46693905ca9bde413f985d739aeacbc7708ff6f623e5c896d8aeb6213588bd3a"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-09",
+          "id": "1WxvykyZRgWv4jOLow6r9mBsV8d_KV9Kh",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1WxvykyZRgWv4jOLow6r9mBsV8d_KV9Kh/view?usp=drivesdk",
+          "sha256": "7acef6027251aa307410d603321452bc55fe4ab7e2e40da2960c13bef59c427f"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-10",
+          "id": "1gjRyg_WQpgu2m3634Bts3Wg4zO1zsUCf",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1gjRyg_WQpgu2m3634Bts3Wg4zO1zsUCf/view?usp=drivesdk",
+          "sha256": "e430b09c905cba79daac05f6533f890dddcae1a5d17cca755b3affeb7ddf2086"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-11",
+          "id": "1AlOqa7bidB6UobPaoBw9o5MvEy85yxd5",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1AlOqa7bidB6UobPaoBw9o5MvEy85yxd5/view?usp=drivesdk",
+          "sha256": "5bcd531b4f172fdda4e5f34fca1ff171cab70e9b54e65d7f67324fd7fb01a336"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-12",
+          "id": "1D8TOZJapOVzx4e-7yhLpHUHvftQOgwpA",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1D8TOZJapOVzx4e-7yhLpHUHvftQOgwpA/view?usp=drivesdk",
+          "sha256": "88d9067996feb8e78668e2864b66054a2f0e0c282c53b2b3e91cba8047f288fd"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-13",
+          "id": "1m5eLYNxHL303UWjY3jrc9dGbWGZCBnnh",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1m5eLYNxHL303UWjY3jrc9dGbWGZCBnnh/view?usp=drivesdk",
+          "sha256": "daeb621f75792050267c58ab5dd2db0f4cc6f76eeeaefc3b5e7e10e1cc48b047"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-14",
+          "id": "1R9yJRqV5CgvivoI7OkYzVOwaVisboi3t",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1R9yJRqV5CgvivoI7OkYzVOwaVisboi3t/view?usp=drivesdk",
+          "sha256": "a3e3f52bc516442b58d7fca5a24a13434c3d918ff43dc366e4af8dd54c60a17f"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-15",
+          "id": "1ueGAmugqQS_VYtiw2GNQczBvNAnWJfJi",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1ueGAmugqQS_VYtiw2GNQczBvNAnWJfJi/view?usp=drivesdk",
+          "sha256": "edfc80bc9ca59f4568996cd538bba77c8497fb2787dd32adca6e7954ccc5a7c5"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-16",
+          "id": "1CtpV983tYn8PiCUXCP3SRHBPzx_kCNax",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1CtpV983tYn8PiCUXCP3SRHBPzx_kCNax/view?usp=drivesdk",
+          "sha256": "ecf12043df58f8772f2c660301ef839e76ae06cf1c3d9cbf03a1858e65d215a2"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-17",
+          "id": "1kKB4qO0snpsBJSW6ORMGDPHqmoXKTvyj",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1kKB4qO0snpsBJSW6ORMGDPHqmoXKTvyj/view?usp=drivesdk",
+          "sha256": "b99ee2342b13c056ca69f912c2b9b73f53dc51d962cad095e2cf5e86ac25bf35"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-18",
+          "id": "1C50tPctP_G8oK_NIZ0O-uskROqCzWdHV",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1C50tPctP_G8oK_NIZ0O-uskROqCzWdHV/view?usp=drivesdk",
+          "sha256": "5310f08f5536019c6cd2d046e4b79bb646c305121f17d3d63cfc59fd56b780b2"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-19",
+          "id": "1rmn3QNeU85Kyok8RnuM5RrFuc5m30S4n",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1rmn3QNeU85Kyok8RnuM5RrFuc5m30S4n/view?usp=drivesdk",
+          "sha256": "f413b88db0d57db3a406ee87629dd3a0d2af30f739622cc219dfcc68b445d970"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-20",
+          "id": "1LlOn87B0B9LCnRENbCoJyAO2dzJnURvb",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1LlOn87B0B9LCnRENbCoJyAO2dzJnURvb/view?usp=drivesdk",
+          "sha256": "146ea904a5e1fc482a8e33b23c09086e73ed53bbc1d7dc3593a3fbf5e46e03f0"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-21",
+          "id": "1rja2TfRHKds-3YjVGSUFSnj1z6iUxTik",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1rja2TfRHKds-3YjVGSUFSnj1z6iUxTik/view?usp=drivesdk",
+          "sha256": "428a1dd18e6a014e9f30eb3f886320293ae8954cad41179f40c03bcbab5b19a7"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-22",
+          "id": "1V2wbuUI9HrjIp1EJ9PLKOmxflwkrkcfO",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1V2wbuUI9HrjIp1EJ9PLKOmxflwkrkcfO/view?usp=drivesdk",
+          "sha256": "cc2fa2d1295f709def087820aebe88ad238a1eec84be150b5c03a474c19f8876"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-23",
+          "id": "1ZOBB7pA3_1m_nO1i0KegkcAmCv6XNVi2",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1ZOBB7pA3_1m_nO1i0KegkcAmCv6XNVi2/view?usp=drivesdk",
+          "sha256": "3aa25beac064db3a50f5addb348f99e2858d2811ff0d46b95d4229d9b2dd1e37"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-24",
+          "id": "1zxsSxPWXKcpLac95KakLJozeNQTwc35k",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1zxsSxPWXKcpLac95KakLJozeNQTwc35k/view?usp=drivesdk",
+          "sha256": "68458d3df2f35bff7e3fbe07d99cd7880fbdb420ed1eee99e6931d93fe75844d"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-25",
+          "id": "1iagcIG4cnWCWt3rRT3yRJr9elO4zPSqT",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1iagcIG4cnWCWt3rRT3yRJr9elO4zPSqT/view?usp=drivesdk",
+          "sha256": "24759feafba661cc1470ac2bd10b5f7903a4db57c482c723586806dd63e9767a"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-26",
+          "id": "1a85tBUDK6LbxeNnLppYtU6w3xZacxeCU",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1a85tBUDK6LbxeNnLppYtU6w3xZacxeCU/view?usp=drivesdk",
+          "sha256": "b9bfe4918c04125d2f26f6c2fcd469bae40d21fee618b9fdec31d0fb31b2be91"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-27",
+          "id": "1fa-qiu2a485nbIeVISVzEGk6NWpI2cHV",
+          "bytes": 16777216,
+          "url": "https://drive.google.com/file/d/1fa-qiu2a485nbIeVISVzEGk6NWpI2cHV/view?usp=drivesdk",
+          "sha256": "151f31c7cb3a764eeb5e765bfee07d882e2594e7a85f8ce8b316f4ab03eb6020"
+        },
+        {
+          "file": "roadgs-generated-inputs-109.zip.part-28",
+          "id": "1XBtMIdMabnGMd502mOyxQ-jORPpj5vKn",
+          "bytes": 1348181,
+          "url": "https://drive.google.com/file/d/1XBtMIdMabnGMd502mOyxQ-jORPpj5vKn/view?usp=drivesdk",
+          "sha256": "702f2cd13b8df320f860a4697413206a1e2121445c4a7cd4e78ff1af4db14696"
+        }
+      ]
     }
   ],
   "drive_folder_url": "https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_",

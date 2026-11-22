@@ -24,7 +24,7 @@
 
 ## 复现一个完整案例
 
-在仓库的 `gen2hole/` 目录执行。`P13`、`M13`、`A13` 是同一道路组合里的三件资产。第一条命令可查看提示词、原图和成品位置。第二条从已保存的生成原图重算坑洞深度、轮廓及井盖拟合，保留当时的人工修订，并渲染两个 GLB 视角。
+先按[新克隆指南](../docs/13-reproduce-and-transfer.md)配置本机路径并恢复输入，再在仓库的 `gen2hole/` 目录执行。`P13`、`M13`、`A13` 是同一道路组合里的三件资产。第一条命令可查看提示词、原图和成品位置。第二条从已保存的生成原图重算坑洞深度、轮廓及井盖拟合，保留当时的人工修订，并渲染两个 GLB 视角。
 
 ~~~bash
 python gen2hole.py show A13
@@ -61,5 +61,5 @@ python downstream/simulate.py --run runs/my-13 --out runs/my-13/sensors
 
 - **项目内的输入**包含 109 张不同的主图、3 张共享补图、两版校准、37 份坑洞相对深度，以及匹配的 Depth Anything V2 Small 权重。`recipes/` 保存建模实现，`downstream/` 保存道路与传感器入口。
 - **历史交付**通过 `published/` 链接到本仓库的 `data/releases/2026-11-21/`，包括 109 件成品、场景检查点、视频及完整传感器包。项目内的原图重建使用 `inputs/` 和 `models/`。`python gen2hole.py audit --published` 可核对全部主图、提示词、共用补图、权重与 218 个发布 GLB/PLY。
-- **本机环境**集中配置在 [config/local.json](config/local.json)。单件资产重建只使用对应 Python 环境和本项目输入。道路迁入另外读取原 StreetCrafter 工程、PandaSet 和 v3 道路标定。换机器时按[环境与数据依赖](docs/pipeline.md#运行环境)指定路径。
+- **本机环境**由仓库根目录的 `python scripts/configure-gen2hole.py` 写入 `gen2hole/config/local.json`。单件资产重建只使用对应 Python 环境和本项目输入。道路迁入另外读取原 StreetCrafter 工程、PandaSet 和 v3 道路标定。换机器时按[环境与数据依赖](docs/pipeline.md#运行环境)指定路径。
 - **来源**为 2026-11-21 的 RoadGS 实验，三批本机交付分别是首批九件、扩充一百件和传感器增强。[参考对话](codex://threads/01a1fbd8-09fd-7520-8a6a-c2301267dee6) · [原始交付目录](published/) · [首批图像和模型来源记录](inputs/pilot/calibration/provenance.json)

@@ -47,8 +47,10 @@ __pycache__/
 /runs/
 
 # Local Gen2Hole tensors, calibration rasters and generated runs.
+/gen2hole/config/local.json
 /gen2hole/runs/
 /gen2hole/inputs/**/*.png
+!/gen2hole/inputs/shared/*.png
 /gen2hole/inputs/**/*.npz
 /gen2hole/models/**/*.safetensors
 /tools/asset_atlas/catalog.js
