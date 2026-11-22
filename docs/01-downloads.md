@@ -43,7 +43,7 @@ python scripts/verify-assets.py --category stereo
 
 ## 生成 RGB 的原图和拟合输入
 
-分组 `gen2hole-inputs-109` 包含两批生成 RGB 的原图、轮廓与缓存深度。运行 `python scripts/packages.py fetch --group gen2hole-inputs-109` 可自动获取、拼合和核对所有卷，再用 `restore` 解压至本机。[逐步复现](13-reproduce-and-transfer.md) · [Google Drive 分卷](https://drive.google.com/drive/folders/12y0agwLAAcPllCtBWqWOc2rctY19gG42)
+这一批的最新分卷 ID 与校验值见仓库内的 [downloads.json](../catalog/downloads.json)。分组 `gen2hole-inputs-109` 包含两批生成 RGB 的原图、轮廓与缓存深度。运行 `python scripts/packages.py fetch --group gen2hole-inputs-109` 可自动获取、拼合和核对所有卷，再用 `restore` 解压至本机。[逐步复现](13-reproduce-and-transfer.md) · [Google Drive 分卷](https://drive.google.com/drive/folders/12y0agwLAAcPllCtBWqWOc2rctY19gG42)
 
 ## 2026-11-20 资产工厂更新
 

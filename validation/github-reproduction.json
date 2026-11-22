@@ -1,0 +1,110 @@
+{
+  "source_commit": "2078794c2d3cdd2dc7b7b0bb1a0badf5c49f8f89",
+  "p154_road_source_commit": "94534c3cbda0b6d448558b412214cfe1bf8df28a",
+  "remote": "https://github.com/Vexlc/road-hazard-reconstruction.git",
+  "catalog": {
+    "families": 27,
+    "unique_asset_ids": 1403
+  },
+  "generated_inputs": {
+    "public_unauthenticated_download": true,
+    "parts": 29,
+    "archive_bytes": 471110229,
+    "archive_sha256": "9ed232597b6c5c0913e5516994fff1a9b3a16e7c42e3ce196b0138b8b97035a6",
+    "restored_files": 190,
+    "archived_input_hashes_checked": 302
+  },
+  "generated_rebuild": {
+    "assets": 109,
+    "glb_sha256_matches": 109,
+    "ply_sha256_matches": 109,
+    "differences": {},
+    "execution": "Used the archived fit parameters. After the series mesh export was interrupted, resumed the remaining meshes in the same build directory, exported the series splats, ran both edition verifiers, and independently hashed every GLB and PLY."
+  },
+  "regenerated_from_rgb": {
+    "P13": {
+      "triangles": true,
+      "glb_bytes": true,
+      "gaussians": true,
+      "ply_bytes": true
+    },
+    "A06": {
+      "triangles": true,
+      "glb_bytes": true,
+      "gaussians": true,
+      "ply_bytes": true
+    }
+  },
+  "photo_mesh_only": {
+    "assets": [
+      "M91",
+      "A91",
+      "A92",
+      "A93",
+      "A94",
+      "A95"
+    ]
+  },
+  "historical_rgbd_sample": {
+    "id": "rgbd_pothole_20250227_135438",
+    "matched_glb": "1bb4551b9fbb8acfb6ca6122e0a50ae4c35bffbfcdcd5aaff2da819a231ab201",
+    "matched_ply": "9bc3f1d020ff31cc121fbfe7c12361a078cc92ff8503455f90361858734cea5a"
+  },
+  "rgbd_road_rebuild": {
+    "id": "P154",
+    "assets": {
+      "glb_sha256": "67ffa66b070d61758784752d17c74e897c32bc9bece74a6e4230c2472e48ffb7",
+      "ply_sha256": "d1e06c704fee764e16089735462cc8bc662ace2def7b8c95a1fa5544029f8d2f",
+      "sites": [
+        "034"
+      ]
+    },
+    "scenes": {
+      "034_154": {
+        "asset": "P154",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          433,
+          1485
+        ],
+        "camera_frames": {
+          "front_camera": 30,
+          "back_camera": 47
+        }
+      }
+    },
+    "scan_counts": {
+      "case_frames": 80,
+      "raw_scans": 80,
+      "original_returns": 14770793,
+      "replacements": 1918,
+      "no_return": 0
+    },
+    "returned_parts": {
+      "fracture bed and lip": 1675,
+      "pavement block top": 156,
+      "pavement block edge": 87
+    },
+    "withheld_optical_depth": {
+      "samples": 13934,
+      "median_mm": 0.5886256694793701,
+      "p95_mm": 2.916896343231197
+    }
+  },
+  "dependencies": {
+    "reused": "Installed asset/CUDA interpreters and pinned upstream code on the test host.",
+    "downloaded_from_drive": [
+      "gen2hole-inputs-109",
+      "inputs-rgbd",
+      "factory-v3-inputs",
+      "scenes-034"
+    ],
+    "downloaded_from_upstream": [
+      "Depth Anything V2 Small weights at pinned revision",
+      "Original PandaSet 034 sequence via the repository ZIP index."
+    ]
+  }
+}

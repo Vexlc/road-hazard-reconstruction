@@ -70,6 +70,22 @@ python gen2hole/gen2hole.py verify --run runs/three-assets
 python gen2hole/gen2hole.py build --all --out runs/all-generated
 ~~~
 
+完整构建之后可再检查一次与历史成品的对应关系。`verify` 检查文件与网格结构，`published_match` 中的两个字节比较字段记录与归档 GLB、PLY 是否完全一致。
+
+~~~bash
+python - <<'CHECK'
+import json
+from pathlib import Path
+reports = Path('runs/all-generated').glob('*/checks.json')
+assets = {key: row for report in reports for key, row in json.loads(report.read_text()).items()}
+different = [key for key, row in assets.items()
+             if not all(row['published_match'][kind] for kind in ('glb_bytes', 'ply_bytes'))]
+print(f'{len(assets)} 件，差异编号 {different}')
+if len(assets) != 109 or different:
+    raise SystemExit(1)
+CHECK
+~~~
+
 如果通过浏览器下载了分卷，把 `part-00` 至 `part-28` 对应的原名文件放入 `downloads/roadgs-generated-inputs-109.zip.parts/`，再执行同一条 `fetch` 命令。完整 ZIP 为 471,110,229 字节，SHA-256 为 `9ed232597b6c5c0913e5516994fff1a9b3a16e7c42e3ce196b0138b8b97035a6`。
 
 默认复用保存的拟合参数与相对深度。要从相同原始 RGB 重算，运行下面的命令。推理脚本将模型固定在提交 `5426e4f0f36572d16453bbda7a8389317b1bef99`。第一次从 Hugging Face 获取权重。离线机器可用 `--model` 指向包含完整权重、配置和预处理器的本地目录。重算后可与各件 `checks.json` 和归档输入指纹比较。[深度推理源码](../gen2hole/recipes/common/estimate_depth.py) · [输入 SHA-256](../gen2hole/catalog/inputs.sha256)
@@ -135,7 +151,9 @@ python scripts/check-pit-transfer.py --run "$run" --out "$run/transfer.json"
 | 哪些原始回波被替换 | `sensors/cases/034_154.npz` 及 `sensors/checks/scan_audit.json` |
 | 量程是否经独立几何复核 | `sensors/checks/independent_geometry.json`、`transfer.json` |
 
-本次在独立源码目录重建的 P154，GLB 和 PLY 的 SHA-256 与此前发布基线一致。034 原生场景重载像素最大差为 0，回放 80 帧，两套激光分别得到 433、1,485 个替换回波。此结果只覆盖这个案例。历史库仍有 13 个双目模型的跨环境复建差异记录。[P154 两段道路的基线](../validation/displaced-paver-transfer.json) · [历史双目差异](../validation/stereo-reconstruction-differences.json)
+从公开 GitHub 克隆源码并匿名下载数据后，109 件生成 RGB 资产按保存的拟合重建，109 个 GLB 和 109 个 Gaussian PLY 的 SHA-256 全部与发布基线一致。原图、校准、纹理与权重等共 302 个输入通过指纹核验。另选坑洞 P13 和平移井盖 A06 从原图重算深度与拟合，两件的 GLB 和 PLY 也与基线一致。复跑复用了测试机已安装的 Python、CUDA 与 StreetCrafter 依赖。[公开下载与复建核验记录](../validation/github-reproduction.json)
+
+实拍 RGB-D 案例 P154 的 GLB 和 PLY 均与基线逐字节一致。迁入 PandaSet 034 后，场景重载前后像素最大差为 0。80 帧回放中，两套激光分别有 433、1,485 个回波因资产而改变。历史库另有 13 个双目模型保留了跨环境重建的差异记录。[P154 两段道路的基线](../validation/displaced-paver-transfer.json) · [历史双目差异](../validation/stereo-reconstruction-differences.json)
 
 ## 查看结果和其他迁入方式
 
