@@ -25,18 +25,32 @@
     const mix=Math.sqrt(Math.min(1,Math.abs(z)/(z<0 ? -range[0] : range[1])));
     return [239,238,220].map((v,i)=>Math.round(v+(end[i]-v)*mix));
   }
+  const sourceColors=[[230,145,68],[67,91,112],[59,193,188],[220,220,210]];
+  const sourceLabels=["插值","原始距离","彩照补深","坑外路面"];
+  function paintMap() {
+    const {n,top,support}=grid;
+    const showSource=support && get("pitSourceMap").checked;
+    heat=document.createElement("canvas");heat.width=heat.height=n;
+    const g=heat.getContext("2d"), image=g.createImageData(n,n);
+    for (let i=0;i<top.length;i++) {
+      const rgb=showSource ? sourceColors[support[i]] : color(top[i]);
+      image.data.set([...rgb,255],4*i);
+    }
+    g.putImageData(image,0,0);
+    let legend="俯视首个交点 · 蓝色低于路面，棕色高于路面，灰色无交点";
+    if (showSource) legend="蓝灰为原始距离，青色为彩照补深，橙色为插值，浅灰为坑外路面";
+    if (current.gradeReference && get("nearGrade").checked) legend="相对路面 −80 至 +45 mm · 深色为低于显示范围的交点";
+    get("reliefLegend").textContent=legend;
+  }
   function prepare() {
-    const {n,top,under}=grid;
+    const {n,top,under,rangeOnly,support}=grid;
     let lo=0,hi=0;
-    for (const field of under ? [top,under] : [top]) {
+    for (const field of [top,under,rangeOnly].filter(Boolean)) {
       for (const z of field) if (Number.isFinite(z)) {lo=Math.min(lo,z);hi=Math.max(hi,z);}
     }
     const gradeZoom=current.gradeReference && get("nearGrade").checked;
     range=gradeZoom ? [-.08,.045] : [Math.min(lo,-.001),Math.max(hi,.001)];
-    heat=document.createElement("canvas");heat.width=heat.height=n;
-    const g=heat.getContext("2d"), image=g.createImageData(n,n);
-    for (let i=0;i<top.length;i++) image.data.set([...color(top[i]),255],4*i);
-    g.putImageData(image,0,0);
+    paintMap();
     slider.max=String(n-1);slider.value=String((n-1)/2);selectedCol=null;
     if (current.gradeReference && probe) {
       const sample=(value,extent)=>Math.max(0,Math.min(n-1,Math.round((value-extent[0])/(extent[1]-extent[0])*(n-1))));
@@ -51,11 +65,20 @@
       }
       if (deepest!==null) {slider.value=String(Math.floor(deepest/n));selectedCol=deepest%n;}
     }
-    get("reliefLegend").textContent="俯视首个交点 · 蓝色低于路面，棕色高于路面，灰色无交点";
+    if (rangeOnly) {
+      let peak=-1, largest=-1;
+      for (let i=0;i<top.length;i++) {
+        const delta=Math.abs(top[i]-rangeOnly[i]);
+        if (support[i]===2 && delta>largest) {peak=i;largest=delta;}
+      }
+      if (peak!==-1) {slider.value=String(Math.floor(peak/n));selectedCol=peak%n;}
+      else selectedCol=Math.floor(n/2);
+      get("pitColumn").max=String(n-1);get("pitColumn").value=String(selectedCol);
+    }
     get("reliefScale").textContent=current.water ? "实线为首个交点，虚线为实拍重建的坑底。高程沿资产本地竖轴读取。" : under ? "实线为首个交点，虚线为移除井盖后的固定部件。" : "实线为从上方投射到网格的首个交点。";
+    if (rangeOnly) get("reliefScale").textContent="蓝色实线为彩照补深模型，橙色虚线为仅用距离图的模型。纵轴为相对路面的高程。";
     if (current.gradeReference) {
       get("reliefScale").textContent="蓝线为当前表面"+(current.id===current.gradeReference ? "" : "，橙色虚线为齐平状态的同一截线")+"。切换状态保留取样位置。";
-      if (gradeZoom) get("reliefLegend").textContent="相对路面 −80 至 +45 mm · 深色为低于显示范围的交点";
     }
     get("reliefContent").hidden=false;
     const pitch=Math.max(Math.abs(grid.x[1]-grid.x[0]), Math.abs(grid.y[1]-grid.y[0]))/(n-1);
@@ -100,11 +123,21 @@
     const aligned=ref && ref.n===n && ref.x.every((v,i)=>Math.abs(v-x[i])<1e-7) && ref.y.every((v,i)=>Math.abs(v-y[i])<1e-7);
     if (under && !current.gradeReference) trace(under,"#8a6b60",[6,4]);
     trace(top,legendColor.below,[]);
+    if (grid.rangeOnly) trace(grid.rangeOnly,"#ab602d",[5,5]);
     if (aligned && current.id!==current.gradeReference) trace(ref.top,"#ab602d",[5,5]);
     let message="Y "+metres(y[0]+row/(n-1)*(y[1]-y[0]));
     if (selectedCol!==null) {
       const i=row*n+selectedCol;
       message+="　X "+metres(x[0]+selectedCol/(n-1)*(x[1]-x[0]))+"　表面 "+metres(top[i]);
+      if (grid.rangeOnly) {
+        const baseline=grid.rangeOnly[i],delta=1000*(top[i]-baseline);
+        message+="　仅距离图 "+metres(baseline)+"　补深后高差 "+(delta>0 ? "+" : "")+delta.toFixed(1)+" mm　"+sourceLabels[grid.support[i]];
+        const px=L+selectedCol/(n-1)*(R-L);
+        ctx.strokeStyle="#666d63";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(px,T);ctx.lineTo(px,B);ctx.stroke();
+        for (const [z,stroke] of [[baseline,"#ab602d"],[top[i],legendColor.below]]) {
+          ctx.beginPath();ctx.arc(px,py(z),3.5,0,2*Math.PI);ctx.fillStyle=stroke;ctx.fill();
+        }
+      }
       if (under) message+=(current.water ? "　坑底 " : "　固定部件 ")+metres(under[i]);
       if (aligned && current.id!==current.gradeReference && Number.isFinite(top[i]-ref.top[i])) {
         message+="　相对齐平 "+((top[i]-ref.top[i])*1000).toFixed(1)+" mm";
@@ -130,6 +163,11 @@
   window.roadRelief=(id,data)=>{
     const value={...data,top:decode(data.top,data.low,data.step,data.n),
       under:data.under ? decode(data.under,data.low,data.step,data.n) : null};
+    if (data.rangeOnly) {
+      value.rangeOnly=decode(data.rangeOnly,data.low,data.step,data.n);
+      value.support=Uint8Array.from(atob(data.support),c=>c.charCodeAt(0));
+      if (value.support.length!==data.n*data.n || value.support.some(code=>code>3)) throw Error("Invalid support grid");
+    }
     if (cache.size>=6 && !cache.has(id)) {
       const oldest=Array.from(cache.keys()).find(key=>key!==current?.id && key!==current?.gradeReference);
       cache.delete(oldest);
@@ -148,17 +186,24 @@
       probe=null;get("nearGrade").checked=true;
     } else remember();
     current=row;grid=null;get("reliefContent").hidden=true;get("reliefStatus").textContent="";
+    get("pitColumnControl").hidden=!row.completionModels;
+    get("pitSourceToggle").hidden=!row.completionModels;
+    get("pitSourceMap").checked=true;
     get("gradeRange").hidden=!row.gradeReference;
     panel.hidden=!row.relief;request();
   };
   panel.addEventListener("toggle",request);
+  get("pitSourceMap").addEventListener("change",()=>{if (grid?.support) {paintMap();draw();}});
   get("nearGrade").addEventListener("change",()=>{if (grid) {remember();prepare();}});
-  slider.addEventListener("input",()=>{selectedCol=null;remember();draw();});
+  slider.addEventListener("input",()=>{if (!grid?.rangeOnly) selectedCol=null;remember();draw();});
+  get("pitColumn").addEventListener("input",()=>{if (grid?.rangeOnly) {selectedCol=Number(get("pitColumn").value);draw();}});
   map.addEventListener("pointerdown",e=>{
     if (!grid || !rect) return;
     const box=map.getBoundingClientRect(), px=(e.clientX-box.left)*map.width/box.width, py=(e.clientY-box.top)*map.height/box.height;
     const [l,t,w,h]=rect;
     if (px<l || px>=l+w || py<t || py>=t+h) return;
-    slider.value=String(Math.floor((py-t)/h*grid.n));selectedCol=Math.floor((px-l)/w*grid.n);remember();draw();
+    slider.value=String(Math.floor((py-t)/h*grid.n));selectedCol=Math.floor((px-l)/w*grid.n);
+    if (grid.rangeOnly) get("pitColumn").value=String(selectedCol);
+    remember();draw();
   });
 })();

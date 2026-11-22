@@ -238,6 +238,8 @@ work/envs/assets/bin/python scripts/render-pit-survey.py --run runs/my-pit-surve
 | P143 · 16 | 279 | 7.90 毫米 | 5.76 毫米 |
 | P143 · 19 | 1,446 | 4.82 毫米 | 11.02 毫米 |
 
+展开图谱中的「网格高程与剖面」，可以沿同一条截线阅读两种模型。点击来源图或用两个滑块选定位置，会显示两种模型的高程、差值和该点的观测来源。默认截线通过彩照单独支持的采样点中变化最大的一处。此处 P142 的补深表面比仅用距离图的表面高 34.1 毫米，P143 高 24.7 毫米。这两个值量的是模型之间的差异。上表用独立机位检验了几何误差。图中的采样间隔约 1 毫米，每件资产的 37,249 个来源标签均与原始融合格点逐一核对。两种网格的高程另用 96 条射线各自复查。[两条截线、实拍纹理与高差](figures/pit-depth-sections.jpg) · [交互取点](http://127.0.0.1:8765/tools/asset_atlas/index.html#P143) · [剖面核验](../validation/atlas-relief.json)
+
 另一次对照在所有拟合帧里同时遮去一块已知深度，保留这些帧的彩照。P142 和 P143 被遮去的区域分别宽 24.6、36.4 毫米。只用剩余距离，以及再加入照片，P143 两帧整块区域的中位误差分别由 37.2 降至 11.0 毫米、由 30.3 降至 11.5 毫米。P142 三帧中有两帧误差下降，第 04 帧由 19.4 升至 23.4 毫米。在图谱的输入照片菜单中选「人工遮去实测深度」可看逐帧覆盖。[人工遮挡对照](../validation/pit-depth-blind-patches.json)
 
 两件资产各按原尺度迁入 PandaSet 034 和 109，四次放置共有 320 个激光雷达案例帧。四个原生场景重新加载后均逐像素复现了相机渲染。对应的精选前视帧中，坑体仅覆盖 47–69 个像素，图版保留整幅道路并放大同一个局部。[四次道路放置](../validation/pit-depth-transfer.json)
@@ -254,6 +256,8 @@ python gen2hole/downstream/simulate.py --run runs/my-depth-completion --out runs
 python scripts/check-pit-transfer.py --run runs/my-depth-completion --out runs/my-depth-completion/transfer.json
 work/envs/assets/bin/python scripts/render-pit-completion.py --run runs/my-depth-completion --out runs/my-depth-completion/overview.jpg
 ~~~
+
+本机图谱已索引发布的 P142、P143。在图谱更新后，运行 `work/envs/streetcrafter/bin/python scripts/build-asset-relief.py --ids P142 P143` 可重建同位置的剖面数据，再运行 `work/envs/streetcrafter/bin/python scripts/render-pit-sections.py` 可重新导出双坑截线图。
 
 ## 从实拍盖板重建贯穿孔与断条
 

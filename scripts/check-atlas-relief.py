@@ -21,7 +21,7 @@ def decode(row):
     key,data=json.loads('['+raw[len(begin):-3]+']')
     if key!=row['id'] or not raw.startswith(begin) or not raw.endswith(');\n'):raise ValueError(key)
     n=data['n']
-    for field in ('top','under'):
+    for field in ('top','under','rangeOnly'):
         if field not in data:continue
         coded=np.frombuffer(base64.b64decode(data[field],validate=True),'<u2').reshape(n,n)
         data[field]=np.where(coded>0,data['low']+(coded.astype(float)-1)*data['step'],np.nan)
@@ -61,6 +61,31 @@ def compare(path,data,seed):
     return dict(independent_rays=len(errors),max_error_m=max(errors))
 
 
+def check_completion(row, grid, seed):
+    paths = row['completionModels']
+    n = grid['n']
+    source = np.frombuffer(base64.b64decode(grid['support'], validate=True), 'u1').reshape(n, n)
+    x, y = np.meshgrid(np.linspace(*grid['x'], n), np.linspace(*grid['y'], n))
+    with np.load(ATLAS / row['surface'], allow_pickle=False) as field:
+        width = float(field['width'])
+        mask = field['defect_mask'] > 0.5
+        j = np.rint((0.5 + x / width) * (mask.shape[1] - 1)).astype(int)
+        i = np.rint((0.5 - y / width) * (mask.shape[0] - 1)).astype(int)
+        expected = np.where(mask[i, j], field['support_kind'][i, j], 3)
+    if not np.array_equal(source, expected):
+        raise ValueError('Height-source texels disagree with the original fusion grid')
+    if hashlib.sha256((ATLAS / paths['support']).read_bytes()).hexdigest() != grid['support_glb_sha256']:
+        raise ValueError('Changed height-source mesh')
+    baseline = dict(grid, glb_sha256=grid['range_only_glb_sha256'], top=grid['rangeOnly'])
+    result = compare(ATLAS / paths['rangeOnly'], baseline, seed)
+    inside = source == 2
+    diff = (grid['top'] - grid['rangeOnly'])[inside]
+    result.update(checked_source_labels=n*n, photo_only_samples=int(inside.sum()),
+                  photo_height_change_mm_min_max=(1000 * np.array([diff.min(), diff.max()])).tolist()
+                  if diff.size else None)
+    return result
+
+
 def check():
     rows=json.loads((ATLAS/'catalog.js').read_text()[len('window.roadAssets='):-2])
     reference={'P134','P135','P136','P137','A125','A126','A127','A128','P121','P122','P123','P124','A115','A116','A117','M115','A118','A119','A120','M118','P110','P111','P112','P113','P114','A107','A108','M107','A104','A105','M104','A93','A95','M91','M13','P13','P102','P90','stereo_pothole_fan_1_03',
@@ -80,7 +105,11 @@ def check():
         if row.get('water'):
             reference.add(row['id'])
             if 'under' not in d or not (top - d['under'] > .001).any():raise ValueError('No water column for '+row['id'])
-        if row['id'] in reference:summary['checked_meshes'][row['id']]=compare(ATLAS/row['glb'],d,i+3567)
+        if row['id'] in reference:
+            result = compare(ATLAS/row['glb'],d,i+3567)
+            if row.get('completionModels'):
+                result['range_only_and_sources'] = check_completion(row, d, i+3567)
+            summary['checked_meshes'][row['id']] = result
     if reference!=set(summary['checked_meshes']):raise ValueError('Missing independent samples')
     pitches=summary.pop('pitch_m')
     summary['pitch_m_min_median_max']=np.percentile(pitches,[0,50,100]).tolist()

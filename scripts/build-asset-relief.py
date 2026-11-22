@@ -71,10 +71,36 @@ def encode(grid,low,step):
     return base64.b64encode(code.tobytes()).decode('ascii')
 
 
+def completion_profile(row, x, y, start, bounds):
+    from pit_texture_eval import read_texture
+
+    paths = {kind: ATLAS / path for kind, path in row['completionModels'].items()}
+    ref, _, lo, hi, digest = read_mesh(paths['rangeOnly'], False)
+    axes = [0, 2]
+    if not all(np.allclose(a[axes], b[axes], atol=1e-7, rtol=0) for a, b in zip(bounds, (lo, hi))):
+        raise ValueError('Comparison surfaces have different footprints for ' + row['id'])
+    height = cast_grid(ref, x, y, max(start, hi[1] + 0.25))
+    width = float(hi[0] - lo[0])
+    image = read_texture(paths['support'], width)
+    u = np.rint((0.5 + x / width) * (image.shape[1] - 1)).astype(int)
+    v = np.rint((0.5 - y / width) * (image.shape[0] - 1)).astype(int)
+    sample = image[v, u]
+    classes = np.full(x.shape, 255, dtype='u1')
+    for i, color in enumerate([(230, 145, 68), (67, 91, 112), (59, 193, 188), (220, 220, 210)]):
+        classes[(sample == color).all(axis=-1)] = i
+    if (classes == 255).any():
+        raise ValueError('Unrecognized height-source color for ' + row['id'])
+    return height, dict(
+        range_only_glb_sha256=digest,
+        support_glb_sha256=hashlib.sha256(paths['support'].read_bytes()).hexdigest(),
+        support=base64.b64encode(classes.tobytes()).decode('ascii'),
+    )
+
+
 def build(row,dest,resume):
     key=row['id'];path=ATLAS/row['glb']
     output=dest/(key+'.js')
-    if resume and output.is_file():
+    if resume and output.is_file() and not row.get('completionModels'):
         # Merely matching an identifier is insufficient when a user has rebuilt the GLB.
         old=output.read_text(encoding='utf-8')
         if old.startswith('window.roadRelief(') and old.endswith(');\n'):
@@ -82,11 +108,12 @@ def build(row,dest,resume):
             with path.open('rb') as stream:
                 sha=hashlib.sha256()
                 for piece in iter(lambda:stream.read(4<<20),b''):sha.update(piece)
-            if name==key and grid.get('glb_sha256')==sha.hexdigest() and (not row.get('water') or 'under' in grid):
+            if (name == key and grid.get('glb_sha256') == sha.hexdigest() and 'rangeOnly' not in grid
+                    and (not row.get('water') or 'under' in grid)):
                 code=np.frombuffer(base64.b64decode(grid['top'],validate=True),'<u2').reshape(grid['n'],grid['n'])
                 return dict(id=key,samples=int(np.count_nonzero(code)),substrate='under' in grid)
     full,under,lo,hi,digest=read_mesh(path,row['category'] in ('异常井盖','落座参照') or bool(row.get('throughHoles') or row.get('water')))
-    n=193 if row['category']=='裂缝' or row.get('panelSize') or row.get('water') else 97
+    n=193 if row['category']=='裂缝' or row.get('panelSize') or row.get('water') or row.get('completionModels') else 97
     # The grid covers cell centres, avoiding ambiguous triangle intersections on exterior edges.
     xpitch=(hi[0]-lo[0])/n;ypitch=(hi[2]-lo[2])/n
     xs=np.linspace(lo[0]+xpitch/2,hi[0]-xpitch/2,n)
@@ -107,10 +134,19 @@ def build(row,dest,resume):
         if np.any(bottom[shared]>top[shared]+.001):
             raise ValueError('Substrate above top in '+key)
         low=min(low,float(bottom[shared].min()))
+    baseline = None
+    if row.get('completionModels'):
+        baseline, comparison = completion_profile(row, x, y, start, (lo, hi))
+        if not np.isfinite(baseline).all():
+            raise ValueError('Incomplete range-only profile for ' + key)
+        low = min(low, float(baseline.min()))
+        high = max(high, float(baseline.max()))
     step=max(.00005,(high-low)/65532)
     obj=dict(n=n,x=[float(xs[0]),float(xs[-1])],y=[float(ys[0]),float(ys[-1])],
              low=low,step=step,top=encode(top,low,step),glb_sha256=digest)
     if bottom is not None:obj['under']=encode(bottom,low,step)
+    if baseline is not None:
+        obj.update(comparison, rangeOnly=encode(baseline, low, step))
     with tempfile.NamedTemporaryFile(dir=dest,mode='w',delete=False,encoding='utf-8') as f:
         f.write('window.roadRelief('+json.dumps(key)+','+json.dumps(obj,separators=(',',':'))+');\n')
     Path(f.name).replace(dest/(key+'.js'))

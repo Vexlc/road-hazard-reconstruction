@@ -2,11 +2,21 @@
   "records": 1391,
   "with_removable_cover": 197,
   "with_water_surface": 5,
-  "valid_top_samples": 13286650,
+  "valid_top_samples": 13342330,
   "checked_meshes": {
     "P143": {
       "independent_rays": 96,
-      "max_error_m": 2.4849319458009056e-05
+      "max_error_m": 2.454824447631343e-05,
+      "range_only_and_sources": {
+        "independent_rays": 96,
+        "max_error_m": 2.460784912108882e-05,
+        "checked_source_labels": 37249,
+        "photo_only_samples": 249,
+        "photo_height_change_mm_min_max": [
+          -16.55,
+          24.7
+        ]
+      }
     },
     "A141": {
       "independent_rays": 192,
@@ -14,7 +24,17 @@
     },
     "P142": {
       "independent_rays": 96,
-      "max_error_m": 2.4620199203490012e-05
+      "max_error_m": 2.4866914749142877e-05,
+      "range_only_and_sources": {
+        "independent_rays": 96,
+        "max_error_m": 2.4866914749142877e-05,
+        "checked_source_labels": 37249,
+        "photo_only_samples": 165,
+        "photo_height_change_mm_min_max": [
+          -15.500000000000004,
+          34.10000000000001
+        ]
+      }
     },
     "P135": {
       "independent_rays": 96,
@@ -218,7 +238,7 @@
     }
   },
   "pitch_m_min_median_max": [
-    0.0013509802144225623,
+    0.001033998755593374,
     0.010103092980139035,
     0.03204765516458098
   ]
