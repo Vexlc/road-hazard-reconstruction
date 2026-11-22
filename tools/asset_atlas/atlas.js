@@ -3,7 +3,7 @@ const el = id => document.getElementById(id);
 const assets = window.roadAssets || [];
 const byId = new Map(assets.map(row => [row.id,row]));
 const pageSize = 12;
-let page = 0, selected, filtered = [], reverse = false, before = false, spinning = false, lidSource = false, cutaway = false;
+let page = 0, selected, filtered = [], reverse = false, before = false, spinning = false, lidSource = false, cutaway = false, gaussian = false;
 
 function photo(id, path, title) {
   el(id).src = path;
@@ -36,6 +36,7 @@ function showScene() {
   }
   el("downloads").replaceChildren();
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
+  download("3DGS 与网格对照","splats.html#"+encodeURIComponent(selected.id));
   for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.auditLabel || (selected.family ? "几何一致性核验" : "轮廓评估"),"audit"],[selected.scanLabel || "雷达核验","scan"],["实拍拟合记录","fit"],[selected.reprojectionLabel || "留出帧核验","reprojection"]])
     if (selected[key]) download(name,selected[key]);
   const video = view?.video || selected.video;
@@ -48,12 +49,15 @@ function showScene() {
   }
 }
 function showModel() {
-  const label = cutaway ? "井壁剖开 · GLB 固定机位" : spinning ? "GLB · 环绕渲染" : selected.reverse ? (reverse ? "GLB · 背向斜视" : "GLB · 正向斜视") : "资产预览";
-  photo("model",cutaway ? selected.cutaway : spinning ? selected.orbit : reverse ? selected.reverse : selected.preview, selected.label+" "+label);
+  const label = gaussian ? "原始 PLY · 高斯渲染" : cutaway ? "井壁剖开 · GLB 固定机位" : spinning ? "GLB · 环绕渲染" : selected.reverse ? (reverse ? "GLB · 背向斜视" : "GLB · 正向斜视") : "资产预览";
+  photo("model",gaussian ? selected.gaussianPreview : cutaway ? selected.cutaway : spinning ? selected.orbit : reverse ? selected.reverse : selected.preview, selected.label+" "+label);
   el("modelLabel").textContent = label;
-  el("rotate").hidden = !selected.reverse || spinning || cutaway;
-  el("spin").hidden = !selected.orbit || cutaway;
-  el("cutaway").hidden = !selected.cutaway;
+  el("representation").hidden = !selected.gaussianPreview;
+  el("representation").textContent = gaussian ? "看网格渲染" : "看高斯渲染";
+  el("representation").setAttribute("aria-pressed",String(gaussian));
+  el("rotate").hidden = !selected.reverse || spinning || cutaway || gaussian;
+  el("spin").hidden = !selected.orbit || cutaway || gaussian;
+  el("cutaway").hidden = !selected.cutaway || gaussian;
   el("cutaway").textContent = cutaway ? "还原井体" : "剖开井体";
   el("cutaway").setAttribute("aria-pressed",String(cutaway));
   el("spin").textContent = spinning ? "停止环绕" : "360° 环绕";
@@ -124,7 +128,7 @@ function showStates() {
 function inspect(id) {
   selected = byId.get(id);
   if (!selected) return;
-  reverse = before = spinning = lidSource = cutaway = false;
+  reverse = before = spinning = lidSource = cutaway = gaussian = false;
   el("detail").hidden = false;
   el("assetKey").textContent = selected.id;
   el("assetTitle").textContent = selected.label;
@@ -255,6 +259,7 @@ if (assets.length) {
   el("prev").onclick=()=>{page--; renderCards();}; el("next").onclick=()=>{page++; renderCards();};
   el("before").onclick=()=>{before=!before; showScene();};
   el("scene").onchange=()=>{before=false; showScene();};
+  el("representation").onclick=()=>{gaussian=!gaussian; spinning=cutaway=false; showModel();};
   el("spin").onclick=()=>{spinning=!spinning; showModel();};
   el("cutaway").onclick=()=>{cutaway=!cutaway; spinning=false; showModel();};
   el("sourceView").onchange=showSource;

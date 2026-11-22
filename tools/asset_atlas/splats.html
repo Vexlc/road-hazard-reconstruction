@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>高斯资产 · RoadGS</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="vendor/model-viewer-4.4.0/model-viewer-umd.min.js"></script>
+<header><div class="bar"><a class="brand" href="index.html">Road<span>GS</span></a><nav><a id="back" href="index.html">返回资产图谱</a></nav></div></header>
+<main>
+  <div class="heading"><div><span id="key" class="mono"></span><h1 id="title">高斯资产</h1></div><span id="count"></span></div>
+  <div id="states" aria-label="切换同源资产" hidden></div>
+  <div class="splatModes" aria-label="三维表示">
+    <button id="gaussian" aria-pressed="true">3DGS</button><button id="meshMode" aria-pressed="false" disabled>GLB 网格</button><button id="split" aria-pressed="false" disabled>同机位对照</button>
+    <label id="splitControl" hidden>分界位置 <input id="divider" type="range" min="0" max="100" value="50"></label>
+  </div>
+  <div id="splatStage">
+    <model-viewer id="mesh" camera-controls touch-action="pan-y" interaction-prompt="none" exposure="1" shadow-intensity="0" min-camera-orbit="auto 0deg 0.02m" max-camera-orbit="auto 180deg 40m" aria-label="拖动旋转，滚轮或双指缩放"></model-viewer>
+    <canvas id="cloud" aria-hidden="true"></canvas><img id="splatPoster" hidden alt="同一资产的 CUDA 高斯渲染"><div id="boundary" hidden></div>
+    <div id="splitLabels" hidden><span>3DGS</span><span>GLB</span></div>
+  </div>
+  <p class="modelinfo" id="status" role="status">正在读取资产…</p>
+  <div class="modelcontrols">
+    <button id="reset">恢复斜视</button><button id="top">俯视</button><button id="side">侧视</button>
+    <label>打开本机 PLY，可同时选 GLB <input id="files" type="file" accept=".ply,.glb" multiple></label>
+  </div>
+  <details id="gaussianAudit" hidden>
+    <summary>核对高斯与网格的深度</summary>
+    <div class="modelcontrols"><label>核验机位 <select id="auditPose"></select></label><label>统计范围 <select id="auditPart"></select></label><button id="useAuditPose">在三维视图中使用此机位</button></div>
+    <div class="auditImages"><figure><a id="auditMeshLink"><img id="auditMesh" alt="核验机位的网格"></a><figcaption>GLB 网格</figcaption></figure>
+      <figure><a id="auditSplatLink"><img id="auditSplat" alt="同机位的高斯渲染"></a><figcaption>原始 PLY 高斯</figcaption></figure>
+      <figure><a id="auditDepthLink"><img id="auditDepth" alt="同像素的光轴深度绝对差"></a><figcaption>光轴深度绝对差</figcaption></figure></div>
+    <div class="depthLegend" aria-label="绝对差图例"><span>低于 2 mm</span><span>2–10 mm</span><span>10–50 mm</span><span>至少 50 mm</span></div>
+    <p id="auditReadout"></p><p class="modelinfo">网格采用首次命中的正面，高斯采用透明度加权的期望深度。彩色区域为网格内部且高斯不透明度超过 85% 的共同像素。</p>
+  </details>
+  <figure id="roadPanel" hidden><a id="roadLink"><img id="road" alt="同一件资产迁入后的道路实景"></a><figcaption><label>迁入道路 <select id="roadShot"></select></label><button id="before">查看迁入前</button></figcaption></figure>
+</main>
+<script src="catalog.js"></script><script src="splat-worker.js"></script><script src="splat-renderer.js"></script><script defer src="splats.js"></script>
+</html>

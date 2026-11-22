@@ -715,7 +715,37 @@ def main():
     if wet.keys() & rows.keys():
         raise ValueError("Water state ID collision")
     rows.update(wet)
+    gaussian_folder = ROOT / 'runs/atlas-gaussians'
+    poses = read(gaussian_folder/'views.json') if (gaussian_folder/'views.json').is_file() else {}
+    audit_folder = ROOT/'runs/atlas-gaussian-checks'
+    audit_report = ROOT/'validation/atlas-gaussians.json'
+    checks = read(audit_report)['browser_vs_cuda_and_glb'] if audit_folder.exists() and audit_report.is_file() else {}
     for row in rows.values():
+        if row['id'] in poses:
+            view = poses[row['id']]
+            if view['count'] != row['gaussians']:
+                raise ValueError("Stale Gaussian preview for " + row['id'])
+            row['gaussianPreview'] = link(gaussian_folder/(row['id']+'.webp'))
+            row['gaussianCamera'] = dict(view['camera'], aspect=view['width']/view['height'])
+            row['gaussianSources'] = {k:view[k+'_sha256'] for k in ('ply','glb')}
+        if row.get('gaussianSources') and row['id'] in checks and checks[row['id']].get('sources') == row['gaussianSources']:
+            audits = []
+            for mode in ('oblique','top','low'):
+                measurement = checks[row['id']]['views'].get(mode)
+                if not measurement:
+                    continue
+                stem = row['id'] + '-' + mode
+                base = audit_folder/'browser'
+                mesh, cloud, difference = base/(stem+'-mesh.png'), base/(stem+'-gaussian.png'), audit_folder/'geometry'/(stem+'.png')
+                if not all(path.is_file() for path in (mesh,cloud,difference)):
+                    continue
+                audits.append(dict(mode=mode, camera=measurement['camera'], mesh=link(mesh),
+                    gaussian=link(cloud), difference=link(difference),
+                    parts=measurement['depth_by_first_mesh_part'], pixels=measurement['shared_opaque_front_pixels'],
+                    median=measurement['gaussian_expected_vs_glb_depth_mm_median'],
+                    p95=measurement['gaussian_expected_vs_glb_depth_mm_p95']))
+            if audits:
+                row['gaussianAudit'] = audits
         relief = ATLAS / "relief" / (row["id"] + ".js")
         if relief.is_file():
             row["relief"] = link(relief)

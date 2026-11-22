@@ -6,6 +6,8 @@ RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资�
 
 ![十二件道路病害的 GLB 模型与同一资产的行车相机局部](docs/figures/road-asset-portfolio.jpg)
 
+图谱中每件资产都可以点「看高斯渲染」查看原始 PLY 的静态预览。点「3DGS 与网格对照」，可旋转资产或滑动分界线，在同一机位比较盖孔、井壁和坑缘。13 件代表资产附有 23 个机位的深度差图，可按部件查看误差。[六件资产的网格、高斯与行车画面](docs/figures/gaussian-asset-comparison.jpg) · [敞井的三个核验机位](docs/figures/gaussian-shaft-depth.jpg) · [查看器与复现](docs/02-asset-reconstruction.md#原始高斯资产与网格的同机位对照)
+
 P135 是 1.75 米见方的混凝土网裂。把原图中的同一处交汇单独取出、以更密的网格重建为 P136 后，在相同的 62,055 个留出缝内像素上，相对源位移的中位绝对误差从 0.109 降至 0.040 毫米。P134 和 P137 则用同一条沥青纵缝展示材质位移与扫描法线给出的两种深度。可在三维页面关闭纹理，或查看同一位置的行车画面和可见裂缝边界。[原图、纹理与无纹理模型](docs/figures/scanned-cracks.jpg) · [网裂在两段道路上的前后视](docs/figures/scanned-crack-roads.jpg) · [同一沥青纵缝的两种深度](docs/figures/asphalt-crack-depth.jpg)
 
 P129–P133 展示两处实拍坑底在不同注水量和道路坡度下的积水。给粗骨料深坑加入 5 升水，目标路面坡度从 5.1% 增至 14.2% 时，最大水深从 66.6 增至 84.6 毫米。图谱可在同一三维视角排空积水，查看真实坑底，也可切换同一行车帧中的干湿画面。[实拍、岸线与水深剖面](docs/figures/standing-water.jpg) · [两段道路上的积水坑](docs/figures/standing-water-roads.jpg)

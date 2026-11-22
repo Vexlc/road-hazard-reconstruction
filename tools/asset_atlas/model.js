@@ -67,6 +67,7 @@ get("file").onchange=()=>{
   get("clayModel").hidden=true;
   sectioned=false;
   selectedRow=null;
+  get("splats").hidden=true;
   get("sectionModel").hidden=true;
   viewer.src=localUrl;
   get("key").textContent=file.name;
@@ -107,6 +108,8 @@ function openSelection() {
   get("states").hidden = !row?.states;
   get("fileLabel").hidden = Boolean(row) && location.protocol!=="file:";
   get("glb").hidden = !row;
+  get("splats").hidden = !row;
+  if (row) get("splats").href="splats.html#"+encodeURIComponent(row.id);
   get("title").textContent=row?.label || "三维模型";
   get("key").textContent=row?.id || "";
   get("back").href=row ? "index.html#"+encodeURIComponent(row.id) : "index.html";

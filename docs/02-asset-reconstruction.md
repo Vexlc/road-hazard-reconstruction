@@ -357,3 +357,45 @@ work/envs/streetcrafter/bin/python scripts/check-crack-visibility.py --run "$run
 python scripts/check-pit-transfer.py --run "$run" --out "$run/evaluation/transfer.json"
 work/envs/streetcrafter/bin/python scripts/render-scanned-cracks.py --run "$run" --out "$run/figures"
 ~~~
+
+## 原始高斯资产与网格的同机位对照
+
+图谱收录的 1,384 个 PLY 共有 191,499,749 个高斯。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
+
+浏览器按 PLY 中的三轴对数尺度、WXYZ 四元数和不透明度恢复各向异性高斯。渲染使用完整点集和原始一阶球谐颜色，按当前透视机位投影协方差、补偿屏幕滤波造成的不透明度变化，再按深度合成。能写入半浮点缓冲区的设备使用 16 位浮点颜色累积。GPU 与浏览器共享米制尺度，原始 PLY 为 Z 向上，GLB 为 Y 向上。[gsplat 光栅化说明](https://docs.gsplat.studio/main/apis/rasterization.html)
+
+直接双击本地页面可以查看预览图。要旋转高斯，可在同一页选择本地 PLY，同时选择对应 GLB 即可滑动对照。页面按 SHA-256 识别与核对文件，识别后加载该资产的来源和道路记录。使用本地预览服务时可直接按图谱 ID 打开模型。
+
+~~~bash
+python scripts/serve-asset-atlas.py
+~~~
+
+在浏览器打开 [掀开圆盖的高斯与网格](http://127.0.0.1:8765/tools/asset_atlas/splats.html#A119) 或 [矩形敞井](http://127.0.0.1:8765/tools/asset_atlas/splats.html#M11)。两种表示使用同一相机进行旋转、缩放和对照，共用局部坐标的井盖状态可保持机位切换。
+
+### 如何读深度差
+
+「核对高斯与网格的深度」提供固定机位的网格、高斯和像素级绝对差。网格深度取射线首次命中的正面。高斯深度为沿光线的透明度加权期望。图中计入不透明度大于 85%、共同命中且远离网格轮廓的像素。可将统计范围切换到井圈、井壁、盖板、水面或周边路面。数字描述两种资产表示的一致程度。[逐机位与逐部件核验](../validation/atlas-gaussians.json)
+
+浏览器解码器已逐个读入并排序全库 1,384 个 PLY。另选覆盖 11 种来源或重建方法的 13 件资产，在 23 个机位逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [逐机位颜色对照](../validation/atlas-gaussians.json)
+
+矩形敞井 M11 的低角度画面中，井圈、井壁和周边路面的差异相距很大。GLB 的路面网格遮住地下结构，独立高斯资产的路面边缘逐渐透明，部分像素仍收到地下井壁的颜色与深度。迁入画面使用宿主路面和遮挡几何。可对照俯视、斜视和低角度三组图，区分部件本身和道路过渡区的贡献。[敞井深度图版](figures/gaussian-shaft-depth.jpg)
+
+### 重新渲染和核验
+
+运行 `render-atlas-gaussians.py` 可生成全库预览与相机清单，也可用 `--ids M11 A119` 选取一组资产。程序核对源 PLY 和预览指纹，已有且匹配的预览可复用。在仓库根目录执行以下命令。
+
+~~~bash
+python scripts/build-asset-atlas.py
+work/envs/streetcrafter/bin/python scripts/render-atlas-gaussians.py
+python scripts/build-asset-atlas.py
+node scripts/check-gaussian-ply.cjs validation/atlas-gaussian-ply.json
+~~~
+
+交互核验使用 Chrome、Node.js 和 ws。先启动上面的本地预览服务，再用下列命令记录实际浏览器的两个渲染结果。CUDA 独立读取原始 PLY，Open3D 独立读取原始 GLB 并对每个像素求交。完成核验后重建图谱索引即可展示这些证据。
+
+~~~bash
+node scripts/capture-atlas-gaussians.cjs runs/atlas-gaussian-checks/browser A119 M11 P135 P130 P112 P121 P110 A104 P90 rgbd_pothole_20250227_135438 stereo_pothole_fan_1_03 model_raised_rectangular_removed_side_chip_seal A128
+work/envs/streetcrafter/bin/python scripts/check-atlas-gaussians.py --captures runs/atlas-gaussian-checks/browser --out validation/atlas-gaussians.json
+work/envs/streetcrafter/bin/python scripts/render-gaussian-audit.py
+python scripts/build-asset-atlas.py
+~~~

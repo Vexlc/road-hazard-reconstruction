@@ -1,0 +1,1143 @@
+{
+  "assets": 1384,
+  "gaussians": 191499749,
+  "methods": {
+    "生成 RGB": 109,
+    "实拍 RGB + 激光雷达": 6,
+    "实拍 RGB": 14,
+    "实拍摄影测量": 12,
+    "多帧双目": 2,
+    "多帧 RGB-D": 3,
+    "双张实拍 RGB": 4,
+    "实拍坑底＋模拟积水": 5,
+    "程序化": 342,
+    "实拍 RGB-D": 822,
+    "实拍双目": 65
+  },
+  "ply_inventory_sha256": "958f8760c5b0f7858159a1e22f0813ccac29befd1d496b12b1e143aeadc3243d",
+  "preview_inventory_sha256": "c700513ef9d054bec5250ea30509973c7001474bbfbd2553677f4207566af4a9",
+  "minimum_fraction_alpha_above_half": 0.05391796875,
+  "browser_vs_cuda_and_glb": {
+    "A104": {
+      "method": "实拍 RGB + 激光雷达",
+      "gaussians": 629093,
+      "sources": {
+        "ply": "8782ba6e1743fc923b17d57d0ead20c8407b9024a6fc73d06cbe3e51101db0b5",
+        "glb": "f58f56e9ca8d615707430c7b5be0ccac874ce9c000dc9eb87f3e14cda215aca7"
+      },
+      "views": {
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 89773,
+          "rgb_mae_0_255": 0.06168521344576505,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 89359,
+          "gaussian_expected_vs_glb_depth_mm_median": 2.1085739135742188,
+          "gaussian_expected_vs_glb_depth_mm_p95": 404.6668640136717,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 1.897002768033502,
+            "target": [
+              0,
+              -0.029918349799118005,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "Chipped concrete collar": {
+              "pixels": 5866,
+              "median_mm": 2.2346973419189453,
+              "p95_mm": 3.102242946624756
+            },
+            "apron": {
+              "pixels": 38046,
+              "median_mm": 3.225088119506836,
+              "p95_mm": 499.0138473510742
+            },
+            "cover": {
+              "pixels": 37700,
+              "median_mm": 1.7745494842529297,
+              "p95_mm": 2.325302362442016
+            },
+            "rim": {
+              "pixels": 7747,
+              "median_mm": 1.9513368606567383,
+              "p95_mm": 5.251991748809812
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.10219451873901901
+        }
+      }
+    },
+    "A119": {
+      "method": "实拍摄影测量",
+      "gaussians": 629215,
+      "sources": {
+        "ply": "fe3dc011f306b771c9b75b8b020162e6412b042268183ee17244428f93648af3",
+        "glb": "96eabcba941d45be4b8b1ba5f54e998c16802a0e6e7605ab0438806b08aaa8ba"
+      },
+      "views": {
+        "low": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 39913,
+          "rgb_mae_0_255": 0.07716784005211334,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 0.9999387992411106,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 32823,
+          "gaussian_expected_vs_glb_depth_mm_median": 3.879070281982422,
+          "gaussian_expected_vs_glb_depth_mm_p95": 481.90075988769513,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 2.626008488231385,
+            "target": [
+              0,
+              0.2394467443227768,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 10438,
+              "median_mm": 285.8538818359375,
+              "p95_mm": 615.0166961669921
+            },
+            "cover": {
+              "pixels": 12139,
+              "median_mm": 3.427743911743164,
+              "p95_mm": 4.325389862060547
+            },
+            "rim": {
+              "pixels": 4651,
+              "median_mm": 5.721330642700195,
+              "p95_mm": 9.683012962341309
+            },
+            "wall": {
+              "pixels": 5595,
+              "median_mm": 1.9073486328125,
+              "p95_mm": 10.662150382995618
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.2325503457941078
+        },
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 42238,
+          "rgb_mae_0_255": 0.09980744037754312,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 41541,
+          "gaussian_expected_vs_glb_depth_mm_median": 1.0700225830078125,
+          "gaussian_expected_vs_glb_depth_mm_p95": 556.31640625,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -1.1504486015944,
+            "phi": 0.8552113334772214,
+            "radius": 2.626008488231385,
+            "target": [
+              0,
+              0.2394467443227768,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 12492,
+              "median_mm": 309.0428161621094,
+              "p95_mm": 656.4356384277344
+            },
+            "cover": {
+              "pixels": 23198,
+              "median_mm": 0.5230903625488281,
+              "p95_mm": 1.8957376480102528
+            },
+            "floor": {
+              "pixels": 36,
+              "median_mm": 868.6495971679688,
+              "p95_mm": 992.1683654785156
+            },
+            "rim": {
+              "pixels": 4389,
+              "median_mm": 2.0940303802490234,
+              "p95_mm": 20.434808731078995
+            },
+            "wall": {
+              "pixels": 1426,
+              "median_mm": 10.547637939453125,
+              "p95_mm": 847.3213958740234
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.20411160058737152
+        },
+        "top": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 35991,
+          "rgb_mae_0_255": 0.10294240226723347,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 35991,
+          "gaussian_expected_vs_glb_depth_mm_median": 1.0488033294677734,
+          "gaussian_expected_vs_glb_depth_mm_p95": 34.0580940246582,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 2.626008488231385,
+            "target": [
+              0,
+              0.2394467443227768,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 7977,
+              "median_mm": 0.0002384185791015625,
+              "p95_mm": 0.18663406372070296
+            },
+            "cover": {
+              "pixels": 14612,
+              "median_mm": 2.7849674224853516,
+              "p95_mm": 6.696105003356931
+            },
+            "floor": {
+              "pixels": 3273,
+              "median_mm": 0.000476837158203125,
+              "p95_mm": 405.04855957030827
+            },
+            "rim": {
+              "pixels": 7154,
+              "median_mm": 0.00095367431640625,
+              "p95_mm": 17.467546463012685
+            },
+            "wall": {
+              "pixels": 2975,
+              "median_mm": 32.73439407348633,
+              "p95_mm": 41.897894287109374
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.013975716151260037
+        }
+      }
+    },
+    "A128": {
+      "method": "实拍摄影测量",
+      "gaussians": 628733,
+      "sources": {
+        "ply": "d79a54d7848f7f2e5d504e736e0363b98671488d24e7122a6fdf27b36f34ef05",
+        "glb": "cec6a92f7d03dc4e6029a633ba027ff0147a6d85b25ebcf4c646770cadf049c5"
+      },
+      "views": {
+        "low": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 58590,
+          "rgb_mae_0_255": 0.10907435853672412,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 41691,
+          "gaussian_expected_vs_glb_depth_mm_median": 9.213805198669434,
+          "gaussian_expected_vs_glb_depth_mm_p95": 584.1769714355469,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.7246082086077417,
+            "target": [
+              0.12267166376113892,
+              -0.0075204744935035706,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 19891,
+              "median_mm": 372.31695556640625,
+              "p95_mm": 647.2755737304688
+            },
+            "cover": {
+              "pixels": 17183,
+              "median_mm": 5.620598793029785,
+              "p95_mm": 12.318634986877441
+            },
+            "rim": {
+              "pixels": 3215,
+              "median_mm": 8.317232131958008,
+              "p95_mm": 24.55589771270749
+            },
+            "wall": {
+              "pixels": 1402,
+              "median_mm": 2.434372901916504,
+              "p95_mm": 597.1141998291016
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.3630519776450553
+        },
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 86300,
+          "rgb_mae_0_255": 0.1144611819235226,
+          "rgb_error_p95_0_255": 0.6666666666666666,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 85999,
+          "gaussian_expected_vs_glb_depth_mm_median": 2.0705461502075195,
+          "gaussian_expected_vs_glb_depth_mm_p95": 444.94326171874985,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 1.7246082086077417,
+            "target": [
+              0.12267166376113892,
+              -0.0075204744935035706,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 31423,
+              "median_mm": 9.041547775268555,
+              "p95_mm": 519.4366394042968
+            },
+            "cover": {
+              "pixels": 34820,
+              "median_mm": 1.606583595275879,
+              "p95_mm": 2.8547346591949436
+            },
+            "floor": {
+              "pixels": 500,
+              "median_mm": 3.566622734069824,
+              "p95_mm": 691.3396759033202
+            },
+            "rim": {
+              "pixels": 12556,
+              "median_mm": 1.8004775047302246,
+              "p95_mm": 3.5562515258789062
+            },
+            "wall": {
+              "pixels": 6700,
+              "median_mm": 3.392457962036133,
+              "p95_mm": 84.06191787719644
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.1698973243874929
+        },
+        "top": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 105624,
+          "rgb_mae_0_255": 0.10665189729606908,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 105624,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.04696846008300781,
+          "gaussian_expected_vs_glb_depth_mm_p95": 16.16907215118406,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.7246082086077417,
+            "target": [
+              0.12267166376113892,
+              -0.0075204744935035706,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 24928,
+              "median_mm": 0.00011920928955078125,
+              "p95_mm": 0.3151893615722656
+            },
+            "cover": {
+              "pixels": 48897,
+              "median_mm": 0.14448165893554688,
+              "p95_mm": 0.594019889831543
+            },
+            "floor": {
+              "pixels": 7588,
+              "median_mm": 0.0002384185791015625,
+              "p95_mm": 315.55917510986313
+            },
+            "rim": {
+              "pixels": 19761,
+              "median_mm": 0.00035762786865234375,
+              "p95_mm": 4.226207733154297
+            },
+            "wall": {
+              "pixels": 4450,
+              "median_mm": 21.88479995727539,
+              "p95_mm": 262.53218841552746
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.008965765356358403
+        }
+      }
+    },
+    "M11": {
+      "method": "生成 RGB",
+      "gaussians": 627948,
+      "sources": {
+        "ply": "1bef9a4b096a320e5c99a3492acc5c4d3d4c7d5886804b3ef3be5d8475af2c6d",
+        "glb": "d428aa5d430db75c261e6057829e15283185cb1ca6166dd8f70aefb8c4e0d64c"
+      },
+      "views": {
+        "low": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 87518,
+          "rgb_mae_0_255": 0.08949777950440671,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 85889,
+          "gaussian_expected_vs_glb_depth_mm_median": 118.31510162353516,
+          "gaussian_expected_vs_glb_depth_mm_p95": 798.0414062499996,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.5907731308638746,
+            "target": [
+              0,
+              -0.026999999303370714,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 59638,
+              "median_mm": 388.50531005859375,
+              "p95_mm": 866.5936248779292
+            },
+            "rim": {
+              "pixels": 13682,
+              "median_mm": 2.0117759704589844,
+              "p95_mm": 6.543987989425654
+            },
+            "wall": {
+              "pixels": 12569,
+              "median_mm": 2.830028533935547,
+              "p95_mm": 4.194498062133789
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.5226746149099419
+        },
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 127571,
+          "rgb_mae_0_255": 0.08872967471708565,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 126904,
+          "gaussian_expected_vs_glb_depth_mm_median": 2.501964569091797,
+          "gaussian_expected_vs_glb_depth_mm_p95": 411.06759796142575,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 1.5907731308638746,
+            "target": [
+              0,
+              -0.026999999303370714,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 58544,
+              "median_mm": 3.1948089599609375,
+              "p95_mm": 489.61321105957023
+            },
+            "rim": {
+              "pixels": 23574,
+              "median_mm": 1.4901161193847656,
+              "p95_mm": 4.36059832572937
+            },
+            "wall": {
+              "pixels": 44786,
+              "median_mm": 2.4900436401367188,
+              "p95_mm": 5.396515130996704
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.18960789258021812
+        },
+        "top": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 150003,
+          "rgb_mae_0_255": 0.081360595010322,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 150003,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.1785755157470703,
+          "gaussian_expected_vs_glb_depth_mm_p95": 23.117876052856438,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.5907731308638746,
+            "target": [
+              0,
+              -0.026999999303370714,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 48115,
+              "median_mm": 0.056624412536621094,
+              "p95_mm": 0.26237964630126953
+            },
+            "floor": {
+              "pixels": 26460,
+              "median_mm": 0.0002384185791015625,
+              "p95_mm": 0.00095367431640625
+            },
+            "rim": {
+              "pixels": 29920,
+              "median_mm": 0.42623281478881836,
+              "p95_mm": 7.410347461700439
+            },
+            "wall": {
+              "pixels": 45508,
+              "median_mm": 14.69409465789795,
+              "p95_mm": 30.154781913757326
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0
+        }
+      }
+    },
+    "P110": {
+      "method": "多帧双目",
+      "gaussians": 256369,
+      "sources": {
+        "ply": "f08f72e7b499d93c4f06d34cfa4b53a7594b087aadd55f182ccf11b4b2a8f4ac",
+        "glb": "73bdc416aba7646d1cd9196c048554b30ad9220e7ccda288ed5bc0df6c9b851e"
+      },
+      "views": {
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 145293,
+          "rgb_mae_0_255": 0.08090548064944629,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 144954,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.4285871982574463,
+          "gaussian_expected_vs_glb_depth_mm_p95": 1.0091975331306462,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 0.2517992560377209,
+            "target": [
+              0.002079743891954422,
+              -0.02164057007757947,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 116838,
+              "median_mm": 0.43933093547821045,
+              "p95_mm": 0.8218586444854736
+            },
+            "pit_or_crack": {
+              "pixels": 28116,
+              "median_mm": 0.3368854522705078,
+              "p95_mm": 7.345631718635559
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0006967727692923272
+        }
+      }
+    },
+    "P112": {
+      "method": "多帧 RGB-D",
+      "gaussians": 257609,
+      "sources": {
+        "ply": "aac4cb4b56c709ce47626b612cba6c5499e5398118d1fb0852256457c3c59052",
+        "glb": "28f2e49e748184222d89e01800567de4cafc98dbcc614952e122a0ccd7861b92"
+      },
+      "views": {
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 54846,
+          "rgb_mae_0_255": 0.15570871166539035,
+          "rgb_error_p95_0_255": 0.6666666666666666,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 54846,
+          "gaussian_expected_vs_glb_depth_mm_median": 1.4218688011169434,
+          "gaussian_expected_vs_glb_depth_mm_p95": 2.088785171508789,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 1.5803665810027574,
+            "target": [
+              -0.0013162791728973389,
+              -0.004749832209199667,
+              -0.001316264271736145
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 36078,
+              "median_mm": 1.5558600425720215,
+              "p95_mm": 2.1605491638183594
+            },
+            "pit_or_crack": {
+              "pixels": 18768,
+              "median_mm": 1.1922717094421387,
+              "p95_mm": 1.7520964145660398
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0
+        }
+      }
+    },
+    "P121": {
+      "method": "双张实拍 RGB",
+      "gaussians": 258692,
+      "sources": {
+        "ply": "26d22cdceefe63ed96039728529bbcc44fcad133d3e94a1a797c761ecaa2fcd7",
+        "glb": "8eb486eee8f898dc62cda336e37e32c184e15bfaec03f9a79cf0cc04e1390e10"
+      },
+      "views": {
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 71837,
+          "rgb_mae_0_255": 0.0856243996826148,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 71837,
+          "gaussian_expected_vs_glb_depth_mm_median": 2.101778984069824,
+          "gaussian_expected_vs_glb_depth_mm_p95": 3.2017946243286124,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 1.684011785719761,
+            "target": [
+              -0.0024979859590530396,
+              -0.06076754257082939,
+              -0.009991943836212158
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 37018,
+              "median_mm": 2.31015682220459,
+              "p95_mm": 2.9747486114501953
+            },
+            "pit_or_crack": {
+              "pixels": 34819,
+              "median_mm": 1.8388032913208008,
+              "p95_mm": 4.753541946411132
+            }
+          },
+          "depth_abs_over_50mm_fraction": 8.352241880924872e-05
+        }
+      }
+    },
+    "P130": {
+      "method": "实拍坑底＋模拟积水",
+      "gaussians": 333379,
+      "sources": {
+        "ply": "d4b3db60a47bb5e30c3c94b026071e17cbe5c0b3e6a4d5cca97a1511cbb89331",
+        "glb": "f613c99d1d2373e1a62a13db67979fbe0f458f040d585e8d3b55aa4b0828ccc2"
+      },
+      "views": {
+        "low": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 19088,
+          "rgb_mae_0_255": 0.1344649343392009,
+          "rgb_error_p95_0_255": 0.6666666666666666,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 19088,
+          "gaussian_expected_vs_glb_depth_mm_median": 6.513833999633789,
+          "gaussian_expected_vs_glb_depth_mm_p95": 26.53045654296863,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.9376518394507223,
+            "target": [
+              -0.0012492239475250244,
+              -0.05565025983378291,
+              -0.002498447895050049
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 10362,
+              "median_mm": 6.348133087158203,
+              "p95_mm": 12.976455688476559
+            },
+            "pit_or_crack": {
+              "pixels": 5788,
+              "median_mm": 3.3478736877441406,
+              "p95_mm": 28.93275022506712
+            },
+            "water": {
+              "pixels": 2938,
+              "median_mm": 10.150014877319336,
+              "p95_mm": 163.76359710693367
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.03064752724224644
+        },
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 61066,
+          "rgb_mae_0_255": 0.10548695946462298,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 61066,
+          "gaussian_expected_vs_glb_depth_mm_median": 1.8740296363830566,
+          "gaussian_expected_vs_glb_depth_mm_p95": 4.142820835113525,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 1.9376518394507223,
+            "target": [
+              -0.0012492239475250244,
+              -0.05565025983378291,
+              -0.002498447895050049
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 29115,
+              "median_mm": 2.1272897720336914,
+              "p95_mm": 2.7265548706054688
+            },
+            "pit_or_crack": {
+              "pixels": 16362,
+              "median_mm": 1.8663406372070312,
+              "p95_mm": 9.485155344009394
+            },
+            "water": {
+              "pixels": 15589,
+              "median_mm": 1.5741586685180664,
+              "p95_mm": 2.0626306533813477
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0007860347820391053
+        },
+        "top": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 81632,
+          "rgb_mae_0_255": 0.09809470142427805,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 81632,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.02658367156982422,
+          "gaussian_expected_vs_glb_depth_mm_p95": 2.880865335464477,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.9376518394507223,
+            "target": [
+              -0.0012492239475250244,
+              -0.05565025983378291,
+              -0.002498447895050049
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 38053,
+              "median_mm": 0.00011920928955078125,
+              "p95_mm": 0.0016689300537109375
+            },
+            "pit_or_crack": {
+              "pixels": 20600,
+              "median_mm": 1.0919570922851562,
+              "p95_mm": 5.753630399703974
+            },
+            "water": {
+              "pixels": 22979,
+              "median_mm": 0.07903575897216797,
+              "p95_mm": 0.5359649658203107
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0
+        }
+      }
+    },
+    "P135": {
+      "method": "实拍摄影测量",
+      "gaussians": 404722,
+      "sources": {
+        "ply": "9ccca00c4f5fa3df596966373535cfa0a76831a26f244cda31651ec86b5d5693",
+        "glb": "2cefbcf3d8d0dd74a06edb8f131ff0649d32656f9dc6eed768beceb9e72751d2"
+      },
+      "views": {
+        "low": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 12070,
+          "rgb_mae_0_255": 0.12253521126760564,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 11492,
+          "gaussian_expected_vs_glb_depth_mm_median": 13.158321380615234,
+          "gaussian_expected_vs_glb_depth_mm_p95": 22.687721252441392,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 4.349696678638255,
+            "target": [
+              0,
+              -0.0006639547646045685,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 8907,
+              "median_mm": 12.57181167602539,
+              "p95_mm": 19.005823135375977
+            },
+            "pit_or_crack": {
+              "pixels": 2585,
+              "median_mm": 16.762971878051758,
+              "p95_mm": 27.74734497070312
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0
+        },
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 37017,
+          "rgb_mae_0_255": 0.105429037109076,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 36475,
+          "gaussian_expected_vs_glb_depth_mm_median": 3.170013427734375,
+          "gaussian_expected_vs_glb_depth_mm_p95": 4.288196563720703,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 4.349696678638255,
+            "target": [
+              0,
+              -0.0006639547646045685,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 27928,
+              "median_mm": 3.173947334289551,
+              "p95_mm": 4.068851470947266
+            },
+            "pit_or_crack": {
+              "pixels": 8547,
+              "median_mm": 3.1456947326660156,
+              "p95_mm": 5.400705337524414
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0
+        },
+        "top": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 47041,
+          "rgb_mae_0_255": 0.09524315667892547,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 46546,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.07200241088867188,
+          "gaussian_expected_vs_glb_depth_mm_p95": 1.1539459228515625,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 4.349696678638255,
+            "target": [
+              0,
+              -0.0006639547646045685,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 35681,
+              "median_mm": 0.05626678466796875,
+              "p95_mm": 0.263214111328125
+            },
+            "pit_or_crack": {
+              "pixels": 10865,
+              "median_mm": 0.5574226379394531,
+              "p95_mm": 1.8977165222167964
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0
+        }
+      }
+    },
+    "P90": {
+      "method": "实拍 RGB",
+      "gaussians": 552953,
+      "sources": {
+        "ply": "30b57c77f3c5d862a12465edfda7bc2d45f6951d61a32f06a152d80bf54802a3",
+        "glb": "4a1a271eef3c28ea02768874971896f0c5877ef012502d9485ce1973f843bd27"
+      },
+      "views": {
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 219130,
+          "rgb_mae_0_255": 0.1427904288169884,
+          "rgb_error_p95_0_255": 0.6666666666666666,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 217201,
+          "gaussian_expected_vs_glb_depth_mm_median": 2.231717109680176,
+          "gaussian_expected_vs_glb_depth_mm_p95": 3.211498260498047,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 2.072255425541145,
+            "target": [
+              0,
+              -0.05586856394074857,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 180239,
+              "median_mm": 2.262711524963379,
+              "p95_mm": 3.070354461669922
+            },
+            "pit_or_crack": {
+              "pixels": 36962,
+              "median_mm": 1.7513632774353027,
+              "p95_mm": 5.194091796874995
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0
+        }
+      }
+    },
+    "model_raised_rectangular_removed_side_chip_seal": {
+      "method": "程序化",
+      "gaussians": 122000,
+      "sources": {
+        "ply": "463b750da494594507c36e38accd5ffb35790dd25e2daaf45f5d6e6a473ec07b",
+        "glb": "eda4d680679122d56ccfa19203d384f0d3dc07d642957dd420d87d5df2b90b17"
+      },
+      "views": {
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 208068,
+          "rgb_mae_0_255": 0.07206137737021873,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 0.9999858794291524,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 206253,
+          "gaussian_expected_vs_glb_depth_mm_median": 6.787300109863281,
+          "gaussian_expected_vs_glb_depth_mm_p95": 10.522460937499998,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0.3141592653589793,
+            "phi": 0.8552113334772214,
+            "radius": 2.7794874585131435,
+            "target": [
+              0.4023110866546631,
+              -0.029000001028180122,
+              -0.06099778413772583
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "Access rung 1": {
+              "pixels": 727,
+              "median_mm": 5.789041519165039,
+              "p95_mm": 9.742832183837887
+            },
+            "Access rung 2": {
+              "pixels": 590,
+              "median_mm": 6.024599075317383,
+              "p95_mm": 159.8432785034163
+            },
+            "Access rung 3": {
+              "pixels": 264,
+              "median_mm": 6.889939308166504,
+              "p95_mm": 860.1857147216795
+            },
+            "apron": {
+              "pixels": 151541,
+              "median_mm": 6.771087646484375,
+              "p95_mm": 9.497404098510742
+            },
+            "cover": {
+              "pixels": 24194,
+              "median_mm": 6.575822830200195,
+              "p95_mm": 8.543014526367188
+            },
+            "rim": {
+              "pixels": 14561,
+              "median_mm": 6.607770919799805,
+              "p95_mm": 13.710975646972656
+            },
+            "wall": {
+              "pixels": 14376,
+              "median_mm": 8.109450340270996,
+              "p95_mm": 80.97946548461914
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.00811139716755635
+        }
+      }
+    },
+    "rgbd_pothole_20250227_135438": {
+      "method": "实拍 RGB-D",
+      "gaussians": 111429,
+      "sources": {
+        "ply": "9bc3f1d020ff31cc121fbfe7c12361a078cc92ff8503455f90361858734cea5a",
+        "glb": "1bb4551b9fbb8acfb6ca6122e0a50ae4c35bffbfcdcd5aaff2da819a231ab201"
+      },
+      "views": {
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 47384,
+          "rgb_mae_0_255": 0.14802464967077492,
+          "rgb_error_p95_0_255": 0.6666666666666666,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 47382,
+          "gaussian_expected_vs_glb_depth_mm_median": 1.97601318359375,
+          "gaussian_expected_vs_glb_depth_mm_p95": 3.0646204948425284,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 2.293877436792802,
+            "target": [
+              0,
+              -0.030782827641814947,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "geometry_0": {
+              "pixels": 47382,
+              "median_mm": 1.97601318359375,
+              "p95_mm": 3.0646204948425284
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0
+        }
+      }
+    },
+    "stereo_pothole_fan_1_03": {
+      "method": "实拍双目",
+      "gaussians": 44082,
+      "sources": {
+        "ply": "17468ea2b3d53cd0cf710eb8afcdf23d6f84a6eb70ac06c219cbeca4c256da7a",
+        "glb": "68a53470ed75eeca90a6c4204d420272ef1a1ab2cec8f4cea8934d3d9c12488a"
+      },
+      "views": {
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 42024,
+          "rgb_mae_0_255": 0.15172282505235105,
+          "rgb_error_p95_0_255": 0.6666666666666666,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 41950,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.5263984203338623,
+          "gaussian_expected_vs_glb_depth_mm_p95": 4.421435403823823,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 0.44668329392284045,
+            "target": [
+              0,
+              -0.021658327896147966,
+              -0.022958824411034584
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "geometry_0": {
+              "pixels": 41950,
+              "median_mm": 0.5263984203338623,
+              "p95_mm": 4.421435403823823
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0014302741358760429
+        }
+      }
+    }
+  }
+}
