@@ -880,7 +880,9 @@
           "url": "https://drive.google.com/file/d/1XBtMIdMabnGMd502mOyxQ-jORPpj5vKn/view?usp=drivesdk",
           "sha256": "702f2cd13b8df320f860a4697413206a1e2121445c4a7cd4e78ff1af4db14696"
         }
-      ]
+      ],
+      "cloud_size_verified": true,
+      "cloud_hash_verified": true
     }
   ],
   "drive_folder_url": "https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_",

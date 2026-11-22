@@ -70,12 +70,18 @@ python gen2hole/gen2hole.py verify --run runs/three-assets
 python gen2hole/gen2hole.py build --all --out runs/all-generated
 ~~~
 
+如果通过浏览器下载了分卷，把 `part-00` 至 `part-28` 对应的原名文件放入 `downloads/roadgs-generated-inputs-109.zip.parts/`，再执行同一条 `fetch` 命令。完整 ZIP 为 471,110,229 字节，SHA-256 为 `9ed232597b6c5c0913e5516994fff1a9b3a16e7c42e3ce196b0138b8b97035a6`。
+
 默认复用保存的拟合参数与相对深度。要从相同原始 RGB 重算，运行下面的命令。推理脚本将模型固定在提交 `5426e4f0f36572d16453bbda7a8389317b1bef99`。第一次从 Hugging Face 获取权重。离线机器可用 `--model` 指向包含完整权重、配置和预处理器的本地目录。重算后可与各件 `checks.json` 和归档输入指纹比较。[深度推理源码](../gen2hole/recipes/common/estimate_depth.py) · [输入 SHA-256](../gen2hole/catalog/inputs.sha256)
 
 ~~~bash
 python gen2hole/gen2hole.py build P13 M13 A13 --from-images \
   --model depth-anything/Depth-Anything-V2-Small-hf --preview --out runs/three-from-rgb
 ~~~
+
+历史发布的 A06、A09、A12、A17、A20、A23 使用较早的平移盖板取样参数。六件的盖面纹理裁切比例为 0.985，路面擦除的归一化半径为 1.075，过渡宽度为 0.055。统一入口按发布编号恢复这些参数，保存拟合和从 RGB 重新拟合两条路径共用同一设置。[逐件参数与发布指纹](../gen2hole/catalog/assets.json)
+
+要同时核验原图、校准和官方模型，下载固定提交的 `model.safetensors` 到 `gen2hole/models/depth-anything-v2-small/`，保留 Git 随附的两份模型配置。运行 `python gen2hole/gen2hole.py audit` 会对 302 个归档输入逐项验证 SHA-256。权重为 99,173,660 字节，SHA-256 为 `3152477ce0d8d6978d76b995120de97cb5b928701fd0f817769f59e249a16b70`。[上游固定版本权重](https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf/resolve/5426e4f0f36572d16453bbda7a8389317b1bef99/model.safetensors)
 
 自带照片可从以下入口开始，每次选一个新的输出目录。单张 RGB 可修改粗框、轮廓和设计尺度。RGB-D 需要同一机位配准的 RGB、光轴深度、掩膜、相机内参与深度单位。两张 RGB 需要对应照片、标尺和掩膜。多帧拟合和留出评估使用不同帧。[单图 RGB 样例](../gen2hole/docs/new-assets.md) · [自带 RGB-D 命令](02-asset-reconstruction.md#自带-rgb-d-文件) · [双张 RGB 输入格式](../gen2hole/examples/photo-parallax/files-example.json) · [多帧输入格式](../gen2hole/examples/multiview-potholes/files-example.json)
 
@@ -136,3 +142,11 @@ python scripts/check-pit-transfer.py --run "$run" --out "$run/transfer.json"
 GitHub 可直接预览下列图版。离线交互图谱从本地模型、相机画面和已有的运行目录构建，完整图谱需要对应的数据树。对单项复建可以直接查看输出的 GLB、预览和传感器记录。[资产与驾驶画面总览](figures/road-asset-portfolio.jpg) · [P154 实拍与道路对照](figures/displaced-paver.jpg) · [六边形井盖四态](figures/hexagonal-cover.jpg)
 
 历史 1,199 件资产走 055/056 的联合场景入口。先恢复 `scenes-055-056` 和仅含 8 件资产的 `sample-scene-001` 即可跑最小组。程序化工厂和 034/109/110 的五类组合有单独的分组计划和冷启动重载步骤。接入新宿主需要动态检查点、标定、相机和道路几何，然后按新宿主重建锚点与缓存。[055/056 最小联合迁入](04-scene-insertion.md) · [工厂迁入](10-factory.md#迁入) · [历史交付与数据版本](12-integration.md)
+
+### 接入自己的道路
+
+1. **先确定宿主表示。** 普通网格引擎可直接导入带材质的 GLB，并在路面网格上做开口。要沿用本项目的动态相机与 Gaussian 渲染，先准备能由 StreetCrafter 重载的宿主检查点、标定、车辆位姿、帧号和前景实例。要回放实车 LiDAR，还需要原始发射器位置、逐点时间和回波记录。
+2. **在目标道路上测锚点。** 在一块覆盖资产占地的实测路面上拟合局部平面，记录 `center_world`、`basis_columns`、支持点数、平面拟合残差和参考帧。固定此基底即可在同位置切换掀盖、缺盖或沉降状态。现有计划的 `slots_by_site` 按道路保存锚点，`drive_start_by_site` 记录对应的轨迹起始帧。[计划字段与实值样例](../catalog/factory-v3-plan.json)
+3. **用同一次刚体变换放置几何。** 若读入的顶点采用 glTF 原始轴向，先将 `(x, y, z)` 转成资产局部的 `(x, -z, y)`。PLY 已处于资产局部 Z-up 坐标。用列向量计算 `p_world = basis_columns @ p_local + center_world`，距离单位均为米。网格引擎若已在导入时转换坐标轴，此处直接使用转换后的坐标。Gaussian 还需旋转朝向与方向相关的球谐系数。[变换、外观和边缘融合源码](../gen2hole/downstream/native_entry.py)
+4. **处理宿主路面。** 按局部切口清除会遮住病害的原路面几何或背景高斯，在坑缘过渡带保留连续的路面外观。盖板、井圈、井筒等多层表面用 GLB 做可见性与最近交点查询。检查斜向低机位能否从开口看见井壁，同时保留更近的人、车和遮挡物。[宿主背景处理](../scripts/hazard_factory/migrate.py) · [射线与部件实现](../gen2hole/downstream/sensors/road_geometry.py)
+5. **核验后再导出。** 先检查同一机位迁入前后图、切口边缘和资产尺寸，再重新加载保存的场景，比较回放像素。复用传感器链时，按同一束激光和时间检查首个命中的部件、距离和新旧回波。内置放置命令接受 `034/109/110`。接入新的道路 ID 时需要给它配置场景、锚点和传感器适配，并用自己的数据验证。已有的 055/056 道路使用上面的历史联合场景入口。

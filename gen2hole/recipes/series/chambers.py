@@ -144,7 +144,8 @@ def lid_model(mesh,key,cfg,img,szx,szy):
         t=rx+x
         return np.stack([hinge_x+t*np.cos(angle)-z*np.sin(angle),hinge_y+y,dz+t*np.sin(angle)+z*np.cos(angle)],-1)
     xx, yy = np.meshgrid(np.linspace(-1,1,1024),np.linspace(1,-1,1024))
-    pix=top_uv(xx*.80,yy*.89) if kind=='side_hinge' else top_uv(xx*.975,yy*.975)
+    scale=cfg.get('offset_sampling', {}).get('lid_scale', .975)
+    pix=top_uv(xx*.80,yy*.89) if kind=='side_hinge' else top_uv(xx*scale,yy*scale)
     if cfg.get('closed_seat'):
         pix=top_uv(xx,yy)
     face_img=lookup(img,pix[:,:,0],pix[:,:,1])
@@ -250,7 +251,8 @@ def build(mesh, key, cfg, layout, grain_atlas):
                 # Remove the photographed plate and hinge from the planar apron before adding the solid.
                 erase=smooth(np.minimum((rx*1.44-abs(px-lx))/5.,(ry*1.12-abs(py-ly))/6.))
             else:
-                erase=smooth((1.115-q)/.070)
+                sampling=cfg.get('offset_sampling', {})
+                erase=smooth((sampling.get('erase_radius', 1.115)-q)/sampling.get('erase_feather', .070))
         else:
             q=np.asarray(lid['quad'])
             left,right=min(cx-ex,q[:,0].min())-36,max(cx+ex,q[:,0].max())+36

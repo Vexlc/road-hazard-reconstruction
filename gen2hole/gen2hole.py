@@ -240,6 +240,15 @@ def build_edition(bundle, edition, rows, args, cfg):
             run_step(compute, code / "fit_images.py", ["--redo", *needed], env)
         elif pits:
             run_step(compute, code / "trace_masks.py", pits, env)
+    # Early displaced covers were exported before the image sampling margins changed.
+    # Apply their archived settings after both saved-fit and from-image calibration.
+    archived_sampling = {r["key"]: r["offset_sampling"] for r in rows if "offset_sampling" in r}
+    if archived_sampling:
+        layout_path = bundle / "calibration/layout.json"
+        layout = load(layout_path)
+        for key, sampling in archived_sampling.items():
+            layout[key]["offset_sampling"] = sampling
+        save(layout_path, layout)
     cache = bundle / "mesh_cache"
     run_step(mesh, code / "build.py", ["--edition", edition, "--cache", cache, *keys], env)
     if not args.mesh_only:
