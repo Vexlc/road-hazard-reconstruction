@@ -411,6 +411,29 @@ def pit_road_views(run):
     return shots
 
 
+def attach_depth_audits(key, row, depth_evidence):
+    audits = {}
+    for base, geometry, result in depth_evidence:
+        depth = result.get(key)
+        if not row.get('gaussianSources') or not depth or depth.get('sources') != row['gaussianSources']:
+            continue
+        for mode in ('oblique','top','low','socket'):
+            measurement = depth['views'].get(mode)
+            if not measurement:
+                continue
+            stem = key + '-' + mode
+            mesh, cloud, difference = base/(stem+'-mesh.png'), base/(stem+'-gaussian.png'), geometry/(stem+'.png')
+            if not all(path.is_file() for path in (mesh,cloud,difference)):
+                continue
+            audits[mode] = dict(mode=mode, camera=measurement['camera'], mesh=link(mesh),
+                gaussian=link(cloud), difference=link(difference),
+                parts=measurement['depth_by_first_mesh_part'], pixels=measurement['shared_opaque_front_pixels'],
+                median=measurement['gaussian_expected_vs_glb_depth_mm_median'],
+                p95=measurement['gaussian_expected_vs_glb_depth_mm_p95'])
+    if audits:
+        row['gaussianAudit'] = [audits[m] for m in ('oblique','top','low','socket') if m in audits]
+
+
 def faulted_slabs():
     run = ROOT/'runs/concrete-slab'
     if not run.is_dir():
@@ -419,6 +442,12 @@ def faulted_slabs():
     results = read(evidence/'measurements.json')
     states = {'P144':'原位','P145':'凸起','P146':'下沉','P147':'脱落'}
     shots = pit_road_views(run)
+    detail = ROOT/'runs/slab-edge-sampling'
+    check_file = detail/'series/checks.json'
+    checked = read(check_file) if check_file.is_file() else {}
+    detail_shots = pit_road_views(detail) if (detail/'sensors/checks/camera_audit.json').is_file() else {}
+    detail_views = detail/'evaluation/previews/views.json'
+    detail_previews = read(detail_views) if detail_views.is_file() else {}
     rows = {}
     for meta in read(bundle/'assets/asset_manifest.json'):
         key = meta['id']
@@ -447,6 +476,23 @@ def faulted_slabs():
                        ('原图闭合边界',evidence/'outline.jpg','青线为提取的碎板，黄线为网格截线。'),
                        ('独立碎板',evidence/'block.jpg','单独提取的完整碎板，断面与厚度采用设计值。'),
                        ('实体截面',evidence/key/'section.jpg','绿线为扫描顶面，棕线为板底、断面及基层。')]])
+        if key in checked:
+            cert = checked[key]
+            hashes = cert['sha256']
+            if hashes['asset.glb'] != proof['glb_sha256']:
+                raise ValueError('Edge-sampled cloud has a different mesh for '+key)
+            assets = detail/'series/assets/pothole'/key
+            variant = dict(ply=link(assets/'asset.ply'), metadata=link(assets/'metadata.json'),
+                           gaussians=cert['gaussians'], gaussianSources=dict(glb=hashes['asset.glb'],ply=hashes['asset.ply']),
+                           gaussianPreview=None, gaussianAudit=None, scenes=detail_shots.get(key,[]))
+            if detail_previews.get(key,{}).get('ply_sha256') == hashes['asset.ply']:
+                variant['gaussianPreview'] = link(detail_views.parent/(key+'.webp'))
+            for shot in row['scenes']:
+                shot.update(sampling='area',shotLabel=shot['label'],label=shot['label']+' · 面积采样')
+            for shot in variant['scenes']:
+                shot.update(sampling='edges',shotLabel=shot['label'],label=shot['label']+' · 断边加密')
+            row['scenes'] = variant['scenes'] + row['scenes']
+            row['edgeSampling'] = variant
         rows[key]=row
     return rows
 
@@ -841,6 +887,10 @@ def main():
     slab_folder = ROOT/'runs/concrete-slab/evaluation'
     slab_report = ROOT/'validation/atlas-slab-gaussians.json'
     slab_checks = read(slab_report)['browser_vs_cuda_and_glb'] if slab_report.is_file() else {}
+    edge_folder = ROOT/'runs/slab-edge-sampling/evaluation'
+    edge_report = ROOT/'validation/atlas-slab-edge-gaussians.json'
+    edge_checks = read(edge_report)['browser_vs_cuda_and_glb'] if edge_report.is_file() else {}
+    edge_evidence = [(edge_folder/'browser', edge_folder/'gaussian-depth', edge_checks)]
     depth_evidence = [(slab_folder/'browser', slab_folder/'gaussian-depth', slab_checks),
                       (audit_folder/'browser', audit_folder/'geometry', checks),
                       (pit_geometry/'browser', pit_geometry/'geometry', pit_depths),
@@ -881,26 +931,9 @@ def main():
                     fullBefore=link(JOINT/f"original_{site}_{n}.jpg"), fullAfter=link(JOINT/vehicle['case']/f"drive_{n}.jpg"),
                     note=f"实车标定机位的场景渲染。标注坑面有 {shot['eligible_pixels']:,} 个可核验像素，其中 {shot['changed_pixels']:,} 个出现可辨变化。点图查看完整前视画面。"))
             row['scenes'][:0] = frames
-        audits = {}
-        for base, geometry, result in depth_evidence:
-            depth = result.get(row['id'])
-            if not row.get('gaussianSources') or not depth or depth.get('sources') != row['gaussianSources']:
-                continue
-            for mode in ('oblique','top','low','socket'):
-                measurement = depth['views'].get(mode)
-                if not measurement:
-                    continue
-                stem = row['id'] + '-' + mode
-                mesh, cloud, difference = base/(stem+'-mesh.png'), base/(stem+'-gaussian.png'), geometry/(stem+'.png')
-                if not all(path.is_file() for path in (mesh,cloud,difference)):
-                    continue
-                audits[mode] = dict(mode=mode, camera=measurement['camera'], mesh=link(mesh),
-                    gaussian=link(cloud), difference=link(difference),
-                    parts=measurement['depth_by_first_mesh_part'], pixels=measurement['shared_opaque_front_pixels'],
-                    median=measurement['gaussian_expected_vs_glb_depth_mm_median'],
-                    p95=measurement['gaussian_expected_vs_glb_depth_mm_p95'])
-        if audits:
-            row['gaussianAudit'] = [audits[m] for m in ('oblique','top','low','socket') if m in audits]
+        attach_depth_audits(row['id'], row, depth_evidence)
+        if 'edgeSampling' in row:
+            attach_depth_audits(row['id'], row['edgeSampling'], edge_evidence)
         pit = row['id'] in pit_checks
         road = (pit_checks if pit else road_checks).get(row['id'])
         if road and row.get('gaussianSources') == road['sources']:
@@ -928,7 +961,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["P145","P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

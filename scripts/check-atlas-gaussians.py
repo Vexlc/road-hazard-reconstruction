@@ -164,6 +164,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--captures', type=Path, required=True)
     parser.add_argument('--ids', nargs='+', help='Audit these captured assets and verify the full preview inventory')
+    parser.add_argument('--edge-sampling', action='store_true', help='Audit the dense edge-sampled PLY variants')
     parser.add_argument('--previews', type=Path, default=ROOT / 'runs/atlas-gaussians')
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--evidence', type=Path, default=ROOT / 'runs/atlas-gaussian-checks/geometry')
@@ -185,6 +186,8 @@ def main():
     result = {}
     for key, shots in by_key.items():
         row = rows[key]
+        if args.edge_sampling:
+            row = {**row, **row['edgeSampling']}
         state = load(row)
         scene = read_surface(ATLAS / row['glb'])
         measures = {}

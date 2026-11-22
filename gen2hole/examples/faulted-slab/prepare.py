@@ -9,7 +9,7 @@ import numpy as np
 from PIL import Image
 
 
-def prepare(parent, survey, dest):
+def prepare(parent, survey, dest, sampling='edges'):
     base = survey['parent']
     spec = next(r for r in json.loads((parent / 'calibration/designs.json').read_text()) if r['id'] == base)
     x, y, n = survey['crop_col_row_intervals']
@@ -61,6 +61,8 @@ def prepare(parent, survey, dest):
             origin_col_row=np.add(spec['origin_col_row'], [x, y]).tolist(),
             slab=dict(params, offset_m=state['offset_m']),
         )
+        if sampling == 'edges':
+            spec_out['slab']['splat_sampling'] = 'edges'
         designs.append(spec_out)
         color.save(ref / (key + '.png'))
         mask.save(cal / (key + '_outline.png'))
@@ -73,11 +75,17 @@ if __name__ == '__main__':
     parser.add_argument('--parent', type=Path, required=True, help='Prepared scanned-cracks input root')
     parser.add_argument('--survey', type=Path, default=Path(__file__).with_name('survey.json'))
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument(
+        '--splat-sampling',
+        choices=('edges', 'area'),
+        default='edges',
+        help='Resolve slab edges or reproduce the original area-sampled cloud',
+    )
     args = parser.parse_args()
     if args.out.exists() or args.out.is_symlink():
         parser.error('Choose a new output directory')
     args.out.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(dir=args.out.parent) as tmp:
         stage = Path(tmp) / 'inputs'
-        prepare(args.parent, json.loads(args.survey.read_text()), stage)
+        prepare(args.parent, json.loads(args.survey.read_text()), stage, args.splat_sampling)
         stage.rename(args.out)

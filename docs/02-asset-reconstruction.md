@@ -399,7 +399,7 @@ work/envs/streetcrafter/bin/python scripts/render-scanned-cracks.py --run "$run"
 
 ## 原始高斯资产与网格的同机位对照
 
-图谱收录的 1,395 个 PLY 共有 196,035,569 个高斯。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
+主目录的 1,395 个 PLY 共有 196,035,569 个高斯。四个碎板状态还提供断边加密 PLY，复用同编号的网格。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
 
 浏览器按 PLY 中的三轴对数尺度、WXYZ 四元数和不透明度恢复各向异性高斯。渲染使用完整点集和原始一阶球谐颜色，按当前透视机位投影协方差、补偿屏幕滤波造成的不透明度变化，再按深度合成。能写入半浮点缓冲区的设备使用 16 位浮点颜色累积。GPU 与浏览器共享米制尺度，原始 PLY 为 Z 向上，GLB 为 Y 向上。[gsplat 光栅化说明](https://docs.gsplat.studio/main/apis/rasterization.html)
 
@@ -415,7 +415,7 @@ python scripts/serve-asset-atlas.py
 
 「核对高斯与网格的深度」提供固定机位的网格、高斯和像素级绝对差。网格深度取射线首次命中的正面。高斯深度为沿光线的透明度加权期望。图中计入不透明度大于 85%、共同命中且远离网格轮廓的像素。可将统计范围切换到井圈、井壁、盖板、水面或周边路面。数字描述两种资产表示的一致程度。[逐机位与逐部件核验](../validation/atlas-gaussians.json)
 
-浏览器解码器已逐个读入并排序全库 1,395 个 PLY。四批覆盖 12 种来源或重建方法的样本共有 34 件资产、102 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json) · [碎板四态的 16 组同机位对照](../validation/atlas-slab-gaussians.json)
+浏览器解码器已逐个读入并排序全库 1,395 个 PLY。四批覆盖 12 种来源或重建方法的样本共有 34 件资产、102 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json) · [碎板四态的 16 组同机位对照](../validation/atlas-slab-gaussians.json) · [同组机位的加密采样对照](../validation/atlas-slab-edge-gaussians.json)
 
 矩形敞井 M11 的低角度画面中，井圈、井壁和周边路面的差异相距很大。GLB 的路面网格遮住地下结构，独立高斯资产的路面边缘逐渐透明，部分像素仍收到地下井壁的颜色与深度。迁入画面使用宿主路面和遮挡几何。可对照俯视、斜视和低角度三组图，区分部件本身和道路过渡区的贡献。[敞井深度图版](figures/gaussian-shaft-depth.jpg)
 
@@ -539,17 +539,17 @@ P144–P147 共用 P135 实拍扫描中的一块混凝土。从 0.75 米见方�
 
 四态各按原尺寸迁到 PandaSet 034 和 109 的同一位置，合计八次放置、16 个标定前后视机位和 640 个放置扫描帧。034 前视第 30 帧中，碎板断面的可见面积从原位的 68 个像素增至凸起时的 617 个像素。碎板下沉时能看到 408 个槽壁像素，脱落后能看到 231 个基层像素。034 路段共有 477 束激光在原位和凸起状态下都得到模拟回波，其中 270 束的量程相差超过 10 毫米。[两段道路的实拍与部件标记](figures/faulted-slab-roads.jpg) · [相机像素与共同模拟回波](../validation/concrete-slab-visibility.json) · [迁移与原位重载](../validation/concrete-slab-transfer.json)
 
-独立高斯与网格各核验了俯视、斜视、低角度和板缝特写四种机位。P145 的板顶在俯视时有 11,882 个共同不透明像素，高斯期望深度与网格首交深度的中位绝对差为 0.24 毫米，低角度时为 8.27 毫米。透过同一板边的狭缝俯视时，48 个首先命中基层的共同像素中位差达到 119.29 毫米。尺寸和狭缝测量可直接在 GLB 上读取，图谱保留逐部件的两种表示对照。[四个机位与部件深度差](http://127.0.0.1:8765/tools/asset_atlas/splats.html#P145) · [逐部件核验数字](../validation/atlas-slab-gaussians.json)
+原始面积采样的高斯与网格各核验了俯视、斜视、低角度和板缝特写四种机位。P145 的板顶在俯视时有 11,882 个共同不透明像素，高斯期望深度与网格首交深度的中位绝对差为 0.24 毫米，低角度时为 8.27 毫米。透过同一板边的狭缝俯视时，48 个首先命中基层的共同像素中位差达到 119.29 毫米。尺寸和狭缝测量可直接在 GLB 上读取，图谱保留逐部件的两种表示对照。[四个机位与部件深度差](http://127.0.0.1:8765/tools/asset_atlas/splats.html#P145) · [逐部件核验数字](../validation/atlas-slab-gaussians.json)
 
-点「放大板缝」后，四态共用相同的光轴、焦距与拍摄距离。以 0.05 毫米间距横穿模型中的这条缝，测得局部开口约 3.95 毫米。设计间隙经 3.91 毫米的网格离散后，各处实际开口取决于边界走向。特写图中有 3,289 个像素在四态都首先命中同一处基层，比较透明度超过 85% 的高斯期望深度与网格交点，凸起态的中位绝对差为 83.3 毫米，移走碎板后为 47.2 毫米。图中保留了窄缝处高斯把多个深度混合的结果。[四态同位特写](figures/concrete-slab-clearance.jpg) · [打开交互特写](http://127.0.0.1:8765/tools/asset_atlas/splats.html?detail=socket#P145) · [共同基层射线](../validation/concrete-slab-clearance.json)
+点「放大板缝」后，四态共用相同的光轴、焦距与拍摄距离。以 0.05 毫米间距横穿模型中的这条缝，测得局部开口约 3.95 毫米。设计间隙经 3.91 毫米的网格离散后，各处实际开口取决于边界走向。特写图中有 3,289 个像素在四态都首先命中同一处基层，比较透明度超过 85% 的原始面积采样的高斯期望深度与网格交点，凸起态的中位绝对差为 83.3 毫米，移走碎板后为 47.2 毫米。图中保留了窄缝处高斯把多个深度混合的结果。[四态同位特写](figures/concrete-slab-clearance.jpg) · [打开原始采样特写](http://127.0.0.1:8765/tools/asset_atlas/splats.html?sampling=area&detail=socket#P145) · [共同基层射线](../validation/concrete-slab-clearance.json)
 
-复现时先按「从道路扫描重建裂缝」准备源图和配准输入，以下的 `parent` 指向该节生成的输入目录。四个状态共享这一份裁切。
+复现原始面积采样时，先按「从道路扫描重建裂缝」准备源图和配准输入，以下的 `parent` 指向该节生成的输入目录。四个状态共享这一份裁切。
 
 ~~~bash
 parent=work/prepared-crack-demo
 prep=work/prepared-slab-demo
 run=work/slab-demo
-work/envs/assets/bin/python gen2hole/examples/faulted-slab/prepare.py --parent "$parent" --out "$prep"
+work/envs/assets/bin/python gen2hole/examples/faulted-slab/prepare.py --splat-sampling area --parent "$parent" --out "$prep"
 python gen2hole/gen2hole.py build --inputs "$prep" --preview --out "$run" P144 P145 P146 P147
 work/envs/streetcrafter/bin/python scripts/check-faulted-slab.py --run "$run" --parent "$parent" --out "$run/evaluation/measurements.json"
 work/envs/assets/bin/python scripts/render-faulted-slab.py --run "$run" --out "$run/model.jpg"
@@ -569,6 +569,36 @@ ev=work/slab-view-check/evaluation
 node scripts/capture-atlas-gaussians.cjs "$ev/browser" P144 P145 P146 P147
 CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/check-atlas-gaussians.py --captures "$ev/browser" --ids P144 P145 P146 P147 --evidence "$ev/geometry" --out "$ev/gaussians.json"
 CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/check-slab-clearance.py --run work/slab-view-check --out "$ev/clearance.json" --figure "$ev/clearance.jpg"
+~~~
+
+### 用更密的高斯重建板缝
+
+新建碎板输入默认采用断边加密。在距离板边或坑槽边约两个网格间距的范围内，把顶面三角形等面积细分，重新从原纹理取色。在竖直断面内沿周界和深度分别分层采样，把高斯沿断面法线的标准差减到约 0.031 毫米，减轻窄缝上方的颜色与深度混合。两个版本的 GLB、路面场逐字节相同。四态共有 606,956 个原始高斯在加密区域以外保留了各自的位置、协方差、透明度、材质标签和环境可见性。重新准备原图与掩膜，从头构建两种采样，每种各 20 个交付文件的 SHA-256 均与相应初次构建一致。带纹理网格、面积采样 PLY、加密 PLY 可从同一条目下载。在 3DGS 页切换采样可保持相机位置、缩放及所选道路观测。[打开碎板特写](http://127.0.0.1:8765/tools/asset_atlas/splats.html?sampling=edges&detail=socket#P145)
+
+| 状态 | 高斯点数，面积采样 → 断边加密 | 首个机位的基层深度中位绝对差 |
+| --- | ---: | ---: |
+| P144 原位 | 263,315 → 838,163 | 77.0 → < 0.01 mm |
+| P145 凸起 | 281,851 → 889,966 | 83.3 → < 0.01 mm |
+| P146 下沉 | 259,661 → 806,287 | 61.9 → 0.16 mm |
+| P147 脱落 | 259,474 → 489,732 | 47.2 → < 0.01 mm |
+
+表中固定使用原先选定的 3,289 条共同射线，逐条比较两种高斯与同一基层网格的光轴深度。沿板块周界按弧长均匀另取八个机位，共有 24,999 条共同基层射线。四态的加密高斯在各机位这些像素上的透明度均超过 85%。凸起态在八处的中位绝对差由 83.3–95.8 毫米降至 0.42 毫米以内。基层在模型中是平面，这些误差衡量对网格的复现。最靠近轮廓处仍会混入上层表面，原特写凸起态的第 95 百分位误差由 119.1 降至 67.7 毫米。[原色与深度误差图版](figures/concrete-slab-edge-sampling.jpg) · [九个机位、逐状态误差与点云指纹](../validation/concrete-slab-edge-sampling.json)
+
+两种采样均以原尺寸迁入 PandaSet 034 和 109。在八次对应放置中，相机与宿主曝光相同，16 幅标定前后视的网格部件、深度和遮挡掩膜逐像素相同。全部 3,376 行模拟激光修改记录也逐项相同。13,089 个命中碎板、槽壁或基层的车载像素，两个 PLY 重放后的 RGB 平均绝对差为 4.00 / 255。点云更密主要改善近看断边时的深度。[两种采样的同帧道路核验](../validation/concrete-slab-edge-transfer.json)
+
+下列命令从同一份扫描输入重建加密版。在 `gen2hole/downstream/place.py` 和 `simulate.py` 中使用新运行目录即可复现道路放置。两份运行都可独立通过 `gen2hole.py verify`。
+
+~~~bash
+work/envs/assets/bin/python gen2hole/examples/faulted-slab/prepare.py --parent work/prepared-crack-demo --out work/prepared-slab-edges-demo
+python gen2hole/gen2hole.py build --inputs work/prepared-slab-edges-demo --out work/slab-edges-demo P144 P145 P146 P147
+python gen2hole/gen2hole.py verify --run work/slab-edges-demo
+~~~
+
+本机图谱中的两份运行分别位于 `runs/concrete-slab` 和 `runs/slab-edge-sampling`。下方命令从原始 PLY 和已有网格重新计算九处截面的结果。浏览器的 16 个加密采样机位可用上节的捕获和核验命令复现，在两个命令中均加上 `--edge-sampling`，并为图片和报告指定新路径。
+
+~~~bash
+CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/check-edge-sampling.py --baseline runs/concrete-slab --fine runs/slab-edge-sampling --out work/check-edge-sampling.json --figure work/check-edge-sampling.jpg
+work/envs/assets/bin/python scripts/check-edge-transfer.py --baseline runs/concrete-slab --refined runs/slab-edge-sampling --out work/check-edge-transfer.json
 ~~~
 
 ## 同一车载机位比较不同资产

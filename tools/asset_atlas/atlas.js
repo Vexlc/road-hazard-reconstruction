@@ -42,8 +42,12 @@ function showScene() {
   }
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
   if (selected.blockModel) download("独立原位碎板 GLB",selected.blockModel);
+  if (selected.edgeSampling) {
+    download("断边加密 PLY",selected.edgeSampling.ply);
+    download("断边采样元数据",selected.edgeSampling.metadata);
+  }
   download("3DGS 与网格对照","splats.html#"+encodeURIComponent(selected.id));
-  for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.auditLabel || (selected.family ? "几何一致性核验" : "轮廓评估"),"audit"],[selected.scanLabel || "雷达核验","scan"],["实拍拟合记录","fit"],[selected.reprojectionLabel || "留出帧核验","reprojection"]])
+  for (const [name,key] of [["GLB","glb"],[selected.edgeSampling ? "原始面积采样 PLY" : "3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.auditLabel || (selected.family ? "几何一致性核验" : "轮廓评估"),"audit"],[selected.scanLabel || "雷达核验","scan"],["实拍拟合记录","fit"],[selected.reprojectionLabel || "留出帧核验","reprojection"]])
     if (selected[key]) download(name,selected[key]);
   const video = view?.video || selected.video;
   if (video) download("前视视频",video);
@@ -56,8 +60,9 @@ function showScene() {
 }
 function showModel() {
   const sectionLabel = selected.blockPreview ? "独立原位碎板 · GLB 斜视" : "井壁剖开 · GLB 固定机位";
-  const label = gaussian ? "原始 PLY · 高斯渲染" : cutaway ? sectionLabel : spinning ? "GLB · 环绕渲染" : selected.reverse ? (reverse ? "GLB · 背向斜视" : "GLB · 正向斜视") : "资产预览";
-  photo("model",gaussian ? selected.gaussianPreview : cutaway ? (selected.blockPreview || selected.cutaway) : spinning ? selected.orbit : reverse ? selected.reverse : selected.preview, selected.label+" "+label);
+  const gaussianLabel=selected.edgeSampling?.gaussianPreview ? "断边加密 PLY · 高斯渲染" : "原始 PLY · 高斯渲染";
+  const label = gaussian ? gaussianLabel : cutaway ? sectionLabel : spinning ? "GLB · 环绕渲染" : selected.reverse ? (reverse ? "GLB · 背向斜视" : "GLB · 正向斜视") : "资产预览";
+  photo("model",gaussian ? (selected.edgeSampling?.gaussianPreview || selected.gaussianPreview) : cutaway ? (selected.blockPreview || selected.cutaway) : spinning ? selected.orbit : reverse ? selected.reverse : selected.preview, selected.label+" "+label);
   el("modelLabel").textContent = label;
   el("representation").hidden = !selected.gaussianPreview;
   el("representation").textContent = gaussian ? "看网格渲染" : "看高斯渲染";
@@ -186,7 +191,8 @@ function inspect(id) {
   metric(selected.captureViews || selected.panelSize ? "设计井口宽 × 长（米）" : selected.scanGeometry ? "裂缝外接框宽 × 长（米）" : "宽 × 长（米）",selected.width.toFixed(2)+" × "+selected.length.toFixed(2));
   metric(selected.depthLabel+"（米）",selected.depth.toFixed(3));
   metric("三角面",selected.triangles.toLocaleString());
-  metric("高斯点",selected.gaussians.toLocaleString());
+  if (selected.edgeSampling) metric("高斯点（原始 / 断边加密）",selected.gaussians.toLocaleString()+" / "+selected.edgeSampling.gaussians.toLocaleString());
+  else metric("高斯点",selected.gaussians.toLocaleString());
   showModel();
   el("sourceView").replaceChildren(...(selected.sourceViews || []).map((v,i)=>new Option(v.label,String(i))));
   showSource();

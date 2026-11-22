@@ -48,10 +48,22 @@ def make_one(dest, cache):
     draws=qmc.Sobol(3,scramble=True,seed=meta['seed']).random_base2(int(np.ceil(np.log2(count))))[:count]
     faces=np.searchsorted(measure,draws[:,0]*measure[-1],side='right')
     s=np.sqrt(draws[:,1]); bary=np.stack([1-s,s*(1-draws[:,2]),s*draws[:,2]],1).astype('f4')
+    spacing=np.sqrt(measure[-1]/(count*weights[faces]))
+    scales=np.c_[.85*spacing,.85*spacing,np.full(len(spacing),.00039)]
+    retain=np.ones(len(faces),bool)
+    edge_sampling=meta.get('slab',{}).get('splat_sampling')=='edges'
+    if edge_sampling:
+        from slab_splats import refine
+        replace,extra,uv_weights,sigma=refine(tri,m['part_names'][m['face_part']],weights>0,meta['source_grid_pitch_m'])
+        retain=np.r_[~replace[faces],np.ones(len(extra),bool)]
+        faces=np.r_[faces,extra]
+        bary=np.vstack([bary,uv_weights])
+        scales=np.vstack([scales,sigma])
     xyz=np.einsum('nvc,nv->nc',tri[faces],bary)
     opacity=np.where(road[faces],at_surface(field['alpha'],xyz,w,l),1.)
     keep=opacity>.008
     faces,xyz,bary,opacity=faces[keep],xyz[keep],bary[keep],opacity[keep]
+    scales,retain=scales[keep],retain[keep]
     norm=unit(cross[faces])
     tan=unit(np.cross(np.broadcast_to([0,0,1.],norm.shape),norm))
     level=abs(norm[:,2])>.82
@@ -68,14 +80,18 @@ def make_one(dest, cache):
     geo=ray_scene({'vertices':v,'faces':f})
     ao=ray_ambient(geo,xyz,norm,tan,bitan,rng).astype('f4')
     direct=sun_visibility(geo,xyz,norm,[-.35,-.25,1])
-    spacing=np.sqrt(measure[-1]/(count*weights[faces]))
+    # Keep the original Sobol sample order through the lighting pass, including superseded samples.
+    # This preserves the visibility and appearance of every retained point when refining a boundary.
+    if not retain.all():
+        xyz,norm,tan,bitan,rgb,mat,ao,direct,faces,opacity,scales=(a[retain] for a in
+            (xyz,norm,tan,bitan,rgb,mat,ao,direct,faces,opacity,scales))
     names=m['part_names']; part=m['face_part'][faces]
     # Residual light in the photographed lining and the sky's diffuse bounce keep
     # the observed brick/concrete pattern legible in the low-order SH renderer.
     bounce=np.where(np.isin(part,np.flatnonzero(np.isin(names,['Inspection shaft','Shaft bottom']))),.17,.11)
     ambient=bounce+(1-bounce)*ao
     samples=dict(name=meta['id'],local_xyz=xyz,normals=norm,rotation_matrices=np.stack([tan,bitan,norm],-1),
-                 scales=np.c_[.85*spacing,.85*spacing,np.full(len(spacing),.00039)],alpha=opacity,
+                 scales=scales,alpha=opacity,
                  normal=(norm+1)/2,color=rgb,arm=np.c_[np.ones(len(mat)),m['parameters'][mat]],ao=ambient[:,None],
                  sun_visibility=direct,road_mask=road[faces].astype('f4'),geometric_ao=True)
     state,err=make_gaussians(samples)
@@ -83,7 +99,7 @@ def make_one(dest, cache):
     # Compact native material labels stay in splat order, including road points underneath a displaced cover.
     np.savez_compressed(dest/'splat_material.npz',road=road[faces],ambient_visibility=np.uint8(ao*255+.5),
                         part=part.astype('u1'),part_names=names)
-    meta.update(gaussians=len(faces),sh_degree=1,appearance_sh_fit_mae=err,gaussian_sigma_median_m=float(np.median(spacing)*.85))
+    meta.update(gaussians=len(faces),sh_degree=1,appearance_sh_fit_mae=err,gaussian_sigma_median_m=float(np.median(scales[:,0]) if edge_sampling else np.median(spacing[keep])*.85))
     (dest/'metadata.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2)+'\n')
     print(meta['id'],len(faces),'splats',flush=True)
     return meta

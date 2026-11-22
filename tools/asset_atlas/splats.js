@@ -133,13 +133,15 @@ function applyCamera(c) {
 }
 el("useAuditPose").onclick=()=>applyCamera(row?.gaussianAudit?.[Number(el("auditPose").value)]?.camera);
 el("slabDetail").onclick=()=>applyCamera(row?.slabDetailCamera);
-function setRoads() {
-  before=false;
+function setRoads(previousShot) {
+  if (!previousShot) before=false;
   const vehicle=s=>s.camera==="front" || s.camera==="back";
-  const shots=(row?.scenes || []).filter(s=>s.after && (vehicle(s) || !s.beforeLabel));
+  const shots=(row?.scenes || []).filter(s=>s.after && (!s.sampling || s.sampling===el("sampling").value) && (vehicle(s) || !s.beforeLabel));
   roads=[...shots.filter(vehicle),...shots.filter(s=>!vehicle(s))];
   el("roadPanel").hidden=!roads.length;
   el("roadShot").replaceChildren(...roads.map((s,i)=>new Option(s.label,String(i))));
+  const index=previousShot ? roads.findIndex(s=>s.shotLabel===previousShot) : -1;
+  if (index>=0) el("roadShot").value=String(index);
   showRoad();
 }
 function showRoad() {
@@ -177,7 +179,14 @@ async function prepareRoad(asset,epoch,host,trace) {
   el("hostControls").hidden=mode==="meshMode" || !orderReady;
   updateRoadRendering();
 }
-function start(selected,files={}) {
+function start(selected,files={},sampling=new URLSearchParams(location.search).get("sampling")) {
+  const sameAsset=Boolean(selected && selected.id===row?.id);
+  const previousShot=sameAsset ? roads[Number(el("roadShot").value)]?.shotLabel : null;
+  const requestedMode=sameAsset && !files.ply ? mode : "gaussian";
+  const useEdges=selected?.edgeSampling && sampling!=="area";
+  el("samplingControl").hidden=!selected?.edgeSampling || location.protocol==="file:";
+  el("sampling").value=useEdges?"edges":"area";
+  if (useEdges) selected={...selected,...selected.edgeSampling};
   const epoch=++selection;
   el("slabDetail").hidden=!selected?.slabDetailCamera;
   const family=Boolean(selected?.states?.includes(row?.id) && (!selected.scanGeometry || (selected.width===row.width && selected.length===row.length)));
@@ -209,7 +218,7 @@ function start(selected,files={}) {
   el("roadAudit").open=false;el("roadAudit").hidden=!row?.roadAudit;
   el("hostAuditPose").replaceChildren(...(row?.roadAudit || []).map((a,i)=>new Option(auditNames[a.mode],String(i))));
   for (const id of ["top","side","reset","useAuditPose","slabDetail"]) el(id).disabled=true;
-  setRoads();
+  setRoads(previousShot);
   if (!files.ply && (!row || location.protocol==="file:")) {
     message(row?"选择本机资产目录中的 asset.ply 即可查看。也可同时选择 asset.glb 做同机位对照。":"选择资产 PLY，或从资产图谱打开高斯视图。");
     return;
@@ -217,6 +226,9 @@ function start(selected,files={}) {
   try {
     if (!renderer) renderer=new GaussianRenderer(canvas);
   } catch (err) { fail(err.message);return; }
+  if (useEdges && !files.ply && sampling!=="edges" && row.gaussians*6>Math.min(4096,renderer.limit)*renderer.limit) {
+    start(inventory.get(row.id),{},"area");return;
+  }
   message("正在读取原始高斯参数…");
   const meshUrl=files.glb?localUrl(files.glb):(row && location.protocol!=="file:"?row.glb:null);
   if (meshUrl) viewer.src=meshUrl;
@@ -231,7 +243,7 @@ function start(selected,files={}) {
       bounds=[data.lo,data.hi];
       for (const id of ["top","side","reset","useAuditPose","slabDetail"]) el(id).disabled=false;
       if (!meshUrl || meshFailed) viewer.src=localUrl(boundsModel(...bounds));
-      hasMesh=Boolean(meshUrl) && !meshFailed;setMode(mode);
+      hasMesh=Boolean(meshUrl) && !meshFailed;setMode(hasMesh?requestedMode:"gaussian");
       const center=data.lo.map((v,i)=>(v+data.hi[i])/2);
       const size=Math.max(...data.hi.map((v,i)=>v-data.lo[i]));
       const span=row ? Math.max(row.width,row.length,(data.hi[2]>0.05?data.hi[2]:0)) : size;
@@ -295,13 +307,18 @@ el("files").onchange=async()=>{
     const [plySha,glbSha]=await Promise.all([fileDigest(ply[0]),glb[0]?fileDigest(glb[0]):null]);
     if (request!==fileRequest || active!==selection) return;
     // Prefer the active record if two entries share an identical PLY.
-    const match=row?.gaussianSources?.ply===plySha?row:Array.from(inventory.values()).find(r=>r.gaussianSources?.ply===plySha);
+    const activeRecord=inventory.get(row?.id);
+    const matches=r=>r?.edgeSampling?.gaussianSources.ply===plySha || r?.gaussianSources?.ply===plySha;
+    const match=matches(activeRecord)?activeRecord:Array.from(inventory.values()).find(matches);
+    const sampling=match?.edgeSampling?.gaussianSources.ply===plySha?"edges":"area";
     if (glbSha && match && match.gaussianSources.glb!==glbSha) {
       message("所选网格与 "+match.id+" 的文件指纹不同。可以单独打开 PLY，或同时选择该资产的 GLB。");
       return;
     }
-    history.replaceState(null,"",location.href.split("#")[0]+(match?"#"+encodeURIComponent(match.id):""));
-    start(match,{ply:ply[0],glb:glb[0]});
+    const url=new URL(location.href);url.hash=match?match.id:"";
+    if (match?.edgeSampling) url.searchParams.set("sampling",sampling);
+    history.replaceState(null,"",url);
+    start(match,{ply:ply[0],glb:glb[0]},sampling);
   } catch(err) {if (request===fileRequest && active===selection) message("无法读取所选文件。"+err.message);}
 };
 el("roadShot").onchange=()=>{before=false;showRoad();};
@@ -314,6 +331,10 @@ viewer.addEventListener("error",()=>{meshFailed=true;if (bounds && hasMesh) {
 canvas.addEventListener("webglcontextlost",event=>{event.preventDefault();fail("显存上下文已释放，重新载入后可继续查看。");});
 canvas.addEventListener("webglcontextrestored",()=>{renderer=null;openSelection();});
 new ResizeObserver(repaint).observe(viewer);
+el("sampling").onchange=()=>{
+  const url=new URL(location.href);url.searchParams.set("sampling",el("sampling").value);
+  history.replaceState(null,"",url);openSelection();
+};
 function openSelection() {start(inventory.get(decodeURIComponent(location.hash.slice(1))));}
 window.addEventListener("hashchange",openSelection);
 openSelection();

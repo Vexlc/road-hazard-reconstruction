@@ -1,0 +1,909 @@
+{
+  "native_transfer": {
+    "assets": {
+      "P144": {
+        "glb_sha256": "14c4915539225f2a9f90fdf8108e0771cb1d25dacbddbe984110b49453b72bb3",
+        "ply_sha256": "eb67e282bc12bc3191f33002cab25ce9d2606bc98f9f9d45fb43b73c7743f752",
+        "sites": [
+          "034",
+          "109"
+        ]
+      },
+      "P145": {
+        "glb_sha256": "8d8e81117a107910324470d937143c7727a32982d7ab9e9bb611a928f4eedc1c",
+        "ply_sha256": "81df15f0e8d48382af0b49c0ae0a8a8054f2f2b4e0cfe7235feddf5d9c69a0ab",
+        "sites": [
+          "034",
+          "109"
+        ]
+      },
+      "P146": {
+        "glb_sha256": "9303df895f0c94efa83d754484fe3f1808e250384aac944c2a0d27e05239a42c",
+        "ply_sha256": "c36af5d3385ac15778851a27a4b9156008239524d2f7c7ef5ccabdcce164f138",
+        "sites": [
+          "034",
+          "109"
+        ]
+      },
+      "P147": {
+        "glb_sha256": "2abfede7eb67bab70674516ee529521085afc454cfa9b229adb9fef00398143a",
+        "ply_sha256": "fec8b4865a3b5e06ddf1a40cb54a704910fb2d01d804442571bebcd96e53e8e0",
+        "sites": [
+          "034",
+          "109"
+        ]
+      }
+    },
+    "scenes": {
+      "034_144": {
+        "asset": "P144",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          119,
+          358
+        ],
+        "camera_frames": {
+          "front_camera": 30,
+          "back_camera": 46
+        }
+      },
+      "034_145": {
+        "asset": "P145",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          173,
+          486
+        ],
+        "camera_frames": {
+          "front_camera": 30,
+          "back_camera": 46
+        }
+      },
+      "034_146": {
+        "asset": "P146",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          119,
+          358
+        ],
+        "camera_frames": {
+          "front_camera": 30,
+          "back_camera": 46
+        }
+      },
+      "034_147": {
+        "asset": "P147",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          119,
+          358
+        ],
+        "camera_frames": {
+          "front_camera": 30,
+          "back_camera": 46
+        }
+      },
+      "109_144": {
+        "asset": "P144",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          61,
+          231
+        ],
+        "camera_frames": {
+          "front_camera": 29,
+          "back_camera": 40
+        }
+      },
+      "109_145": {
+        "asset": "P145",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          75,
+          335
+        ],
+        "camera_frames": {
+          "front_camera": 29,
+          "back_camera": 40
+        }
+      },
+      "109_146": {
+        "asset": "P146",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          61,
+          231
+        ],
+        "camera_frames": {
+          "front_camera": 29,
+          "back_camera": 40
+        }
+      },
+      "109_147": {
+        "asset": "P147",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          61,
+          231
+        ],
+        "camera_frames": {
+          "front_camera": 29,
+          "back_camera": 40
+        }
+      }
+    },
+    "common_site_anchors": {
+      "034": [
+        [
+          -36.16243798230243,
+          -5.790768920867825,
+          -5.150513699017868
+        ],
+        [
+          [
+            -0.15583637906672923,
+            -0.9776676350399915,
+            -0.14100006508750496
+          ],
+          [
+            0.9875661737497854,
+            -0.15719661918618416,
+            -0.00150843682079268
+          ],
+          [
+            -0.02068998367759607,
+            -0.13948196410914124,
+            0.9900084374709527
+          ]
+        ],
+        "01",
+        30
+      ],
+      "109": [
+        [
+          -38.60890679637467,
+          39.414138021219195,
+          -0.5507427847349833
+        ],
+        [
+          [
+            0.7022745068784205,
+            -0.7111999369127098,
+            0.031704364431875125
+          ],
+          [
+            0.7101220131204765,
+            0.7029704320496952,
+            0.03948794937176009
+          ],
+          [
+            -0.05037105786454429,
+            -0.005217413077624456,
+            0.998716944449419
+          ]
+        ],
+        "01",
+        27
+      ]
+    },
+    "scans": {
+      "counts": {
+        "case_frames": 640,
+        "raw_scans": 160,
+        "original_returns": 27654141,
+        "replacements": 3376,
+        "no_return": 0
+      },
+      "sites": 2,
+      "cases": 8,
+      "asset_count": 4,
+      "placements": 8,
+      "placements_with_both_lidars": 8,
+      "placements_without_returns": 0,
+      "case_frames_with_edits": 287,
+      "case_frames_without_edits": 353,
+      "by_category": {
+        "pothole": 3376
+      },
+      "by_sensor": {
+        "0": 788,
+        "1": 2588
+      },
+      "by_surface": {
+        "pavement block top": 1010,
+        "pavement block edge": 366,
+        "fracture bed and lip": 1352,
+        "socket wall": 637,
+        "subgrade": 11
+      },
+      "synthetic_local_height_range_m": {
+        "pothole": [
+          -0.08500015735626221,
+          0.03616523742675781
+        ]
+      },
+      "occluded_nonroad_source_returns": 0,
+      "max_lateral_ray_error_m": 4.0398788879983365e-07,
+      "max_source_range_error_m": 1.849731148695355e-06,
+      "max_replay_range_error_m": 4.016793774042071e-06,
+      "max_local_height_error_m": 9.299744134494414e-16
+    },
+    "cameras": {
+      "views": 16,
+      "camera_counts": {
+        "front_camera": 8,
+        "back_camera": 8
+      },
+      "skipped": [],
+      "protected_pixels": {
+        "1": 0,
+        "2": 0,
+        "4": 105852
+      },
+      "direct_shadow_views": {},
+      "direct_shadow_pixels": {},
+      "target_pixels": {
+        "min": 810.0,
+        "p10": 810.0,
+        "median": 1461.0,
+        "p90": 2789.0,
+        "max": 3066.0
+      },
+      "gaussian_alpha_above_48pct_coverage": {
+        "min": 0.846914,
+        "p10": 0.849383,
+        "median": 0.875282,
+        "p90": 0.90541,
+        "max": 0.926288
+      },
+      "target_rgb_difference_8bit": {
+        "min": 16.139395,
+        "p10": 19.263525,
+        "median": 25.39145,
+        "p90": 37.760654,
+        "max": 43.897942
+      },
+      "shared_front_frame_count": 0,
+      "legacy_gaussian_silhouette_vs_mesh_iou": null,
+      "smallest_front_iou": [],
+      "same_part_reprojection_counts": {
+        "target_lidar_returns_at_capture": 495,
+        "inside_crop_and_in_front": 495,
+        "same_visible_mesh_part": 471
+      },
+      "signed_lidar_minus_camera_depth_m": {
+        "min": -0.020364,
+        "p10": -0.007474,
+        "median": 1e-06,
+        "p90": 0.007156,
+        "max": 0.062514
+      },
+      "absolute_depth_error_under_5cm": 469,
+      "note": "Different physical emitters can see different parts or different faces of the same part. These are pixel-depth comparisons, not calibration ground truth."
+    },
+    "independent_geometry": {
+      "reader": "trimesh GLB scene graph",
+      "intersector": "Blender mathutils.bvhtree",
+      "assets": 4,
+      "real_beam_samples": 64,
+      "vertical_grid_samples": 105,
+      "range_p99_m": 4.261028166752112e-06,
+      "range_max_m": 4.261028166752112e-06,
+      "grid_height_p99_m": 3.5762786865234375e-07,
+      "grid_height_max_m": 3.5762786865234375e-07,
+      "nearest_part_disagreements": [],
+      "per_asset": {
+        "P144": {
+          "samples": 18,
+          "max_range_error_m": 2.0930655075801496e-06
+        },
+        "P145": {
+          "samples": 17,
+          "max_range_error_m": 2.2244604096499643e-06
+        },
+        "P146": {
+          "samples": 16,
+          "max_range_error_m": 4.261028166752112e-06
+        },
+        "P147": {
+          "samples": 13,
+          "max_range_error_m": 4.261028166752112e-06
+        }
+      }
+    }
+  },
+  "comparison": {
+    "034_144": {
+      "ply_sha256": "eb67e282bc12bc3191f33002cab25ce9d2606bc98f9f9d45fb43b73c7743f752",
+      "asset": "P144",
+      "identical_lidar_delta_rows": 477,
+      "camera": {
+        "front_camera": {
+          "frame": 30,
+          "crop": [
+            976,
+            914,
+            1256,
+            1080
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 1308,
+              "rgb_mae_0_255": 4.133282364933741,
+              "rgb_p95_0_255": 24.666666666666668,
+              "area_alpha_mean_0_255": 252.8677370030581,
+              "edge_alpha_mean_0_255": 253.1980122324159
+            },
+            "slab_top": {
+              "pixels": 1202,
+              "rgb_mae_0_255": 2.916528008874099,
+              "rgb_p95_0_255": 17.666666666666668,
+              "area_alpha_mean_0_255": 254.68219633943428,
+              "edge_alpha_mean_0_255": 254.8053244592346
+            },
+            "edges_or_socket": {
+              "pixels": 106,
+              "rgb_mae_0_255": 17.930817610062896,
+              "rgb_p95_0_255": 38.16666666666667,
+              "area_alpha_mean_0_255": 232.29245283018867,
+              "edge_alpha_mean_0_255": 234.97169811320754
+            }
+          }
+        },
+        "back_camera": {
+          "frame": 46,
+          "crop": [
+            704,
+            712,
+            980,
+            876
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 448,
+              "rgb_mae_0_255": 3.8511904761904767,
+              "rgb_p95_0_255": 21.98333333333331,
+              "area_alpha_mean_0_255": 250.95089285714286,
+              "edge_alpha_mean_0_255": 251.83482142857142
+            },
+            "slab_top": {
+              "pixels": 421,
+              "rgb_mae_0_255": 2.7743467933491686,
+              "rgb_p95_0_255": 17.666666666666668,
+              "area_alpha_mean_0_255": 252.93824228028504,
+              "edge_alpha_mean_0_255": 253.52969121140143
+            },
+            "edges_or_socket": {
+              "pixels": 27,
+              "rgb_mae_0_255": 20.641975308641978,
+              "rgb_p95_0_255": 32.56666666666666,
+              "area_alpha_mean_0_255": 219.96296296296296,
+              "edge_alpha_mean_0_255": 225.40740740740742
+            }
+          }
+        }
+      }
+    },
+    "034_145": {
+      "ply_sha256": "81df15f0e8d48382af0b49c0ae0a8a8054f2f2b4e0cfe7235feddf5d9c69a0ab",
+      "asset": "P145",
+      "identical_lidar_delta_rows": 659,
+      "camera": {
+        "front_camera": {
+          "frame": 30,
+          "crop": [
+            976,
+            914,
+            1256,
+            1080
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 1800,
+              "rgb_mae_0_255": 3.369814814814815,
+              "rgb_p95_0_255": 17.333333333333332,
+              "area_alpha_mean_0_255": 253.73,
+              "edge_alpha_mean_0_255": 253.75666666666666
+            },
+            "slab_top": {
+              "pixels": 1178,
+              "rgb_mae_0_255": 2.1380871533672896,
+              "rgb_p95_0_255": 14.383333333333288,
+              "area_alpha_mean_0_255": 254.99915110356537,
+              "edge_alpha_mean_0_255": 254.723259762309
+            },
+            "edges_or_socket": {
+              "pixels": 622,
+              "rgb_mae_0_255": 5.702572347266881,
+              "rgb_p95_0_255": 19.333333333333332,
+              "area_alpha_mean_0_255": 251.32636655948554,
+              "edge_alpha_mean_0_255": 251.92604501607718
+            }
+          }
+        },
+        "back_camera": {
+          "frame": 46,
+          "crop": [
+            704,
+            712,
+            980,
+            876
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 616,
+              "rgb_mae_0_255": 3.1623376623376624,
+              "rgb_p95_0_255": 15.75,
+              "area_alpha_mean_0_255": 252.72727272727272,
+              "edge_alpha_mean_0_255": 252.93019480519482
+            },
+            "slab_top": {
+              "pixels": 411,
+              "rgb_mae_0_255": 1.848337388483374,
+              "rgb_p95_0_255": 10.833333333333334,
+              "area_alpha_mean_0_255": 254.99756690997566,
+              "edge_alpha_mean_0_255": 254.57177615571777
+            },
+            "edges_or_socket": {
+              "pixels": 205,
+              "rgb_mae_0_255": 5.796747967479676,
+              "rgb_p95_0_255": 18.933333333333326,
+              "area_alpha_mean_0_255": 248.17560975609757,
+              "edge_alpha_mean_0_255": 249.6390243902439
+            }
+          }
+        }
+      }
+    },
+    "034_146": {
+      "ply_sha256": "c36af5d3385ac15778851a27a4b9156008239524d2f7c7ef5ccabdcce164f138",
+      "asset": "P146",
+      "identical_lidar_delta_rows": 477,
+      "camera": {
+        "front_camera": {
+          "frame": 30,
+          "crop": [
+            976,
+            914,
+            1256,
+            1080
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 1308,
+              "rgb_mae_0_255": 3.911060142711519,
+              "rgb_p95_0_255": 20.883333333333287,
+              "area_alpha_mean_0_255": 252.5756880733945,
+              "edge_alpha_mean_0_255": 251.0512232415902
+            },
+            "slab_top": {
+              "pixels": 894,
+              "rgb_mae_0_255": 2.558165548098434,
+              "rgb_p95_0_255": 16.333333333333332,
+              "area_alpha_mean_0_255": 252.14429530201343,
+              "edge_alpha_mean_0_255": 252.6006711409396
+            },
+            "edges_or_socket": {
+              "pixels": 414,
+              "rgb_mae_0_255": 6.832528180354268,
+              "rgb_p95_0_255": 27.23333333333331,
+              "area_alpha_mean_0_255": 253.5072463768116,
+              "edge_alpha_mean_0_255": 247.70531400966183
+            }
+          }
+        },
+        "back_camera": {
+          "frame": 46,
+          "crop": [
+            704,
+            712,
+            980,
+            876
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 446,
+              "rgb_mae_0_255": 3.4088191330343802,
+              "rgb_p95_0_255": 16.0,
+              "area_alpha_mean_0_255": 250.76233183856502,
+              "edge_alpha_mean_0_255": 248.0627802690583
+            },
+            "slab_top": {
+              "pixels": 313,
+              "rgb_mae_0_255": 1.883919062832801,
+              "rgb_p95_0_255": 10.333333333333334,
+              "area_alpha_mean_0_255": 250.70287539936103,
+              "edge_alpha_mean_0_255": 251.93290734824282
+            },
+            "edges_or_socket": {
+              "pixels": 133,
+              "rgb_mae_0_255": 6.997493734335841,
+              "rgb_p95_0_255": 21.466666666666665,
+              "area_alpha_mean_0_255": 250.90225563909775,
+              "edge_alpha_mean_0_255": 238.95488721804512
+            }
+          }
+        }
+      }
+    },
+    "034_147": {
+      "ply_sha256": "fec8b4865a3b5e06ddf1a40cb54a704910fb2d01d804442571bebcd96e53e8e0",
+      "asset": "P147",
+      "identical_lidar_delta_rows": 477,
+      "camera": {
+        "front_camera": {
+          "frame": 30,
+          "crop": [
+            976,
+            914,
+            1256,
+            1080
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 1308,
+              "rgb_mae_0_255": 4.010958205912334,
+              "rgb_p95_0_255": 12.0,
+              "area_alpha_mean_0_255": 252.07645259938838,
+              "edge_alpha_mean_0_255": 246.62614678899084
+            },
+            "edges_or_socket": {
+              "pixels": 1077,
+              "rgb_mae_0_255": 4.288455586505726,
+              "rgb_p95_0_255": 11.666666666666666,
+              "area_alpha_mean_0_255": 253.07242339832868,
+              "edge_alpha_mean_0_255": 246.67223769730734
+            },
+            "base": {
+              "pixels": 231,
+              "rgb_mae_0_255": 2.717171717171717,
+              "rgb_p95_0_255": 13.5,
+              "area_alpha_mean_0_255": 247.43290043290042,
+              "edge_alpha_mean_0_255": 246.4112554112554
+            }
+          }
+        },
+        "back_camera": {
+          "frame": 46,
+          "crop": [
+            704,
+            712,
+            980,
+            876
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 446,
+              "rgb_mae_0_255": 4.470104633781764,
+              "rgb_p95_0_255": 15.0,
+              "area_alpha_mean_0_255": 250.32959641255604,
+              "edge_alpha_mean_0_255": 239.09865470852017
+            },
+            "edges_or_socket": {
+              "pixels": 352,
+              "rgb_mae_0_255": 4.8939393939393945,
+              "rgb_p95_0_255": 15.0,
+              "area_alpha_mean_0_255": 251.7215909090909,
+              "edge_alpha_mean_0_255": 238.24147727272728
+            },
+            "base": {
+              "pixels": 94,
+              "rgb_mae_0_255": 2.8829787234042548,
+              "rgb_p95_0_255": 14.683333333333328,
+              "area_alpha_mean_0_255": 245.11702127659575,
+              "edge_alpha_mean_0_255": 242.30851063829786
+            }
+          }
+        }
+      }
+    },
+    "109_144": {
+      "ply_sha256": "eb67e282bc12bc3191f33002cab25ce9d2606bc98f9f9d45fb43b73c7743f752",
+      "asset": "P144",
+      "identical_lidar_delta_rows": 292,
+      "camera": {
+        "front_camera": {
+          "frame": 29,
+          "crop": [
+            968,
+            871,
+            1244,
+            1035
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 857,
+              "rgb_mae_0_255": 4.437183975106962,
+              "rgb_p95_0_255": 26.399999999999977,
+              "area_alpha_mean_0_255": 252.60676779463245,
+              "edge_alpha_mean_0_255": 252.80630105017502
+            },
+            "slab_top": {
+              "pixels": 788,
+              "rgb_mae_0_255": 2.984771573604061,
+              "rgb_p95_0_255": 16.0,
+              "area_alpha_mean_0_255": 254.43654822335026,
+              "edge_alpha_mean_0_255": 254.501269035533
+            },
+            "edges_or_socket": {
+              "pixels": 69,
+              "rgb_mae_0_255": 21.02415458937198,
+              "rgb_p95_0_255": 45.33333333333332,
+              "area_alpha_mean_0_255": 231.71014492753622,
+              "edge_alpha_mean_0_255": 233.44927536231884
+            }
+          }
+        },
+        "back_camera": {
+          "frame": 40,
+          "crop": [
+            702,
+            696,
+            978,
+            860
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 368,
+              "rgb_mae_0_255": 4.3686594202898545,
+              "rgb_p95_0_255": 23.666666666666668,
+              "area_alpha_mean_0_255": 251.09782608695653,
+              "edge_alpha_mean_0_255": 252.02445652173913
+            },
+            "slab_top": {
+              "pixels": 342,
+              "rgb_mae_0_255": 3.056530214424951,
+              "rgb_p95_0_255": 16.98333333333333,
+              "area_alpha_mean_0_255": 252.99707602339183,
+              "edge_alpha_mean_0_255": 253.7719298245614
+            },
+            "edges_or_socket": {
+              "pixels": 26,
+              "rgb_mae_0_255": 21.628205128205124,
+              "rgb_p95_0_255": 32.25,
+              "area_alpha_mean_0_255": 226.1153846153846,
+              "edge_alpha_mean_0_255": 229.03846153846155
+            }
+          }
+        }
+      }
+    },
+    "109_145": {
+      "ply_sha256": "81df15f0e8d48382af0b49c0ae0a8a8054f2f2b4e0cfe7235feddf5d9c69a0ab",
+      "asset": "P145",
+      "identical_lidar_delta_rows": 410,
+      "camera": {
+        "front_camera": {
+          "frame": 29,
+          "crop": [
+            968,
+            871,
+            1244,
+            1035
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 1220,
+              "rgb_mae_0_255": 3.7314207650273223,
+              "rgb_p95_0_255": 17.349999999999984,
+              "area_alpha_mean_0_255": 253.56147540983608,
+              "edge_alpha_mean_0_255": 253.5909836065574
+            },
+            "slab_top": {
+              "pixels": 766,
+              "rgb_mae_0_255": 2.1797214969538734,
+              "rgb_p95_0_255": 14.083333333333334,
+              "area_alpha_mean_0_255": 254.99869451697128,
+              "edge_alpha_mean_0_255": 254.7924281984334
+            },
+            "edges_or_socket": {
+              "pixels": 454,
+              "rgb_mae_0_255": 6.349486049926577,
+              "rgb_p95_0_255": 20.783333333333324,
+              "area_alpha_mean_0_255": 251.136563876652,
+              "edge_alpha_mean_0_255": 251.56387665198238
+            }
+          }
+        },
+        "back_camera": {
+          "frame": 40,
+          "crop": [
+            702,
+            696,
+            978,
+            860
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 516,
+              "rgb_mae_0_255": 3.780361757105944,
+              "rgb_p95_0_255": 19.75,
+              "area_alpha_mean_0_255": 252.81976744186048,
+              "edge_alpha_mean_0_255": 252.9108527131783
+            },
+            "slab_top": {
+              "pixels": 337,
+              "rgb_mae_0_255": 2.193867457962414,
+              "rgb_p95_0_255": 13.399999999999997,
+              "area_alpha_mean_0_255": 254.99703264094956,
+              "edge_alpha_mean_0_255": 254.37388724035608
+            },
+            "edges_or_socket": {
+              "pixels": 179,
+              "rgb_mae_0_255": 6.767225325884545,
+              "rgb_p95_0_255": 23.099999999999994,
+              "area_alpha_mean_0_255": 248.72067039106145,
+              "edge_alpha_mean_0_255": 250.15642458100558
+            }
+          }
+        }
+      }
+    },
+    "109_146": {
+      "ply_sha256": "c36af5d3385ac15778851a27a4b9156008239524d2f7c7ef5ccabdcce164f138",
+      "asset": "P146",
+      "identical_lidar_delta_rows": 292,
+      "camera": {
+        "front_camera": {
+          "frame": 29,
+          "crop": [
+            968,
+            871,
+            1244,
+            1035
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 857,
+              "rgb_mae_0_255": 4.446518864255154,
+              "rgb_p95_0_255": 20.066666666666645,
+              "area_alpha_mean_0_255": 252.2345390898483,
+              "edge_alpha_mean_0_255": 250.10618436406068
+            },
+            "slab_top": {
+              "pixels": 562,
+              "rgb_mae_0_255": 2.8451957295373664,
+              "rgb_p95_0_255": 15.649999999999977,
+              "area_alpha_mean_0_255": 251.54626334519574,
+              "edge_alpha_mean_0_255": 251.95195729537366
+            },
+            "edges_or_socket": {
+              "pixels": 295,
+              "rgb_mae_0_255": 7.497175141242938,
+              "rgb_p95_0_255": 26.100000000000005,
+              "area_alpha_mean_0_255": 253.5457627118644,
+              "edge_alpha_mean_0_255": 246.58983050847456
+            }
+          }
+        },
+        "back_camera": {
+          "frame": 40,
+          "crop": [
+            702,
+            696,
+            978,
+            860
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 367,
+              "rgb_mae_0_255": 4.1671207992733885,
+              "rgb_p95_0_255": 17.899999999999995,
+              "area_alpha_mean_0_255": 250.69482288828337,
+              "edge_alpha_mean_0_255": 247.6675749318801
+            },
+            "slab_top": {
+              "pixels": 248,
+              "rgb_mae_0_255": 2.172043010752688,
+              "rgb_p95_0_255": 10.883333333333326,
+              "area_alpha_mean_0_255": 249.91532258064515,
+              "edge_alpha_mean_0_255": 251.59274193548387
+            },
+            "edges_or_socket": {
+              "pixels": 119,
+              "rgb_mae_0_255": 8.324929971988794,
+              "rgb_p95_0_255": 26.03333333333333,
+              "area_alpha_mean_0_255": 252.31932773109244,
+              "edge_alpha_mean_0_255": 239.48739495798318
+            }
+          }
+        }
+      }
+    },
+    "109_147": {
+      "ply_sha256": "fec8b4865a3b5e06ddf1a40cb54a704910fb2d01d804442571bebcd96e53e8e0",
+      "asset": "P147",
+      "identical_lidar_delta_rows": 292,
+      "camera": {
+        "front_camera": {
+          "frame": 29,
+          "crop": [
+            968,
+            871,
+            1244,
+            1035
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 857,
+              "rgb_mae_0_255": 4.596654998055231,
+              "rgb_p95_0_255": 12.666666666666666,
+              "area_alpha_mean_0_255": 251.66977829638273,
+              "edge_alpha_mean_0_255": 245.45274212368727
+            },
+            "edges_or_socket": {
+              "pixels": 766,
+              "rgb_mae_0_255": 4.748476936466493,
+              "rgb_p95_0_255": 12.666666666666666,
+              "area_alpha_mean_0_255": 253.18146214099218,
+              "edge_alpha_mean_0_255": 246.10443864229765
+            },
+            "base": {
+              "pixels": 91,
+              "rgb_mae_0_255": 3.318681318681318,
+              "rgb_p95_0_255": 11.833333333333332,
+              "area_alpha_mean_0_255": 238.94505494505495,
+              "edge_alpha_mean_0_255": 239.96703296703296
+            }
+          }
+        },
+        "back_camera": {
+          "frame": 40,
+          "crop": [
+            702,
+            696,
+            978,
+            860
+          ],
+          "parts": {
+            "all_slab_parts": {
+              "pixels": 367,
+              "rgb_mae_0_255": 5.679382379654858,
+              "rgb_p95_0_255": 17.0,
+              "area_alpha_mean_0_255": 250.3542234332425,
+              "edge_alpha_mean_0_255": 238.49863760217983
+            },
+            "edges_or_socket": {
+              "pixels": 307,
+              "rgb_mae_0_255": 6.252985884907709,
+              "rgb_p95_0_255": 20.133333333333326,
+              "area_alpha_mean_0_255": 251.14983713355048,
+              "edge_alpha_mean_0_255": 237.35504885993484
+            },
+            "base": {
+              "pixels": 60,
+              "rgb_mae_0_255": 2.7444444444444445,
+              "rgb_p95_0_255": 13.733333333333329,
+              "area_alpha_mean_0_255": 246.28333333333333,
+              "edge_alpha_mean_0_255": 244.35
+            }
+          }
+        }
+      }
+    }
+  }
+}

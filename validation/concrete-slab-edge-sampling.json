@@ -1,0 +1,680 @@
+{
+  "sources": {
+    "P144": {
+      "area_count": 263315,
+      "edge_count": 838163,
+      "retained_points": 145889,
+      "max_retained_sh_change": 2.384185791015625e-07,
+      "glb_sha256": "14c4915539225f2a9f90fdf8108e0771cb1d25dacbddbe984110b49453b72bb3",
+      "area_ply_sha256": "26e654dd48ef0869e6686ab24b9daf74aae983e8cf902d6b9795e2d84e280118",
+      "edge_ply_sha256": "eb67e282bc12bc3191f33002cab25ce9d2606bc98f9f9d45fb43b73c7743f752",
+      "area_independent_rebuild_sha256": {
+        "asset.glb": "14c4915539225f2a9f90fdf8108e0771cb1d25dacbddbe984110b49453b72bb3",
+        "asset.ply": "26e654dd48ef0869e6686ab24b9daf74aae983e8cf902d6b9795e2d84e280118",
+        "splat_material.npz": "884881d2eed3458fab3425448a5ab3f64ef291b240c8cfac38f7cc7975dae9ae",
+        "surface.npz": "7aa0a048420d4116c99ce49df85969e59e9de8d3ff5bd690968ddc01876818b3",
+        "metadata.json": "6a1e3ada96ecd86d26fa7d9df052b19cb39cd9846db16b0da24004e73417ff1e"
+      },
+      "edges_independent_rebuild_sha256": {
+        "asset.glb": "14c4915539225f2a9f90fdf8108e0771cb1d25dacbddbe984110b49453b72bb3",
+        "asset.ply": "eb67e282bc12bc3191f33002cab25ce9d2606bc98f9f9d45fb43b73c7743f752",
+        "splat_material.npz": "e6dd2a865578d311a37dd7589266ea1bdd7a064eb886f315790383474315d284",
+        "surface.npz": "7aa0a048420d4116c99ce49df85969e59e9de8d3ff5bd690968ddc01876818b3",
+        "metadata.json": "c2529484bbaab16a60ce98358238178576b9709de2d02be2bef56230d8452386"
+      }
+    },
+    "P145": {
+      "area_count": 281851,
+      "edge_count": 889966,
+      "retained_points": 145852,
+      "max_retained_sh_change": 4.76837158203125e-07,
+      "glb_sha256": "8d8e81117a107910324470d937143c7727a32982d7ab9e9bb611a928f4eedc1c",
+      "area_ply_sha256": "959c31f62953133a1f19c862231a4094553ec64c3f4d6029c2f88e7d4fd05130",
+      "edge_ply_sha256": "81df15f0e8d48382af0b49c0ae0a8a8054f2f2b4e0cfe7235feddf5d9c69a0ab",
+      "area_independent_rebuild_sha256": {
+        "asset.glb": "8d8e81117a107910324470d937143c7727a32982d7ab9e9bb611a928f4eedc1c",
+        "asset.ply": "959c31f62953133a1f19c862231a4094553ec64c3f4d6029c2f88e7d4fd05130",
+        "splat_material.npz": "2fe0bdc4d0dcfce3d0c161f53dcac703f2041633af04b24384a68ff04c60c354",
+        "surface.npz": "2fcab7169bc7bb1299c7f76b45db6f8594b46e9aa458e594656ae3fa78bc3dcd",
+        "metadata.json": "e39ec517af975230bbfb21af12ddb640d73e2a50c64c8e1166291706ba2c87ae"
+      },
+      "edges_independent_rebuild_sha256": {
+        "asset.glb": "8d8e81117a107910324470d937143c7727a32982d7ab9e9bb611a928f4eedc1c",
+        "asset.ply": "81df15f0e8d48382af0b49c0ae0a8a8054f2f2b4e0cfe7235feddf5d9c69a0ab",
+        "splat_material.npz": "2ef650e7a593bf5b686ac44ab473355119b7be4970f8df1cc2675801323bb3d2",
+        "surface.npz": "2fcab7169bc7bb1299c7f76b45db6f8594b46e9aa458e594656ae3fa78bc3dcd",
+        "metadata.json": "1627a1a1abd918256f098b6c609b943401f30c10dd2b2a7ad2f5793b881de236"
+      }
+    },
+    "P146": {
+      "area_count": 259661,
+      "edge_count": 806287,
+      "retained_points": 151453,
+      "max_retained_sh_change": 0.0,
+      "glb_sha256": "9303df895f0c94efa83d754484fe3f1808e250384aac944c2a0d27e05239a42c",
+      "area_ply_sha256": "b8b057f134123014f813220cc0e2fe8df7a4fe155bf54edf663f653139af346f",
+      "edge_ply_sha256": "c36af5d3385ac15778851a27a4b9156008239524d2f7c7ef5ccabdcce164f138",
+      "area_independent_rebuild_sha256": {
+        "asset.glb": "9303df895f0c94efa83d754484fe3f1808e250384aac944c2a0d27e05239a42c",
+        "asset.ply": "b8b057f134123014f813220cc0e2fe8df7a4fe155bf54edf663f653139af346f",
+        "splat_material.npz": "9e7c673a1c7456974b1e3150527d2f1fe69a0deec03f1294495da98ebf965a53",
+        "surface.npz": "b899d0a3969e751130bb69b77cf281cd4748e61f81c23141ea82ecff134b4514",
+        "metadata.json": "0b20ba2829eaa1b623b8ceeb43e5ea0bf3810a1f6118662cc4049906f6166272"
+      },
+      "edges_independent_rebuild_sha256": {
+        "asset.glb": "9303df895f0c94efa83d754484fe3f1808e250384aac944c2a0d27e05239a42c",
+        "asset.ply": "c36af5d3385ac15778851a27a4b9156008239524d2f7c7ef5ccabdcce164f138",
+        "splat_material.npz": "88470c2d7bbcd4fcb019d4fbb2af156a2bb4e8eebefd69ed4445844a84857aa7",
+        "surface.npz": "b899d0a3969e751130bb69b77cf281cd4748e61f81c23141ea82ecff134b4514",
+        "metadata.json": "6fe698bb2fdd9b0e7e40ce911c2731aa3b644e4b519ef38b87bf14f781d50a11"
+      }
+    },
+    "P147": {
+      "area_count": 259474,
+      "edge_count": 489732,
+      "retained_points": 163762,
+      "max_retained_sh_change": 0.0,
+      "glb_sha256": "2abfede7eb67bab70674516ee529521085afc454cfa9b229adb9fef00398143a",
+      "area_ply_sha256": "f1e8a128d827495d8390d9013beb01c2b00c04f2254141bbf52c050a40a4e110",
+      "edge_ply_sha256": "fec8b4865a3b5e06ddf1a40cb54a704910fb2d01d804442571bebcd96e53e8e0",
+      "area_independent_rebuild_sha256": {
+        "asset.glb": "2abfede7eb67bab70674516ee529521085afc454cfa9b229adb9fef00398143a",
+        "asset.ply": "f1e8a128d827495d8390d9013beb01c2b00c04f2254141bbf52c050a40a4e110",
+        "splat_material.npz": "f950a177266745ce9ac4ec8dd8c82f73f261c92565d5401f0c6b07fcb77ac3af",
+        "surface.npz": "a49174b5f2aef77121ced27d0517b032c580506982a131903945807b066f9399",
+        "metadata.json": "ab75ce0b6f4b61c528363ad5c5b800399091c2c769593a9662b89991e67b95af"
+      },
+      "edges_independent_rebuild_sha256": {
+        "asset.glb": "2abfede7eb67bab70674516ee529521085afc454cfa9b229adb9fef00398143a",
+        "asset.ply": "fec8b4865a3b5e06ddf1a40cb54a704910fb2d01d804442571bebcd96e53e8e0",
+        "splat_material.npz": "8b1b38172f78d74a00ba54e04ec394b08839ed31d8ab05c6b46c6f807b83965a",
+        "surface.npz": "a49174b5f2aef77121ced27d0517b032c580506982a131903945807b066f9399",
+        "metadata.json": "d6f8b433a2f8815ad526865f9fe73c4e7beb114fbc35858a92369a603b9a61c1"
+      }
+    }
+  },
+  "camera": {
+    "theta": 0,
+    "phi": 1e-06,
+    "radius": 0.27,
+    "target": [
+      0.119140625,
+      0,
+      -0.052734375
+    ],
+    "fov": 17
+  },
+  "image_size": [
+    750,
+    372
+  ],
+  "views": [
+    {
+      "view": "original",
+      "target": [
+        0.119140625,
+        0,
+        -0.052734375
+      ],
+      "common_foundation_rays": 3289,
+      "states": {
+        "P144": {
+          "area": {
+            "median_mm": 77.01152801513672,
+            "p95_mm": 83.83870086669921,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 63.614105224609375,
+            "fraction_within_10mm": 0.7576771055031924
+          },
+          "refined_alpha_over_85": 3289
+        },
+        "P145": {
+          "area": {
+            "median_mm": 83.29891967773438,
+            "p95_mm": 119.1147476196289,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 8.940696716308594e-05,
+            "p95_mm": 67.70971984863282,
+            "fraction_within_10mm": 0.7415627850410459
+          },
+          "refined_alpha_over_85": 3289
+        },
+        "P146": {
+          "area": {
+            "median_mm": 61.931671142578125,
+            "p95_mm": 83.36585235595703,
+            "fraction_within_10mm": 0.0006080875646093037
+          },
+          "edges": {
+            "median_mm": 0.15872716903686523,
+            "p95_mm": 62.55306549072265,
+            "fraction_within_10mm": 0.7619337184554575
+          },
+          "refined_alpha_over_85": 3289
+        },
+        "P147": {
+          "area": {
+            "median_mm": 47.18696975708008,
+            "p95_mm": 83.42552185058594,
+            "fraction_within_10mm": 0.22195196108239587
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 62.55306549072265,
+            "fraction_within_10mm": 0.8142292490118577
+          },
+          "refined_alpha_over_85": 3289
+        }
+      }
+    },
+    {
+      "view": "rim_1",
+      "target": [
+        -0.048828125,
+        0.0,
+        -0.177734375
+      ],
+      "common_foundation_rays": 2850,
+      "states": {
+        "P144": {
+          "area": {
+            "median_mm": 77.69461059570312,
+            "p95_mm": 84.76131324768066,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 8.940696716308594e-05,
+            "p95_mm": 54.53345108032219,
+            "fraction_within_10mm": 0.7764912280701755
+          },
+          "refined_alpha_over_85": 2850
+        },
+        "P145": {
+          "area": {
+            "median_mm": 95.75111389160156,
+            "p95_mm": 119.48546409606934,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.31378865242004395,
+            "p95_mm": 100.29358901977537,
+            "fraction_within_10mm": 0.6929824561403509
+          },
+          "refined_alpha_over_85": 2850
+        },
+        "P146": {
+          "area": {
+            "median_mm": 59.499263763427734,
+            "p95_mm": 83.84367141723632,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 8.940696716308594e-05,
+            "p95_mm": 44.90793914794921,
+            "fraction_within_10mm": 0.7887719298245615
+          },
+          "refined_alpha_over_85": 2850
+        },
+        "P147": {
+          "area": {
+            "median_mm": 28.07965850830078,
+            "p95_mm": 83.88843383789062,
+            "fraction_within_10mm": 0.3291228070175439
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 36.1816841125488,
+            "fraction_within_10mm": 0.8789473684210526
+          },
+          "refined_alpha_over_85": 2850
+        }
+      }
+    },
+    {
+      "view": "rim_2",
+      "target": [
+        -0.107421875,
+        0.0,
+        -0.048828125
+      ],
+      "common_foundation_rays": 3445,
+      "states": {
+        "P144": {
+          "area": {
+            "median_mm": 77.56817626953125,
+            "p95_mm": 84.17926940917968,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.00011920928955078125,
+            "p95_mm": 59.84126434326171,
+            "fraction_within_10mm": 0.7413642960812772
+          },
+          "refined_alpha_over_85": 3445
+        },
+        "P145": {
+          "area": {
+            "median_mm": 90.18614959716797,
+            "p95_mm": 119.27165222167969,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.00011920928955078125,
+            "p95_mm": 75.96672058105467,
+            "fraction_within_10mm": 0.7378809869375907
+          },
+          "refined_alpha_over_85": 3445
+        },
+        "P146": {
+          "area": {
+            "median_mm": 59.14649200439453,
+            "p95_mm": 82.58019714355468,
+            "fraction_within_10mm": 0.008127721335268505
+          },
+          "edges": {
+            "median_mm": 0.00014901161193847656,
+            "p95_mm": 45.94149093627928,
+            "fraction_within_10mm": 0.7753265602322206
+          },
+          "refined_alpha_over_85": 3445
+        },
+        "P147": {
+          "area": {
+            "median_mm": 34.07877731323242,
+            "p95_mm": 82.646142578125,
+            "fraction_within_10mm": 0.3204644412191582
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 41.581987762451114,
+            "fraction_within_10mm": 0.865021770682148
+          },
+          "refined_alpha_over_85": 3445
+        }
+      }
+    },
+    {
+      "view": "rim_3",
+      "target": [
+        -0.130859375,
+        0.0,
+        0.095703125
+      ],
+      "common_foundation_rays": 3085,
+      "states": {
+        "P144": {
+          "area": {
+            "median_mm": 74.57881927490234,
+            "p95_mm": 84.80306243896484,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 56.45697784423828,
+            "fraction_within_10mm": 0.8055105348460292
+          },
+          "refined_alpha_over_85": 3085
+        },
+        "P145": {
+          "area": {
+            "median_mm": 84.79082489013672,
+            "p95_mm": 119.73887786865234,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 66.71839294433587,
+            "fraction_within_10mm": 0.779578606158833
+          },
+          "refined_alpha_over_85": 3085
+        },
+        "P146": {
+          "area": {
+            "median_mm": 59.46072769165039,
+            "p95_mm": 82.68495025634765,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 8.940696716308594e-05,
+            "p95_mm": 37.929701232910006,
+            "fraction_within_10mm": 0.8165316045380875
+          },
+          "refined_alpha_over_85": 3085
+        },
+        "P147": {
+          "area": {
+            "median_mm": 22.71837043762207,
+            "p95_mm": 82.66006622314453,
+            "fraction_within_10mm": 0.3831442463533225
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 27.95823173522946,
+            "fraction_within_10mm": 0.8807131280388979
+          },
+          "refined_alpha_over_85": 3085
+        }
+      }
+    },
+    {
+      "view": "rim_4",
+      "target": [
+        -0.029296875,
+        0.0,
+        0.185546875
+      ],
+      "common_foundation_rays": 3161,
+      "states": {
+        "P144": {
+          "area": {
+            "median_mm": 79.0356674194336,
+            "p95_mm": 85.00179290771484,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.03135204315185547,
+            "p95_mm": 59.40148162841797,
+            "fraction_within_10mm": 0.7386902878835812
+          },
+          "refined_alpha_over_85": 3161
+        },
+        "P145": {
+          "area": {
+            "median_mm": 87.12461853027344,
+            "p95_mm": 119.97596740722656,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.018417835235595703,
+            "p95_mm": 79.52505493164062,
+            "fraction_within_10mm": 0.6880733944954128
+          },
+          "refined_alpha_over_85": 3161
+        },
+        "P146": {
+          "area": {
+            "median_mm": 61.182796478271484,
+            "p95_mm": 83.94053649902344,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.14591217041015625,
+            "p95_mm": 44.71981430053711,
+            "fraction_within_10mm": 0.7608351787409048
+          },
+          "refined_alpha_over_85": 3161
+        },
+        "P147": {
+          "area": {
+            "median_mm": 42.06135940551758,
+            "p95_mm": 83.96533203125,
+            "fraction_within_10mm": 0.2726985131287567
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 40.33210754394531,
+            "fraction_within_10mm": 0.8427712749130022
+          },
+          "refined_alpha_over_85": 3161
+        }
+      }
+    },
+    {
+      "view": "rim_5",
+      "target": [
+        0.052734375,
+        0.0,
+        0.201171875
+      ],
+      "common_foundation_rays": 3499,
+      "states": {
+        "P144": {
+          "area": {
+            "median_mm": 75.66600799560547,
+            "p95_mm": 84.90652313232422,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 45.430590820312496,
+            "fraction_within_10mm": 0.7936553300943127
+          },
+          "refined_alpha_over_85": 3499
+        },
+        "P145": {
+          "area": {
+            "median_mm": 95.26071166992188,
+            "p95_mm": 119.62289962768554,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.40975213050842285,
+            "p95_mm": 97.83104476928693,
+            "fraction_within_10mm": 0.7059159759931409
+          },
+          "refined_alpha_over_85": 3499
+        },
+        "P146": {
+          "area": {
+            "median_mm": 58.34296417236328,
+            "p95_mm": 84.50796661376953,
+            "fraction_within_10mm": 0.007716490425835953
+          },
+          "edges": {
+            "median_mm": 8.940696716308594e-05,
+            "p95_mm": 39.285152435302734,
+            "fraction_within_10mm": 0.8305230065733067
+          },
+          "refined_alpha_over_85": 3499
+        },
+        "P147": {
+          "area": {
+            "median_mm": 26.243209838867188,
+            "p95_mm": 84.54432754516601,
+            "fraction_within_10mm": 0.39496999142612177
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 30.23165073394775,
+            "fraction_within_10mm": 0.8725350100028579
+          },
+          "refined_alpha_over_85": 3499
+        }
+      }
+    },
+    {
+      "view": "rim_6",
+      "target": [
+        0.103515625,
+        0.0,
+        0.068359375
+      ],
+      "common_foundation_rays": 3046,
+      "states": {
+        "P144": {
+          "area": {
+            "median_mm": 78.79261779785156,
+            "p95_mm": 85.08426666259766,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.00011920928955078125,
+            "p95_mm": 63.545979499816895,
+            "fraction_within_10mm": 0.7403151674326987
+          },
+          "refined_alpha_over_85": 3046
+        },
+        "P145": {
+          "area": {
+            "median_mm": 94.77413940429688,
+            "p95_mm": 120.51066970825195,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.3085881471633911,
+            "p95_mm": 91.84796524047852,
+            "fraction_within_10mm": 0.685817465528562
+          },
+          "refined_alpha_over_85": 3046
+        },
+        "P146": {
+          "area": {
+            "median_mm": 61.130210876464844,
+            "p95_mm": 84.0949649810791,
+            "fraction_within_10mm": 0.002954694681549573
+          },
+          "edges": {
+            "median_mm": 0.10232627391815186,
+            "p95_mm": 53.80448055267334,
+            "fraction_within_10mm": 0.7586999343401182
+          },
+          "refined_alpha_over_85": 3046
+        },
+        "P147": {
+          "area": {
+            "median_mm": 36.48760986328125,
+            "p95_mm": 84.15079307556152,
+            "fraction_within_10mm": 0.3079448456992777
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 46.10481834411621,
+            "fraction_within_10mm": 0.8391332895600788
+          },
+          "refined_alpha_over_85": 3046
+        }
+      }
+    },
+    {
+      "view": "rim_7",
+      "target": [
+        0.111328125,
+        0.0,
+        -0.083984375
+      ],
+      "common_foundation_rays": 2542,
+      "states": {
+        "P144": {
+          "area": {
+            "median_mm": 75.46660614013672,
+            "p95_mm": 83.54194602966308,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 42.818691444396855,
+            "fraction_within_10mm": 0.7985837922895358
+          },
+          "refined_alpha_over_85": 2542
+        },
+        "P145": {
+          "area": {
+            "median_mm": 83.27375793457031,
+            "p95_mm": 118.50602111816406,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 67.83222198486327,
+            "fraction_within_10mm": 0.8115656963021243
+          },
+          "refined_alpha_over_85": 2542
+        },
+        "P146": {
+          "area": {
+            "median_mm": 58.5626220703125,
+            "p95_mm": 82.60614967346191,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 8.940696716308594e-05,
+            "p95_mm": 32.85127849578852,
+            "fraction_within_10mm": 0.8060582218725413
+          },
+          "refined_alpha_over_85": 2542
+        },
+        "P147": {
+          "area": {
+            "median_mm": 17.606197357177734,
+            "p95_mm": 82.62318382263183,
+            "fraction_within_10mm": 0.4189614476789929
+          },
+          "edges": {
+            "median_mm": 2.9802322387695312e-05,
+            "p95_mm": 28.158549976348876,
+            "fraction_within_10mm": 0.8953579858379229
+          },
+          "refined_alpha_over_85": 2542
+        }
+      }
+    },
+    {
+      "view": "rim_8",
+      "target": [
+        0.041015625,
+        0.0,
+        -0.197265625
+      ],
+      "common_foundation_rays": 3371,
+      "states": {
+        "P144": {
+          "area": {
+            "median_mm": 78.25833892822266,
+            "p95_mm": 84.94262313842773,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 8.940696716308594e-05,
+            "p95_mm": 54.39433479309082,
+            "fraction_within_10mm": 0.7356867398398101
+          },
+          "refined_alpha_over_85": 3371
+        },
+        "P145": {
+          "area": {
+            "median_mm": 88.01293182373047,
+            "p95_mm": 119.81222152709961,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 8.940696716308594e-05,
+            "p95_mm": 71.15520477294922,
+            "fraction_within_10mm": 0.7769207950163156
+          },
+          "refined_alpha_over_85": 3371
+        },
+        "P146": {
+          "area": {
+            "median_mm": 60.07426834106445,
+            "p95_mm": 84.79182434082031,
+            "fraction_within_10mm": 0.0
+          },
+          "edges": {
+            "median_mm": 0.1398921012878418,
+            "p95_mm": 44.23671913146973,
+            "fraction_within_10mm": 0.7472560071195491
+          },
+          "refined_alpha_over_85": 3371
+        },
+        "P147": {
+          "area": {
+            "median_mm": 32.05025100708008,
+            "p95_mm": 84.7321891784668,
+            "fraction_within_10mm": 0.3476713141501038
+          },
+          "edges": {
+            "median_mm": 5.9604644775390625e-05,
+            "p95_mm": 37.19626426696777,
+            "fraction_within_10mm": 0.851972708395135
+          },
+          "refined_alpha_over_85": 3371
+        }
+      }
+    }
+  ]
+}

@@ -20,7 +20,10 @@ def main():
     cmd = argparse.ArgumentParser(description=__doc__)
     cmd.add_argument('--out', type=Path, default=ROOT / 'runs/atlas-gaussians')
     cmd.add_argument('--ids', nargs='+')
+    cmd.add_argument('--edge-sampling', action='store_true', help='Render the alternate edge-sampled PLY files')
     args = cmd.parse_args()
+    if args.edge_sampling and args.out.resolve() == (ROOT/'runs/atlas-gaussians').resolve():
+        cmd.error('Use a separate --out for alternate previews')
     args.out.mkdir(parents=True, exist_ok=True)
     with (args.out / '.render.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
@@ -30,6 +33,8 @@ def main():
 def render_batch(args):
     registry = args.out / 'views.json'
     rows = catalog()
+    if args.edge_sampling:
+        rows = {k:{**v, **v['edgeSampling']} for k,v in rows.items() if v.get('edgeSampling')}
     ids = args.ids or list(rows)
     views = json.loads(registry.read_text()) if registry.is_file() else {}
     torch.set_num_threads(4)

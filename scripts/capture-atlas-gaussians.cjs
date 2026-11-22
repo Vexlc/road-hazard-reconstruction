@@ -8,7 +8,8 @@ const WebSocket = require("ws");
 const base = "http://127.0.0.1:8765/tools/asset_atlas/";
 const out = process.argv[2];
 const captureRoad = process.argv.includes("--road");
-const ids = process.argv.slice(3).filter(value=>value!=="--road");
+const sampling=process.argv.includes("--edge-sampling")?"edges":"area";
+const ids = process.argv.slice(3).filter(value=>value!=="--road" && value!=="--edge-sampling");
 if (!out || !ids.length) throw Error("Usage: node scripts/capture-atlas-gaussians.cjs OUTPUT ID ...");
 const sleep = ms => new Promise(resolve=>setTimeout(resolve,ms));
 
@@ -54,7 +55,7 @@ async function capture() {
     await cmd("Page.enable");await cmd("Runtime.enable");await cmd("Network.enable");
     await cmd("Network.setCacheDisabled",{cacheDisabled:true});
     await cmd("Emulation.setDeviceMetricsOverride",{width:840,height:640,deviceScaleFactor:1,mobile:false});
-    await cmd("Page.navigate",{url:base+"splats.html"});
+    await cmd("Page.navigate",{url:base+"splats.html?sampling="+sampling});
     await wait('typeof start==="function"');
     for (const id of ids) {
       await ev("location.hash="+JSON.stringify(id));
