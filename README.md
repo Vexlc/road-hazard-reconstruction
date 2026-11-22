@@ -18,7 +18,7 @@ A138–A141、M138 展示同一块混凝土芯井盖的齐平、整圈下沉、�
 
 1,082 件坑洞、裂缝和混凝土碎板也能铺到扫描沥青上。双坑各有自己的边界，网裂保留分支，干坑与积水状态共用同一坑缘。887 条单帧 RGB-D 或双目记录采用照片标注定位坑面，其中 778 条已配对到 055、056 路段的车载前视画面。可切换迁入前后，并点开局部查看整幅道路。[坑洞迁移对照](docs/figures/gaussian-pit-roads.jpg) · [驾驶员视角与资产原貌](docs/figures/capture-pit-driving.jpg) · [几何与机位核验](docs/02-asset-reconstruction.md#坑洞与裂缝的道路边界)
 
-**P144–P147 是同一块混凝土碎板的四种状态。** 沿实拍网裂取出的板块约 25.0 × 47.7 厘米，可单独旋转查看。切换原位、凸起 35 毫米、下沉 25 毫米和脱落时，可以在同一条剖面读高差，也可以看同一张行车照片中露出多少断面或基层。顶面与纹理来自扫描，板厚、高差和基层采用设计值。[碎板与剖面](docs/figures/faulted-slab.jpg) · [两段实拍道路](docs/figures/faulted-slab-roads.jpg) · [旋转碎板模型](http://127.0.0.1:8765/tools/asset_atlas/model.html#P145) · [在同一车载机位切换状态](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-01&view=front-near&a=P145&b=P147&parts=1&zoom=1)
+**P144–P147 是同一块混凝土碎板的四种状态。** 沿实拍网裂取出的板块约 25.0 × 47.7 厘米，可单独旋转查看。切换原位、凸起 35 毫米、下沉 25 毫米和脱落时，可以在同一条剖面读高差，也可以看同一张行车照片中露出多少断面或基层。顶面与纹理来自扫描，板厚、高差和基层采用设计值。[碎板与剖面](docs/figures/faulted-slab.jpg) · [放大同一段板缝](http://127.0.0.1:8765/tools/asset_atlas/splats.html?detail=socket#P145) · [两段实拍道路](docs/figures/faulted-slab-roads.jpg) · [旋转碎板模型](http://127.0.0.1:8765/tools/asset_atlas/model.html#P145) · [在同一车载机位切换状态](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-01&view=front-near&a=P145&b=P147&parts=1&zoom=1)
 
 P135 是 1.75 米见方的混凝土网裂。把原图中的同一处交汇单独取出、以更密的网格重建为 P136 后，在相同的 62,055 个留出缝内像素上，相对源位移的中位绝对误差从 0.109 降至 0.040 毫米。P134 和 P137 则用同一条沥青纵缝展示材质位移与扫描法线给出的两种深度。可在三维页面关闭纹理，或查看同一位置的行车画面和可见裂缝边界。[原图、纹理与无纹理模型](docs/figures/scanned-cracks.jpg) · [网裂在两段道路上的前后视](docs/figures/scanned-crack-roads.jpg) · [同一沥青纵缝的两种深度](docs/figures/asphalt-crack-depth.jpg)
 

@@ -415,7 +415,7 @@ python scripts/serve-asset-atlas.py
 
 「核对高斯与网格的深度」提供固定机位的网格、高斯和像素级绝对差。网格深度取射线首次命中的正面。高斯深度为沿光线的透明度加权期望。图中计入不透明度大于 85%、共同命中且远离网格轮廓的像素。可将统计范围切换到井圈、井壁、盖板、水面或周边路面。数字描述两种资产表示的一致程度。[逐机位与逐部件核验](../validation/atlas-gaussians.json)
 
-浏览器解码器已逐个读入并排序全库 1,395 个 PLY。四批覆盖 12 种来源或重建方法的样本共有 34 件资产、98 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json) · [碎板四态的 12 组同机位对照](../validation/atlas-slab-gaussians.json)
+浏览器解码器已逐个读入并排序全库 1,395 个 PLY。四批覆盖 12 种来源或重建方法的样本共有 34 件资产、102 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json) · [碎板四态的 16 组同机位对照](../validation/atlas-slab-gaussians.json)
 
 矩形敞井 M11 的低角度画面中，井圈、井壁和周边路面的差异相距很大。GLB 的路面网格遮住地下结构，独立高斯资产的路面边缘逐渐透明，部分像素仍收到地下井壁的颜色与深度。迁入画面使用宿主路面和遮挡几何。可对照俯视、斜视和低角度三组图，区分部件本身和道路过渡区的贡献。[敞井深度图版](figures/gaussian-shaft-depth.jpg)
 
@@ -539,7 +539,9 @@ P144–P147 共用 P135 实拍扫描中的一块混凝土。从 0.75 米见方�
 
 四态各按原尺寸迁到 PandaSet 034 和 109 的同一位置，合计八次放置、16 个标定前后视机位和 640 个放置扫描帧。034 前视第 30 帧中，碎板断面的可见面积从原位的 68 个像素增至凸起时的 617 个像素。碎板下沉时能看到 408 个槽壁像素，脱落后能看到 231 个基层像素。034 路段共有 477 束激光在原位和凸起状态下都得到模拟回波，其中 270 束的量程相差超过 10 毫米。[两段道路的实拍与部件标记](figures/faulted-slab-roads.jpg) · [相机像素与共同模拟回波](../validation/concrete-slab-visibility.json) · [迁移与原位重载](../validation/concrete-slab-transfer.json)
 
-独立高斯与网格各核验了俯视、斜视和低角度三种机位。P145 的板顶在俯视时有 11,882 个共同不透明像素，高斯期望深度与网格首交深度的中位绝对差为 0.24 毫米，低角度时为 8.27 毫米。透过同一板边的狭缝俯视时，48 个首先命中基层的共同像素中位差达到 119.29 毫米。尺寸和狭缝测量可直接在 GLB 上读取，图谱保留逐部件的两种表示对照。[三个机位与部件深度差](http://127.0.0.1:8765/tools/asset_atlas/splats.html#P145) · [逐部件核验数字](../validation/atlas-slab-gaussians.json)
+独立高斯与网格各核验了俯视、斜视、低角度和板缝特写四种机位。P145 的板顶在俯视时有 11,882 个共同不透明像素，高斯期望深度与网格首交深度的中位绝对差为 0.24 毫米，低角度时为 8.27 毫米。透过同一板边的狭缝俯视时，48 个首先命中基层的共同像素中位差达到 119.29 毫米。尺寸和狭缝测量可直接在 GLB 上读取，图谱保留逐部件的两种表示对照。[四个机位与部件深度差](http://127.0.0.1:8765/tools/asset_atlas/splats.html#P145) · [逐部件核验数字](../validation/atlas-slab-gaussians.json)
+
+点「放大板缝」后，四态共用相同的光轴、焦距与拍摄距离。以 0.05 毫米间距横穿模型中的这条缝，测得局部开口约 3.95 毫米。设计间隙经 3.91 毫米的网格离散后，各处实际开口取决于边界走向。特写图中有 3,289 个像素在四态都首先命中同一处基层，比较透明度超过 85% 的高斯期望深度与网格交点，凸起态的中位绝对差为 83.3 毫米，移走碎板后为 47.2 毫米。图中保留了窄缝处高斯把多个深度混合的结果。[四态同位特写](figures/concrete-slab-clearance.jpg) · [打开交互特写](http://127.0.0.1:8765/tools/asset_atlas/splats.html?detail=socket#P145) · [共同基层射线](../validation/concrete-slab-clearance.json)
 
 复现时先按「从道路扫描重建裂缝」准备源图和配准输入，以下的 `parent` 指向该节生成的输入目录。四个状态共享这一份裁切。
 
@@ -560,12 +562,13 @@ python gen2hole/downstream/simulate.py --run "$run" --out "$run/sensors"
 work/envs/assets/bin/python scripts/render-slab-roads.py --run "$run" --out "$run/roads.jpg" --report "$run/evaluation/visibility.json"
 ~~~
 
-图谱加载本机正式发布的四态后，可另存三个机位的网格、高斯及逐像素深度差。下列命令按图谱所引的 GLB 和 PLY 指纹核对浏览器与 CUDA 参考渲染。
+图谱加载本机正式发布的四态后，可另存四个机位的网格、高斯及逐像素深度差。下列命令按图谱所引的 GLB 和 PLY 指纹核对浏览器与 CUDA 参考渲染。
 
 ~~~bash
-ev=work/slab-view-check
+ev=work/slab-view-check/evaluation
 node scripts/capture-atlas-gaussians.cjs "$ev/browser" P144 P145 P146 P147
 CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/check-atlas-gaussians.py --captures "$ev/browser" --ids P144 P145 P146 P147 --evidence "$ev/geometry" --out "$ev/gaussians.json"
+CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/check-slab-clearance.py --run work/slab-view-check --out "$ev/clearance.json" --figure "$ev/clearance.jpg"
 ~~~
 
 ## 同一车载机位比较不同资产

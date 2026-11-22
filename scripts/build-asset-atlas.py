@@ -423,6 +423,14 @@ def faulted_slabs():
     for meta in read(bundle/'assets/asset_manifest.json'):
         key = meta['id']
         spec, proof = meta['slab'], results[key]
+        boundary = spec['boundary_xy']
+        outer_x = max(x for x, _ in boundary)
+        edge_midpoints = sorted((a[1]+b[1])/2 for a,b in zip(boundary, boundary[1:]+boundary[:1])
+                                if a[0] == b[0] == outer_x)
+        # Place the optical axis inside the first empty grid cell beside a photographed plate edge.
+        gap_x = outer_x + meta['source_grid_pitch_m']/2
+        gap_y = edge_midpoints[len(edge_midpoints)//2]
+        detail_camera = dict(target=[gap_x,0.,-gap_y],theta=0.,phi=0.,radius=.27,fov=17.)
         row = entry(meta,bundle/'assets','实拍碎板＋设计状态',meta['label'],bundle/'views'/(key+'_inspection.jpg'))
         source = bundle/meta['source_image']
         row.update(category='混凝土碎板', state=states[key], states=list(states), gradeReference='P144',
@@ -431,7 +439,7 @@ def faulted_slabs():
                    depth=(spec['offset_m'] if spec['offset_m'] is not None else spec['base_z_m']),
                    depthLabel='相对原位的平移' if spec['offset_m'] is not None else '基层设计高程',
                    slab=dict(area=proof['source_area_m2'],volume=results['P144']['volume_m3'],pitch=1000*meta['source_grid_pitch_m']),
-                   blockModel=link(evidence/'block.glb'), blockPreview=link(evidence/'block.jpg'),
+                   slabDetailCamera=detail_camera, blockModel=link(evidence/'block.glb'), blockPreview=link(evidence/'block.jpg'),
                    note='四态共用一块扫描顶面及其闭合裂缝边界。板厚、移位、接触基层与露出的材质为设计参数。脱落状态保留原槽口。',
                    credit=meta['source_page'],audit=link(evidence/'measurements.json'),auditLabel='顶面、闭合实体与高差核验',
                    sourceViews=[dict(label=title,image=link(photo),note=note) for title,photo,note in [
@@ -878,7 +886,7 @@ def main():
             depth = result.get(row['id'])
             if not row.get('gaussianSources') or not depth or depth.get('sources') != row['gaussianSources']:
                 continue
-            for mode in ('oblique','top','low'):
+            for mode in ('oblique','top','low','socket'):
                 measurement = depth['views'].get(mode)
                 if not measurement:
                     continue
@@ -892,7 +900,7 @@ def main():
                     median=measurement['gaussian_expected_vs_glb_depth_mm_median'],
                     p95=measurement['gaussian_expected_vs_glb_depth_mm_p95'])
         if audits:
-            row['gaussianAudit'] = [audits[m] for m in ('oblique','top','low') if m in audits]
+            row['gaussianAudit'] = [audits[m] for m in ('oblique','top','low','socket') if m in audits]
         pit = row['id'] in pit_checks
         road = (pit_checks if pit else road_checks).get(row['id'])
         if road and row.get('gaussianSources') == road['sources']:

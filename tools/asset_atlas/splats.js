@@ -93,7 +93,7 @@ function setMode(next) {
   canvas.style.clipPath=mode==="split"?"inset(0 "+(100-split)+"% 0 0)":"";
   repaint();
 }
-const auditNames={oblique:"斜视",top:"俯视",low:"低角度"};
+const auditNames={oblique:"斜视",top:"俯视",low:"低角度",socket:"板缝特写"};
 const partNames={apron:"周边路面",cover:"盖板",wall:"井壁",floor:"井底",rim:"井圈",collar:"高差立面",hinge:"铰链",water:"水面",pit_or_crack:"坑或裂缝",geometry_0:"表面网格",
   slab_top:"碎板顶面",slab_edge:"碎板断面",slab_underside:"碎板底面",slab_base:"露出基层",slab_support:"承托面",slab_socket:"坑槽侧壁"};
 function showAudit(resetPart) {
@@ -125,13 +125,14 @@ function showHostAudit() {
 }
 el("hostAuditPose").onchange=showHostAudit;
 el("roadAudit").ontoggle=()=>{if (el("roadAudit").open) showHostAudit();};
-el("useAuditPose").onclick=()=>{
-  const c=row?.gaussianAudit?.[Number(el("auditPose").value)]?.camera;
-  if (!c || !viewer.loaded) return;
+function applyCamera(c) {
+  if (!c) return;
   viewer.cameraOrbit=c.theta+"rad "+c.phi+"rad "+c.radius+"m";
   viewer.cameraTarget=c.target.map(n=>n+"m").join(" ");
   viewer.fieldOfView=c.fov+"deg";viewer.jumpCameraToGoal();repaint();
-};
+}
+el("useAuditPose").onclick=()=>applyCamera(row?.gaussianAudit?.[Number(el("auditPose").value)]?.camera);
+el("slabDetail").onclick=()=>applyCamera(row?.slabDetailCamera);
 function setRoads() {
   before=false;
   const vehicle=s=>s.camera==="front" || s.camera==="back";
@@ -178,6 +179,7 @@ async function prepareRoad(asset,epoch,host,trace) {
 }
 function start(selected,files={}) {
   const epoch=++selection;
+  el("slabDetail").hidden=!selected?.slabDetailCamera;
   const family=Boolean(selected?.states?.includes(row?.id) && (!selected.scanGeometry || (selected.width===row.width && selected.length===row.length)));
   const previous=family && viewer.loaded ? {orbit:viewer.getCameraOrbit(),target:viewer.getCameraTarget(),fov:viewer.getFieldOfView()} : null;
   const hostRequested=family && renderer?.mask?el("hostRoad").checked:new URLSearchParams(location.search).get("road")==="1";
@@ -206,7 +208,7 @@ function start(selected,files={}) {
   if (row?.gaussianAudit) showAudit(true);
   el("roadAudit").open=false;el("roadAudit").hidden=!row?.roadAudit;
   el("hostAuditPose").replaceChildren(...(row?.roadAudit || []).map((a,i)=>new Option(auditNames[a.mode],String(i))));
-  for (const id of ["top","side","reset","useAuditPose"]) el(id).disabled=true;
+  for (const id of ["top","side","reset","useAuditPose","slabDetail"]) el(id).disabled=true;
   setRoads();
   if (!files.ply && (!row || location.protocol==="file:")) {
     message(row?"选择本机资产目录中的 asset.ply 即可查看。也可同时选择 asset.glb 做同机位对照。":"选择资产 PLY，或从资产图谱打开高斯视图。");
@@ -227,7 +229,7 @@ function start(selected,files={}) {
       try { renderer.upload(data); } catch (err) { fail(err.message);return; }
       prepareRoad(row,epoch,hostRequested,traceRequested);
       bounds=[data.lo,data.hi];
-      for (const id of ["top","side","reset","useAuditPose"]) el(id).disabled=false;
+      for (const id of ["top","side","reset","useAuditPose","slabDetail"]) el(id).disabled=false;
       if (!meshUrl || meshFailed) viewer.src=localUrl(boundsModel(...bounds));
       hasMesh=Boolean(meshUrl) && !meshFailed;setMode(mode);
       const center=data.lo.map((v,i)=>(v+data.hi[i])/2);
@@ -239,6 +241,8 @@ function start(selected,files={}) {
         viewer.cameraOrbit=o.theta+"rad "+o.phi+"rad "+o.radius+"m";
         viewer.cameraTarget=t.x+"m "+t.y+"m "+t.z+"m";
         viewer.fieldOfView=previous.fov+"deg";
+      } else if (row?.slabDetailCamera && new URLSearchParams(location.search).get("detail")==="socket") {
+        applyCamera(row.slabDetailCamera);
       } else pose();
       viewer.jumpCameraToGoal();
       el("count").textContent=data.count.toLocaleString()+" 个高斯";

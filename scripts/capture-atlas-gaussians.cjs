@@ -64,8 +64,12 @@ async function capture() {
       await wait(settled+' && Math.abs(viewer.getCameraOrbit().phi-initialPose.phi)<0.0001');
       const poses=[["oblique",null]];
       if(captureRoad || await ev("Boolean(row.slab)") || ["P135","P130","M11","A119","A128"].includes(id)) poses.push(["low",[122,76]],["top",[0,0]]);
+      if(await ev("Boolean(row.slabDetailCamera)")) poses.push(["socket",null]);
       for (const [kind,angle] of poses) {
-        if (angle) {
+        if (kind==="socket") {
+          await ev('el("slabDetail").click()');
+          await wait(settled+' && Math.abs(viewer.getCameraOrbit().radius-row.slabDetailCamera.radius)<1e-5 && Math.abs(viewer.getCameraTarget().x-row.slabDetailCamera.target[0])<1e-5');
+        } else if (angle) {
           await ev('pose('+angle.join(",")+');viewer.jumpCameraToGoal()');
           await wait(settled+' && Math.abs(viewer.getCameraOrbit().phi-'+angle[1]*Math.PI/180+')<0.0001');
         }

@@ -1,0 +1,49 @@
+{
+  "section": {
+    "width_mm": 3.95,
+    "sampling_interval_mm": 0.05,
+    "base_z_m": -0.08499997854232788
+  },
+  "camera": {
+    "theta": 0,
+    "phi": 1e-06,
+    "radius": 0.27,
+    "target": [
+      0.119140625,
+      0,
+      -0.052734375
+    ],
+    "fov": 17
+  },
+  "image_size": [
+    750,
+    372
+  ],
+  "common_foundation_pixels": 3289,
+  "states": {
+    "P144": {
+      "median_absolute_error_mm": 77.01152801513672,
+      "p95_absolute_error_mm": 83.83870086669921,
+      "median_signed_error_mm": -77.01152801513672,
+      "fraction_within_10mm": 0.0
+    },
+    "P145": {
+      "median_absolute_error_mm": 83.29891967773438,
+      "p95_absolute_error_mm": 119.1147476196289,
+      "median_signed_error_mm": -83.29891967773438,
+      "fraction_within_10mm": 0.0
+    },
+    "P146": {
+      "median_absolute_error_mm": 61.931671142578125,
+      "p95_absolute_error_mm": 83.36585235595703,
+      "median_signed_error_mm": -61.931671142578125,
+      "fraction_within_10mm": 0.0006080875646093037
+    },
+    "P147": {
+      "median_absolute_error_mm": 47.18696975708008,
+      "p95_absolute_error_mm": 83.42552185058594,
+      "median_signed_error_mm": -47.18696975708008,
+      "fraction_within_10mm": 0.22195196108239587
+    }
+  }
+}
