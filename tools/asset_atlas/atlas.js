@@ -41,6 +41,7 @@ function showScene() {
     download("同位置对照其他资产","compare-road.html#"+new URLSearchParams({group,a:selected.id}));
   }
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
+  if (selected.components) download("逐槽尺寸与复位坐标",selected.componentIndex);
   if (selected.blockModel) download("独立原位碎板 GLB",selected.blockModel);
   if (selected.edgeSampling) {
     download("断边加密 PLY",selected.edgeSampling.ply);
@@ -118,7 +119,7 @@ function showPitView(resetModes) {
   el("pitLegend").textContent = m.note || (m.error ? "深度绝对误差　黑紫接近 0，橙黄接近 35 毫米，灰色为比较范围以外" :
     m.iou != null ? "黄线为原始标注，青线为模型回投" : m.texture ? "坑内像素取自 GLB 内嵌材质，周围为留出照片" : "独立观测的实拍照片");
   el("pitScore").textContent = m.iou != null ? "坑缘 IoU "+m.iou.toFixed(3) : m.texture && view.colorError != null ? "RGB 平均绝对误差 "+view.colorError.toFixed(1)+" / 255" : "";
-  let text = view.description || ("融合 GLB 与留出实测深度的重合区有 "+view.samples.toLocaleString()+" 个像素。深度绝对误差中位数 "+view.median.toFixed(1)+" 毫米，P95 为 "+view.p95.toFixed(1)+" 毫米。");
+  let text = view.description || ("导出 GLB 与留出实测深度的重合区有 "+view.samples.toLocaleString()+" 个像素。深度绝对误差中位数 "+view.median.toFixed(1)+" 毫米，P95 为 "+view.p95.toFixed(1)+" 毫米。");
   if (view.spacing != null) text += " 留出深度估计的双坑中心距为 "+view.spacing.toFixed(3)+" 米。";
   el("pitDepth").textContent = text;
 }
@@ -147,6 +148,7 @@ function inspect(id) {
   el("sourceType").textContent = selected.category+" / "+selected.method;
   el("note").textContent = selected.note || notes[selected.method];
   el("metrics").replaceChildren();
+  if (selected.components) metric("整组槽口 / 独立网格",selected.componentCount+" / "+selected.components.length);
   if (selected.slab) {
     metric("原图闭合面积（平方厘米）",(selected.slab.area*10000).toFixed(1));
     metric("独立碎板体积（升）",(selected.slab.volume*1000).toFixed(3));

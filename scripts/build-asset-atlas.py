@@ -604,9 +604,12 @@ def multiview_potholes(shared, run):
         directory=run/'evaluation'/key
         source=case['source']
         method='多帧 RGB-D' if source=='PothRGBD' else '多帧双目'
+        single_fit = len(case['fit']) == 1
+        if single_fit:
+            method = '实拍 RGB-D' if source == 'PothRGBD' else '实拍双目'
         row=entry(meta,bundle/'assets',method,meta['label'],bundle/'views'/(key+'_inspection.jpg'))
         inputs=[dict(label='拟合帧 '+k,image=link(directory/'input'/(k+'.jpg'))) for k in case['fit']]
-        inputs.extend([dict(label='融合正射纹理',image=link(bundle/'references'/(key+'_ortho.png'))),
+        inputs.extend([dict(label='实拍正射纹理' if single_fit else '融合正射纹理',image=link(bundle/'references'/(key+'_ortho.png'))),
                        dict(label='实测覆盖次数',image=link(directory/'input/support.png'))])
         if 'depth_completion' in meta:
             dest = bundle / 'comparison' / key
@@ -634,11 +637,13 @@ def multiview_potholes(shared, run):
         for frame,data in case['heldout'].items():
             dest=directory/frame
             stats=data['exported_glb']
-            modes=[dict(label='融合 GLB 回投',image=link(dest/'contours.jpg'),iou=stats['mask_iou']),
+            modes=[dict(label='GLB 回投' if single_fit else '融合 GLB 回投',image=link(dest/'contours.jpg'),iou=stats['mask_iou']),
                    dict(label='实拍原图',image=link(dest/'photo.jpg')),
                    dict(label='GLB 材质底色回投',image=link(dest/'base-color.jpg'),texture=True),
                    dict(label='光轴深度误差',image=link(dest/'errors.jpg'),error=True)]
             for k,single in data['single_fit_frame_controls'].items():
+                if single_fit:
+                    continue
                 modes.append(dict(label='仅用帧 '+k,image=link(dest/('single-'+k+'.jpg')),iou=single['mask_iou']))
             if (key, frame) in shared:
                 modes.append(shared[key, frame])
@@ -658,6 +663,33 @@ def multiview_potholes(shared, run):
         appearance=read(bundle/'calibration'/(key+'_capture.json'))['photographic_texture']
         note+=f" 坑内 {appearance['observed_pit_fraction']:.1%} 的纹理像素可直接投影到有效照片，其余使用基础表面颜色。"
         if source=='PothRGBD':note+=' PothRGBD 的米制结果基于标称内参。'
+        component_dir = directory/'components'
+        if (component_dir/'index.json').is_file():
+            mapping = read(component_dir/'index.json')
+            if mapping['glb_sha256'] != case['glb_sha256']:
+                raise ValueError('Stale connected openings for '+key)
+            pieces = mapping['components']
+            row['components'] = [dict(id=name, glb=link(component_dir/item['file']), length=item['length_m'],
+                                      width=item['width_m'], depth=item['rim_relative_depth_p95_m'])
+                                 for name, item in pieces.items() if 'file' in item]
+            row['depthPanelTitle'] = '逐槽核对另一实拍机位的边界与深度'
+            if single_fit and source == 'PothRGBD':
+                row.update(related='rgbd_pothole_'+case['fit'][0], relatedLabel='同一采集帧的原始重建记录',
+                           reverseRelatedLabel='同源槽口拆分与第二机位核对')
+            row['componentIndex'] = link(component_dir/'index.json')
+            row['componentCount'] = len(pieces)
+            if (component_dir/'source.jpg').is_file():
+                inputs.insert(0, dict(label='逐槽编号 · 拟合原图', image=link(component_dir/'source.jpg'),
+                                      note='两排分别从左向右编号。三维页面可取出单个槽口及其周围路面。'))
+            if (component_dir/'gallery.jpg').is_file():
+                inputs.append(dict(label='单槽纹理与凹深', image=link(component_dir/'gallery.jpg'),
+                                   note='每件均采用同一机位和标尺。右图颜色表示相对该槽周围路面中位高程的凹深。'))
+            for entry_view in evidence:
+                overlay = component_dir/(entry_view['frame']+'.jpg')
+                if overlay.is_file():
+                    entry_view['modes'].append(dict(label='逐槽编号与边界', image=link(overlay),
+                        note='黄色为留出帧标注，青色为整组网格回投，编号来自拟合帧。'))
+            note += f" 共 {len(pieces)} 个槽口，{len(row['components'])} 个可取出为独立 GLB。"
         if 'depth_completion' in meta:
             note += (f" 在 {meta['native_pit_cells']:,} 个原始距离支持的坑内格点之外，"
                      f"双向照片匹配另支持 {meta['photo_only_pit_cells']:,} 个格点，"
@@ -863,6 +895,7 @@ def main():
     shared = shared_profile_modes()
     for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), scanned_cracks(), faulted_slabs(),
                   multiview_potholes(shared, ROOT/'runs/multiview-pit-survey'),
+                  multiview_potholes(shared, ROOT/'runs/paired-road-slots'),
                   multiview_potholes(shared, ROOT/'runs/pit-depth-completion'), parallax_potholes(shared)):
         if group.keys() & rows.keys():
             raise ValueError("Asset ID collision")
@@ -961,7 +994,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["P145","P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["P148","P145","P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

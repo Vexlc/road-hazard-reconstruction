@@ -14,6 +14,7 @@
     <button type="button" id="reset">恢复斜视</button><button type="button" id="top">俯视</button><button type="button" id="side">侧视</button>
     <button type="button" id="rotateModel" aria-pressed="false">自动旋转</button>
     <button type="button" id="clayModel" aria-pressed="false" hidden>查看无纹理网格</button>
+    <label id="componentControl" hidden>选择槽口 <select id="componentMode"></select></label>
     <label id="completionControl" hidden>坑洞网格 <select id="completionMode">
       <option value="completed">距离图与彩照补深</option><option value="rangeOnly">仅用距离图</option><option value="support">查看高程来源</option>
     </select></label>
@@ -22,6 +23,7 @@
     <a id="glb" hidden>打开 GLB</a>
     <label id="fileLabel" hidden>选择本机 GLB <input id="file" type="file" accept=".glb,model/gltf-binary"></label>
   </div>
+  <p class="modelinfo" id="componentSize" hidden></p>
   <p class="modelinfo" id="supportLegend" hidden>蓝灰为原始距离支持的格点，青色为彩照补出的格点，橙色为插值。浅灰为坑外路面。</p>
 </main>
 <script src="catalog.js"></script><script defer src="model.js"></script>

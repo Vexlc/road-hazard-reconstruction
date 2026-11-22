@@ -16,7 +16,7 @@ function restoreTextures() {
   get("clayModel").textContent="查看无纹理网格";
 }
 get("clayModel").onclick=()=>{
-  if (!viewer.loaded || !(selectedRow?.scanGeometry || selectedRow?.slab)) return;
+  if (!viewer.loaded || !(selectedRow?.scanGeometry || selectedRow?.slab || selectedRow?.components)) return;
   if (clayMaterials.length) {
     restoreTextures();
     status("已恢复扫描纹理。");
@@ -51,7 +51,7 @@ get("rotateModel").onclick=()=>{
   get("rotateModel").textContent=viewer.autoRotate ? "停止旋转" : "自动旋转";
 };
 viewer.addEventListener("load",()=>{
-  get("clayModel").hidden=!(selectedRow?.scanGeometry || selectedRow?.slab) || location.protocol==="file:";
+  get("clayModel").hidden=!(selectedRow?.scanGeometry || selectedRow?.slab || selectedRow?.components) || location.protocol==="file:";
   status("拖动旋转，滚轮或双指缩放。"+(sectioned ? (selectedRow?.slab ? "当前显示从原位模型提取的碎板实体。" : selectedRow?.water ? "当前显示原始干坑。" : "当前剖开近侧井壁，保留盖面、碎片和井底。") : ""));
 });
 viewer.addEventListener("error",()=>{
@@ -67,6 +67,8 @@ get("file").onchange=()=>{
   get("clayModel").hidden=true;
   sectioned=false;
   selectedRow=null;
+  get("componentControl").hidden=true;
+  get("componentSize").hidden=true;
   get("completionControl").hidden=true;
   get("supportLegend").hidden=true;
   get("glb").hidden=true;
@@ -88,7 +90,11 @@ function displayModel(row, preservePose=false) {
   }
   viewer.poster=sectioned ? (row.blockPreview || row.dryPreview || row.cutaway) : row.preview;
   const mode=get("completionMode").value;
-  const src=row.completionModels?.[mode] || (sectioned ? (row.blockModel || row.dryModel || row.cutawayModel) : row.glb);
+  const component=row.components?.find(item=>item.id===get("componentMode").value);
+  const size=get("componentSize");
+  size.hidden=!component;
+  if (component) size.textContent=component.id+"　槽口长 × 宽 "+(component.length*100).toFixed(1)+" × "+(component.width*100).toFixed(1)+" 厘米，槽缘附近路面至槽底的 P95 高差 "+(component.depth*1000).toFixed(1)+" 毫米。";
+  const src=component?.glb || row.completionModels?.[mode] || (sectioned ? (row.blockModel || row.dryModel || row.cutawayModel) : row.glb);
   get("supportLegend").hidden=!(row.completionModels && mode==="support");
   get("glb").href=src;
   viewer.src=src;
@@ -100,6 +106,11 @@ get("sectionModel").onclick=()=>{
   sectioned=!sectioned;
   status("正在读取资产网格与纹理…");
   displayModel(selectedRow, Boolean(selectedRow.water));
+};
+get("componentMode").onchange=()=>{
+  if (!selectedRow?.components) return;
+  restoreTextures();
+  displayModel(selectedRow);
 };
 get("completionMode").onchange=()=>{
   if (selectedRow?.completionModels) displayModel(selectedRow,true);
@@ -117,6 +128,9 @@ function openSelection() {
   get("completionControl").hidden=!row?.completionModels || location.protocol==="file:";
   get("supportLegend").hidden=true;
   selectedRow=row;
+  get("componentSize").hidden=true;
+  get("componentMode").replaceChildren(new Option("整组路面",""),...(row?.components || []).map(c=>new Option(c.id,c.id)));
+  get("componentControl").hidden=!row?.components || location.protocol==="file:";
   if (!sameCover || location.protocol==="file:") sectioned=false;
   get("sectionModel").hidden=!(row?.cutawayModel || row?.dryModel || row?.blockModel) || location.protocol==="file:";
   get("states").replaceChildren();

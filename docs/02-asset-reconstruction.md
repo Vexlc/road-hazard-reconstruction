@@ -220,6 +220,29 @@ work/envs/streetcrafter/bin/python scripts/check-pit-inputs.py --run runs/my-pit
 work/envs/assets/bin/python scripts/render-pit-survey.py --run runs/my-pit-survey --out runs/my-pit-survey/figures
 ~~~
 
+## 从双排凹痕提取单个槽口
+
+P148 使用 PothRGBD 的 `20250305_140423` 单帧彩照、原始深度和 13 处标注重建了整段路面的网格与 311,363 个高斯。远排 7 槽，近排 6 槽。整组槽口外包尺寸约 2.67 × 1.40 米，沿排相邻中心的距离中位数为 41.1 厘米。相机内参沿用数据入口的标称值，尺度为近似值。[资产图谱](http://127.0.0.1:8765/tools/asset_atlas/index.html#P148) · [纹理与局部凹深图版](figures/paired-road-slots.jpg)
+
+在三维页面的「选择槽口」里，可以从整组切换到 12 个独立 GLB。每件保留槽底、原网格上约 35 毫米宽的邻接路面、原顶点法线、UV 与材质贴图。槽长为 14.1–30.7 厘米，槽缘周围路面至槽底的 P95 高差为 5.5–19.8 毫米。R2-01 的标注距离原图边界仅 1 像素，整组保留其观测范围。独立件只计作同一处路面的组成部分。清单记录每件的 glTF 复位平移、文件指纹和逐件检查结果。[逐槽尺寸和复位参数](../validation/paired-road-slots.json) · [旋转或下载各个槽口](http://127.0.0.1:8765/tools/asset_atlas/model.html#P148)
+
+另一帧 `20250305_140426` 的坑外路面特征用于定位相机。它的 10 处槽口标注各自对应一个模型部件，重合区共有 11,093 个实测深度像素，光轴深度绝对误差中位数为 7.9 毫米，P95 为 21.2 毫米。整帧轮廓交并比为 0.489。10 处中心偏差的中位数为 3.6 厘米，最大偏差出现在远排右端 R1-07，达 10.6 厘米。这些偏差与各槽尺寸接近时，图谱中的黄线和青线可以直接看出错位。[留出帧逐像素统计](../validation/paired-road-slots-heldout.json) · [逐槽轮廓与深度](../validation/paired-road-slots.json)
+
+同一 GLB 和 PLY 按原始尺度迁入 PandaSet 034 与 109，两处原生场景检查点重载后的像素差均为零。四个前后视相机观察使用实车标定，160 帧共给出 1,034 条模拟激光量程替换。[两处道路和传感器记录](../validation/paired-road-slots-transfer.json)
+
+```bash
+work/envs/streetcrafter/bin/python gen2hole/multiview_pits.py --survey gen2hole/examples/paired-road-slots/survey.json --preview --out runs/paired-road-slots
+work/envs/assets/bin/python gen2hole/export_pit_components.py --run runs/paired-road-slots --id P148 --rows 2
+work/envs/streetcrafter/bin/python scripts/check-pit-components.py --run runs/paired-road-slots --id P148 --out validation/paired-road-slots.json
+for site in 034 109; do
+  python gen2hole/downstream/place.py --bundle runs/paired-road-slots/series --site "$site" --group 148 --assets P148
+done
+python gen2hole/downstream/simulate.py --run runs/paired-road-slots --out runs/paired-road-slots/sensors
+python scripts/check-pit-transfer.py --run runs/paired-road-slots --out validation/paired-road-slots-transfer.json
+work/envs/streetcrafter/bin/python scripts/render-road-slots.py --run runs/paired-road-slots --out docs/figures/paired-road-slots.jpg
+python scripts/build-asset-atlas.py
+```
+
 ## 用彩照补回双目深度缺口
 
 陡壁三角形坑 P142 和粗粒坑壁凹坑 P143 来自 FanStereo 的两组拍摄。两件坑洞横跨约 9 厘米。各拟合帧中有四分之一到超过三分之一的坑内像素缺少有效距离。先以坑外的路面配准相机，再沿不同高度将一张照片投影到另一张。只有坑内纹理能双向匹配、回到原像素附近，并且与其余已有距离相容时，才向空像素写入估计。拍摄时已经有效的距离逐像素保留。最终表面经过邻域滤波，格点的颜色标出滤波前支持其高度的来源。[FanStereo 数据来源](https://github.com/ruirangerfan/stereo_pothole_datasets) · [实拍与道路对照图版](figures/pit-depth-completion.jpg)
@@ -399,7 +422,7 @@ work/envs/streetcrafter/bin/python scripts/render-scanned-cracks.py --run "$run"
 
 ## 原始高斯资产与网格的同机位对照
 
-主目录的 1,395 个 PLY 共有 196,035,569 个高斯。四个碎板状态还提供断边加密 PLY，复用同编号的网格。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
+主目录的 1,396 个 PLY 共有 196,346,932 个高斯。四个碎板状态还提供断边加密 PLY，复用同编号的网格。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
 
 浏览器按 PLY 中的三轴对数尺度、WXYZ 四元数和不透明度恢复各向异性高斯。渲染使用完整点集和原始一阶球谐颜色，按当前透视机位投影协方差、补偿屏幕滤波造成的不透明度变化，再按深度合成。能写入半浮点缓冲区的设备使用 16 位浮点颜色累积。GPU 与浏览器共享米制尺度，原始 PLY 为 Z 向上，GLB 为 Y 向上。[gsplat 光栅化说明](https://docs.gsplat.studio/main/apis/rasterization.html)
 
@@ -415,7 +438,7 @@ python scripts/serve-asset-atlas.py
 
 「核对高斯与网格的深度」提供固定机位的网格、高斯和像素级绝对差。网格深度取射线首次命中的正面。高斯深度为沿光线的透明度加权期望。图中计入不透明度大于 85%、共同命中且远离网格轮廓的像素。可将统计范围切换到井圈、井壁、盖板、水面或周边路面。数字描述两种资产表示的一致程度。[逐机位与逐部件核验](../validation/atlas-gaussians.json)
 
-浏览器解码器已逐个读入并排序全库 1,395 个 PLY。四批覆盖 12 种来源或重建方法的样本共有 34 件资产、102 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json) · [碎板四态的 16 组同机位对照](../validation/atlas-slab-gaussians.json) · [同组机位的加密采样对照](../validation/atlas-slab-edge-gaussians.json)
+浏览器解码器已逐个读入并排序全库 1,396 个 PLY。四批覆盖 12 种来源或重建方法的样本共有 34 件资产、102 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json) · [碎板四态的 16 组同机位对照](../validation/atlas-slab-gaussians.json) · [同组机位的加密采样对照](../validation/atlas-slab-edge-gaussians.json)
 
 矩形敞井 M11 的低角度画面中，井圈、井壁和周边路面的差异相距很大。GLB 的路面网格遮住地下结构，独立高斯资产的路面边缘逐渐透明，部分像素仍收到地下井壁的颜色与深度。迁入画面使用宿主路面和遮挡几何。可对照俯视、斜视和低角度三组图，区分部件本身和道路过渡区的贡献。[敞井深度图版](figures/gaussian-shaft-depth.jpg)
 
