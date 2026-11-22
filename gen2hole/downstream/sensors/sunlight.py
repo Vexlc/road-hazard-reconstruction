@@ -86,7 +86,7 @@ def cast_shadows(site,camera,models,pose,K,rect,part,which,src,protected):
     factor=np.asarray(info['contrast'][camera]['measured_shade_to_sun_srgb'],dtype='f4').clip(.42,.88)
     l,t,r,b=rect
     for i,(p,mesh,_) in enumerate(models,1):
-        if p['category']!='raised':continue
+        if p['category']!='raised' and not (13 in mesh.parts and mesh.high[2]>.0035):continue
         keep=(part==1)&(which==i)&~protected
         y,x=np.where(keep)
         if not len(y):continue
@@ -102,7 +102,7 @@ def cast_shadows(site,camera,models,pose,K,rect,part,which,src,protected):
         ground=eye+ray*((.0035-eye[2])/ray[:,2])[:,None]
         distance,hit,_=mesh.cast(ground,np.broadcast_to(sun,ground.shape))
         shade=np.zeros(shape,'f4')
-        shade[y,x]=((hit>=9)&(distance>0)&(distance<3.)).astype('f4')
+        shade[y,x]=((hit>=9)&(hit<=15)&(distance>0)&(distance<3.)).astype('f4')
         if not shade.any():continue
         soft=cv2.GaussianBlur(shade,(0,0),1.15)
         # Suppress additional darkening on strongly pre-shadowed asphalt; paint can receive light.

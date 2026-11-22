@@ -1,0 +1,15 @@
+{
+  "parent": "P135",
+  "crop_col_row_intervals": [724, 112, 768],
+  "seed_col_row_in_crop": [382, 393],
+  "base_z_m": -0.085,
+  "slab_bottom_z_m": -0.05,
+  "socket_clearance_m": 0.006,
+  "support_inset_m": 0.012,
+  "states": [
+    {"id":"P144", "label":"闭合网裂中的原位碎板", "offset_m":0},
+    {"id":"P145", "label":"局部凸起的混凝土碎板", "offset_m":0.035},
+    {"id":"P146", "label":"局部下沉的混凝土碎板", "offset_m":-0.025},
+    {"id":"P147", "label":"混凝土碎板脱落坑", "offset_m":null}
+  ]
+}

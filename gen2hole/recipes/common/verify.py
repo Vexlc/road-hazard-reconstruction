@@ -65,7 +65,11 @@ def verify_asset(directory, manifest_row, run):
             distance = np.minimum(axis, len(axis) - 1 - axis) * pitch
             t = np.clip(np.minimum.outer(distance, distance) / max(.012, 4*pitch), 0, 1)
             expected = measured * t**2 * (3 - 2*t)
-            require(np.allclose(height, expected, rtol=0, atol=1e-7), f"{name}: scan heights vs metric field")
+            captured = field["captured_height"] if "slab" in meta else height
+            require(np.allclose(captured, expected, rtol=0, atol=1e-7), f"{name}: scan heights vs metric field")
+            if "slab" in meta:
+                outside = field["slab_socket"] == 0
+                require(np.array_equal(height[outside],captured[outside]), f"{name}: fixed road around slab")
         mask = "water_mask" if meta["category"] == "pothole" else "opening_mask"
         require(field[mask].shape == height.shape, f"{name}: {mask}")
         if mask == "opening_mask":

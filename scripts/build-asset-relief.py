@@ -46,7 +46,7 @@ def read_mesh(path,separate):
             node=header['nodes'][idx]
             if set(node)-{'name','mesh','extras'}:raise ValueError('Expected world-aligned atlas GLB '+str(path))
             mesh=header['meshes'][node['mesh']]
-            layer=mesh.get('name','').startswith(('Lid ','Hinge ')) or mesh.get('name')=='Water surface'
+            layer=mesh.get('name','').startswith(('Lid ','Hinge ','Detached pavement ')) or mesh.get('name')=='Water surface'
             saw_layer |= layer
             for primitive in mesh['primitives']:
                 if primitive.get('mode',4)!=4:raise ValueError('Only triangles can be queried')
@@ -112,8 +112,8 @@ def build(row,dest,resume):
                     and (not row.get('water') or 'under' in grid)):
                 code=np.frombuffer(base64.b64decode(grid['top'],validate=True),'<u2').reshape(grid['n'],grid['n'])
                 return dict(id=key,samples=int(np.count_nonzero(code)),substrate='under' in grid)
-    full,under,lo,hi,digest=read_mesh(path,row['category'] in ('异常井盖','落座参照') or bool(row.get('throughHoles') or row.get('water')))
-    n=193 if row['category']=='裂缝' or row.get('panelSize') or row.get('water') or row.get('completionModels') else 97
+    full,under,lo,hi,digest=read_mesh(path,row['category'] in ('异常井盖','落座参照') or bool(row.get('throughHoles') or row.get('water') or row.get('slab')))
+    n=193 if row['category']=='裂缝' or row.get('slab') or row.get('panelSize') or row.get('water') or row.get('completionModels') else 97
     # The grid covers cell centres, avoiding ambiguous triangle intersections on exterior edges.
     xpitch=(hi[0]-lo[0])/n;ypitch=(hi[2]-lo[2])/n
     xs=np.linspace(lo[0]+xpitch/2,hi[0]-xpitch/2,n)

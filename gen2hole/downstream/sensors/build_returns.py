@@ -92,12 +92,13 @@ def run(parent,out,cache,first,last):
         for n,pl in enumerate(scene['placements'],1):
             wh=(arr['instance']==n); valid=wh&(arr['action']==1)
             z=arr['local_z_m'][valid];ranges=arr['range_after_m'][valid]-arr['range_before_m'][valid]
-            root,_=assets[pl['asset_id']]
+            mesh,_=model(pl['asset_id'])
+            part_count=max(13,int(mesh.parts.max())+1)
             per_asset.append(dict(asset_id=pl['asset_id'],instance=n,slot=pl['slot'],category=pl['category'],
                 center_world=pl['center_world'],basis_columns=pl['basis_columns'],plane_rms_m=pl['rms_m'],
                 changed=int(wh.sum()),hits=int(valid.sum()),lost=int((wh&~valid).sum()),
                 by_sensor=np.bincount(arr['sensor'][valid],minlength=2).tolist(),
-                part_counts=np.bincount(arr['part'][valid],minlength=13).tolist(),
+                part_counts=np.bincount(arr['part'][valid],minlength=part_count).tolist(),
                 z_range_m=[float(z.min()),float(z.max())] if len(z) else [],
                 range_change_m=[float(ranges.min()),float(ranges.max())] if len(ranges) else []))
         save_json(dst.with_suffix('.json'),dict(case=case,site=site,

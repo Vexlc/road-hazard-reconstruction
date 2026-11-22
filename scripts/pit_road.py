@@ -36,7 +36,7 @@ class PitBed:
             if name == 'Water surface':
                 continue
             geom = self.scene.add_triangles(o3d.core.Tensor(xyz), o3d.core.Tensor(faces))
-            if name.startswith('Fracture '):
+            if name.startswith(('Fracture ', 'Detached pavement ', 'Subgrade bearing', 'Slab socket wall', 'Exposed slab foundation')):
                 self.bed_ids.append(geom)
             if self.annotation is not None:
                 sample = xyz[:: max(1, len(xyz) // 4096)]

@@ -411,6 +411,38 @@ def pit_road_views(run):
     return shots
 
 
+def faulted_slabs():
+    run = ROOT/'runs/concrete-slab'
+    if not run.is_dir():
+        return {}
+    bundle, evidence = run/'series', run/'evaluation'
+    results = read(evidence/'measurements.json')
+    states = {'P144':'原位','P145':'凸起','P146':'下沉','P147':'脱落'}
+    shots = pit_road_views(run)
+    rows = {}
+    for meta in read(bundle/'assets/asset_manifest.json'):
+        key = meta['id']
+        spec, proof = meta['slab'], results[key]
+        row = entry(meta,bundle/'assets','实拍碎板＋设计状态',meta['label'],bundle/'views'/(key+'_inspection.jpg'))
+        source = bundle/meta['source_image']
+        row.update(category='混凝土碎板', state=states[key], states=list(states), gradeReference='P144',
+                   reference=link(source), reverse=link(bundle/'views'/(key+'_reverse.jpg')), scenes=shots.get(key,[]),
+                   triangles=sum(meta['geometry_parts'].values()),width=spec['grid_xy_extent_m'][0],length=spec['grid_xy_extent_m'][1],
+                   depth=(spec['offset_m'] if spec['offset_m'] is not None else spec['base_z_m']),
+                   depthLabel='相对原位的平移' if spec['offset_m'] is not None else '基层设计高程',
+                   slab=dict(area=proof['source_area_m2'],volume=results['P144']['volume_m3'],pitch=1000*meta['source_grid_pitch_m']),
+                   blockModel=link(evidence/'block.glb'), blockPreview=link(evidence/'block.jpg'),
+                   note='四态共用一块扫描顶面及其闭合裂缝边界。板厚、移位、接触基层与露出的材质为设计参数。脱落状态保留原槽口。',
+                   credit=meta['source_page'],audit=link(evidence/'measurements.json'),auditLabel='顶面、闭合实体与高差核验',
+                   sourceViews=[dict(label=title,image=link(photo),note=note) for title,photo,note in [
+                       ('实拍原图',source,'摄影测量彩色图与位移图共享坐标。'),
+                       ('原图闭合边界',evidence/'outline.jpg','青线为提取的碎板，黄线为网格截线。'),
+                       ('独立碎板',evidence/'block.jpg','单独提取的完整碎板，断面与厚度采用设计值。'),
+                       ('实体截面',evidence/key/'section.jpg','绿线为扫描顶面，棕线为板底、断面及基层。')]])
+        rows[key]=row
+    return rows
+
+
 def scanned_cracks():
     run = ROOT / 'runs/scanned-cracks'
     if not run.exists():
@@ -775,7 +807,7 @@ def standing_water(rows):
 def main():
     rows = {}
     shared = shared_profile_modes()
-    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), scanned_cracks(),
+    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), crack_examples(), scanned_cracks(), faulted_slabs(),
                   multiview_potholes(shared, ROOT/'runs/multiview-pit-survey'),
                   multiview_potholes(shared, ROOT/'runs/pit-depth-completion'), parallax_potholes(shared)):
         if group.keys() & rows.keys():
@@ -798,7 +830,11 @@ def main():
     road_checks = read(road_report)['audited_assets'] if road_folder.is_dir() and road_report.is_file() else {}
     grade_report = ROOT / 'validation/atlas-grade-gaussians.json'
     grade_depths = read(grade_report)['browser_vs_cuda_and_glb'] if grade_report.is_file() else {}
-    depth_evidence = [(audit_folder/'browser', audit_folder/'geometry', checks),
+    slab_folder = ROOT/'runs/concrete-slab/evaluation'
+    slab_report = ROOT/'validation/atlas-slab-gaussians.json'
+    slab_checks = read(slab_report)['browser_vs_cuda_and_glb'] if slab_report.is_file() else {}
+    depth_evidence = [(slab_folder/'browser', slab_folder/'gaussian-depth', slab_checks),
+                      (audit_folder/'browser', audit_folder/'geometry', checks),
                       (pit_geometry/'browser', pit_geometry/'geometry', pit_depths),
                       (road_folder, road_folder/'geometry', grade_depths)]
     pit_folder = ROOT / 'runs/atlas-pit-road/browser'

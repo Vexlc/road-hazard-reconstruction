@@ -58,6 +58,8 @@ def prepare_view(dest,cache,kind,width,height):
     with np.load(cache/(meta['id']+'.npz')) as m:
         names=m['part_names']
         include=np.array([('Fracture' in x or 'Water' in x or 'Cast ring' in x or x.startswith('Lid') or 'collar' in x) for x in names])
+        if 'slab' in meta:
+            include=np.isin(names,['Detached pavement top','Exposed slab foundation','Slab socket wall'])
         points=m['xyz'][np.unique(m['faces'][include[m['face_part']]])]
     cat=meta['category']
     if cat=='pothole':

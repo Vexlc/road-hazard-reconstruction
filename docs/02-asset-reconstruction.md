@@ -399,7 +399,7 @@ work/envs/streetcrafter/bin/python scripts/render-scanned-cracks.py --run "$run"
 
 ## 原始高斯资产与网格的同机位对照
 
-图谱收录的 1,391 个 PLY 共有 194,971,268 个高斯。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
+图谱收录的 1,395 个 PLY 共有 196,035,569 个高斯。每件资产都有一张从自身 PLY 渲染的离线预览。在图谱中点「看高斯渲染」即可查看，点「3DGS 与网格对照」可绕任意方向检查原始高斯，或用分界线在原位切换到 GLB。对照页下方列出同一资产已有的道路观测。[独立资产与实景对照](figures/gaussian-asset-comparison.jpg)
 
 浏览器按 PLY 中的三轴对数尺度、WXYZ 四元数和不透明度恢复各向异性高斯。渲染使用完整点集和原始一阶球谐颜色，按当前透视机位投影协方差、补偿屏幕滤波造成的不透明度变化，再按深度合成。能写入半浮点缓冲区的设备使用 16 位浮点颜色累积。GPU 与浏览器共享米制尺度，原始 PLY 为 Z 向上，GLB 为 Y 向上。[gsplat 光栅化说明](https://docs.gsplat.studio/main/apis/rasterization.html)
 
@@ -415,7 +415,7 @@ python scripts/serve-asset-atlas.py
 
 「核对高斯与网格的深度」提供固定机位的网格、高斯和像素级绝对差。网格深度取射线首次命中的正面。高斯深度为沿光线的透明度加权期望。图中计入不透明度大于 85%、共同命中且远离网格轮廓的像素。可将统计范围切换到井圈、井壁、盖板、水面或周边路面。数字描述两种资产表示的一致程度。[逐机位与逐部件核验](../validation/atlas-gaussians.json)
 
-浏览器解码器已逐个读入并排序全库 1,391 个 PLY。三批覆盖 11 种来源或重建方法的样本共有 30 件资产、86 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json)
+浏览器解码器已逐个读入并排序全库 1,395 个 PLY。四批覆盖 12 种来源或重建方法的样本共有 34 件资产、98 个不同的资产机位，均已逐像素比较浏览器画面与 CUDA 参考渲染。以 255 为满值，每幅画面不透明区域的 RGB 平均绝对差均小于 0.16。[全库 PLY 解码记录](../validation/atlas-gaussian-ply.json) · [首批颜色对照](../validation/atlas-gaussians.json) · [坑洞与裂缝的 60 组同机位对照](../validation/atlas-pit-gaussians.json) · [井盖高差的 15 组同机位对照](../validation/atlas-grade-gaussians.json) · [碎板四态的 12 组同机位对照](../validation/atlas-slab-gaussians.json)
 
 矩形敞井 M11 的低角度画面中，井圈、井壁和周边路面的差异相距很大。GLB 的路面网格遮住地下结构，独立高斯资产的路面边缘逐渐透明，部分像素仍收到地下井壁的颜色与深度。迁入画面使用宿主路面和遮挡几何。可对照俯视、斜视和低角度三组图，区分部件本身和道路过渡区的贡献。[敞井深度图版](figures/gaussian-shaft-depth.jpg)
 
@@ -524,11 +524,55 @@ work/envs/streetcrafter/bin/python scripts/check-perforated-covers.py --run work
 work/envs/streetcrafter/bin/python scripts/render-cover-grade.py --run work/grade-rebuild --report work/grade-rebuild/grade.json --out work/grade-rebuild/grade.jpg
 ~~~
 
+## 从闭合网裂中提取可拆卸的混凝土碎板
+
+P144–P147 共用 P135 实拍扫描中的一块混凝土。从 0.75 米见方的源图裁切内，沿包围种子点的闭合裂缝提取板块，用稀疏位移样本重建顶面。原图闭合区面积 0.07287 平方米，板块的网格平面包围盒为 25.0 × 47.7 厘米。纹理坐标与原照逐点配准。板底、断面材质、槽口间隙和基层来自设计配方。三个在位状态保留相同的 19,948 个三角形以及相同的纹理坐标和相对形状。[实拍源与模型截面](figures/faulted-slab.jpg) · [提取与状态配方](../gen2hole/examples/faulted-slab/survey.json)
+
+| 状态 | 导出模型中的垂直变化 | 在道路机位可以观察到的部位 |
+| --- | ---: | --- |
+| P144 原位 | 0 mm | 扫描顶面与环绕它的裂缝 |
+| P145 凸起 | +35 mm | 顶面和较大面积的断面 |
+| P146 下沉 | −25 mm | 下沉的顶面和槽口侧壁 |
+| P147 脱落 | 基层高程 −85 mm | 移走整块碎板后露出的侧壁和基层 |
+
+单独提取出的碎板是封闭实体。三个在位状态各对 9,570 个底面三角形中心发射射线，7,860 处接触设计承托面，接触面积约 0.0600 平方米。按均匀密度计算的重心投影距承托点凸包边界最近约 10.1 厘米。将顶面射线与 42,778 个建模格点之外的源位移像素比较，原位模型的中位绝对差为 0.026 毫米，第 95 百分位为 0.099 毫米。这两项数值衡量对源位移图的复现。板块平面轮廓与原图闭合区的交并比为 0.988。重新准备输入并从头构建四态后，GLB、Gaussian PLY、路面场、逐点材质和元数据共 20 个文件的 SHA-256 均与第一次构建相同。[几何与接触记录](../validation/concrete-slab.json) · [独立三维模型](http://127.0.0.1:8765/tools/asset_atlas/model.html#P145) · [同点高程与剖面](http://127.0.0.1:8765/tools/asset_atlas/index.html#P145)
+
+四态各按原尺寸迁到 PandaSet 034 和 109 的同一位置，合计八次放置、16 个标定前后视机位和 640 个放置扫描帧。034 前视第 30 帧中，碎板断面的可见面积从原位的 68 个像素增至凸起时的 617 个像素。碎板下沉时能看到 408 个槽壁像素，脱落后能看到 231 个基层像素。034 路段共有 477 束激光在原位和凸起状态下都得到模拟回波，其中 270 束的量程相差超过 10 毫米。[两段道路的实拍与部件标记](figures/faulted-slab-roads.jpg) · [相机像素与共同模拟回波](../validation/concrete-slab-visibility.json) · [迁移与原位重载](../validation/concrete-slab-transfer.json)
+
+独立高斯与网格各核验了俯视、斜视和低角度三种机位。P145 的板顶在俯视时有 11,882 个共同不透明像素，高斯期望深度与网格首交深度的中位绝对差为 0.24 毫米，低角度时为 8.27 毫米。透过同一板边的狭缝俯视时，48 个首先命中基层的共同像素中位差达到 119.29 毫米。尺寸和狭缝测量可直接在 GLB 上读取，图谱保留逐部件的两种表示对照。[三个机位与部件深度差](http://127.0.0.1:8765/tools/asset_atlas/splats.html#P145) · [逐部件核验数字](../validation/atlas-slab-gaussians.json)
+
+复现时先按「从道路扫描重建裂缝」准备源图和配准输入，以下的 `parent` 指向该节生成的输入目录。四个状态共享这一份裁切。
+
+~~~bash
+parent=work/prepared-crack-demo
+prep=work/prepared-slab-demo
+run=work/slab-demo
+work/envs/assets/bin/python gen2hole/examples/faulted-slab/prepare.py --parent "$parent" --out "$prep"
+python gen2hole/gen2hole.py build --inputs "$prep" --preview --out "$run" P144 P145 P146 P147
+work/envs/streetcrafter/bin/python scripts/check-faulted-slab.py --run "$run" --parent "$parent" --out "$run/evaluation/measurements.json"
+work/envs/assets/bin/python scripts/render-faulted-slab.py --run "$run" --out "$run/model.jpg"
+for site in 034 109; do
+  for id in P144 P145 P146 P147; do
+    python gen2hole/downstream/place.py --bundle "$run/series" --site "$site" --group "${id#P}" --assets "$id"
+  done
+done
+python gen2hole/downstream/simulate.py --run "$run" --out "$run/sensors"
+work/envs/assets/bin/python scripts/render-slab-roads.py --run "$run" --out "$run/roads.jpg" --report "$run/evaluation/visibility.json"
+~~~
+
+图谱加载本机正式发布的四态后，可另存三个机位的网格、高斯及逐像素深度差。下列命令按图谱所引的 GLB 和 PLY 指纹核对浏览器与 CUDA 参考渲染。
+
+~~~bash
+ev=work/slab-view-check
+node scripts/capture-atlas-gaussians.cjs "$ev/browser" P144 P145 P146 P147
+CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/check-atlas-gaussians.py --captures "$ev/browser" --ids P144 P145 P146 P147 --evidence "$ev/geometry" --out "$ev/gaussians.json"
+~~~
+
 ## 同一车载机位比较不同资产
 
 在图谱打开「同位置道路资产对照」，先选道路位置，再选两件资产。同一栏也可以切回「原始路面」。两件资产共用原实拍帧、相机标定、放置中心和朝向，各自保留重建时的米制尺寸。下方并排显示重建参考图与独立模型。可点开原图，或旋转图谱内的三维模型。尺寸旁沿用原资产的深度定义，例如设计井深、实测坑底凹深或某条截线的深度。[八件资产的道路近景与远景](figures/matched-road-assets.jpg) · [离线对照页](../tools/asset_atlas/compare-road.html)
 
-当前有 163 件可对照资产，其中 162 件来自图谱，A98 是另列的合成 RGB-D 姿态标定样例。109 件来自生成的 RGB，其他来源包括实拍 RGB、双张彩照、多帧 RGB-D、双目、摄影测量和实拍相机加激光。PandaSet 034、109、110 的九处路面共保留 405 次原尺度放置。每个位置的前后相机各取可用的近处与远处帧。110 的位置 01 在记录开始时已经很近，只有一个可用的前视机位。合计 35 个机位、1,577 组单资产观测。
+当前有 167 件可对照资产，其中 166 件来自图谱，A98 是另列的合成 RGB-D 姿态标定样例。109 件来自生成的 RGB，其他来源包括实拍 RGB、双张彩照、多帧 RGB-D、双目、摄影测量和实拍相机加激光。PandaSet 034、109、110 的九处路面共保留 413 次原尺度放置。每个位置的前后相机各取可用的近处与远处帧。110 的位置 01 在记录开始时已经很近，只有一个可用的前视机位。合计 35 个机位、1,609 组单资产观测。
 
 以 109 的位置 01 为例，前视第 29 帧相机距资产中心 9.4 米，第 21 帧为 22.3 米。同一相机的两次裁切使用相同的原图像素宽高，保留了随车辆距离变化的视角大小。勾选「同步放大病害」，两栏会裁到能容纳这两件资产及其投影回波的范围。近处和远处仍用相同的像素跨度，全景中的白框标出放大区域。
 
@@ -547,7 +591,7 @@ work/envs/streetcrafter/bin/python scripts/render-cover-grade.py --run work/grad
 
 在同一张近处前视照片里，干坑 P122 和积水坑 P130 的可见网格面积都是 3,346 像素。185 束共同回波中有 85 束相差超过 10 毫米。沿原始扫描行 154991，干坑命中坑底的距离为 8.459 米，注水后命中水面的距离为 8.296 米。这里按理想水面几何求交，实际水面的光学反射和雷达漏检取决于材质、波长与入射角。两种井盖断片位置则给出另一种结果。在 109 的位置 05 近处前视中，A127、A128 的 126 束共同回波全部返回相同距离。[同一个坑的干湿对照](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-01&view=front-near&a=P122&b=P130&beam=154991&zoom=1) · [断片落井与移至井旁](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-05&view=front-near&a=A127&b=A128&rays=1&zoom=1)
 
-独立核验重新读取实拍照片、标定、扫描与 GLB，抽查 30,303 条相机射线和 4,237 个模拟回波的相机深度。四条相机射线在轮廓边缘内外 0.001 像素范围内复核，两条位于几乎重合的盖面与边缘，逐部件求交的距离相差小于 0.05 毫米。与已有标定回放重合的 483 组观测共比较了 2,807,961 个部件像素，标签完全一致。所有机位累计有 206,403 个投影模拟回波，其中 199,623 个与相机命中同一部件且光轴深度相差不超过 5 厘米。有 132 组观测没有落进裁切的模拟回波。[逐位置与逐资产对的核验记录](../validation/matched-road-views.json)
+独立核验重新读取实拍照片、标定、扫描与 GLB，抽查 30,975 条相机射线和 4,275 个模拟回波的相机深度。四条相机射线在轮廓边缘内外 0.001 像素范围内复核，两条位于几乎重合的盖面与边缘，逐部件求交的距离相差小于 0.05 毫米。与已有标定回放重合的 491 组观测共比较了 2,818,849 个部件像素，标签完全一致。所有机位累计有 207,359 个投影模拟回波，其中 200,517 个与相机命中同一部件且光轴深度相差不超过 5 厘米。有 135 组观测没有落进裁切的模拟回波。[逐位置与逐资产对的核验记录](../validation/matched-road-views.json)
 
 本地已恢复资产、场景检查点、传感器发布数据与 PandaSet 原始／预处理数据后，可执行以下命令复建。若只需一处，构建命令可追加 `--groups 109-01`。下方命令写入新的目录，图谱正式入口读取 `runs/road-comparisons/`。
 

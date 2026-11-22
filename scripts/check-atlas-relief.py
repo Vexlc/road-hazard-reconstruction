@@ -40,7 +40,7 @@ def compare(path,data,seed):
         transform,name=scene.graph[node]
         mesh=scene.geometry[name].copy()
         mesh.apply_transform(transform)
-        (moving if name.startswith(('Lid ','Hinge ')) or name=='Water surface' else fixed).append(mesh)
+        (moving if name.startswith(('Lid ','Hinge ','Detached pavement ')) or name=='Water surface' else fixed).append(mesh)
     rng=np.random.default_rng(seed)
     errors=[]
     for field,meshes in [('top',fixed+moving),('under',fixed)]:
@@ -90,17 +90,18 @@ def check():
     rows=json.loads((ATLAS/'catalog.js').read_text()[len('window.roadAssets='):-2])
     reference={'P134','P135','P136','P137','A125','A126','A127','A128','P121','P122','P123','P124','A115','A116','A117','M115','A118','A119','A120','M118','P110','P111','P112','P113','P114','A107','A108','M107','A104','A105','M104','A93','A95','M91','M13','P13','P102','P90','stereo_pothole_fan_1_03',
                'rgbd_pothole_20250227_135438','model_raised_rectangular_removed_side_chip_seal'}
-    summary=dict(records=len(rows),with_removable_cover=0,with_water_surface=0,valid_top_samples=0,pitch_m=[],checked_meshes={})
+    summary=dict(records=len(rows),with_removable_cover=0,with_detached_slab=0,with_water_surface=0,valid_top_samples=0,pitch_m=[],checked_meshes={})
     for i,row in enumerate(rows):
         d=decode(row)
         top=d['top'];n=d['n']
         if 'under' in d:
-            summary['with_water_surface' if row.get('water') else 'with_removable_cover']+=1
+            kind='with_water_surface' if row.get('water') else 'with_detached_slab' if row.get('slab') else 'with_removable_cover'
+            summary[kind]+=1
             ok=np.isfinite(d['under'])&np.isfinite(top)
             if (d['under'][ok]>top[ok]+d['step']).any():raise ValueError(row['id'])
         summary['valid_top_samples']+=int(np.isfinite(top).sum())
         summary['pitch_m'].append(max(abs(d['x'][1]-d['x'][0]),abs(d['y'][1]-d['y'][0]))/(n-1))
-        if row.get('installationGrade') or row.get('completionModels'):
+        if row.get('installationGrade') or row.get('completionModels') or row.get('slab'):
             reference.add(row['id'])
         if row.get('water'):
             reference.add(row['id'])

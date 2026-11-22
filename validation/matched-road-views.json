@@ -381,9 +381,122 @@
           "second_m": 22.307192
         }
       }
+    },
+    "109-01/P145-P147": {
+      "front-near": {
+        "shared_projected_rows": 106,
+        "over_10mm": 72,
+        "max_difference_mm": 444.784,
+        "median_difference_mm": 193.835,
+        "farthest_apart": {
+          "scan_row": 155015,
+          "sensor": 1,
+          "first_part": 13,
+          "second_part": 17,
+          "original_m": 8.120245,
+          "first_m": 7.941661,
+          "second_m": 8.386445
+        }
+      },
+      "front-far": {
+        "shared_projected_rows": 0,
+        "over_10mm": 0
+      },
+      "back-near": {
+        "shared_projected_rows": 3,
+        "over_10mm": 0,
+        "max_difference_mm": 0.0,
+        "median_difference_mm": 0.0,
+        "farthest_apart": {
+          "scan_row": 101963,
+          "sensor": 0,
+          "first_part": 2,
+          "second_part": 2,
+          "original_m": 9.789914,
+          "first_m": 9.835097,
+          "second_m": 9.835097
+        }
+      },
+      "back-far": {
+        "shared_projected_rows": 3,
+        "over_10mm": 2,
+        "max_difference_mm": 454.815,
+        "median_difference_mm": 282.284,
+        "farthest_apart": {
+          "scan_row": 102159,
+          "sensor": 0,
+          "first_part": 14,
+          "second_part": 17,
+          "original_m": 25.257181,
+          "first_m": 25.067879,
+          "second_m": 25.522694
+        }
+      }
+    },
+    "034-01/P144-P146": {
+      "front-near": {
+        "shared_projected_rows": 102,
+        "over_10mm": 53,
+        "max_difference_mm": 146.812,
+        "median_difference_mm": 21.3355,
+        "farthest_apart": {
+          "scan_row": 173710,
+          "sensor": 1,
+          "first_part": 13,
+          "second_part": 17,
+          "original_m": 8.265961,
+          "first_m": 8.223077,
+          "second_m": 8.369889
+        }
+      },
+      "front-far": {
+        "shared_projected_rows": 2,
+        "over_10mm": 1,
+        "max_difference_mm": 273.173,
+        "median_difference_mm": 136.5865,
+        "farthest_apart": {
+          "scan_row": 57351,
+          "sensor": 0,
+          "first_part": 13,
+          "second_part": 13,
+          "original_m": 21.979122,
+          "first_m": 22.013145,
+          "second_m": 22.286318
+        }
+      },
+      "back-near": {
+        "shared_projected_rows": 8,
+        "over_10mm": 6,
+        "max_difference_mm": 115.144,
+        "median_difference_mm": 64.8435,
+        "farthest_apart": {
+          "scan_row": 112189,
+          "sensor": 0,
+          "first_part": 13,
+          "second_part": 13,
+          "original_m": 10.096603,
+          "first_m": 10.143652,
+          "second_m": 10.258796
+        }
+      },
+      "back-far": {
+        "shared_projected_rows": 1,
+        "over_10mm": 1,
+        "max_difference_mm": 109.362,
+        "median_difference_mm": 109.362,
+        "farthest_apart": {
+          "scan_row": 1028,
+          "sensor": 0,
+          "first_part": 13,
+          "second_part": 17,
+          "original_m": 22.575996,
+          "first_m": 22.892614,
+          "second_m": 23.001976
+        }
+      }
     }
   },
-  "assets": 163,
+  "assets": 167,
   "reconstruction_methods": {
     "生成 RGB": 109,
     "实拍 RGB + 激光雷达": 6,
@@ -393,28 +506,29 @@
     "多帧双目": 4,
     "多帧 RGB-D": 3,
     "双张实拍 RGB": 4,
-    "实拍坑底＋模拟积水": 5
+    "实拍坑底＋模拟积水": 5,
+    "实拍碎板＋设计状态": 4
   },
   "locations": 9,
   "camera_poses": 35,
   "metrics": {
     "camera_subpixel_boundaries": 4,
     "camera_coincident_parts": 2,
-    "projected_beams": 206403,
-    "views_without_projected_beams": 132,
-    "same_part_beams": 200542,
-    "same_part_within_50mm": 199623,
-    "laser_depth_checks": 4237,
+    "projected_beams": 207359,
+    "views_without_projected_beams": 135,
+    "same_part_beams": 201443,
+    "same_part_within_50mm": 200517,
+    "laser_depth_checks": 4275,
     "laser_subpixel_boundaries": 0,
     "laser_coincident_parts": 0,
-    "views": 1577,
-    "visible_pixels": 4978184,
-    "changed_pixels": 5608234,
+    "views": 1609,
+    "visible_pixels": 5001189,
+    "changed_pixels": 5642972,
     "empty_mesh_views": 6,
-    "camera_ray_checks": 30303,
-    "placements": 405,
-    "previous_camera_overlaps": 483,
-    "previous_part_pixels": 2807961,
+    "camera_ray_checks": 30975,
+    "placements": 413,
+    "previous_camera_overlaps": 491,
+    "previous_part_pixels": 2818849,
     "previous_part_differences": 0
   },
   "max_center_ray_depth_error_mm": 0.22314080421637073,
@@ -482,39 +596,39 @@
     "109-01": {
       "camera_subpixel_boundaries": 1,
       "camera_coincident_parts": 0,
-      "projected_beams": 20981,
-      "views_without_projected_beams": 62,
-      "same_part_beams": 20029,
-      "same_part_within_50mm": 19954,
-      "laser_depth_checks": 496,
+      "projected_beams": 21461,
+      "views_without_projected_beams": 65,
+      "same_part_beams": 20488,
+      "same_part_within_50mm": 20407,
+      "laser_depth_checks": 514,
       "laser_subpixel_boundaries": 0,
       "laser_coincident_parts": 0,
-      "previous_camera_overlaps": 131,
-      "previous_part_pixels": 463558,
+      "previous_camera_overlaps": 139,
+      "previous_part_pixels": 474446,
       "previous_part_differences": 0,
-      "views": 284,
-      "visible_pixels": 502908,
-      "changed_pixels": 601082,
+      "views": 300,
+      "visible_pixels": 514520,
+      "changed_pixels": 618830,
       "empty_mesh_views": 4,
-      "camera_ray_checks": 4321,
-      "placements": 71
+      "camera_ray_checks": 4656,
+      "placements": 75
     },
     "034-01": {
       "camera_subpixel_boundaries": 0,
       "camera_coincident_parts": 0,
-      "projected_beams": 19703,
+      "projected_beams": 20179,
       "views_without_projected_beams": 15,
-      "same_part_beams": 18697,
-      "same_part_within_50mm": 18620,
-      "laser_depth_checks": 469,
+      "same_part_beams": 19139,
+      "same_part_within_50mm": 19061,
+      "laser_depth_checks": 489,
       "laser_subpixel_boundaries": 0,
       "laser_coincident_parts": 0,
-      "views": 240,
-      "visible_pixels": 412180,
-      "changed_pixels": 474142,
+      "views": 256,
+      "visible_pixels": 423573,
+      "changed_pixels": 491132,
       "empty_mesh_views": 0,
-      "camera_ray_checks": 3605,
-      "placements": 60,
+      "camera_ray_checks": 3942,
+      "placements": 64,
       "previous_camera_overlaps": 13,
       "previous_part_pixels": 23681,
       "previous_part_differences": 0

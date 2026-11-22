@@ -39,7 +39,7 @@
     g.putImageData(image,0,0);
     let legend="俯视首个交点 · 蓝色低于路面，棕色高于路面，灰色无交点";
     if (showSource) legend="蓝灰为原始距离，青色为彩照补深，橙色为插值，浅灰为坑外路面";
-    if (current.gradeReference && get("nearGrade").checked) legend="相对路面 −80 至 +45 mm · 深色为低于显示范围的交点";
+    if (current.gradeReference && get("nearGrade").checked) legend=current.slab ? "四态统一高程色标 · 相对路面 −100 至 +45 mm" : "相对路面 −80 至 +45 mm · 深色为低于显示范围的交点";
     get("reliefLegend").textContent=legend;
   }
   function prepare() {
@@ -49,7 +49,7 @@
       for (const z of field) if (Number.isFinite(z)) {lo=Math.min(lo,z);hi=Math.max(hi,z);}
     }
     const gradeZoom=current.gradeReference && get("nearGrade").checked;
-    range=gradeZoom ? [-.08,.045] : [Math.min(lo,-.001),Math.max(hi,.001)];
+    range=gradeZoom ? [current.slab ? -.10 : -.08,.045] : [Math.min(lo,-.001),Math.max(hi,.001)];
     paintMap();
     slider.max=String(n-1);slider.value=String((n-1)/2);selectedCol=null;
     if (current.gradeReference && probe) {
@@ -78,7 +78,7 @@
     get("reliefScale").textContent=current.water ? "实线为首个交点，虚线为实拍重建的坑底。高程沿资产本地竖轴读取。" : under ? "实线为首个交点，虚线为移除井盖后的固定部件。" : "实线为从上方投射到网格的首个交点。";
     if (rangeOnly) get("reliefScale").textContent="蓝色实线为彩照补深模型，橙色虚线为仅用距离图的模型。纵轴为相对路面的高程。";
     if (current.gradeReference) {
-      get("reliefScale").textContent="蓝线为当前表面"+(current.id===current.gradeReference ? "" : "，橙色虚线为齐平状态的同一截线")+"。切换状态保留取样位置。";
+      get("reliefScale").textContent="蓝线为当前表面"+(current.id===current.gradeReference ? "" : "，橙色虚线为"+(current.slab ? "原位碎板" : "齐平状态")+"的同一截线")+"。切换状态保留取样位置。"+(current.slab && under ? "灰褐色虚线为移走碎板后露出的表面。" : "");
     }
     get("reliefContent").hidden=false;
     const pitch=Math.max(Math.abs(grid.x[1]-grid.x[0]), Math.abs(grid.y[1]-grid.y[0]))/(n-1);
@@ -121,7 +121,7 @@
     }
     const ref=cache.get(current.gradeReference);
     const aligned=ref && ref.n===n && ref.x.every((v,i)=>Math.abs(v-x[i])<1e-7) && ref.y.every((v,i)=>Math.abs(v-y[i])<1e-7);
-    if (under && !current.gradeReference) trace(under,"#8a6b60",[6,4]);
+    if (under && (!current.gradeReference || current.slab)) trace(under,"#8a6b60",[6,4]);
     trace(top,legendColor.below,[]);
     if (grid.rangeOnly) trace(grid.rangeOnly,"#ab602d",[5,5]);
     if (aligned && current.id!==current.gradeReference) trace(ref.top,"#ab602d",[5,5]);
@@ -138,9 +138,9 @@
           ctx.beginPath();ctx.arc(px,py(z),3.5,0,2*Math.PI);ctx.fillStyle=stroke;ctx.fill();
         }
       }
-      if (under) message+=(current.water ? "　坑底 " : "　固定部件 ")+metres(under[i]);
+      if (under) message+=(current.slab ? "　移板后的表面 " : current.water ? "　坑底 " : "　固定部件 ")+metres(under[i]);
       if (aligned && current.id!==current.gradeReference && Number.isFinite(top[i]-ref.top[i])) {
-        message+="　相对齐平 "+((top[i]-ref.top[i])*1000).toFixed(1)+" mm";
+        message+=(current.slab ? "　相对原位 " : "　相对齐平 ")+((top[i]-ref.top[i])*1000).toFixed(1)+" mm";
       }
       if (current.water) message+="　铅直水深 "+((top[i]-under[i])*current.water.up_local[2]*1000).toFixed(1)+" mm";
     }

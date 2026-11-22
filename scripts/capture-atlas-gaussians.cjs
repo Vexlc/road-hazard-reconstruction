@@ -63,7 +63,7 @@ async function capture() {
       await ev('pose();viewer.jumpCameraToGoal()');
       await wait(settled+' && Math.abs(viewer.getCameraOrbit().phi-initialPose.phi)<0.0001');
       const poses=[["oblique",null]];
-      if(captureRoad || ["P135","P130","M11","A119","A128"].includes(id)) poses.push(["low",[122,76]],["top",[0,0]]);
+      if(captureRoad || await ev("Boolean(row.slab)") || ["P135","P130","M11","A119","A128"].includes(id)) poses.push(["low",[122,76]],["top",[0,0]]);
       for (const [kind,angle] of poses) {
         if (angle) {
           await ev('pose('+angle.join(",")+');viewer.jumpCameraToGoal()');

@@ -34,9 +34,10 @@ def build(parent, out):
         start=float(np.ceil(mesh.high[2]+.2))
         top,part,normal=heights(mesh,x,y,start)
         underlying_z,underlying_part=top.copy(),part.copy()
-        overlay=(part==4)|(part>=9)
+        lid=(part>=9)&(part<=12)
+        overlay=(part==4)|lid|np.isin(part,[13,14,15])
         if overlay.any():
-            substrate=Surface(f,exclude=(4,9,10,11,12))
+            substrate=Surface(f,exclude=(4,9,10,11,12,13,14,15))
             lower,p,_=heights(substrate,x[overlay],y[overlay],start)
             underlying_z[overlay],underlying_part[overlay]=lower,p
             del substrate
@@ -50,8 +51,8 @@ def build(parent, out):
             mesh_sha256=sha256(f),grid_sha256=sha256(dest),category=meta['category'],label=meta['label'],
             shape=list(x.shape),pitch_m=pitch,mins_m=mesh.low.tolist(),maxs_m=mesh.high.tolist(),
             lowest_top_m=float(np.nanmin(top)),highest_top_m=float(np.nanmax(top)),water_cells=int((part==4).sum()),
-            unknown_rigid_cells_under_water=int(((part==4)&~np.isfinite(rigid_z)).sum()),lid_cells=int((part>=9).sum()),
-            cells_above_open_shaft=int(((part>=9)&(underlying_part==7)).sum()))
+            unknown_rigid_cells_under_water=int(((part==4)&~np.isfinite(rigid_z)).sum()),lid_cells=int(lid.sum()),
+            cells_above_open_shaft=int((lid&(underlying_part==7)).sum()))
         if len(records)%20==0: print('height grids',len(records),flush=True)
         del mesh
     save_json(folder/'inventory.json',records)

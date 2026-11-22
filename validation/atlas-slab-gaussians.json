@@ -1,0 +1,692 @@
+{
+  "assets": 1395,
+  "gaussians": 196035569,
+  "methods": {
+    "生成 RGB": 109,
+    "实拍 RGB + 激光雷达": 6,
+    "实拍 RGB": 14,
+    "实拍摄影测量": 17,
+    "多帧双目": 4,
+    "多帧 RGB-D": 3,
+    "双张实拍 RGB": 4,
+    "实拍坑底＋模拟积水": 5,
+    "实拍碎板＋设计状态": 4,
+    "程序化": 342,
+    "实拍 RGB-D": 822,
+    "实拍双目": 65
+  },
+  "ply_inventory_sha256": "0ef1b10ac3f4809016b02a3b5c3c39b8b8a1efe634b36aa86d463f86ef016660",
+  "preview_inventory_sha256": "0ffa42f7df5041152a11e2e3d457fa4bc6cd474e6ad93847e948952e919034c0",
+  "minimum_fraction_alpha_above_half": 0.05391796875,
+  "browser_vs_cuda_and_glb": {
+    "P144": {
+      "method": "实拍碎板＋设计状态",
+      "gaussians": 263315,
+      "sources": {
+        "ply": "26e654dd48ef0869e6686ab24b9daf74aae983e8cf902d6b9795e2d84e280118",
+        "glb": "14c4915539225f2a9f90fdf8108e0771cb1d25dacbddbe984110b49453b72bb3"
+      },
+      "views": {
+        "low": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 18190,
+          "rgb_mae_0_255": 0.1103719992669965,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 17405,
+          "gaussian_expected_vs_glb_depth_mm_median": 7.8552961349487305,
+          "gaussian_expected_vs_glb_depth_mm_p95": 251.50289916992185,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.7414024847813605,
+            "target": [
+              -0.03125,
+              -0.041613871580921113,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 11489,
+              "median_mm": 7.754206657409668,
+              "p95_mm": 270.2679016113281
+            },
+            "pit_or_crack": {
+              "pixels": 2992,
+              "median_mm": 8.944869041442871,
+              "p95_mm": 23.200201988220208
+            },
+            "slab_edge": {
+              "pixels": 173,
+              "median_mm": 10.036110877990723,
+              "p95_mm": 22.643709182739265
+            },
+            "slab_socket": {
+              "pixels": 51,
+              "median_mm": 14.049410820007324,
+              "p95_mm": 21.67540740966797
+            },
+            "slab_top": {
+              "pixels": 2700,
+              "median_mm": 7.747948169708252,
+              "p95_mm": 8.801841735839844
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.15277219189887964
+        },
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 52983,
+          "rgb_mae_0_255": 0.08924875274459104,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 52417,
+          "gaussian_expected_vs_glb_depth_mm_median": 1.8939971923828125,
+          "gaussian_expected_vs_glb_depth_mm_p95": 2.6921510696411124,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 1.7414024847813605,
+            "target": [
+              -0.03125,
+              -0.041613871580921113,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 30697,
+              "median_mm": 2.0847320556640625,
+              "p95_mm": 2.575302124023437
+            },
+            "pit_or_crack": {
+              "pixels": 12070,
+              "median_mm": 1.6578435897827148,
+              "p95_mm": 3.2648622989654537
+            },
+            "slab_edge": {
+              "pixels": 408,
+              "median_mm": 5.843222141265869,
+              "p95_mm": 23.316759204864464
+            },
+            "slab_socket": {
+              "pixels": 370,
+              "median_mm": 6.466269493103027,
+              "p95_mm": 23.554879856109626
+            },
+            "slab_top": {
+              "pixels": 8872,
+              "median_mm": 1.2584924697875977,
+              "p95_mm": 1.652044057846069
+            }
+          },
+          "depth_abs_over_50mm_fraction": 3.815556021901291e-05
+        },
+        "top": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 69894,
+          "rgb_mae_0_255": 0.07911980999799695,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 69266,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.07736682891845703,
+          "gaussian_expected_vs_glb_depth_mm_p95": 0.9547173976898193,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.7414024847813605,
+            "target": [
+              -0.03125,
+              -0.041613871580921113,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 40412,
+              "median_mm": 0.04172325134277344,
+              "p95_mm": 0.30467510223388533
+            },
+            "pit_or_crack": {
+              "pixels": 15694,
+              "median_mm": 0.42438507080078125,
+              "p95_mm": 1.3442039489746094
+            },
+            "slab_base": {
+              "pixels": 92,
+              "median_mm": 84.29801177978516,
+              "p95_mm": 85.35544395446777
+            },
+            "slab_edge": {
+              "pixels": 30,
+              "median_mm": 20.504653930664062,
+              "p95_mm": 45.91560821533202
+            },
+            "slab_socket": {
+              "pixels": 858,
+              "median_mm": 28.117359161376953,
+              "p95_mm": 74.35393562316894
+            },
+            "slab_top": {
+              "pixels": 12180,
+              "median_mm": 0.23859739303588867,
+              "p95_mm": 0.5804300308227539
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.00391245344036035
+        }
+      }
+    },
+    "P145": {
+      "method": "实拍碎板＋设计状态",
+      "gaussians": 281851,
+      "sources": {
+        "ply": "959c31f62953133a1f19c862231a4094553ec64c3f4d6029c2f88e7d4fd05130",
+        "glb": "8d8e81117a107910324470d937143c7727a32982d7ab9e9bb611a928f4eedc1c"
+      },
+      "views": {
+        "low": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 17844,
+          "rgb_mae_0_255": 0.11565045206605394,
+          "rgb_error_p95_0_255": 0.6666666666666666,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 17093,
+          "gaussian_expected_vs_glb_depth_mm_median": 7.231593132019043,
+          "gaussian_expected_vs_glb_depth_mm_p95": 241.7642578125,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.7796359791915939,
+            "target": [
+              -0.03125,
+              -0.024193614721298218,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 9748,
+              "median_mm": 7.190704345703125,
+              "p95_mm": 265.47545471191404
+            },
+            "pit_or_crack": {
+              "pixels": 2270,
+              "median_mm": 7.8261494636535645,
+              "p95_mm": 22.429686355590814
+            },
+            "slab_edge": {
+              "pixels": 2576,
+              "median_mm": 1.283586025238037,
+              "p95_mm": 10.165125131607056
+            },
+            "slab_socket": {
+              "pixels": 10,
+              "median_mm": 14.017879486083984,
+              "p95_mm": 23.965328502655023
+            },
+            "slab_top": {
+              "pixels": 2489,
+              "median_mm": 8.27038288116455,
+              "p95_mm": 9.354996681213379
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.15696483940794478
+        },
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 50146,
+          "rgb_mae_0_255": 0.08823568513274573,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 49587,
+          "gaussian_expected_vs_glb_depth_mm_median": 1.9022226333618164,
+          "gaussian_expected_vs_glb_depth_mm_p95": 2.8819084167480447,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 1.7796359791915939,
+            "target": [
+              -0.03125,
+              -0.024193614721298218,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 28803,
+              "median_mm": 2.0869970321655273,
+              "p95_mm": 2.6389360427856445
+            },
+            "pit_or_crack": {
+              "pixels": 10790,
+              "median_mm": 1.7102360725402832,
+              "p95_mm": 4.0586888790130615
+            },
+            "slab_base": {
+              "pixels": 4,
+              "median_mm": 130.35922241210938,
+              "p95_mm": 150.99759368896486
+            },
+            "slab_edge": {
+              "pixels": 1338,
+              "median_mm": 3.202676773071289,
+              "p95_mm": 21.762656211852928
+            },
+            "slab_socket": {
+              "pixels": 82,
+              "median_mm": 18.847942352294922,
+              "p95_mm": 61.40682010650635
+            },
+            "slab_support": {
+              "pixels": 1,
+              "median_mm": 40.39311218261719,
+              "p95_mm": 40.39311218261719
+            },
+            "slab_top": {
+              "pixels": 8569,
+              "median_mm": 1.2695789337158203,
+              "p95_mm": 1.6829490661621094
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0016738258011172282
+        },
+        "top": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 65566,
+          "rgb_mae_0_255": 0.07919755157652848,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 64988,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.07867813110351562,
+          "gaussian_expected_vs_glb_depth_mm_p95": 1.001352071762083,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.7796359791915939,
+            "target": [
+              -0.03125,
+              -0.024193614721298218,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 37880,
+              "median_mm": 0.04184246063232422,
+              "p95_mm": 0.31067132949828996
+            },
+            "pit_or_crack": {
+              "pixels": 14716,
+              "median_mm": 0.4611015319824219,
+              "p95_mm": 1.8209517002105713
+            },
+            "slab_base": {
+              "pixels": 48,
+              "median_mm": 119.28707122802734,
+              "p95_mm": 120.21481361389161
+            },
+            "slab_edge": {
+              "pixels": 32,
+              "median_mm": 20.725845336914062,
+              "p95_mm": 42.16562061309814
+            },
+            "slab_socket": {
+              "pixels": 430,
+              "median_mm": 52.2491340637207,
+              "p95_mm": 87.54002571105956
+            },
+            "slab_top": {
+              "pixels": 11882,
+              "median_mm": 0.24247169494628906,
+              "p95_mm": 0.6166577339172361
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0042469378962269955
+        }
+      }
+    },
+    "P146": {
+      "method": "实拍碎板＋设计状态",
+      "gaussians": 259661,
+      "sources": {
+        "ply": "b8b057f134123014f813220cc0e2fe8df7a4fe155bf54edf663f653139af346f",
+        "glb": "9303df895f0c94efa83d754484fe3f1808e250384aac944c2a0d27e05239a42c"
+      },
+      "views": {
+        "low": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 18197,
+          "rgb_mae_0_255": 0.10803978677804034,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 17413,
+          "gaussian_expected_vs_glb_depth_mm_median": 7.5550079345703125,
+          "gaussian_expected_vs_glb_depth_mm_p95": 251.66077270507765,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.7414024847813605,
+            "target": [
+              -0.03125,
+              -0.041613871580921113,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 11497,
+              "median_mm": 7.737636566162109,
+              "p95_mm": 270.3150207519531
+            },
+            "pit_or_crack": {
+              "pixels": 3008,
+              "median_mm": 8.202016830444336,
+              "p95_mm": 22.300827503204346
+            },
+            "slab_edge": {
+              "pixels": 3,
+              "median_mm": 9.230256080627441,
+              "p95_mm": 9.757041931152344
+            },
+            "slab_socket": {
+              "pixels": 1493,
+              "median_mm": 1.604318618774414,
+              "p95_mm": 19.51310577392576
+            },
+            "slab_top": {
+              "pixels": 1412,
+              "median_mm": 7.711946964263916,
+              "p95_mm": 106.28201408386231
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.16303910871188193
+        },
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 52972,
+          "rgb_mae_0_255": 0.09006015756751994,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 52413,
+          "gaussian_expected_vs_glb_depth_mm_median": 1.8874406814575195,
+          "gaussian_expected_vs_glb_depth_mm_p95": 2.781200408935546,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 1.7414024847813605,
+            "target": [
+              -0.03125,
+              -0.041613871580921113,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 30693,
+              "median_mm": 2.0519495010375977,
+              "p95_mm": 2.546072006225586
+            },
+            "pit_or_crack": {
+              "pixels": 12070,
+              "median_mm": 1.6384124755859375,
+              "p95_mm": 3.252702951431274
+            },
+            "slab_edge": {
+              "pixels": 115,
+              "median_mm": 17.800212860107422,
+              "p95_mm": 44.375409317016604
+            },
+            "slab_socket": {
+              "pixels": 1177,
+              "median_mm": 4.5424699783325195,
+              "p95_mm": 22.196578216552755
+            },
+            "slab_top": {
+              "pixels": 8358,
+              "median_mm": 1.260519027709961,
+              "p95_mm": 1.8086314201354978
+            }
+          },
+          "depth_abs_over_50mm_fraction": 5.723770820216359e-05
+        },
+        "top": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 69918,
+          "rgb_mae_0_255": 0.08006521925684373,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 69285,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.0776052474975586,
+          "gaussian_expected_vs_glb_depth_mm_p95": 0.9909629821777347,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.7414024847813605,
+            "target": [
+              -0.03125,
+              -0.041613871580921113,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 40431,
+              "median_mm": 0.041484832763671875,
+              "p95_mm": 0.31071901321411133
+            },
+            "pit_or_crack": {
+              "pixels": 15694,
+              "median_mm": 0.41961669921875,
+              "p95_mm": 1.3384103775024407
+            },
+            "slab_base": {
+              "pixels": 205,
+              "median_mm": 60.91642379760742,
+              "p95_mm": 82.58666687011718
+            },
+            "slab_edge": {
+              "pixels": 26,
+              "median_mm": 23.904621124267578,
+              "p95_mm": 46.69848155975342
+            },
+            "slab_socket": {
+              "pixels": 1085,
+              "median_mm": 28.00130844116211,
+              "p95_mm": 59.06982421875
+            },
+            "slab_top": {
+              "pixels": 11844,
+              "median_mm": 0.24765729904174805,
+              "p95_mm": 0.5849242210388185
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.004748502561882082
+        }
+      }
+    },
+    "P147": {
+      "method": "实拍碎板＋设计状态",
+      "gaussians": 259474,
+      "sources": {
+        "ply": "f1e8a128d827495d8390d9013beb01c2b00c04f2254141bbf52c050a40a4e110",
+        "glb": "2abfede7eb67bab70674516ee529521085afc454cfa9b229adb9fef00398143a"
+      },
+      "views": {
+        "low": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 18230,
+          "rgb_mae_0_255": 0.11504845492777471,
+          "rgb_error_p95_0_255": 0.6666666666666666,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 17428,
+          "gaussian_expected_vs_glb_depth_mm_median": 7.01904296875,
+          "gaussian_expected_vs_glb_depth_mm_p95": 254.24848022460898,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 1.7414024847813605,
+            "target": [
+              -0.03125,
+              -0.041613871580921113,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 11512,
+              "median_mm": 7.810831069946289,
+              "p95_mm": 270.24417877197254
+            },
+            "pit_or_crack": {
+              "pixels": 3008,
+              "median_mm": 8.386314392089844,
+              "p95_mm": 22.71133098602295
+            },
+            "slab_socket": {
+              "pixels": 2908,
+              "median_mm": 1.3515949249267578,
+              "p95_mm": 101.58447685241701
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.16295616249713105
+        },
+        "oblique": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 52957,
+          "rgb_mae_0_255": 0.09999937055850343,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 52400,
+          "gaussian_expected_vs_glb_depth_mm_median": 1.6934871673583984,
+          "gaussian_expected_vs_glb_depth_mm_p95": 2.880716323852537,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 1.7414024847813605,
+            "target": [
+              -0.03125,
+              -0.041613871580921113,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 30680,
+              "median_mm": 1.7791390419006348,
+              "p95_mm": 2.2534191608428955
+            },
+            "pit_or_crack": {
+              "pixels": 12070,
+              "median_mm": 1.5031695365905762,
+              "p95_mm": 2.963936328887939
+            },
+            "slab_base": {
+              "pixels": 6996,
+              "median_mm": 1.527547836303711,
+              "p95_mm": 7.2876811027526855
+            },
+            "slab_socket": {
+              "pixels": 2654,
+              "median_mm": 3.4689903259277344,
+              "p95_mm": 33.17171936035156
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.004160305343511451
+        },
+        "top": {
+          "width": 750,
+          "height": 372,
+          "opaque_pixels": 69821,
+          "rgb_mae_0_255": 0.09352487074089456,
+          "rgb_error_p95_0_255": 0.3333333333333333,
+          "glb_front_interior_recall": 1.0,
+          "glb_ray_support_precision": 1.0,
+          "shared_opaque_front_pixels": 69208,
+          "gaussian_expected_vs_glb_depth_mm_median": 0.04112720489501953,
+          "gaussian_expected_vs_glb_depth_mm_p95": 0.988006591796875,
+          "blend": "rgba16f",
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 1.7414024847813605,
+            "target": [
+              -0.03125,
+              -0.041613871580921113,
+              0
+            ],
+            "fov": 30.000000000000004
+          },
+          "depth_by_first_mesh_part": {
+            "apron": {
+              "pixels": 40354,
+              "median_mm": 0.03707408905029297,
+              "p95_mm": 0.27716755867004345
+            },
+            "pit_or_crack": {
+              "pixels": 15694,
+              "median_mm": 0.36966800689697266,
+              "p95_mm": 1.1826694011688204
+            },
+            "slab_base": {
+              "pixels": 11955,
+              "median_mm": 0.0002384185791015625,
+              "p95_mm": 4.602313041686993
+            },
+            "slab_socket": {
+              "pixels": 1205,
+              "median_mm": 25.19762420654297,
+              "p95_mm": 54.25226669311523
+            }
+          },
+          "depth_abs_over_50mm_fraction": 0.0026297537856895155
+        }
+      }
+    }
+  }
+}

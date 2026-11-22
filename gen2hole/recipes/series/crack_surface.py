@@ -63,14 +63,28 @@ def build(mesh,key,cfg):
     groove=mask.ravel()[triangles].any(axis=1)
     material=mesh.material('Scanned pavement and fissures' if scanned else 'Photographed asphalt and open fissure',
                            img,.94,0.,0. if scanned else 1.8,lossless_color=scanned)
-    mesh.add('Road adjoining the fracture',xyz,triangles[~groove],uv,material,True)
-    mesh.add('Fracture lip and exposed bed',xyz,triangles[groove],uv,material)
+    captured = height
+    if 'slab' in cfg:
+        if not scanned:
+            raise ValueError('A detached slab requires registered surface heights')
+        from faulted_slab import build as build_slab
+        height, footprint, details['slab'] = build_slab(mesh,key,cfg,xyz,uv,triangles,groove,material)
+        mask = mask | footprint
+        alpha = smooth((.095-distance_transform_edt(~mask)*pitch)/.06)*taper
+    else:
+        mesh.add('Road adjoining the fracture',xyz,triangles[~groove],uv,material,True)
+        mesh.add('Fracture lip and exposed bed',xyz,triangles[groove],uv,material)
     rows,cols=np.where(mask)
     fields=dict(height=height,alpha=alpha,defect_mask=mask,water_mask=np.zeros_like(mask),width=span,length=span)
+    if 'slab' in cfg:
+        fields.update(captured_height=captured,slab_socket=footprint)
     meta=dict(state='crack_network',surface_class='crack',**details,
               width_m=float(np.ptp(cols)*pitch),length_m=float(np.ptp(rows)*pitch),
               depth_p95_m=float(np.percentile(-height[mask],95)),
               metric_source_span_m=span,components=int(label(mask,np.ones((3,3)))[1]),
               mask_sha256=hashlib.sha256(mask_path.read_bytes()).hexdigest(),mask_pixels=int(mask.sum()),
               road_projection=[239.5,239.5,479/span,479/span,len(img)],native_scene_category='pothole')
+    if 'slab' in cfg:
+        meta.update(state='faulted_slab',surface_class='faulted_slab',
+                    geometry_source='Photogrammetric top and optical fracture boundary; designed grade, clearance, thickness and foundation')
     return fields,meta

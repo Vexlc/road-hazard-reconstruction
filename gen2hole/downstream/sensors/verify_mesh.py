@@ -13,7 +13,9 @@ PART_NAMES={'Road around the aperture':1,'Road adjoining the fracture':1,'Fractu
             'Inspection shaft':6,'Shaft bottom':7,'Chipped concrete collar':8,'Lid face':9,
             'Lid underside with casting ribs':10,'Lid rolled edge':11,
             'Lid underside':10,'Lid aperture walls and perimeter':11,
-            'Lid fragment face':9,'Lid fragment underside':10,'Lid fragment aperture walls and perimeter':11}
+            'Lid fragment face':9,'Lid fragment underside':10,'Lid fragment aperture walls and perimeter':11,
+            'Detached pavement top':13,'Detached pavement edges':14,'Detached pavement underside':15,
+            'Exposed slab foundation':16,'Subgrade bearing':16,'Subgrade bearing surface':16,'Slab socket wall':17}
 
 
 def bvh(file, include_part=None):

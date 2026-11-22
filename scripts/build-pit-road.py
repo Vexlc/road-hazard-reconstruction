@@ -110,7 +110,7 @@ def main():
     pits = [
         r
         for r in rows
-        if r['category'] in ('坑洞', '方形浅坑', '裂缝') and (not args.ids or r['id'] in args.ids)
+        if r['category'] in ('坑洞', '方形浅坑', '裂缝', '混凝土碎板') and (not args.ids or r['id'] in args.ids)
     ]
     if not pits or (args.ids and set(args.ids) != {r['id'] for r in pits}):
         raise ValueError('Unknown pit asset')

@@ -41,6 +41,7 @@ function showScene() {
     download("同位置对照其他资产","compare-road.html#"+new URLSearchParams({group,a:selected.id}));
   }
   download("交互三维","model.html#"+encodeURIComponent(selected.id));
+  if (selected.blockModel) download("独立原位碎板 GLB",selected.blockModel);
   download("3DGS 与网格对照","splats.html#"+encodeURIComponent(selected.id));
   for (const [name,key] of [["GLB","glb"],["3DGS PLY","ply"],["路面场","surface"],["元数据","metadata"],["输入掩膜","mask"],[selected.auditLabel || (selected.family ? "几何一致性核验" : "轮廓评估"),"audit"],[selected.scanLabel || "雷达核验","scan"],["实拍拟合记录","fit"],[selected.reprojectionLabel || "留出帧核验","reprojection"]])
     if (selected[key]) download(name,selected[key]);
@@ -54,16 +55,17 @@ function showScene() {
   }
 }
 function showModel() {
-  const label = gaussian ? "原始 PLY · 高斯渲染" : cutaway ? "井壁剖开 · GLB 固定机位" : spinning ? "GLB · 环绕渲染" : selected.reverse ? (reverse ? "GLB · 背向斜视" : "GLB · 正向斜视") : "资产预览";
-  photo("model",gaussian ? selected.gaussianPreview : cutaway ? selected.cutaway : spinning ? selected.orbit : reverse ? selected.reverse : selected.preview, selected.label+" "+label);
+  const sectionLabel = selected.blockPreview ? "独立原位碎板 · GLB 斜视" : "井壁剖开 · GLB 固定机位";
+  const label = gaussian ? "原始 PLY · 高斯渲染" : cutaway ? sectionLabel : spinning ? "GLB · 环绕渲染" : selected.reverse ? (reverse ? "GLB · 背向斜视" : "GLB · 正向斜视") : "资产预览";
+  photo("model",gaussian ? selected.gaussianPreview : cutaway ? (selected.blockPreview || selected.cutaway) : spinning ? selected.orbit : reverse ? selected.reverse : selected.preview, selected.label+" "+label);
   el("modelLabel").textContent = label;
   el("representation").hidden = !selected.gaussianPreview;
   el("representation").textContent = gaussian ? "看网格渲染" : "看高斯渲染";
   el("representation").setAttribute("aria-pressed",String(gaussian));
   el("rotate").hidden = !selected.reverse || spinning || cutaway || gaussian;
   el("spin").hidden = !selected.orbit || cutaway || gaussian;
-  el("cutaway").hidden = !selected.cutaway || gaussian;
-  el("cutaway").textContent = cutaway ? "还原井体" : "剖开井体";
+  el("cutaway").hidden = !(selected.cutaway || selected.blockPreview) || gaussian;
+  el("cutaway").textContent = selected.blockPreview ? (cutaway ? "查看整片路面" : "看独立碎板") : (cutaway ? "还原井体" : "剖开井体");
   el("cutaway").setAttribute("aria-pressed",String(cutaway));
   el("spin").textContent = spinning ? "停止环绕" : "360° 环绕";
   el("spin").setAttribute("aria-pressed",String(spinning));
@@ -140,6 +142,11 @@ function inspect(id) {
   el("sourceType").textContent = selected.category+" / "+selected.method;
   el("note").textContent = selected.note || notes[selected.method];
   el("metrics").replaceChildren();
+  if (selected.slab) {
+    metric("原图闭合面积（平方厘米）",(selected.slab.area*10000).toFixed(1));
+    metric("独立碎板体积（升）",(selected.slab.volume*1000).toFixed(3));
+    metric("顶面网格间距（毫米）",selected.slab.pitch.toFixed(2));
+  }
   if (selected.scanGeometry) {
     const g=selected.scanGeometry;
     metric("网格间距（毫米）",g.pitch.toFixed(2));

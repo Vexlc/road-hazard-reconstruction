@@ -37,6 +37,12 @@ def read_surface(path):
             ('Inspection shaft', 'wall'),
             ('Shaft bottom', 'floor'),
             ('Water', 'water'),
+            ('Detached pavement top', 'slab_top'),
+            ('Detached pavement edges', 'slab_edge'),
+            ('Detached pavement underside', 'slab_underside'),
+            ('Exposed slab foundation', 'slab_base'),
+            ('Subgrade bearing', 'slab_support'),
+            ('Slab socket wall', 'slab_socket'),
         ]
         groups.append(next((group for prefix, group in prefixes if name.startswith(prefix)), name))
     return scene, groups
@@ -183,6 +189,8 @@ def main():
         scene = read_surface(ATLAS / row['glb'])
         measures = {}
         for path, obs in shots:
+            if obs.get('sources') is not None and obs['sources'] != row['gaussianSources']:
+                raise ValueError('Browser capture uses a different GLB or PLY for ' + key)
             if obs['count'] != len(state['means']):
                 raise ValueError('Browser point count mismatch for ' + key)
             measures[obs['mode']] = compare(

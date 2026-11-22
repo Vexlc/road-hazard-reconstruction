@@ -16,7 +16,7 @@ function restoreTextures() {
   get("clayModel").textContent="查看无纹理网格";
 }
 get("clayModel").onclick=()=>{
-  if (!viewer.loaded || !selectedRow?.scanGeometry) return;
+  if (!viewer.loaded || !(selectedRow?.scanGeometry || selectedRow?.slab)) return;
   if (clayMaterials.length) {
     restoreTextures();
     status("已恢复扫描纹理。");
@@ -34,7 +34,7 @@ get("clayModel").onclick=()=>{
   }
   get("clayModel").setAttribute("aria-pressed","true");
   get("clayModel").textContent="恢复扫描纹理";
-  status("当前显示无纹理网格，可旋转查看裂缝边缘和底部。");
+  status("当前显示无纹理网格，可旋转查看表面几何。");
 };
 function status(message) { get("status").textContent=message; }
 function pose(orbit) {
@@ -51,8 +51,8 @@ get("rotateModel").onclick=()=>{
   get("rotateModel").textContent=viewer.autoRotate ? "停止旋转" : "自动旋转";
 };
 viewer.addEventListener("load",()=>{
-  get("clayModel").hidden=!selectedRow?.scanGeometry || location.protocol==="file:";
-  status("拖动旋转，滚轮或双指缩放。"+(sectioned ? (selectedRow?.water ? "当前显示原始干坑。" : "当前剖开近侧井壁，保留盖面、碎片和井底。") : ""));
+  get("clayModel").hidden=!(selectedRow?.scanGeometry || selectedRow?.slab) || location.protocol==="file:";
+  status("拖动旋转，滚轮或双指缩放。"+(sectioned ? (selectedRow?.slab ? "当前显示从原位模型提取的碎板实体。" : selectedRow?.water ? "当前显示原始干坑。" : "当前剖开近侧井壁，保留盖面、碎片和井底。") : ""));
 });
 viewer.addEventListener("error",()=>{
   status("模型加载失败。可以选择本机 GLB 重新打开。");
@@ -79,23 +79,24 @@ get("file").onchange=()=>{
 };
 function displayModel(row, preservePose=false) {
   get("sectionModel").setAttribute("aria-pressed",String(sectioned));
-  get("sectionModel").textContent=row.water ? (sectioned ? "恢复积水" : "排空积水") : (sectioned ? "还原井体" : "剖开井体");
+  get("sectionModel").textContent=row.blockModel ? (sectioned ? "还原路面" : "单独看原位碎板") : row.water ? (sectioned ? "恢复积水" : "排空积水") : (sectioned ? "还原井体" : "剖开井体");
   if (preservePose && viewer.loaded) {
     const {theta,phi,radius}=viewer.getCameraOrbit(), target=viewer.getCameraTarget();
     viewer.cameraOrbit=theta+"rad "+phi+"rad "+radius+"m";
     viewer.cameraTarget=target.x+"m "+target.y+"m "+target.z+"m";
     viewer.fieldOfView=viewer.getFieldOfView()+"deg";
   }
-  viewer.poster=sectioned ? (row.dryPreview || row.cutaway) : row.preview;
+  viewer.poster=sectioned ? (row.blockPreview || row.dryPreview || row.cutaway) : row.preview;
   const mode=get("completionMode").value;
-  const src=row.completionModels?.[mode] || (sectioned ? (row.dryModel || row.cutawayModel) : row.glb);
+  const src=row.completionModels?.[mode] || (sectioned ? (row.blockModel || row.dryModel || row.cutawayModel) : row.glb);
   get("supportLegend").hidden=!(row.completionModels && mode==="support");
   get("glb").href=src;
   viewer.src=src;
   if (!preservePose) pose(sectioned && selectedRow?.cutawayModel ? "16deg 70deg auto" : "20deg 48deg auto");
 }
 get("sectionModel").onclick=()=>{
-  if (!selectedRow?.cutawayModel && !selectedRow?.dryModel) return;
+  if (!selectedRow?.cutawayModel && !selectedRow?.dryModel && !selectedRow?.blockModel) return;
+  restoreTextures();
   sectioned=!sectioned;
   status("正在读取资产网格与纹理…");
   displayModel(selectedRow, Boolean(selectedRow.water));
@@ -106,6 +107,7 @@ get("completionMode").onchange=()=>{
 function openSelection() {
   const requested = decodeURIComponent(location.hash.slice(1));
   const row = inventory.get(requested);
+  const sameSlab=Boolean(row?.slab && selectedRow?.slab && row.states.includes(selectedRow.id));
   const sameBed=Boolean(row?.dryFamily && row.dryFamily===selectedRow?.dryFamily);
   const sameScan=Boolean(row?.scanGeometry && selectedRow?.scanGeometry && row.states.includes(selectedRow.id) && row.width===selectedRow.width && row.length===selectedRow.length);
   restoreTextures();
@@ -116,7 +118,7 @@ function openSelection() {
   get("supportLegend").hidden=true;
   selectedRow=row;
   if (!sameCover || location.protocol==="file:") sectioned=false;
-  get("sectionModel").hidden=!(row?.cutawayModel || row?.dryModel) || location.protocol==="file:";
+  get("sectionModel").hidden=!(row?.cutawayModel || row?.dryModel || row?.blockModel) || location.protocol==="file:";
   get("states").replaceChildren();
   get("states").hidden = !row?.states;
   get("fileLabel").hidden = Boolean(row) && location.protocol!=="file:";
@@ -142,7 +144,7 @@ function openSelection() {
     status(row ? "直接打开网页时，请选择对应的 GLB。使用项目的本地预览服务可直接加载所选资产。" : "选择一个本机 GLB 查看。");
   } else {
     status("正在读取资产网格与纹理…");
-    displayModel(row,sameBed || sameScan);
+    displayModel(row,sameBed || sameScan || sameSlab);
   }
 }
 window.addEventListener("hashchange",openSelection);

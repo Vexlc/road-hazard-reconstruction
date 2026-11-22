@@ -408,7 +408,7 @@ def check(run):
                 )
                 require(
                     labels.shape == protected.shape
-                    and np.bincount(labels[labels > 0], minlength=13).tolist() == view['parts']
+                    and np.bincount(labels[labels > 0], minlength=len(view['parts'])).tolist() == view['parts']
                     and view['visible'] == (labels > 0).sum()
                     and 0 <= view['opaque'] <= view['visible'],
                     'Wrong part counts',
@@ -454,6 +454,8 @@ def check(run):
             ('109-05', 'A127', 'A128'),
             ('110-01', 'P02_wet_wheel_track', 'A93'),
             ('109-03', 'M11', 'M03_brick_lined'),
+            ('109-01', 'P145', 'P147'),
+            ('034-01', 'P144', 'P146'),
         ]
         if g in groups and a in groups[g]['assets'] and b in groups[g]['assets']
     ]

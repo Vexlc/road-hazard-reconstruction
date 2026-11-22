@@ -1,0 +1,16 @@
+{
+  "assets": 4,
+  "smallest_opening_pixels": 185875,
+  "profiles_sha256": "d63dd67e2bde9bff2b36f9d8d33c81979b758abd7b74c9dae5fced656f819c93",
+  "methods": {
+    "实拍碎板＋设计状态": 4
+  },
+  "cutouts": {
+    "bed_triangles": 4
+  },
+  "profile_bytes": 181472,
+  "max_pitch_mm": 0.9765625,
+  "max_profile_bytes": 45398,
+  "capture_grid_max_height_error_mm": null,
+  "shared_water_beds": []
+}

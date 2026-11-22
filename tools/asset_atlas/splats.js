@@ -94,7 +94,8 @@ function setMode(next) {
   repaint();
 }
 const auditNames={oblique:"斜视",top:"俯视",low:"低角度"};
-const partNames={apron:"周边路面",cover:"盖板",wall:"井壁",floor:"井底",rim:"井圈",collar:"高差立面",hinge:"铰链",water:"水面",pit_or_crack:"坑或裂缝",geometry_0:"表面网格"};
+const partNames={apron:"周边路面",cover:"盖板",wall:"井壁",floor:"井底",rim:"井圈",collar:"高差立面",hinge:"铰链",water:"水面",pit_or_crack:"坑或裂缝",geometry_0:"表面网格",
+  slab_top:"碎板顶面",slab_edge:"碎板断面",slab_underside:"碎板底面",slab_base:"露出基层",slab_support:"承托面",slab_socket:"坑槽侧壁"};
 function showAudit(resetPart) {
   const data=row?.gaussianAudit?.[Number(el("auditPose").value)];
   if (!data) return;

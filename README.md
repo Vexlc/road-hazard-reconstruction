@@ -2,11 +2,11 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
-**[打开离线路面病害资产图谱](tools/asset_atlas/index.html)**。按编号、重建方式或病害形态查找资产，查看原图、模型斜视、米制尺寸和对应的 PandaSet 道路画面。图谱收录 822 条实拍 RGB-D、65 条实拍双目、342 件程序化、109 件生成 RGB、14 条实拍单目、6 条实拍相机加激光雷达、13 条摄影测量来源的井盖状态、4 条道路裂缝扫描重建，4 组双张实拍 RGB，以及 3 组多帧 RGB-D、4 组多帧双目重建及 5 个实拍坑底积水状态，共 1,391 条、3,755 个场景查看入口。采集帧可能来自同一处病害。六种井盖状态共用一套井体与盖面。展开任一条目的「网格高程与剖面」，可以在俯视图上取截线，读取该处的米制高度。
+**[打开离线路面病害资产图谱](tools/asset_atlas/index.html)**。按编号、重建方式或病害形态查找资产，查看原图、模型斜视、米制尺寸和对应的 PandaSet 道路画面。图谱收录 822 条实拍 RGB-D、65 条实拍双目、342 件程序化、109 件生成 RGB、14 条实拍单目、6 条实拍相机加激光雷达、13 条摄影测量来源的井盖状态、4 条道路裂缝扫描重建、4 个实拍混凝土碎板状态、4 组双张实拍 RGB，以及 3 组多帧 RGB-D、4 组多帧双目重建及 5 个实拍坑底积水状态，共 1,395 条、3,779 个场景查看入口。采集帧可能来自同一处病害。六种井盖状态共用一套井体与盖面。展开任一条目的「网格高程与剖面」，可以在俯视图上取截线，读取该处的米制高度。
 
-![十二件道路病害的 GLB 模型与同一资产的行车相机局部](docs/figures/road-asset-portfolio.jpg)
+![十六个道路病害样例的 GLB 模型与对应的行车相机局部](docs/figures/road-asset-portfolio.jpg)
 
-**同位置道路资产对照**覆盖 163 件资产在三段道路上的 405 次放置。选定位置和车载照片后，可并排切换双坑、积水、井盖掀开、缺盖、断条雨水篦和路面网裂，也可以把其中一栏切回原始路面。切到远处时保留相同的原图像素跨度。打开模拟雷达回波，点选同一束激光，能读出它先碰到盖板边缘还是井圈。[八件模型的近处与远处画面](docs/figures/matched-road-assets.jpg) · [打开掀盖与缺盖对照](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-01&view=front-near&a=A119&b=M118&beam=151811&zoom=1) · [实测与模拟回波图](docs/figures/matched-road-lidar.jpg) · [覆盖范围与复现](docs/02-asset-reconstruction.md#同一车载机位比较不同资产)
+**同位置道路资产对照**覆盖 167 件资产在三段道路上的 413 次放置。选定位置和车载照片后，可并排切换双坑、积水、井盖掀开、缺盖、断条雨水篦、路面网裂和碎板脱落，也可以把其中一栏切回原始路面。切到远处时保留相同的原图像素跨度。打开模拟雷达回波，点选同一束激光，能读出它先碰到盖板边缘还是井圈。[八件模型的近处与远处画面](docs/figures/matched-road-assets.jpg) · [打开掀盖与缺盖对照](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-01&view=front-near&a=A119&b=M118&beam=151811&zoom=1) · [实测与模拟回波图](docs/figures/matched-road-lidar.jpg) · [覆盖范围与复现](docs/02-asset-reconstruction.md#同一车载机位比较不同资产)
 
 P142 和 P143 是两处约 9 厘米宽的实拍坑洞。双目深度在陡壁和坑底有缺口，两张以上照片从不同方向看到同一位置时，可以多恢复一部分坑面。打开三维模型，可在相同视角切换仅用距离图、加入彩照和标出高程来源的网格。留出照片同时展示改善和误差增大的位置。[实拍、模型与两段道路](docs/figures/pit-depth-completion.jpg) · [在同一截线上量坑壁](docs/figures/pit-depth-sections.jpg) · [切换三种网格](http://127.0.0.1:8765/tools/asset_atlas/model.html#P143) · [逐机位结果](docs/02-asset-reconstruction.md#用彩照补回双目深度缺口)
 
@@ -16,7 +16,9 @@ A138–A141、M138 展示同一块混凝土芯井盖的齐平、整圈下沉、�
 
 313 件井类资产支持「铺设开孔沥青路面」。可旋转同一件资产，观察路面怎样挡住井外的地下结构，以及从井口、篦条或盖板通孔还能看到哪些部件。页面底部可切换同编号的 PandaSet 迁入前后画面。[六件井类资产的遮挡对照](docs/figures/gaussian-road-openings.jpg) · [开孔提取与验证](docs/02-asset-reconstruction.md#井类资产的开孔路面)
 
-1,078 件坑洞和裂缝也能铺到扫描沥青上。双坑各有自己的边界，网裂保留分支，干坑与积水状态共用同一坑缘。887 条单帧 RGB-D 或双目记录采用照片标注定位坑面，其中 778 条已配对到 055、056 路段的车载前视画面。可切换迁入前后，并点开局部查看整幅道路。[坑洞迁移对照](docs/figures/gaussian-pit-roads.jpg) · [驾驶员视角与资产原貌](docs/figures/capture-pit-driving.jpg) · [几何与机位核验](docs/02-asset-reconstruction.md#坑洞与裂缝的道路边界)
+1,082 件坑洞、裂缝和混凝土碎板也能铺到扫描沥青上。双坑各有自己的边界，网裂保留分支，干坑与积水状态共用同一坑缘。887 条单帧 RGB-D 或双目记录采用照片标注定位坑面，其中 778 条已配对到 055、056 路段的车载前视画面。可切换迁入前后，并点开局部查看整幅道路。[坑洞迁移对照](docs/figures/gaussian-pit-roads.jpg) · [驾驶员视角与资产原貌](docs/figures/capture-pit-driving.jpg) · [几何与机位核验](docs/02-asset-reconstruction.md#坑洞与裂缝的道路边界)
+
+**P144–P147 是同一块混凝土碎板的四种状态。** 沿实拍网裂取出的板块约 25.0 × 47.7 厘米，可单独旋转查看。切换原位、凸起 35 毫米、下沉 25 毫米和脱落时，可以在同一条剖面读高差，也可以看同一张行车照片中露出多少断面或基层。顶面与纹理来自扫描，板厚、高差和基层采用设计值。[碎板与剖面](docs/figures/faulted-slab.jpg) · [两段实拍道路](docs/figures/faulted-slab-roads.jpg) · [旋转碎板模型](http://127.0.0.1:8765/tools/asset_atlas/model.html#P145) · [在同一车载机位切换状态](http://127.0.0.1:8765/tools/asset_atlas/compare-road.html#group=109-01&view=front-near&a=P145&b=P147&parts=1&zoom=1)
 
 P135 是 1.75 米见方的混凝土网裂。把原图中的同一处交汇单独取出、以更密的网格重建为 P136 后，在相同的 62,055 个留出缝内像素上，相对源位移的中位绝对误差从 0.109 降至 0.040 毫米。P134 和 P137 则用同一条沥青纵缝展示材质位移与扫描法线给出的两种深度。可在三维页面关闭纹理，或查看同一位置的行车画面和可见裂缝边界。[原图、纹理与无纹理模型](docs/figures/scanned-cracks.jpg) · [网裂在两段道路上的前后视](docs/figures/scanned-crack-roads.jpg) · [同一沥青纵缝的两种深度](docs/figures/asphalt-crack-depth.jpg)
 

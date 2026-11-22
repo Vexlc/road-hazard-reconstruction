@@ -1,0 +1,140 @@
+{
+  "P144": {
+    "glb_sha256": "14c4915539225f2a9f90fdf8108e0771cb1d25dacbddbe984110b49453b72bb3",
+    "ply_sha256": "26e654dd48ef0869e6686ab24b9daf74aae983e8cf902d6b9795e2d84e280118",
+    "source_sha256": "207fee85d76a51b03c1c4ce49dc6ca3f40600ee169c64e8fc2115267870aa97b",
+    "source_displacement_sha256": "0f1ea8c85ab0c183ee7bc15c125b57fc249497b5de7b0f453a3eb4a009a0ef9b",
+    "source_area_m2": 0.07287406921386719,
+    "source_xy_extent_m": [
+      0.25,
+      0.4765625
+    ],
+    "designed_offset_m": 0,
+    "vertices": 9976,
+    "triangles": 19948,
+    "volume_m3": 0.003661952101051736,
+    "uniform_mass_center_m": [
+      -0.0017335036280223183,
+      -0.008962520086404323,
+      -0.024921855055936897
+    ],
+    "source_iou": 0.9884696258982831,
+    "heldout_texels": 42778,
+    "abs_error_mm_median": 0.025599132574946705,
+    "abs_error_mm_p95": 0.09877699718234978,
+    "matched_top_texels": 43065,
+    "vertical_difference_mm": 0.0,
+    "support_top_m": -0.04999998211860657,
+    "underside_faces_checked": 9570,
+    "supported_faces": 7860,
+    "contact_area_m2": 0.059967041015625,
+    "support_margin_m": 0.10138982621207508,
+    "max_penetration_m": 1.862645149230957e-08,
+    "independent_rebuild_sha256": {
+      "asset.glb": "14c4915539225f2a9f90fdf8108e0771cb1d25dacbddbe984110b49453b72bb3",
+      "asset.ply": "26e654dd48ef0869e6686ab24b9daf74aae983e8cf902d6b9795e2d84e280118",
+      "splat_material.npz": "884881d2eed3458fab3425448a5ab3f64ef291b240c8cfac38f7cc7975dae9ae",
+      "surface.npz": "7aa0a048420d4116c99ce49df85969e59e9de8d3ff5bd690968ddc01876818b3",
+      "metadata.json": "6a1e3ada96ecd86d26fa7d9df052b19cb39cd9846db16b0da24004e73417ff1e"
+    }
+  },
+  "P145": {
+    "glb_sha256": "8d8e81117a107910324470d937143c7727a32982d7ab9e9bb611a928f4eedc1c",
+    "ply_sha256": "959c31f62953133a1f19c862231a4094553ec64c3f4d6029c2f88e7d4fd05130",
+    "source_sha256": "207fee85d76a51b03c1c4ce49dc6ca3f40600ee169c64e8fc2115267870aa97b",
+    "source_displacement_sha256": "0f1ea8c85ab0c183ee7bc15c125b57fc249497b5de7b0f453a3eb4a009a0ef9b",
+    "source_area_m2": 0.07287406921386719,
+    "source_xy_extent_m": [
+      0.25,
+      0.4765625
+    ],
+    "designed_offset_m": 0.035,
+    "vertices": 9976,
+    "triangles": 19948,
+    "volume_m3": 0.0036619520338897855,
+    "uniform_mass_center_m": [
+      -0.0017335036499598559,
+      -0.00896252012761222,
+      0.010078145564563837
+    ],
+    "source_iou": 0.9884696258982831,
+    "heldout_texels": 42778,
+    "abs_error_mm_median": 0.025592524305333153,
+    "abs_error_mm_p95": 0.0988032232260485,
+    "matched_top_texels": 43065,
+    "vertical_difference_mm": 34.99999642372131,
+    "support_top_m": -0.014999955892562866,
+    "underside_faces_checked": 9570,
+    "supported_faces": 7860,
+    "contact_area_m2": 0.059967041015625,
+    "support_margin_m": 0.10138982623090859,
+    "max_penetration_m": 4.377216100692749e-08,
+    "independent_rebuild_sha256": {
+      "asset.glb": "8d8e81117a107910324470d937143c7727a32982d7ab9e9bb611a928f4eedc1c",
+      "asset.ply": "959c31f62953133a1f19c862231a4094553ec64c3f4d6029c2f88e7d4fd05130",
+      "splat_material.npz": "2fe0bdc4d0dcfce3d0c161f53dcac703f2041633af04b24384a68ff04c60c354",
+      "surface.npz": "2fcab7169bc7bb1299c7f76b45db6f8594b46e9aa458e594656ae3fa78bc3dcd",
+      "metadata.json": "e39ec517af975230bbfb21af12ddb640d73e2a50c64c8e1166291706ba2c87ae"
+    }
+  },
+  "P146": {
+    "glb_sha256": "9303df895f0c94efa83d754484fe3f1808e250384aac944c2a0d27e05239a42c",
+    "ply_sha256": "b8b057f134123014f813220cc0e2fe8df7a4fe155bf54edf663f653139af346f",
+    "source_sha256": "207fee85d76a51b03c1c4ce49dc6ca3f40600ee169c64e8fc2115267870aa97b",
+    "source_displacement_sha256": "0f1ea8c85ab0c183ee7bc15c125b57fc249497b5de7b0f453a3eb4a009a0ef9b",
+    "source_area_m2": 0.07287406921386719,
+    "source_xy_extent_m": [
+      0.25,
+      0.4765625
+    ],
+    "designed_offset_m": -0.025,
+    "vertices": 9976,
+    "triangles": 19948,
+    "volume_m3": 0.003661952237351329,
+    "uniform_mass_center_m": [
+      -0.0017335036287368603,
+      -0.008962520066871576,
+      -0.04992185635783343
+    ],
+    "source_iou": 0.9884696258982831,
+    "heldout_texels": 42778,
+    "abs_error_mm_median": 0.02559407761734342,
+    "abs_error_mm_p95": 0.0988008390402622,
+    "matched_top_texels": 43065,
+    "vertical_difference_mm": -25.000005960464478,
+    "support_top_m": -0.07499995827674866,
+    "underside_faces_checked": 9570,
+    "supported_faces": 7860,
+    "contact_area_m2": 0.059967041015625,
+    "support_margin_m": 0.1013898262142306,
+    "max_penetration_m": 4.470348358154297e-08,
+    "independent_rebuild_sha256": {
+      "asset.glb": "9303df895f0c94efa83d754484fe3f1808e250384aac944c2a0d27e05239a42c",
+      "asset.ply": "b8b057f134123014f813220cc0e2fe8df7a4fe155bf54edf663f653139af346f",
+      "splat_material.npz": "9e7c673a1c7456974b1e3150527d2f1fe69a0deec03f1294495da98ebf965a53",
+      "surface.npz": "b899d0a3969e751130bb69b77cf281cd4748e61f81c23141ea82ecff134b4514",
+      "metadata.json": "0b20ba2829eaa1b623b8ceeb43e5ea0bf3810a1f6118662cc4049906f6166272"
+    }
+  },
+  "P147": {
+    "glb_sha256": "2abfede7eb67bab70674516ee529521085afc454cfa9b229adb9fef00398143a",
+    "ply_sha256": "f1e8a128d827495d8390d9013beb01c2b00c04f2254141bbf52c050a40a4e110",
+    "source_sha256": "207fee85d76a51b03c1c4ce49dc6ca3f40600ee169c64e8fc2115267870aa97b",
+    "source_displacement_sha256": "0f1ea8c85ab0c183ee7bc15c125b57fc249497b5de7b0f453a3eb4a009a0ef9b",
+    "source_area_m2": 0.07287406921386719,
+    "source_xy_extent_m": [
+      0.25,
+      0.4765625
+    ],
+    "designed_offset_m": null,
+    "exposed_base_texels": 37978,
+    "exposed_base_z_m": -0.08499997854232788,
+    "independent_rebuild_sha256": {
+      "asset.glb": "2abfede7eb67bab70674516ee529521085afc454cfa9b229adb9fef00398143a",
+      "asset.ply": "f1e8a128d827495d8390d9013beb01c2b00c04f2254141bbf52c050a40a4e110",
+      "splat_material.npz": "f950a177266745ce9ac4ec8dd8c82f73f261c92565d5401f0c6b07fcb77ac3af",
+      "surface.npz": "a49174b5f2aef77121ced27d0517b032c580506982a131903945807b066f9399",
+      "metadata.json": "ab75ce0b6f4b61c528363ad5c5b800399091c2c769593a9662b89991e67b95af"
+    }
+  }
+}

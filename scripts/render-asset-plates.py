@@ -120,9 +120,13 @@ def road_portfolio(rows):
         ("局部破损与道路构件", [
             ("P135", "混凝土网裂与碎板", "109"), ("A117", "雨水篦断条", "109"),
             ("A118", "铺石穿孔盖", "109"), ("A108", "修补圈内小盖错位", "034")]),
+        ("同一块混凝土碎板", [
+            ("P144", "原位", "034"), ("P145", "凸起 35 毫米", "034"),
+            ("P146", "下沉 25 毫米", "034"), ("P147", "整块脱落", "034")]),
     ]
     w, margin, gap, panel = 1760, 36, 18, 408
-    sheet = Image.new("RGB", (w, 1596), PAPER)
+    height = 201 + 465 * len(groups)
+    sheet = Image.new("RGB", (w, height), PAPER)
     draw = ImageDraw.Draw(sheet)
     label(draw, (margin, 24), "道路病害资产与行车视角", 50, True)
     label(draw, (margin, 104), "每件资产上方为带纹理的 GLB 模型，下方为同一资产迁入 PandaSet 后的前视相机局部。", 25, fill=SOFT)
@@ -157,7 +161,7 @@ def road_portfolio(rows):
                 draw.rectangle((x,y+287,x+panel-1,y+398),fill=LINE)
                 sheet.paste(view,(x+(panel-view.width)//2,y+287+(112-view.height)//2))
             label(draw, (x,y+411), row["method"]+"   ·   "+site+" / 帧 "+str(evidence["frame"]), 18, fill=SOFT)
-    label(draw,(margin,1560),"P122 与 P131 共用坑底。井盖状态和注水量含设计参数；各图独立取景，米制尺寸与原始资料可按编号在图谱中查看。",18,fill=SOFT)
+    label(draw,(margin,height-36),"P122 与 P131 共用坑底，P144–P147 共用扫描顶面。井盖姿态、注水量和碎板高差含设计参数。可按编号查看米制尺寸与各自的实拍或生成来源。",18,fill=SOFT)
     sheet.save(OUT/"road-asset-portfolio.jpg",quality=93,subsampling=0)
 
 

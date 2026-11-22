@@ -10,7 +10,8 @@ import open3d as o3d
 PACKAGE_NAMES = ('道路病害图生三维', '道路病害图生三维_新增100')
 PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidewall',
          'water surface', 'cast ring and seat', 'shaft wall', 'shaft bottom',
-         'concrete collar', 'lid face', 'lid underside', 'lid edge', 'hinge')
+         'concrete collar', 'lid face', 'lid underside', 'lid edge', 'hinge',
+         'pavement block top', 'pavement block edge', 'pavement block underside', 'subgrade', 'socket wall')
 EXACT_PARTS = {
     'Road around the aperture': 1, 'Road adjoining the fracture': 1,
     'Fracture lip and exposed bed': 2, 'Fracture sidewall in surface coordinates': 3,
@@ -18,7 +19,9 @@ EXACT_PARTS = {
     'Shaft bottom': 7, 'Chipped concrete collar': 8, 'Lid face': 9,
     'Lid underside with casting ribs': 10, 'Lid rolled edge': 11,
     'Lid underside': 10, 'Lid aperture walls and perimeter': 11,
-    'Lid fragment face': 9, 'Lid fragment underside': 10, 'Lid fragment aperture walls and perimeter': 11
+    'Lid fragment face': 9, 'Lid fragment underside': 10, 'Lid fragment aperture walls and perimeter': 11,
+    'Detached pavement top': 13, 'Detached pavement edges': 14, 'Detached pavement underside': 15,
+    'Exposed slab foundation': 16, 'Subgrade bearing': 16, 'Subgrade bearing surface': 16, 'Slab socket wall': 17,
 }
 CLASSES = {'pothole': 1, 'missing': 2, 'raised': 3}
 SITES = ('034', '109', '110')

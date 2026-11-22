@@ -1,7 +1,8 @@
 {
-  "decoded_assets": 1391,
-  "sorted_points": 194971268,
+  "decoded_assets": 1395,
+  "sorted_points": 196035569,
   "methods": {
+    "多帧双目": 4,
     "实拍摄影测量": 17,
     "实拍坑底＋模拟积水": 5,
     "双张实拍 RGB": 4,
@@ -12,7 +13,7 @@
     "实拍 RGB-D": 822,
     "程序化": 342,
     "实拍双目": 65,
-    "多帧双目": 4
+    "实拍碎板＋设计状态": 4
   },
   "texture_dimension_limit": 2048,
   "depth_row": [

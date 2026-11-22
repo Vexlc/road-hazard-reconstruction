@@ -40,7 +40,7 @@ def geometry_frame(row, aspect):
         focus = [
             m
             for m in meshes
-            if m.get('name', '').startswith(('Lid', 'Hinge', 'Fracture', 'Cast ring', 'Water'))
+            if m.get('name', '').startswith(('Lid', 'Hinge', 'Fracture', 'Cast ring', 'Water', 'Detached pavement', 'Slab socket', 'Exposed slab'))
             or 'collar' in m.get('name', '').lower()
         ]
         corners = []
@@ -63,10 +63,10 @@ def geometry_frame(row, aspect):
                     normals = np.frombuffer(stream.read(acc['count'] * 12), '<f4').reshape(-1, 3)
                     normal = normals.mean(axis=0)
     corners = np.array(corners)
-    theta = -18.0 if row['category'] in ('坑洞', '裂缝') else 18.0
+    theta = -18.0 if row['category'] in ('坑洞', '裂缝', '混凝土碎板') else 18.0
     if normal is not None and np.hypot(normal[0], normal[2]) > 0.3:
         theta = math.degrees(math.atan2(normal[0], normal[2])) + 24
-    phi = 42.0 if row['category'] in ('坑洞', '裂缝') else 49.0
+    phi = 42.0 if row['category'] in ('坑洞', '裂缝', '混凝土碎板') else 49.0
     center = (corners.min(0) + corners.max(0)) * 0.5
     camera = dict(
         theta=math.radians(theta), phi=math.radians(phi), target=center.tolist(), radius=1.0, fov=30.0
