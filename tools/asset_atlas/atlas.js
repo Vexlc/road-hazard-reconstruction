@@ -232,6 +232,7 @@ function inspect(id) {
     showCapture();
   }
   window.showAssetRelief(selected);
+  window.showSourceProbe(selected);
   el("roadPanel").hidden = !selected.scenes.length;
   el("scene").replaceChildren(...selected.scenes.map((s,i) => new Option(s.label,String(i))));
   if (sameView>=0) {

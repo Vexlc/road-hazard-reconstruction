@@ -59,9 +59,10 @@ def build(args, stage):
         if single:
             if 'depth_completion' in spec:
                 raise ValueError('Photographic depth completion needs multiple fitting images')
-            from single_depth_surfaces import split_depth, surface_regions
+            from single_depth_surfaces import split_depth, surface_regions, target_view
 
-            training, reserved = split_depth(views[spec['anchor']])
+            annotated = target_view(spec.get('surface_regions', {}), views[spec['anchor']])
+            training, reserved = split_depth(annotated)
             poses, alignment = {training.key: np.eye(4)}, {}
             fitting = [training]
         else:

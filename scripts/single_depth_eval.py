@@ -6,7 +6,7 @@ from PIL import Image
 from fuse_pit import fuse
 from pit_captures import read_views
 from road_geometry import glb_triangles, read_json, sha256, Surface
-from single_depth_surfaces import split_depth, surface_regions, annotated_fragments
+from single_depth_surfaces import split_depth, surface_regions, annotated_fragments, paver_labels, target_view
 
 
 def error_stats(error):
@@ -48,7 +48,7 @@ def evaluate(args, spec):
     capture = read_json(cal / (key + '_capture.json'))
     views = read_views(spec, args.source, args.catalog, args.files_base or cal)
     (name,) = spec['fit']
-    view = views[name]
+    view = target_view(spec.get('surface_regions', {}), views[name])
     if view.sources != capture['inputs'][name]['files'] or spec['holdout']:
         raise ValueError('Wrong single-camera source')
     train, test = split_depth(view)
@@ -89,6 +89,8 @@ def evaluate(args, spec):
         if 'fragment_polygons_px' in spec.get('surface_regions', {})
         else None
     )
+    if 'paver' in spec.get('surface_regions', {}):
+        reference = paver_labels(spec['surface_regions'], view)
     for i, n in enumerate(names, 1):
         surface = Surface(glb, include_names={n})
         d, _, _ = surface.cast(np.broadcast_to(eye, ray.shape), ray)
@@ -117,7 +119,7 @@ def evaluate(args, spec):
     cls = np.zeros(shape, 'u1')
     cls[yr, xr] = parts
     pic = view.rgb.copy()
-    for code, hue in [(18, (29, 209, 182)), (19, (249, 179, 57))]:
+    for code, hue in [(13, (29, 209, 182)), (14, (235, 153, 61)), (18, (29, 209, 182)), (19, (249, 179, 57))]:
         mask = cls == code
         pic[mask] = (0.4 * pic[mask] + 0.6 * np.array(hue)).astype('u1')
     Image.fromarray(pic).save(folder / 'labels.jpg', quality=95)

@@ -1,0 +1,91 @@
+{
+  "sha256": "9979173f46242569df02106a7c8c758dbb2abb39a237b73baa9f2264ef9e501f",
+  "camera": [
+    {
+      "site": "034",
+      "case": "034_154",
+      "frame": 30,
+      "direction": "前视",
+      "part_pixels": 663,
+      "per_mesh": {
+        "Detached pavement top": 390,
+        "Detached pavement edges": 273
+      },
+      "texture": "034_154-front-texture.png",
+      "overlay": "034_154-front-parts.png",
+      "crop_in_replay": [
+        86,
+        131,
+        354,
+        235
+      ]
+    },
+    {
+      "site": "034",
+      "case": "034_154",
+      "frame": 47,
+      "direction": "后视",
+      "part_pixels": 427,
+      "per_mesh": {
+        "Detached pavement top": 427,
+        "Detached pavement edges": 0
+      },
+      "texture": "034_154-back-texture.png",
+      "overlay": "034_154-back-parts.png",
+      "crop_in_replay": [
+        67,
+        48,
+        207,
+        112
+      ]
+    },
+    {
+      "site": "109",
+      "case": "109_154",
+      "frame": 29,
+      "direction": "前视",
+      "part_pixels": 410,
+      "per_mesh": {
+        "Detached pavement top": 228,
+        "Detached pavement edges": 182
+      },
+      "texture": "109_154-front-texture.png",
+      "overlay": "109_154-front-parts.png",
+      "crop_in_replay": [
+        73,
+        58,
+        305,
+        145
+      ]
+    },
+    {
+      "site": "109",
+      "case": "109_154",
+      "frame": 40,
+      "direction": "后视",
+      "part_pixels": 510,
+      "per_mesh": {
+        "Detached pavement top": 510,
+        "Detached pavement edges": 0
+      },
+      "texture": "109_154-back-texture.png",
+      "overlay": "109_154-back-parts.png",
+      "crop_in_replay": [
+        62,
+        45,
+        212,
+        115
+      ]
+    }
+  ],
+  "lidar": {
+    "034_154": {
+      "Detached pavement top": 156,
+      "Detached pavement edges": 87
+    },
+    "109_154": {
+      "Detached pavement top": 67,
+      "Detached pavement edges": 29
+    }
+  }
+}

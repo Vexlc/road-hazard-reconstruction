@@ -1,8 +1,8 @@
 {
-  "decoded_assets": 1402,
-  "sorted_points": 199102976,
+  "decoded_assets": 1403,
+  "sorted_points": 199633323,
   "methods": {
-    "实拍 RGB-D": 825,
+    "实拍 RGB-D": 826,
     "实拍碎板＋设计状态": 4,
     "多帧双目": 4,
     "实拍摄影测量": 17,

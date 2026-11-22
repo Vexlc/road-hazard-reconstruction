@@ -1,0 +1,16 @@
+{
+  "assets": 1,
+  "smallest_opening_pixels": 212252,
+  "profiles_sha256": "99c233002e542612c48a399c268788465508a2cf63b8c0c42fcb91b83fdc5920",
+  "methods": {
+    "实拍 RGB-D": 1
+  },
+  "cutouts": {
+    "bed_triangles": 1
+  },
+  "profile_bytes": 19095,
+  "max_pitch_mm": 1.8599128040174644,
+  "max_profile_bytes": 19095,
+  "capture_grid_max_height_error_mm": null,
+  "shared_water_beds": []
+}

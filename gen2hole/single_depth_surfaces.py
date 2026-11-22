@@ -10,6 +10,30 @@ from pit_captures import project
 
 RIM = 'Fracture inset rim'
 DEBRIS_PREFIX = 'Fracture debris '
+PAVER_PARTS = ['Detached pavement top', 'Detached pavement edges']
+
+
+def paver_labels(spec, view):
+    if spec['image_size_px'] != list(view.rgb.shape[1::-1]):
+        raise ValueError('Paver outline and RGB camera dimensions differ')
+    masks = []
+    for key in ('outline_px', 'top_px'):
+        xy = np.asarray(spec['paver'][key])
+        if (xy.ndim != 2 or xy.shape[1] != 2 or len(xy) < 3
+                or not np.issubdtype(xy.dtype, np.integer) or (xy < 0).any()
+                or (xy >= view.rgb.shape[1::-1]).any()):
+            raise ValueError('Invalid paver polygon in source pixels')
+        masks.append(cv2.fillPoly(np.zeros(view.mask.shape, 'u1'), [xy.astype('i4')], 1).astype(bool))
+    outline, top = masks
+    if (top & ~outline).any() or min(top.sum(), (outline & ~top).sum()) < 12:
+        raise ValueError('The visible top and exposed edge must lie inside the paver outline')
+    return np.where(top, 1, np.where(outline, 2, 0)).astype('u1')
+
+
+def target_view(spec, view):
+    if 'paver' in spec:
+        return replace(view, mask=view.mask | (paver_labels(spec, view) != 0))
+    return view
 
 
 def split_depth(view):
@@ -52,7 +76,8 @@ def surface_regions(spec, view, field, frame):
         labels = ((distance > 0) & (distance <= width)).astype('u1')
         names = [RIM]
     else:
-        pixels = annotated_fragments(spec, view)
+        paver = 'paver' in spec
+        pixels = paver_labels(spec, view) if paver else annotated_fragments(spec, view)
         height = field['height']
         axis = np.linspace(-0.5, 0.5, len(height)) * field['width']
         x, y = np.meshgrid(axis, -axis)
@@ -63,7 +88,7 @@ def surface_regions(spec, view, field, frame):
         uv = project(world, view.K).astype('f4')
         labels = cv2.remap(pixels, uv, None, cv2.INTER_NEAREST)
         labels[~field['defect_mask']] = 0
-        names = [DEBRIS_PREFIX + f'{i:02}' for i in range(1, int(pixels.max()) + 1)]
+        names = PAVER_PARTS if paver else [DEBRIS_PREFIX + f'{i:02}' for i in range(1, int(pixels.max()) + 1)]
     if set(np.unique(labels)) != set(range(len(names) + 1)):
         raise ValueError('A labelled region did not reach the reconstructed surface')
     return labels, names

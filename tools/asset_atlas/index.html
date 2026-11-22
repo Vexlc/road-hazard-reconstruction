@@ -28,6 +28,13 @@
       <figure><a id="pitImageLink" target="_blank"><img id="pitImage" alt=""></a><figcaption><span id="pitLegend"></span><output id="pitScore"></output></figcaption></figure>
       <p id="pitDepth"></p>
     </details>
+    <details id="sourceProbe" hidden>
+      <summary>在实拍像素上量高程</summary>
+      <div class="capture-controls"><label>底图 <select id="probeView"><option value="rgb">实拍轮廓</option><option value="measured">原始量程高程</option><option value="mesh">网格高程</option></select></label><span id="probeExamples"></span></div>
+      <canvas id="probeMap" width="640" height="480" tabindex="0" aria-label="实拍像素高程，点击或用方向键移动"></canvas>
+      <p id="probeResult" role="status"></p>
+      <p>高程以邻近路面为零。高度图从蓝色（−110 mm）经浅灰（0）到红色（+40 mm），深灰表示缺测。实拍轮廓中，黄色标出原坑洞，青色标出补入的砖。</p>
+    </details>
     <details id="reliefPanel" hidden>
       <summary>查看网格高程与剖面</summary>
       <div id="reliefContent" hidden>
@@ -41,5 +48,5 @@
     <div id="cards"></div><div class="pager"><button id="prev">上一页</button><output id="page"></output><button id="next">下一页</button></div>
   </section>
 </main>
-<script src="catalog.js"></script><script src="relief.js"></script><script src="atlas.js"></script>
+<script src="catalog.js"></script><script src="relief.js"></script><script src="source-probe.js"></script><script src="atlas.js"></script>
 </html>

@@ -1,0 +1,111 @@
+{
+  "response_threshold_0_255": 8,
+  "excluded_contour_px": 2,
+  "audited_assets": {
+    "P154": {
+      "sources": {
+        "glb": "67ffa66b070d61758784752d17c74e897c32bc9bece74a6e4230c2472e48ffb7",
+        "ply": "d1e06c704fee764e16089735462cc8bc662ace2def7b8c95a1fa5544029f8d2f"
+      },
+      "views": {
+        "low": {
+          "camera": {
+            "theta": 2.129301687433082,
+            "phi": 1.3264502315156903,
+            "radius": 3.0283538654257582,
+            "target": [
+              0,
+              -0.05677844025194645,
+              -0.009802818298339844
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 264533,
+          "exterior_raw_probe_pixels": 793,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 7542,
+          "interior_raw_probe_pixels": 3936,
+          "interior_host_probe_pixels": 3936,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0,
+          "native_opening_pixels": 8759,
+          "browser_opening_pixels": 8761,
+          "footprint_iou": 0.9961262390338385,
+          "opening_extra_in_exterior": 0,
+          "opening_missing_in_interior": 0,
+          "far_mesh_pixels": 15033,
+          "apron_before_pixels": 1982,
+          "apron_after_pixels": 0
+        },
+        "oblique": {
+          "camera": {
+            "theta": -0.3141592653589793,
+            "phi": 0.7330382858376184,
+            "radius": 3.0283538654257582,
+            "target": [
+              0,
+              -0.05677844025194645,
+              -0.009802818298339844
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 242782,
+          "exterior_raw_probe_pixels": 125,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 28943,
+          "interior_raw_probe_pixels": 20277,
+          "interior_host_probe_pixels": 20277,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0,
+          "native_opening_pixels": 30337,
+          "browser_opening_pixels": 30355,
+          "footprint_iou": 0.9967100934333465,
+          "opening_extra_in_exterior": 0,
+          "opening_missing_in_interior": 0,
+          "far_mesh_pixels": 44222,
+          "apron_before_pixels": 4617,
+          "apron_after_pixels": 0
+        },
+        "top": {
+          "camera": {
+            "theta": 0,
+            "phi": 1e-06,
+            "radius": 3.0283538654257582,
+            "target": [
+              0,
+              -0.05677844025194645,
+              -0.009802818298339844
+            ],
+            "fov": 30.000000000000004
+          },
+          "width": 750,
+          "height": 372,
+          "exterior_pixels": 232999,
+          "exterior_raw_probe_pixels": 52,
+          "exterior_host_probe_pixels": 0,
+          "interior_pixels": 38472,
+          "interior_raw_probe_pixels": 27128,
+          "interior_host_probe_pixels": 27128,
+          "interior_max_rgb_change": 0,
+          "interior_probe_max_rgb_change": 0,
+          "native_opening_pixels": 39992,
+          "browser_opening_pixels": 39986,
+          "footprint_iou": 0.9967543815848604,
+          "opening_extra_in_exterior": 0,
+          "opening_missing_in_interior": 0,
+          "far_mesh_pixels": 56790,
+          "apron_before_pixels": 6571,
+          "apron_after_pixels": 0
+        }
+      },
+      "road_height_m": -0.003,
+      "tracer_below_m": -0.05813364535570145,
+      "contact": "bed_triangles",
+      "blend_width_m": 0.05998138917099414
+    }
+  }
+}

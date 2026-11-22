@@ -17,6 +17,8 @@ Plate = import_module('render-pit-survey').Plate
 
 def owners(models, eye, rays, depths):
     result = np.zeros(len(rays), 'u1')
+    if not len(rays):
+        return result
     for i, mesh in enumerate(models, 1):
         z, _, _ = mesh.cast(np.broadcast_to(eye, rays.shape), rays)
         hit = np.isfinite(z) & (abs(z - depths) < 0.0003)
@@ -33,7 +35,15 @@ def observations(run, key):
     bundle = run / 'series'
     asset = bundle / 'assets/pothole' / key
     names = read_json(asset / 'metadata.json')['region_names']
-    code = 19 if names == ['Fracture inset rim'] else 18
+    if names == ['Detached pavement top', 'Detached pavement edges']:
+        codes = [13, 14]
+        hues = [[35, 204, 181], [235, 153, 61]]
+    elif names == ['Fracture inset rim']:
+        codes = [19]
+        hues = [[244, 174, 46]]
+    else:
+        codes = [18]
+        hues = [[35, 204, 181], [114, 217, 230]] * (len(names) // 2 + 1)
     isolated = bundle / 'comparison' / key / 'isolated.glb'
     evidence = read_json(run / 'evaluation/measurements.json')[key]
     if sha256(isolated) != evidence['comparison_meshes']['isolated']['sha256']:
@@ -50,7 +60,7 @@ def observations(run, key):
         B = np.array(place['basis_columns'])
         center = np.array(place['center_world'])
         with np.load(run / 'sensors/cases' / (case + '.npz')) as scan:
-            use = (scan['action'] == 1) & (scan['part'] == code) & (scan['instance'] == 1)
+            use = (scan['action'] == 1) & np.isin(scan['part'], codes) & (scan['instance'] == 1)
             xyz = (scan['xyz'][use] - center) @ B
         eye = xyz + [0, 0, 1.0]
         hits = owners(models, eye, np.tile([0.0, 0.0, -1.0], (len(eye), 1)), np.ones(len(eye)))
@@ -62,7 +72,7 @@ def observations(run, key):
             direction = shot['camera'].split('_')[0]
             with np.load(camera / shot['geometry']) as geom:
                 mask = (
-                    (geom['part'] == code)
+                    np.isin(geom['part'], codes)
                     & (geom['instance'] == shot['instance'])
                     & ~geom['protected'].astype(bool)
                 )
@@ -80,10 +90,7 @@ def observations(run, key):
             counts = np.bincount(hit, minlength=len(names) + 1)[1:]
             before = np.array(Image.open(camera / shot['after_stem']).convert('RGB'))
             tagged = before.copy()
-            hues = np.array(
-                [[244, 174, 46]] if code == 19 else [[35, 204, 181], [114, 217, 230]] * (len(names) // 2 + 1)
-            )
-            tagged[mask] = 0.18 * before[mask] + 0.82 * hues[hit - 1]
+            tagged[mask] = 0.18 * before[mask] + 0.82 * np.asarray(hues)[hit - 1]
             a, b, c, d = shot['xyxy_target_in_crop']
             h, w = mask.shape
             crop = (max(0, a - 12), max(0, b - 12), min(w, c + 13), min(h, d + 13))

@@ -776,8 +776,7 @@ def multiview_potholes(shared, run):
     return rows
 
 
-def observed_surfaces():
-    run = ROOT/'runs/observed-pavement'
+def observed_surfaces(run):
     if not run.is_dir():
         return {}
     bundle = run/'series'
@@ -794,12 +793,21 @@ def observed_surfaces():
         isolated = '单独查看缺口边缘' if rim else '单独查看碎片可见面'
         legend = ('金色是从缺口边界向内 18 毫米的路面投影区域。' if rim else
                   '青色是依实拍轮廓划分的九块碎片可见面，交替着色便于分辨相邻碎片。')
+        paver = 'Detached pavement top' in meta['region_names']
+        part_label = '缺口内缘' if rim else '碎片可见面'
+        if paver:
+            isolated = '单独查看倾斜联锁砖'
+            part_label = '砖顶面或外露侧面'
+            legend = '青色标出砖顶面，橙色标出可见侧面。泥水区只记录表面量程，水深与砖底面未知。'
         views = [dict(label='拟合原图 · '+frame,image=link(bundle/'references'/(key+'.png'))),
                  dict(label='网格部位回投',image=link(folder/'labels.jpg'),note=legend),
                  dict(label='留出量程位置',image=link(folder/'reserved.jpg'),
                       note='黄点标出预先从原始深度中去掉的坑内像素。照片、内参和轮廓来自同一次曝光。')]
         if (folder/'isolated-render.jpg').is_file():
             views.append(dict(label=isolated,image=link(folder/'isolated-render.jpg')))
+        if paver:
+            views.append(dict(label='实拍坑缘与补入的联锁砖',image=link(folder/'source-outlines.png'),
+                              note='黄线为原坑洞轮廓，青线为另行描出的可见砖面轮廓。'))
         scenes = shots.get(key,[])
         evidence = folder/'road-parts.json'
         if evidence.is_file():
@@ -807,7 +815,7 @@ def observed_surfaces():
                 scenes.append(dict(label=f"{obs['site']} · {obs['direction']} · 可见部位 · 帧 {obs['frame']}",
                     after=link(folder/obs['overlay']), before=link(folder/obs['texture']),
                     beforeLabel='查看同像素迁入外观', afterLabel='查看部位回投',
-                    note=f"当前裁切有 {obs['part_pixels']:,} 个首个交点属于"+('缺口内缘。' if rim else '碎片可见面。')+'颜色来自模型部位标签。'))
+                    note=f"当前裁切有 {obs['part_pixels']:,} 个首个交点属于{part_label}。颜色来自模型部位标签。"))
         err=score['withheld_mesh']
         row=entry(meta,bundle/'assets','实拍 RGB-D',meta['label'],bundle/'views'/(key+'_inspection.jpg'))
         row.update(depth=meta['depth_p95_m'],depthLabel='重建 P95 凹深',triangles=sum(meta['geometry_parts'].values()),
@@ -822,6 +830,10 @@ def observed_surfaces():
                    reprojectionLabel='同机位预留深度核验',credit='https://github.com/ymyurdakul/PData',scenes=scenes)
         if (run/'sensors/checks/scan_audit.json').is_file():
             row['scan']=link(run/'sensors/checks/scan_audit.json')
+        if paver:
+            row['depthLabel'] = '观测表面 P95 凹深'
+            row['sourceProbe'] = dict(data=link(folder/'source-probe.js'), rgb=link(folder/'source-outlines.png'),
+                                      measured=link(folder/'measured-height.png'), mesh=link(folder/'mesh-height.png'))
         output[key]=row
     return output
 
@@ -1015,7 +1027,8 @@ def main():
     shared = shared_profile_modes()
     for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), polygon_covers(), crack_examples(), scanned_cracks(), faulted_slabs(),
                   multiview_potholes(shared, ROOT/'runs/multiview-pit-survey'),
-                  multiview_potholes(shared, ROOT/'runs/paired-road-slots'), observed_surfaces(),
+                  multiview_potholes(shared, ROOT/'runs/paired-road-slots'), observed_surfaces(ROOT/'runs/observed-pavement'),
+                  observed_surfaces(ROOT/'runs/displaced-paver'),
                   multiview_potholes(shared, ROOT/'runs/pit-depth-completion'), parallax_potholes(shared)):
         if group.keys() & rows.keys():
             raise ValueError("Asset ID collision")
@@ -1055,6 +1068,13 @@ def main():
     pit_folder = ROOT / 'runs/atlas-pit-road/browser'
     pit_report = ROOT / 'validation/atlas-pit-road.json'
     pit_checks = read(pit_report)['audited_assets'] if pit_folder.is_dir() and pit_report.is_file() else {}
+    pit_folders = dict.fromkeys(pit_checks, pit_folder)
+    paver_report = ROOT/'validation/displaced-paver-road.json'
+    paver_folder = ROOT/'runs/displaced-paver/evaluation/browser'
+    if paver_folder.is_dir() and paver_report.is_file():
+        paver_checks = read(paver_report)['audited_assets']
+        pit_checks.update(paver_checks)
+        pit_folders.update(dict.fromkeys(paver_checks, paver_folder))
     driving_dir = ROOT / 'runs/capture-driving'
     driving_manifest = driving_dir / 'views.json'
     driving = read(driving_manifest) if driving_manifest.is_file() else {}
@@ -1097,7 +1117,7 @@ def main():
             shots = []
             for mode in ('oblique', 'low', 'top'):
                 view = road['views'][mode]
-                folder = pit_folder if pit else road_folder
+                folder = pit_folders[row['id']] if pit else road_folder
                 kinds = ('unblended', 'footprint', 'road') if pit else ('gaussian', 'road-probe', 'road')
                 paths = [folder / f"{row['id']}-{mode}-{kind}.png" for kind in kinds]
                 if all(p.is_file() for p in paths):
@@ -1118,7 +1138,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["P150","P149","P148","P145","P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["P154","P150","P149","P148","P145","P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

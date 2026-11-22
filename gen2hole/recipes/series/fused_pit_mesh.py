@@ -34,6 +34,8 @@ def surface_mesh(field, color, meta, diagnostic=False, region_mode=None):
                  ('Fracture lip and exposed bed', bed & (code == 0), (119, 96, 75))]
         for i, name in enumerate(meta['region_names'], 1):
             hue = (234, 165, 58) if name == 'Fracture inset rim' else ((45, 164, 154) if i%2 else (92, 195, 204))
+            if name == 'Detached pavement edges':
+                hue = (235, 153, 61)
             parts.append((name, bed & (code == i), hue))
         for i, (name, selected, hue) in enumerate(parts):
             if i < 2 and region_mode == 'isolated':
