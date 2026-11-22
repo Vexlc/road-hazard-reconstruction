@@ -13,6 +13,7 @@ uniform int textureWidth;
 uniform vec3 eye, right, up, forward;
 uniform vec2 viewport;
 uniform float focal;
+uniform float probeHeight;
 uniform bool roadPass, traceUnder;
 out vec2 delta;
 flat out vec3 conic, colour;
@@ -46,14 +47,14 @@ void main() {
   gl_Position=vec4(2.*(focal*uv+delta)/viewport,0.,1.);
   vec4 sh=vec4(1.,normalize(v));
   colour=max(vec3(0.),vec3(dot(sh,datum(index+3)),dot(sh,datum(index+4)),dot(sh,datum(index+5))));
-  if (traceUnder && height < -0.075) colour=vec3(1.,0.04,0.6);
+  if (traceUnder && height < probeHeight) colour=vec3(1.,0.04,0.6);
 }`;
     const fragment=`#version 300 es
 precision highp float;
 in vec2 delta;
 flat in vec3 conic, colour;
 flat in float opacity, height;
-uniform bool roadPass, roadEnabled;
+uniform bool roadPass, roadEnabled, cutoutOnly, blendRim;
 uniform vec3 eye, right, up, forward;
 uniform vec2 viewport;
 uniform float focal, tileMetres, roadHeight;
@@ -61,23 +62,33 @@ uniform vec4 maskBounds;
 uniform sampler2D roadTexture, openingMask;
 out vec4 pixel;
 void main() {
-  if (roadPass || (roadEnabled && height<roadHeight)) {
+  float edgeWeight=1.;
+  if (roadPass || (roadEnabled && (height<roadHeight || blendRim))) {
     vec2 uv=(gl_FragCoord.xy-0.5*viewport)/focal;
     vec3 ray=forward+right*uv.x+up*uv.y;
-    if (ray.z>=-0.000001) discard;
-    vec2 xy=eye.xy+((roadHeight-eye.z)/ray.z)*ray.xy;
-    vec2 maskUV=(xy-maskBounds.xy)/maskBounds.zw;
-    bool inBox=all(greaterThanEqual(maskUV,vec2(0.))) && all(lessThanEqual(maskUV,vec2(1.)));
-    bool opening=inBox && textureLod(openingMask,maskUV,0.).r>0.5;
-    if (roadPass) {
-      if (opening) discard;
-      pixel=vec4(texture(roadTexture,xy/tileMetres).rgb,1.);
-      return;
+    if (ray.z>=-0.000001) {
+      if (cutoutOnly) {pixel=vec4(0.,0.,0.,1.);return;}
+      if (roadPass || height<roadHeight) discard;
+    } else {
+      vec2 xy=eye.xy+((roadHeight-eye.z)/ray.z)*ray.xy;
+      vec2 maskUV=(xy-maskBounds.xy)/maskBounds.zw;
+      bool inBox=all(greaterThanEqual(maskUV,vec2(0.))) && all(lessThanEqual(maskUV,vec2(1.)));
+      vec2 cutout=inBox?textureLod(openingMask,maskUV,0.).rg:vec2(0.);
+      bool opening=cutout.r>0.5;
+      if (roadPass) {
+        if (cutoutOnly) {pixel=vec4(vec3(opening?1.:0.),1.);return;}
+        if (opening) discard;
+        pixel=vec4(texture(roadTexture,xy/tileMetres).rgb,1.);
+        return;
+      }
+      if (!opening) {
+        if (height<roadHeight) discard;
+        edgeWeight=cutout.g;
+      }
     }
-    if (!opening) discard;
   }
   float power=-0.5*(conic.x*delta.x*delta.x+conic.z*delta.y*delta.y)-conic.y*delta.x*delta.y;
-  float alpha=min(0.999,opacity*exp(min(0.,power)));
+  float alpha=edgeWeight*min(0.999,opacity*exp(min(0.,power)));
   if (alpha<1./255.) discard;
   pixel=vec4(colour*alpha,alpha);
 }`;
@@ -93,7 +104,7 @@ void main() {
     gl.useProgram(this.program);
     this.uniform={};
     for (const name of ["textureWidth","eye","right","up","forward","viewport","focal","roadPass","roadEnabled","traceUnder",
-      "tileMetres","roadHeight","maskBounds","roadTexture","openingMask"]) this.uniform[name]=gl.getUniformLocation(this.program,name);
+      "tileMetres","roadHeight","probeHeight","maskBounds","roadTexture","openingMask","cutoutOnly","blendRim"]) this.uniform[name]=gl.getUniformLocation(this.program,name);
     gl.uniform1i(this.uniform.roadTexture,1);gl.uniform1i(this.uniform.openingMask,2);
     this.roadHeight=-0.003;
     gl.uniform1f(this.uniform.roadHeight,this.roadHeight);
@@ -124,11 +135,28 @@ void main() {
   setOrder(order) {
     this.gl.bufferSubData(this.gl.ARRAY_BUFFER,0,order);
   }
-  setRoad(profile) {
+  setRoad(profile, bitmap) {
     const gl=this.gl;
     gl.deleteTexture(this.mask || null);this.mask=null;
     this.roadActive=this.traceUnder=false;
     if (!profile) return;
+    this.roadHeight=profile.roadHeight ?? -0.003;
+    this.probeHeight=profile.probeHeight ?? -0.075;
+    gl.uniform1f(this.uniform.roadHeight,this.roadHeight);
+    gl.uniform1f(this.uniform.probeHeight,this.probeHeight);
+    this.blendRim=Boolean(profile.blendWidth);
+    const [mask,bounds]=bitmap?[bitmap,profile.bounds]:this.chamberMask(profile);
+    this.mask=gl.createTexture();
+    gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D,this.mask);
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,mask);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+    gl.uniform4fv(this.uniform.maskBounds,bounds);
+    gl.activeTexture(gl.TEXTURE0);
+  }
+  chamberMask(profile) {
     // The local polygon is in units of 10 micrometres. A one-pixel border
     // keeps the clamp sampler outside the opening on all four bounding edges.
     const size=1024, xy=profile.xy.map(point=>point.map(v=>v/100000));
@@ -143,15 +171,7 @@ void main() {
       if (i===0) ctx.moveTo(u,v); else ctx.lineTo(u,v);
     }
     ctx.closePath();ctx.fill();
-    this.mask=gl.createTexture();
-    gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D,this.mask);
-    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,mask);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
-    gl.uniform4f(this.uniform.maskBounds,left-stepX,bottom-stepY,stepX*size,stepY*size);
-    gl.activeTexture(gl.TEXTURE0);
+    return [mask,[left-stepX,bottom-stepY,stepX*size,stepY*size]];
   }
   async loadRoadTexture(material) {
     if (this.asphalt) return;
@@ -186,7 +206,7 @@ void main() {
     }
     gl.bindFramebuffer(gl.FRAMEBUFFER,this.floatTarget?this.framebuffer:null);
   }
-  draw(camera,width,height) {
+  draw(camera,width,height,pass="asset") {
     const gl=this.gl;
     if (gl.canvas.width!==width || gl.canvas.height!==height) {gl.canvas.width=width;gl.canvas.height=height;}
     this.target(width,height);
@@ -196,13 +216,15 @@ void main() {
     gl.uniform1f(this.uniform.focal,height/(2*Math.tan(camera.fov*Math.PI/360)));
     const hosted=Boolean(this.roadActive && this.mask && this.asphalt && camera.eye[2]>this.roadHeight);
     gl.uniform1i(this.uniform.roadEnabled,hosted);
+    gl.uniform1i(this.uniform.cutoutOnly,pass==="cutout");
+    gl.uniform1i(this.uniform.blendRim,Boolean(this.blendRim && pass!=="hard"));
     gl.uniform1i(this.uniform.traceUnder,Boolean(this.traceUnder));
     if (hosted) {
       gl.uniform1i(this.uniform.roadPass,1);
       gl.drawArraysInstanced(gl.TRIANGLES,0,3,1);
     }
     gl.uniform1i(this.uniform.roadPass,0);
-    gl.drawArraysInstanced(gl.TRIANGLE_STRIP,0,4,this.count);
+    if (pass==="asset" || pass==="hard") gl.drawArraysInstanced(gl.TRIANGLE_STRIP,0,4,this.count);
     if (this.floatTarget) {
       gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,null);
       gl.blitFramebuffer(0,0,width,height,0,0,width,height,gl.COLOR_BUFFER_BIT,gl.NEAREST);

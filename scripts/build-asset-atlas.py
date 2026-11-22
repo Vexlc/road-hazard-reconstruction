@@ -98,6 +98,9 @@ def captured_and_designed():
                 view = dict(label=f"{scene['site']} · {path.parent.name} · 迁入近景")
                 if folder == JOINT:
                     view["after"] = link(path.parent / p["preview_file"])
+                    original = path.parent / p["preview_file"].replace("close_", "original_", 1)
+                    if original.is_file() and original.name != p["preview_file"]:
+                        view["before"] = link(original)
                 else:
                     category = p["category"]
                     view.update(after=link(path.parent / (category+"_after.png")),
@@ -720,10 +723,22 @@ def main():
     audit_folder = ROOT/'runs/atlas-gaussian-checks'
     audit_report = ROOT/'validation/atlas-gaussians.json'
     checks = read(audit_report)['browser_vs_cuda_and_glb'] if audit_folder.exists() and audit_report.is_file() else {}
+    pit_geometry = ROOT / 'runs/atlas-pit-road'
+    pit_gaussians = ROOT / 'validation/atlas-pit-gaussians.json'
+    pit_depths = read(pit_gaussians)['browser_vs_cuda_and_glb'] if (pit_geometry/'geometry').is_dir() and pit_gaussians.is_file() else {}
     road_folder = ROOT / 'runs/atlas-host-road'
     road_report = ROOT / 'validation/atlas-host-road.json'
     road_checks = read(road_report)['audited_assets'] if road_folder.is_dir() and road_report.is_file() else {}
+    pit_folder = ROOT / 'runs/atlas-pit-road/browser'
+    pit_report = ROOT / 'validation/atlas-pit-road.json'
+    pit_checks = read(pit_report)['audited_assets'] if pit_folder.is_dir() and pit_report.is_file() else {}
+    driving_dir = ROOT / 'runs/capture-driving'
+    driving_manifest = driving_dir / 'views.json'
+    driving = read(driving_manifest) if driving_manifest.is_file() else {}
     for row in rows.values():
+        pit_profile = ROOT / 'runs/atlas-pit-road/profiles' / (row['id'] + '.js')
+        if pit_profile.is_file():
+            row['pitRoad'] = link(pit_profile)
         if row['id'] in poses:
             view = poses[row['id']]
             if view['count'] != row['gaussians']:
@@ -731,34 +746,54 @@ def main():
             row['gaussianPreview'] = link(gaussian_folder/(row['id']+'.webp'))
             row['gaussianCamera'] = dict(view['camera'], aspect=view['width']/view['height'])
             row['gaussianSources'] = {k:view[k+'_sha256'] for k in ('ply','glb')}
-        if row.get('gaussianSources') and row['id'] in checks and checks[row['id']].get('sources') == row['gaussianSources']:
-            audits = []
+        vehicle = driving.get(row['id'])
+        if vehicle and vehicle['glb_sha256'] == row.get('gaussianSources',{}).get('glb'):
+            frames=[]
+            for n,shot in sorted(vehicle['frames'].items(),key=lambda f:-f[1].get('eligible_pixels',0)):
+                if shot['status'] != 'visible':
+                    continue
+                site = vehicle['site']
+                frames.append(dict(label=f"{site} · 前视 · 帧 {n}", camera='front', site=site,
+                    before=link(driving_dir/shot['before']), after=link(driving_dir/shot['after']),
+                    fullBefore=link(JOINT/f"original_{site}_{n}.jpg"), fullAfter=link(JOINT/vehicle['case']/f"drive_{n}.jpg"),
+                    note=f"实车标定机位的场景渲染。标注坑面有 {shot['eligible_pixels']:,} 个可核验像素，其中 {shot['changed_pixels']:,} 个出现可辨变化。点图查看完整前视画面。"))
+            row['scenes'][:0] = frames
+        audits = {}
+        for folder, result in ((audit_folder, checks), (pit_geometry, pit_depths)):
+            depth = result.get(row['id'])
+            if not row.get('gaussianSources') or not depth or depth.get('sources') != row['gaussianSources']:
+                continue
             for mode in ('oblique','top','low'):
-                measurement = checks[row['id']]['views'].get(mode)
+                measurement = depth['views'].get(mode)
                 if not measurement:
                     continue
                 stem = row['id'] + '-' + mode
-                base = audit_folder/'browser'
-                mesh, cloud, difference = base/(stem+'-mesh.png'), base/(stem+'-gaussian.png'), audit_folder/'geometry'/(stem+'.png')
+                base = folder/'browser'
+                mesh, cloud, difference = base/(stem+'-mesh.png'), base/(stem+'-gaussian.png'), folder/'geometry'/(stem+'.png')
                 if not all(path.is_file() for path in (mesh,cloud,difference)):
                     continue
-                audits.append(dict(mode=mode, camera=measurement['camera'], mesh=link(mesh),
+                audits[mode] = dict(mode=mode, camera=measurement['camera'], mesh=link(mesh),
                     gaussian=link(cloud), difference=link(difference),
                     parts=measurement['depth_by_first_mesh_part'], pixels=measurement['shared_opaque_front_pixels'],
                     median=measurement['gaussian_expected_vs_glb_depth_mm_median'],
-                    p95=measurement['gaussian_expected_vs_glb_depth_mm_p95']))
-            if audits:
-                row['gaussianAudit'] = audits
-        road = road_checks.get(row['id'])
+                    p95=measurement['gaussian_expected_vs_glb_depth_mm_p95'])
+        if audits:
+            row['gaussianAudit'] = [audits[m] for m in ('oblique','top','low') if m in audits]
+        pit = row['id'] in pit_checks
+        road = (pit_checks if pit else road_checks).get(row['id'])
         if road and row.get('gaussianSources') == road['sources']:
             shots = []
             for mode in ('oblique', 'low', 'top'):
                 view = road['views'][mode]
-                paths = [road_folder / f"{row['id']}-{mode}-{kind}.png" for kind in ('gaussian', 'road-probe', 'road')]
+                folder = pit_folder if pit else road_folder
+                kinds = ('unblended', 'footprint', 'road') if pit else ('gaussian', 'road-probe', 'road')
+                paths = [folder / f"{row['id']}-{mode}-{kind}.png" for kind in kinds]
                 if all(p.is_file() for p in paths):
                     shots.append(dict(mode=mode, images=[link(p) for p in paths],
                                       exteriorRaw=view['exterior_raw_probe_pixels'], exteriorHost=view['exterior_host_probe_pixels'],
                                       interior=view['interior_pixels'], change=view['interior_max_rgb_change']))
+                    if pit:
+                        shots[-1].update(iou=view['footprint_iou'], apronBefore=view['apron_before_pixels'], apronAfter=view['apron_after_pixels'])
             if shots:
                 row['roadAudit'] = shots
         relief = ATLAS / "relief" / (row["id"] + ".js")

@@ -1,0 +1,27 @@
+{
+  "assets": 887,
+  "frames_per_asset": [
+    37,
+    44
+  ],
+  "visible_assets": 778,
+  "visible_methods": {
+    "实拍 RGB-D": 760,
+    "实拍双目": 18
+  },
+  "observations": {
+    "visible": 1355,
+    "insufficient_projected_area": 188,
+    "weak_image_change": 122,
+    "outside_frame": 109
+  },
+  "gate": {
+    "minimum_eligible_pixels": 12,
+    "minimum_changed_pixels": 8,
+    "minimum_changed_fraction": 0.2,
+    "minimum_mean_channel_difference_per_changed_pixel": 8,
+    "control": "At least the 99.9th percentile of the paired upper-third frame difference"
+  },
+  "views_sha256": "5e7c27ed971f985a286e50da05f151b949e4747c90f0c66d62a2f57421057337",
+  "sources_sha256": "52cd006c8ddc69185f1960ca995aeefea3ddc129ada7751d7b0317551f9da0e0"
+}

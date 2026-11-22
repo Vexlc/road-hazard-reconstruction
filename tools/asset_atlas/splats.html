@@ -24,8 +24,8 @@
   </div>
   <div class="modelcontrols" id="hostControls" hidden>
     <label><input type="checkbox" id="hostRoad"> 铺设开孔沥青路面</label>
-    <label><input type="checkbox" id="traceUnder"> 标出地下 7.5 cm 以下的结构</label>
-    <span class="modelinfo">从路面上方观察。开孔沿该资产网格的铺面内缘，沥青为摄影测量材质。</span>
+    <label><input type="checkbox" id="traceUnder"> <span id="traceLabel"></span></label>
+    <span class="modelinfo" id="hostDescription"></span>
   </div>
   <details id="gaussianAudit" class="auditPanel" hidden>
     <summary>核对高斯与网格的深度</summary>
@@ -39,12 +39,12 @@
   <details id="roadAudit" class="auditPanel" hidden>
     <summary>核对铺路前后的遮挡</summary>
     <div class="modelcontrols"><label>核验机位 <select id="hostAuditPose"></select></label></div>
-    <div class="auditImages"><figure><a id="rawRoadLink"><img id="rawRoad" alt="固定机位的独立高斯资产"></a><figcaption>独立高斯资产</figcaption></figure>
-      <figure><a id="roadProbeLink"><img id="roadProbe" alt="铺路后地下高斯染成洋红色的画面"></a><figcaption>铺路后标出地下结构</figcaption></figure>
-      <figure><a id="hostColourLink"><img id="hostColour" alt="恢复原始颜色后的开孔路面"></a><figcaption>铺路后恢复原色</figcaption></figure></div>
+    <div class="auditImages"><figure><a id="rawRoadLink"><img id="rawRoad" alt=""></a><figcaption id="rawRoadCaption"></figcaption></figure>
+      <figure><a id="roadProbeLink"><img id="roadProbe" alt=""></a><figcaption id="roadProbeCaption"></figcaption></figure>
+      <figure><a id="hostColourLink"><img id="hostColour" alt=""></a><figcaption id="hostColourCaption"></figcaption></figure></div>
     <p id="hostAuditReadout"></p>
   </details>
-  <figure id="roadPanel" hidden><a id="roadLink"><img id="road" alt="同一件资产迁入后的道路实景"></a><figcaption><label>迁入道路 <select id="roadShot"></select></label><button id="before">查看迁入前</button></figcaption></figure>
+  <figure id="roadPanel" hidden><a id="roadLink"><img id="road" alt="同一件资产迁入后的道路画面"></a><figcaption><label>迁入道路 <select id="roadShot"></select></label><button id="before">查看迁入前</button><span id="roadNote"></span></figcaption></figure>
 </main>
 <script src="catalog.js"></script><script src="road-host-data.js"></script><script src="splat-worker.js"></script><script src="splat-renderer.js"></script><script defer src="splats.js"></script>
 </html>

@@ -80,14 +80,20 @@ async function capture() {
         const stem=id+"-"+kind;
         save(stem+"-gaussian.png",result.img);save(stem+"-mesh.png",result.mesh);
         if(captureRoad) {
-          result.view.road_height_m=await ev("renderer.roadHeight");
           await wait('!el("hostControls").hidden && !el("hostRoad").checked && !el("traceUnder").checked');
+          result.view.road_height_m=await ev("renderer.roadHeight");
+          result.view.probe_height_m=await ev("renderer.probeHeight");
           const toggle=id=>ev('el('+JSON.stringify(id)+').click()');
           const snapshot=()=>ev('renderer.draw(camera(),canvas.width,canvas.height);canvas.toDataURL("image/png")');
           await toggle("traceUnder");save(stem+"-probe.png",await snapshot());
           await toggle("hostRoad");await wait("renderer.roadActive && renderer.asphalt");
           save(stem+"-road-probe.png",await snapshot());
           await toggle("traceUnder");save(stem+"-road.png",await snapshot());
+          if (await ev("Boolean(row.pitRoad)")) {
+            for (const [suffix,pass] of [["footprint","cutout"],["base","road"],["unblended","hard"]]) {
+              save(stem+"-"+suffix+".png",await ev('renderer.draw(camera(),canvas.width,canvas.height,'+JSON.stringify(pass)+');canvas.toDataURL("image/png")'));
+            }
+          }
           await toggle("hostRoad");
           if (await ev("renderer.gl.getError()")!==0) throw Error("WebGL error during road rendering");
         }

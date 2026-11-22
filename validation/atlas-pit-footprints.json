@@ -1,0 +1,39 @@
+{
+  "assets": 1076,
+  "smallest_opening_pixels": 17247,
+  "profiles_sha256": "bdd390e52ac44ca9e7eaf6db64f6e11d6ceda18724b759d43a662230046952f9",
+  "methods": {
+    "实拍摄影测量": 4,
+    "实拍坑底＋模拟积水": 5,
+    "双张实拍 RGB": 4,
+    "多帧 RGB-D": 3,
+    "实拍 RGB": 4,
+    "生成 RGB": 37,
+    "实拍 RGB-D": 822,
+    "实拍双目": 65,
+    "程序化": 130,
+    "多帧双目": 2
+  },
+  "cutouts": {
+    "bed_triangles": 59,
+    "capture_annotation": 887,
+    "height_intersection": 130
+  },
+  "profile_bytes": 16816711,
+  "max_pitch_mm": 3.155919723212719,
+  "max_profile_bytes": 310183,
+  "capture_grid_max_height_error_mm": 0,
+  "shared_water_beds": [
+    [
+      "P113",
+      "P133"
+    ],
+    [
+      "P122",
+      "P129",
+      "P130",
+      "P131",
+      "P132"
+    ]
+  ]
+}

@@ -31,6 +31,7 @@ function showScene() {
   el("roadCompare").textContent = view?.note || "";
   if (view) {
     photo("road", before ? view.before : view.after, view.label + (before ? (view.beforeLabel || " 迁入前") : (view.afterLabel || " 迁入后")));
+    el("roadLink").href=(before?view.fullBefore:view.fullAfter) || el("road").src;
     el("before").hidden = !view.before;
     el("before").textContent = before ? (view.afterLabel || "查看迁入后") : (view.beforeLabel || "查看迁入前");
   }

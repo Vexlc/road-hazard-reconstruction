@@ -112,11 +112,15 @@ el("auditPart").onchange=()=>showAudit(false);
 function showHostAudit() {
   const shot=row?.roadAudit?.[Number(el("hostAuditPose").value)];
   if (!shot) return;
+  const pit=shot.iou!=null;
+  const names=pit?["保留拍摄底色","坑缘或裂缝开孔","按坑缘过渡到沥青"]:["独立高斯资产","铺路后标出地下结构","铺路后恢复原色"];
   for (const [index,id] of ["rawRoad","roadProbe","hostColour"].entries()) {
     el(id+"Link").href=el(id).src=shot.images[index];
+    el(id).alt=el(id+"Caption").textContent=names[index];
   }
-  el("hostAuditReadout").textContent="地下高斯染色后，井口外的响应像素从 "+shot.exteriorRaw.toLocaleString()+" 个变为 "+shot.exteriorHost.toLocaleString()+
-    " 个。井口内 "+shot.interior.toLocaleString()+" 个核验像素在铺路前后的 RGB 通道最大差为 "+shot.change+" / 255。";
+  const lead=pit?"浏览器开孔与网格逐像素核验的交并比为 "+(100*shot.iou).toFixed(1)+"%。过渡带外带有原路面颜色的像素从 "+shot.apronBefore.toLocaleString()+" 个变为 "+shot.apronAfter.toLocaleString()+" 个。":
+    "地下高斯染色后，井口外的响应像素从 "+shot.exteriorRaw.toLocaleString()+" 个变为 "+shot.exteriorHost.toLocaleString()+" 个。";
+  el("hostAuditReadout").textContent=lead+"开孔内 "+shot.interior.toLocaleString()+" 个核验像素在铺路前后的 RGB 通道最大差为 "+shot.change+" / 255。";
 }
 el("hostAuditPose").onchange=showHostAudit;
 el("roadAudit").ontoggle=()=>{if (el("roadAudit").open) showHostAudit();};
@@ -129,8 +133,9 @@ el("useAuditPose").onclick=()=>{
 };
 function setRoads() {
   before=false;
-  roads=(row?.scenes || []).filter(s=>s.camera==="front" || s.camera==="back");
-  if (!roads.length) roads=(row?.scenes || []).filter(s=>s.before && !s.beforeLabel).slice(0,4);
+  const vehicle=s=>s.camera==="front" || s.camera==="back";
+  const shots=(row?.scenes || []).filter(s=>s.after && (vehicle(s) || !s.beforeLabel));
+  roads=[...shots.filter(vehicle),...shots.filter(s=>!vehicle(s))];
   el("roadPanel").hidden=!roads.length;
   el("roadShot").replaceChildren(...roads.map((s,i)=>new Option(s.label,String(i))));
   showRoad();
@@ -138,8 +143,37 @@ function setRoads() {
 function showRoad() {
   const shot=roads[Number(el("roadShot").value)];
   if (!shot) return;
-  el("roadLink").href=el("road").src=before?shot.before:shot.after;
+  el("road").src=before?shot.before:shot.after;
+  el("roadLink").href=(before?shot.fullBefore:shot.fullAfter) || el("road").src;
+  el("roadNote").textContent=shot.note || "";
   el("before").hidden=!shot.before;el("before").textContent=before?"查看迁入后":"查看迁入前";
+}
+async function prepareRoad(asset,epoch,host,trace) {
+  let profile=window.gaussianRoad?.profiles[asset?.id], bitmap;
+  if (!profile && asset?.pitRoad) {
+    const script=document.createElement("script");
+    try {
+      profile=await new Promise((resolve,reject)=>{
+        script.onload=()=>resolve(script.roadProfile);script.onerror=()=>reject(Error("无法读取开孔轮廓。"));
+        script.src=asset.pitRoad;document.head.append(script);
+      });
+      if (!profile || epoch!==selection || profile.glb!==asset.gaussianSources?.glb) return;
+      bitmap=new Image();bitmap.src=profile.mask;await bitmap.decode();
+    } catch (err) {
+      if (epoch===selection && host) message(err.message);
+      return;
+    } finally {script.remove();}
+  }
+  if (!profile || epoch!==selection || profile.glb!==asset?.gaussianSources?.glb) return;
+  renderer.setRoad(profile,bitmap);
+  el("traceLabel").textContent=bitmap?"标出低于零高程 "+(-1000*profile.probeHeight).toFixed(1)+" mm 的部位":"标出地下 7.5 cm 以下的结构";
+  const hints={capture_annotation:"开孔沿原始照片标注在网格上的投影。",bed_triangles:"开孔沿网格标出的病害边界。",
+    height_intersection:"开孔取自网格低于铺设平面的区域。"};
+  const hint=hints[profile.kind] || "开孔沿该资产网格的铺面内缘。";
+  el("hostDescription").textContent="从路面上方观察。"+hint+(bitmap?"铺设平面比标称路面低 "+(-1000*profile.roadHeight).toFixed(2)+" mm。":"");
+  el("hostRoad").checked=Boolean(host);el("traceUnder").checked=Boolean(trace);
+  el("hostControls").hidden=mode==="meshMode" || !orderReady;
+  updateRoadRendering();
 }
 function start(selected,files={}) {
   const epoch=++selection;
@@ -190,12 +224,7 @@ function start(selected,files={}) {
     if (data.type==="error") { fail(data.message);return; }
     if (data.type==="cloud") {
       try { renderer.upload(data); } catch (err) { fail(err.message);return; }
-      const opening=window.gaussianRoad?.profiles[row?.id];
-      if (opening && opening.glb===row?.gaussianSources?.glb) {
-        renderer.setRoad(opening);
-        el("hostRoad").checked=Boolean(hostRequested);el("traceUnder").checked=Boolean(traceRequested);
-        updateRoadRendering();
-      }
+      prepareRoad(row,epoch,hostRequested,traceRequested);
       bounds=[data.lo,data.hi];
       for (const id of ["top","side","reset","useAuditPose"]) el(id).disabled=false;
       if (!meshUrl || meshFailed) viewer.src=localUrl(boundsModel(...bounds));
