@@ -1,4 +1,4 @@
-"""Build a movable chamber family from separate single-view frame and lid photographs."""
+"""Reconstruct a family of movable road covers from photographed components or marked openings."""
 import argparse
 import os
 from pathlib import Path
@@ -21,7 +21,8 @@ def main():
     ids = [s['id'] for s in survey['states']]
     if not ids or len(set(ids)) != len(ids) or any(not re.fullmatch(('M' if s.get('absent') else 'A')+r'[0-9]{2,}',s['id']) for s in survey['states']):
         p.error('Every state needs a unique A or M ID, e.g. A91 or M91')
-    roles = ('frame', 'lid') if any(not s.get('absent') for s in survey['states']) else ('frame',)
+    perforated = 'perforations' in survey
+    roles = ('frame', 'lid') if not perforated and any(not s.get('absent') for s in survey['states']) else ('frame',)
     paths = {name: args.survey.parent/survey[name]['image'] for name in roles}
     if any(not path.is_file() for path in paths.values()):
         p.error('The requested component images must exist relative to the survey')
@@ -42,7 +43,21 @@ def build_bundle(args,survey,envs,paths,ids,run):
     refs.mkdir(parents=True)
     (bundle/'calibration').mkdir()
     for name,path in paths.items():
-        shutil.copy2(path,refs/(name+'.png'))
+        if 'perforations' in survey and name == 'frame' and path.suffix.lower() != '.png':
+            original = 'source_frame' + path.suffix.lower()
+            shutil.copy2(path, refs / original)
+            survey = dict(survey, frame=dict(survey['frame'], original_reference=original))
+        else:
+            shutil.copy2(path,refs/(name+'.png'))
+    if 'perforations' in survey:
+        profile = dict(survey['perforations'])
+        for name in ('mask', 'lining', 'displacement'):
+            if name in profile:
+                original = args.survey.parent / profile[name]
+                filename = name + original.suffix.lower()
+                shutil.copyfile(original, refs / filename)
+                profile[name] = filename
+        survey = dict(survey, perforations=profile)
     shutil.copy2(ROOT/'inputs/shared/back.png', refs/'back.png')
     for group,fields in [('rgbd',('depth','bottom_mask')),('pose_capture',('image','depth','lid_mask'))]:
         if group not in survey:continue
@@ -73,7 +88,11 @@ def build_bundle(args,survey,envs,paths,ids,run):
                                preview=args.preview,published={},reference_sha256=sha_refs))
     env = dict(os.environ,OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='4',MKL_NUM_THREADS='4',PYTHONDONTWRITEBYTECODE='1')
     mesh, compute = envs['mesh_python'], envs['compute_python']
-    run_step(mesh,code/'survey_chamber.py',[],env)
+    if 'perforations' in survey:
+        run_step(compute,code/'trace_grate.py',[],env)
+        run_step(mesh,code/'perforated_cover.py',[],env)
+    else:
+        run_step(mesh,code/'survey_chamber.py',[],env)
     if not args.mesh_only:
         run_step(compute,code/'export_splats.py',['--cache',bundle/'mesh_cache',*ids],env)
     if args.preview:

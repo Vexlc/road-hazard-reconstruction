@@ -16,7 +16,8 @@ EXACT_PARTS = {
     'Fracture lip and exposed bed': 2, 'Fracture sidewall in surface coordinates': 3,
     'Water surface': 4, 'Cast ring and cover seat': 5, 'Inspection shaft': 6,
     'Shaft bottom': 7, 'Chipped concrete collar': 8, 'Lid face': 9,
-    'Lid underside with casting ribs': 10, 'Lid rolled edge': 11
+    'Lid underside with casting ribs': 10, 'Lid rolled edge': 11,
+    'Lid underside': 10, 'Lid aperture walls and perimeter': 11
 }
 CLASSES = {'pothole': 1, 'missing': 2, 'raised': 3}
 SITES = ('034', '109', '110')

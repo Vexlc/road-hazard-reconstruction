@@ -1,0 +1,158 @@
+{
+  "family": "yokota-welded-grate",
+  "source_url": "https://www.dvidshub.net/image/9735953/374-ces-airmen-maintain-installation-readiness-through-storm-mitigating-flood",
+  "credit": "U.S. Air Force photo by Airman 1st Class Julian Batista. DVIDS 9735953, VIRIN 260603-F-FN020-1083. Public domain.",
+  "frame": {
+    "image": "photo.png"
+  },
+  "perforations": {
+    "shape": "rect",
+    "corners_xy": [
+      [
+        20,
+        141
+      ],
+      [
+        372,
+        91
+      ],
+      [
+        599,
+        250
+      ],
+      [
+        145,
+        341
+      ]
+    ],
+    "mask": "openings.png",
+    "lining": "../lining.jpg",
+    "road_patch_xyxy": [
+      682,
+      290,
+      803,
+      387
+    ],
+    "edge_patch_xyxy": [
+      250,
+      326,
+      356,
+      345
+    ],
+    "frame_band_m": 0.03,
+    "seat_overlap_m": 0.012,
+    "shaft_depth_m": 0.58,
+    "photographed_surround": false,
+    "scale_source": "Single-image rectangle and visible side with design reference width 0.45 m. Orthogonal directions, square pixels and image-centred principal point. Length and thickness scale with that width; shaft and installed poses designed.",
+    "edge_calibration": {
+      "reference_width_m": 0.45,
+      "principal_xy": [
+        499.5,
+        333.0
+      ],
+      "bottom_corner_index": 3,
+      "bottom_corner_xy": [
+        153,
+        408
+      ],
+      "check_edge_corners": [
+        3,
+        2
+      ],
+      "check_lower_edge_xy": [
+        [
+          176,
+          402.5
+        ],
+        [
+          220,
+          391.5
+        ],
+        [
+          230,
+          389.5
+        ],
+        [
+          310,
+          371.5
+        ],
+        [
+          330,
+          367.5
+        ],
+        [
+          402,
+          351.5
+        ]
+      ]
+    }
+  },
+  "states": [
+    {
+      "id": "A115",
+      "label": "落座",
+      "angle_deg": 0,
+      "offset_m": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A117",
+      "label": "单根格条断缺",
+      "angle_deg": 0,
+      "offset_m": [
+        0,
+        0
+      ],
+      "break_polygon_uv": [
+        [
+          0.474,
+          0.526
+        ],
+        [
+          0.491,
+          0.532
+        ],
+        [
+          0.501,
+          0.526
+        ],
+        [
+          0.516,
+          0.536
+        ],
+        [
+          0.52,
+          0.675
+        ],
+        [
+          0.504,
+          0.666
+        ],
+        [
+          0.493,
+          0.675
+        ],
+        [
+          0.475,
+          0.664
+        ]
+      ]
+    },
+    {
+      "id": "A116",
+      "label": "掀开",
+      "angle_deg": 58,
+      "offset_m": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "M115",
+      "label": "缺盖",
+      "absent": true
+    }
+  ]
+}

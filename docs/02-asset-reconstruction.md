@@ -1,4 +1,4 @@
-# 五类资产从输入到 GLB 与 3DGS
+# 道路病害资产从输入到 GLB 与 3DGS
 
 先按 [环境文档](03-environment-and-relocation.md) 安装 Python 3.11 资产环境和 Python 3.9 CUDA 环境。以下命令都在仓库根目录执行。`reconstruct-assets.py` 只重建版本化资产清单中已经发布的 ID，避免上游数据新增、排序或筛选变化导致资产数量漂移。
 
@@ -219,3 +219,23 @@ python scripts/check-pit-transfer.py --run runs/my-pit-survey --out runs/my-pit-
 work/envs/streetcrafter/bin/python scripts/check-pit-inputs.py --run runs/my-pit-survey --out runs/my-pit-survey/input-checks.json
 work/envs/assets/bin/python scripts/render-pit-survey.py --run runs/my-pit-survey --out runs/my-pit-survey/figures
 ~~~
+
+## 从实拍盖板重建贯穿孔与断条
+
+矩形雨水篦来自一张斜视照片。标注盖面四角、可见下角和 60 个孔口，在方形像素、给定主点和边缘正交的假设下恢复相机、盖板长宽比和厚宽比。参考宽度取 0.45 米，换算后盖长 0.601 米、厚 66.0 毫米。将完整 GLB 投回原机位，同一张照片中留出的 6 个下缘标记与模型底边距离中位数为 1.77 像素。绝对尺度随参考宽度改变。[原始照片与署名](https://www.dvidshub.net/image/9735953/374-ces-airmen-maintain-installation-readiness-through-storm-mitigating-flood) · [重建与道路图版](figures/perforated-grate.jpg)
+
+铺石圆盖的 16 个孔、石材与盖面凹凸取自同一份摄影测量彩色图和相对位移图。来源公布的图幅宽 1.25 米，对应可见盖缝直径约 0.655 米。一处孔被树枝遮住，按两侧可见边界补全。垂直起伏幅度 7 毫米、盖厚 26 毫米与井深 0.75 米采用设计值。两组资产的隐藏井壁采用同一份混凝土材质。[原始摄影测量图](https://ambientcg.com/a/ManholeCover004) · [井壁材质](https://ambientcg.com/a/Concrete049) · [圆盖图版](figures/perforated-cobblestone.jpg)
+
+自己的输入可以沿用两份示例清单。将原图和同分辨率的黑白 PNG 孔口掩膜放在一起，白色标出每个孔口内圈，黑色保留金属。斜视照片的四角从盖面左上起顺时针标注。正射圆盖标外接矩形四角。在 `perforations` 中给出井深、座圈重叠宽度、取纹理用的图像区域和井壁纹理。已知盖板尺寸时填写 `size_m`、`thickness_m`，矩形单照也可以填写 `edge_calibration`。对齐的单通道整数位移图和米制起伏跨度为可选输入。[矩形输入清单](../gen2hole/examples/perforated-covers/yokota/survey.json) · [圆盖输入清单](../gen2hole/examples/perforated-covers/cobblestone/survey.json)
+
+```bash
+python gen2hole/survey.py --survey gen2hole/examples/perforated-covers/yokota/survey.json --out work/grate-rebuild --preview
+python gen2hole/survey.py --survey gen2hole/examples/perforated-covers/cobblestone/survey.json --out work/round-cover-rebuild --preview
+work/envs/streetcrafter/bin/python scripts/check-perforated-covers.py --run work/grate-rebuild --out work/grate-check.json
+```
+
+孔缘约束三角化生成盖面、底面和每个孔的侧壁。角度与位移对整块盖板施加刚体变换，移位盖板按盖底与座圈或路面的首次接触落位。缺盖状态只导出井体。可用归一化盖面坐标中的 `break_polygon_uv` 指定缺损格条。对 A115 和 A117 的实际 GLB 作同位置射线比较，移除约 5.0 平方厘米金属，两个独立孔连成一个。六个有盖状态的网格均通过封闭性、连通性和孔数检查。完整矩形、圆盖的孔口回投与输入标注的 IoU 分别为 0.997、0.960。
+
+在 PandaSet 109，两组资产的全部状态分别放到相同的道路位置。A117 和 A120 还迁到 034。共 10 次原生放置、20 组前后视相机对照和 800 个雷达案例帧，复用两段路的 160 帧原始扫描。断条、掀盖、移位、缺盖都属于由同一来源派生的状态。核验文件逐状态记录 GLB、Gaussian PLY 摘要、同源井体和回波命中部件。[雨水篦核验](../validation/yokota-grate.json) · [铺石圆盖核验](../validation/cobble-cover.json)
+
+图谱的道路菜单可以直接比较落座和异常状态。两幅图共享相机、帧、曝光来源和像素坐标，黄色标出可见部件改变或光轴深度差超过 1 厘米的像素。对 109 的断条篦子，前视第 29 帧有 10 个这样的像素，后视第 40 帧有 3 个。沿该路段 80 帧原始激光束逐行比较，两束的模拟距离差超过 1 厘米，分别约为 24.6 和 74.3 毫米。断条回波俯视图把两个状态的命中点投在同一张盖面纹理上。

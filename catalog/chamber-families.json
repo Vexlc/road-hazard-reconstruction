@@ -19,5 +19,19 @@
     "reprojection": "validation/pandaset-109-reprojection.json",
     "note": "PandaSet 109 的小型金属盖板和浅色修补圈来自同一处设施。实拍边界和激光点给出外径、修补圈轮廓与表面高度。内侧盖缝分辨率有限，盖面直径按 3 毫米径向间隙设计。井深与遮挡面按设计补全，错位与缺盖为派生状态。",
     "asset_label": "道路小盖板"
+  },
+  {
+    "run": "runs/yokota-grate-metric",
+    "method": "实拍 RGB",
+    "asset_label": "矩形雨水篦",
+    "audit": "validation/yokota-grate.json",
+    "note": "原照记录了从井口取出的一块格栅。孔缘逐个标注，长宽比和厚宽比由透视边缘恢复，绝对尺寸按 0.45 米参考宽度换算。座圈、井体、断条和安装姿态由设计给定。"
+  },
+  {
+    "run": "runs/cobble-cover",
+    "method": "实拍摄影测量",
+    "asset_label": "铺石穿孔圆盖",
+    "audit": "validation/cobble-cover.json",
+    "note": "落座圆盖的石块、金属环及 16 个孔来自同一份摄影测量彩色图和位移图。平面尺寸按来源公布的 1.25 米图幅换算，一处孔缘跨过遮挡的树枝。起伏幅度、盖厚、井深与其他姿态采用设计值。"
   }
 ]

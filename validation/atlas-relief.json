@@ -1,91 +1,123 @@
 {
-  "records": 1359,
-  "with_removable_cover": 183,
-  "valid_top_samples": 12262200,
+  "records": 1367,
+  "with_removable_cover": 189,
+  "valid_top_samples": 12559953,
   "checked_meshes": {
+    "A117": {
+      "independent_rays": 192,
+      "max_error_m": 1.8893241882311784e-05
+    },
+    "A119": {
+      "independent_rays": 192,
+      "max_error_m": 2.3967838287286547e-05
+    },
     "P112": {
       "independent_rays": 96,
-      "max_error_m": 2.477836608886716e-05
+      "max_error_m": 2.475042343139805e-05
+    },
+    "A116": {
+      "independent_rays": 192,
+      "max_error_m": 2.2609424591091276e-05
+    },
+    "M118": {
+      "independent_rays": 96,
+      "max_error_m": 1.416320800773363e-05
     },
     "A104": {
       "independent_rays": 192,
-      "max_error_m": 2.4572658538724035e-05
+      "max_error_m": 2.4700164794833057e-05
     },
     "A108": {
       "independent_rays": 192,
-      "max_error_m": 2.4868011474610263e-05
+      "max_error_m": 2.4884986877415916e-05
     },
     "A93": {
       "independent_rays": 192,
-      "max_error_m": 2.4740600585992922e-05
+      "max_error_m": 2.4877738952655548e-05
     },
     "P90": {
       "independent_rays": 96,
-      "max_error_m": 2.283573150634044e-05
+      "max_error_m": 2.4864578247074665e-05
     },
     "P102": {
       "independent_rays": 96,
-      "max_error_m": 1.967239379882524e-06
+      "max_error_m": 1.8309974670411427e-05
     },
     "rgbd_pothole_20250227_135438": {
       "independent_rays": 96,
-      "max_error_m": 2.4717140197749732e-05
+      "max_error_m": 2.432270050048424e-05
     },
     "model_raised_rectangular_removed_side_chip_seal": {
       "independent_rays": 192,
-      "max_error_m": 2.4378299713134766e-05
+      "max_error_m": 2.4682235717721213e-05
     },
     "stereo_pothole_fan_1_03": {
       "independent_rays": 96,
-      "max_error_m": 2.4880456924433747e-05
+      "max_error_m": 2.4835062026981602e-05
     },
     "M13": {
       "independent_rays": 96,
-      "max_error_m": 2.4913883209132237e-05
+      "max_error_m": 2.4700355529705398e-05
     },
     "P13": {
       "independent_rays": 96,
-      "max_error_m": 2.4372959136959027e-05
+      "max_error_m": 2.337932586671254e-05
     },
     "A105": {
       "independent_rays": 192,
-      "max_error_m": 2.4831295013516552e-05
+      "max_error_m": 2.487897872915923e-05
     },
     "A107": {
       "independent_rays": 192,
-      "max_error_m": 2.495398521423775e-05
+      "max_error_m": 2.4747037887573597e-05
+    },
+    "A115": {
+      "independent_rays": 192,
+      "max_error_m": 1.8893241882311784e-05
+    },
+    "A118": {
+      "independent_rays": 192,
+      "max_error_m": 2.4663448333739346e-05
+    },
+    "A120": {
+      "independent_rays": 192,
+      "max_error_m": 2.4611473083413493e-05
     },
     "A95": {
       "independent_rays": 192,
-      "max_error_m": 2.4954128265530784e-05
+      "max_error_m": 2.484216690068486e-05
     },
     "M104": {
       "independent_rays": 96,
-      "max_error_m": 2.447366714486421e-05
+      "max_error_m": 2.465248107919038e-05
     },
     "M107": {
       "independent_rays": 96,
-      "max_error_m": 2.4778890609755688e-05
+      "max_error_m": 2.405171394348482e-05
+    },
+    "M115": {
+      "independent_rays": 96,
+      "max_error_m": 1.8833637237536394e-05
     },
     "M91": {
       "independent_rays": 96,
-      "max_error_m": 2.412691116338017e-05
+      "max_error_m": 2.369155883785723e-05
     },
     "P110": {
       "independent_rays": 96,
-      "max_error_m": 2.4729061126708973e-05
+      "max_error_m": 2.4330520629882446e-05
     },
     "P111": {
       "independent_rays": 96,
-      "max_error_m": 2.4719619750979138e-05
+      "max_error_m": 2.4824047088624346e-05
     },
     "P113": {
       "independent_rays": 96,
-      "max_error_m": 2.4600887298583188e-05
+      "max_error_m": 2.494697570800883e-05
     },
     "P114": {
       "independent_rays": 96,
-      "max_error_m": 2.438859939575197e-05
+      "max_error_m": 2.3999023437498712e-05
     }
   },
   "pitch_m_min_median_max": [

@@ -38,3 +38,5 @@ model-viewer{display:block;width:100%;height:min(65vh,740px);min-height:300px;ba
 
 #pitPanel .capture-controls{margin-top:12px}
 #pitPanel img{width:auto;height:auto}
+#roadPanel figcaption{flex-wrap:wrap}
+#roadCompare{flex-basis:100%;color:#46584b;line-height:1.5}

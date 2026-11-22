@@ -129,6 +129,86 @@ def real_rgb():
     return {name: row}
 
 
+def add_perforated_views(row, run, profile, meta, family_audit, seated):
+    key = meta["id"]
+    audit = family_audit['states'][key]
+    source = run / 'evaluation'
+    row.update(
+        panelSize=meta['panel_size_m'],
+        lidThickness=meta['lid_thickness_m'],
+        throughHoles=meta['through_holes'],
+        wellVisible=audit['views'][0]['visible_well_fraction'],
+        openFace=meta['open_face_fraction'],
+        mask=link(run / 'series/references' / profile['mask']),
+    )
+    views = [
+        ('实拍原图', run / 'series/references/frame.png', '原始参考图'),
+        ('盖面正射图', run / 'series/references/lid_ortho.png', '盖面在正射坐标下的源纹理'),
+    ]
+    footprint = key if 'solid' in audit else seated
+    if footprint:
+        note = '黄线为标注，青线为 GLB 孔口投影。'
+        if not meta['through_holes']:
+            note += '缺盖状态显示参考盖板。'
+        views.append(('逐孔回投', source / footprint / 'openings.jpg', note))
+    if seated and 'same_photo_side_check' in family_audit:
+        views.extend(
+            [
+                (
+                    '原机位侧壁',
+                    source / seated / 'source-pose.jpg',
+                    '原照机位的 GLB，金色为盖面，蓝绿色为可见侧壁',
+                ),
+                (
+                    '原图下缘复核',
+                    source / seated / 'side-fit.jpg',
+                    '青线为 GLB 底边，黄点为同图留出的边缘标记',
+                ),
+            ]
+        )
+    if 'break_comparison' in audit:
+        views.append(
+            ('断口放大', source / key / 'broken-web.png', '左为完整，右为断条。金色为金属，深蓝为贯穿孔')
+        )
+    for angle in (0, 55):
+        views.append(
+            (
+                f'射线视图 · {angle}°',
+                source / key / f'rays-{angle}.png',
+                '金色为盖面，棕色为孔壁，蓝绿色为井壁，深蓝为井底',
+            )
+        )
+    row['sourceViews'] = [dict(label=t, image=link(p), note=caption) for t, p, caption in views]
+    for case, diff in family_audit.get('relative_to_seated', {}).items():
+        placed = family_audit['placements'][case]
+        if placed['asset'] != key:
+            continue
+        laser = diff['lidar']
+        for camera, image in diff['cameras'].items():
+            title = '前视' if camera == 'front_camera' else '后视'
+            note = (
+                f"左为落座，右为{row['state']}。黄色标出部件改变或光轴深度差超过 1 厘米的 "
+                f"{image['changed_pixels']:,} 个像素。该路段 {placed['frames']} 帧中有 "
+                f"{laser['range_change_over_1cm']:,} 个原始激光束的模拟回波距离差超过 1 厘米。"
+            )
+            row['scenes'].append(
+                dict(
+                    label=f"{placed['site']} · {title} · 与落座对照 · 帧 {image['frame']}",
+                    after=link(source / key / image['image']),
+                    note=note,
+                )
+            )
+        if laser.get('plan_view'):
+            distances = '、'.join(f"{1000 * h['delta_m']:.1f}" for h in laser['strongest_paired_hits'])
+            row['scenes'].append(
+                dict(
+                    label=f"{placed['site']} · 断条回波落点俯视",
+                    after=link(source / key / laser['plan_view']),
+                    note=f"黄线为断条区域。青点为完整时的命中点，橙点为断条后的命中点。图中配对激光束的模拟距离差为 {distances} 毫米。",
+                )
+            )
+
+
 def photo_families():
     rows = {}
     for info in read(ROOT / 'catalog/chamber-families.json'):
@@ -138,12 +218,27 @@ def photo_families():
         bundle = run / 'series'
         spec = read(bundle / 'calibration/survey.json')
         state_ids = [s['id'] for s in spec['states']]
+        perforated = 'perforations' in spec
+        if perforated:
+            perforation_audit = read(ROOT / info['audit'])
+            seated = next((s['id'] for s in spec['states'] if not s.get('absent') and
+                           not s.get('angle_deg', 0) and not any(s.get('offset_m', [])) and not s.get('break_polygon_uv')), None)
         scenes = {}
+        street_dir=run/'evaluation/streets'
+        street_frames=read(street_dir/'frames.json') if (street_dir/'frames.json').exists() else {}
+        driving={}
         for path in sorted((bundle / 'scenes').glob('*/scene.json')):
             for placed in read(path)['placements']:
                 cat = placed['category']
                 scenes.setdefault(placed['asset_id'],[]).append(dict(label=path.parent.name+" · 迁入近景",
                     after=link(path.parent/(cat+'_after.png')),before=link(path.parent/(cat+'_before.png'))))
+                case=path.parent.name
+                if case in street_frames:
+                    frame=street_frames[case]
+                    driving.setdefault(placed['asset_id'],[]).append(dict(
+                        label=f"{frame['site']} · 完整前视 · 帧 {frame['frame']}",site=frame['site'],camera='front',
+                        before=link(street_dir/(case+'-before.jpg')),after=link(street_dir/(case+'-after.jpg')),
+                        video=link(bundle/'sensor_views'/case/'front_after.mp4')))
         sensor_root = run/'sensors'
         if (run/'sensors-multisite/checks/camera_audit.json').is_file():
             sensor_root = run/'sensors-multisite'
@@ -171,10 +266,15 @@ def photo_families():
                 raise ValueError(f"Asset ID collision: {key}")
             row = entry(meta, bundle/'assets', info['method'], meta['label'], bundle/'views'/(key+'_inspection.jpg'))
             row.update(family=spec['family'], states=state_ids, label=info.get('asset_label','圆井')+' · '+meta['label'], state=meta['label'],
-                       reference=link(bundle/'references/frame.png'), lidReference=link(bundle/'references/lid.png'),
+                       reference=link(bundle/'references/frame.png'),
                        audit=link(ROOT / info['audit']), reverse=link(bundle/'views'/(key+'_reverse.jpg')),
                        credit=spec.get('source_url'), note=info['note'], triangles=sum(meta['geometry_parts'].values()),
-                       scenes=paired.get(key,[])+shots.get(key,[])+scenes.get(key,[]))
+                       scenes=driving.get(key,[])+paired.get(key,[])+shots.get(key,[])+scenes.get(key,[]))
+            if perforated:
+                row['category'] = info['asset_label']
+                add_perforated_views(row, run, spec['perforations'], meta, perforation_audit, seated)
+            else:
+                row['lidReference']=link(bundle/'references/lid.png')
             if capture_views:
                 row.update(reference=link(bundle/'references/capture.png'),lidReference=link(bundle/'references/frame.png'),
                            sourceLabels=['前视实拍裁切','两帧融合的正射纹理'],captureViews=capture_views,
@@ -183,7 +283,7 @@ def photo_families():
                            lidDiameter=capture_fit['lid_diameter_m'],lidDesigned=bool(capture_fit.get('lid_diameter_source')),
                            apronExtent=capture_fit.get('apron_xy_extent_m'),laserCount=repro['heldout_lid_returns'],
                            laserMedianMM=repro['lidar_abs_error_median_m']*1000)
-            if meta['lid_angle_degrees'] == 0 and meta['lid_offset_m'] == [0,0]:
+            if not perforated and meta['lid_angle_degrees'] == 0 and meta['lid_offset_m'] == [0,0]:
                 row['category']='落座参照'
             if (sensor_root/'checks/scan_audit.json').is_file():
                 row['scan']=link(sensor_root/'checks/scan_audit.json')
@@ -293,7 +393,7 @@ def main():
             row["orbit"] = link(orbit)
         if row.get("related"):
             rows[row["related"]]["related"] = row["id"]
-    featured = ["P112","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["A117","A119","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

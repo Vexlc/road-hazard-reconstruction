@@ -1,0 +1,89 @@
+{
+  "family": "cobble-perforated-cover",
+  "source_url": "https://ambientcg.com/a/ManholeCover004",
+  "credit": "ambientCG, Manhole Cover 004. CC0 1.0. Colour and displacement downsampled from the 4K photogrammetry maps. One bore is partly occluded by a twig; its outline bridges the two visible dark regions.",
+  "frame": {
+    "image": "photo.png"
+  },
+  "perforations": {
+    "shape": "round",
+    "corners_xy": [
+      [
+        262,
+        225
+      ],
+      [
+        798,
+        225
+      ],
+      [
+        798,
+        761
+      ],
+      [
+        262,
+        761
+      ]
+    ],
+    "mask": "openings.png",
+    "lining": "../lining.jpg",
+    "displacement": "relief.png",
+    "relief_span_m": 0.007,
+    "road_patch_xyxy": [
+      52,
+      87,
+      245,
+      235
+    ],
+    "edge_patch_xyxy": [
+      726,
+      455,
+      743,
+      476
+    ],
+    "size_m": [
+      0.6549364613880743,
+      0.6549364613880743
+    ],
+    "frame_band_m": 0.0625,
+    "seat_overlap_m": 0.01,
+    "thickness_m": 0.026,
+    "shaft_depth_m": 0.75,
+    "photographed_surround": true,
+    "scale_source": "Visible plan dimensions use the 1.25 m source map width published by ambientCG. Displacement amplitude, cover thickness, seat, shaft and alternative poses use design values."
+  },
+  "states": [
+    {
+      "id": "A118",
+      "label": "落座",
+      "angle_deg": 0,
+      "offset_m": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A119",
+      "label": "掀开",
+      "angle_deg": 53,
+      "offset_m": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A120",
+      "label": "错位",
+      "angle_deg": 0,
+      "offset_m": [
+        0.16,
+        -0.045
+      ]
+    },
+    {
+      "id": "M118",
+      "label": "缺盖",
+      "absent": true
+    }
+  ]
+}

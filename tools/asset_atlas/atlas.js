@@ -27,6 +27,8 @@ function download(title, url) {
 }
 function showScene() {
   const view = selected.scenes[Number(el("scene").value)];
+  el("roadCompare").hidden = !view?.note;
+  el("roadCompare").textContent = view?.note || "";
   if (view) {
     photo("road", before ? view.before : view.after, view.label + (before ? " 迁入前" : " 迁入后"));
     el("before").hidden = !view.before;
@@ -68,7 +70,7 @@ function showSource() {
   if (selected.sourceViews) {
     const item = selected.sourceViews[Number(el("sourceView").value)];
     photo("source",item.image,item.label);
-    el("sourceLabel").textContent = item.label === "实测覆盖次数" ? "灰 0 · 黄 1 · 绿 2 · 紫 ≥3" : "输入与纹理";
+    el("sourceLabel").textContent = item.note || (item.label === "实测覆盖次数" ? "灰 0 · 黄 1 · 绿 2 · 紫 ≥3" : "输入与纹理");
     el("switchSource").hidden = true;
     return;
   }
@@ -130,7 +132,15 @@ function inspect(id) {
     metric(selected.lidDesigned ? "实测外圈 / 设计盖面直径（米）" : "实测外圈 / 盖面直径（米）",selected.frameDiameter.toFixed(3)+" / "+selected.lidDiameter.toFixed(3));
   }
   if (selected.apronExtent) metric("实测修补圈宽 × 长（米）",selected.apronExtent.map(v=>v.toFixed(3)).join(" × "));
-  metric(selected.captureViews ? "设计井口宽 × 长（米）" : "宽 × 长（米）",selected.width.toFixed(2)+" × "+selected.length.toFixed(2));
+  if (selected.panelSize) {
+    if (selected.throughHoles > 0) {
+      metric("盖板宽 × 长（米）",selected.panelSize.map(v=>v.toFixed(3)).join(" × "));
+      metric("盖板厚度（毫米）",(selected.lidThickness*1000).toFixed(1));
+      metric("贯穿孔 / 盖面开孔率",selected.throughHoles+" / "+(100*selected.openFace).toFixed(1)+"%");
+    }
+    metric("净井口俯视可见井壁或井底",(selected.wellVisible*100).toFixed(1)+"%");
+  }
+  metric(selected.captureViews || selected.panelSize ? "设计井口宽 × 长（米）" : "宽 × 长（米）",selected.width.toFixed(2)+" × "+selected.length.toFixed(2));
   metric(selected.depthLabel+"（米）",selected.depth.toFixed(3));
   metric("三角面",selected.triangles.toLocaleString());
   metric("高斯点",selected.gaussians.toLocaleString());
