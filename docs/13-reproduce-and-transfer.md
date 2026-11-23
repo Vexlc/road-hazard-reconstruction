@@ -7,21 +7,11 @@
 [逐资产复现索引](../catalog/reconstruction-index.json)的 27 个分组覆盖全部 1,403 个编号。每组列出主程序、配方文件、必要的预处理程序，以及手册和对应章节标题。在 GitHub 上打开索引后可以搜索完整编号，也可在克隆后运行下面的查询。
 
 ~~~bash
-python - P154 <<'PY'
-import json, sys
-from pathlib import Path
-key = sys.argv[1]
-groups = json.loads(Path('catalog/reconstruction-index.json').read_text())['families']
-for group in groups.values():
-    if key in group['assets']:
-        for field in ('name', 'prepare', 'launcher', 'recipe', 'guide', 'section'):
-            if field in group:
-                print(group[field])
-        break
-else:
-    raise SystemExit('未找到编号 ' + key)
-PY
+python gen2hole/gen2hole.py locate P154
+python gen2hole/gen2hole.py locate p103
 ~~~
+
+`locate` 只需 Python 标准库，可在安装项目依赖前运行。查无编号时会列出共享数字的其他类别，交接时可据此核对源图。例如 P103 是路面裂缝，当前索引中没有 A103。P103 的照片、掩膜与配方已随克隆提供。[从 CPU 网格到 Gaussian PLY 的完整示例](../gen2hole/examples/photo-cracks/README.md)
 
 | 资产来源 | 数量 | 重建入口与要准备的输入 |
 | --- | ---: | --- |

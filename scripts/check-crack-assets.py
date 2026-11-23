@@ -13,6 +13,8 @@ mesh_parts=runpy.run_path(str(Path(__file__).with_name('check-chamber-family.py'
 
 def check(root):
     bundle=root/'series'
+    run_file = bundle/'run.json'
+    mesh_only = run_file.is_file() and json.loads(run_file.read_text()).get('mesh_only', False)
     manifest=json.loads((bundle/'assets/asset_manifest.json').read_text())
     scenes={}
     for path in (bundle/'scenes').glob('*/scene.json'):
@@ -46,11 +48,14 @@ def check(root):
         depressed=decoded < -1e-9
         overlap=float((depressed&visible).sum()/(depressed|visible).sum())
         if overlap<.998:raise ValueError(key+' mask footprint overlap')
-        asset_hash=hashlib.sha256((bundle/'assets'/meta['ply']).read_bytes()).hexdigest()
-        for scene in scenes.get(key,[]):
-            if scene['ply_sha256']!=asset_hash:raise ValueError(key+' source PLY mismatch')
+        if mesh_only and key in scenes:
+            raise ValueError(key+' scene validation requires a full build with a Gaussian PLY')
+        if not mesh_only:
+            asset_hash=hashlib.sha256((bundle/'assets'/meta['ply']).read_bytes()).hexdigest()
+            for scene in scenes.get(key,[]):
+                if scene['ply_sha256']!=asset_hash:raise ValueError(key+' source PLY mismatch')
         result[key]=dict(source_mask_pixels=int(mask.sum()),components=meta['components'],triangles=sum(meta['geometry_parts'].values()),
-                         gaussians=meta['gaussians'],source_mask_vs_glb_interior_iou=overlap,mesh_vs_field_max_m=error,
+                         gaussians=None if mesh_only else meta['gaussians'],source_mask_vs_glb_interior_iou=overlap,mesh_vs_field_max_m=error,
                          deepest_vertex_m=float(-decoded.min()),design_limit_m=meta['depth_design_m'],scenes=scenes.get(key,[]))
     return result
 

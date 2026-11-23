@@ -49,15 +49,48 @@ def inventory(custom):
     return rows
 
 
+def published_asset(query):
+    families = load(ROOT.parent / "catalog/reconstruction-index.json")["families"]
+    code = query.upper()
+    short_query = re.fullmatch(r"[PMA]([0-9]+)", code)
+    alternatives = []
+    for group in families.values():
+        for name in group["assets"]:
+            short = name.split("_", 1)[0].upper()
+            if name.casefold() == query.casefold() or (short_query and short == code):
+                return name, group
+            if short_query and short[:1] in CATEGORIES and short[1:] == short_query[1]:
+                alternatives.append(f"{name}（{group['name']}）")
+    hint = "。同号记录有 " + "、".join(alternatives) if alternatives else ""
+    raise ValueError(f"发布索引中没有 {query}{hint}。请核对原始文件名和病害类型。")
+
+
+def example_inputs(group):
+    recipe = Path(group["recipe"])
+    if group["launcher"] == "gen2hole/gen2hole.py" and recipe.parts[-2:] == ("calibration", "designs.json"):
+        return recipe.parents[1]
+
+
+def locate(query):
+    name, group = published_asset(query)
+    print(f"{name}  {group['name']}")
+    for field in ("prepare", "launcher", "recipe", "guide", "section"):
+        if field in group:
+            print(f"{field}: {group[field]}")
+    inputs = example_inputs(group)
+    if inputs:
+        print(f"python gen2hole/gen2hole.py build --inputs {inputs} {name} --mesh-only --out runs/{name}")
+
+
 def select(rows, ids):
     if not ids:
         raise ValueError("请选择资产编号或使用 --all")
-    names = {row["id"]: code for code, row in rows.items()}
+    names = {row["id"].casefold(): code for code, row in rows.items()}
     selected = []
     for arg in ids:
-        code = names.get(arg, arg.upper())
+        code = names.get(arg.casefold(), arg.upper())
         if code not in rows:
-            raise ValueError(f"找不到资产 {arg}，可用 list 查看编号")
+            raise ValueError(f"当前输入库中没有 {arg}。可用 list 查看本批次，或用 locate {arg} 查询整个发布索引。")
         if code not in selected:
             selected.append(code)
     return selected
@@ -258,10 +291,11 @@ def build_edition(bundle, edition, rows, args, cfg):
     run_step(mesh, code / "verify.py", [], env)
 
 
-def build(args, rows, cfg):
+def build(args, rows):
     if args.all and args.ids:
         raise ValueError("--all 与指定编号只能选择一种")
     selected = select(rows, list(rows) if args.all else args.ids)
+    cfg = load(args.config)
     groups = defaultdict(list)
     for key in selected:
         groups[rows[key]["edition"]].append(rows[key])
@@ -289,6 +323,8 @@ def main():
     p.add_argument("--config", type=Path, default=ROOT / "config/local.json", help="解释器与道路工程路径")
     commands = p.add_subparsers(dest="command", required=True)
     catalog = commands.add_parser("list", help="查看可用编号与类别")
+    lookup = commands.add_parser("locate", help="按编号查询整个发布索引中的配方、入口和指南")
+    lookup.add_argument("id")
     prompt = commands.add_parser("show", help="查看单件资产的原始生图提示词、原图与成品路径")
     prompt.add_argument("id")
     prompts = commands.add_parser("prompts", help="列出生图任务，每张图附原始提示词与落盘路径")
@@ -317,6 +353,9 @@ def main():
     scan.add_argument("--mode", choices=["before", "after"], default="after")
     args = p.parse_args()
     try:
+        if args.command == "locate":
+            locate(args.id)
+            return
         if args.command == "verify":
             verify(args.run, load(args.config))
             return
@@ -332,6 +371,18 @@ def main():
             run_step(load(args.config)["mesh_python"], ROOT / "downstream/sensors/replay.py", options)
             return
         rows = inventory(args.inputs)
+        if args.command == "build" and args.ids and not args.inputs and not args.all:
+            names = {row["id"].casefold() for row in rows.values()}
+            if any(arg.upper() not in rows and arg.casefold() not in names for arg in args.ids):
+                groups = [published_asset(arg)[1] for arg in args.ids]
+                group = groups[0]
+                if any(other != group for other in groups[1:]):
+                    raise ValueError("请按配方分批执行。用 locate <编号> 查看各资产的重建入口与指南。")
+                inputs = example_inputs(group)
+                if not inputs:
+                    raise ValueError(f"这组资产的入口是 {group['launcher']}。详见 {group['guide']} 的「{group['section']}」。")
+                args.inputs = ROOT.parent / inputs
+                rows = inventory(args.inputs)
         if args.command == "list":
             for key, row in rows.items():
                 print(f"{key:5} {row['edition']:7} {row['category']:8} {row['label']}")
@@ -341,7 +392,7 @@ def main():
             print(json.dumps(image_jobs(rows, select(rows, args.ids or list(rows)), args.inputs),
                              ensure_ascii=False, indent=2))
         else:
-            build(args, rows, load(args.config))
+            build(args, rows)
     except (OSError, ValueError, KeyError, subprocess.CalledProcessError) as exc:
         p.exit(1, f"gen2hole: {exc}\n")
 
