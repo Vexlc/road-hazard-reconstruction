@@ -13,6 +13,7 @@
 | 想做的事 | 入口 |
 |---|---|
 | 理解生图、拟合、分件建模、贴图和高斯采样 | [重建方法与逐阶段输入输出](docs/pipeline.md) |
+| 用斜拍照片重建大型干坑并迁入实景 | [大坑子模块、输入包和两段车载回放](../docs/15-large-dry-pits.md) |
 | 设计一个新病害并从头重建 | [新资产操作说明](docs/new-assets.md) · [三类设计样例](examples/new-batch/calibration/designs.json) |
 | 从实拍深度、双目点云或程序化配方重建 | [本仓库的五类重建入口](../docs/02-asset-reconstruction.md) |
 | 从道路扫描恢复沥青纵缝、混凝土网裂与断边 | [固定的输入与裁切](examples/scanned-cracks/survey.json) · [重建、剖面与道路复现](../docs/02-asset-reconstruction.md#从道路扫描重建裂缝) |

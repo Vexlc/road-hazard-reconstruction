@@ -1,0 +1,295 @@
+{
+  "site": "109",
+  "shared_placement": true,
+  "size_multiplier": 1,
+  "checkpoint_reload_max_pixel_error": 0,
+  "matched_camera_frames": {
+    "front_camera": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "back_camera": [
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65
+    ]
+  },
+  "movie": {
+    "frames": 103,
+    "fps": 10.0,
+    "size": [
+      1552,
+      838
+    ]
+  },
+  "assets": {
+    "P198": {
+      "label": "街道路面开挖露出的断面",
+      "reference_kind": "photograph",
+      "oriented_extent_m": [
+        1.985079050064087,
+        1.8918347358703613
+      ],
+      "outline_area_m2": 2.7898490317210993,
+      "depth_p95_m": 0.1349349319934845,
+      "scale_kind": "Uncalibrated monocular metric prior",
+      "source_check": {
+        "outline_iou": 0.9283990345937249,
+        "source_view_rgb_mae_255": 7.212305068969727,
+        "visible_pix": 3462,
+        "check": "Ray intersection with delivered GLB from its fitting camera; same-view consistency",
+        "lowpass_rgb_mae_255": 1.6970767974853516,
+        "pixel_mean_abs_error_p95_255": 22.0
+      },
+      "geometry_sha256": "3cefa1ac96000e857e3698d84f1c7d30f43fad6a30516be0d1f702cb32686593",
+      "native_hashes": {
+        "asset.glb": "02e6b2d8d5ae1139f01778967905f1b17d6eb396e8e1b292ed56194105268f1d",
+        "surface.npz": "52dd092f768645ac5342968ccc3440c26be4e2315f131908c0d5f12c377a8660",
+        "metadata.json": "9a03a686431c096a8a8e087210da49ef2549ed6469f38bc79251c42c5af1d307",
+        "asset.ply": "13c61e23a4e2af1768b2ac9784f8fb90e84c1c01ba77155f3666caec1ec1290e",
+        "splat_material.npz": "159c30dc7ae83e27ab27aa78d06837260814f75c0feaa10903b3736684fa1def"
+      },
+      "movie": {
+        "decoded_frames": 87,
+        "fps": 10.0,
+        "seconds": 8.7,
+        "size": [
+          1440,
+          810
+        ]
+      },
+      "cameras": {
+        "front_camera": {
+          "frame_count": 29,
+          "first": 1,
+          "last": 29,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 48
+        },
+        "back_camera": {
+          "frame_count": 25,
+          "first": 41,
+          "last": 65,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 204
+        }
+      }
+    },
+    "P199": {
+      "label": "双叶连通碎石坑",
+      "reference_kind": "generated",
+      "oriented_extent_m": [
+        5.019506931304932,
+        2.9863319396972656
+      ],
+      "outline_area_m2": 9.21641833745122,
+      "depth_p95_m": 0.3760518193244934,
+      "scale_kind": "Designed long axis; relative depth inferred from a generated image",
+      "design_long_axis_m": 5.0,
+      "source_check": {
+        "outline_iou": 0.9843108710365348,
+        "source_view_rgb_mae_255": 7.785179138183594,
+        "visible_pix": 385402,
+        "check": "Ray intersection with delivered GLB from its fitting camera; same-view consistency",
+        "lowpass_rgb_mae_255": 1.8140166997909546,
+        "pixel_mean_abs_error_p95_255": 19.0
+      },
+      "geometry_sha256": "16075f09b762f20ef3104c2712eb5f665212dac001200a7e2c6ae2ebc0a21cfd",
+      "native_hashes": {
+        "asset.glb": "6b1f262636d89590e09bb817ab832e17c552832bb59d6d5f87773c3613c55604",
+        "surface.npz": "19782b83217e926411dd7583f577662bc5bcc5c43e6adc20dcbeede8ecce79ca",
+        "metadata.json": "5e824c9dd9435aa0470c585db41b0622d36fe2bde63fde171fab4b917c2f53b6",
+        "asset.ply": "aa74fabe976226454f768b57de8fbe3c1f2648ced806fbc525ab56e1b10780e4",
+        "splat_material.npz": "cc77bb0788ff8a3dceeb04d2aee3c4d6ecb2de2d7b3b6cfad91c28fe2f0c5483"
+      },
+      "movie": {
+        "decoded_frames": 87,
+        "fps": 10.0,
+        "seconds": 8.7,
+        "size": [
+          1440,
+          810
+        ]
+      },
+      "cameras": {
+        "front_camera": {
+          "frame_count": 29,
+          "first": 1,
+          "last": 29,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 27
+        },
+        "back_camera": {
+          "frame_count": 25,
+          "first": 41,
+          "last": 65,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 620
+        }
+      }
+    },
+    "P200": {
+      "label": "纵向冲蚀沟坑",
+      "reference_kind": "generated",
+      "oriented_extent_m": [
+        5.617178916931152,
+        1.275451421737671
+      ],
+      "outline_area_m2": 5.075319685450275,
+      "depth_p95_m": 0.3304757922887802,
+      "scale_kind": "Designed long axis; relative depth inferred from a generated image",
+      "design_long_axis_m": 5.6,
+      "source_check": {
+        "outline_iou": 0.9825680952296307,
+        "source_view_rgb_mae_255": 8.662704467773438,
+        "visible_pix": 331658,
+        "check": "Ray intersection with delivered GLB from its fitting camera; same-view consistency",
+        "lowpass_rgb_mae_255": 2.158677101135254,
+        "pixel_mean_abs_error_p95_255": 22.33333396911621
+      },
+      "geometry_sha256": "85baee81e77031e2628c0d239fdf1bf39d6c7f81df7dee444372cd7814ef53b3",
+      "native_hashes": {
+        "asset.glb": "52000345e6f960c6134243db6c9e2acc87d0d03bc8ed27efa2199afeee67b1b6",
+        "surface.npz": "2fbe95d3f6440f6075fc144fa621b95ebdbd234bbc280a2d7fb117a90d2a2332",
+        "metadata.json": "917591a408276d8d689f76aca300b99b71fbacc2ad92d7452ed44ef9e07107eb",
+        "asset.ply": "397566a05ddf3e6200fd43705b05ca3d35834b2e8c1e533469c00af3a004361a",
+        "splat_material.npz": "939dfe5299a9ea0300a8de997c126cd67ad6b557608e575abd73107cfbf1b098"
+      },
+      "movie": {
+        "decoded_frames": 87,
+        "fps": 10.0,
+        "seconds": 8.7,
+        "size": [
+          1440,
+          810
+        ]
+      },
+      "cameras": {
+        "front_camera": {
+          "frame_count": 29,
+          "first": 0,
+          "last": 28,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 1
+        },
+        "back_camera": {
+          "frame_count": 25,
+          "first": 41,
+          "last": 65,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 4786
+        }
+      }
+    },
+    "P201": {
+      "label": "弧形断壁砾石坑",
+      "reference_kind": "generated",
+      "oriented_extent_m": [
+        5.102797031402588,
+        4.126685619354248
+      ],
+      "outline_area_m2": 15.301003495028063,
+      "depth_p95_m": 0.4010224223136902,
+      "scale_kind": "Designed long axis; relative depth inferred from a generated image",
+      "design_long_axis_m": 5.1,
+      "design_bed_depth_p95_m": 0.4,
+      "source_check": {
+        "outline_iou": 0.9889641577756643,
+        "source_view_rgb_mae_255": 7.04935884475708,
+        "visible_pix": 458554,
+        "check": "Ray intersection with delivered GLB from its fitting camera; same-view consistency",
+        "lowpass_rgb_mae_255": 1.5552868843078613,
+        "pixel_mean_abs_error_p95_255": 17.33333396911621
+      },
+      "geometry_sha256": "c8ef6fb1773496d39118a126527a9f825e99d5b84091cb05e69a289e9b5f6c3d",
+      "native_hashes": {
+        "asset.glb": "7f4fc264c27298132137ed07f74084a37c0efd193b4cf5e95f8c263b0721049d",
+        "surface.npz": "1661a70dcbe00fe3df8b8e60008b765a4e7856fb718f51f1ffdf43e86227def4",
+        "metadata.json": "e18f5b140e527d7ceb007bfe9d3d0800f95b430a6c765b43fe32d134733046ab",
+        "asset.ply": "1e4b633e0473529588c468a9c800378f27ea4f65511b180986ecd287cbb441a4",
+        "splat_material.npz": "78d33f153a67bdb28b917a121351ed4aeb4dfdd787453af0025992abc525111b"
+      },
+      "movie": {
+        "decoded_frames": 87,
+        "fps": 10.0,
+        "seconds": 8.7,
+        "size": [
+          1440,
+          810
+        ]
+      },
+      "cameras": {
+        "front_camera": {
+          "frame_count": 29,
+          "first": 0,
+          "last": 28,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 660
+        },
+        "back_camera": {
+          "frame_count": 25,
+          "first": 41,
+          "last": 65,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 6406
+        }
+      }
+    }
+  }
+}

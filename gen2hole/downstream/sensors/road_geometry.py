@@ -84,7 +84,7 @@ def part_id(name):
     return 12 if name.startswith('Hinge ') else EXACT_PARTS[name]
 
 
-def glb_triangles(path, *, names=False, appearance=False):
+def glb_triangles(path, *, names=False, appearance=False, normal_map=False):
     """Read the flat, uncompressed indexed meshes exported by the two reconstruction packages."""
     data = Path(path).read_bytes()
     magic, version, total, jsize, tag = struct.unpack_from('<4sIIII', data)
@@ -117,10 +117,11 @@ def glb_triangles(path, *, names=False, appearance=False):
             v = np.stack((p[:,0], -p[:,2], p[:,1]), axis=-1)
             f = accessor(primitive['indices']).reshape(-1, 3).astype(np.uint32)
             part = (mesh['name'] if names else part_id(mesh['name']), np.ascontiguousarray(v), f)
-            if appearance:
+            if appearance or normal_map:
                 uv = accessor(primitive['attributes']['TEXCOORD_0'])
-                material = gltf['materials'][primitive['material']]['pbrMetallicRoughness']
-                source = gltf['textures'][material['baseColorTexture']['index']]['source']
+                material = gltf['materials'][primitive['material']]
+                tex = material['normalTexture'] if normal_map else material['pbrMetallicRoughness']['baseColorTexture']
+                source = gltf['textures'][tex['index']]['source']
                 view = gltf['bufferViews'][gltf['images'][source]['bufferView']]
                 start = view.get('byteOffset', 0)
                 part += (uv, binary[start:start + view['byteLength']])

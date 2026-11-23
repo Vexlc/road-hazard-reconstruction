@@ -1,5 +1,5 @@
 {
-  "asset_count": 1403,
+  "asset_count": 1408,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -1650,6 +1650,24 @@
         "A153",
         "M151"
       ]
+    },
+    "large-dry-pit": {
+      "name": "实拍大面积干坑的断边与场景光照",
+      "launcher": "python -m gen2hole.large_pits build",
+      "recipe": "gen2hole/examples/oblique-road-pits/P190-detail.json",
+      "prepare": "python -m gen2hole.large_pits prepare",
+      "assets": ["P190"],
+      "guide": "docs/15-large-dry-pits.md",
+      "section": "用输入包重建"
+    },
+    "lane-pits-batch": {
+      "name": "车行道大坑的实拍与生成参考图重建",
+      "launcher": "python -m gen2hole.large_pits build",
+      "recipe": "gen2hole/examples/oblique-road-pits/lane-batch",
+      "prepare": "python -m gen2hole.large_pits prepare",
+      "assets": ["P198", "P199", "P200", "P201"],
+      "guide": "docs/15-large-dry-pits.md",
+      "section": "车行道上的四个坑"
     }
   }
 }

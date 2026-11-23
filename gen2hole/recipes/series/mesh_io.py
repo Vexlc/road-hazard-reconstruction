@@ -146,6 +146,7 @@ class Mesh:
         self.materials = {}
         self.parts = []
         self.lossless_color = set()
+        self.normal_maps = {}
 
     def material(self, key, rgb, rough, metal, bump=3., *, lossless_color=False):
         self.materials[key] = (np.asarray(rgb, dtype="u1"), float(rough), float(metal), float(bump))
@@ -171,6 +172,8 @@ class Mesh:
         mat = {}
         for key, (rgb, rough, metal, bump) in self.materials.items():
             normal, orm = material_maps(rgb, rough, metal, bump)
+            if key in self.normal_maps:
+                normal = self.normal_maps[key]
             mat[key] = trimesh.visual.material.PBRMaterial(
                 name=key, baseColorTexture=Image.fromarray(rgb) if key in self.lossless_color else jpeg(rgb, 96), normalTexture=jpeg(normal),
                 metallicRoughnessTexture=jpeg(orm, 92), roughnessFactor=1., metallicFactor=1.,

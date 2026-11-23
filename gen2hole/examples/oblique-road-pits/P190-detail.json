@@ -1,0 +1,297 @@
+{
+  "id": "P190",
+  "insets": [
+    {
+      "centre": [
+        749,
+        366
+      ],
+      "size": [
+        822,
+        376
+      ],
+      "flip": false
+    },
+    {
+      "centre": [
+        758,
+        382
+      ],
+      "size": [
+        690,
+        304
+      ],
+      "flip": true
+    }
+  ],
+  "wall_transects": [
+    [
+      [
+        527,
+        330
+      ],
+      [
+        538,
+        348
+      ]
+    ],
+    [
+      [
+        541,
+        320
+      ],
+      [
+        548,
+        340
+      ]
+    ],
+    [
+      [
+        561,
+        316
+      ],
+      [
+        565,
+        334
+      ]
+    ],
+    [
+      [
+        581,
+        316
+      ],
+      [
+        585,
+        329
+      ]
+    ],
+    [
+      [
+        597,
+        311
+      ],
+      [
+        602,
+        322
+      ]
+    ],
+    [
+      [
+        619,
+        309
+      ],
+      [
+        620,
+        316
+      ]
+    ],
+    [
+      [
+        646,
+        312
+      ],
+      [
+        646,
+        320
+      ]
+    ],
+    [
+      [
+        675,
+        318
+      ],
+      [
+        675,
+        326
+      ]
+    ],
+    [
+      [
+        699,
+        325
+      ],
+      [
+        698,
+        332
+      ]
+    ],
+    [
+      [
+        735,
+        335
+      ],
+      [
+        734,
+        343
+      ]
+    ],
+    [
+      [
+        773,
+        345
+      ],
+      [
+        770,
+        353
+      ]
+    ],
+    [
+      [
+        803,
+        353
+      ],
+      [
+        801,
+        362
+      ]
+    ],
+    [
+      [
+        840,
+        362
+      ],
+      [
+        836,
+        372
+      ]
+    ],
+    [
+      [
+        874,
+        370
+      ],
+      [
+        870,
+        380
+      ]
+    ],
+    [
+      [
+        909,
+        383
+      ],
+      [
+        905,
+        390
+      ]
+    ],
+    [
+      [
+        940,
+        391
+      ],
+      [
+        936,
+        401
+      ]
+    ],
+    [
+      [
+        967,
+        401
+      ],
+      [
+        962,
+        410
+      ]
+    ],
+    [
+      [
+        994,
+        411
+      ],
+      [
+        987,
+        421
+      ]
+    ]
+  ],
+  "materials": {
+    "gravelly_sand": {
+      "width_m": 2.48,
+      "source": "https://polyhaven.com/a/gravelly_sand",
+      "albedo": {
+        "size": 1062525,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravelly_sand/gravelly_sand_diff_1k.jpg",
+        "md5": "16b7593a26ce1bd43f1d95e61dc25f05"
+      },
+      "displacement": {
+        "size": 1694619,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/gravelly_sand/gravelly_sand_disp_1k.png",
+        "md5": "592e4c98c6d4ccc821547f5fb9e1e11b"
+      }
+    },
+    "stony_dirt_path": {
+      "width_m": 2.17,
+      "source": "https://polyhaven.com/a/stony_dirt_path",
+      "albedo": {
+        "size": 1234067,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stony_dirt_path/stony_dirt_path_diff_1k.jpg",
+        "md5": "8fd2cfd0f6498288510429bd5a0bf0a1"
+      },
+      "displacement": {
+        "size": 2501632,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/stony_dirt_path/stony_dirt_path_disp_1k.png",
+        "md5": "43040943c6d2f244eea60cafe5a6913f"
+      }
+    }
+  },
+  "context_detector_boxes": [
+    [
+      481,
+      304,
+      1032,
+      462,
+      6
+    ],
+    [
+      900,
+      269,
+      963,
+      374,
+      8
+    ],
+    [
+      984,
+      283,
+      1058,
+      405,
+      8
+    ],
+    [
+      1060,
+      311,
+      1134,
+      449,
+      8
+    ],
+    [
+      1122,
+      364,
+      1211,
+      561,
+      8
+    ],
+    [
+      618,
+      143,
+      750,
+      227,
+      5
+    ],
+    [
+      705,
+      129,
+      789,
+      193,
+      5
+    ],
+    [
+      1142,
+      142,
+      1230,
+      385,
+      6
+    ]
+  ]
+}

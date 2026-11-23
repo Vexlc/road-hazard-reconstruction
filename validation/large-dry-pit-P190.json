@@ -1,0 +1,138 @@
+{
+  "asset": "P190",
+  "models": {
+    "v2": {
+      "source_check": {
+        "outline_iou": 0.9834596695821186,
+        "source_view_rgb_mae_255": 8.953587532043457,
+        "visible_pix": 50209,
+        "check": "Ray intersection with delivered GLB from its fitting camera; same-view consistency",
+        "lowpass_rgb_mae_255": 2.5627901554107666,
+        "pixel_mean_abs_error_p95_255": 24.0
+      },
+      "native_checks": {
+        "triangles": 591872,
+        "geometry_sha256": "ed206a5b20d447097a30b752588a5f8232b422a5ac0f646f8cd6baa04bc1d4c0",
+        "lowest_z_m": -0.2517024278640747,
+        "highest_z_m": 0.0,
+        "gaussians": 628562,
+        "sha256": {
+          "asset.glb": "2588cdbddebf97b893c6e438d48625fcb4864bbc47c608c049dddf6659f4d6af",
+          "surface.npz": "a2806304dffbb0f2794267b6432e10bf91f163e478cf551a0d0fa035bf9b67bb",
+          "metadata.json": "55e7331ac2e8b10645228c836a97029db86fef7c6c5e5f9666f02c660369ab15",
+          "asset.ply": "e389d328e184d071d1117911bcb994dcb4570ee3481d8a7474913d0facbeb092",
+          "splat_material.npz": "fb23a4152b44707531519d8739ae29b314548aa60eadea5da88a5ff49db1ebc7"
+        }
+      },
+      "source_sha256": "38fb53d438ac8913d6c0adad6c4f511be41c9fdf6c415147ceb7c8bd3a3d3049"
+    },
+    "v3": {
+      "source_check": {
+        "outline_iou": 0.9834596695821186,
+        "source_view_rgb_mae_255": 4.297729015350342,
+        "visible_pix": 50209,
+        "check": "Ray intersection with delivered GLB from its fitting camera; same-view consistency",
+        "lowpass_rgb_mae_255": 0.9311413764953613,
+        "pixel_mean_abs_error_p95_255": 11.333333015441895
+      },
+      "native_checks": {
+        "triangles": 591872,
+        "geometry_sha256": "ed206a5b20d447097a30b752588a5f8232b422a5ac0f646f8cd6baa04bc1d4c0",
+        "lowest_z_m": -0.2517024278640747,
+        "highest_z_m": 0.0,
+        "gaussians": 628562,
+        "sha256": {
+          "asset.glb": "aa25a5ec3ea873ef43e16b52db2234657fa58f7725efc3b8adece96a742b8d6a",
+          "surface.npz": "a2806304dffbb0f2794267b6432e10bf91f163e478cf551a0d0fa035bf9b67bb",
+          "metadata.json": "04efca33af543222dba4b9f34fcfd56e149e7d770ec4b8d8e9b04d1773356437",
+          "asset.ply": "218fce46280150d2647d37055a647c4874fc48054501ffff3db0ee4abaf6a8ea",
+          "splat_material.npz": "fb23a4152b44707531519d8739ae29b314548aa60eadea5da88a5ff49db1ebc7"
+        }
+      },
+      "source_sha256": "38fb53d438ac8913d6c0adad6c4f511be41c9fdf6c415147ceb7c8bd3a3d3049"
+    }
+  },
+  "roads": {
+    "109": {
+      "movie": {
+        "decoded_frames": 87,
+        "fps": 10.0,
+        "seconds": 8.7,
+        "size": [
+          1440,
+          810
+        ]
+      },
+      "cameras": {
+        "front_camera": {
+          "frame_count": 29,
+          "first": 0,
+          "last": 28,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 13
+        },
+        "back_camera": {
+          "frame_count": 25,
+          "first": 42,
+          "last": 66,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 6
+        }
+      },
+      "centre_world": [
+        -38.60890679637467,
+        39.414138021219195,
+        -0.5507427847349833
+      ],
+      "checkpoint_reload_max_pixel_error": 0,
+      "direct_sun": true
+    },
+    "034": {
+      "movie": {
+        "decoded_frames": 86,
+        "fps": 10.0,
+        "seconds": 8.6,
+        "size": [
+          1440,
+          810
+        ]
+      },
+      "cameras": {
+        "front_camera": {
+          "frame_count": 28,
+          "first": 0,
+          "last": 27,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 0
+        },
+        "back_camera": {
+          "frame_count": 25,
+          "first": 49,
+          "last": 73,
+          "protected_edits": 0,
+          "outside_edits": 0,
+          "peak_frame_self_shadow_pixels": 0
+        }
+      },
+      "centre_world": [
+        -36.16243798230243,
+        -5.790768920867825,
+        -5.150513699017868
+      ],
+      "checkpoint_reload_max_pixel_error": 0,
+      "direct_sun": false
+    }
+  },
+  "texture_visibility": {
+    "bed_texels": 971679,
+    "first_hit_texels": 824174,
+    "clean_texels": 803051,
+    "hidden_texels": 147505,
+    "three_plane_scan": true,
+    "texel_pitch_m": 0.0038377935447711487,
+    "ray_tolerance_m": 0.001
+  }
+}

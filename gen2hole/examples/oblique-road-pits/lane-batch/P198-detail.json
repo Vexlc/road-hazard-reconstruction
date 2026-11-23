@@ -1,0 +1,139 @@
+{
+ "id": "P198",
+ "insets": [
+  {
+   "centre": [
+    176,
+    487
+   ],
+   "size": [
+    340,
+    255
+   ],
+   "flip": false
+  },
+  {
+   "centre": [
+    179,
+    486
+   ],
+   "size": [
+    290,
+    220
+   ],
+   "flip": true
+  }
+ ],
+ "wall_transects": [
+  [
+   [
+    128,
+    474
+   ],
+   [
+    130,
+    483
+   ]
+  ],
+  [
+   [
+    143,
+    474
+   ],
+   [
+    145,
+    486
+   ]
+  ],
+  [
+   [
+    156,
+    473
+   ],
+   [
+    158,
+    487
+   ]
+  ],
+  [
+   [
+    173,
+    471
+   ],
+   [
+    174,
+    483
+   ]
+  ],
+  [
+   [
+    187,
+    471
+   ],
+   [
+    186,
+    478
+   ]
+  ],
+  [
+   [
+    209,
+    470
+   ],
+   [
+    209,
+    477
+   ]
+  ],
+  [
+   [
+    232,
+    470
+   ],
+   [
+    232,
+    477
+   ]
+  ],
+  [
+   [
+    251,
+    471
+   ],
+   [
+    250,
+    476
+   ]
+  ]
+ ],
+ "materials": {
+  "gravelly_sand": {
+   "width_m": 2.48,
+   "source": "https://polyhaven.com/a/gravelly_sand",
+   "albedo": {
+    "size": 1062525,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravelly_sand/gravelly_sand_diff_1k.jpg",
+    "md5": "16b7593a26ce1bd43f1d95e61dc25f05"
+   },
+   "displacement": {
+    "size": 1694619,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/gravelly_sand/gravelly_sand_disp_1k.png",
+    "md5": "592e4c98c6d4ccc821547f5fb9e1e11b"
+   }
+  },
+  "stony_dirt_path": {
+   "width_m": 2.17,
+   "source": "https://polyhaven.com/a/stony_dirt_path",
+   "albedo": {
+    "size": 1234067,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stony_dirt_path/stony_dirt_path_diff_1k.jpg",
+    "md5": "8fd2cfd0f6498288510429bd5a0bf0a1"
+   },
+   "displacement": {
+    "size": 2501632,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/stony_dirt_path/stony_dirt_path_disp_1k.png",
+    "md5": "43040943c6d2f244eea60cafe5a6913f"
+   }
+  }
+ }
+}

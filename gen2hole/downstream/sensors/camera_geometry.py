@@ -110,11 +110,20 @@ def camera_hits(pose,K,rect,models):
 
 
 @lru_cache(maxsize=6)
-def static_scene_points(out,site,frame):
-    with np.load(Path(out)/'base'/site/f'{frame:03d}.npz') as a:
-        sem=a['semantic']
-        keep=np.isin(sem,[5,6,11,12,34,35,36,37,38,39,40,41,42])
-        return a['xyz'][keep]
+def static_scene_points(out,site,frame,raw=None):
+    if out is None:
+        import pandas as pd
+        source=Path(raw)/site
+        cloud=pd.read_pickle(source/'lidar'/f'{frame:02d}.pkl.gz')
+        labels=pd.read_pickle(source/'annotations/semseg'/f'{frame:02d}.pkl.gz')
+        if not cloud.index.equals(labels.index):
+            raise ValueError('Semantic labels do not align with the LiDAR rows')
+        sem=labels['class'].to_numpy()
+        xyz=cloud[['x','y','z']].to_numpy()
+    else:
+        with np.load(Path(out)/'base'/site/f'{frame:03d}.npz') as data:
+            sem,xyz=data['semantic'],data['xyz']
+    return xyz[np.isin(sem,[5,6,11,12,34,35,36,37,38,39,40,41,42])]
 
 
 def foreground(raw,proc,out,site,camera,frame,rect,depth):
@@ -122,7 +131,7 @@ def foreground(raw,proc,out,site,camera,frame,rect,depth):
     _,poses,K,(W,H)=track(raw,site,camera);pose=poses[frame]
     with Image.open(Path(proc)/site/'dynamic_masks/all'/f'{frame:03d}_{CAMERAS.index(camera)}.png') as im:
         dynamic=np.asarray(im.convert('L').resize((W,H),Image.Resampling.NEAREST).crop(rect))>0
-    points=static_scene_points(str(out),site,frame)
+    points=static_scene_points(out,site,frame,raw)
     cam=(points-pose[:3,3])@pose[:3,:3]
     cam=cam[cam[:,2]>.05]
     xy=np.floor(cam[:,:2]/cam[:,2,None]*[K[0,0],K[1,1]]+[K[0,2]-l,K[1,2]-t]).astype('i4')

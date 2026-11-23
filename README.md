@@ -2,13 +2,17 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**新增四个车行道坑洞 P198–P201**　一个根据街道实拍重建，另外三个来自独立生成的参考图。面积最大的是 15.30 m² 的弧形断壁坑，最长的是 5.62 m 的斜向沟坑。四件均已放入 PandaSet 109 的同一车道位置。[同帧对比视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/lane-pits-comparison.mp4) · [近景大图](docs/figures/lane-pits-overview.jpg) · [四件模型](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/lane-pits-models-glb.zip) · [参考图与复现](docs/15-large-dry-pits.md#车行道上的四个坑)
+
+**实拍大坑子模块**　P190 已按原尺度放入两段实拍道路。109 可以看阳光和电线投影，034 可以看背阴坡道上的断边。安装项目环境后可运行 `python -m gen2hole.large_pits example P201` 自动取回输入包、重建并校验文件。[109 行车视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190-scene-109.mp4) · [034 行车视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190-scene-034.mp4) · [同帧新旧对照](docs/figures/large-dry-pit-road.jpg) · [输入包与复现命令](docs/15-large-dry-pits.md)
+
 **了解重建原理**　从实拍坑洞、生成图、可动井盖到车载回放，按资产类型查阅数据来源、尺度依据、重建算法与实测误差。[道路病害资产重建详解](docs/14-reconstruction-principles.md)
 
 **按编号复建**　运行 `python gen2hole/gen2hole.py locate <编号>` 查询输入和配方。第一次交接可用 P103 实拍裂缝，从普通电脑上的 CPU 网格到完整高斯模型逐步核验。[P103 的照片、安装命令与成品校验值](gen2hole/examples/photo-cracks/README.md)
 
-**从 GitHub 复现**　[安装、逐资产重建与自驾场景迁移](docs/13-reproduce-and-transfer.md) · [1,403 个编号的源码和配方索引](catalog/reconstruction-index.json) · [可直接预览的资产与车载图版](docs/figures/road-asset-portfolio.jpg)。GitHub 保存重建、迁入、传感器与核验源码。大输入按组从 Google Drive 获取，下载后校验 SHA-256。[公开下载与复建核验记录](validation/github-reproduction.json)
+**从 GitHub 复现**　[安装、逐资产重建与自驾场景迁移](docs/13-reproduce-and-transfer.md) · [1,408 个编号的源码和配方索引](catalog/reconstruction-index.json) · [可直接预览的资产与车载图版](docs/figures/road-asset-portfolio.jpg)。GitHub 保存重建、迁入、传感器与核验源码。大输入按组从 Google Drive 获取，下载后校验 SHA-256。[公开下载与复建核验记录](validation/github-reproduction.json)
 
-**[打开离线路面病害资产图谱](tools/asset_atlas/index.html)**。按编号、重建方式或病害形态查找资产，查看原图、模型斜视、米制尺寸和对应的 PandaSet 道路画面。图谱收录 826 条实拍 RGB-D、65 条实拍双目、342 件程序化、109 件生成 RGB、18 条实拍单目、6 条实拍相机加激光雷达、13 条摄影测量来源的井盖状态、4 条道路裂缝扫描重建、4 个实拍混凝土碎板状态、4 组双张实拍 RGB，以及 3 组多帧 RGB-D、4 组多帧双目重建及 5 个实拍坑底积水状态，共 1,403 条、3,863 个场景查看入口。采集帧可能来自同一处病害。六种井盖状态共用一套井体与盖面。展开任一条目的「网格高程与剖面」，可以在俯视图上取截线，读取该处的米制高度。
+**[打开离线路面病害资产图谱](tools/asset_atlas/index.html)**。按编号、重建方式或病害形态查找资产，查看原图、模型斜视、米制尺寸和对应的 PandaSet 道路画面。图谱收录 826 条实拍 RGB-D、65 条实拍双目、342 件程序化、112 件生成 RGB、20 条实拍单目、6 条实拍相机加激光雷达、13 条摄影测量来源的井盖状态、4 条道路裂缝扫描重建、4 个实拍混凝土碎板状态、4 组双张实拍 RGB，以及 3 组多帧 RGB-D、4 组多帧双目重建及 5 个实拍坑底积水状态，共 1,408 条、3,875 个场景查看入口。采集帧可能来自同一处病害。六种井盖状态共用一套井体与盖面。展开任一条目的「网格高程与剖面」，可以在俯视图上取截线，读取该处的米制高度。
 
 ![十六个道路病害样例的 GLB 模型与对应的行车相机局部](docs/figures/road-asset-portfolio.jpg)
 

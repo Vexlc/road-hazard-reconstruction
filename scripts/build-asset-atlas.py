@@ -74,6 +74,69 @@ def generated():
     return rows
 
 
+def large_photographed_pits():
+    rows = {}
+    review = ROOT / 'outputs/photo-large-potholes'
+    runs = ROOT / 'runs'
+    bundles = [runs / name / 'series' for name in ('large-pits-oblique', 'large-pits-rgbd', 'large-pits-driveway', 'large-pits-v3')]
+    batch = runs / 'lane-pits-batch'
+    for bundle in bundles + sorted(batch.glob('P*/series')):
+        manifest = bundle / 'assets/asset_manifest.json'
+        if not (manifest.is_file() and (bundle / 'checks.json').is_file()):
+            continue
+        for meta in read(manifest):
+            key = meta['id']
+            single = meta['state'] == 'estimated'
+            synthetic = meta.get('reference_kind') == 'generated'
+            method = '生成 RGB' if synthetic else ('单张实拍估计' if single else '实拍 RGB-D')
+            row = entry(meta, bundle / 'assets', method,
+                        meta['label'], bundle / 'views' / (key + '_inspection.jpg'))
+            row.update(depth=meta['depth_p95_m'], depthLabel='单图估计凹深 P95' if single else '实测凹深 P95',
+                       triangles=sum(meta['geometry_parts'].values()), reference=link(bundle / meta['source_image']),
+                       reverse=link(bundle / 'views' / (key + '_reverse.jpg')))
+            row['note'] = ('坑缘按照片标注，照片提供可见纹理。单目模型估计高程和尺度，遮挡区由邻近表面补全。'
+                           if single else '根据同一机位的 RGB 和深度重建，预留一部分原始深度点检验网格。')
+            v3 = meta.get('recipe_version') == 'oblique-photo-visible-v3'
+            detail_dir = review / (key + ('-v3' if v3 else '-v2'))
+            pose_dir = detail_dir / 'comparison/v3' if v3 else review
+            if bundle.parent.parent == batch:
+                detail_dir = review / 'lane-batch' / key
+                pose_dir = detail_dir / 'reference'
+                row['outlineArea'] = meta['outline_area_m2']
+            if (pose_dir / (key + '-source-pose.jpg')).is_file():
+                row['sourceViews'] = [dict(label='生成参考图' if synthetic else '实拍原图', image=row['reference']),
+                                      dict(label='原机位回投', image=link(pose_dir / (key + '-source-pose.jpg')),
+                                           note='在参考图的机位渲染交付的 GLB。')]
+            if v3 or meta.get('recipe_version') == 'oblique-photo-detail-v2':
+                row['note'] = '坑沿和可见断口依照原图拟合。坑底细砂、碎石及周围沥青的微小起伏来自扫描材质，未逐粒实测。'
+                comparisons = ([('原照片与两版回投', 'comparison/source-comparison.jpg'), ('同帧道路前后视', 'comparison/road-comparison.jpg')]
+                               if v3 else [('优化前后同机位', 'before-after.jpg'), ('原机位街景合成', 'street-view.jpg')])
+                for title, filename in comparisons:
+                    preview = detail_dir / filename
+                    if preview.is_file():
+                        row.setdefault('sourceViews', []).append(dict(label=title, image=link(preview)))
+                for placed in sorted(detail_dir.glob('scene-*/placement.json')):
+                    observation = read(placed)
+                    if observation['asset'] != key or observation['size_multiplier'] != 1:
+                        raise ValueError('Scene preview and source asset disagree')
+                    for camera, shot in observation['selected'].items():
+                        stem = camera.split('_')[0]
+                        title = '前视' if stem == 'front' else '后视'
+                        row['scenes'].append(dict(
+                            site=observation['site'], camera=stem,
+                            label=f"{observation['site']} · {title} · 帧 {shot['frame']}",
+                            before=link(placed.parent / (stem + '-before.webp')),
+                            after=link(placed.parent / (stem + '-after.webp')),
+                            note='同一车载机位的实拍原帧和三维场景合成。'))
+            if synthetic:
+                row['depthLabel'] = '模型凹深 P95'
+                row['note'] = f"坑口按 ImageGen 参考图重建，设计长轴 {meta['design_long_axis_m']:g} 米。"
+                if 'design_bed_depth_p95_m' in meta:
+                    row['note'] += f"坑床深度先验设为 {meta['design_bed_depth_p95_m']:g} 米。"
+            rows[key] = row
+    return rows
+
+
 def captured_and_designed():
     rows = {}
     for folder in (EXPANSION, FACTORY / "资产库"):
@@ -1025,7 +1088,7 @@ def standing_water(rows):
 def main():
     rows = {}
     shared = shared_profile_modes()
-    for group in (generated(), captured_and_designed(), real_rgb(), photo_families(), polygon_covers(), crack_examples(), scanned_cracks(), faulted_slabs(),
+    for group in (generated(), captured_and_designed(), large_photographed_pits(), real_rgb(), photo_families(), polygon_covers(), crack_examples(), scanned_cracks(), faulted_slabs(),
                   multiview_potholes(shared, ROOT/'runs/multiview-pit-survey'),
                   multiview_potholes(shared, ROOT/'runs/paired-road-slots'), observed_surfaces(ROOT/'runs/observed-pavement'),
                   observed_surfaces(ROOT/'runs/displaced-paver'),

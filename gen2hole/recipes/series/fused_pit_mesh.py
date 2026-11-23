@@ -27,6 +27,9 @@ def surface_mesh(field, color, meta, diagnostic=False, region_mode=None):
         mat = mesh.material('Height sample source', color, 0.94, 0.0, 0.0, lossless_color=True)
     else:
         mat = mesh.material('Photographed road surface', color, 0.94, 0.0, 1.8)
+    if 'normal_texture' in meta and not diagnostic:
+        with Image.open(ROOT / meta['normal_texture']) as image:
+            mesh.normal_maps[mat] = np.array(image.convert('RGB'))
     if 'region_ids' in field:
         a, b, c = field['region_ids'].ravel()[faces].T
         code = np.where((a == b) | (a == c), a, np.where(b == c, b, 0))
