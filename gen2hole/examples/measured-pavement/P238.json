@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P238",
+    "label": "露出龟裂底层的片状剥落",
+    "source": "PothRGBD",
+    "anchor": "20250305_021453",
+    "fit": [
+      "20250305_021453"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

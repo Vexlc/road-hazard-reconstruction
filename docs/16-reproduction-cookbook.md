@@ -3,13 +3,13 @@
 当前完整索引可用下列命令核对。
 
 ~~~bash
-gh repo clone Vexlc/road-hazard-reconstruction -- --branch traffic-cones-v1.0.0 --depth 1
+gh repo clone Vexlc/road-hazard-reconstruction -- --branch measured-pavement-v1.0.0 --depth 1
 cd road-hazard-reconstruction
 python3 scripts/check-reproduction-index.py
 python3 gen2hole/gen2hole.py locate H234
 ~~~
 
-该标签包含 **1,483 个编号、42 个重建系列、12 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
+该标签包含 **1,485 个编号、43 个重建系列、14 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
 
 双联井盖及其整块占地检查、鱼眼边缘可见性、独立前景量程接入见[双联检查井与跨场景迁入](18-twin-hatch-transfer.md)。固定代码标签为 `twin-hatch-v1.0.0`。
 
@@ -47,6 +47,7 @@ python3 gen2hole/gen2hole.py locate P211
 | 横向沥青修补带 P202 | 原图和标注可从头拟合；复用校正后的高度与相对亮度场可直接导出网格 | [修补带构建与换色](../gen2hole/repair_patch.py) 保留缝迹与高程，按目标路面颜色重着色。下文提供从发布中间量恢复原 GLB 的命令。[完整案例](../gen2hole/examples/transverse-repair/README.md) |
 | 实测坑洞、单片及双联方井盖 | RGB-D 或扫描材质，井盖另需部件尺寸与姿态 | [坑洞与单片方井](17-mixed-road-transfer.md) · [可分别缺失的双联井盖](18-twin-hatch-transfer.md) |
 | 两种隔离墩、两种消防栓涂层 | 固定哈希的原始 glTF、网格缓冲与 PBR 贴图 | [模型转换、接地和带纹理采样](../gen2hole/roadside_props.py) · [输入包、建模与验收](19-roadside-props.md) |
+| 露出龟裂底层的片状剥落、粗集料宽碗坑 P238/P239 | 原始 RGB、毫米深度和像素轮廓；按坑沿的实测起伏和相邻路面一起建模 | [两份配方](../gen2hole/examples/measured-pavement) · [原始输入重建、留出深度与颜色采样验收](21-measured-pavement.md) |
 | 直立与侧倒交通锥 | 同一原始 glTF、颜色和反射纹理、落地与双件布局配方 | [单件姿态重建](../gen2hole/traffic_cones.py) · [成对布局、实车与 220° 鱼眼复现](20-traffic-cones.md) |
 
 ## 先跑一个最小案例
@@ -78,6 +79,7 @@ echo '49759ba9e543495993f33a23896c7ead3bc83f2c42f6d0c47d6100ca3ccc5f38  runs/p10
 | 修补带 → 另一种沥青的实拍机位 | [修补带同帧投影](../scripts/review-repair-transfer.py)，从目标沥青取色，按标定位姿求 GLB 射线交点。[运行说明](../gen2hole/examples/transverse-repair/README.md#迁到另一种沥青) | 交付物是同机位图像对照和 `transfer.json`。几何指纹、保护区像素与色差在这里核验 |
 | 米制网格 → 针孔、实车鱼眼或其他渲染器输出 | [光线包适配器](../scripts/transfer-mesh-view.py) 使用世界位姿、相机光线和径向遮挡距离。| [接入契约与示例](17-mixed-road-transfer.md) · [独立 SC-GS 和阴影接收面验证](19-roadside-props.md) |
 | 两件路侧立体设施 → KITTI 0000 原生联合场景 | [成对写入和回放](../streetcrafter/joint/roadside_pairs.py)，可从固定宿主和两个已发布锚点重建。 | 检查场景原几何、动态对象张量及 48 帧前后视。[从检查点到视频](19-roadside-props.md) |
+| 多处实测破损 → 不同横坡的路面、实车鱼眼、原生 KITTI 0000 | [各坑分别拟合支撑面](../gen2hole/downstream/pavement_layout.py) · [局部切分检查点中的路面高斯](../streetcrafter/joint/pavement_pair.py) | [直接回放、跨渲染器验证和逐帧输出](21-measured-pavement.md) |
 | 多件立体设施 → Blender Cycles、自定义鱼眼深度宿主 | [组合布局](../gen2hole/roadside_layout.py)和[鱼眼深度接入](../scripts/transfer-mesh-view.py)保留实例姿态，可由已标注的路面深度直接估计落点。 | [真实遮挡与反向机位复核](20-traffic-cones.md#在-blender-cycles-中独立复核) |
 
 接入自己的网格引擎时，GLB 使用米制 Y-up，Gaussian PLY 使用米制 Z-up。同一资产的高程场与切口需要随模型一起放置；坑口内要移除会遮挡坑底的宿主路面。原生高斯迁入还会旋转椭球朝向与球谐方向。自定义宿主需要世界坐标、锚点、原始相机、行车时间戳及遮挡信息。[坐标约定与自定义宿主接入](13-reproduce-and-transfer.md#接入自己的道路)

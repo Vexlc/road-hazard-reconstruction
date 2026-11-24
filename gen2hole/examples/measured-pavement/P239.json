@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P239",
+    "label": "露出粗集料的宽碗坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_124804",
+    "fit": [
+      "20250305_124804"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

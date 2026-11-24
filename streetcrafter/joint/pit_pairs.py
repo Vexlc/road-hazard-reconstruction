@@ -30,7 +30,10 @@ ANCHORS = [(20, 0.48, -12), (33, -0.25, 14)]  # frame group, lateral offset (m),
 
 def digest(path):
     with path.open("rb") as f:
-        return hashlib.file_digest(f, "sha256").hexdigest()
+        checksum = hashlib.sha256()
+        for block in iter(lambda: f.read(1024 * 1024), b""):
+            checksum.update(block)
+        return checksum.hexdigest()
 
 
 def unit(v):
@@ -169,7 +172,7 @@ def particles(xyz, quat, scale, alpha, rgb, rest=None):
     return {k: torch.from_numpy(np.ascontiguousarray(v, dtype="f4")) for k, v in arrays.items()}
 
 
-def terrain_asset(key, case, site, plate, heading):
+def terrain_asset(key, case, site, plate, heading, *, voxel=.019):
     folder = (ROOT / case["model"]).parent
     path = folder / "asset.ply"
     if digest(path) != case["native_hashes"]["asset.ply"]:
@@ -180,12 +183,13 @@ def terrain_asset(key, case, site, plate, heading):
         visibility = f["ambient_visibility"].astype("f4") / 255
     foot = Footprint(folder/"surface.npz")
     center, road, fit = site
-    eig = np.linalg.eigh(np.cov(vertices[bed, :2].T))[1][:, -1]
-    angle = np.deg2rad(heading) - np.arctan2(eig[1], eig[0])
-    basis = road @ Rotation.from_rotvec([0, 0, angle]).as_matrix()
+    basis = road
+    if heading is not None:
+        eig = np.linalg.eigh(np.cov(vertices[bed, :2].T))[1][:, -1]
+        angle = np.deg2rad(heading) - np.arctan2(eig[1], eig[0])
+        basis = road @ Rotation.from_rotvec([0, 0, angle]).as_matrix()
     # Keep an actual source splat per spatial cell, including separate vertical lip samples.
     src = np.flatnonzero(bed)
-    voxel = .019
     _, picks = np.unique(np.floor(vertices[src, :3] / voxel).astype("i4"), axis=0, return_index=True)
     ids = src[picks]
     v = vertices[ids]
@@ -226,7 +230,7 @@ def terrain_asset(key, case, site, plate, heading):
                       np.tile([step*.89, step*.89, .002], (len(xy), 1)), opacity, tint)
     edge = np.column_stack((foot.edge, np.zeros(len(foot.edge)))) @ basis.T + center
     record = dict(id=key, label=case["label"], center_world=center.tolist(), basis_columns=basis.tolist(),
-                  source_sha256=case["native_hashes"]["asset.ply"], source_ply=str(path.relative_to(ROOT)),
+                  source_sha256=case["native_hashes"]["asset.ply"], source_ply=case.get("source_ply") or str(path.relative_to(ROOT)),
                   scale=1.0, source_bed_points=int(bed.sum()), inserted_bed_points=len(ids),
                   road_support_points=len(xy), outline_area_m2=case["outline_area_m2"], **fit)
     return (foot, center, basis), [bed_state, strip], edge, record
@@ -284,38 +288,49 @@ def build_pairs(orders):
         output.mkdir(exist_ok=True, parents=True)
         asset_data = [terrain_asset(k, cases[k], site, plate, a[2])
                       for k, site, plate, a in zip(keys, sites, plates, ANCHORS)]
-        placements, states, edges, records = zip(*asset_data)
-        separation = cKDTree(edges[0]).query(edges[1])[0].min()
-        if separation < .45:
-            raise ValueError("Overlapping pit boundaries")
-        state = dict(baseline, layers=copy.copy(baseline["layers"]))
-        removed = {}
-        for layer_name, layer in baseline["layers"].items():
-            world = layer["_xyz"].numpy()
-            if layer_name != "background":
-                actor = next(v for v in baseline["metadata"]["obj_meta"].values()
-                             if v["id"] == int(layer_name.split("_")[-1]))
-                tracks = baseline["metadata"]["camera_tracklets"][:, :, actor["id"]]
-                if actor["class"] != "untracked residual" or not np.allclose(tracks, tracks[0, 0]):
-                    continue
-                t = tracks[0, 0]
-                world = world @ Rotation.from_quat(t[[4, 5, 6, 3]]).as_matrix().T + t[:3]
+        write_pair(name, output, baseline, source_digest, asset_data, cameras, split)
+
+
+def write_pair(name, output, baseline, source_digest, asset_data, cameras, split, *, split_ground=False, minimum_separation=.45):
+    placements, states, edges, records = zip(*asset_data)
+    separation = cKDTree(edges[0]).query(edges[1])[0].min()
+    if separation < minimum_separation:
+        raise ValueError("Overlapping pit boundaries")
+    state = dict(baseline, layers=copy.copy(baseline["layers"]))
+    removed = {}
+    for layer_name, layer in baseline["layers"].items():
+        world = layer["_xyz"].numpy()
+        world_rotation = np.eye(3)
+        if layer_name != "background":
+            actor = next(v for v in baseline["metadata"]["obj_meta"].values()
+                         if v["id"] == int(layer_name.split("_")[-1]))
+            tracks = baseline["metadata"]["camera_tracklets"][:, :, actor["id"]]
+            if actor["class"] != "untracked residual" or not np.allclose(tracks, tracks[0, 0]):
+                continue
+            t = tracks[0, 0]
+            world_rotation = Rotation.from_quat(t[[4, 5, 6, 3]]).as_matrix()
+            world = world @ world_rotation.T + t[:3]
+        if split_ground:
+            from pavement_splats import retained_ground
+            ground, removed[layer_name] = retained_ground(layer, world, world_rotation, placements)
+        else:
             keep = carve(layer, world, placements)
             removed[layer_name] = int((~keep).sum())
-            layers = [{k: v[keep] for k, v in layer.items()}]
-            if layer_name == "background":
-                layers.extend(s for pair in states for s in pair)
-            state["layers"][layer_name] = {k: torch.cat([s[k] for s in layers], 0) for k in layer}
-        report = dict(pair=name, source_checkpoint=str((BASE/"joint.pt").relative_to(ROOT)), source_sha256=source_digest,
-                      placements=list(records), boundary_separation_m=float(separation), removed=removed,
-                      projected_edges=frame_boxes(edges, cameras, split))
-        state["pit_pair"] = {k: report[k] for k in ("pair","source_sha256","placements")}
-        tmp = output/"joint.stage.pt"
-        torch.save(state, tmp)
-        tmp.replace(output/"joint.pt")
-        report["checkpoint_sha256"] = digest(output/"joint.pt")
-        (output/"placement.json").write_text(json.dumps(report, ensure_ascii=False, indent=2))
-        print(name, removed, f"edge clearance {separation:.2f} m", flush=True)
+            ground = {k: v[keep] for k, v in layer.items()}
+        layers = [ground]
+        if layer_name == "background":
+            layers.extend(s for pair in states for s in pair)
+        state["layers"][layer_name] = {k: torch.cat([s[k] for s in layers], 0) for k in layer}
+    report = dict(pair=name, source_checkpoint=str((BASE/"joint.pt").relative_to(ROOT)), source_sha256=source_digest,
+                  placements=list(records), boundary_separation_m=float(separation), removed=removed,
+                  projected_edges=frame_boxes(edges, cameras, split))
+    state["pit_pair"] = {k: report[k] for k in ("pair","source_sha256","placements")}
+    tmp = output/"joint.stage.pt"
+    torch.save(state, tmp)
+    tmp.replace(output/"joint.pt")
+    report["checkpoint_sha256"] = digest(output/"joint.pt")
+    (output/"placement.json").write_text(json.dumps(report, ensure_ascii=False, indent=2))
+    print(name, removed, f"edge clearance {separation:.2f} m", flush=True)
 
 
 def hd_camera(batch, pinhole=None):

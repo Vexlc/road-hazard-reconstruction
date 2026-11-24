@@ -1,0 +1,8 @@
+{
+  "id": "P238-P239",
+  "label": "片状剥落与粗集料宽碗坑",
+  "instances": [
+    {"id": "broken_patch", "asset": "P238", "xy_m": [1.15, 0.20], "heading_deg": -12},
+    {"id": "aggregate_bowl", "asset": "P239", "xy_m": [-1.15, -0.15], "heading_deg": 23}
+  ]
+}

@@ -163,7 +163,8 @@ def pixel_rays(calibration, *, return_valid=False):
 
 
 class RoadMesh:
-    def __init__(self, folder):
+    def __init__(self, folder, *, filter_pavement=False, measured_rim=False):
+        self.filtered_textures = {}
         folder = Path(folder)
         self.digest = sha256(folder / "asset.glb")
         self.scene = o3d.t.geometry.RaycastingScene(nthreads=2)
@@ -172,6 +173,7 @@ class RoadMesh:
         with np.load(folder / "surface.npz", allow_pickle=False) as field:
             self.cut = field["defect_mask"].astype(bool)
             self.extent = np.array([float(field["width"]), float(field["length"])])
+            self.measured_rim = measured_rim and "view_count" in field
             self.standing = "sky_blocked" in field
             if self.standing:
                 self.sky_blocked = field["sky_blocked"]
@@ -182,6 +184,9 @@ class RoadMesh:
             gid = self.scene.add_triangles(o3d.core.Tensor(xyz), o3d.core.Tensor(tri))
             texture = np.asarray(Image.open(BytesIO(image)).convert("RGB"))
             self.surfaces[gid] = part, tri, uv, texture
+            if filter_pavement:
+                from pavement_texture import pyramid
+                self.filtered_textures[gid] = xyz, pyramid(texture)
             if pbr:
                 self.materials[gid] = pbr[0], np.asarray(Image.open(BytesIO(pbr[1])).convert("RGB"))
             if len(pbr) > 2:
@@ -190,6 +195,7 @@ class RoadMesh:
                 if spec is not None: self.dielectrics[gid] = spec
             bounds.extend([xyz.min(axis=0), xyz.max(axis=0)])
         self.bounds = np.array([np.min(bounds, axis=0), np.max(bounds, axis=0)])
+        self.measured_rim &= {surface[0] for surface in self.surfaces.values()} == {1, 2}
 
     def sky_gain(self, points, normals):
         """Diffuse skylight reaching the exposed frame, cut edges and well, plus a soft bounce floor."""
@@ -210,7 +216,7 @@ class RoadMesh:
         return 0.26 + 0.74 * np.clip(light / sky[:, 2].sum(), 0, 1)
 
     def render(self, rgb, camera_to_world, rays_camera, anchor, host_range, protected, *,
-               occluder_range=None, road_tolerance_m=0.10, with_shadow=False, receiver_mask=None):
+               occluder_range=None, road_tolerance_m=0.10, with_shadow=False, receiver_mask=None, pixel_width=1.0):
         """Compare uncertain host pavement and optional positively identified foreground in radial metres."""
         h, w = rgb.shape[:2]
         pose, basis = np.asarray(camera_to_world), np.asarray(anchor["basis_columns"])
@@ -254,6 +260,9 @@ class RoadMesh:
             f0 = np.zeros((*part.shape,3), "f4") if self.dielectrics else None
             rough = np.ones(part.shape, "f4") if self.dielectrics else None
             sky = np.ones(part.shape, 'f4') if self.baked_sky else None
+        if self.filtered_textures:
+            from pavement_texture import filtered, projected_axes, ray_derivatives
+            derivatives = ray_derivatives(directions)
         for gid, (code, tri, uv, texture) in self.surfaces.items():
             mask = geom == gid
             if not mask.any():
@@ -262,14 +271,21 @@ class RoadMesh:
             pair = weights[mask]
             bary = np.column_stack([1 - pair.sum(1), pair])
             texcoord = (uv[tri[faces[mask]]] * bary[:, :, None]).sum(1)
-            coords = (texcoord * texture.shape[1::-1] - 0.5)[:, ::-1].T
-            color[mask] = np.stack(
-                [
-                    map_coordinates(channel, coords, order=1, mode="grid-wrap" if self.standing else "nearest")
-                    for channel in texture.transpose(2, 0, 1)
-                ],
-                axis=1,
-            )
+            if gid in self.filtered_textures:
+                xyz, levels = self.filtered_textures[gid]
+                face = tri[faces[mask]]
+                dx, dy = projected_axes(xyz[face], uv[face], directions[mask], distance[mask],
+                                        [d[mask] for d in derivatives], texture.shape[1::-1], pixel_width)
+                color[mask] = filtered(levels, texcoord, dx, dy)
+            else:
+                coords = (texcoord * texture.shape[1::-1] - 0.5)[:, ::-1].T
+                color[mask] = np.stack(
+                    [
+                        map_coordinates(channel, coords, order=1, mode="grid-wrap" if self.standing else "nearest")
+                        for channel in texture.transpose(2, 0, 1)
+                    ],
+                    axis=1,
+                )
             if self.standing:
                 if gid in self.baked_sky:
                     sky[mask] = (self.baked_sky[gid][tri[faces[mask]]] * bary).sum(1)
@@ -291,8 +307,14 @@ class RoadMesh:
         crossing = origin[:2] + directions[..., :2] * np.where(np.isfinite(plane), plane, 0)[..., None]
         uv = 0.5 + crossing / self.extent * [1, -1]
         gr = np.rint(np.clip(uv, 0, 1) * (np.array(self.cut.shape[::-1]) - 1)).astype(int)
-        aperture = (uv >= 0).all(-1) & (uv <= 1).all(-1) & self.cut[gr[..., 1], gr[..., 0]]
+        surveyed = (uv >= 0).all(-1) & (uv <= 1).all(-1)
+        # A continuous measured grid includes the surrounding asphalt and the actual uneven lip.
+        # Its first mesh hit establishes visibility. Shaft models instead require a cut at grade.
+        aperture = surveyed if self.measured_rim else surveyed & self.cut[gr[..., 1], gr[..., 0]]
         target = (part > 1) & ((ray_z >= -0.0015) | ((plane > 0) & np.isfinite(plane) & aperture))
+        if receiver_mask is not None and not self.standing:
+            # The host must actually show replaceable road at the entrance to a buried hit.
+            target &= (ray_z > 0.0015) | receiver_mask
         # The original pavement will be removed. Only measured returns in front of both
         # the impact and the entry plane may hide the replacement surface.
         near = np.minimum(plane, distance)

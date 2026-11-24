@@ -22,7 +22,7 @@ def cli(*args):
     subprocess.run([sys.executable, str(ROOT / "scripts/transfer-mesh-view.py"), *map(str, args)], check=True)
 
 
-def packet(folder, axial):
+def packet(folder, axial, *, flat_reference=True):
     meta = json.loads((folder / "camera.json").read_text())
     w = meta["size"]
     f = w / np.deg2rad(meta["fov_deg"])
@@ -36,12 +36,14 @@ def packet(folder, axial):
     raw[known] = distance[known] * rays[..., 2][known] if axial else distance[known]
     pose = np.array(meta["camera_to_world"])
     world = np.array(meta["reference_ground_to_world"])
-    dz = rays @ (pose[:3, :3].T @ world[:3, 2])
-    plane = (world[:3, 3] - pose[:3, 3]) @ world[:3, 2] / dz
-    close = (ids == 1) & (distance < 5)
-    p99 = float(np.percentile(abs(distance[close] - plane[close]), 99))
-    if p99 > 0.0002:
-        raise ValueError(f"Cycles metric depth registration drifted: {p99}")
+    p99 = None
+    if flat_reference:
+        dz = rays @ (pose[:3, :3].T @ world[:3, 2])
+        plane = (world[:3, 3] - pose[:3, 3]) @ world[:3, 2] / dz
+        close = (ids == 1) & (distance < 5)
+        p99 = float(np.percentile(abs(distance[close] - plane[close]), 99))
+        if p99 > 0.0002:
+            raise ValueError(f"Cycles metric depth registration drifted: {p99}")
     data = dict(
         rgb=np.array(Image.open(folder / "rgb.png").convert("RGB")),
         rays_camera=rays,

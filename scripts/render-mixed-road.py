@@ -20,6 +20,7 @@ from mesh_transfer import RoadMesh, fit_footprint, fit_road, footprint_size, pix
 from prepare import load_rig  # noqa: E402
 from prepare_kitti import project_mei, homogeneous  # noqa: E402
 from road_geometry import glb_triangles, save_json, sha256  # noqa: E402
+from pavement_layout import PavementLayout, resolve_instances
 from prop_lighting import fit_receivers, view_bounds
 from prop_registration import driving_clearance, stereo_ranges
 
@@ -193,7 +194,8 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
 
     # Buried geometry can only be seen through its road-plane opening. Include every
     # above-ground vertex and the entire aperture/apron, independent of forward projection.
-    bounds = view_bounds(mesh, anchor)
+    grouped = isinstance(mesh, PavementLayout)
+    bounds = mesh.visible_bounds(anchor) if grouped else view_bounds(mesh, anchor)
     mid = (bounds[0] + bounds[1]) / 2
     crop = window.crop(to_cam(mid @ basis.T + center), np.linalg.norm(bounds[1] - mid))
     if crop is None:
@@ -209,7 +211,7 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
     image = np.array(Image.open(raw_image).convert("RGB").crop((*lo, *hi)))
     depth = np.full((h, w), np.inf, "f4")
     # The host's original pavement will be replaced. Only non-ground LiDAR points can occlude it.
-    above = (points - center) @ basis[:, 2] > 0.10
+    above = mesh.foreground_points(points, anchor, .10) if grouped else (points - center) @ basis[:, 2] > 0.10
     cam = to_cam(points[above])
     radial = np.linalg.norm(cam, axis=1)
     cam = cam[(radial > 0.01) & (radial < 70)]
@@ -232,11 +234,16 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
     for dx, dy in SUBPIXELS:
         rays, valid = unproject(x, y, w, h, dx, dy)
         protected = body | ~valid
-        samples.append(mesh.render(image, pose, rays, anchor, depth, protected, with_shadow=mesh.standing))
+        if grouped:
+            samples.append(mesh.sample(image, pose, rays, anchor, depth, protected, occluder_range=depth,
+                                       pixel_width=len(SUBPIXELS)**-0.5))
+        else:
+            samples.append(mesh.render(image, pose, rays, anchor, depth, protected, with_shadow=mesh.standing))
         if packet_path:
             packet_rays.append(rays)
             packet_masks.append(protected)
-    after, part, distance, *receiver = resolve_samples(samples)
+    after, part, distance, *receiver = resolve_samples([s[:3] for s in samples] if grouped else samples)
+    instance = resolve_instances(samples) if grouped else None
     shadow = receiver[0] if receiver else np.zeros(part.shape,'f4')
     if packet_path:
         np.savez_compressed(
@@ -244,6 +251,7 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
             rgb=image,
             camera_to_world=pose,
             host_range=depth,
+            **({"occluder_range": depth} if grouped else {}),
             rays_camera=packet_rays,
             protected=packet_masks,
         )
@@ -258,6 +266,7 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
         ("top", y == 0 and hit[0].any()), ("bottom", hi[1] == height and hit[-1].any())
     ) if touches]
     return dict(
+        instance=instance,
         before=image,
         after=after,
         part=part,
@@ -394,6 +403,7 @@ def main():
     parser.add_argument("--run", type=Path, default=ROOT / "runs/mixed-road")
     parser.add_argument("--scene", choices=["kitti360-0000", "kitti360-0003-right", "a2d2-frontleft"], default="kitti360-0000")
     parser.add_argument("--out", type=Path)
+    parser.add_argument("--layout", type=Path, help="Fit and render all openings of a pavement recipe together")
     parser.add_argument("--group", type=int, default=26, help="host trajectory index used to seed the anchor")
     parser.add_argument("--offset", type=float, default=2.25, help="metres toward camera right")
     parser.add_argument("--ego-mask",type=Path,help="Optional per-scene calibrated physical camera body outlines")
@@ -421,7 +431,8 @@ def main():
         clouds = scans(raw, data, cams)
         rig_pose = np.linalg.inv(cams[f"{args.group:03}00.png"])
         seed = rig_pose[:3, 3] + args.offset * rig_pose[:3, 0] - [0, 0, 1.6-args.seed_lift]
-        nearby = np.concatenate(clouds[max(0, args.group - 7) : args.group + 8 : 2])
+        nearby = (np.concatenate(clouds[max(0, args.group - 12):args.group + 13]) if args.layout
+                  else np.concatenate(clouds[max(0, args.group - 7) : args.group + 8 : 2]))
         anchor = fit_road(nearby, seed, rig_pose[:3, 2], up_world=[0, 0, 1], radius_m=args.support_radius)
         views = [
             (0, range(max(0, args.group - 18), args.group)),
@@ -436,13 +447,20 @@ def main():
 
     out = args.out or ROOT / "outputs/mixed-road" / args.scene
     assets = {}
-    for key in args.ids:
+    for key in ([] if args.layout else args.ids):
         folder = args.run / key
         if not (folder / "asset.glb").is_file():
             (folder,) = args.run.glob(f"*/series/assets/*/{key}")
         assets[key] = folder
     registration_anchor = anchor
-    anchor = fit_footprint(anchor, nearby, np.max([footprint_size(path) for path in assets.values()], axis=0))
+    layout = None
+    if args.layout:
+        layout = PavementLayout(args.layout, args.run)
+        anchor = layout.fit(anchor, nearby, np.asarray(anchor["basis_columns"])[:, 2], args.support_radius)
+        layout.bind(anchor)
+        anchor.update(host_scene=args.scene, placement_group=args.group)
+    else:
+        anchor = fit_footprint(anchor, nearby, np.max([footprint_size(path) for path in assets.values()], axis=0))
     out.mkdir(parents=True, exist_ok=True)
     ego_masks = json.loads((ROOT / "gen2hole/examples/mixed-road/ego-masks.json").read_text())[args.scene]
     if args.ego_mask:
@@ -488,8 +506,8 @@ def main():
                     output_params=["-threads", "3", "-movflags", "+faststart"],
                 )
             )
-        for key, folder in assets.items():
-            mesh = RoadMesh(folder)
+        for key, folder in ([(layout.key, args.layout.parent)] if layout else assets.items()):
+            mesh = layout if layout else RoadMesh(folder)
             index[key] = {"source_sha256": mesh.digest, "views": {}}
             for cam, groups in views:
                 sensor = data["sensors"][cam]
@@ -529,13 +547,15 @@ def main():
                 Image.fromarray(best["after"]).save(dest / "after.png")
                 Image.fromarray(best["part"]).save(dest / "part.png")
                 np.save(dest / "range.npy", best["range"])
+                if layout:
+                    Image.fromarray(best["instance"]).save(dest / "instance.png")
                 if mesh.standing:
                     np.save(dest / "shadow.npy", best["shadow"])
                 image = Image.open(photo).convert("RGB")
                 image.paste(Image.fromarray(best["after"]), tuple(best["xy"]))
                 image.save(dest / "full.jpg", quality=94)
                 if writer:
-                    label = json.loads((folder / "metadata.json").read_text())["label"]
+                    label = layout.label if layout else json.loads((folder / "metadata.json").read_text())["label"]
                     video_segment(writer, candidates, key, label, args.scene, sensor)
                 if args.export_packet == key:
                     g = best["group"]
@@ -568,6 +588,14 @@ def main():
                                        for _, frame, r, _ in candidates if r["clipped_sides"]],
                     model=data["source_calibration"][sensor]["model"],
                 )
+                if layout:
+                    row["best_frame_instance_pixels"] = {
+                        item["id"]: int((best["instance"] == i).sum()) for i, item in enumerate(anchor["instances"], 1)
+                    }
+                    row["frames_showing_all_instances"] = [
+                        frame for _, frame, result, _ in candidates
+                        if np.count_nonzero(np.bincount(result["instance"].ravel(), minlength=len(anchor["instances"])+1)[1:]) == len(anchor["instances"])
+                    ]
                 index[key]["views"][sensor] = row
                 print(key, sensor, f, best["visible"], flush=True)
             save_json(out / "index.json", index)

@@ -1,5 +1,5 @@
 {
-  "asset_count": 1483,
+  "asset_count": 1485,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2009,6 +2009,22 @@
         "joint-props",
         "cycles"
       ]
+    },
+    "measured-pavement-pair": {
+      "name": "实测片状剥落与粗集料碗坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/measured-pavement",
+      "guide": "docs/21-measured-pavement.md",
+      "section": "从原始 RGB-D 重建两处破损",
+      "assets": [
+        "P238",
+        "P239"
+      ],
+      "transfer": [
+        "mesh-view",
+        "pavement-layout",
+        "pavement-joint"
+      ]
     }
   },
   "transfer_routes": {
@@ -2071,6 +2087,16 @@
       "name": "Blender Cycles 原生等距鱼眼、米制深度与双物体对照",
       "entry": "scripts/render-cone-cycles.py",
       "guide": "docs/20-traffic-cones.md"
+    },
+    "pavement-layout": {
+      "name": "独立支撑面上的成组开口、实车鱼眼与 Cycles 冠形路面",
+      "entry": "scripts/transfer-mesh-view.py",
+      "guide": "docs/21-measured-pavement.md"
+    },
+    "pavement-joint": {
+      "name": "实测双坑的原生联合检查点与边缘高斯分割",
+      "entry": "streetcrafter/joint/pavement_pair.py",
+      "guide": "docs/21-measured-pavement.md"
     }
   }
 }

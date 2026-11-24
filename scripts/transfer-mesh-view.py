@@ -14,6 +14,7 @@ from road_geometry import save_json
 from prop_lighting import fit_receivers
 from prop_registration import driving_clearance
 from host_depth import geometry, road_samples
+from pavement_layout import PavementLayout, resolve_instances
 
 
 def main():
@@ -46,9 +47,16 @@ def main():
     )
     render.add_argument("out", type=Path)
     render.add_argument("--calibration", type=Path, help="JSON COLMAP camera row when rays_camera is omitted")
+    render.add_argument("--measured-rim", action="store_true", help="Use the scanned lip and adjoining continuous RGB-D pavement to resolve occlusion")
     render.add_argument("--road-tolerance-m", type=float, default=0.10,
                         help="Radial tolerance for uncertain host pavement; labelled occluders use their own range")
+    for command in (fit, render):
+        command.add_argument("--asset-root", type=Path, help="Built members of a pavement layout JSON")
     args = parser.parse_args()
+    grouped = bool(getattr(args, "asset", None) and args.asset.is_file())
+    if grouped and args.asset_root is None:
+        parser.error("Provide --asset-root with a pavement layout recipe")
+    layout = PavementLayout(args.asset, args.asset_root) if grouped else None
     if args.task == "road-points":
         clouds = []
         for path in args.views:
@@ -70,7 +78,11 @@ def main():
             up_world=args.up,
             radius_m=args.radius,
         )
-        if args.asset:
+        if layout:
+            if args.trajectory:
+                parser.error("Vehicle envelope clearance is only supported for standing props")
+            anchor = layout.fit(anchor, points, args.up, args.radius)
+        elif args.asset:
             anchor = fit_footprint(anchor, points, footprint_size(args.asset))
             with np.load(args.asset / "surface.npz", allow_pickle=False) as field:
                 if "contact_mask" in field:
@@ -88,7 +100,7 @@ def main():
             anchor["lighting"] = json.loads(args.lighting.read_text())
         save_json(args.out, anchor)
         return
-    mesh = RoadMesh(args.asset)
+    mesh = layout if layout else RoadMesh(args.asset, measured_rim=args.measured_rim)
     with np.load(args.view, allow_pickle=False) as view:
         rays, host, protected, pose = geometry(view, args.calibration)
         rgb = view["rgb"]
@@ -104,17 +116,25 @@ def main():
             receivers = np.broadcast_to(receivers, rays.shape[:-1])
         if receivers is not None and (receivers.shape != rays.shape[:-1] or receivers.dtype != bool):
             parser.error("Expected boolean H×W or S×H×W registered receiver_mask")
-        after, ids, ranges, *shadow = resolve_samples(
-            [mesh.render(rgb, pose, subray, anchor, host[i], mask,
-                         occluder_range=None if foreground is None else foreground[i],
-                         road_tolerance_m=args.road_tolerance_m, with_shadow=mesh.standing,
-                         receiver_mask=None if receivers is None else receivers[i])
-             for i, (subray, mask) in enumerate(zip(rays, protected))]
-        )
+        if layout:
+            layout.bind(anchor)
+        samples = []
+        for i, (subray, mask) in enumerate(zip(rays, protected)):
+            options = dict(occluder_range=None if foreground is None else foreground[i],
+                           road_tolerance_m=args.road_tolerance_m,
+                           receiver_mask=None if receivers is None else receivers[i])
+            if layout:
+                sample = layout.sample(rgb, pose, subray, anchor, host[i], mask, pixel_width=len(rays)**-0.5, **options)
+            else:
+                sample = mesh.render(rgb, pose, subray, anchor, host[i], mask, with_shadow=mesh.standing, **options)
+            samples.append(sample)
+        after, ids, ranges, *shadow = resolve_samples([s[:3] for s in samples] if layout else samples)
     args.out.mkdir(parents=True, exist_ok=True)
     Image.fromarray(after).save(args.out / "after.png")
     Image.fromarray(ids).save(args.out / "part.png")
     np.save(args.out / "range.npy", ranges)
+    if layout:
+        Image.fromarray(resolve_instances(samples)).save(args.out / "instance.png")
     if shadow:
         np.save(args.out / "shadow.npy", shadow[0])
     save_json(args.out / "result.json", dict(mesh_sha256=mesh.digest, visible_pixels=int((ids > 0).sum())))

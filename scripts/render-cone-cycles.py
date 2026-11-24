@@ -66,9 +66,10 @@ def plane(scene, world):
     lamp = bpy.data.objects.new("Sun", sun)
     scene.collection.objects.link(lamp)
     lamp.rotation_euler = (0.44, -0.63, -0.3)
+    return road
 
 
-def render(scene, camera, world, objects, out, name, yaw, with_pair):
+def render(scene, camera, world, objects, out, name, yaw, with_pair, *, eye=None):
     folder = out / name / ("native" if with_pair else "host")
     folder.mkdir(exist_ok=True, parents=True)
     yaw = np.deg2rad(yaw)
@@ -78,6 +79,8 @@ def render(scene, camera, world, objects, out, name, yaw, with_pair):
     pose = np.eye(4)
     pose[:3, :3] = np.stack([right, np.cross(forward, right), forward], axis=1)
     pose[:3, 3] = [1.10, 1.76, 0.89] if name == "return-view" else [0, -1.76, 0.89]
+    if eye is not None:
+        pose[:3, 3] = eye
     pose = world @ pose
     camera.matrix_world = Matrix((pose @ np.diag([1, -1, -1, 1])).tolist())
     for o in objects:
@@ -109,16 +112,11 @@ def render(scene, camera, world, objects, out, name, yaw, with_pair):
     )
 
 
-def main():
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--assets", type=Path, default=ROOT / "runs/traffic-cones")
-    p.add_argument("--out", type=Path, default=ROOT / "outputs/traffic-cones/cycles")
-    args = p.parse_args()
-    out = args.out.resolve()
+def setup_scene(samples):
     bpy.ops.wm.read_factory_settings(use_empty=True)
     scene = bpy.context.scene
     scene.render.engine = "CYCLES"
-    scene.cycles.samples = 128
+    scene.cycles.samples = samples
     scene.cycles.use_denoising = False
     scene.cycles.seed = 6
     scene.render.threads_mode = "FIXED"
@@ -135,19 +133,6 @@ def main():
     camera = bpy.data.objects.new("Sensor", camera_data)
     scene.collection.objects.link(camera)
     scene.camera = camera
-    world = np.eye(4)
-    world[:3, :3] = Rotation.from_euler("zyx", [36, -4, 3], degrees=True).as_matrix()
-    world[:3, 3] = [11.7, -5.8, 2.1]
-    plane(scene, world)
-    # A third, pre-existing cone is a measured host occluder for the inserted pair.
-    occ = np.eye(4)
-    occ[:3, 3] = [0.32, -0.58, 0]
-    imported(args.assets / "C236/asset.glb", world @ occ, 2)
-    objects = imported(args.assets / "C236-C237/asset.glb", world, 3)
-    if len(objects) != 2:
-        raise ValueError("Expected two separately labelled GLB instances")
-    for obj in objects:
-        obj.pass_index = 3 if "@upright" in obj.name else 4
     bpy.context.view_layer.use_pass_z = True
     bpy.context.view_layer.use_pass_object_index = True
     scene.use_nodes = True
@@ -165,6 +150,29 @@ def main():
     file.file_slots.new("id-")
     graph.links.new(passes.outputs["Depth"], file.inputs[0])
     graph.links.new(passes.outputs["IndexOB"], file.inputs[1])
+    return scene, camera
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--assets", type=Path, default=ROOT / "runs/traffic-cones")
+    p.add_argument("--out", type=Path, default=ROOT / "outputs/traffic-cones/cycles")
+    args = p.parse_args()
+    out = args.out.resolve()
+    scene, camera = setup_scene(128)
+    world = np.eye(4)
+    world[:3, :3] = Rotation.from_euler("zyx", [36, -4, 3], degrees=True).as_matrix()
+    world[:3, 3] = [11.7, -5.8, 2.1]
+    plane(scene, world)
+    # A third, pre-existing cone is a measured host occluder for the inserted pair.
+    occ = np.eye(4)
+    occ[:3, 3] = [0.32, -0.58, 0]
+    imported(args.assets / "C236/asset.glb", world @ occ, 2)
+    objects = imported(args.assets / "C236-C237/asset.glb", world, 3)
+    if len(objects) != 2:
+        raise ValueError("Expected two separately labelled GLB instances")
+    for obj in objects:
+        obj.pass_index = 3 if "@upright" in obj.name else 4
     for name, yaw in [("center", 4), ("left-edge", 92), ("return-view", -155)]:
         for show in (False, True):
             render(scene, camera, world, objects, out, name, yaw, show)

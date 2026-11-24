@@ -1,0 +1,8 @@
+{
+  "id": "P238-P239",
+  "label": "同一冠形路面上的两处实测破损",
+  "instances": [
+    {"id": "broken_patch", "asset": "P238", "xy_m": [2.45, 0.1], "heading_deg": -12},
+    {"id": "aggregate_bowl", "asset": "P239", "xy_m": [-2.45, -0.15], "heading_deg": 23}
+  ]
+}
