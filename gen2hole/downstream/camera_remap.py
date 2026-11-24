@@ -33,6 +33,13 @@ def remap_packet(view, source_xy, calibration=None):
     out = dict(rgb=rgb_out, camera_to_world=pose, rays_camera=pick(rays, [0., 0., 1.]),
                host_range=pick(distance.astype(np.result_type(distance, np.float32), copy=False), np.inf),
                protected=pick(protected, True))
+    if "sample_rgb" in view:
+        from host_exposure import exposure
+        colors, _ = exposure(view, distance.shape)
+        out["sample_rgb"] = pick(colors, 0).reshape(samples, *valid.shape, 3)
+        if "sample_weights" in view:
+            wgt = view["sample_weights"]
+            out["sample_weights"] = wgt if wgt.ndim == 1 else pick(wgt, 1).reshape(samples, *valid.shape)
     if origins is not None:
         out["ray_origins_camera"] = pick(origins, 0.0)
     for name, border in (("receiver_mask", False), ("occluder_range", np.inf)):

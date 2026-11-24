@@ -49,6 +49,9 @@ def geometry(view, calibration=None, *, with_origins=False):
     if protected.dtype != bool:
         raise ValueError("protected must be boolean")
     protected = protected | ~np.asarray(valid)
+    if "sample_weights" in view:
+        from host_exposure import weights
+        protected |= weights(view, shape) == 0
     unit = np.isclose(np.linalg.norm(rays, axis=-1), 1, atol=1e-4)
     if np.any(~unit & ~protected):
         raise ValueError("Unmasked rays must be unit vectors")

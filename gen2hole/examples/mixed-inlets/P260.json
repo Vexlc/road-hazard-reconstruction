@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P260",
+    "label": "椭圆轮廓的浅碗状沥青坑",
+    "source": "PothRGBD",
+    "anchor": "20250227_184048",
+    "fit": [
+      "20250227_184048"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

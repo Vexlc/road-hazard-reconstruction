@@ -118,6 +118,8 @@ def from_depth(packet, stride, max_edge, calibration=None):
     if stride < 1 or "reflector_labels" not in packet:
         raise ValueError("Supply a positive sampling stride and registered reflector_labels")
     rays, dist, protected, pose, origins = geometry(packet, calibration, with_origins=True)
+    from host_exposure import exposure
+    colors, _ = exposure(packet, dist.shape)
     labels = sampled(packet["reflector_labels"], dist.shape, "reflector_labels")
     rgb = np.asarray(packet["rgb"])
     if (
@@ -139,7 +141,7 @@ def from_depth(packet, stride, max_edge, calibration=None):
         points = direction * np.where(good, dist[i][sub], 0.0)[..., None] + pose[:3, 3]
         if origins is not None:
             points += origins[i][sub] @ pose[:3, :3].T
-        mesh = triangulate(points, rgb[sub], direction, np.where(good, labels[i][sub], 0), max_edge)
+        mesh = triangulate(points, (rgb if colors is None else colors[i])[sub], direction, np.where(good, labels[i][sub], 0), max_edge)
         if mesh is not None:
             members.append(mesh)
     if not members:

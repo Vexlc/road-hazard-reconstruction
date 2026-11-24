@@ -2,7 +2,9 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
-**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,508 个编号所属的 55 个系列与 24 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,512 个编号所属的 57 个系列与 25 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+
+**大坑与异常井盖混合迁入**　1.23 m² 浅碗坑搭配单侧沉降填芯盖，1.06 m² 碎石坑搭配缺盖井。两组都可从前方驶近、再从真实车尾回看。其他渲染器可传入独立光线颜色和采样权重以保留遮挡边缘。[复现和鱼眼输入](docs/29-mixed-inlets.md) · [Audi 视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/mixed-inlets-v1.0.0/audi-front-rear.mp4)
 
 **两处实测宽坑 P256、P257 与积水态 P258**　约 1.47 和 1.42 m² 的坑床已成对放入两段 KITTI 道路及 Audi 实拍。积水可从同步双目或激光雷达的实测表面追踪近物倒影。[复建和其他渲染器接入](docs/28-roadside-reflections.md) · [Audi 车尾视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/roadside-reflections-v1.0.0/audi-front-rear.mp4)
 

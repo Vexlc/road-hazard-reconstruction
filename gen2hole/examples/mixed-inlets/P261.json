@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P261",
+    "label": "露出碎石的宽口沥青坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_053657",
+    "fit": [
+      "20250305_053657"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

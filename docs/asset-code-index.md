@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,508 个资产编号、55 个重建系列和 24 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,512 个资产编号、57 个重建系列和 25 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -38,6 +38,7 @@
 | [断边露底坑与粗集料碗坑](../docs/26-remapped-pits.md#%E4%BB%8E%E5%AE%9E%E6%8B%8D%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%BB%BA%E4%B8%A4%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | P250 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/remapped-pits) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[native-pavement-support](#route-native-pavement-support)、[apron-exposure](#route-apron-exposure)、[remapped-camera](#route-remapped-camera) |
 | [磨圆剥落坑与粗石碗坑](../docs/27-wet-pavement.md#%E9%87%8D%E5%BB%BA%E4%B8%A4%E5%A4%84%E5%AE%9E%E6%B5%8B%E5%9D%91%E5%BA%8A) | 2 | P252 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/wet-pavement) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure)、[native-pavement-support](#route-native-pavement-support)、[seat-water](#route-seat-water) |
 | [碎边宽浅坑与椭圆碎石坑](../docs/28-roadside-reflections.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E9%87%87%E9%9B%86%E9%87%8D%E5%BB%BA%E4%B8%A4%E4%BB%B6%E5%A4%A7%E5%9D%91) | 2 | P256 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/roadside-reflections) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure)、[native-pavement-support](#route-native-pavement-support)、[seat-water](#route-seat-water) |
+| [与检查井同段的浅碗坑和碎石坑](../docs/29-mixed-inlets.md#%E4%BB%8E%E5%AE%9E%E6%8B%8D%E8%BE%93%E5%85%A5%E9%87%8D%E5%BB%BA%E5%A4%A7%E5%9D%91%E4%B8%8E%E6%89%AB%E6%8F%8F%E4%BA%95%E7%9B%96) | 2 | P260 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/mixed-inlets) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure)、[native-pavement-support](#route-native-pavement-support)、[remapped-camera](#route-remapped-camera)、[sampled-radiance](#route-sampled-radiance) |
 
 ## 裂缝、积水、铺装与修补
 
@@ -73,6 +74,7 @@
 | [裂纹填芯盖与缺盖井](../docs/22-scanned-round-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%B8%AA%E7%8A%B6%E6%80%81) | 2 | A241 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/scanned-round-covers/008/survey.json) · [输入准备](../gen2hole/examples/scanned-round-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins) |
 | [沉降填芯井盖和沉降敞井](../docs/25-rolling-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | A248 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/rolling-covers/003/survey.json) · [输入准备](../gen2hole/examples/rolling-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins)、[rolling-readout](#route-rolling-readout)、[native-pavement-support](#route-native-pavement-support)、[remapped-camera](#route-remapped-camera) |
 | [错位十孔铸铁盖和敞井](../docs/25-rolling-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | A249 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/rolling-covers/006/survey.json) · [输入准备](../gen2hole/examples/rolling-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins)、[rolling-readout](#route-rolling-readout)、[native-pavement-support](#route-native-pavement-support)、[remapped-camera](#route-remapped-camera) |
+| [十六孔填芯检查井单侧沉降与缺盖](../docs/29-mixed-inlets.md#%E4%BB%8E%E5%AE%9E%E6%8B%8D%E8%BE%93%E5%85%A5%E9%87%8D%E5%BB%BA%E5%A4%A7%E5%9D%91%E4%B8%8E%E6%89%AB%E6%8F%8F%E4%BA%95%E7%9B%96) | 2 | A259 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/mixed-inlets/004/survey.json) · [输入准备](../gen2hole/examples/mixed-inlets/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure)、[native-pavement-support](#route-native-pavement-support)、[remapped-camera](#route-remapped-camera)、[sampled-radiance](#route-sampled-radiance) |
 
 ## 路侧与路面立体设施
 
@@ -112,5 +114,6 @@
 | <a id="route-seat-water"></a>seat-water | 逐处拟合干坑落点并按目标重力重算水线 | [seat_water.py](../gen2hole/seat_water.py) | [指南](../docs/27-wet-pavement.md) |
 | <a id="route-water-reflection"></a>water-reflection | 带标定光线的宿主按观察方向渲染积水反射与折射 | [pavement_water.py](../gen2hole/downstream/pavement_water.py) | [指南](../docs/27-wet-pavement.md) |
 | <a id="route-metric-reflection"></a>metric-reflection | 按实测近物表面、岸壁与天空的可见性渲染积水 | [metric_reflection.py](../gen2hole/downstream/metric_reflection.py) | [指南](../docs/28-roadside-reflections.md) |
+| <a id="route-sampled-radiance"></a>sampled-radiance | 在有独立光线颜色和响应权重的鱼眼中迁入并保留前景边界 | [host_exposure.py](../gen2hole/downstream/host_exposure.py) | [指南](../docs/29-mixed-inlets.md) |
 
 更新目录后运行 `python3 scripts/check-reproduction-index.py --write-map`。常规检查运行同一命令并省略参数，检查编号、源文件、指南章节、迁入路线与本页是否一致。

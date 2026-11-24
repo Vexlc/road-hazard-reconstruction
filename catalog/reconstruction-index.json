@@ -1,5 +1,5 @@
 {
-  "asset_count": 1508,
+  "asset_count": 1512,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2239,6 +2239,45 @@
         "metric-reflection",
         "remapped-camera"
       ]
+    },
+    "infill-paired-breakouts": {
+      "name": "与检查井同段的浅碗坑和碎石坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/mixed-inlets",
+      "guide": "docs/29-mixed-inlets.md",
+      "section": "从实拍输入重建大坑与扫描井盖",
+      "assets": [
+        "P260",
+        "P261"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "remapped-camera",
+        "sampled-radiance"
+      ]
+    },
+    "sixteen-vent-infill": {
+      "name": "十六孔填芯检查井单侧沉降与缺盖",
+      "launcher": "gen2hole/survey.py",
+      "recipe": "gen2hole/examples/mixed-inlets/004/survey.json",
+      "guide": "docs/29-mixed-inlets.md",
+      "section": "从实拍输入重建大坑与扫描井盖",
+      "assets": [
+        "A259",
+        "M259"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "remapped-camera",
+        "sampled-radiance"
+      ],
+      "prepare": "gen2hole/examples/mixed-inlets/prepare.py"
     }
   },
   "transfer_routes": {
@@ -2361,6 +2400,11 @@
       "name": "按实测近物表面、岸壁与天空的可见性渲染积水",
       "entry": "gen2hole/downstream/metric_reflection.py",
       "guide": "docs/28-roadside-reflections.md"
+    },
+    "sampled-radiance": {
+      "name": "在有独立光线颜色和响应权重的鱼眼中迁入并保留前景边界",
+      "entry": "gen2hole/downstream/host_exposure.py",
+      "guide": "docs/29-mixed-inlets.md"
     }
   },
   "groups": {
@@ -2391,7 +2435,8 @@
       "measured-asphalt-breakouts",
       "broken-lip-and-bowl",
       "rounded-spall-and-stony-bowl",
-      "wide-spall-and-oval-bed"
+      "wide-spall-and-oval-bed",
+      "infill-paired-breakouts"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
@@ -2420,7 +2465,8 @@
       "vented-cast-cover",
       "cracked-infill-cover",
       "settled-infill-well",
-      "rusted-ten-vent-cover"
+      "rusted-ten-vent-cover",
+      "sixteen-vent-infill"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

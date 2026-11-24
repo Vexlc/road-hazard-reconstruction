@@ -342,9 +342,11 @@ def frame_crop(
             probe = DirectionalProbe(world[allowed].astype("f4"), lowpass[row[allowed], col[allowed]], 2.)
     reflection_stats = dict(water_subrays=0, bank_hits=0, near_hits=0)
     samples, packet_rays, packet_masks = [], [], []
+    lens_or_body = body.copy()
     for dx, dy in SUBPIXELS:
         rays, valid = unproject(x, y, w, h, dx, dy)
         protected = body | ~valid
+        lens_or_body |= protected
         if grouped:
             samples.append(mesh.sample(image, pose, rays, anchor, depth, protected, occluder_range=depth, reflection_probe=probe, reflectors=reflectors, reflection_stats=reflection_stats,
                                        pixel_width=len(SUBPIXELS)**-0.5))
@@ -395,6 +397,7 @@ def frame_crop(
         protected_ego=int(body.sum()),
         shadow=shadow,
         clipped_sides=edges,
+        touches_mask=bool((cv2.dilate(lens_or_body.astype("u1"), np.ones((3,3), "u1")) & hit).any()),
     )
 
 
@@ -564,9 +567,13 @@ def main():
     parser.add_argument("--stereo-reflections", action="store_true", help="Also recover finite reflecting surfaces from synchronized KITTI front stereo")
     parser.add_argument("--metric-reflections", action="store_true", help="Trace finite-distance reflections on the current registered LiDAR scan")
     parser.add_argument("--gravity-up", type=float, nargs=3, metavar=("X", "Y", "Z"), help="Measured gravity-opposing vector in the host world")
+    parser.add_argument("--unclipped-preview", action="store_true",
+                        help="Prefer a joint exposure with all openings clear of the sensor edge and vehicle mask")
     args = parser.parse_args()
     if (args.survey_only or args.gravity_up) and not args.layout:
         parser.error("Road gravity and surveyed seats require --layout")
+    if args.unclipped_preview:
+        args.paired_preview = True
     if args.paired_preview and not args.layout:
         parser.error("--paired-preview requires a pavement layout")
     if args.appearance_views and not args.layout:
@@ -718,13 +725,17 @@ def main():
                         counts = np.bincount(ids.ravel(), minlength=len(mesh.members) + 1)[1:]
                         return 0.0 if np.any(counts < 12) else len(counts) / np.sum(1.0 / counts)
 
+                    pool = candidates
+                    if args.unclipped_preview:
+                        clear = [c for c in candidates if joint_area(c) and not c[2]["clipped_sides"] and not c[2]["touches_mask"]]
+                        pool = clear or candidates
                     if args.metric_reflections:
                         # Inspect a view that resolves both openings and an actual surveyed reflector when available.
-                        best_area = max(map(joint_area, candidates))
-                        options = [c for c in candidates if joint_area(c) >= best_area * .20]
+                        best_area = max(map(joint_area, pool))
+                        options = [c for c in pool if joint_area(c) >= best_area * .20]
                         chosen = max(options, key=lambda c: (c[2]["reflection_stats"]["near_hits"], joint_area(c)))
                     else:
-                        chosen = max(candidates, key=joint_area)
+                        chosen = max(pool, key=joint_area)
                     if not joint_area(chosen):
                         raise ValueError(f"{key}: no {sensor} exposure jointly resolves all members")
                 else:
@@ -765,6 +776,7 @@ def main():
                     )
                 row = dict(
                     **({"reflection_samples_by_frame": {str(frame):r["reflection_stats"] for _,frame,r,_ in candidates}} if args.metric_reflections else {}),
+                    **({"unclipped_preview": not (best["clipped_sides"] or best["touches_mask"])} if args.unclipped_preview else {}),
                     frame=f,
                     local_road_alignment=best["alignment"],
                     crop_xy=best["xy"].tolist(),

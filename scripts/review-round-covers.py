@@ -107,6 +107,11 @@ def main():
             for recipe, layout in zip(args.layouts, specs):
                 labels = {s["id"]: s["label"] for f in recipe.parent.glob("*/survey.json")
                           for s in json.loads(f.read_text())["states"]}
+                for item in layout["instances"]:
+                    key = item["asset"]
+                    if key not in labels:
+                        sources = json.loads((recipe.parent / (key + ".json")).read_text())
+                        labels[key] = next(r["label"] for r in sources if r["id"] == key)
                 pair = layout["id"]
                 clip = Path(folder) / (pair + ".mp4")
                 append(args.views / pair / "audi", pair, [r["asset"] + "   " + labels[r["asset"]] for r in layout["instances"]], clip)

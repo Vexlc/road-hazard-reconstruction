@@ -1,0 +1,24 @@
+{
+  "id": "P261-M259",
+  "label": "碎石坑与缺盖检查井",
+  "instances": [
+    {
+      "id": "pit",
+      "asset": "P261",
+      "xy_m": [
+        0.98,
+        0.13
+      ],
+      "heading_deg": -11
+    },
+    {
+      "id": "well",
+      "asset": "M259",
+      "xy_m": [
+        -0.98,
+        -0.16
+      ],
+      "heading_deg": 22
+    }
+  ]
+}

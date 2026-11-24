@@ -3,13 +3,13 @@
 从下列固定标签开始，可核对完整索引。获得单件模型、原生场景或相机回放的具体命令，见对应系列的操作章节。
 
 ~~~bash
-gh repo clone Vexlc/road-hazard-reconstruction -- --branch roadside-reflections-v1.0.0 --depth 1
+gh repo clone Vexlc/road-hazard-reconstruction -- --branch mixed-inlets-v1.0.0 --depth 1
 cd road-hazard-reconstruction
 python3 scripts/check-reproduction-index.py
 python3 gen2hole/gen2hole.py locate H234
 ~~~
 
-该标签包含 **1,508 个编号、55 个重建系列、24 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[逐系列代码对照表](asset-code-index.md) · [沥青双坑、车尾鱼眼与换材质复现](24-asphalt-breakouts.md) · [道路遗落物的模型、锚点与鱼眼重放](23-road-debris.md) · [实扫圆井的逐文件复建与非共心宿主](22-scanned-round-covers.md) · [完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
+该标签包含 **1,512 个编号、57 个重建系列、25 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[逐系列代码对照表](asset-code-index.md) · [沥青双坑、车尾鱼眼与换材质复现](24-asphalt-breakouts.md) · [道路遗落物的模型、锚点与鱼眼重放](23-road-debris.md) · [实扫圆井的逐文件复建与非共心宿主](22-scanned-round-covers.md) · [完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
 
 ### 按手头材料选入口
 
@@ -39,7 +39,7 @@ python3 gen2hole/gen2hole.py locate P203
 python3 gen2hole/gen2hole.py locate P211
 ~~~
 
-第一项检查仅用 Python 标准库。该版本应输出 **1,508 个唯一编号、55 个重建系列、24 条迁入或展示路线、20 件 KITTI 双坑资产**。`locate` 的 `prepare` 指输入准备，`launcher` 指实际构建程序，`recipe` 指配方，`guide / section` 定位到该案例的操作步骤，`transfer` 给出对应的迁入程序及说明。P154 是带实测深度的翘砖，P203 是单图路面剥落，P211 是生成参考图的大坑，三者使用不同入口。统计以编号为单位，共用同一次采集的多种井盖姿态分别有编号。[机器可读索引](../catalog/reconstruction-index.json)
+第一项检查仅用 Python 标准库。该版本应输出 **1,512 个唯一编号、57 个重建系列、25 条迁入或展示路线、20 件 KITTI 双坑资产**。`locate` 的 `prepare` 指输入准备，`launcher` 指实际构建程序，`recipe` 指配方，`guide / section` 定位到该案例的操作步骤，`transfer` 给出对应的迁入程序及说明。P154 是带实测深度的翘砖，P203 是单图路面剥落，P211 是生成参考图的大坑，三者使用不同入口。统计以编号为单位，共用同一次采集的多种井盖姿态分别有编号。[机器可读索引](../catalog/reconstruction-index.json)
 
 ## 各类资产怎样重建
 
@@ -65,6 +65,7 @@ python3 gen2hole/gen2hole.py locate P211
 | 断边沥青坑与粗集料碗坑 P250/P251 | 单次实拍 RGB-D，原始颜色、深度和轮廓均在小型输入包内 | [从两份采集到检查点和实拍车尾](26-remapped-pits.md) |
 | 路面浅层剥落、粗石碗坑与积水 P252–P255 | 两份实拍 RGB-D 与掩膜，目标路面支撑、重力、水量与注水点 | [从实测坑床到逐坡重算水线](27-wet-pavement.md) |
 | 碎边宽坑与椭圆碎石坑 P256–P258 | 两份注册 RGB-D、目标坡面、重力，近物反射可用同步双目或激光雷达 | [从两份采集到三个宿主](28-roadside-reflections.md) |
+| P260/P261 坑床与 A259/M259 十六孔检查井 | 实拍 RGB-D、扫描盖面与孔口、指定井圈安装状态 | [两组混合资产的逐文件重建](29-mixed-inlets.md#从实拍输入重建大坑与扫描井盖) |
 
 ## 先跑一个最小案例
 
@@ -104,6 +105,7 @@ echo '49759ba9e543495993f33a23896c7ead3bc83f2c42f6d0c47d6100ca3ccc5f38  runs/p10
 | 已裁切、旋转、缩放或去畸变的鱼眼 | [从源像素重采样已标定相机包](../gen2hole/downstream/camera_remap.py) | [实车四子光线回放与独立鱼眼验收](26-remapped-pits.md#接入重采样的相机) |
 | 积水坑 → 有坡度的新路面、实车鱼眼或自有引擎 | [水线重建](../gen2hole/seat_water.py) · [按光线求水面外观](../gen2hole/downstream/pavement_water.py) | [场景输入、固定回放与鱼眼验收](27-wet-pavement.md#接入自己的道路或鱼眼渲染器) |
 | 路边近物在水中的倒影 → 鱼眼、非共心或其他相机 | [从带标签深度提取观测面](../gen2hole/downstream/metric_reflection.py) | [观测面、朝向、独立光学验收和 CPU 复现](28-roadside-reflections.md#把自己的深度和相机接进来) |
+| 多采样鱼眼宿主，前景跨过坑口或井沿 | [逐光线颜色与进入传感器的权重](../gen2hole/downstream/host_exposure.py) | [标定、相机输入和遮挡边缘独立核验](29-mixed-inlets.md#在其他鱼眼或渲染器保留遮挡边缘) |
 
 接入自己的网格引擎时，GLB 使用米制 Y-up，Gaussian PLY 使用米制 Z-up。同一资产的高程场与切口需要随模型一起放置；坑口内要移除会遮挡坑底的宿主路面。原生高斯迁入还会旋转椭球朝向与球谐方向。自定义宿主需要世界坐标、锚点、原始相机、行车时间戳及遮挡信息。[坐标约定与自定义宿主接入](13-reproduce-and-transfer.md#接入自己的道路)
 

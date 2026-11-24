@@ -1,0 +1,445 @@
+{
+  "assets": {
+    "M259": {
+      "hashes": {
+        "asset.ply": "1a8eb1f158604cfb6e5257129db725100c8ea1194f98ae20cc720eeb8c7f6957",
+        "metadata.json": "f4a7bd7eb303ec001075fd9de382887070f40afd20b9bb20821ea6aa56fbe372",
+        "splat_material.npz": "beab6c89c88ce8d2634b6893e6422449659f7923827c5be91a795137544fb2f7",
+        "surface.npz": "4347b76e43e601d8deca0e7ef718517dea8d7298f8ba68cabeabcd417c3a0d56",
+        "asset.glb": "65531798213999c11e214a6e09a28a7f7e5e2770162868ac767dc00183a87a66"
+      },
+      "width_m": 0.66780078125,
+      "panel_size_m": [
+        0.69580078125,
+        0.69580078125
+      ],
+      "depth_design_m": 0.62,
+      "installation_grade": {
+        "center_z_m": -0.026,
+        "tilt_deg": 3.2,
+        "uphill_deg": 35
+      },
+      "through_holes": 0,
+      "highest_z_m": 0.0,
+      "lowest_z_m": -0.6200000047683716
+    },
+    "A259": {
+      "hashes": {
+        "asset.ply": "88e4469365039675594fb92dafc52deba9d89d46efdabb1d2b04466d172a2560",
+        "metadata.json": "7856b4f255523f0d6282f173b39ab81922131841c1436434477a8f1343c1495a",
+        "splat_material.npz": "d6842cfb3029a419cbd626d0362738f2a6b7201a65f23e8da125e211d4657fba",
+        "surface.npz": "f59008f7268d98fca1a322a054d165cb102b04a43e92bca19acda166921b47f4",
+        "asset.glb": "5eacb829afe4fa99a9c54005be46beee1ef20f94f564a25ba207e900a6cb48eb"
+      },
+      "width_m": 0.66780078125,
+      "panel_size_m": [
+        0.69580078125,
+        0.69580078125
+      ],
+      "depth_design_m": 0.62,
+      "installation_grade": {
+        "center_z_m": -0.026,
+        "tilt_deg": 3.2,
+        "uphill_deg": 35
+      },
+      "through_holes": 17,
+      "highest_z_m": 0.0,
+      "lowest_z_m": -0.6200000047683716
+    },
+    "P260": {
+      "hashes": {
+        "asset.ply": "21db402a37b3b9a0ddabfc496be3bf822af25b08d44815b919650d9907416eff",
+        "metadata.json": "66f071841fe617ab22c6b47019718bacf01a9216362e31a1947429cdbba83051",
+        "splat_material.npz": "7d18bf3e0ca8998e0c6754ed979b6e6457d33bd85199c7131cf6b0a008f26bdd",
+        "surface.npz": "d7994fdfe46168f5d31605ec2f8510531ecadefc291104995a36b4038780d08e",
+        "asset.glb": "e0529c996370ad986e4be737d1f0b5fab33a92ee550a73ffb26e7a4757e4dd24"
+      },
+      "area_m2": 1.2327843187638685,
+      "extent_m": [
+        1.400230884552002,
+        1.1683523654937744
+      ],
+      "depth_p95_m": 0.08863271267275273,
+      "holdout": {
+        "glb_sha256": "e0529c996370ad986e4be737d1f0b5fab33a92ee550a73ffb26e7a4757e4dd24",
+        "source": "PothRGBD",
+        "fit": [
+          "20250227_184048"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 9508,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 75983,
+        "withheld_mesh": {
+          "samples": 9508,
+          "median_mm": 0.8744597434997559,
+          "p95_mm": 4.004567861557006
+        },
+        "withheld_road_plane": {
+          "samples": 9508,
+          "median_mm": 65.31491892366347,
+          "p95_mm": 105.06431912022586
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      }
+    },
+    "P261": {
+      "hashes": {
+        "asset.ply": "a76588fa6354eb342dad6e7faac513bb5753d15117f8033ee8a0fb0d76ee0b48",
+        "metadata.json": "b4d71f04f20e839c31367246e3a2e222cf845d4b7ccc4d8f39a6e87e4e0b61f7",
+        "splat_material.npz": "a808eefc6dbe2e240e38e030cb986a1837afc13491eb676c848f83315a32ee88",
+        "surface.npz": "46caf2ee425c217ffd14cf31dd3d50855351958b95fcceb767f4f4430ba43ae1",
+        "asset.glb": "c11106c49ebb467e6c75c0348ce7ab99863a679808b16883bce2b8eeee1888aa"
+      },
+      "area_m2": 1.0556924472731135,
+      "extent_m": [
+        1.4838625192642212,
+        0.9849600791931152
+      ],
+      "depth_p95_m": 0.09970981201371,
+      "holdout": {
+        "glb_sha256": "c11106c49ebb467e6c75c0348ce7ab99863a679808b16883bce2b8eeee1888aa",
+        "source": "PothRGBD",
+        "fit": [
+          "20250305_053657"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 9657,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 77673,
+        "withheld_mesh": {
+          "samples": 9657,
+          "median_mm": 0.7539987564086914,
+          "p95_mm": 2.414941787719725
+        },
+        "withheld_road_plane": {
+          "samples": 9657,
+          "median_mm": 72.33164183237494,
+          "p95_mm": 109.39795217023072
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      }
+    }
+  },
+  "source_host_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+  "native": {
+    "P260-A259": {
+      "checkpoint_sha256": "1465ccb4d9579c8d3d87502966fc9808619a9f0e3a5daa2a928a62033806db10",
+      "native": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 2710,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 211067,
+          "max_baseline_error": 0
+        }
+      },
+      "local": {
+        "support_m": 0.18,
+        "views": {
+          "front": {
+            "frames": 48,
+            "raw_outside_changes": 12128,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 5893,
+            "max_interior_error": 0
+          },
+          "rear": {
+            "frames": 48,
+            "raw_outside_changes": 827260,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 316707,
+            "max_interior_error": 0
+          }
+        }
+      }
+    },
+    "P261-M259": {
+      "checkpoint_sha256": "bfde0ba96f5a832cb6e573c7f82577c2b075e26adcc2c993e5056d3be20c9e3b",
+      "native": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 2678,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 206618,
+          "max_baseline_error": 0
+        }
+      },
+      "local": {
+        "support_m": 0.18,
+        "views": {
+          "front": {
+            "frames": 48,
+            "raw_outside_changes": 12265,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 5416,
+            "max_interior_error": 0
+          },
+          "rear": {
+            "frames": 48,
+            "raw_outside_changes": 832586,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 285207,
+            "max_interior_error": 0
+          }
+        }
+      }
+    }
+  },
+  "real": {
+    "geometry": {
+      "A259": {
+        "floor_rays_at_vent_mouths": 17,
+        "part_at_bridge": 9,
+        "part_at_center": 9
+      },
+      "M259": {
+        "floor_rays_at_vent_mouths": 17,
+        "part_at_bridge": 7,
+        "part_at_center": 7
+      }
+    },
+    "views": {
+      "P260-A259/image_00": {
+        "frame": 217,
+        "both_visible_frames": 11,
+        "unclipped_preview": true,
+        "instance_pixels": {
+          "pit": 1880,
+          "well": 1732
+        },
+        "protected_edits": 0
+      },
+      "P260-A259/front_left": {
+        "frame": 1505,
+        "both_visible_frames": 8,
+        "unclipped_preview": true,
+        "instance_pixels": {
+          "pit": 4933,
+          "well": 4547
+        },
+        "protected_edits": 0
+      },
+      "P260-A259/rear_center": {
+        "frame": 1520,
+        "both_visible_frames": 19,
+        "unclipped_preview": true,
+        "instance_pixels": {
+          "pit": 13936,
+          "well": 2252
+        },
+        "protected_edits": 0
+      },
+      "P260-A259/image_03": {
+        "frame": 228,
+        "both_visible_frames": 7,
+        "unclipped_preview": false,
+        "instance_pixels": {
+          "pit": 11144,
+          "well": 7522
+        },
+        "protected_edits": 0
+      },
+      "P261-M259/image_00": {
+        "frame": 217,
+        "both_visible_frames": 11,
+        "unclipped_preview": true,
+        "instance_pixels": {
+          "pit": 1467,
+          "well": 1732
+        },
+        "protected_edits": 0
+      },
+      "P261-M259/front_left": {
+        "frame": 1505,
+        "both_visible_frames": 8,
+        "unclipped_preview": true,
+        "instance_pixels": {
+          "pit": 4026,
+          "well": 4547
+        },
+        "protected_edits": 0
+      },
+      "P261-M259/rear_center": {
+        "frame": 1520,
+        "both_visible_frames": 19,
+        "unclipped_preview": true,
+        "instance_pixels": {
+          "pit": 12596,
+          "well": 2252
+        },
+        "protected_edits": 0
+      },
+      "P261-M259/image_03": {
+        "frame": 228,
+        "both_visible_frames": 7,
+        "unclipped_preview": false,
+        "instance_pixels": {
+          "pit": 7750,
+          "well": 7522
+        },
+        "protected_edits": 0
+      }
+    }
+  },
+  "products": {
+    "P260-A259/image_00": {
+      "after.png": "f20913277f1bb2a2e87c57d11b25d493d18378de728fe5f5bbbd66b92f289670",
+      "part.png": "4520dd23fed020f8ecc575f193cc2dbbd02fe037321ac2e7e7735970dae1fe6d",
+      "instance.png": "dbd5ab1cfc8b1ee5d3a0dac8bfbb96e981c2cdd33044162bc4ddfc6a705487e4",
+      "range.npy": "0971fc0618f04bc25adc75a59b54a570452fea837aeffe18a011c25e5bc5190b"
+    },
+    "P260-A259/image_03": {
+      "after.png": "96a880238712890db3ff53f5f74240f48b58abf6d2f135523ffb34486d3c5244",
+      "part.png": "3e9c05db6e76b4ff4d2b16bce22d09da1d93acdc529935c277fb4446a0beced9",
+      "instance.png": "78ce294565f006fee5b82f02d57313b2c8fb9c2aacf53e9e387f88e54fa27d81",
+      "range.npy": "78c5cc4d7446e4af8ed9e3212267c9db50efa18a563b4f6ea639d07aabf266e0"
+    },
+    "P260-A259/front_left": {
+      "after.png": "0c0f27540ffb30714cdfbeb007fb783df1d6b7a775678c3e09f9000a725b2c12",
+      "part.png": "c1776113a226aa9ab6add0cae6649808aef984efc654e118ae09573a8cbb3b69",
+      "instance.png": "cc8949eaaf601afab96ece71ec4dab59add39e6425aa50e314a3d7b3fa931fd2",
+      "range.npy": "05cccbb2d5d8bcf44cb7d93781c25e74812b31d1be2ad92f8aaa6ea7448897e6"
+    },
+    "P260-A259/rear_center": {
+      "after.png": "228566dcba77ca6021d7adcbe86b75f2c33f70e1e564b851551ebc6fbb7bcbcb",
+      "part.png": "415917fd0c6ba237fa95ae4dbdeff24143842821a34879a04b84d3286634c1a2",
+      "instance.png": "f36ba2a3d7c0975b4b8b2ae31692e29f082019e78137d766298c98ad3631af60",
+      "range.npy": "537f3c3c7ad344361d068e46a9d8c8203d43c58db03d64d6621081abd159ce89"
+    },
+    "P261-M259/image_00": {
+      "after.png": "e0f9bb881597e384342f321be8b78c912b94f465b469d22d7e492cf66de0db27",
+      "part.png": "3bc83739732aaa1e73d2e36ddb46b60ea6d812e395c612613b5200e1c26b9ed4",
+      "instance.png": "c9b329fd926c5a9803d1dfac8b927bfa30be8bf2d02c23de39d73a5a5d1d49d4",
+      "range.npy": "551c2c5cd661bc6785e742d0b87ff3621d6173ff5610f0a2ccb4ddd022a967fb"
+    },
+    "P261-M259/image_03": {
+      "after.png": "4ad3638eac0749d3be56db594b9575310e3b0ed2b3aee29e8ec9d3574ec09a66",
+      "part.png": "5f79610c52531a4e72a0b73c56b7fa7a385560228dc2f91d517436694ec65e66",
+      "instance.png": "400b3e559fcbab84e06fa22e6e105ef52abeb02959f92f92f6401e14f464efdc",
+      "range.npy": "19f61503c3e09b6454a52560d8e5954441ba7dc8d8373ffe4373705e98d89e78"
+    },
+    "P261-M259/front_left": {
+      "after.png": "6beb38f2b97021cd56e9271acb04f692796901161c56b771ca849d96e9ea26d2",
+      "part.png": "f5a7b865f0aec226e72870d241b10fc1e3d8f9a670e94881056288f4fde8d156",
+      "instance.png": "290916818be7410b62d2b0b43cdd28432c4e3aa0476637c9964b055238ca3ebf",
+      "range.npy": "3b90d112a192beb78d3a5b6c2a09912c73e92117e2e7d082ecf4920789a230e5"
+    },
+    "P261-M259/rear_center": {
+      "after.png": "682d0d267e80b80f52fc4e854f146d8766a722e7378807e6a8e9b07592910175",
+      "part.png": "5d92946c27345b3766be77facaff32f304879fdac9865f64e0f82d2f616161ac",
+      "instance.png": "5e9b6d4c21e0e63a4e8548e350f390d92a9e59c653f51f4fe010ddfddbe1dc24",
+      "range.npy": "8f18f733af339c9a6a4f57dd88428634d24a2d3a027ebc556b4236520a0e0149"
+    }
+  },
+  "independent": {
+    "P260-A259/rear": {
+      "P260": {
+        "iou": 1.0,
+        "part_agreement": 1.0,
+        "range_error_p95_m": 1.430511474609375e-06,
+        "mixed_pixels": 57,
+        "sampled_mae": 0.0026552793414018694,
+        "resolved_host_mae": 0.1398372899420069,
+        "rear_hemisphere_samples": 0
+      },
+      "A259": {
+        "iou": 1.0,
+        "part_agreement": 1.0,
+        "range_error_p95_m": 2.765655517578117e-06,
+        "mixed_pixels": 24,
+        "sampled_mae": 0.00446247747530237,
+        "resolved_host_mae": 0.1301418437818603,
+        "rear_hemisphere_samples": 0
+      }
+    },
+    "P260-A259/side": {
+      "P260": {
+        "iou": 1.0,
+        "part_agreement": 1.0,
+        "range_error_p95_m": 1.1920928955078125e-06,
+        "mixed_pixels": 58,
+        "sampled_mae": 0.002430490782387118,
+        "resolved_host_mae": 0.12158956152973768,
+        "rear_hemisphere_samples": 0
+      },
+      "A259": {
+        "iou": 0.998876404494382,
+        "part_agreement": 0.998876404494382,
+        "range_error_p95_m": 1.1920928955078125e-06,
+        "mixed_pixels": 37,
+        "sampled_mae": 0.0021804140766453588,
+        "resolved_host_mae": 0.12334612437095478,
+        "rear_hemisphere_samples": 1541
+      }
+    },
+    "P261-M259/rear": {
+      "P261": {
+        "iou": 1.0,
+        "part_agreement": 1.0,
+        "range_error_p95_m": 1.430511474609375e-06,
+        "mixed_pixels": 55,
+        "sampled_mae": 0.0025366788724619153,
+        "resolved_host_mae": 0.14026745488884237,
+        "rear_hemisphere_samples": 0
+      },
+      "M259": {
+        "iou": 1.0,
+        "part_agreement": 1.0,
+        "range_error_p95_m": 2.0384788513183485e-06,
+        "mixed_pixels": 26,
+        "sampled_mae": 0.0041991673544106,
+        "resolved_host_mae": 0.12780262573592843,
+        "rear_hemisphere_samples": 0
+      }
+    },
+    "P261-M259/side": {
+      "P261": {
+        "iou": 1.0,
+        "part_agreement": 1.0,
+        "range_error_p95_m": 1.1920928955078125e-06,
+        "mixed_pixels": 60,
+        "sampled_mae": 0.0025789116564022625,
+        "resolved_host_mae": 0.12215750515156805,
+        "rear_hemisphere_samples": 0
+      },
+      "M259": {
+        "iou": 0.998876404494382,
+        "part_agreement": 0.998876404494382,
+        "range_error_p95_m": 3.337860107421875e-06,
+        "mixed_pixels": 37,
+        "sampled_mae": 0.0020298736740449012,
+        "resolved_host_mae": 0.123364974757296,
+        "rear_hemisphere_samples": 1541
+      }
+    }
+  },
+  "videos": {
+    "audi-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 9.6
+    },
+    "kitti-front-side.mp4": {
+      "frames": 87,
+      "seconds": 8.7
+    },
+    "joint-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    },
+    "joint-local-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    }
+  }
+}

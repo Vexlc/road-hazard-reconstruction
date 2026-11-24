@@ -429,14 +429,26 @@ class RoadMesh:
         return (*result, np.zeros((h, w), "f4")) if with_shadow else result
 
 
-def resolve_samples(samples):
+def resolve_samples(samples, *, host_rgb=None, weights=None):
     """Resolve subpixel color coverage, and return the nearest visible surface's part and radial range."""
-    after = np.uint8(np.rint(np.mean([v[0] for v in samples], axis=0)))
+    colors = np.stack([s[0] for s in samples])
+    if host_rgb is None:
+        after = np.uint8(np.rint(colors.mean(axis=0)))
+    else:
+        from host_exposure import integrate
+        after = integrate(colors, weights)
     ranges = np.stack([np.where(np.isfinite(v[2]), v[2], np.inf) for v in samples])
     nearest = np.argmin(ranges, axis=0)[None]
     distance = np.take_along_axis(ranges, nearest, axis=0)[0]
     part = np.take_along_axis(np.stack([v[1] for v in samples]), nearest, axis=0)[0]
     distance[part == 0] = np.nan
     if len(samples[0]) == 4:
-        return after, part, distance, np.mean([s[3] for s in samples], axis=0)
+        shadows = np.stack([s[3] for s in samples])
+        shadow = shadows.mean(axis=0) if weights is None else (shadows * weights).sum(axis=0).astype(shadows.dtype)
+        if host_rgb is not None:
+            unchanged = (part == 0) & (shadow == 0)
+            after[unchanged] = host_rgb[unchanged]
+        return after, part, distance, shadow
+    if host_rgb is not None:
+        after[part == 0] = host_rgb[part == 0]
     return after, part, distance

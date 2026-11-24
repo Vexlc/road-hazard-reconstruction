@@ -187,25 +187,28 @@ def register_views(layout, anchor, paths, calibration=None):
                 if "receiver_mask" in packet
                 else None
             )
-            # Calibrate on one real subray per pixel to avoid counting the same RGB measurement repeatedly.
-            for s in anchor["instances"]:
-                mesh = layout.meshes[s["asset"]]
-                xy, source, context = mesh.render(
-                    rgb,
-                    pose,
-                    rays[0],
-                    s["anchor"],
-                    host[0],
-                    protected[0],
-                    ray_origins_camera=None if origins is None else origins[0],
-                    apron_samples=True,
-                    receiver_mask=None if receiver is None else receiver[0],
-                    occluder_range=None if occluder is None else occluder[0],
-                    pixel_width=len(rays) ** -0.5,
-                )
-                if len(xy):
-                    base = albedo[context] if has_albedo else source
-                    observations[s["id"]].append((xy, base, rgb[context]))
+            from host_exposure import exposure
+            colors, _ = exposure(packet, host.shape)
+            # A resolved photograph supplies one observation; a sampled exposure supplies one per ray.
+            for i, image in enumerate([rgb] if colors is None else colors):
+                for s in anchor["instances"]:
+                    mesh = layout.meshes[s["asset"]]
+                    xy, source, context = mesh.render(
+                        image,
+                        pose,
+                        rays[i],
+                        s["anchor"],
+                        host[i],
+                        protected[i],
+                        ray_origins_camera=None if origins is None else origins[i],
+                        apron_samples=True,
+                        receiver_mask=None if receiver is None else receiver[i],
+                        occluder_range=None if occluder is None else occluder[i],
+                        pixel_width=len(rays) ** -0.5,
+                    )
+                    if len(xy):
+                        base = albedo[context] if has_albedo else source
+                        observations[s["id"]].append((xy, base, image[context]))
     result = {}
     for s in anchor["instances"]:
         batches = observations[s["id"]]

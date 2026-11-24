@@ -186,7 +186,9 @@ def main():
     mesh = layout if layout else RoadMesh(args.asset, measured_rim=args.measured_rim)
     with np.load(args.view, allow_pickle=False) as view:
         rays, host, protected, pose, origins = geometry(view, args.calibration, with_origins=True)
+        from host_exposure import exposure
         rgb = view["rgb"]
+        colors, weights = exposure(view, host.shape)
         anchor = json.loads(args.anchor.read_text())
         if "pavement_appearance_by_camera" in anchor:
             from pavement_appearance import camera_anchor
@@ -228,19 +230,21 @@ def main():
             receiver_band = float(receiver_band)
         samples = []
         for i, (subray, mask) in enumerate(zip(rays, protected)):
+            incident = rgb if colors is None else colors[i]
             options = dict(ray_origins_camera=None if origins is None else origins[i],
                            occluder_range=None if foreground is None else foreground[i],
                            road_tolerance_m=args.road_tolerance_m,
                            receiver_mask=None if receivers is None else receivers[i])
             if layout:
-                sample = layout.sample(rgb, pose, subray, anchor, host[i], mask, reflection_probe=reflection_probe, reflectors=reflectors, pixel_width=len(rays)**-0.5, **options)
+                sample = layout.sample(incident, pose, subray, anchor, host[i], mask, reflection_probe=reflection_probe, reflectors=reflectors, pixel_width=len(rays)**-0.5, **options)
             else:
                 options["receiver_band_m"] = receiver_band
                 if mesh.normal_textures:
                     options["pixel_width"] = len(rays)**-.5
-                sample = mesh.render(rgb, pose, subray, anchor, host[i], mask, with_shadow=mesh.standing, **options)
+                sample = mesh.render(incident, pose, subray, anchor, host[i], mask, with_shadow=mesh.standing, **options)
             samples.append(sample)
-        after, ids, ranges, *shadow = resolve_samples([s[:3] for s in samples] if layout else samples)
+        after, ids, ranges, *shadow = resolve_samples([s[:3] for s in samples] if layout else samples,
+            host_rgb=None if colors is None else rgb, weights=weights)
     args.out.mkdir(parents=True, exist_ok=True)
     Image.fromarray(after).save(args.out / "after.png")
     Image.fromarray(ids).save(args.out / "part.png")

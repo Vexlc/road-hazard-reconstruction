@@ -1,0 +1,77 @@
+{
+  "family": "sixteen-vent-infill",
+  "source_url": "https://ambientcg.com/a/ManholeCover004",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "credit": "ambientCG, Manhole Cover 004. Scanned visible surfaces. Specified installation, cover thickness, and shaft dimensions.",
+  "frame": {
+    "image": "Color.png"
+  },
+  "perforations": {
+    "shape": "round",
+    "corners_xy": [
+      [
+        242,
+        210
+      ],
+      [
+        812,
+        210
+      ],
+      [
+        812,
+        780
+      ],
+      [
+        242,
+        780
+      ]
+    ],
+    "mask": "openings.png",
+    "lining": "../../perforated-covers/lining.jpg",
+    "displacement": "Displacement.png",
+    "pavement": "../../perforated-covers/split-iron/pavement.jpg",
+    "surround_mask": "Opacity.png",
+    "metalness": "Metalness.png",
+    "roughness": "Roughness.png",
+    "normal_gl": "NormalGL.png",
+    "relief_span_m": 0.006,
+    "photographed_surround": true,
+    "edge_patch_xyxy": [
+      512,
+      176,
+      527,
+      185
+    ],
+    "size_m": [
+      0.69580078125,
+      0.69580078125
+    ],
+    "frame_band_m": 0.048828125,
+    "seat_overlap_m": 0.014,
+    "thickness_m": 0.04,
+    "shaft_depth_m": 0.62,
+    "solid_face": false,
+    "scale_source": "570 px lid seam in the 1024 px scan. The publisher gives an approximate 1.25 m planar extent. The relief span, buried geometry and installed grade are design values."
+  },
+  "states": [
+    {
+      "id": "A259",
+      "label": "单侧沉降的十六孔填芯盖",
+      "installation_grade": {
+        "center_z_m": -0.026,
+        "tilt_deg": 3.2,
+        "uphill_deg": 35
+      }
+    },
+    {
+      "id": "M259",
+      "label": "十六孔填芯盖缺失的沉降井",
+      "absent": true,
+      "installation_grade": {
+        "center_z_m": -0.026,
+        "tilt_deg": 3.2,
+        "uphill_deg": 35
+      }
+    }
+  ]
+}
