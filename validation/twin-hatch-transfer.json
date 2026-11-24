@@ -1,0 +1,619 @@
+{
+  "assets": {
+    "A228": {
+      "leaf_solids": {
+        "Left": {
+          "through_holes": 0,
+          "euler_characteristic": 2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.02213093909528267
+        },
+        "Right": {
+          "through_holes": 0,
+          "euler_characteristic": 2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.022103915518409945
+        }
+      },
+      "beam_solid": {
+        "through_holes": 0,
+        "euler_characteristic": 2,
+        "connected_solids": 1,
+        "closed_oriented_mesh": true,
+        "metal_volume_m3": 0.002822239161358927
+      },
+      "surface_probes": {
+        "left": {
+          "rays": 1276,
+          "median_z_m": -0.0009688138961791992
+        },
+        "right": {
+          "rays": 1276,
+          "median_z_m": -0.0008594393730163574
+        }
+      },
+      "asset.glb": "abe1229e6b3257ffec31dd4b18b408cf1aa5eef88ab262682be27ab8c6b12221",
+      "surface.npz": "7a80558f4af998394f10ee8ed57b1482450866c43a76f7e12d93af370e41680b",
+      "metadata.json": "b4cc811c43429caf8104e027440a41f40c6e5041d71ff6865b8d860473607ede",
+      "asset.ply": "025f3ca2692475d154a2cdd6df15e6283e53255d0ecd5f8827b9037024a604af",
+      "splat_material.npz": "f9773242f025252c95d9c25afa8461c84a8fc196a606a967c1f2a16eff294870",
+      "site": "034_228",
+      "reload_pixel_error": 0,
+      "depth_check": null
+    },
+    "A229": {
+      "leaf_solids": {
+        "Left": {
+          "through_holes": 0,
+          "euler_characteristic": 2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.02213093909528267
+        },
+        "Right": {
+          "through_holes": 0,
+          "euler_characteristic": 2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.022103914692404036
+        }
+      },
+      "beam_solid": {
+        "through_holes": 0,
+        "euler_characteristic": 2,
+        "connected_solids": 1,
+        "closed_oriented_mesh": true,
+        "metal_volume_m3": 0.002822239161358927
+      },
+      "surface_probes": {
+        "left": {
+          "rays": 1276,
+          "median_z_m": -0.0009688138961791992
+        },
+        "right": {
+          "rays": 1276,
+          "median_z_m": 0.05244007706642151
+        }
+      },
+      "asset.glb": "cc5fc3588cacca926c8cba712f0a824041998a3ac40ca6ca77c9f75a30b5bef3",
+      "surface.npz": "8e8cb5158251cfe53ec0ccebfba0fdaf3187863505226c60f539faccd0a93cba",
+      "metadata.json": "c68a21eeb94a2ebc5833f47abc3bda08746828aaaa8ecbf60e4f4358192a99f8",
+      "asset.ply": "b1421f6d7adb658b5b893dcdee326c6ae43d886879384726993b050459d4fe90",
+      "splat_material.npz": "c7bc7439814d463029f3a3eb1e0ee59af95de552e61893c231ba0d88312dc187",
+      "site": "109_229",
+      "reload_pixel_error": 0,
+      "depth_check": null
+    },
+    "M229": {
+      "leaf_solids": {
+        "Right": {
+          "through_holes": 0,
+          "euler_characteristic": 2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.022103915518409945
+        }
+      },
+      "beam_solid": {
+        "through_holes": 0,
+        "euler_characteristic": 2,
+        "connected_solids": 1,
+        "closed_oriented_mesh": true,
+        "metal_volume_m3": 0.002822239161358927
+      },
+      "surface_probes": {
+        "left": {
+          "rays": 1276,
+          "median_z_m": -0.8399999141693115
+        },
+        "right": {
+          "rays": 1276,
+          "median_z_m": -0.0008594393730163574
+        }
+      },
+      "asset.glb": "a7b568e3c89446f9f6fe02c031d4ddffea7dcabf2ff76e1ab7f0ad42d17ebeaf",
+      "surface.npz": "46224f9320a44bf917c8f0175b0ae1e58ecbe89a7b15b5bc70fbfa75e0b608fa",
+      "metadata.json": "dfcbc10b835dd5d22165d0fbb54aca9ed726e96ec2766be718a601bc5411d134",
+      "asset.ply": "745d9eb6d54ac23fe155cf98c23d0de5bbd8ac07e41eb14f9b4bc2a37f8dead9",
+      "splat_material.npz": "31b8f8c3e79e80ee57fdd4323e3c057956db29315034366996cd79ee2668a3ae",
+      "site": "034_229",
+      "reload_pixel_error": 0,
+      "depth_check": {
+        "retained_panel_rays": 253,
+        "retained_within_35mm_fraction": 1.0,
+        "rays": 253,
+        "below_road_7cm_fraction": 1.0,
+        "median_hit_local_height_m": -0.36299121870669626
+      }
+    },
+    "M230": {
+      "leaf_solids": {
+        "Left": {
+          "through_holes": 0,
+          "euler_characteristic": 2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.02213093909528267
+        }
+      },
+      "beam_solid": {
+        "through_holes": 0,
+        "euler_characteristic": 2,
+        "connected_solids": 1,
+        "closed_oriented_mesh": true,
+        "metal_volume_m3": 0.002822239161358927
+      },
+      "surface_probes": {
+        "left": {
+          "rays": 1276,
+          "median_z_m": -0.0009688138961791992
+        },
+        "right": {
+          "rays": 1276,
+          "median_z_m": -0.8399999141693115
+        }
+      },
+      "asset.glb": "5ed89664b62048fefe39903f1cb4f658a8d65cd2b5692dd20c9d2323e028ef30",
+      "surface.npz": "9b55f7e458a9b46b96d9a7e0051c777a831dae232ac5230ce4dc997470bf7975",
+      "metadata.json": "5818cf6b1153130031be6fe121baf65bbbad7053b8a5fdba6a9dd9724c40527a",
+      "asset.ply": "86dcd71856664b4f0de92552a2dd80664124fc9e327fd521408cb7c836a09541",
+      "splat_material.npz": "1ab7c4687c425962b100dc72db61c7ac49c3049cdad22ac15f44e06196bda3fc",
+      "site": "109_230",
+      "reload_pixel_error": 0,
+      "depth_check": {
+        "retained_panel_rays": 253,
+        "retained_within_35mm_fraction": 1.0,
+        "rays": 253,
+        "below_road_7cm_fraction": 0.9090909090909091,
+        "median_hit_local_height_m": -0.33650412792536544
+      }
+    },
+    "M231": {
+      "leaf_solids": {},
+      "beam_solid": {
+        "through_holes": 0,
+        "euler_characteristic": 2,
+        "connected_solids": 1,
+        "closed_oriented_mesh": true,
+        "metal_volume_m3": 0.002822239161358927
+      },
+      "surface_probes": {
+        "left": {
+          "rays": 1276,
+          "median_z_m": -0.8399999141693115
+        },
+        "right": {
+          "rays": 1276,
+          "median_z_m": -0.8399999141693115
+        }
+      },
+      "asset.glb": "fdacbfa9bca62b2a0417be84c9d0384e87498ef56aeb1558b798f9cf6fd4851f",
+      "surface.npz": "fd3eb9c42163878a2fcda6da3da4226d7e3136526855fb25942a0827a6fda06a",
+      "metadata.json": "453596abc7eae394a8348f682e01b4c11c3232872d81a7dbfa7ec71ba9dc0d11",
+      "asset.ply": "a18bdc0b134e9c0bf55ddc77b934051acfd45c70c66953d4ef7cf1a537b01fac",
+      "splat_material.npz": "2584ea081b263e5719362be7f5f59a5271f2375b360627bfa515d1d8d560bc38",
+      "site": "034_231",
+      "reload_pixel_error": 0,
+      "depth_check": {
+        "rays": 506,
+        "below_road_7cm_fraction": 0.9545454545454546,
+        "median_hit_local_height_m": -0.33987593879798084
+      }
+    }
+  },
+  "hosts": {
+    "a2d2-frontleft": {
+      "models": {
+        "A228": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 7345,
+            "accepted_frames": 8,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1517,
+            "visible_pixels": 10625,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        },
+        "A229": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 8473,
+            "accepted_frames": 8,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1517,
+            "visible_pixels": 10939,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        },
+        "M229": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 7345,
+            "accepted_frames": 8,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1517,
+            "visible_pixels": 10625,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        },
+        "M230": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 7345,
+            "accepted_frames": 8,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1517,
+            "visible_pixels": 10625,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        },
+        "M231": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 7345,
+            "accepted_frames": 8,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1517,
+            "visible_pixels": 10625,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        }
+      },
+      "road_fit": {
+        "center_world": [
+          2.528033351159315,
+          1.8823935933419687,
+          8.153294928021317
+        ],
+        "basis_columns": [
+          [
+            0.04283619997389938,
+            -0.9989085569421443,
+            -0.01862135439646972
+          ],
+          [
+            0.011288626551449316,
+            0.019121194731130182,
+            -0.9997534430161449
+          ],
+          [
+            0.9990183316047698,
+            0.04261542889397007,
+            0.012095384979609578
+          ]
+        ],
+        "inliers": 25604,
+        "cells": 84,
+        "rms_m": 0.020653702604120652,
+        "footprint_support": {
+          "size_m": [
+            1.3905000016093254,
+            0.6901000007987022
+          ],
+          "cells": 24,
+          "points": 4320,
+          "center_adjustment_m": -0.00901574539453206,
+          "cell_height_spread_m": 0.021202961613304226,
+          "cell_residual_p90_m": 0.012580965746990452
+        }
+      },
+      "encoded_frames": 110,
+      "seconds": 11.0,
+      "packets": {
+        "front_left": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls.",
+        "rear_center": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls."
+      },
+      "M230_sensor_edge_frames": {
+        "front_left": [],
+        "rear_center": []
+      }
+    },
+    "kitti360-0000": {
+      "models": {
+        "A228": {
+          "image_00": {
+            "frame": 219,
+            "visible_pixels": 3481,
+            "accepted_frames": 13,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 22391,
+            "accepted_frames": 14,
+            "ego_edits": 0
+          }
+        },
+        "A229": {
+          "image_00": {
+            "frame": 219,
+            "visible_pixels": 3999,
+            "accepted_frames": 14,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 23662,
+            "accepted_frames": 14,
+            "ego_edits": 0
+          }
+        },
+        "M229": {
+          "image_00": {
+            "frame": 219,
+            "visible_pixels": 3481,
+            "accepted_frames": 13,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 22391,
+            "accepted_frames": 14,
+            "ego_edits": 0
+          }
+        },
+        "M230": {
+          "image_00": {
+            "frame": 219,
+            "visible_pixels": 3481,
+            "accepted_frames": 13,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 22391,
+            "accepted_frames": 14,
+            "ego_edits": 0
+          }
+        },
+        "M231": {
+          "image_00": {
+            "frame": 219,
+            "visible_pixels": 3481,
+            "accepted_frames": 13,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 22391,
+            "accepted_frames": 14,
+            "ego_edits": 0
+          }
+        }
+      },
+      "road_fit": {
+        "center_world": [
+          18.22419645180624,
+          -8.535335355122529,
+          -0.9018641488056293
+        ],
+        "basis_columns": [
+          [
+            0.9959136107699704,
+            -0.09007689558836154,
+            0.006498674040399259
+          ],
+          [
+            0.09003171032233784,
+            0.9959147193498491,
+            0.006939950918125862
+          ],
+          [
+            -0.007097254367330756,
+            -0.006326504838752576,
+            0.9999548011370166
+          ]
+        ],
+        "inliers": 15965,
+        "cells": 81,
+        "rms_m": 0.012680196329574763,
+        "footprint_support": {
+          "size_m": [
+            1.3905000016093254,
+            0.6901000007987022
+          ],
+          "cells": 24,
+          "points": 914,
+          "center_adjustment_m": 0.0052706908169578934,
+          "cell_height_spread_m": 0.016207187889258325,
+          "cell_residual_p90_m": 0.00952407870279791
+        }
+      },
+      "encoded_frames": 196,
+      "seconds": 19.6,
+      "packets": {
+        "image_00": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls.",
+        "image_03": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls."
+      },
+      "M230_sensor_edge_frames": {
+        "image_00": [
+          {
+            "frame": 219,
+            "sides": [
+              "bottom"
+            ]
+          },
+          {
+            "frame": 220,
+            "sides": [
+              "bottom"
+            ]
+          }
+        ],
+        "image_03": []
+      }
+    },
+    "kitti360-0003-right": {
+      "models": {
+        "A228": {
+          "image_00": {
+            "frame": 501,
+            "visible_pixels": 3100,
+            "accepted_frames": 16,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 501,
+            "visible_pixels": 1006,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          }
+        },
+        "A229": {
+          "image_00": {
+            "frame": 501,
+            "visible_pixels": 3523,
+            "accepted_frames": 16,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 501,
+            "visible_pixels": 1199,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          }
+        },
+        "M229": {
+          "image_00": {
+            "frame": 501,
+            "visible_pixels": 3100,
+            "accepted_frames": 16,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 501,
+            "visible_pixels": 1006,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          }
+        },
+        "M230": {
+          "image_00": {
+            "frame": 501,
+            "visible_pixels": 3100,
+            "accepted_frames": 16,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 501,
+            "visible_pixels": 1006,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          }
+        },
+        "M231": {
+          "image_00": {
+            "frame": 501,
+            "visible_pixels": 3100,
+            "accepted_frames": 16,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 501,
+            "visible_pixels": 1006,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          }
+        }
+      },
+      "road_fit": {
+        "center_world": [
+          -36.40151818810663,
+          -21.90162744638447,
+          -0.929594165120104
+        ],
+        "basis_columns": [
+          [
+            -0.8553322080780762,
+            0.5180352928529626,
+            -0.006800675189114937
+          ],
+          [
+            -0.5180797546339865,
+            -0.8552690235157314,
+            0.010405059002017457
+          ],
+          [
+            -0.00042621904097952986,
+            0.012423074224700362,
+            0.9999227397974988
+          ]
+        ],
+        "inliers": 4942,
+        "cells": 67,
+        "rms_m": 0.02086267364408709,
+        "footprint_support": {
+          "size_m": [
+            1.3905000016093254,
+            0.6901000007987022
+          ],
+          "cells": 24,
+          "points": 547,
+          "center_adjustment_m": -0.023554669168486725,
+          "cell_height_spread_m": 0.025168373941992155,
+          "cell_residual_p90_m": 0.013433525116942641
+        }
+      },
+      "encoded_frames": 190,
+      "seconds": 19.0,
+      "packets": {
+        "image_00": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls.",
+        "image_03": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls."
+      },
+      "M230_sensor_edge_frames": {
+        "image_00": [],
+        "image_03": []
+      }
+    }
+  },
+  "independent_build_files": 25,
+  "grazing_sensor_control": {
+    "hit_pixels": 56,
+    "rear_hemisphere_pixels": 56,
+    "visible_on_right_edge": 17,
+    "masked_uncalibrated_pixels": 36652,
+    "exact_full_sensor_rgb_part_range": true,
+    "masked_nan_bearings": 64,
+    "foreground_delta_m": 0.015
+  },
+  "kitti_0003_footprint_candidates": {
+    "0.85": {
+      "accepted": true,
+      "size_m": [
+        1.3905000016093254,
+        0.6901000007987022
+      ],
+      "cells": 24,
+      "points": 547,
+      "center_adjustment_m": -0.023554669168486725,
+      "cell_height_spread_m": 0.025168373941992155,
+      "cell_residual_p90_m": 0.013433525116942641
+    },
+    "1.55": {
+      "accepted": false,
+      "reason": "Footprint crosses a step or an inconsistent road plane (offset -0.065 m, height spread 0.034 m, residual P90 0.014 m)"
+    },
+    "1.85": {
+      "accepted": false,
+      "reason": "Footprint crosses a step or an inconsistent road plane (offset -0.035 m, height spread 0.118 m, residual P90 0.042 m)"
+    }
+  }
+}

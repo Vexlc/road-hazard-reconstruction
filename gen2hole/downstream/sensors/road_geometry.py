@@ -11,7 +11,7 @@ PACKAGE_NAMES = ('道路病害图生三维', '道路病害图生三维_新增100
 PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidewall',
          'water surface', 'cast ring and seat', 'shaft wall', 'shaft bottom',
          'concrete collar', 'lid face', 'lid underside', 'lid edge', 'hinge',
-         'pavement block top', 'pavement block edge', 'pavement block underside', 'subgrade', 'socket wall', 'visible debris face', 'opening inner rim')
+         'pavement block top', 'pavement block edge', 'pavement block underside', 'subgrade', 'socket wall', 'visible debris face', 'opening inner rim', 'central bearing beam')
 EXACT_PARTS = {
     'Fracture inset rim': 19, 'Road around the aperture': 1, 'Road adjoining the fracture': 1,
     'Fracture lip and exposed bed': 2, 'Fracture sidewall in surface coordinates': 3,
@@ -20,6 +20,9 @@ EXACT_PARTS = {
     'Lid underside with casting ribs': 10, 'Lid rolled edge': 11,
     'Lid underside': 10, 'Lid aperture walls and perimeter': 11,
     'Lid fragment face': 9, 'Lid fragment underside': 10, 'Lid fragment aperture walls and perimeter': 11,
+    'Left lid face': 9, 'Right lid face': 9, 'Left lid underside': 10, 'Right lid underside': 10,
+    'Left lid aperture walls and perimeter': 11, 'Right lid aperture walls and perimeter': 11,
+    'Central bearing beam': 20,
     'Detached pavement top': 13, 'Detached pavement edges': 14, 'Detached pavement underside': 15,
     'Exposed slab foundation': 16, 'Subgrade bearing': 16, 'Subgrade bearing surface': 16, 'Slab socket wall': 17,
 }
@@ -150,6 +153,6 @@ class Surface:
         hit = self.scene.cast_rays(o3d.core.Tensor(rays), nthreads=self.threads)
         dist, ids = hit['t_hit'].numpy(), hit['geometry_ids'].numpy()
         valid = np.isfinite(dist)
-        parts = np.zeros(len(dist), 'u1')
+        parts = np.zeros(dist.shape, 'u1')
         parts[valid] = self.parts[ids[valid]]
         return dist, parts, hit['primitive_normals'].numpy()

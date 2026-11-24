@@ -156,6 +156,14 @@ def trace(spec):
         variants[key] = repaired
         Image.fromarray(damaged * 255).save(calibration / (key + "_openings.png"))
     Image.fromarray(canonical).save(refs / "lid_ortho.png")
+    if 'twin_seam_uv' in profile:
+        measured = []
+        for name in ('roughness', 'metalness'):
+            source = np.asarray(Image.open(refs / profile[name]).convert('L'))
+            if source.shape != holes.shape:
+                raise ValueError(f"Unregistered {name} map")
+            measured.append(cv2.warpPerspective(source, mapping, (n, n)))
+        Image.fromarray(np.stack([np.full_like(mask, 255), *measured], -1)).save(refs / 'lid_orm.png')
     Image.fromarray(np.uint8(mask) * 255).save(calibration / "openings.png")
     if "displacement" in profile:
         source = np.asarray(Image.open(refs / profile["displacement"]))

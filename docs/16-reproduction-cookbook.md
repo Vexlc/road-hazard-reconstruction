@@ -1,5 +1,7 @@
 # 道路病害资产重建与场景迁入复现手册
 
+双联井盖和最新的整块占地检查、鱼眼边缘可见性、独立前景量程接入见[双联检查井与跨场景迁入](18-twin-hatch-transfer.md)。固定代码标签为 `twin-hatch-v1.0.0`。
+
 有资产编号，先运行 `locate`。只有参考图或深度，按下表的输入选重建入口。已有资产要放入道路，直接看下文的宿主表。所有命令均从仓库根目录执行，路径为相对路径。下载固定版本需要能读取该私有仓库的 GitHub 账号。[版本源码与下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25)
 
 主分支后来增加了九件实测坑洞与异常方井，以及按标定光线接入其他渲染器的方式。需要这一批时，使用后续标签 `mixed-road-v1.0.0`。[方井、坑洞和原始鱼眼复现](17-mixed-road-transfer.md)

@@ -38,7 +38,7 @@ def fracture_polygon(profile):
     return (uv - 0.5) * [w, -h]
 
 
-def cover_mesh(profile, openings, piece=None):
+def cover_mesh(profile, openings, piece=None, *, panel_interval=None):
     size = np.array(profile["size_m"])
     hole_loops = [(np.array(c) - 0.5) * [size[0], -size[1]] for c in openings]
     shape = profile["shape"]
@@ -51,6 +51,11 @@ def cover_mesh(profile, openings, piece=None):
         outer = (np.asarray(profile["lid_boundary_uv"]) - .5) * size * [1, -1]
     elif shape == "rect":
         outer = np.array([[-1, -1], [1, -1], [1, 1], [-1, 1]]) * size / 2
+        if panel_interval is not None:
+            left, right = panel_interval
+            if not 0 <= left < right <= 1:
+                raise ValueError("Invalid leaf interval in registered cover coordinates")
+            outer[:, 0] = (np.array([left, right, right, left]) - 0.5) * size[0]
     else:
         raise ValueError("Supported cover outlines are round, rectangular and polygonal")
     loops = [outer, *hole_loops]

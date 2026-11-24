@@ -19,7 +19,9 @@ def main():
     args = p.parse_args()
     survey, envs = load(args.survey), load(args.config)
     ids = [s['id'] for s in survey['states']]
-    if not ids or len(set(ids)) != len(ids) or any(not re.fullmatch(('M' if s.get('absent') else 'A')+r'[0-9]{2,}',s['id']) for s in survey['states']):
+    def missing(s):
+        return s.get('absent') or ('twin_seam_uv' in survey.get('perforations', {}) and len(s['panels']) < 2)
+    if not ids or len(set(ids)) != len(ids) or any(not re.fullmatch(('M' if missing(s) else 'A')+r'[0-9]{2,}',s['id']) for s in survey['states']):
         p.error('Every state needs a unique A or M ID, e.g. A91 or M91')
     perforated = 'perforations' in survey
     roles = ('frame', 'lid') if not perforated and any(not s.get('absent') for s in survey['states']) else ('frame',)
@@ -51,7 +53,7 @@ def build_bundle(args,survey,envs,paths,ids,run):
             shutil.copy2(path,refs/(name+'.png'))
     if 'perforations' in survey:
         profile = dict(survey['perforations'])
-        for name in ('mask', 'lining', 'displacement', 'pavement', 'surround_mask'):
+        for name in ('mask', 'lining', 'displacement', 'pavement', 'surround_mask', 'roughness', 'metalness'):
             if name in profile:
                 original = args.survey.parent / profile[name]
                 filename = ('source_pavement' if name == 'pavement' else name) + original.suffix.lower()
@@ -90,7 +92,8 @@ def build_bundle(args,survey,envs,paths,ids,run):
     mesh, compute = envs['mesh_python'], envs['compute_python']
     if 'perforations' in survey:
         run_step(compute,code/'trace_grate.py',[],env)
-        run_step(mesh,code/'perforated_cover.py',[],env)
+        builder = 'twin_hatch.py' if 'twin_seam_uv' in survey['perforations'] else 'perforated_cover.py'
+        run_step(mesh,code/builder,[],env)
     else:
         run_step(mesh,code/'survey_chamber.py',[],env)
     if not args.mesh_only:

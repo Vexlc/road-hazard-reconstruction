@@ -22,7 +22,7 @@ from migrate import rb
 def support(model_id):
     with np.load(Path(JOB['mesh_cache'])/(model_id+'.npz')) as data:
         names=data['part_names']
-        labels=np.array([('Fracture' in n or 'Water' in n or n.startswith('Lid') or 'Cast ring' in n or 'collar' in n) for n in names])
+        labels=np.array([('Fracture' in n or 'Water' in n or n.startswith(('Lid', 'Left lid', 'Right lid')) or 'Cast ring' in n or 'collar' in n) for n in names])
         if 'Slab socket wall' in names:
             labels=np.isin(names,['Detached pavement top','Exposed slab foundation','Slab socket wall'])
         xyz=data['xyz'][np.unique(data['faces'][labels[data['face_part']]])]

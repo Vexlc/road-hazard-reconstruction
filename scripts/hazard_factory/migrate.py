@@ -101,23 +101,42 @@ def cavity_fraction(result, cam, anchor, model):
     exponent = model['exponent']
     mask = abs(x/(.5*model['width_m']))**exponent + abs(y/(.5*model['length_m']))**exponent < .62
     local = np.c_[x[mask], y[mask], np.zeros(mask.sum())]
+    if 'missing_panels' in model:
+        # The original opening still includes any surviving panels and the central bearing.
+        # Use the delivered upper surface to decide which probe belongs to an exposed bay.
+        with np.load(Path(model['ply']).with_name('surface.npz'), allow_pickle=False) as field:
+            expected_z = rb.sample_field(field, 'height', local)
     points = local@anchor.basis.T+anchor.center
     w = cam.get_extrinsic(world2cam=True).cpu().numpy()
     k = cam.K.cpu().numpy()
     q = points@w[:3, :3].T+w[:3, 3]
     uv = q[:,:2]/q[:,2:3]*[k[0,0], k[1,1]]+[k[0,2], k[1,2]]
     px = np.rint(uv).astype(int)
-    good = ((px[:,0]>=0)&(px[:,0]<cam.image_width)&(px[:,1]>=0)&(px[:,1]<cam.image_height))
+    good = ((q[:,2]>0)&(px[:,0]>=0)&(px[:,0]<cam.image_width)&(px[:,1]>=0)&(px[:,1]<cam.image_height))
     px = px[good]
     depth = result['depth'][0].cpu().numpy()[px[:,1], px[:,0]]
     rays = np.c_[(px[:,0]-k[0,2])/k[0,0], (px[:,1]-k[1,2])/k[1,1], np.ones(len(px))]
     pose = np.linalg.inv(w)
     hits = (rays*depth[:,None])@pose[:3,:3].T+pose[:3,3]
     height = (hits-anchor.center)@anchor.basis[:,2]
+    retained = {}
+    if 'missing_panels' in model:
+        expected_z = expected_z[good]
+        on_panel = expected_z > -.01
+        if len(model['missing_panels']) == 1:
+            if on_panel.sum() < 15:
+                raise ValueError(f"{model['id']}: insufficient rays on retained leaf")
+            on_surface = float(np.mean(abs(height[on_panel] - expected_z[on_panel]) < .035))
+            if on_surface < .70:
+                raise ValueError(f"{model['id']}: retained leaf obscured; surface fraction={on_surface}")
+            retained = dict(retained_panel_rays=int(on_panel.sum()), retained_within_35mm_fraction=on_surface)
+        height = height[expected_z < -.07]
+    if not len(height) or not np.isfinite(height).all():
+        raise ValueError(f"{model['id']}: insufficient valid cavity depth")
     fraction = float(np.mean(height < -.07))
     if fraction < .55:
         raise ValueError(f"{model['id']}: cavity obscured; below-road ray fraction={fraction}")
-    return {'rays': len(px), 'below_road_7cm_fraction': fraction,
+    return {**retained, 'rays': len(height), 'below_road_7cm_fraction': fraction,
             'median_hit_local_height_m': float(np.median(height))}
 
 

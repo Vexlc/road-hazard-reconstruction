@@ -17,25 +17,36 @@ from road_geometry import read_json, save_json, sha256  # noqa: E402
 
 def project_directions(rays, cal):
     model, width, height, fx, fy, cx, cy, *k = cal
-    if model != "OPENCV_FISHEYE" or len(k) != 4:
-        raise ValueError("Use an exported SC-GS calibrated fisheye sensor frame")
-    r = np.linalg.norm(rays[..., :2], axis=-1)
-    theta = np.arctan2(r, rays[..., 2])
-    rad = theta * np.polynomial.polynomial.polyval(theta**2, [1, *k])
-    s = np.divide(rad, r, out=np.ones_like(rad), where=r > 1e-8)
+    if model == "PINHOLE" and not k:
+        in_front = rays[..., 2] > 1e-6
+        s = np.divide(1., rays[..., 2], out=np.zeros_like(rays[..., 2]), where=in_front)
+    elif model == "OPENCV_FISHEYE" and len(k) == 4:
+        r = np.linalg.norm(rays[..., :2], axis=-1)
+        theta = np.arctan2(r, rays[..., 2])
+        rad = theta * np.polynomial.polynomial.polyval(theta**2, [1, *k])
+        s = np.divide(rad, r, out=np.ones_like(rad), where=r > 1e-8)
+        in_front = np.ones_like(r, bool)
+    else:
+        raise ValueError("Use an exported pinhole or OpenCV fisheye sensor frame")
     uv = rays[..., :2] * s[..., None] * [fx, fy] + [cx - 0.5, cy - 0.5]
-    valid = np.all((uv >= 0) & (uv < [width - 1, height - 1]), axis=-1)
-    return np.float32(uv), valid
+    valid = in_front & np.all((uv >= 0) & (uv < [width - 1, height - 1]), axis=-1)
+    uv = np.float32(uv)
+    sensor_rays, domain = pixel_rays(cal, return_valid=True)
+    bearing = cv2.remap(sensor_rays, uv, None, cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT)
+    calibrated = cv2.remap(np.uint8(domain), uv, None, cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT)
+    return uv, valid & calibrated.astype(bool) & ((rays * bearing).sum(-1) > 0.999)
 
 
-def native_samples(cal, project_raw, crop_xy, from_range, from_mask):
+def native_samples(cal, project_raw, crop_xy, from_range, from_mask, from_rays):
     _, width, height, fx, fy, cx, cy, *k = cal
     source_h, source_w = from_range.shape
     samples = []
     for dx, dy in [(-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0.25, 0.25)]:
-        rays = pixel_rays([cal[0], width, height, fx, fy, cx - dx, cy - dy, *k])
+        rays, valid = pixel_rays([cal[0], width, height, fx, fy, cx - dx, cy - dy, *k], return_valid=True)
         coord = np.float32(project_raw(rays) - crop_xy)
-        available = (rays[..., 2] > 0) & (coord >= 0).all(-1) & (coord < [source_w - 1, source_h - 1]).all(-1)
+        bearings = cv2.remap(from_rays, coord, None, cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT)
+        available = (valid & ((rays * bearings).sum(-1) > 0.999) &
+                     (coord >= 0).all(-1) & (coord < [source_w - 1, source_h - 1]).all(-1))
         near = cv2.remap(
             from_range, coord, None, cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT, borderValue=np.inf
         )
@@ -52,22 +63,28 @@ def main():
     ap.add_argument("--out", type=Path, default=ROOT / "outputs/mixed-road/sc-gs")
     ap.add_argument("--runs", type=Path, default=ROOT / "runs/mixed-road")
     ap.add_argument("--views", type=Path, default=ROOT / "outputs/mixed-road")
+    ap.add_argument("--ids", nargs="+", default=["P223", "A225", "M224"])
+    ap.add_argument("--packet-id", default="M224")
+    sensors = {"kitti360-0000": "image_03", "kitti360-0003-right": "image_00", "a2d2-frontleft": "rear_center"}
+    ap.add_argument("--scenes", nargs="+", choices=sensors, default=["kitti360-0000", "a2d2-frontleft"])
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
-    ids = ("P223", "A225", "M224")
-    meshes = {key: RoadMesh(next(args.runs.glob("*/series/assets/*/" + key))) for key in ids}
+    assets = {key: next(args.runs.glob("*/series/assets/*/" + key)) for key in args.ids}
+    meshes = {key: RoadMesh(path) for key, path in assets.items()}
     result = {}
-    gallery = Image.new("RGB", (1216, 632), "#f2f1eb")
+    gallery = Image.new("RGB", (12 + (len(assets) + 1) * 301, 130 + 251 * len(args.scenes)), "#f2f1eb")
     draw = ImageDraw.Draw(gallery)
     font = ImageFont.truetype("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", 21, index=2)
     title = ImageFont.truetype("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", 30, index=2)
-    draw.text((18, 8), "同一份米制网格迁入 SC-GS 鱼眼画面", font=title, fill="#172d29")
-    for j, label in enumerate(("SC-GS 原路面", "P223   相邻浅坑", "A225   方盖横移", "M224   方井缺盖")):
+    draw.text((18, 8), "同一份米制网格迁入 SC-GS 实际相机画面", font=title, fill="#172d29")
+    labels = [f"{key}  {read_json(path / 'metadata.json')['label']}" for key, path in assets.items()]
+    for j, label in enumerate(["SC-GS 原路面", *labels]):
         draw.text((18 + j * 301, 75), label, font=font, fill="#233330")
-    for i, (scene, sensor) in enumerate([("kitti360-0000", "image_03"), ("a2d2-frontleft", "rear_center")]):
+    for i, scene in enumerate(args.scenes):
+        sensor = sensors[scene]
         base = args.views / scene
         anchor = read_json(base / "anchor.json")
-        chosen = read_json(base / "index.json")["M224"]["views"][sensor]
+        chosen = read_json(base / "index.json")[args.packet_id]["views"][sensor]
         split = read_json(ROOT / "work/streetcrafter-rig" / scene / "all/split.json")
         (name,) = [
             n
@@ -82,7 +99,7 @@ def main():
         host = np.asarray(Image.open(frame).convert("RGB"))
         if list(host.shape[1::-1]) != cal[1:3]:
             raise ValueError("SC-GS output size disagrees with the sensor calibration")
-        with np.load(base / "M224" / sensor / "view.npz") as packet:
+        with np.load(base / args.packet_id / sensor / "view.npz") as packet:
             rays, pose, host_range, protected, photo = (
                 packet[k] for k in ("rays_camera", "camera_to_world", "host_range", "protected", "rgb")
             )
@@ -96,7 +113,7 @@ def main():
         guarded = protected | ~fully_valid
         raw_project = import_module("render-mixed-road").view_model(sensor, split)[1]
         native = native_samples(
-            cal, raw_project, np.asarray(chosen["crop_xy"]), host_range, np.any(protected, axis=0)
+            cal, raw_project, np.asarray(chosen["crop_xy"]), host_range, np.any(protected, axis=0), np.mean(rays, axis=0)
         )
         panels = [host]
         union = np.zeros(host.shape[:2], bool)
@@ -126,7 +143,8 @@ def main():
                 or not np.array_equal(out[~hits], target[~hits])
                 or np.any(hits & ~fully_valid)
             ):
-                raise ValueError(f"SC-GS replay, depth or protected pixels differ for {scene}/{key}")
+                raise ValueError(f"SC-GS replay, depth or protected pixels differ for {scene}/{key}: "
+                                 f"{hits.sum()} asset pixels, {fully_valid.sum()} sensor pixels")
             folder = args.out / scene / key
             folder.mkdir(parents=True, exist_ok=True)
             Image.fromarray(out).save(folder / "after.png")
@@ -170,7 +188,7 @@ def main():
         result[scene] = row
     gallery.save(args.out / "scgs-fisheye.jpg", quality=94)
     save_json(args.out / "index.json", result)
-    print("Six placements on two independent SC-GS fisheye hosts matched the physical-camera hit ranges.")
+    print(f"{len(assets) * len(args.scenes)} placements matched the physical-camera hit ranges on {len(args.scenes)} SC-GS hosts.")
 
 
 if __name__ == "__main__":

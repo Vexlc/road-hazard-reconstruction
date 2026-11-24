@@ -15,6 +15,7 @@ PART_IMPORTANCE = {
     'Chipped concrete collar': 2.1, 'Inspection shaft': .85,
     'Cast ring and cover seat': 4.8, 'Shaft bottom': .42,
     'Lid face': 4.8, 'Lid fragment face': 4.8, 'Lid underside with casting ribs': 1.9, 'Lid rolled edge': 2.8,
+    'Left lid face': 4.8, 'Right lid face': 4.8,
 }
 
 

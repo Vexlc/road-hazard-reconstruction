@@ -16,10 +16,51 @@ sys.path[:0] = [
     str(ROOT / "streetcrafter/joint"),
     str(ROOT / "streetcrafter/backends"),
 ]
-from mesh_transfer import RoadMesh, fit_road, pixel_rays, resolve_samples  # noqa: E402
+from mesh_transfer import RoadMesh, fit_footprint, fit_road, footprint_size, pixel_rays, resolve_samples  # noqa: E402
 from prepare import load_rig  # noqa: E402
 from prepare_kitti import project_mei, homogeneous  # noqa: E402
 from road_geometry import save_json, sha256  # noqa: E402
+
+SUBPIXELS = ((-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0.25, 0.25))
+
+
+class RayWindow:
+    """Bound every calibrated subpixel ray in each tile, including fish-eye rays behind the optical plane."""
+
+    def __init__(self, model):
+        (self.width, self.height), _, unproject = model
+        self.tile = 32
+        starts = np.arange(0, self.width, self.tile)
+        low, high = [], []
+        for y in range(0, self.height, self.tile):
+            h = min(self.tile, self.height - y)
+            lo = np.full((len(starts), 3), np.inf, 'f4')
+            hi = -lo.copy()
+            for dx, dy in SUBPIXELS:
+                rays, valid = unproject(0, y, self.width, h, dx, dy)
+                lo = np.minimum(lo, np.minimum.reduceat(np.where(valid[..., None], rays, np.inf).min(0), starts))
+                hi = np.maximum(hi, np.maximum.reduceat(np.where(valid[..., None], rays, -np.inf).max(0), starts))
+            low.append(lo)
+            high.append(hi)
+        self.low, self.high = np.stack(low), np.stack(high)
+        self.valid = np.isfinite(self.low).all(-1)
+        self.low[~self.valid] = self.high[~self.valid] = 0
+
+    def crop(self, center, radius):
+        distance = np.linalg.norm(center)
+        if distance <= radius:
+            keep = self.valid
+        else:
+            axis = center / distance
+            # A tile is excluded only when even its directional upper bound misses the enclosing sphere.
+            upper = (np.where(axis >= 0, self.high, self.low) * axis).sum(-1)
+            keep = self.valid & (upper >= np.sqrt(1 - (radius / distance)**2) - 1e-6)
+        yy, xx = np.nonzero(keep)
+        if not len(xx):
+            return None
+        lo = np.array([xx.min(), yy.min()]) * self.tile
+        hi = np.minimum((np.array([xx.max(), yy.max()]) + 1) * self.tile, [self.width, self.height])
+        return lo, hi
 
 
 def view_model(sensor, data):
@@ -59,12 +100,11 @@ def view_model(sensor, data):
 
         def project(xyz):
             xyz = np.asarray(xyz)
-            if not xyz.size:
-                return np.empty((*xyz.shape[:-1], 2))
-            uv, _ = cv2.fisheye.projectPoints(
-                np.ascontiguousarray(xyz.reshape(-1, 1, 3), dtype="f8"), np.zeros(3), np.zeros(3), k, d
-            )
-            return uv.reshape(*xyz.shape[:-1], 2)
+            radial = np.linalg.norm(xyz[..., :2], axis=-1)
+            theta = np.arctan2(radial, xyz[..., 2])
+            r = theta * np.polynomial.polynomial.polyval(theta**2, np.r_[1., d])
+            scale = np.divide(r, radial, out=np.zeros_like(r), where=radial > 0)
+            return xyz[..., :2] * scale[..., None] * k.diagonal()[:2] + k[:2, 2]
 
         def unproject(left, top, width, height, dx=0.0, dy=0.0):
             cal = [
@@ -76,7 +116,7 @@ def view_model(sensor, data):
                 k[1, 2] + 0.5 - top - dy,
                 *d,
             ]
-            return pixel_rays(cal), np.ones((height, width), bool)
+            return pixel_rays(cal, return_valid=True)
 
         return (w, h), project, unproject
 
@@ -142,46 +182,51 @@ def align_observed_road(anchor, pose, points):
     )
 
 
-def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, is_fish, ego, packet_path=None):
+def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego, packet_path=None):
     (width, height), project, unproject = sensor_model
     center, basis = np.asarray(anchor["center_world"]), np.asarray(anchor["basis_columns"])
 
     def to_cam(pts):
         return (pts - pose[:3, 3]) @ pose[:3, :3]
 
-    # Enclose all possible intersections: surface.npz spans the full square road patch.
-    ex = mesh.extent * 0.5
-    box = np.array([[x, y, z] for x in [-ex[0], ex[0]] for y in [-ex[1], ex[1]] for z in [-0.03, 0.16]])
-    local = to_cam(box @ basis.T + center)
-    if local[:, 2].min() < (0.04 if is_fish else 0.35):
+    # Buried geometry can only be seen through its road-plane opening. Include every
+    # above-ground vertex and the entire aperture/apron, independent of forward projection.
+    bounds = mesh.bounds.copy()
+    bounds[0, 2] = min(-0.0015, bounds[1, 2])
+    mid = (bounds[0] + bounds[1]) / 2
+    crop = window.crop(to_cam(mid @ basis.T + center), np.linalg.norm(bounds[1] - mid))
+    if crop is None:
         return None
-    bounds = project(local)
-    if np.any(bounds.min(0) < 3) or np.any(bounds.max(0) > np.array([width, height]) - 4):
-        return None
-    lo = np.maximum(0, np.floor(bounds.min(0) - 18)).astype(int)
-    hi = np.minimum([width, height], np.ceil(bounds.max(0) + 19)).astype(int)
-    if np.any(hi - lo < 8) or not np.all(
-        (project(to_cam(center)) >= 0) & (project(to_cam(center)) < [width, height])
-    ):
-        return None
+    lo, hi = crop
     x, y = lo
     w, h = hi - lo
-    image = np.array(Image.open(raw_image).convert("RGB").crop((*lo, *hi)))
     grid = np.asarray(ego["grid"])
     edge = np.asarray(ego["edge"]) * np.array([width, height]) / grid
     body = (y + np.arange(h)[:, None]) >= np.interp(x + np.arange(w), edge[:, 0], edge[:, 1])
+    if body.all():
+        return None
+    image = np.array(Image.open(raw_image).convert("RGB").crop((*lo, *hi)))
     depth = np.full((h, w), np.inf, "f4")
     # The host's original pavement will be replaced. Only non-ground LiDAR points can occlude it.
     above = (points - center) @ basis[:, 2] > 0.10
     cam = to_cam(points[above])
-    cam = cam[(cam[:, 2] > 0) & (np.linalg.norm(cam, axis=1) < 70)]
+    radial = np.linalg.norm(cam, axis=1)
+    cam = cam[(radial > 0.01) & (radial < 70)]
     uv = project(cam) - lo
     keep = (uv >= 0).all(1) & (uv < [w - 0.5, h - 0.5]).all(1)
     uv = np.rint(uv[keep]).astype(int)
-    np.minimum.at(depth, (uv[:, 1], uv[:, 0]), np.linalg.norm(cam[keep], axis=1).astype("f4"))
+    if len(uv):
+        candidates = cam[keep]
+        radial = np.linalg.norm(candidates, axis=1)
+        rays, valid = unproject(x, y, w, h)
+        rows, cols = uv[:, 1], uv[:, 0]
+        # A forward model can fold at the lens boundary. Reject returns from the wrong
+        # hemisphere by comparing the projected pixel's true bearing to the 3-D return.
+        matches = valid[rows, cols] & ((rays[rows, cols] * candidates).sum(-1) > 0.999 * radial)
+        np.minimum.at(depth, (rows[matches], cols[matches]), radial[matches].astype("f4"))
     depth = cv2.erode(depth, np.ones((7, 7), "u1"))
     samples, packet_rays, packet_masks = [], [], []
-    for dx, dy in [(-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0.25, 0.25)]:
+    for dx, dy in SUBPIXELS:
         rays, valid = unproject(x, y, w, h, dx, dy)
         protected = body | ~valid
         samples.append(mesh.render(image, pose, rays, anchor, depth, protected))
@@ -204,6 +249,10 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, is_fish, ego
     mod = np.any(after != image, axis=2)
     if mod[~hit].any() or mod[body].any():
         raise ValueError("A protected or out-of-support pixel changed")
+    edges = [side for side, touches in (
+        ("left", x == 0 and hit[:, 0].any()), ("right", hi[0] == width and hit[:, -1].any()),
+        ("top", y == 0 and hit[0].any()), ("bottom", hi[1] == height and hit[-1].any())
+    ) if touches]
     return dict(
         before=image,
         after=after,
@@ -213,6 +262,7 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, is_fish, ego
         visible=int(hit.sum()),
         changed=int(mod.sum()),
         protected_ego=int(body.sum()),
+        clipped_sides=edges,
     )
 
 
@@ -246,23 +296,30 @@ def audi_inputs(raw, data, cams, group, offset):
     return anchor, views, lambda g, cam: clouds[g, cam], filename
 
 
-def video_segment(writer, candidates, best, mesh_id, label, scene, sensor):
+def timed_frames(candidates):
+    segments = []
+    for item in sorted(candidates, key=lambda v: v[2]["group"]):
+        if not segments or item[2]["group"] != segments[-1][-1][2]["group"] + 1:
+            segments.append([])
+        segments[-1].append(item)
+    for i, clip in enumerate(segments):
+        times = np.asarray([r["time"] for _, _, r, _ in clip])
+        for j, t in enumerate(np.arange(times[0], times[-1] + 0.08, 0.1)):
+            yield i > 0 and j == 0, clip[int(np.argmin(abs(times - t)))]
+
+
+def video_segment(writer, candidates, mesh_id, label, scene, sensor):
     from PIL import ImageDraw, ImageFont, ImageOps
 
     font_path = "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"
     header = ImageFont.truetype(font_path, 26, index=2)
     caption = ImageFont.truetype(font_path, 19, index=2)
-    seq = sorted(candidates, key=lambda item: item[2]["group"])
-    i = next(i for i, (_, _, r, _) in enumerate(seq) if r is best)
-    start = end = i
-    while start and seq[start - 1][2]["group"] + 1 == seq[start][2]["group"]:
-        start -= 1
-    while end + 1 < len(seq) and seq[end][2]["group"] + 1 == seq[end + 1][2]["group"]:
-        end += 1
-    clip = seq[start : end + 1]
-    times = np.asarray([r["time"] for _, _, r, _ in clip])
-    for t in np.arange(times[0], times[-1] + 0.08, 0.1):
-        _, frame, r, photo = clip[int(np.argmin(abs(times - t)))]
+    for cut, (_, frame, r, photo) in timed_frames(candidates):
+        if cut:
+            intertitle = Image.new("RGB", (960, 480), "#20272a")
+            ImageDraw.Draw(intertitle).text((42, 207), f"下一段可见画面  ·  曝光 {frame}", font=header, fill="white")
+            for _ in range(4):
+                writer.append_data(np.asarray(intertitle))
         host = Image.open(photo).convert("RGB")
         host.paste(Image.fromarray(r["after"]), tuple(r["xy"]))
         page = Image.new("RGB", (960, 480), "#20272a")
@@ -277,9 +334,14 @@ def video_segment(writer, candidates, best, mesh_id, label, scene, sensor):
         d.text((18, 55), scene + "  ·  " + camera + "  ·  " + str(frame), font=caption, fill="#d4dedb")
         wide = ImageOps.contain(host, (560, 365), Image.Resampling.LANCZOS)
         page.paste(wide, (16 + (560 - wide.width) // 2, 86 + (365 - wide.height) // 2))
+        yy, xx = np.nonzero(r["part"])
+        margin = max(15, round(max(np.ptp(xx), np.ptp(yy)) * 0.18))
+        # Keep the same real pixels and framing in both magnified views.
+        box = (max(0, xx.min() - margin), max(0, yy.min() - margin),
+               min(r["part"].shape[1], xx.max() + margin + 1), min(r["part"].shape[0], yy.max() + margin + 1))
         for y, name, key in [(52, "原路面", "before"), (256, "同机位迁入后", "after")]:
             d.text((610, y), name, font=caption, fill="#d4dedb")
-            detail = ImageOps.contain(Image.fromarray(r[key]), (330, 167), Image.Resampling.LANCZOS)
+            detail = ImageOps.contain(Image.fromarray(r[key]).crop(box), (330, 167), Image.Resampling.LANCZOS)
             page.paste(detail, (600 + (340 - detail.width) // 2, y + 32 + (167 - detail.height) // 2))
         writer.append_data(np.asarray(page))
     for _ in range(5):
@@ -289,7 +351,7 @@ def video_segment(writer, candidates, best, mesh_id, label, scene, sensor):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, default=ROOT / "runs/mixed-road")
-    parser.add_argument("--scene", choices=["kitti360-0000", "a2d2-frontleft"], default="kitti360-0000")
+    parser.add_argument("--scene", choices=["kitti360-0000", "kitti360-0003-right", "a2d2-frontleft"], default="kitti360-0000")
     parser.add_argument("--out", type=Path)
     parser.add_argument("--group", type=int, default=26, help="host trajectory index used to seed the anchor")
     parser.add_argument("--offset", type=float, default=2.25, help="metres toward camera right")
@@ -308,8 +370,9 @@ def main():
     if args.scene == "a2d2-frontleft":
         raw = ROOT / "work/data" / args.scene
         anchor, views, cloud_at, filename = audi_inputs(raw, data, cams, args.group, args.offset)
+        nearby = np.concatenate([cloud_at(g, cam) for cam, groups in views for g in groups if g % 3 == 0])
     else:
-        raw = ROOT / "work/data/kitti360-0000-0200"
+        raw = ROOT / "work/data" / ("kitti360-0000-0200" if args.scene == "kitti360-0000" else args.scene)
         clouds = scans(raw, data, cams)
         rig_pose = np.linalg.inv(cams[f"{args.group:03}00.png"])
         seed = rig_pose[:3, 3] + args.offset * rig_pose[:3, 0] - [0, 0, 1.6]
@@ -327,9 +390,19 @@ def main():
             return raw / sensor / f"{data['frames'][g]:010}.png"
 
     out = args.out or ROOT / "outputs/mixed-road" / args.scene
+    assets = {}
+    for key in args.ids:
+        folder = args.run / key
+        if not (folder / "asset.glb").is_file():
+            (folder,) = args.run.glob(f"*/series/assets/*/{key}")
+        assets[key] = folder
+    registration_anchor = anchor
+    anchor = fit_footprint(anchor, nearby, np.max([footprint_size(path) for path in assets.values()], axis=0))
     out.mkdir(parents=True, exist_ok=True)
     save_json(out / "anchor.json", anchor)
     ego_masks = json.loads((ROOT / "gen2hole/examples/mixed-road/ego-masks.json").read_text())[args.scene]
+    models = {cam: view_model(data["sensors"][cam], data) for cam, _ in views}
+    windows = {cam: RayWindow(model) for cam, model in models.items()}
     index = {}
     with ExitStack() as stack:
         writer = None
@@ -346,13 +419,12 @@ def main():
                     output_params=["-threads", "3", "-movflags", "+faststart"],
                 )
             )
-        for key in args.ids:
-            (folder,) = args.run.glob(f"*/series/assets/*/{key}")
+        for key, folder in assets.items():
             mesh = RoadMesh(folder)
             index[key] = {"source_sha256": mesh.digest, "views": {}}
             for cam, groups in views:
                 sensor = data["sensors"][cam]
-                model = view_model(sensor, data)
+                model = models[cam]
                 candidates = []
                 for g in groups:
                     name = f"{g:03}{cam}0.png"
@@ -362,7 +434,7 @@ def main():
                     points = cloud_at(g, cam)
                     correction = None
                     if args.scene == "a2d2-frontleft":
-                        adjusted = align_observed_road(anchor, pose, points)
+                        adjusted = align_observed_road(registration_anchor, pose, points)
                         if adjusted is None:
                             continue
                         pose, points, correction = adjusted
@@ -373,7 +445,7 @@ def main():
                         pose,
                         photo,
                         points,
-                        data["source_calibration"][sensor]["model"] != "PINHOLE rectified",
+                        windows[cam],
                         ego_masks[sensor],
                     )
                     if res:
@@ -393,13 +465,13 @@ def main():
                 image.save(dest / "full.jpg", quality=94)
                 if writer:
                     label = json.loads((folder / "metadata.json").read_text())["label"]
-                    video_segment(writer, candidates, best, key, label, args.scene, sensor)
+                    video_segment(writer, candidates, key, label, args.scene, sensor)
                 if args.export_packet == key:
                     g = best["group"]
                     pose = np.linalg.inv(cams[f"{g:03}{cam}0.png"])
                     points = cloud_at(g, cam)
                     if args.scene == "a2d2-frontleft":
-                        pose, points, _ = align_observed_road(anchor, pose, points)
+                        pose, points, _ = align_observed_road(registration_anchor, pose, points)
                     frame_crop(
                         mesh,
                         anchor,
@@ -407,7 +479,7 @@ def main():
                         pose,
                         photo,
                         points,
-                        data["source_calibration"][sensor]["model"] != "PINHOLE rectified",
+                        windows[cam],
                         ego_masks[sensor],
                         dest / "view.npz",
                     )
@@ -421,6 +493,8 @@ def main():
                     protected_edits=0,
                     source_rgb_sha256=sha256(photo),
                     captured_frames=[(frame, n) for n, frame, _, _ in candidates],
+                    image_edge_frames=[{"frame": frame, "sides": r["clipped_sides"]}
+                                       for _, frame, r, _ in candidates if r["clipped_sides"]],
                     model=data["source_calibration"][sensor]["model"],
                 )
                 index[key]["views"][sensor] = row

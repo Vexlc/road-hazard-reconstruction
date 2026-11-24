@@ -83,7 +83,57 @@ def fit_road(points_world, seed_world, heading_world, *, up_world, radius_m):
     )
 
 
-def pixel_rays(calibration):
+def fit_footprint(anchor, points_world, size_m):
+    """Check the full contact rectangle against independent local cells and refine its plane in metres."""
+    size = np.asarray(size_m, dtype=float)
+    if size.shape != (2,) or not np.isfinite(size).all() or np.any(size <= 0):
+        raise ValueError("Expected positive contact dimensions along heading and across the road")
+    basis = np.asarray(anchor["basis_columns"])
+    center = np.asarray(anchor["center_world"])
+    local = (np.asarray(points_world) - center) @ basis
+    half = size / 2 + 0.05
+    sample = local[(abs(local[:, :2]) < half).all(1) & (abs(local[:, 2]) < 0.30)]
+    shape = np.array([6, 4])
+    cell = np.floor((sample[:, :2] / half + 1) / 2 * shape).astype(int)
+    groups, inv, counts = np.unique(cell, axis=0, return_inverse=True, return_counts=True)
+    supported = counts >= 3
+    groups = groups[supported]
+    quadrants = (groups[:, 0] >= 3).astype(int) + 2 * (groups[:, 1] >= 2)
+    if len(groups) < 16 or len(np.unique(quadrants)) != 4:
+        raise ValueError("Insufficient measured road across the asset footprint")
+    reps = np.stack([np.median(sample[inv == i], axis=0) for i in np.flatnonzero(supported)])
+    z = reps[:, 2]
+    design = np.column_stack([reps[:, :2], np.ones(len(reps))])
+    slope_x, slope_y, offset = np.linalg.lstsq(design, z, rcond=None)[0]
+    residual = z - (reps[:, 0] * slope_x + reps[:, 1] * slope_y + offset)
+    spread = float(np.ptp(np.percentile(z, [10, 90])))
+    tail = float(np.percentile(abs(residual), 90))
+    # A coherent step or a global plane passing above a gutter must not be averaged into a seat.
+    if abs(offset) > 0.04 or spread > 0.08 or np.hypot(slope_x, slope_y) > 0.12 or tail > 0.035:
+        raise ValueError(f"Footprint crosses a step or an inconsistent road plane (offset {offset:.3f} m, "
+                         f"height spread {spread:.3f} m, residual P90 {tail:.3f} m)")
+    normal = unit(basis @ [-slope_x, -slope_y, 1])
+    forward = unit(basis[:, 0] - normal * (basis[:, 0] @ normal))
+    new_basis = np.column_stack([forward, np.cross(normal, forward), normal])
+    return dict(anchor, center_world=(center + offset * basis[:, 2]).tolist(), basis_columns=new_basis.tolist(),
+                footprint_support=dict(size_m=size.tolist(), cells=len(groups), points=len(sample),
+                                       center_adjustment_m=float(offset), cell_height_spread_m=spread,
+                                       cell_residual_p90_m=tail))
+
+
+def footprint_size(folder):
+    """Return the centre-symmetric road-contact envelope recorded in the asset cut and height fields."""
+    with np.load(Path(folder) / "surface.npz", allow_pickle=False) as field:
+        extent = np.array([float(field["width"]), float(field["length"])])
+        mask = (field["defect_mask"] > 0.5) | (field["height"] > 0.003)
+    y, x = np.nonzero(mask)
+    if not len(x):
+        raise ValueError("No contact footprint in the asset field")
+    pos = np.column_stack([x, y]) / (np.array(mask.shape[::-1]) - 1) - 0.5
+    return 2 * np.max(abs(pos), axis=0) * extent
+
+
+def pixel_rays(calibration, *, return_valid=False):
     """Unit optical-frame directions at pixel centres. Supports COLMAP PINHOLE and OPENCV_FISHEYE."""
     model, w, h, fx, fy, cx, cy, *dist = calibration
     if w < 1 or h < 1 or not np.isfinite([fx, fy, cx, cy, *dist]).all() or min(fx, fy) <= 0:
@@ -92,7 +142,8 @@ def pixel_rays(calibration):
     x, y = (xx + 0.5 - cx) / fx, (yy + 0.5 - cy) / fy
     if model == "PINHOLE" and not dist:
         out = np.stack([x, y, np.ones_like(x)], -1)
-        return np.float32(out / np.linalg.norm(out, axis=-1, keepdims=True))
+        rays = np.float32(out / np.linalg.norm(out, axis=-1, keepdims=True))
+        return (rays, np.ones((h, w), bool)) if return_valid else rays
     if model != "OPENCV_FISHEYE" or len(dist) != 4:
         raise ValueError("Supply calibrated per-pixel unit rays for other camera models")
     radius = np.hypot(x, y)
@@ -101,11 +152,13 @@ def pixel_rays(calibration):
     distorted = angles * np.polynomial.polynomial.polyval(angles**2, coeff)
     turn = np.flatnonzero(np.diff(distorted) <= 0)
     end = int(turn[0] + 1) if len(turn) else len(angles)
-    if end < 2 or radius.max() > distorted[end - 1]:
+    valid = radius <= distorted[end - 1]
+    if end < 2 or (not return_valid and not valid.all()):
         raise ValueError("Fisheye polynomial has no unique inverse over this image")
     theta = np.interp(radius, distorted[:end], angles[:end])
     scale = np.divide(np.sin(theta), radius, out=np.ones_like(theta), where=radius > 0)
-    return np.float32(np.stack([x * scale, y * scale, np.cos(theta)], -1))
+    rays = np.float32(np.stack([x * scale, y * scale, np.cos(theta)], -1))
+    return (rays, valid) if return_valid else rays
 
 
 class RoadMesh:
@@ -114,6 +167,7 @@ class RoadMesh:
         self.digest = sha256(folder / "asset.glb")
         self.scene = o3d.t.geometry.RaycastingScene(nthreads=2)
         self.surfaces = {}
+        bounds = []
         with np.load(folder / "surface.npz", allow_pickle=False) as field:
             self.cut = field["defect_mask"].astype(bool)
             self.extent = np.array([float(field["width"]), float(field["length"])])
@@ -121,9 +175,30 @@ class RoadMesh:
             gid = self.scene.add_triangles(o3d.core.Tensor(xyz), o3d.core.Tensor(tri))
             texture = np.asarray(Image.open(BytesIO(image)).convert("RGB"))
             self.surfaces[gid] = part, tri, uv, texture
+            bounds.extend([xyz.min(axis=0), xyz.max(axis=0)])
+        self.bounds = np.array([np.min(bounds, axis=0), np.max(bounds, axis=0)])
 
-    def render(self, rgb, camera_to_world, rays_camera, anchor, host_range, protected):
-        """host_range is radial metres. NaNs denote unobserved range. protected is a hard foreground mask."""
+    def sky_gain(self, points, normals):
+        """Diffuse skylight reaching the exposed frame, cut edges and well, plus a soft bounce floor."""
+        # Uniform solid angle quadrature. Keep directions fixed in road coordinates across exposures.
+        i = np.arange(24)
+        z = (i + 0.5) / len(i)
+        azimuth = i * (np.pi * (3 - np.sqrt(5)))
+        sky = np.float32(np.c_[np.cos(azimuth) * np.sqrt(1 - z*z), np.sin(azimuth) * np.sqrt(1 - z*z), z])
+        origins = points + normals * 0.0004
+        light = np.zeros(len(points), 'f4')
+        for direction in sky:
+            cosine = normals @ direction
+            facing = cosine > 0
+            if facing.any():
+                rays = np.column_stack([origins[facing], np.broadcast_to(direction, (int(facing.sum()), 3))])
+                blocked = self.scene.test_occlusions(o3d.core.Tensor(np.float32(rays)), nthreads=2).numpy()
+                light[facing] += cosine[facing] * ~blocked
+        return 0.26 + 0.74 * np.clip(light / sky[:, 2].sum(), 0, 1)
+
+    def render(self, rgb, camera_to_world, rays_camera, anchor, host_range, protected, *,
+               occluder_range=None, road_tolerance_m=0.10):
+        """Compare uncertain host pavement and optional positively identified foreground in radial metres."""
         h, w = rgb.shape[:2]
         pose, basis = np.asarray(camera_to_world), np.asarray(anchor["basis_columns"])
         if (
@@ -133,12 +208,20 @@ class RoadMesh:
             or host_range.shape != (h, w)
             or protected.shape != (h, w)
             or np.any(host_range <= 0)
+            or not np.isfinite(road_tolerance_m)
+            or road_tolerance_m < 0
+            or (occluder_range is not None and
+                (occluder_range.shape != (h, w) or np.any(occluder_range <= 0)))
             or pose.shape != (4, 4)
             or not np.allclose(pose[3], [0, 0, 0, 1])
             or not np.isfinite(pose).all()
-            or not np.allclose(np.linalg.norm(rays_camera, axis=2), 1, atol=1e-4)
         ):
             raise ValueError("Invalid host image, camera pose, unit rays, radial range or foreground mask")
+        valid_ray = np.isclose(np.linalg.norm(rays_camera, axis=2), 1, atol=1e-4)
+        if not valid_ray.all():
+            if np.any(~valid_ray & ~np.asarray(protected, bool)):
+                raise ValueError("Unmasked camera ray must be finite and unit length")
+            rays_camera = np.where(valid_ray[..., None], rays_camera, np.array([0, 0, 1], 'f4'))
         for frame in (basis, pose[:3, :3]):
             if not np.allclose(frame.T @ frame, np.eye(3), atol=1e-5) or np.linalg.det(frame) < 0.99999:
                 raise ValueError("Expected right-handed rigid transforms")
@@ -181,7 +264,11 @@ class RoadMesh:
         # The original pavement will be removed. Only measured returns in front of both
         # the impact and the entry plane may hide the replacement surface.
         near = np.minimum(plane, distance)
-        blocked = np.asarray(protected, bool) | (host_range < near - 0.10)
+        blocked = np.asarray(protected, bool) | (host_range < near - road_tolerance_m)
+        if occluder_range is not None:
+            # A return positively identified as an object is not replaceable pavement.
+            # Compare it with the actual hit, even when it lies inside the opening.
+            blocked |= occluder_range < distance - 1e-5
         visible = target & ~blocked
         context = (part == 1) & ~blocked
         out = rgb.copy()
@@ -195,9 +282,14 @@ class RoadMesh:
                 0.50,
                 1.55,
             )
-            # The photographed pit floor already contains texture shading. Reduce light
-            # only on newly exposed shaft lining, measured relative to the rim datum.
-            ao = np.where(np.isin(part, [6, 7, 10]), np.clip(0.71 + 0.66 * ray_z, 0.24, 0.80), 1.0)
+            ao = np.ones((h, w), 'f4')
+            inside = visible & np.isin(part, [5, 6, 7, 8, 10, 11, 20])
+            if inside.any():
+                directions_hit = directions[inside]
+                points = origin + directions_hit * distance[inside, None]
+                normals = hits["primitive_normals"].numpy()[inside].copy()
+                normals[(normals * directions_hit).sum(1) > 0] *= -1
+                ao[inside] = self.sky_gain(points, normals)
             values = color[visible] * gain * (local_light[visible] * ao[visible])[:, None]
             out[visible] = np.uint8(np.clip(np.rint(values), 0, 255))
         else:

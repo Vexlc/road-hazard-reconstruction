@@ -1,5 +1,7 @@
 # 实测坑洞、方形检查井与跨镜头迁入
 
+双联井盖和最新的整块占地检查、鱼眼边缘可见性、独立前景量程接入见[双联检查井与跨场景迁入](18-twin-hatch-transfer.md)。固定代码标签为 `twin-hatch-v1.0.0`。
+
 这一版从四幅有深度的道路照片重建四个坑洞，从一套方形检查井的扫描重建五种安装状态。九件资产都放入 PandaSet 并重载了独立的高斯检查点。另一条路线把同一批三角网格放进 KITTI-360 和 Audi A2D2 的世界坐标，使用原始实车镜头逐像素求交。它可以直接接收其他宿主渲染器提供的相机射线、深度和前景。[版本与模型下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/mixed-road-v1.0.0) · [Audi 左前与后视鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/mixed-road-v1.0.0/a2d2-mixed-road.mp4) · [KITTI 前方针孔与右侧鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/mixed-road-v1.0.0/kitti-mixed-road.mp4)
 
 ![九件资产在原始鱼眼画面中的局部](figures/mixed-road-fisheye.jpg)

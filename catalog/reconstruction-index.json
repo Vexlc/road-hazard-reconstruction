@@ -1,5 +1,5 @@
 {
-  "asset_count": 1472,
+  "asset_count": 1477,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -1940,6 +1940,24 @@
         "A226",
         "A227",
         "M224"
+      ],
+      "transfer": [
+        "native",
+        "mesh-view"
+      ]
+    },
+    "twin-infill-hatch": {
+      "name": "实扫双联检查井与半缺盖",
+      "launcher": "gen2hole/survey.py",
+      "recipe": "gen2hole/examples/mixed-road/twin-hatch/survey.json",
+      "guide": "docs/18-twin-hatch-transfer.md",
+      "section": "从扫描重建五件资产",
+      "assets": [
+        "A228",
+        "A229",
+        "M229",
+        "M230",
+        "M231"
       ],
       "transfer": [
         "native",

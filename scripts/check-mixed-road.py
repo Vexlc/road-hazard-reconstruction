@@ -59,10 +59,10 @@ def check_frames(base, cases):
     )
 
 
-def packet_controls(base, mesh):
+def packet_controls(base, mesh, asset_id="M224"):
     anchor = read_json(base / "anchor.json")
     controls = {}
-    for packet in sorted((base / "M224").glob("*/view.npz")):
+    for packet in sorted((base / asset_id).glob("*/view.npz")):
         with np.load(packet, allow_pickle=False) as view:
             rgb, pose, host, protection, rays = (
                 view[k] for k in ("rgb", "camera_to_world", "host_range", "protected", "rays_camera")
@@ -85,7 +85,7 @@ def packet_controls(base, mesh):
             "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls."
         )
     if len(controls) != 2:
-        raise ValueError("Render with --export-packet M224 to check both physical cameras")
+        raise ValueError(f"Render with --export-packet {asset_id} to check both physical cameras")
     return controls
 
 
