@@ -1,0 +1,8 @@
+{
+  "id": "C236-C237",
+  "label": "直立与侧倒交通锥",
+  "instances": [
+    {"id": "upright", "asset": "C236", "xy_m": [0.53, 0.08], "heading_deg": 12},
+    {"id": "fallen", "asset": "C237", "xy_m": [-0.48, -0.06], "heading_deg": -25}
+  ]
+}

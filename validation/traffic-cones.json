@@ -1,0 +1,231 @@
+{
+  "assets": {
+    "C236": {
+      "files": {
+        "samples.npz": "45440945bcd0cc6269a3effb629a5eb556ebcccf5b6367b6cbb63f68739f826d",
+        "metadata.json": "9bda81a65e0fb93b112088f579f60143649c132af973dac943e737f17a594d10",
+        "surface.npz": "1e3bae07d349bcf6021192a7d1e713978246c3ae808ead205396537a4a52060d",
+        "asset.glb": "f3cb137cc2a283d98011ed1af7b10c498628a5e8b5ae934b6d7a5c48e03e4589"
+      },
+      "samples": 24000,
+      "triangles": 8512
+    },
+    "C237": {
+      "files": {
+        "samples.npz": "614cb6b6a40555981a5ce7ccffce3b4b8c26a6553302d19c0095172cf1433fda",
+        "metadata.json": "5caa38d01fe6718308f82536086c4d38d4166a02e59d5cfa7d9e18d336cb5eef",
+        "surface.npz": "8602f9fba57cc2ef09c8ce029bfffd4226a66a8f02b334ad1f95024f0783118b",
+        "asset.glb": "4cacdd20f19ae525c1a68230dff76bda9db490b171664e9b7713b765ec6cdbe7"
+      },
+      "samples": 24000,
+      "triangles": 8512,
+      "contact_vertices": 47,
+      "support_margin_m": 0.09426015652868232,
+      "tilt_deg": 110.82093045838835
+    },
+    "C236-C237": {
+      "files": {
+        "samples.npz": "54d5b0e7cc17ac56ec783686799fc958e5f169850f6ecd5dfafd2eedee6f6aea",
+        "metadata.json": "b807abd95be0bb79d51f2ddfcb29f408e6b8eccc3daba7dc4612be3bbf52adda",
+        "surface.npz": "9a3af762d38c8c87ed5f017375f3412e195e746b89e12d6a6cb29ab5f630e863",
+        "asset.glb": "c02fc94b116871498a7f6715cf519df7f8e06673ac0041e05c18cc6a3e70a4f0"
+      },
+      "samples": 39418,
+      "triangles": 17024
+    }
+  },
+  "byte_identical_rebuilt_files": 12,
+  "physical": {
+    "urban": {
+      "minimum_vehicle_clearance_m": 0.14375022053718567,
+      "cameras": {
+        "image_00": {
+          "frame": 219,
+          "pixels": 3796,
+          "pure_shadow_pixels": 8093
+        },
+        "image_03": {
+          "frame": 227,
+          "pixels": 11055,
+          "pure_shadow_pixels": 66412
+        }
+      }
+    },
+    "sun": {
+      "minimum_vehicle_clearance_m": 2.4961316414373793,
+      "cameras": {
+        "image_00": {
+          "frame": 206,
+          "pixels": 5933,
+          "pure_shadow_pixels": 2139
+        },
+        "image_03": {
+          "frame": 213,
+          "pixels": 3548,
+          "pure_shadow_pixels": 8202
+        }
+      }
+    },
+    "audi": {
+      "minimum_vehicle_clearance_m": 0.2806670069694519,
+      "cameras": {
+        "front_left": {
+          "frame": 1507,
+          "pixels": 6887,
+          "pure_shadow_pixels": 6049
+        },
+        "rear_center": {
+          "frame": 1515,
+          "pixels": 11388,
+          "pure_shadow_pixels": 11581,
+          "road_pixels_recovered_from_coarse_outline": 2455
+        }
+      }
+    }
+  },
+  "rig_mask": {
+    "held_out_exposures": 16,
+    "p95_repeat_error_px": 1.0,
+    "max_repeat_error_px": 1,
+    "mask_sha256": "95776fb43ef8b9c610268fc7ca93d79764fd67c0408e31d3b4cea35f71d472b2"
+  },
+  "cycles": {
+    "views": {
+      "center": {
+        "depth_convention": "radial",
+        "road_range_p99_m": 9.082997453116804e-05,
+        "visible_native": 959,
+        "visible_portable": 959,
+        "iou": 1.0,
+        "range_p95_m": 0.00015056133270263672,
+        "behind_optical_plane": 0,
+        "foreground_occludes": 267,
+        "asset_in_front_of_host": 0,
+        "core_rgb_mae": 18.922084623323013,
+        "diffuse_only_mae": 27.58152734778122
+      },
+      "left-edge": {
+        "depth_convention": "signed axial Z",
+        "road_range_p99_m": 8.952171578954436e-05,
+        "visible_native": 1569,
+        "visible_portable": 1568,
+        "iou": 0.9993626513702996,
+        "range_p95_m": 0.00013883709907531737,
+        "behind_optical_plane": 1184,
+        "foreground_occludes": 354,
+        "asset_in_front_of_host": 0,
+        "core_rgb_mae": 19.861929520508376,
+        "diffuse_only_mae": 26.831311380704793
+      },
+      "return-view": {
+        "depth_convention": "radial",
+        "road_range_p99_m": 9.01594996290813e-05,
+        "visible_native": 970,
+        "visible_portable": 970,
+        "iou": 1.0,
+        "range_p95_m": 0.00011456012725830067,
+        "behind_optical_plane": 0,
+        "foreground_occludes": 0,
+        "asset_in_front_of_host": 192,
+        "core_rgb_mae": 15.863078375826252,
+        "diffuse_only_mae": 31.248347497639283
+      }
+    },
+    "ground_center_error_m": 7.794910690260979e-07,
+    "ground_normal_error_deg": 0.0002690796020695653
+  },
+  "native": {
+    "placement": {
+      "source_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+      "checkpoint_sha256": "4ac641ab50f03f67ee8f081cbe42eaf7644f05a46f81cc46295c64893f003be9",
+      "placements": [
+        {
+          "id": "C236-C237",
+          "asset_sha256": "c02fc94b116871498a7f6715cf519df7f8e06673ac0041e05c18cc6a3e70a4f0",
+          "samples_sha256": "54d5b0e7cc17ac56ec783686799fc958e5f169850f6ecd5dfafd2eedee6f6aea",
+          "samples": 39418,
+          "anchor_sha256": "ea953edfbb8c9e6d78715a7fb408b8309a71ec2a07cdf401a41eb2dae81779d7",
+          "center_world": [
+            7.896323560013303,
+            -8.521378285779848,
+            -0.8316640023932867
+          ],
+          "basis_columns": [
+            [
+              0.9210949117804811,
+              0.388470190108967,
+              0.025982203309393416
+            ],
+            [
+              -0.38833087378983727,
+              0.9214611574559899,
+              -0.010414785714963565
+            ],
+            [
+              -0.027987424921366567,
+              -0.0004966855847849672,
+              0.9996081519023845
+            ]
+          ],
+          "ground_gaussians_with_shadow": 20,
+          "minimum_vehicle_clearance_m": 2.4961316414373793,
+          "instances": [
+            {
+              "id": "upright",
+              "asset": "C236",
+              "xy_m": [
+                0.53,
+                0.08
+              ],
+              "heading_deg": 12,
+              "source": "https://sketchfab.com/3d-models/traffic-cone-573feef839d7450cb3e12da9986e7a98",
+              "credit": "hinndia",
+              "license": "CC BY 4.0",
+              "glb_sha256": "f3cb137cc2a283d98011ed1af7b10c498628a5e8b5ae934b6d7a5c48e03e4589"
+            },
+            {
+              "id": "fallen",
+              "asset": "C237",
+              "xy_m": [
+                -0.48,
+                -0.06
+              ],
+              "heading_deg": -25,
+              "source": "https://sketchfab.com/3d-models/traffic-cone-573feef839d7450cb3e12da9986e7a98",
+              "credit": "hinndia",
+              "license": "CC BY 4.0",
+              "glb_sha256": "4cacdd20f19ae525c1a68230dff76bda9db490b171664e9b7713b765ec6cdbe7"
+            }
+          ]
+        }
+      ],
+      "original_count": 79605,
+      "actors_exact": true,
+      "original_geometry_exact": true
+    },
+    "replay": {
+      "front": {
+        "frames": 48,
+        "peak_changed_pixels": 1862,
+        "max_baseline_error": 0
+      },
+      "rear": {
+        "frames": 48,
+        "peak_changed_pixels": 16934,
+        "max_baseline_error": 0
+      }
+    },
+    "original": {
+      "front": {
+        "frames": 48,
+        "peak_changed_pixels": 0,
+        "max_baseline_error": 0
+      },
+      "rear": {
+        "frames": 48,
+        "peak_changed_pixels": 0,
+        "max_baseline_error": 0
+      }
+    }
+  }
+}

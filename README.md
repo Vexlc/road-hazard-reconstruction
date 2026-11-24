@@ -4,7 +4,9 @@ RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资�
 
 **[资产重建与场景迁入复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按资产编号找到配方、迁入代码、所需数据和验收方法。KITTI-360 示例用同一宿主生成十个场景，每次放入两个坑洞。[私有 Release 输入包与宿主检查点](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25) · [前视驶入、后视驶离](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4) · [只看后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-rear.mp4)
 
-**路侧立体设施和车尾回看**　两种混凝土隔离墩、同一消防栓的两种涂层，已按每组两件迁入 KITTI-360 0000 的 30,000 步检查点。全仓现可按 1,481 个资产编号定位 41 个重建系列和 11 条迁入或展示路线。[复现指南](docs/19-roadside-props.md) · [原生前后视视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/roadside-props-v1.0.0/joint-front-rear.mp4) · [Audi 实车鱼眼视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/roadside-props-v1.0.0/audi.mp4)
+**直立与倒地交通锥**　两件按接地几何成对迁入同一个 `joint.pt`，并用 Blender Cycles 的 220° 鱼眼独立核验。全仓现可按 1,483 个编号定位 42 个重建系列、12 条迁入或展示路线。[模型与复现](docs/20-traffic-cones.md) · [Audi 实车前后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/traffic-cones-v1.0.0/audi-front-rear.mp4) · [联合场景前后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/traffic-cones-v1.0.0/joint-front-rear.mp4)
+
+**路侧立体设施和车尾回看**　两种混凝土隔离墩、同一消防栓的两种涂层，已按每组两件迁入 KITTI-360 0000 的 30,000 步检查点。[复现指南](docs/19-roadside-props.md) · [原生前后视视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/roadside-props-v1.0.0/joint-front-rear.mp4) · [Audi 实车鱼眼视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/roadside-props-v1.0.0/audi.mp4)
 
 **双联检查井与跨场景放置**　5 件实扫盖板状态，覆盖齐平、错位、单侧缺失及双侧缺失。[复现与迁入指南](docs/18-twin-hatch-transfer.md) · [车尾回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/twin-hatch-v1.0.0/a2d2-frontleft.mp4) · [网格与三段道路视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/twin-hatch-v1.0.0)
 

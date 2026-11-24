@@ -176,12 +176,18 @@ class RoadMesh:
             if self.standing:
                 self.sky_blocked = field["sky_blocked"]
         self.materials = {}
+        self.baked_sky = {}
+        self.dielectrics = {}
         for part, xyz, tri, uv, image, *pbr in glb_triangles(folder / "asset.glb", appearance=True, packed_material=self.standing):
             gid = self.scene.add_triangles(o3d.core.Tensor(xyz), o3d.core.Tensor(tri))
             texture = np.asarray(Image.open(BytesIO(image)).convert("RGB"))
             self.surfaces[gid] = part, tri, uv, texture
             if pbr:
                 self.materials[gid] = pbr[0], np.asarray(Image.open(BytesIO(pbr[1])).convert("RGB"))
+            if len(pbr) > 2:
+                sky, spec = pbr[2]
+                if sky is not None: self.baked_sky[gid] = sky
+                if spec is not None: self.dielectrics[gid] = spec
             bounds.extend([xyz.min(axis=0), xyz.max(axis=0)])
         self.bounds = np.array([np.min(bounds, axis=0), np.max(bounds, axis=0)])
 
@@ -245,6 +251,9 @@ class RoadMesh:
         if self.standing:
             normals = np.zeros((*part.shape, 3), 'f4')
             ambient_visibility = np.ones(part.shape, 'f4')
+            f0 = np.zeros((*part.shape,3), "f4") if self.dielectrics else None
+            rough = np.ones(part.shape, "f4") if self.dielectrics else None
+            sky = np.ones(part.shape, 'f4') if self.baked_sky else None
         for gid, (code, tri, uv, texture) in self.surfaces.items():
             mask = geom == gid
             if not mask.any():
@@ -262,10 +271,16 @@ class RoadMesh:
                 axis=1,
             )
             if self.standing:
+                if gid in self.baked_sky:
+                    sky[mask] = (self.baked_sky[gid][tri[faces[mask]]] * bary).sum(1)
                 verts, arm = self.materials[gid]
                 n = (verts[tri[faces[mask]]] * bary[:, :, None]).sum(1)
                 normals[mask] = n / np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-8)
                 rc = (texcoord * arm.shape[1::-1] - .5)[:, ::-1].T
+                if gid in self.dielectrics:
+                    spec, factor = self.dielectrics[gid]
+                    f0[mask] = spec
+                    rough[mask] = factor * map_coordinates(arm[...,1],rc,order=1,mode="grid-wrap")/255.
                 ambient_visibility[mask] = map_coordinates(arm[..., 0], rc, order=1, mode="grid-wrap") / 255
         # Only a ray entering the cut at pavement height may see buried sidewalls or floor.
         plane = np.divide(
@@ -291,7 +306,8 @@ class RoadMesh:
             from prop_lighting import compose
             return compose(self, rgb, part, color, normals, ambient_visibility, visible, distance, plane, crossing,
                            host_range, protected, occluder_range, road_tolerance_m, anchor, with_shadow, receiver_mask,
-                           origin + directions[visible] * distance[visible,None])
+                           origin + directions[visible] * distance[visible,None], None if sky is None else sky[visible],
+                           None if f0 is None else (f0[visible],rough[visible],-directions[visible]))
         context = (part == 1) & ~blocked
         out = rgb.copy()
         if visible.any() and context.sum() >= 8:

@@ -78,15 +78,50 @@ def view_bounds(mesh, anchor):
     return bounds
 
 
-def irradiance(normals, visibility, anchor, direct_visibility=1.0):
+def irradiance(normals, visibility, anchor, direct_visibility=1.0, sky_visibility=None):
     color, direct, sun = geometry_light(anchor)
     ref = linear(color)
     level = np.clip((ref @ [0.2126, 0.7152, 0.0722]) / linear(100), 0.22, 2.8)
     balance = np.clip((ref + 0.009) / (ref.mean() + 0.009), 0.80, 1.20)
     diffuse = (0.39 + 0.61 * np.clip((1 + normals[:, 2]) * 0.5, 0, 1)) * (0.50 + 0.50 * visibility)
+    if sky_visibility is not None:
+        diffuse *= 0.16 + 0.84 * np.clip(sky_visibility, 0, 1)
     if direct:
         diffuse = (1 - direct) * diffuse + direct * np.clip(normals @ sun, 0, 1) / sun[2] * direct_visibility
     return level * balance * diffuse[:, None]
+
+
+def surface_radiance(albedo, light, normals, anchor, sky, direct_visible, optics=None):
+    """Diffuse + dielectric sky reflection and GGX sunlight in linear radiance."""
+    diffuse = linear(albedo) * light
+    if optics is None:
+        return diffuse
+    f0, rough, view = optics
+    color, direct, sun = geometry_light(anchor)
+    ref = linear(color)
+    level = np.clip((ref @ [0.2126, 0.7152, 0.0722]) / linear(100), 0.22, 2.8)
+    balance = np.clip((ref + 0.009) / (ref.mean() + 0.009), 0.8, 1.2)
+    nv = np.full(len(rough), 0.65) if view is None else np.clip((normals * view).sum(1), 0.005, 1)
+    fresnel = f0 + (np.maximum(1 - rough[:, None], f0) - f0) * (1 - nv[:, None]) ** 5
+    active = (f0 > 0).any(1)
+    fresnel[~active] = 0
+    env_visibility = 1.0 if sky is None else 0.16 + 0.84 * sky
+    environment = fresnel * ((1 - direct) * np.broadcast_to(env_visibility, (len(rough),)))[:, None]
+    reflected = environment
+    if direct and view is not None:
+        half = view + sun
+        half /= np.maximum(np.linalg.norm(half, axis=1, keepdims=True), 1e-8)
+        nh = np.clip((normals * half).sum(1), 0, 1)
+        vh = np.clip((view * half).sum(1), 0, 1)
+        nl = np.clip(normals @ sun, 0, 1)
+        alpha2 = np.clip(rough, 0.045, 1) ** 4
+        d = alpha2 / np.maximum((nh**2 * (alpha2 - 1) + 1) ** 2, 1e-12)
+        g = 0.5 / np.maximum(
+            nl * np.sqrt(nv**2 * (1 - alpha2) + alpha2) + nv * np.sqrt(nl**2 * (1 - alpha2) + alpha2), 1e-8
+        )
+        spec = f0 + (1 - f0) * (1 - vh[:, None]) ** 5
+        reflected = reflected + spec * (d * g * direct * nl / sun[2] * direct_visible * active)[:, None]
+    return diffuse * (1 - fresnel) + reflected * level * balance
 
 
 def blocked_sun(mesh, xyz, sun):
@@ -145,6 +180,8 @@ def compose(
     with_shadow,
     receiver_mask,
     visible_xyz,
+    sky_visibility=None,
+    optics=None,
 ):
     _, direct, sun = geometry_light(anchor)
     out = rgb.copy()
@@ -170,7 +207,9 @@ def compose(
     if visible.any():
         n = normals[visible]
         direct_vis = 1 - blocked_sun(mesh, visible_xyz + n * 0.001, sun) if direct else 1.0
-        light = irradiance(n, ambient[visible], anchor, direct_vis)
-        out[visible] = srgb(linear(color[visible]) * light)
+        light = irradiance(n, ambient[visible], anchor, direct_vis, sky_visibility)
+        out[visible] = srgb(
+            surface_radiance(color[visible], light, n, anchor, sky_visibility, direct_vis, optics)
+        )
     result = out, np.where(visible, part, 0).astype("u1"), np.where(visible, distance, np.nan)
     return (*result, shadow) if with_shadow else result

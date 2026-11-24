@@ -19,6 +19,14 @@ from prepare import load_rig
 PAIRS = [("H234", "B232"), ("H235", "B233")]
 
 
+def scenes(args):
+    if args.assembly:
+        if not args.site:
+            raise ValueError("--assembly requires its registered --site")
+        return [(args.assembly, [(args.assembly, args.site)])]
+    return [("-".join(pair), list(zip(pair, ["hydrant", "barrier"]))) for pair in PAIRS]
+
+
 def build(args):
     sys.path.insert(0, str(ROOT / "gen2hole/downstream"))
     from mesh_transfer import RoadMesh
@@ -30,6 +38,7 @@ def build(args):
         irradiance,
         linear,
         srgb,
+        surface_radiance,
     )
     from road_geometry import read_json, save_json, sha256 as digest
 
@@ -40,13 +49,13 @@ def build(args):
         raise ValueError("Use the original road checkpoint as the pair-building input")
     source = digest(BASE / "joint.pt")
     original = baseline["layers"]["background"]
-    for pair in PAIRS:
+    for name, objects in scenes(args):
         background = dict(original)
         dc = original["_features_dc"].clone()
         rest = original["_features_rest"].clone()
         additions = []
         records = []
-        for key, site in zip(pair, ["hydrant", "barrier"]):
+        for key, site in objects:
             anchor = read_json(args.views / site / "anchor.json")
             if anchor.get("host_scene") != SCENE:
                 raise ValueError("The anchor must belong to the same KITTI-360 coordinate system as the host")
@@ -70,8 +79,20 @@ def build(args):
             quat = Rotation.from_matrix(rotation).as_quat()[:, [3, 0, 1, 2]]
             _, direct, sun = geometry_light(anchor)
             vis = 1 - blocked_sun(mesh, pts + n * 0.001, sun) if direct else 1.0
-            gain = irradiance(n, samples["arm"][:, 0] / 255.0, anchor, vis)
-            rgb = srgb(linear(samples["albedo"]) * gain).astype("f4") / 255.0
+            gain = irradiance(n, samples["arm"][:, 0] / 255.0, anchor, vis, samples.get("sky_visibility"))
+            optics = (
+                (samples["dielectric_f0"], samples["specular_roughness"], None)
+                if "dielectric_f0" in samples
+                else None
+            )
+            rgb = (
+                srgb(
+                    surface_radiance(
+                        samples["albedo"], gain, n, anchor, samples.get("sky_visibility"), vis, optics
+                    )
+                ).astype("f4")
+                / 255.0
+            )
             spacing = float(samples["spacing_m"])
             scales = np.broadcast_to([0.83 * spacing, 0.83 * spacing, 0.12 * spacing], pts.shape)
             additions.append(particles(pts @ basis.T + center, quat, scales, np.full(len(pts), 0.94), rgb))
@@ -101,7 +122,8 @@ def build(args):
                 )
             )
         background.update(_features_dc=dc, _features_rest=rest)
-        name = "-".join(pair)
+        if args.assembly:
+            records[0]["instances"] = read_json(args.assets / args.assembly / "metadata.json")["instances"]
         dest = args.out / name
         dest.mkdir(parents=True, exist_ok=True)
         checkpoint = dict(baseline, layers=dict(baseline["layers"]), roadside_props=records)
@@ -155,7 +177,7 @@ def render(args):
     model.eval()
     with torch.no_grad():
         for label, path in [("original", BASE / "joint.pt")] + [
-            ("-".join(pair), args.out / "-".join(pair) / "joint.pt") for pair in PAIRS
+            (name, args.out / name / "joint.pt") for name, _ in scenes(args)
         ]:
             model.restore(torch.load(path, map_location="cpu", weights_only=False))
             metrics = {}
@@ -218,6 +240,8 @@ if __name__ == "__main__":
     p.add_argument("--views", type=Path, default=ROOT / "outputs/roadside-props")
     p.add_argument("--out", type=Path, default=BASE / "roadside-props")
     p.add_argument("--renders", type=Path, default=ROOT / "outputs/roadside-props/joint")
+    p.add_argument("--assembly", help="ID of a baked freestanding layout")
+    p.add_argument("--site", help="Anchor subdirectory for the layout")
     args = p.parse_args()
     for key in ["assets", "views", "out", "renders"]:
         setattr(args, key, getattr(args, key).resolve())

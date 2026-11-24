@@ -1,0 +1,50 @@
+{
+  "author": "hinndia",
+  "license": "CC BY 4.0",
+  "page": "https://sketchfab.com/3d-models/traffic-cone-573feef839d7450cb3e12da9986e7a98",
+  "adaptation": "KhronosGroup/glTF-Sample-Assets",
+  "commit": "f36bfdabd1031c3cf6689a50570b8cdf3678b49c",
+  "files": {
+    "TrafficCone.gltf": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/f36bfdabd1031c3cf6689a50570b8cdf3678b49c/Models/TrafficCone/glTF/TrafficCone.gltf",
+      "bytes": 8029,
+      "sha256": "71b43c0d0723be64b099b614dee7bb45027920b8ce84359073428e9e6046d00b"
+    },
+    "TrafficCone.bin": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/f36bfdabd1031c3cf6689a50570b8cdf3678b49c/Models/TrafficCone/glTF/TrafficCone.bin",
+      "bytes": 224048,
+      "sha256": "dec65cc3526b62ba7de0f8e8dbee7f14d7bc1b0225ac37cf1315ca7bd0ff8949"
+    },
+    "ConeBaseMat_baseColor.png": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/f36bfdabd1031c3cf6689a50570b8cdf3678b49c/Models/TrafficCone/glTF/ConeBaseMat_baseColor.png",
+      "bytes": 361248,
+      "sha256": "60b5e141e8647ee7ad129a324e3fa7da6f64aa731ccb04fe2e7f53ff7aba0997"
+    },
+    "ConeBaseMat_metallicRoughness.png": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/f36bfdabd1031c3cf6689a50570b8cdf3678b49c/Models/TrafficCone/glTF/ConeBaseMat_metallicRoughness.png",
+      "bytes": 28301,
+      "sha256": "9ac221da6c77408c5da6b42b35cced80f0ab98be37fec52dd87d632b62afefb3"
+    },
+    "Cone_Retro.png": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/f36bfdabd1031c3cf6689a50570b8cdf3678b49c/Models/TrafficCone/glTF/Cone_Retro.png",
+      "bytes": 27096,
+      "sha256": "47858fedcda585cab244e3e7c131f2d7b05a7d0e3ff7e7f80ffbc4f0d9bee4fd"
+    },
+    "asphalt_02_diff_1k.jpg": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/f36bfdabd1031c3cf6689a50570b8cdf3678b49c/Models/TrafficCone/glTF/asphalt_02_diff_1k.jpg",
+      "sha256": "1aa5ce99f58a625c71d48cfc3e68b65ca85ccb00f39e045c0a928608a0ea25ed",
+      "bytes": 731707
+    },
+    "asphalt_02_rough_1k.jpg": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/f36bfdabd1031c3cf6689a50570b8cdf3678b49c/Models/TrafficCone/glTF/asphalt_02_rough_1k.jpg",
+      "sha256": "70ba3edc65525eb4dc366cf010ca7ae0bd34e0251ff0225c2dad627a873d0712",
+      "bytes": 544032
+    }
+  },
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "asphalt_credit": {
+    "creator": "Rob Tuytel / Poly Haven",
+    "license": "CC0",
+    "page": "https://polyhaven.com/a/asphalt_02"
+  }
+}

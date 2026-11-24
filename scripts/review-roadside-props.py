@@ -66,7 +66,7 @@ def physical(root, out):
     canvas.save(out, quality=93)
 
 
-def joint(root):
+def joint(root, pairs=("H234-B232", "H235-B233")):
     base = root / "joint"
     dest = root / "joint-front-rear.mp4"
     tmp = dest.with_suffix(".tmp.mp4")
@@ -78,7 +78,7 @@ def joint(root):
         macro_block_size=2,
         output_params=["-threads", "3", "-movflags", "+faststart"],
     ) as writer:
-        for pair in ["H234-B232", "H235-B233"]:
+        for pair in pairs:
             names = sorted(p.name for p in (base / "original/front").glob("*.png"))
             if len(names) != 48:
                 raise ValueError("Expected all 48 recorded rig poses")
@@ -104,8 +104,13 @@ def joint(root):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--views", type=Path, default=ROOT / "outputs/roadside-props")
-    parser.add_argument("--joint-only", action="store_true", help="Compose reloaded checkpoints without physical-camera plates")
+    parser.add_argument(
+        "--joint-only",
+        action="store_true",
+        help="Compose reloaded checkpoints without physical-camera plates",
+    )
+    parser.add_argument("--pairs", nargs="+", default=["H234-B232", "H235-B233"])
     args = parser.parse_args()
     if not args.joint_only:
         physical(args.views, args.views / "physical.jpg")
-    joint(args.views)
+    joint(args.views, args.pairs)

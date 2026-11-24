@@ -12,7 +12,7 @@ PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidew
          'water surface', 'cast ring and seat', 'shaft wall', 'shaft bottom',
          'concrete collar', 'lid face', 'lid underside', 'lid edge', 'hinge',
          'pavement block top', 'pavement block edge', 'pavement block underside', 'subgrade', 'socket wall', 'visible debris face', 'opening inner rim', 'central bearing beam',
-         'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain')
+         'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain', 'traffic cone')
 EXACT_PARTS = {
     'Fracture inset rim': 19, 'Road around the aperture': 1, 'Road adjoining the fracture': 1,
     'Fracture lip and exposed bed': 2, 'Fracture sidewall in surface coordinates': 3,
@@ -83,6 +83,8 @@ def load_inventory(parent):
 
 
 def part_id(name):
+    if name.startswith('Traffic cone '):
+        return 25
     if name.startswith('Barrier '):
         return 21
     if name.startswith('Hydrant '):
@@ -90,6 +92,18 @@ def part_id(name):
     if name.startswith('Fracture debris '):
         return 18
     return 12 if name.startswith('Hinge ') else EXACT_PARTS[name]
+
+
+def dielectric_spec(material):
+    """Tinted dielectric reflectance at normal incidence for untextured glTF specular factors."""
+    ext = material.get("extensions", {})
+    spec = ext.get("KHR_materials_specular")
+    pbr = material["pbrMetallicRoughness"]
+    if not spec or pbr.get("metallicFactor", 1) != 0 or any(k.endswith("Texture") for k in spec):
+        return None
+    ior = ext.get("KHR_materials_ior", {}).get("ior", 1.5)
+    f0 = ((ior - 1) / (ior + 1))**2 * np.array(spec.get("specularColorFactor", [1.,1.,1.]))
+    return np.float32(np.clip(f0 * spec.get("specularFactor", 1.), 0, 1)), pbr.get("roughnessFactor", 1.)
 
 
 def glb_triangles(path, *, names=False, appearance=False, normal_map=False, packed_material=False):
@@ -140,6 +154,8 @@ def glb_triangles(path, *, names=False, appearance=False, normal_map=False, pack
                     normals = accessor(primitive['attributes']['NORMAL'])
                     normals = np.stack((normals[:,0], -normals[:,2], normals[:,1]), axis=-1)
                     part += (normals, binary[offset:offset + packed['byteLength']])
+                    sky = primitive['attributes'].get('_SKY_VISIBILITY')
+                    part += ((None if sky is None else accessor(sky).ravel(), dielectric_spec(material)),)
             yield part
 
 

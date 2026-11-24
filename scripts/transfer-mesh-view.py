@@ -9,15 +9,21 @@ import numpy as np
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "gen2hole/downstream"))
-from mesh_transfer import RoadMesh, fit_footprint, fit_road, footprint_size, pixel_rays, resolve_samples
+from mesh_transfer import RoadMesh, fit_footprint, fit_road, footprint_size, resolve_samples
 from road_geometry import save_json
 from prop_lighting import fit_receivers
 from prop_registration import driving_clearance
+from host_depth import geometry, road_samples
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     tasks = parser.add_subparsers(dest="task", required=True)
+    road = tasks.add_parser("road-points", help="Unproject labelled metric road depth from calibrated host views")
+    road.add_argument("out", type=Path, help="World-space XYZ .npy")
+    road.add_argument("views", type=Path, nargs="+")
+    road.add_argument("--calibration", type=Path, help="Shared lens calibration if packets omit explicit rays")
+    road.add_argument("--stride", type=int, default=2, help="Pixel subsampling interval")
     fit = tasks.add_parser("fit", help="Fit an anchor from metric world-space road samples")
     fit.add_argument("points", type=Path, help="N × 3 .npy")
     fit.add_argument("out", type=Path)
@@ -43,6 +49,18 @@ def main():
     render.add_argument("--road-tolerance-m", type=float, default=0.10,
                         help="Radial tolerance for uncertain host pavement; labelled occluders use their own range")
     args = parser.parse_args()
+    if args.task == "road-points":
+        clouds = []
+        for path in args.views:
+            with np.load(path, allow_pickle=False) as packet:
+                clouds.append(road_samples(packet, args.calibration, args.stride))
+        points = np.concatenate(clouds)
+        if not len(points):
+            parser.error("No valid measured road samples in the supplied views")
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        with args.out.open("wb") as dest:
+            np.save(dest, points)
+        return
     if args.task == "fit":
         points = np.load(args.points, allow_pickle=False)
         anchor = fit_road(
@@ -72,22 +90,9 @@ def main():
         return
     mesh = RoadMesh(args.asset)
     with np.load(args.view, allow_pickle=False) as view:
-        if ("rays_camera" in view) == bool(args.calibration):
-            parser.error("Provide exactly one lens definition: calibrated rays in the packet or --calibration")
-        protected = view["protected"]
-        if "rays_camera" in view:
-            rays = view["rays_camera"]
-        else:
-            rays, valid = pixel_rays(json.loads(args.calibration.read_text()), return_valid=True)
-            protected = protected | ~valid
+        rays, host, protected, pose = geometry(view, args.calibration)
+        rgb = view["rgb"]
         anchor = json.loads(args.anchor.read_text())
-        if rays.ndim == 3:
-            rays = rays[None]
-        if protected.ndim == 2:
-            protected = np.broadcast_to(protected, rays.shape[:-1])
-        if rays.ndim != 4 or not len(rays) or protected.shape != rays.shape[:-1]:
-            parser.error("Expected H×W×3 rays or S×H×W×3 subpixel rays with compatible foreground masks")
-        rgb, pose, host = view["rgb"], view["camera_to_world"], view["host_range"]
         foreground = view.get("occluder_range")
         if foreground is not None:
             if foreground.shape == rgb.shape[:2]:
@@ -100,7 +105,7 @@ def main():
         if receivers is not None and (receivers.shape != rays.shape[:-1] or receivers.dtype != bool):
             parser.error("Expected boolean H×W or S×H×W registered receiver_mask")
         after, ids, ranges, *shadow = resolve_samples(
-            [mesh.render(rgb, pose, subray, anchor, host, mask,
+            [mesh.render(rgb, pose, subray, anchor, host[i], mask,
                          occluder_range=None if foreground is None else foreground[i],
                          road_tolerance_m=args.road_tolerance_m, with_shadow=mesh.standing,
                          receiver_mask=None if receivers is None else receivers[i])

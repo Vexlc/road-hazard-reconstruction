@@ -1,5 +1,5 @@
 {
-  "asset_count": 1481,
+  "asset_count": 1483,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -1993,6 +1993,22 @@
         "mesh-view",
         "joint-props"
       ]
+    },
+    "traffic-cones": {
+      "name": "直立与倒地交通锥",
+      "launcher": "gen2hole/traffic_cones.py",
+      "recipe": "gen2hole/examples/traffic-cones/source.json",
+      "guide": "docs/20-traffic-cones.md",
+      "section": "从原始模型重建并成对放置",
+      "assets": [
+        "C236",
+        "C237"
+      ],
+      "transfer": [
+        "mesh-view",
+        "joint-props",
+        "cycles"
+      ]
     }
   },
   "transfer_routes": {
@@ -2050,6 +2066,11 @@
       "name": "KITTI 0000 原生联合场景的成对立体设施及前后视",
       "entry": "streetcrafter/joint/roadside_pairs.py",
       "guide": "docs/19-roadside-props.md"
+    },
+    "cycles": {
+      "name": "Blender Cycles 原生等距鱼眼、米制深度与双物体对照",
+      "entry": "scripts/render-cone-cycles.py",
+      "guide": "docs/20-traffic-cones.md"
     }
   }
 }

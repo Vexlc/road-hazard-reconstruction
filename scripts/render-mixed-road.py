@@ -396,6 +396,7 @@ def main():
     parser.add_argument("--out", type=Path)
     parser.add_argument("--group", type=int, default=26, help="host trajectory index used to seed the anchor")
     parser.add_argument("--offset", type=float, default=2.25, help="metres toward camera right")
+    parser.add_argument("--ego-mask",type=Path,help="Optional per-scene calibrated physical camera body outlines")
     parser.add_argument("--support-radius", type=float, default=2.1, help="KITTI candidate terrain search radius in metres")
     parser.add_argument("--seed-lift", type=float, default=0., help="KITTI candidate height above the nominal road, e.g. a sidewalk")
     parser.add_argument("--lighting", type=Path, help="Optional standing-object ground RGB, sun_world and direct_fraction JSON")
@@ -444,6 +445,8 @@ def main():
     anchor = fit_footprint(anchor, nearby, np.max([footprint_size(path) for path in assets.values()], axis=0))
     out.mkdir(parents=True, exist_ok=True)
     ego_masks = json.loads((ROOT / "gen2hole/examples/mixed-road/ego-masks.json").read_text())[args.scene]
+    if args.ego_mask:
+        ego_masks.update(json.loads(args.ego_mask.read_text())[args.scene])
     models = {cam: view_model(data["sensors"][cam], data) for cam, _ in views}
     standing_bounds = []
     for folder in assets.values():
