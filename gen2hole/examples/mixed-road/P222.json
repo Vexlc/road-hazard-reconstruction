@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P222",
+    "label": "露出粗集料的局部坑蚀",
+    "source": "PothRGBD",
+    "anchor": "20250227_171539",
+    "fit": [
+      "20250227_171539"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

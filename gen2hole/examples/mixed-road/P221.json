@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P221",
+    "label": "跨施工接缝的长条掉块",
+    "source": "PothRGBD",
+    "anchor": "20250305_041332",
+    "fit": [
+      "20250305_041332"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

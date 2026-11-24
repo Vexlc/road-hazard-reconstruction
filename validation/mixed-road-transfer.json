@@ -1,0 +1,431 @@
+{
+  "assets": {
+    "P220": {
+      "asset.glb": "7c1178fad92105227a0d66435e3f397e662bde023df507c5665043ed58dcbb7b",
+      "asset.ply": "f119d94f788d02186f5e71d78145306c2035254d58f7a14333c266c063a3834a",
+      "surface.npz": "0f5d94da22b86c63e2d8d350e95e8f7bb071b6fe3b57ca88ece65326f59725d2",
+      "pandaset": "034_220",
+      "reload_pixel_error": 0,
+      "local_road_rms_m": 0.009539089918793717,
+      "withheld_depth": {
+        "samples": 12578,
+        "median_mm": 0.2613067626953125,
+        "p95_mm": 0.5527079105377196
+      }
+    },
+    "P221": {
+      "asset.glb": "064407a0c295da8af617f50fda237735bd8913cff792fbfa3c3c2cb9a0d2b8f6",
+      "asset.ply": "dbe34c581cc2a99b80972d2aec70f5860fe3e9c05ed9b51e97b217d830d4760d",
+      "surface.npz": "7c31392a54db90f8bb18e8e85674dcd182aa0c872c184c187b9391a074d4ea36",
+      "pandaset": "109_221",
+      "reload_pixel_error": 0,
+      "local_road_rms_m": 0.006391006110654229,
+      "withheld_depth": {
+        "samples": 4098,
+        "median_mm": 0.24628639221191406,
+        "p95_mm": 0.8097678422927854
+      }
+    },
+    "P222": {
+      "asset.glb": "d0f93363d269eaad95829f2e070ccc935829bb49b23431ab8d761d1f2410454a",
+      "asset.ply": "f2738c425aec9b22caa05d262aee1b34834d59a78340c1fab31b7174fab43347",
+      "surface.npz": "28c261fc7096919bb884119f4ce70315016ab712ea738b6ed35896b6ec611fd5",
+      "pandaset": "034_222",
+      "reload_pixel_error": 0,
+      "local_road_rms_m": 0.009539089918793717,
+      "withheld_depth": {
+        "samples": 7123,
+        "median_mm": 0.2785921096801758,
+        "p95_mm": 0.6805062294006345
+      }
+    },
+    "P223": {
+      "asset.glb": "a40393b0ebc80ac193026d207d715b49096b65b102b5ab77609760308969d1f5",
+      "asset.ply": "9ba042f0e9a367d63f8b48ec36108bd1d3c69b4aa85c0be1b0e9ab116c272740",
+      "surface.npz": "dfe64c1ee5adf157535588d237f8019379414e4a22b46835cdfdd749fcf71f06",
+      "pandaset": "109_223",
+      "reload_pixel_error": 0,
+      "local_road_rms_m": 0.006391006110654229,
+      "withheld_depth": {
+        "samples": 2548,
+        "median_mm": 0.5499720573425293,
+        "p95_mm": 1.4622151851654053
+      }
+    },
+    "A224": {
+      "asset.glb": "a72b174cb970b2e6a7120635fe7adc435aa48720db14f789d16a514215150160",
+      "asset.ply": "bd87bb7aac81074cefc19423bf2ad21b01fc73e575bd236224c3e643c38320bc",
+      "surface.npz": "627513dc185af801aa4ad5dcfee46d992dd3b196660156e9adb21e8349188714",
+      "pandaset": "034_224",
+      "reload_pixel_error": 0,
+      "local_road_rms_m": 0.009539089918793717,
+      "centre_part": 9
+    },
+    "A225": {
+      "asset.glb": "b250470323f5e834c707ddbb954740de2bc29bf25b22feb3bd37d97499827a6d",
+      "asset.ply": "8f6adabdc4f834843b4282a9fe69722a01d6f6cca0c307a3a0feae844679b589",
+      "surface.npz": "4748438b9a443d72c97f804c4dc6b1423de5c0547d1b9b6ce060139ec8f3ffb9",
+      "pandaset": "109_225",
+      "reload_pixel_error": 0,
+      "local_road_rms_m": 0.006391006110654229
+    },
+    "A226": {
+      "asset.glb": "5a5604139d1244791a797475af7814dadb50f92e1e62c7ec936db70054419941",
+      "asset.ply": "7b3cb7a41bdf439ea47395ef12f56f831e77fc9c2e5b7b3584831dcdbd541a14",
+      "surface.npz": "f4543ad8ed540faf3a8f5ca6fc0fa697a3d2860e0543659c6db8b322ec8dd650",
+      "pandaset": "034_226",
+      "reload_pixel_error": 0,
+      "local_road_rms_m": 0.009539089918793717
+    },
+    "A227": {
+      "asset.glb": "8d9e53c4e4d2d5314c0b768af5bf5e80d1ca28394d6b74e7ee10dbb27dbae6d1",
+      "asset.ply": "144f174399c58fee67d806c7de8511f56c7a69f5860ffafd21ad5452f1797afc",
+      "surface.npz": "b8835f36190a1631b48bcf82dca1223d40075d2556e4de5072366c8be0cbffdf",
+      "pandaset": "109_227",
+      "reload_pixel_error": 0,
+      "local_road_rms_m": 0.006391006110654229
+    },
+    "M224": {
+      "asset.glb": "476c633f689206610ca220e31132e29341aa32a574e8c9ebf733e9912ec84275",
+      "asset.ply": "d23247ca54b78e08790f45aadef18bae9f4176eedae8b99f24d0a65ef6b58963",
+      "surface.npz": "627513dc185af801aa4ad5dcfee46d992dd3b196660156e9adb21e8349188714",
+      "pandaset": "034_228",
+      "reload_pixel_error": 0,
+      "local_road_rms_m": 0.009539089918793717,
+      "centre_part": 7
+    }
+  },
+  "controls": {
+    "fisheye_max_pixel_roundtrip": 9.163887996225165e-06,
+    "rotated_gravity_origin": "matched",
+    "one_sided_support": "rejected"
+  },
+  "hosts": {
+    "a2d2-frontleft": {
+      "models": {
+        "P220": {
+          "front_left": {
+            "frame": 1509,
+            "visible_pixels": 731,
+            "accepted_frames": 6,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1516,
+            "visible_pixels": 1074,
+            "accepted_frames": 20,
+            "ego_edits": 0
+          }
+        },
+        "P221": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 707,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1516,
+            "visible_pixels": 1212,
+            "accepted_frames": 20,
+            "ego_edits": 0
+          }
+        },
+        "P222": {
+          "front_left": {
+            "frame": 1509,
+            "visible_pixels": 876,
+            "accepted_frames": 6,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1516,
+            "visible_pixels": 1275,
+            "accepted_frames": 20,
+            "ego_edits": 0
+          }
+        },
+        "P223": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 1376,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1517,
+            "visible_pixels": 1913,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        },
+        "A224": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 5898,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1516,
+            "visible_pixels": 8422,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        },
+        "A225": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 7232,
+            "accepted_frames": 8,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1516,
+            "visible_pixels": 8486,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        },
+        "A226": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 5889,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1516,
+            "visible_pixels": 8411,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        },
+        "A227": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 6511,
+            "accepted_frames": 8,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1516,
+            "visible_pixels": 9336,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        },
+        "M224": {
+          "front_left": {
+            "frame": 1508,
+            "visible_pixels": 5898,
+            "accepted_frames": 7,
+            "ego_edits": 0
+          },
+          "rear_center": {
+            "frame": 1516,
+            "visible_pixels": 8422,
+            "accepted_frames": 21,
+            "ego_edits": 0
+          }
+        }
+      },
+      "road_fit": {
+        "center_world": [
+          2.527785112841649,
+          1.8733823608354074,
+          8.15343539677002
+        ],
+        "basis_columns": [
+          [
+            0.04289377195309307,
+            -0.998700160508192,
+            -0.027533865121841382
+          ],
+          [
+            0.014390598607460291,
+            0.02817397156858108,
+            -0.9994994437205914
+          ],
+          [
+            0.9989759932047192,
+            0.04247607240511406,
+            0.015580381050555203
+          ]
+        ],
+        "inliers": 25604,
+        "cells": 84,
+        "rms_m": 0.020653702604120652
+      },
+      "encoded_frames": 191,
+      "seconds": 19.1,
+      "packets": {
+        "front_left": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls.",
+        "rear_center": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls."
+      }
+    },
+    "kitti360-0000": {
+      "models": {
+        "P220": {
+          "image_00": {
+            "frame": 219,
+            "visible_pixels": 315,
+            "accepted_frames": 12,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 1975,
+            "accepted_frames": 14,
+            "ego_edits": 0
+          }
+        },
+        "P221": {
+          "image_00": {
+            "frame": 218,
+            "visible_pixels": 203,
+            "accepted_frames": 11,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 2027,
+            "accepted_frames": 13,
+            "ego_edits": 0
+          }
+        },
+        "P222": {
+          "image_00": {
+            "frame": 219,
+            "visible_pixels": 363,
+            "accepted_frames": 12,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 2373,
+            "accepted_frames": 14,
+            "ego_edits": 0
+          }
+        },
+        "P223": {
+          "image_00": {
+            "frame": 218,
+            "visible_pixels": 418,
+            "accepted_frames": 11,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 4584,
+            "accepted_frames": 11,
+            "ego_edits": 0
+          }
+        },
+        "A224": {
+          "image_00": {
+            "frame": 218,
+            "visible_pixels": 1812,
+            "accepted_frames": 11,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 16471,
+            "accepted_frames": 12,
+            "ego_edits": 0
+          }
+        },
+        "A225": {
+          "image_00": {
+            "frame": 218,
+            "visible_pixels": 2302,
+            "accepted_frames": 11,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 17997,
+            "accepted_frames": 12,
+            "ego_edits": 0
+          }
+        },
+        "A226": {
+          "image_00": {
+            "frame": 218,
+            "visible_pixels": 1811,
+            "accepted_frames": 11,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 16450,
+            "accepted_frames": 12,
+            "ego_edits": 0
+          }
+        },
+        "A227": {
+          "image_00": {
+            "frame": 218,
+            "visible_pixels": 2042,
+            "accepted_frames": 11,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 16961,
+            "accepted_frames": 12,
+            "ego_edits": 0
+          }
+        },
+        "M224": {
+          "image_00": {
+            "frame": 218,
+            "visible_pixels": 1812,
+            "accepted_frames": 11,
+            "ego_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "visible_pixels": 16471,
+            "accepted_frames": 12,
+            "ego_edits": 0
+          }
+        }
+      },
+      "road_fit": {
+        "center_world": [
+          18.224170820507474,
+          -8.535349931853194,
+          -0.907134757142758
+        ],
+        "basis_columns": [
+          [
+            0.9959246390417557,
+            -0.0900581185178314,
+            0.004862986590245763
+          ],
+          [
+            0.09004544430595558,
+            0.9959338177323308,
+            0.0027656205176779915
+          ],
+          [
+            -0.005092279380760984,
+            -0.002316459827622343,
+            0.9999843512298459
+          ]
+        ],
+        "inliers": 15965,
+        "cells": 81,
+        "rms_m": 0.012680196329574763
+      },
+      "encoded_frames": 321,
+      "seconds": 32.1,
+      "packets": {
+        "image_00": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls.",
+        "image_03": "Exact RGB, part and metric range. No edits with foreground or nearer-depth controls."
+      }
+    }
+  }
+}

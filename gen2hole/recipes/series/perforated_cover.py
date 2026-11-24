@@ -494,7 +494,9 @@ def build():
             source_image="references/frame.png",
             source_sha256=photo_hash,
             mask_sha256=mask_hash,
-            geometry_source="Rectified photographed face and individually marked through-openings. Designed recessed seat and hidden surfaces.",
+            geometry_source=("Registered solid face and displacement scan. Designed recessed seat and hidden surfaces."
+                             if profile.get("solid_face") else
+                             "Rectified photographed face and individually marked through-openings. Designed recessed seat and hidden surfaces."),
             width_m=float(size[0] - 2 * profile["seat_overlap_m"]),
             length_m=float(size[1] - 2 * profile["seat_overlap_m"]),
             panel_size_m=size.tolist(),

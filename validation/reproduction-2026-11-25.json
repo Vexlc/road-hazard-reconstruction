@@ -274,5 +274,18 @@
     "front_seconds": 62.0,
     "rear_seconds": 48.6,
     "front_to_rear_seconds": 78.3
+  },
+  "fixed_tag_remote_clone": {
+    "tag": "reproduction-2026.11.25",
+    "commit": "cdf453a4f7205314cbb5d9a47cafbac43ede5b9a",
+    "index": [
+      1463,
+      36,
+      9,
+      20
+    ],
+    "P103": "Freshly installed Python 3.11 CPU environment followed the handbook. GLB SHA-256 49759ba9e543495993f33a23896c7ead3bc83f2c42f6d0c47d6100ca3ccc5f38.",
+    "release_assets_verified": 29,
+    "P211": "All 22 Release volumes downloaded again through gh, per-volume and combined SHA-256 checked. Rebuilt P211 using installed GPU environment. Geometry and five native hashes matched."
   }
 }

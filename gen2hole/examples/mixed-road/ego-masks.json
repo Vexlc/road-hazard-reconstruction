@@ -1,0 +1,11 @@
+{
+  "description": "Conservative upper envelope of the vehicle body and rig, traced in original physical-camera views and padded toward the road. Coordinates on the listed reference grid, scaled to the captured resolution.",
+  "a2d2-frontleft": {
+    "front_left": {"grid": [480,302], "edge": [[0,302],[185,302],[194,283],[205,267],[216,256],[237,249],[268,244],[303,240],[337,240],[369,243],[401,248],[438,259],[479,273]]},
+    "rear_center": {"grid": [480,302], "edge": [[0,274],[48,267],[96,261],[144,256],[192,254],[240,253],[288,253],[336,254],[384,257],[432,262],[479,267]]}
+  },
+  "kitti360-0000": {
+    "image_00": {"grid": [1408,376], "edge": [[0,376],[1407,376]]},
+    "image_03": {"grid": [420,420], "edge": [[0,278],[24,277],[38,278],[56,291],[70,293],[85,294],[99,322],[125,337],[157,348],[200,353],[244,352],[279,346],[304,337],[316,311],[334,310],[351,298],[368,280],[390,264],[419,261]]}
+  }
+}

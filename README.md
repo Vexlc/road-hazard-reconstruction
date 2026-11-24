@@ -4,6 +4,8 @@ RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资�
 
 **[资产重建与场景迁入复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按资产编号找到配方、迁入代码、所需数据和验收方法。KITTI-360 示例用同一宿主生成十个场景，每次放入两个坑洞。[私有 Release 输入包与宿主检查点](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25) · [前视驶入、后视驶离](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4) · [只看后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-rear.mp4)
 
+**实测坑洞与异常方井**　新增 9 件资产。PandaSet 提供原生高斯检查点回放。KITTI-360 与 Audi A2D2 使用同一套网格、实拍相机及车身遮挡规则。当前主分支索引共 1,472 个编号、38 个系列、10 条迁入或展示路线。[新资产和其他渲染器接入](docs/17-mixed-road-transfer.md) · [Audi 前后鱼眼视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/mixed-road-v1.0.0/a2d2-mixed-road.mp4) · [模型及 KITTI 视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/mixed-road-v1.0.0)
+
 **StreetCrafter 自驾场景重建**支持从同一个场景入口运行 3DGUT 和动态 SC-GS，按实拍时间戳导出对照视频。已配置 PandaSet 前视 055、056 和 KITTI-360 左侧鱼眼片段。[运行方式与相机模型](streetcrafter/backends/README.md)
 
 **多视角鱼眼场景重建：** [3DGUT、SC-GS 和 Self-Cali-GS 的实拍对照](pipelines/fisheye/README.md)，含数据下载、相机转换、训练入口和留出视图评估。

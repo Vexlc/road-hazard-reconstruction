@@ -1,0 +1,90 @@
+{
+  "family": "square-concrete-infill-inspection-hatch",
+  "source_url": "https://ambientcg.com/a/ManholeCover011",
+  "credit": "ambientCG Manhole Cover 011. CC0 height-field photogrammetry. Source map is approximately 90 × 90 cm. Original archive ManholeCover011_1K-PNG.zip SHA-256 8720de52e8fd493a151c171efca938df829a1d30a59c49aa7a6139c97e4f130b.",
+  "frame": {
+    "image": "photo.png"
+  },
+  "perforations": {
+    "shape": "rect",
+    "corners_xy": [
+      [
+        108,
+        96
+      ],
+      [
+        926,
+        96
+      ],
+      [
+        926,
+        922
+      ],
+      [
+        108,
+        922
+      ]
+    ],
+    "solid_face": true,
+    "mask": "solid.png",
+    "displacement": "relief.png",
+    "surround_mask": "surround.png",
+    "pavement": "../../perforated-covers/split-iron/pavement.jpg",
+    "lining": "../../perforated-covers/lining.jpg",
+    "edge_patch_xyxy": [
+      89,
+      157,
+      105,
+      173
+    ],
+    "size_m": [
+      0.7189453125,
+      0.7259765625
+    ],
+    "frame_band_m": 0.046,
+    "seat_overlap_m": 0.014,
+    "thickness_m": 0.049,
+    "shaft_depth_m": 0.82,
+    "photographed_surround": true,
+    "relief_span_m": 0.005,
+    "scale_source": "Lid span from pixels on the 90 cm square registered ambientCG scan. The seat, underside, shaft, relief amplitude and abnormal installation poses are design values. Lifting sockets are modelled as blind surface relief."
+  },
+  "states": [
+    {
+      "id": "A224",
+      "label": "方形混凝土填芯检查盖齐平",
+      "angle_deg": 0
+    },
+    {
+      "id": "A225",
+      "label": "方盖沿接缝横移",
+      "offset_m": [
+        0.107,
+        -0.014
+      ]
+    },
+    {
+      "id": "A226",
+      "label": "沉降后单侧低于路面",
+      "installation_grade": {
+        "center_z_m": -0.024,
+        "tilt_deg": 3.0,
+        "uphill_deg": 83
+      }
+    },
+    {
+      "id": "A227",
+      "label": "框座拱起",
+      "installation_grade": {
+        "center_z_m": 0.026,
+        "tilt_deg": 0.8,
+        "uphill_deg": 124
+      }
+    },
+    {
+      "id": "M224",
+      "label": "方形检查井缺盖",
+      "absent": true
+    }
+  ]
+}

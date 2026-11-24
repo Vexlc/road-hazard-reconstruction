@@ -93,7 +93,8 @@ def trace(spec):
     if frame != "frame.png":
         Image.fromarray(photo).save(refs / "frame.png")
     holes = np.array(Image.open(refs / profile["mask"]).convert("L")) > 127
-    if holes.shape != photo.shape[:2] or not holes.any():
+    solid = profile.get("solid_face", False)
+    if holes.shape != photo.shape[:2] or holes.any() == solid:
         raise ValueError("Mark the openings on an image aligned to the photograph")
     quad = np.asarray(profile["corners_xy"], dtype="f4")
     if (
@@ -131,7 +132,7 @@ def trace(spec):
     # A perforation cannot touch the outside of its own panel.
     if np.any(mask[[0, -1]]) or np.any(mask[:, [0, -1]]):
         raise ValueError("An opening touches the cover perimeter")
-    loops = opening_loops(mask)
+    loops = [] if solid else opening_loops(mask)
     variants = {}
     for state in spec["states"]:
         if "break_polygon_uv" not in state:

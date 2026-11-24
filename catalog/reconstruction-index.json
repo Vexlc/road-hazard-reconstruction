@@ -1,5 +1,5 @@
 {
-  "asset_count": 1463,
+  "asset_count": 1472,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -1910,6 +1910,41 @@
       "transfer": [
         "drive"
       ]
+    },
+    "mixed-rgbd-pits": {
+      "name": "实测沥青坑蚀与接缝掉块",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/mixed-road",
+      "guide": "docs/17-mixed-road-transfer.md",
+      "section": "用原始输入重建九件资产",
+      "assets": [
+        "P220",
+        "P221",
+        "P222",
+        "P223"
+      ],
+      "transfer": [
+        "native",
+        "mesh-view"
+      ]
+    },
+    "square-infill-hatch": {
+      "name": "实扫方形检查井及异常安装状态",
+      "launcher": "gen2hole/survey.py",
+      "recipe": "gen2hole/examples/mixed-road/square-hatch/survey.json",
+      "guide": "docs/17-mixed-road-transfer.md",
+      "section": "用原始输入重建九件资产",
+      "assets": [
+        "A224",
+        "A225",
+        "A226",
+        "A227",
+        "M224"
+      ],
+      "transfer": [
+        "native",
+        "mesh-view"
+      ]
     }
   },
   "transfer_routes": {
@@ -1957,6 +1992,11 @@
       "name": "封存成品及环绕复核；独立 GLB 的宿主接入见手册",
       "entry": "scripts/review-large-potholes.py",
       "guide": "docs/10-factory.md"
+    },
+    "mesh-view": {
+      "name": "米制网格、标定光线与宿主遮挡合成",
+      "entry": "scripts/transfer-mesh-view.py",
+      "guide": "docs/17-mixed-road-transfer.md"
     }
   }
 }

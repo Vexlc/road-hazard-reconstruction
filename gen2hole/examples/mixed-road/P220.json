@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P220",
+    "label": "粗粒沥青浅碗坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_095918",
+    "fit": [
+      "20250305_095918"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

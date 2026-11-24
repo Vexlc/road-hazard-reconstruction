@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P223",
+    "label": "相邻的三处浅坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_140116",
+    "fit": [
+      "20250305_140116"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]
