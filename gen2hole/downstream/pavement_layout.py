@@ -152,7 +152,7 @@ class PavementLayout:
             points.extend((world - anchor["center_world"]) @ np.array(anchor["basis_columns"]))
         return np.array([np.min(points, axis=0), np.max(points, axis=0)])
 
-    def sample(self, rgb, pose, rays, anchor, host, protected, *, reflection_probe=None, **options):
+    def sample(self, rgb, pose, rays, anchor, host, protected, *, reflection_probe=None, reflectors=None, reflection_stats=None, **options):
         output = rgb.copy()
         distance = np.full(rgb.shape[:2], np.inf, "f4")
         part = np.zeros(rgb.shape[:2], "u1")
@@ -162,10 +162,10 @@ class PavementLayout:
             color, labels, metric = mesh.render(rgb, pose, rays, seat["anchor"], host, protected, **options)
             nearer = (labels > 0) & (metric < distance)
             wet = nearer & (labels == 4)
-            if reflection_probe is not None and seat["id"] in self.pond_beds and wet.any():
+            if (reflection_probe is not None or reflectors is not None) and seat["id"] in self.pond_beds and wet.any():
                 origins = options.get("ray_origins_camera")
                 color[wet] = self.pond_beds[seat["id"]].shade(color[wet], pose, rays[wet],
-                    None if origins is None else origins[wet], metric[wet], seat["anchor"], reflection_probe)
+                    None if origins is None else origins[wet], metric[wet], seat["anchor"], reflection_probe, reflectors, reflection_stats)
             output[nearer] = color[nearer]
             distance[nearer] = metric[nearer]
             part[nearer] = labels[nearer]

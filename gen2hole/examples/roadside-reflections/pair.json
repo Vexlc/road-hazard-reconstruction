@@ -1,0 +1,33 @@
+{
+  "id": "P256-P258",
+  "label": "碎边宽坑与碎石浅水坑",
+  "instances": [
+    {
+      "id": "broken",
+      "asset": "P256",
+      "xy_m": [
+        1.4,
+        0.1
+      ],
+      "heading_deg": -9
+    },
+    {
+      "id": "oval",
+      "asset": "P258",
+      "xy_m": [
+        -1.4,
+        -0.1
+      ],
+      "heading_deg": 16,
+      "water": {
+        "bed": "P257",
+        "input_liters": 9.0,
+        "seed_uv": [
+          0.64118,
+          0.38824
+        ],
+        "label": "椭圆碎石坑·九升积水"
+      }
+    }
+  ]
+}

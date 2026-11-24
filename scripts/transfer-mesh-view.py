@@ -29,6 +29,13 @@ def main():
     remap.add_argument("source_xy", type=Path, help="Hout×Wout×2 .npy map into original pixel centres (x, y)")
     remap.add_argument("out", type=Path)
     remap.add_argument("--calibration", type=Path, help="Original lens JSON if the input omits explicit rays")
+    reflection = tasks.add_parser("reflection-mesh", help="Recover visible reflecting surfaces from labelled metric RGB-D")
+    reflection.add_argument("view", type=Path)
+    reflection.add_argument("out", type=Path)
+    reflection.add_argument("--additional-view", type=Path, action="append", default=[], help="Another registered observation in the same world coordinates")
+    reflection.add_argument("--calibration", type=Path)
+    reflection.add_argument("--stride", type=int, default=2)
+    reflection.add_argument("--max-edge-m", type=float, default=.35)
     road = tasks.add_parser("road-points", help="Unproject labelled metric road depth from calibrated host views")
     road.add_argument("out", type=Path, help="World-space XYZ .npy")
     road.add_argument("views", type=Path, nargs="+")
@@ -56,6 +63,7 @@ def main():
         "view", type=Path, help="npz: rgb, camera_to_world, host_range, protected and optionally rays_camera"
     )
     render.add_argument("out", type=Path)
+    render.add_argument("--reflection-mesh", type=Path, help="Finite-distance host reflecting surfaces in world coordinates")
     render.add_argument("--calibration", type=Path, help="JSON COLMAP camera row when rays_camera is omitted")
     render.add_argument("--measured-rim", action="store_true", help="Use the scanned lip and adjoining continuous RGB-D pavement to resolve occlusion")
     render.add_argument("--road-tolerance-m", type=float, default=0.10,
@@ -77,6 +85,13 @@ def main():
     for command in (fit, render, color):
         command.add_argument("--asset-root", type=Path, help="Built members of a pavement layout JSON")
     args = parser.parse_args()
+    if args.task == "reflection-mesh":
+        from metric_reflection import MetricReflectors, from_depth
+        members = []
+        for exposure in (args.view, *args.additional_view):
+            with np.load(exposure, allow_pickle=False) as view:
+                members.append(from_depth(view, args.stride, args.max_edge_m, args.calibration))
+        packet = MetricReflectors.merge(members).packet()
     if args.task == "register-readout":
         from camera_readout import interpolate_rows
 
@@ -93,7 +108,7 @@ def main():
 
         with np.load(args.view, allow_pickle=False) as source:
             packet = remap_packet(source, np.load(args.source_xy, allow_pickle=False), args.calibration)
-    if args.task in ("register-readout", "remap-camera"):
+    if args.task in ("register-readout", "remap-camera", "reflection-mesh"):
         from tempfile import NamedTemporaryFile
 
         args.out.parent.mkdir(exist_ok=True, parents=True)
@@ -193,7 +208,19 @@ def main():
         if layout:
             layout.bind(anchor)
             from pavement_water import DirectionalProbe
+            from metric_reflection import MetricReflectors
             reflection_probe = DirectionalProbe.from_packet(view)
+            if args.reflection_mesh:
+                if any(k in view for k in MetricReflectors.fields):
+                    parser.error("Choose embedded or separate reflection geometry")
+                with np.load(args.reflection_mesh, allow_pickle=False) as source:
+                    reflectors = MetricReflectors.from_packet(source)
+                    if reflectors is None:
+                        parser.error("Missing metric reflector geometry in the external file")
+            else:
+                reflectors = MetricReflectors.from_packet(view)
+        elif args.reflection_mesh:
+            parser.error("A reflection mesh requires a pavement layout")
         receiver_band = view.get("receiver_band_m")
         if receiver_band is not None:
             if receiver_band.shape != () or layout or not mesh.standing:
@@ -206,7 +233,7 @@ def main():
                            road_tolerance_m=args.road_tolerance_m,
                            receiver_mask=None if receivers is None else receivers[i])
             if layout:
-                sample = layout.sample(rgb, pose, subray, anchor, host[i], mask, reflection_probe=reflection_probe, pixel_width=len(rays)**-0.5, **options)
+                sample = layout.sample(rgb, pose, subray, anchor, host[i], mask, reflection_probe=reflection_probe, reflectors=reflectors, pixel_width=len(rays)**-0.5, **options)
             else:
                 options["receiver_band_m"] = receiver_band
                 if mesh.normal_textures:

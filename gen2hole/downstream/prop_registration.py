@@ -132,7 +132,7 @@ def stereo_rig(root):
 
 
 @lru_cache(maxsize=3)
-def stereo_ranges(left):
+def stereo_ranges(left, *, disparity_allowance=1.0):
     """Left-right checked foreground range from the synchronized camera pair. Unknown depth stays unknown."""
     root = left.parents[1]
     a, b, times = stereo_rig(root)
@@ -161,5 +161,5 @@ def stereo_ranges(left):
     factor = np.sqrt(1 + ((xx - a[0, 2]) / a[0, 0]) ** 2 + ((yy - a[1, 2]) / a[1, 1]) ** 2)
     # A one-pixel disparity allowance moves ambiguous near surfaces farther away.
     result = np.full(dl.shape, np.inf, "f4")
-    result[valid] = factor[valid] * (a[0, 3] - b[0, 3]) / np.maximum(dl[valid] - 1.0, 0.5)
+    result[valid] = factor[valid] * (a[0, 3] - b[0, 3]) / np.maximum(dl[valid] - disparity_allowance, 0.5)
     return result

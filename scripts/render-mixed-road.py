@@ -4,7 +4,8 @@ import argparse
 import json
 from pathlib import Path
 import sys
-from contextlib import ExitStack
+from contextlib import closing, contextmanager, nullcontext
+from tempfile import TemporaryDirectory
 
 import cv2
 import numpy as np
@@ -30,9 +31,11 @@ SUBPIXELS = ((-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0.25, 0.25))
 class RayWindow:
     """Bound every calibrated subpixel ray in each tile, including fish-eye rays behind the optical plane."""
 
-    def __init__(self, model, *, reflection=False):
+    def __init__(self, model, *, reflection=False, metric_reflections=False, stereo_reflections=False):
         (self.width, self.height), _, unproject = model
         self.tile = 32
+        self.metric_reflections = metric_reflections
+        self.stereo_reflections = stereo_reflections
         starts = np.arange(0, self.width, self.tile)
         low, high = [], []
         probe_rays, probe_pixels = [], []
@@ -56,6 +59,10 @@ class RayWindow:
         if reflection:
             self.probe_rays = np.concatenate(probe_rays)
             self.probe_pixels = np.concatenate(probe_pixels)
+        if metric_reflections:
+            self.bearings = np.zeros(((self.height+7)//8, (self.width+7)//8, 3), "f4")
+            row, col = self.probe_pixels.T // 8
+            self.bearings[row, col] = self.probe_rays
         self.valid = np.isfinite(self.low).all(-1)
         self.low[~self.valid] = self.high[~self.valid] = 0
 
@@ -195,6 +202,57 @@ def align_observed_road(anchor, pose, points):
     )
 
 
+def scan_reflectors(window, points_camera, project, pose, edge, rgb):
+    """Register only measured LiDAR neighbours with valid colour and a consistent camera bearing."""
+    from metric_reflection import observed_faces
+    from scipy.spatial import Delaunay, QhullError
+    if not len(points_camera):
+        return None
+    uv = project(points_camera)
+    h, w = rgb.shape[:2]
+    valid = np.isfinite(uv).all(1) & (uv >= 0).all(1) & (uv < [w-.5,h-.5]).all(1)
+    valid &= uv[:,1] < np.interp(uv[:,0],edge[:,0],edge[:,1])-2
+    uv, xyz = uv[valid], points_camera[valid]
+    r,c = np.rint(uv).astype(int).T[::-1]
+    gh,gw = window.bearings.shape[:2]
+    col,row = np.clip(np.rint(uv/8).astype(int), 0, [gw-1,gh-1]).T
+    dist = np.linalg.norm(xyz,axis=1)
+    direction = xyz / dist[:,None]
+    observed = (direction*window.bearings[row,col]).sum(1) > .999
+    observed &= dist < 35.
+    r,c,row,col,xyz,dist,direction = (a[observed] for a in (r,c,row,col,xyz,dist,direction))
+    cell = row*gw + col
+    ordered = np.lexsort((dist,cell))
+    _, first = np.unique(cell[ordered],return_index=True)
+    picked = ordered[first]
+    if len(picked) < 3:
+        return None
+    screen = np.stack((c[picked], r[picked]), axis=-1)
+    try:
+        tri = Delaunay(screen).simplices
+    except QhullError:
+        return None
+    pixel = screen[tri]
+    tri = tri[np.linalg.norm(pixel[:,[1,2,0]]-pixel, axis=2).max(1) <= 24]
+    return observed_faces(xyz[picked] @ pose[:3,:3].T + pose[:3,3], rgb[r[picked], c[picked]],
+                          direction[picked] @ pose[:3,:3].T, tri, .40)
+
+
+def stereo_reflectors(photo, model, mesh, anchor, pose, rgb):
+    """Measure off-road surfaces in a synchronized rectified stereo exposure."""
+    from metric_reflection import triangulate
+
+    step = 4
+    (w, h), _, inverse = model
+    rays, valid = inverse(0, 0, w, h)
+    ranges = stereo_ranges(photo, disparity_allowance=0.)[::step, ::step]
+    direction = rays[::step, ::step] @ pose[:3, :3].T
+    good = valid[::step, ::step] & np.isfinite(ranges) & (ranges < 25.)
+    points = pose[:3, 3] + np.where(good, ranges, 0.)[..., None] * direction
+    good[good] = mesh.foreground_points(points[good], anchor, .15)
+    return triangulate(points, rgb[::step, ::step], direction, good, .30)
+
+
 def frame_crop(
     mesh, anchor, sensor_model, pose, raw_image, points, window, ego, packet_path=None, sensor_name=None
 ):
@@ -259,24 +317,36 @@ def frame_crop(
             residual = np.abs(np.subtract(lidar, depth, out=np.zeros_like(lidar), where=both))
             confirmed = both & (residual < np.maximum(.12, .025 * depth))
             foreground = np.where(confirmed, np.maximum(lidar, depth), np.inf)
-    probe = None
+    probe = reflectors = None
     if grouped and mesh.water_states:
         from pavement_water import DirectionalProbe
         full = np.asarray(Image.open(raw_image).convert("RGB"))
+        if window.metric_reflections:
+            reflectors = scan_reflectors(window, cam, project, pose, edge, full)
+            if window.stereo_reflections:
+                from metric_reflection import MetricReflectors
+                stereo = stereo_reflectors(raw_image, sensor_model, mesh, anchor, pose, full)
+                members = [surface for surface in (reflectors, stereo) if surface is not None]
+                reflectors = MetricReflectors.merge(members) if members else None
         row, col = window.probe_pixels.T
         allowed = row < np.interp(col, edge[:, 0], edge[:, 1])
         # Reflect only observed light above the gravity horizon; deeper bank hits use the measured bed.
         world = window.probe_rays @ pose[:3, :3].T
         allowed &= (world @ anchor["gravity_up_world"]) > 0
+        if reflectors is not None and allowed.any():
+            # Near surfaces already measured in 3-D must not also appear at infinity.
+            direct, _ = reflectors.trace(pose[:3, 3], world[allowed])
+            allowed[allowed] = ~np.isfinite(direct)
         if allowed.any():
             lowpass = cv2.GaussianBlur(full, (0, 0), 1.4)
             probe = DirectionalProbe(world[allowed].astype("f4"), lowpass[row[allowed], col[allowed]], 2.)
+    reflection_stats = dict(water_subrays=0, bank_hits=0, near_hits=0)
     samples, packet_rays, packet_masks = [], [], []
     for dx, dy in SUBPIXELS:
         rays, valid = unproject(x, y, w, h, dx, dy)
         protected = body | ~valid
         if grouped:
-            samples.append(mesh.sample(image, pose, rays, anchor, depth, protected, occluder_range=depth, reflection_probe=probe,
+            samples.append(mesh.sample(image, pose, rays, anchor, depth, protected, occluder_range=depth, reflection_probe=probe, reflectors=reflectors, reflection_stats=reflection_stats,
                                        pixel_width=len(SUBPIXELS)**-0.5))
         else:
             samples.append(mesh.render(image, pose, rays, anchor, depth, protected, with_shadow=mesh.standing,
@@ -298,6 +368,7 @@ def frame_crop(
             **({"occluder_range": foreground} if foreground is not None else {}),
             **({"receiver_band_m": np.float64(receiver_band)} if receiver_band is not None else {}),
             **(probe.packet() if probe is not None else {}),
+            **(reflectors.packet() if reflectors is not None else {}),
             rays_camera=packet_rays,
             protected=packet_masks,
         )
@@ -312,6 +383,7 @@ def frame_crop(
         ("top", y == 0 and hit[0].any()), ("bottom", hi[1] == height and hit[-1].any())
     ) if touches]
     return dict(
+        reflection_stats=reflection_stats,
         instance=instance,
         before=image,
         after=after,
@@ -404,6 +476,21 @@ def timed_frames(candidates):
             yield i > 0 and j == 0, clip[int(np.argmin(abs(times - t)))]
 
 
+@contextmanager
+def driving_video(output):
+    import imageio.v2 as imageio
+
+    with TemporaryDirectory(dir=output.parent) as directory:
+        staged = Path(directory) / output.name
+        encoder = imageio.get_writer(
+            str(staged), fps=10, codec="libx264", quality=7, macro_block_size=2,
+            output_params=["-threads", "3", "-movflags", "+faststart"],
+        )
+        with closing(encoder) as writer:
+            yield writer
+        staged.replace(output)
+
+
 def video_segment(writer, candidates, mesh_id, label, scene, sensor):
     from PIL import ImageDraw, ImageFont, ImageOps
 
@@ -474,6 +561,8 @@ def main():
     )
     parser.add_argument("--appearance-views",type=Path,help="Directory of surveyed original camera packets (same layout and metric placement)")
     parser.add_argument("--survey-only", action="store_true", help="Write the two surveyed seats and world up before building site-dependent water")
+    parser.add_argument("--stereo-reflections", action="store_true", help="Also recover finite reflecting surfaces from synchronized KITTI front stereo")
+    parser.add_argument("--metric-reflections", action="store_true", help="Trace finite-distance reflections on the current registered LiDAR scan")
     parser.add_argument("--gravity-up", type=float, nargs=3, metavar=("X", "Y", "Z"), help="Measured gravity-opposing vector in the host world")
     args = parser.parse_args()
     if (args.survey_only or args.gravity_up) and not args.layout:
@@ -579,23 +668,15 @@ def main():
             for cam, _ in views
         }
     save_json(out / "anchor.json", anchor)
-    windows = {cam: RayWindow(model, reflection=bool(layout and layout.water_states)) for cam, model in models.items()}
+    if args.stereo_reflections and (not args.metric_reflections or args.scene == "a2d2-frontleft"):
+        parser.error("Stereo reflection needs a registered KITTI stereo rig and --metric-reflections")
+    if args.metric_reflections and not (layout and layout.water_states):
+        parser.error("Metric reflections require a surveyed water layout")
+    windows = {cam: RayWindow(model, reflection=bool(layout and layout.water_states), metric_reflections=args.metric_reflections,
+                              stereo_reflections=args.stereo_reflections and data["sensors"][cam] == "image_00")
+               for cam, model in models.items()}
     index = {}
-    with ExitStack() as stack:
-        writer = None
-        if args.video:
-            import imageio.v2 as imageio
-
-            writer = stack.enter_context(
-                imageio.get_writer(
-                    str(out / "driving.tmp.mp4"),
-                    fps=10,
-                    codec="libx264",
-                    quality=7,
-                    macro_block_size=2,
-                    output_params=["-threads", "3", "-movflags", "+faststart"],
-                )
-            )
+    with (driving_video(out / "driving.mp4") if args.video else nullcontext()) as writer:
         for key, folder in ([(layout.key, args.layout.parent)] if layout else assets.items()):
             mesh = layout if layout else RoadMesh(folder)
             index[key] = {"source_sha256": mesh.digest, "views": {}}
@@ -637,7 +718,13 @@ def main():
                         counts = np.bincount(ids.ravel(), minlength=len(mesh.members) + 1)[1:]
                         return 0.0 if np.any(counts < 12) else len(counts) / np.sum(1.0 / counts)
 
-                    chosen = max(candidates, key=joint_area)
+                    if args.metric_reflections:
+                        # Inspect a view that resolves both openings and an actual surveyed reflector when available.
+                        best_area = max(map(joint_area, candidates))
+                        options = [c for c in candidates if joint_area(c) >= best_area * .20]
+                        chosen = max(options, key=lambda c: (c[2]["reflection_stats"]["near_hits"], joint_area(c)))
+                    else:
+                        chosen = max(candidates, key=joint_area)
                     if not joint_area(chosen):
                         raise ValueError(f"{key}: no {sensor} exposure jointly resolves all members")
                 else:
@@ -677,6 +764,7 @@ def main():
                         dest / "view.npz",sensor_name=sensor,
                     )
                 row = dict(
+                    **({"reflection_samples_by_frame": {str(frame):r["reflection_stats"] for _,frame,r,_ in candidates}} if args.metric_reflections else {}),
                     frame=f,
                     local_road_alignment=best["alignment"],
                     crop_xy=best["xy"].tolist(),
@@ -701,8 +789,6 @@ def main():
                 index[key]["views"][sensor] = row
                 print(key, sensor, f, best["visible"], flush=True)
             save_json(out / "index.json", index)
-    if args.video:
-        (out / "driving.tmp.mp4").replace(out / "driving.mp4")
 
 
 if __name__ == "__main__":

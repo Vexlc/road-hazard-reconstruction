@@ -1,6 +1,6 @@
 # 下载与复现入口
 
-从[全仓复现手册](16-reproduction-cookbook.md)开始。手头已有编号，查[逐系列重建与迁入代码表](asset-code-index.md)；已有新相机或道路，查[按宿主选择迁入入口](16-reproduction-cookbook.md#各类资产怎样迁入道路)。常见大坑、异常井盖和路面遗落物各有从原始输入到驶过后回看的示例。[20 件常见大坑](16-reproduction-cookbook.md#kitti-360-双坑与后视) · [实测双坑和鱼眼近景](24-asphalt-breakouts.md) · [缺盖井与通气盖](22-scanned-round-covers.md) · [轮胎、轮圈、筐和水泥袋](23-road-debris.md) · [行驶中的鱼眼与沉降、错位井盖](25-rolling-covers.md) · [双坑和裁切、去畸变相机](26-remapped-pits.md) · [干湿双坑、坡度与鱼眼反光](27-wet-pavement.md)
+从[全仓复现手册](16-reproduction-cookbook.md)开始。手头已有编号，查[逐系列重建与迁入代码表](asset-code-index.md)；已有新相机或道路，查[按宿主选择迁入入口](16-reproduction-cookbook.md#各类资产怎样迁入道路)。常见大坑、异常井盖和路面遗落物各有从原始输入到驶过后回看的示例。[20 件常见大坑](16-reproduction-cookbook.md#kitti-360-双坑与后视) · [实测双坑和鱼眼近景](24-asphalt-breakouts.md) · [缺盖井与通气盖](22-scanned-round-covers.md) · [轮胎、轮圈、筐和水泥袋](23-road-debris.md) · [行驶中的鱼眼与沉降、错位井盖](25-rolling-covers.md) · [双坑和裁切、去畸变相机](26-remapped-pits.md) · [干湿双坑、坡度与鱼眼反光](27-wet-pavement.md) · [三段道路与近物倒影](28-roadside-reflections.md)
 
 本文记录五类历史资产库的下载与复现方法，共 1,199 条资产记录。当前图生三维、场景与传感器的本地开发入口见[项目首页](../README.md)。
 

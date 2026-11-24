@@ -1,0 +1,24 @@
+{
+  "id": "P256-P257",
+  "label": "碎边宽坑与椭圆碎石坑",
+  "instances": [
+    {
+      "id": "broken",
+      "asset": "P256",
+      "xy_m": [
+        1.4,
+        0.1
+      ],
+      "heading_deg": -9
+    },
+    {
+      "id": "oval",
+      "asset": "P257",
+      "xy_m": [
+        -1.4,
+        -0.1
+      ],
+      "heading_deg": 16
+    }
+  ]
+}

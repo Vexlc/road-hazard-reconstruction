@@ -106,25 +106,39 @@ class PondBed:
                 (1 - dx) * texture[row1, col] + dx * texture[row1, col1]
             ) * dy
             xy = points[valid, :2] + directions[valid, :2] * distance[valid, None]
-            result[valid] = linear(apply_apron(color, xy, appearance))
+            result[valid] = linear(apply_apron(color, xy, appearance) if appearance is not None else color)
         return distance, result
 
-    def shade(self, baked, pose, directions, origins, ranges, seat, probe):
+    def shade(self, baked, pose, directions, origins, ranges, seat, probe, reflectors=None, reflection_stats=None):
         basis = np.asarray(seat["basis_columns"])
         local_ray = directions @ pose[:3, :3].T @ basis
         points = (pose[:3, 3] - seat["center_world"]) @ basis + local_ray * ranges[:, None]
         if origins is not None:
             points += origins @ pose[:3, :3].T @ basis
         reflected, transmitted, fresnel = interface(local_ray, self.up)
-        env, support = probe.sample(reflected @ basis.T)
+        world_ray = reflected @ basis.T
+        if probe is None:
+            env, support = np.zeros((len(points), 3)), np.zeros(len(points))
+        else:
+            env, support = probe.sample(world_ray)
+        bank = np.full(len(points), np.inf)
         base = linear(baked)
         appearance = seat.get("pavement_appearance")
         if appearance is not None:
             path, color = self.trace(points, transmitted, appearance)
             hit = np.isfinite(path)
             base[hit] = color[hit] * (0.74 * np.exp(-path[hit, None] * [7.0, 5.5, 4.5]))
+        if appearance is not None or reflectors is not None:
             bank, material = self.trace(points, reflected, appearance)
             bank_hit = np.isfinite(bank)
             env[bank_hit], support[bank_hit] = material[bank_hit], 1.0
+        if reflectors is not None:
+            near, color = reflectors.trace(points @ basis.T + seat["center_world"], world_ray)
+            visible = near < bank
+            env[visible], support[visible] = color[visible], 1.0
+            if reflection_stats is not None:
+                reflection_stats["water_subrays"] += len(points)
+                reflection_stats["bank_hits"] += int(np.isfinite(bank).sum())
+                reflection_stats["near_hits"] += int(visible.sum())
         fraction = (fresnel * support * ((local_ray @ self.up) < 0))[:, None]
         return srgb(base * (1 - fraction) + env * fraction)

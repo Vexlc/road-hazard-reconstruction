@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P256",
+    "label": "碎边露出集料的宽浅坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_121628",
+    "fit": [
+      "20250305_121628"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

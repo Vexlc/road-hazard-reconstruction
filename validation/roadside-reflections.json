@@ -1,0 +1,303 @@
+{
+  "assets": {
+    "P256": {
+      "area_m2": 1.4746641420968514,
+      "extent_m": [
+        1.4301172494888306,
+        1.2511850595474243
+      ],
+      "depth_p95_m": 0.05453290433585357,
+      "holdout": {
+        "glb_sha256": "f6113eb6e89bbdf36308985df4d571b3c33765f40817884d9a34dfc9546e1981",
+        "source": "PothRGBD",
+        "fit": [
+          "20250305_121628"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 15642,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 124967,
+        "withheld_mesh": {
+          "samples": 15642,
+          "median_mm": 0.5971193313598633,
+          "p95_mm": 1.8310308456420894
+        },
+        "withheld_road_plane": {
+          "samples": 15642,
+          "median_mm": 27.72506866249458,
+          "p95_mm": 57.68737025265846
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      },
+      "hashes": {
+        "asset.ply": "a2672a4a497a4eb6b1f5ef260544b29b3f4a92332c8149ddd33407c517922cc2",
+        "metadata.json": "88a9f6a327a9020c28ed89323e5a4753daecf8b811f3a17eeab8d6c13b2a42dc",
+        "splat_material.npz": "13c860402e333d531a40a49bc18faf4584f1d5f5764bc806349e18656bbca514",
+        "surface.npz": "cd7a98c8f1e42a8fe0ee088ad4631405afd6c6d399f872a5b1b41e256093cc00",
+        "asset.glb": "f6113eb6e89bbdf36308985df4d571b3c33765f40817884d9a34dfc9546e1981"
+      }
+    },
+    "P257": {
+      "area_m2": 1.4241131675953078,
+      "extent_m": [
+        1.4763957262039185,
+        1.1632405519485474
+      ],
+      "depth_p95_m": 0.04691718829748266,
+      "holdout": {
+        "glb_sha256": "a4a2dc639f36ea7bd998b9db91f4b87fea9a0e9e3250049f94ffa4c77cf6bacd",
+        "source": "PothRGBD",
+        "fit": [
+          "20250305_110328"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 17445,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 138825,
+        "withheld_mesh": {
+          "samples": 17445,
+          "median_mm": 0.5108118057250977,
+          "p95_mm": 1.4743804931640625
+        },
+        "withheld_road_plane": {
+          "samples": 17445,
+          "median_mm": 15.242544664184177,
+          "p95_mm": 52.98739162586651
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      },
+      "hashes": {
+        "asset.ply": "ba2545a3a3b6f54e69cf912aac3ee5d989b04f0cedd66007887292630833a18a",
+        "metadata.json": "dcaeb7bb9c55800b25820a346b10bd89719707ecbef00e56b868d68871361a34",
+        "splat_material.npz": "0ad66c361f7bc87a2ef940bd9297e01be97d573cf01192517c9b18384a4d81c7",
+        "surface.npz": "4bc30bbc8cd4adbf7949f318d257291df1bf149c5ca0da802c1f04aceaa458d0",
+        "asset.glb": "a4a2dc639f36ea7bd998b9db91f4b87fea9a0e9e3250049f94ffa4c77cf6bacd"
+      }
+    }
+  },
+  "water": {
+    "urban": {
+      "glb_sha256": "3beb60848c74b0d8325bcd650ffd21247a62efc1efeb1817f87c54a5003e46e5",
+      "bed_geometry_uv_texture_sha256": "6f819091983c879f1407181add27a07fadd961a630d0d9546f9bc26f824bf076",
+      "world_level_max_error_m": 1.3132537522719812e-09,
+      "integrated_liters": 8.999999726939276,
+      "area_m2": 0.5627442798022647,
+      "spilled_liters": 0.0,
+      "input_liters": 9.0,
+      "grade_percent": 1.3919528163243367
+    },
+    "avenue": {
+      "glb_sha256": "188f2d898fc0f7447cb91fc3597e13c8a0b7025dcde2780fb3727717631f0f72",
+      "bed_geometry_uv_texture_sha256": "6f819091983c879f1407181add27a07fadd961a630d0d9546f9bc26f824bf076",
+      "world_level_max_error_m": 1.2468169691137732e-09,
+      "integrated_liters": 8.999999893046521,
+      "area_m2": 0.7908680810529062,
+      "spilled_liters": 0.0,
+      "input_liters": 9.0,
+      "grade_percent": 1.8587100828085632
+    },
+    "audi": {
+      "glb_sha256": "0272975da8fae5ddf994f83e3bf724535b6270d41dabbca374be12dbe2f9e530",
+      "bed_geometry_uv_texture_sha256": "6f819091983c879f1407181add27a07fadd961a630d0d9546f9bc26f824bf076",
+      "world_level_max_error_m": 1.4753802624056789e-09,
+      "integrated_liters": 8.999999844483908,
+      "area_m2": 0.5744824691156458,
+      "spilled_liters": 0.0,
+      "input_liters": 9.0,
+      "grade_percent": 2.0018844772913686
+    }
+  },
+  "real": {
+    "urban/image_00": {
+      "water_pixels": 794,
+      "changed_water_pixels": 29,
+      "max_channel_delta": 47,
+      "triangles": 5653,
+      "frame": 218,
+      "protected_edits": 0,
+      "both_visible_frames": 11
+    },
+    "urban/image_03": {
+      "water_pixels": 3468,
+      "changed_water_pixels": 0,
+      "max_channel_delta": 0,
+      "triangles": 805,
+      "frame": 228,
+      "protected_edits": 0,
+      "both_visible_frames": 10
+    },
+    "avenue/image_00": {
+      "water_pixels": 1923,
+      "changed_water_pixels": 0,
+      "max_channel_delta": 0,
+      "triangles": 7944,
+      "frame": 500,
+      "protected_edits": 0,
+      "both_visible_frames": 16
+    },
+    "avenue/image_03": {
+      "water_pixels": 1033,
+      "changed_water_pixels": 0,
+      "max_channel_delta": 0,
+      "triangles": 4424,
+      "frame": 500,
+      "protected_edits": 0,
+      "both_visible_frames": 5
+    },
+    "audi/front_left": {
+      "water_pixels": 5508,
+      "changed_water_pixels": 97,
+      "max_channel_delta": 28,
+      "triangles": 5913,
+      "frame": 1505,
+      "protected_edits": 0,
+      "both_visible_frames": 8
+    },
+    "audi/rear_center": {
+      "water_pixels": 2692,
+      "changed_water_pixels": 0,
+      "max_channel_delta": 0,
+      "triangles": 3709,
+      "frame": 1519,
+      "protected_edits": 0,
+      "both_visible_frames": 18
+    }
+  },
+  "independent_optics": {
+    "vertices": 460883,
+    "triangles": 911306,
+    "views": {
+      "front": {
+        "near_red": {
+          "native_pixels": 1053,
+          "iou": 0.9639126305792972,
+          "directional_iou": 0.0,
+          "p95_linear_rgb_error": 0.001982776966105486,
+          "interior_pixels": 771,
+          "rear_hemisphere_pixels": 0
+        },
+        "far_green": {
+          "native_pixels": 1470,
+          "iou": 0.939742721733243,
+          "directional_iou": 0.0,
+          "p95_linear_rgb_error": 0.0020618354819184953,
+          "interior_pixels": 1003,
+          "rear_hemisphere_pixels": 0
+        }
+      },
+      "edge": {
+        "near_red": {
+          "native_pixels": 1967,
+          "iou": 0.9552618200305033,
+          "directional_iou": 0.0,
+          "p95_linear_rgb_error": 0.0018064140226806181,
+          "interior_pixels": 1593,
+          "rear_hemisphere_pixels": 1670
+        },
+        "far_green": {
+          "native_pixels": 2642,
+          "iou": 0.9668300037693177,
+          "directional_iou": 0.0,
+          "p95_linear_rgb_error": 0.0020664609108761887,
+          "interior_pixels": 2167,
+          "rear_hemisphere_pixels": 336
+        }
+      },
+      "rear": {
+        "near_red": {
+          "native_pixels": 966,
+          "iou": 0.9493278179937953,
+          "directional_iou": 0.0,
+          "p95_linear_rgb_error": 0.0017595508073792278,
+          "interior_pixels": 679,
+          "rear_hemisphere_pixels": 0
+        },
+        "far_green": {
+          "native_pixels": 1879,
+          "iou": 0.9005319148936171,
+          "directional_iou": 0.0,
+          "p95_linear_rgb_error": 0.0015264561421099525,
+          "interior_pixels": 1353,
+          "rear_hemisphere_pixels": 0
+        }
+      }
+    }
+  },
+  "native": {
+    "source_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+    "checkpoint_sha256": "7dd1c1c6e930268d2d8cd53f3d24235359a83a03457c9aa45abc3b312c94cdde",
+    "replay": {
+      "front": {
+        "frames": 48,
+        "peak_changed_pixels": 4292,
+        "max_baseline_error": 0
+      },
+      "rear": {
+        "frames": 48,
+        "peak_changed_pixels": 202249,
+        "max_baseline_error": 0
+      }
+    },
+    "local": {
+      "support_m": 0.18,
+      "views": {
+        "front": {
+          "frames": 48,
+          "raw_outside_changes": 17765,
+          "localized_outside_changes": 0,
+          "preserved_interior_changes": 9640,
+          "max_interior_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "raw_outside_changes": 835434,
+          "localized_outside_changes": 0,
+          "preserved_interior_changes": 535957,
+          "max_interior_error": 0
+        }
+      }
+    }
+  },
+  "real_products": {
+    "after.png": "e7785f0e92adce30b9d62b6a26219bd5412946f3af9d20aa63f1a61832a7a39c",
+    "part.png": "b6928b0e8818acd73617edb8e8aca03f7dc76bd840f214a45f1d70cd7257c04a",
+    "instance.png": "31c0d84ae326660f8abe9458f6bdc50156ef7b40e8f1878a0a8595d4cd253429",
+    "range.npy": "583c0a8a8563ef85f7e694569a3fb1c3fdfbbec437cc06c80c46dadcb8569539"
+  },
+  "videos": {
+    "audi-front-rear.mp4": {
+      "frames": 48,
+      "seconds": 4.8
+    },
+    "kitti-0003-front-side.mp4": {
+      "frames": 41,
+      "seconds": 4.1
+    },
+    "kitti-0000-front-side.mp4": {
+      "frames": 41,
+      "seconds": 4.1
+    },
+    "joint-front-rear.mp4": {
+      "frames": 48,
+      "seconds": 8.0
+    },
+    "joint-local-front-rear.mp4": {
+      "frames": 48,
+      "seconds": 8.0
+    }
+  },
+  "bank_order": {
+    "bank_distance_m": 0.026772812008857727,
+    "fresnel": 0.15149585815987868,
+    "rgb_channel_change": {
+      "registered-0.5": 51,
+      "registered-1.5": 0,
+      "unregistered-0.5": 51,
+      "unregistered-1.5": 0
+    }
+  }
+}

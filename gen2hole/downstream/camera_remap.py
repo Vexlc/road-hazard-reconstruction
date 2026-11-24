@@ -43,13 +43,16 @@ def remap_packet(view, source_xy, calibration=None):
             if name == "occluder_range":
                 value = value.astype(np.result_type(value, np.float32), copy=False)
             out[name] = pick(value, border)
+    if "reflector_labels" in view:
+        out["reflector_labels"] = pick(sampled(view["reflector_labels"], distance.shape, "reflector_labels"), 0)
     if "road_albedo_srgb" in view:
         albedo = view["road_albedo_srgb"]
         if albedo.shape != rgb.shape or albedo.dtype != np.uint8:
             raise ValueError("road_albedo_srgb must match the uint8 RGB image")
         out["road_albedo_srgb"] = albedo[y, x].copy()
         out["road_albedo_srgb"][~valid] = 0
-    for name in ("sensor_name", "receiver_band_m", "reflection_rays_world", "reflection_srgb", "reflection_radius_deg"):
+    for name in ("sensor_name", "receiver_band_m", "reflection_rays_world", "reflection_srgb", "reflection_radius_deg",
+                 "reflector_vertices_world", "reflector_triangles", "reflector_srgb"):
         if name in view:
             out[name] = view[name]
     return out

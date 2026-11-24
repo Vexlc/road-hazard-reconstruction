@@ -1,5 +1,5 @@
 {
-  "asset_count": 1505,
+  "asset_count": 1508,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2203,6 +2203,42 @@
         "water-reflection",
         "remapped-camera"
       ]
+    },
+    "wide-spall-and-oval-bed": {
+      "name": "碎边宽浅坑与椭圆碎石坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/roadside-reflections",
+      "guide": "docs/28-roadside-reflections.md",
+      "section": "从原始采集重建两件大坑",
+      "assets": [
+        "P256",
+        "P257"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "seat-water"
+      ]
+    },
+    "oval-bed-near-reflection": {
+      "name": "椭圆碎石坑在实测近物旁的积水状态",
+      "launcher": "gen2hole/seat_water.py",
+      "recipe": "gen2hole/examples/roadside-reflections",
+      "guide": "docs/28-roadside-reflections.md",
+      "section": "在三段道路逐处注水并回看",
+      "assets": [
+        "P258"
+      ],
+      "transfer": [
+        "seat-water",
+        "pavement-joint",
+        "native-pavement-support",
+        "water-reflection",
+        "metric-reflection",
+        "remapped-camera"
+      ]
     }
   },
   "transfer_routes": {
@@ -2320,6 +2356,11 @@
       "name": "带标定光线的宿主按观察方向渲染积水反射与折射",
       "entry": "gen2hole/downstream/pavement_water.py",
       "guide": "docs/27-wet-pavement.md"
+    },
+    "metric-reflection": {
+      "name": "按实测近物表面、岸壁与天空的可见性渲染积水",
+      "entry": "gen2hole/downstream/metric_reflection.py",
+      "guide": "docs/28-roadside-reflections.md"
     }
   },
   "groups": {
@@ -2349,7 +2390,8 @@
       "measured-pavement-pair",
       "measured-asphalt-breakouts",
       "broken-lip-and-bowl",
-      "rounded-spall-and-stony-bowl"
+      "rounded-spall-and-stony-bowl",
+      "wide-spall-and-oval-bed"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
@@ -2361,7 +2403,8 @@
       "observed-pavement",
       "paired-road-slots",
       "transverse-repair",
-      "seated-wet-pavement"
+      "seated-wet-pavement",
+      "oval-bed-near-reflection"
     ],
     "井盖、雨水篦与敞井": [
       "photo-chamber-BD-v2",
