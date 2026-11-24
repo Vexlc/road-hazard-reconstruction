@@ -37,6 +37,8 @@ class PavementLayout:
         self.members = []
         seen = set()
         self.meshes = {}
+        self.water_states = {}
+        self.pond_beds = {}
         for row in data["instances"]:
             key, name = row["asset"], row["id"]
             xy, angle = np.asarray(row["xy_m"], float), float(row["heading_deg"])
@@ -51,6 +53,16 @@ class PavementLayout:
                         "Use the roadside layout for freestanding props and their ground shadows"
                     )
                 self.meshes[key] = mesh
+            if "water" in row:
+                spec = row["water"]
+                meta = json.loads((path / "metadata.json").read_text())
+                water = meta.get("water", {})
+                if (meta.get("dry_source_id") != spec["bed"] or water.get("input_liters") != spec["input_liters"]
+                        or water.get("seed_uv") != spec["seed_uv"]):
+                    raise ValueError(f"Expected the registered volume, inlet and source bed for {key}")
+                from pavement_water import PondBed
+                self.water_states[name] = water
+                self.pond_beds[name] = PondBed(path, water)
             self.members.append((row, path))
         if not 1 <= len(self.members) <= 65535:
             raise ValueError("Expected one or more pavement instances fitting uint16 labels")
@@ -107,6 +119,15 @@ class PavementLayout:
             ):
                 raise ValueError(f"Asset or geometry changed after fitting {row['id']}")
 
+            if row["id"] in self.water_states:
+                up = np.asarray(anchor.get("gravity_up_world"), dtype=float)
+                if up.shape != (3,) or not np.isclose(np.linalg.norm(up), 1., atol=1e-7):
+                    raise ValueError("A site-dependent water surface requires a registered gravity_up_world")
+                solved = self.water_states[row["id"]]["up_local"]
+                local = up @ np.array(seat["anchor"]["basis_columns"])
+                if not np.allclose(local, solved, atol=1e-6, rtol=0):
+                    raise ValueError(f"Re-solve the water on the fitted road grade for {row['asset']}")
+
     def foreground_points(self, points, anchor, height_m):
         """Classify raw LiDAR returns against the nearest surveyed local road plane."""
         best = np.full(len(points), np.inf)
@@ -131,7 +152,7 @@ class PavementLayout:
             points.extend((world - anchor["center_world"]) @ np.array(anchor["basis_columns"]))
         return np.array([np.min(points, axis=0), np.max(points, axis=0)])
 
-    def sample(self, rgb, pose, rays, anchor, host, protected, **options):
+    def sample(self, rgb, pose, rays, anchor, host, protected, *, reflection_probe=None, **options):
         output = rgb.copy()
         distance = np.full(rgb.shape[:2], np.inf, "f4")
         part = np.zeros(rgb.shape[:2], "u1")
@@ -140,6 +161,11 @@ class PavementLayout:
             mesh = self.meshes[seat["asset"]]
             color, labels, metric = mesh.render(rgb, pose, rays, seat["anchor"], host, protected, **options)
             nearer = (labels > 0) & (metric < distance)
+            wet = nearer & (labels == 4)
+            if reflection_probe is not None and seat["id"] in self.pond_beds and wet.any():
+                origins = options.get("ray_origins_camera")
+                color[wet] = self.pond_beds[seat["id"]].shade(color[wet], pose, rays[wet],
+                    None if origins is None else origins[wet], metric[wet], seat["anchor"], reflection_probe)
             output[nearer] = color[nearer]
             distance[nearer] = metric[nearer]
             part[nearer] = labels[nearer]

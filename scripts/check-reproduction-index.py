@@ -52,6 +52,9 @@ def main():
     args = parser.parse_args()
     index = json.loads((ROOT / "catalog/reconstruction-index.json").read_text())
     routes = index["transfer_routes"]
+    grouped = [family for families in index["groups"].values() for family in families]
+    if len(grouped) != len(set(grouped)) or set(grouped) != set(index["families"]):
+        raise ValueError("Every reconstruction family must appear in exactly one navigation group")
     owners, used = {}, set()
     for family, row in index["families"].items():
         for key in ("launcher", "recipe", "prepare"):

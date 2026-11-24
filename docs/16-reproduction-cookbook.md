@@ -3,13 +3,25 @@
 从下列固定标签开始，可核对完整索引。获得单件模型、原生场景或相机回放的具体命令，见对应系列的操作章节。
 
 ~~~bash
-gh repo clone Vexlc/road-hazard-reconstruction -- --branch remapped-pits-v1.0.0 --depth 1
+gh repo clone Vexlc/road-hazard-reconstruction -- --branch wet-pavement-v1.0.0 --depth 1
 cd road-hazard-reconstruction
 python3 scripts/check-reproduction-index.py
 python3 gen2hole/gen2hole.py locate H234
 ~~~
 
-该标签包含 **1,501 个编号、51 个重建系列、21 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[逐系列代码对照表](asset-code-index.md) · [沥青双坑、车尾鱼眼与换材质复现](24-asphalt-breakouts.md) · [道路遗落物的模型、锚点与鱼眼重放](23-road-debris.md) · [实扫圆井的逐文件复建与非共心宿主](22-scanned-round-covers.md) · [完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
+该标签包含 **1,505 个编号、53 个重建系列、23 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[逐系列代码对照表](asset-code-index.md) · [沥青双坑、车尾鱼眼与换材质复现](24-asphalt-breakouts.md) · [道路遗落物的模型、锚点与鱼眼重放](23-road-debris.md) · [实扫圆井的逐文件复建与非共心宿主](22-scanned-round-covers.md) · [完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
+
+### 按手头材料选入口
+
+| 你手头已有 | 从哪里开始 | 能核对什么 |
+|---|---|---|
+| 一个编号或某一类病害 | 运行下节的 `locate`，或从[分类代码表](asset-code-index.md)进入系列 | 输入出处、重建程序、配方及支持的迁入方式 |
+| 一张照片、一对双目或一组 RGB-D | 按[重建输入表](#各类资产怎样重建)选对应系列 | 尺度依据、相机参数、原图或留出的深度误差 |
+| 一个模型，希望放入指定 joint.pt | 从[20 个大坑的十组迁入](#kitti-360-双坑与后视)或[干湿双坑的检查点示例](27-wet-pavement.md#迁入指定的-kitti-检查点)开始 | 宿主 SHA-256、每组两个资产、检查点重载、前后视 |
+| 自有鱼眼、点云或其他渲染器 | 先跑[固定相机包 CPU 回放](27-wet-pavement.md#先用-cpu-复现三个鱼眼机位)，再换上[自己的标定和路面](27-wet-pavement.md#接入自己的道路或鱼眼渲染器) | 同一像素的 RGB、部件、实例、径向距离和遮挡 |
+| 只想看效果、比较车驶过之后的画面 | 从[附件与视频导航](01-downloads.md)选系列 | 每个专题都注明实拍车尾、虚拟后视或独立渲染机位 |
+
+全仓索引检查覆盖每个编号、重建系列和迁入入口。逐文件重建、检查点重载和相机精度的验收范围记录在相应专题的 validation 文件。不同历史系列使用的原始输入、单位和环境版本各见其固定标签。
 
 双联井盖及其整块占地检查、鱼眼边缘可见性、独立前景量程接入见[双联检查井与跨场景迁入](18-twin-hatch-transfer.md)。固定代码标签为 `twin-hatch-v1.0.0`。
 
@@ -27,7 +39,7 @@ python3 gen2hole/gen2hole.py locate P203
 python3 gen2hole/gen2hole.py locate P211
 ~~~
 
-第一项检查仅用 Python 标准库。该版本应输出 **1,501 个唯一编号、51 个重建系列、21 条迁入或展示路线、20 件 KITTI 双坑资产**。`locate` 的 `prepare` 指输入准备，`launcher` 指实际构建程序，`recipe` 指配方，`guide / section` 定位到该案例的操作步骤，`transfer` 给出对应的迁入程序及说明。P154 是带实测深度的翘砖，P203 是单图路面剥落，P211 是生成参考图的大坑，三者使用不同入口。统计以编号为单位，共用同一次采集的多种井盖姿态分别有编号。[机器可读索引](../catalog/reconstruction-index.json)
+第一项检查仅用 Python 标准库。该版本应输出 **1,505 个唯一编号、53 个重建系列、23 条迁入或展示路线、20 件 KITTI 双坑资产**。`locate` 的 `prepare` 指输入准备，`launcher` 指实际构建程序，`recipe` 指配方，`guide / section` 定位到该案例的操作步骤，`transfer` 给出对应的迁入程序及说明。P154 是带实测深度的翘砖，P203 是单图路面剥落，P211 是生成参考图的大坑，三者使用不同入口。统计以编号为单位，共用同一次采集的多种井盖姿态分别有编号。[机器可读索引](../catalog/reconstruction-index.json)
 
 ## 各类资产怎样重建
 
@@ -51,6 +63,7 @@ python3 gen2hole/gen2hole.py locate P211
 | 破碎集料坑与残留沥青块剥落坑 P246/P247 | 两份颜色、毫米深度和原始轮廓，经小型输入包即可恢复 | [实测坑与近景亮度登记](24-asphalt-breakouts.md) |
 | 沉降填芯井、错位十孔铸铁盖及两种缺盖井 A248/M248/A249/M249 | 两套扫描的六个配准通道、孔口标注和设计井深 | [从扫描重建四件资产](25-rolling-covers.md#从扫描重建四件资产) |
 | 断边沥青坑与粗集料碗坑 P250/P251 | 单次实拍 RGB-D，原始颜色、深度和轮廓均在小型输入包内 | [从两份采集到检查点和实拍车尾](26-remapped-pits.md) |
+| 路面浅层剥落、粗石碗坑与积水 P252–P255 | 两份实拍 RGB-D 与掩膜，目标路面支撑、重力、水量与注水点 | [从实测坑床到逐坡重算水线](27-wet-pavement.md) |
 
 ## 先跑一个最小案例
 
@@ -88,6 +101,7 @@ echo '49759ba9e543495993f33a23896c7ead3bc83f2c42f6d0c47d6100ca3ccc5f38  runs/p10
 | 坑底占满近景、目标路面换材质 → 实车相机包或新渲染器 | [从宽视野路面登记曝光](../gen2hole/downstream/pavement_appearance.py)，使用可选的宿主漫反射底色，登记结果可在驶过后的机位复用。 | [从两份原始采集到 220° 鱼眼的重放与逐文件核对](24-asphalt-breakouts.md) |
 | 逐行曝光的鱼眼 → 运动中对齐井沿 | [时间戳对齐和姿态插值](../gen2hole/downstream/camera_readout.py) · [三维修补范围限定](../gen2hole/downstream/pavement_support.py) | [两种读出方向和驶过后回看](25-rolling-covers.md) |
 | 已裁切、旋转、缩放或去畸变的鱼眼 | [从源像素重采样已标定相机包](../gen2hole/downstream/camera_remap.py) | [实车四子光线回放与独立鱼眼验收](26-remapped-pits.md#接入重采样的相机) |
+| 积水坑 → 有坡度的新路面、实车鱼眼或自有引擎 | [水线重建](../gen2hole/seat_water.py) · [按光线求水面外观](../gen2hole/downstream/pavement_water.py) | [场景输入、固定回放与鱼眼验收](27-wet-pavement.md#接入自己的道路或鱼眼渲染器) |
 
 接入自己的网格引擎时，GLB 使用米制 Y-up，Gaussian PLY 使用米制 Z-up。同一资产的高程场与切口需要随模型一起放置；坑口内要移除会遮挡坑底的宿主路面。原生高斯迁入还会旋转椭球朝向与球谐方向。自定义宿主需要世界坐标、锚点、原始相机、行车时间戳及遮挡信息。[坐标约定与自定义宿主接入](13-reproduce-and-transfer.md#接入自己的道路)
 

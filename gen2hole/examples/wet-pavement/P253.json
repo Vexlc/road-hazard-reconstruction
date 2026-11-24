@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P253",
+    "label": "粗石裸露的深碗坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_125116",
+    "fit": [
+      "20250305_125116"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

@@ -81,7 +81,8 @@ def main():
             native_hashes={"asset.ply": digest(folder / "asset.ply")},
         )
         plate = road_plate(center, basis, cameras, split)
-        members.append(terrain_asset(seat["asset"], case, (center, basis, stats), plate, None, voxel=0.009,apron_exposure=args.apron_exposure))
+        members.append(terrain_asset(seat["asset"], case, (center, basis, stats), plate, None, voxel=0.009, apron_exposure=args.apron_exposure,
+                                     separate_water=layout.water_states.get(seat["id"], {}).get("retained_liters", 0.) > 0))
     split_ground = args.ground_method == "split"
     trim_road_support(members, 0.18 if split_ground else 1.45)
     dest = args.out / layout.key

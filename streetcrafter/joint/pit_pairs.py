@@ -172,7 +172,7 @@ def particles(xyz, quat, scale, alpha, rgb, rest=None):
     return {k: torch.from_numpy(np.ascontiguousarray(v, dtype="f4")) for k, v in arrays.items()}
 
 
-def terrain_asset(key, case, site, plate, heading, *, voxel=.019, apron_exposure=False):
+def terrain_asset(key, case, site, plate, heading, *, voxel=.019, apron_exposure=False, separate_water=False):
     folder = (ROOT / case["model"]).parent
     path = folder / "asset.ply"
     if digest(path) != case["native_hashes"]["asset.ply"]:
@@ -180,6 +180,10 @@ def terrain_asset(key, case, site, plate, heading, *, voxel=.019, apron_exposure
     vertices = ply_vertices(path)
     with np.load(folder/"splat_material.npz") as f:
         bed = ~f["road"]
+        if separate_water:
+            water = f["part_names"][f["part"]] == "Water surface"
+            if not water.any():
+                raise ValueError("Missing water-interface Gaussians")
         visibility = f["ambient_visibility"].astype("f4") / 255
     foot = Footprint(folder/"surface.npz")
     center, road, fit = site
@@ -190,7 +194,10 @@ def terrain_asset(key, case, site, plate, heading, *, voxel=.019, apron_exposure
         basis = road @ Rotation.from_rotvec([0, 0, angle]).as_matrix()
     # Keep an actual source splat per spatial cell, including separate vertical lip samples.
     src = np.flatnonzero(bed)
-    _, picks = np.unique(np.floor(vertices[src, :3] / voxel).astype("i4"), axis=0, return_index=True)
+    cells = np.floor(vertices[src, :3] / voxel).astype("i4")
+    if separate_water:
+        cells = np.column_stack((cells, water[src]))
+    _, picks = np.unique(cells, axis=0, return_index=True)
     ids = src[picks]
     v = vertices[ids]
     world = v[:, :3] @ basis.T + center
@@ -247,6 +254,8 @@ def terrain_asset(key, case, site, plate, heading, *, voxel=.019, apron_exposure
                   source_sha256=case["native_hashes"]["asset.ply"], source_ply=case.get("source_ply") or str(path.relative_to(ROOT)),
                   scale=1.0, source_bed_points=int(bed.sum()), inserted_bed_points=len(ids),
                   road_support_points=len(xy), outline_area_m2=case["outline_area_m2"], **fit)
+    if separate_water:
+        record["inserted_water_points"] = int(water[ids].sum())
     if exposure is not None:
         record["pavement_appearance"] = exposure
     return (foot, center, basis), [bed_state, strip], edge, record

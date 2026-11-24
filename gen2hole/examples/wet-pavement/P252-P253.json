@@ -1,0 +1,24 @@
+{
+  "id": "P252-P253",
+  "label": "实测浅坑与粗石碗坑",
+  "instances": [
+    {
+      "id": "spall",
+      "asset": "P252",
+      "xy_m": [
+        1.15,
+        0.2
+      ],
+      "heading_deg": -12
+    },
+    {
+      "id": "bowl",
+      "asset": "P253",
+      "xy_m": [
+        -1.15,
+        -0.15
+      ],
+      "heading_deg": 23
+    }
+  ]
+}

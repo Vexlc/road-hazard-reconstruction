@@ -35,6 +35,15 @@ def check():
         xyz, faces, field, dict(up_local=[0, 0, 1], seed_uv=[0.4, 0.5], input_liters=20)
     )
     assert stats['basin_seed_rc'] == [4, 3] and wet[4, 3] and not wet[4, 4]
+    y, x = np.indices((9, 9))
+    slope = .03 * x
+    vertices, faces, wet, _, state = solve(
+        np.stack([x, -y, slope], -1).reshape(-1, 3), grid_faces(*slope.shape),
+        dict(height=slope, defect_mask=np.ones_like(slope)),
+        dict(up_local=[0, 0, 1], seed_uv=[.5, .5], input_liters=5.), allow_drain=True,
+    )
+    assert not (len(vertices) or len(faces) or wet.any())
+    assert state['retained_liters'] == 0 and state['spilled_liters'] == 5 and state['free_surface_m'] is None
     print('Analytic volume, overflow, inlet descent and isolated basins passed')
 
 

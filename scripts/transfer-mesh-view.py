@@ -39,6 +39,7 @@ def main():
     fit.add_argument("out", type=Path)
     for name in ("seed", "heading", "up"):
         fit.add_argument("--" + name, nargs=3, type=float, required=True)
+    fit.add_argument("--gravity-up", type=float, nargs=3, help="Gravity-opposing world direction for site-dependent water")
     fit.add_argument("--radius", type=float, required=True, help="metres")
     fit.add_argument("--asset", type=Path, help="Check ground support across this asset's entire contact footprint")
     fit.add_argument("--lighting", type=Path, help="Registered road RGB reference and optional world-space sun")
@@ -144,6 +145,10 @@ def main():
             if args.trajectory:
                 parser.error("Vehicle envelope clearance is only supported for standing props")
             anchor = layout.fit(anchor, points, args.up, args.radius)
+            if args.gravity_up or layout.water_states:
+                from mesh_transfer import unit
+                anchor["gravity_up_world"] = unit(args.gravity_up or args.up).tolist()
+                layout.bind(anchor)
         elif args.asset:
             anchor = fit_footprint(anchor, points, footprint_size(args.asset))
             with np.load(args.asset / "surface.npz", allow_pickle=False) as field:
@@ -187,6 +192,8 @@ def main():
             parser.error("Expected boolean H×W or S×H×W registered receiver_mask")
         if layout:
             layout.bind(anchor)
+            from pavement_water import DirectionalProbe
+            reflection_probe = DirectionalProbe.from_packet(view)
         receiver_band = view.get("receiver_band_m")
         if receiver_band is not None:
             if receiver_band.shape != () or layout or not mesh.standing:
@@ -199,7 +206,7 @@ def main():
                            road_tolerance_m=args.road_tolerance_m,
                            receiver_mask=None if receivers is None else receivers[i])
             if layout:
-                sample = layout.sample(rgb, pose, subray, anchor, host[i], mask, pixel_width=len(rays)**-0.5, **options)
+                sample = layout.sample(rgb, pose, subray, anchor, host[i], mask, reflection_probe=reflection_probe, pixel_width=len(rays)**-0.5, **options)
             else:
                 options["receiver_band_m"] = receiver_band
                 if mesh.normal_textures:

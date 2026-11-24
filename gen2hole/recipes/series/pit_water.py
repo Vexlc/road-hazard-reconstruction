@@ -7,6 +7,10 @@ from scipy.ndimage import binary_dilation, label, map_coordinates
 NEIGHBORS = [[0, 1, 1], [1, 1, 1], [1, 1, 0]]
 
 
+class OpenOutlet(ValueError):
+    """The downhill route from this inlet reaches the measured boundary."""
+
+
 def component(elevation, head, seed):
     components, _ = label(elevation < head, structure=NEIGHBORS)
     number = components[seed]
@@ -35,7 +39,7 @@ def resting_seed(elev, inlet):
                 r, c = np.unravel_index(np.where(outlets, elev, np.inf).argmin(), elev.shape)
                 continue
         return int(r), int(c)
-    raise ValueError('The inlet drains out of the measured patch before reaching a depression')
+    raise OpenOutlet('The inlet drains out of the measured patch before reaching a depression')
 
 
 def drains(mask):
@@ -107,7 +111,7 @@ def make_interface(xyz, faces, flags, drop):
     return vertices[used], local.reshape(-1, 3)
 
 
-def solve(xyz, faces, field, spec):
+def solve(xyz, faces, field, spec, *, allow_drain=False):
     normal = np.array(spec['up_local'], dtype=float)
     if (
         normal.shape != (3,)
@@ -125,7 +129,18 @@ def solve(xyz, faces, field, spec):
     if field['defect_mask'][seed] < 0.5:
         raise ValueError('Water inlet is outside the measured pit')
     elev = (xyz @ normal).reshape(shape)
-    seed = resting_seed(elev, seed)
+    def dry_outlet():
+        if not allow_drain:
+            raise OpenOutlet('The selected inlet drains at this road orientation')
+        stats = dict(spec, basin_seed_rc=None, retained_liters=0., spilled_liters=liters,
+                     capacity_liters=0., free_surface_m=None, spill_elevation_m=None,
+                     max_water_depth_m=0., surface_area_m2=0.)
+        return np.empty((0, 3)), np.empty((0, 3), dtype=int), np.zeros(shape, bool), np.zeros(shape), stats
+
+    try:
+        seed = resting_seed(elev, seed)
+    except OpenOutlet:
+        return dry_outlet()
     bottom = float(elev[seed])
     low, high = bottom, float(np.nextafter(elev.max(), np.inf))
     for _ in range(40):
@@ -137,7 +152,7 @@ def solve(xyz, faces, field, spec):
     spill = low
     pool = component(elev, spill, seed)
     if not pool.any():
-        raise ValueError('The selected seed drains immediately at this road orientation')
+        return dry_outlet()
     # After finding the spill, only this connected catchment can enter volume queries.
     possible = faces[pool.ravel()[faces].any(axis=1)]
     tri = xyz[faces[0], :2]
@@ -184,7 +199,11 @@ def solve(xyz, faces, field, spec):
 
 
 def add_water(mesh, xyz, faces, field, color, spec):
-    points, triangles, wet, depth, stats = solve(xyz, faces, field, spec)
+    points, triangles, wet, depth, stats = solve(xyz, faces, field, spec, allow_drain=True)
+    if not len(triangles):
+        field['water_mask'] = wet.astype('f4')
+        field['water_depth_local_z'] = depth.astype('f4')
+        return stats
     width = float(field['width'])
     uv = points[:, :2] / width + 0.5
     # Bake the photographed bed seen through the water into a portable opaque

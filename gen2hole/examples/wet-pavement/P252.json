@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P252",
+    "label": "边缘磨圆的浅层沥青剥落",
+    "source": "PothRGBD",
+    "anchor": "20250227_185544",
+    "fit": [
+      "20250227_185544"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

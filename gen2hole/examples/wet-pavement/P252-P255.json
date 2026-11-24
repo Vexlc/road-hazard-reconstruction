@@ -1,0 +1,33 @@
+{
+  "id": "P252-P255",
+  "label": "浅层剥落与粗石坑积水",
+  "instances": [
+    {
+      "id": "spall",
+      "asset": "P252",
+      "xy_m": [
+        1.15,
+        0.2
+      ],
+      "heading_deg": -12
+    },
+    {
+      "id": "bowl",
+      "asset": "P255",
+      "xy_m": [
+        -1.15,
+        -0.15
+      ],
+      "heading_deg": 23,
+      "water": {
+        "bed": "P253",
+        "input_liters": 8.0,
+        "seed_uv": [
+          0.498,
+          0.475
+        ],
+        "label": "粗石碗坑·八升积水"
+      }
+    }
+  ]
+}

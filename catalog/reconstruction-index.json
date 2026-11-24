@@ -1,5 +1,5 @@
 {
-  "asset_count": 1501,
+  "asset_count": 1505,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2167,6 +2167,42 @@
         "apron-exposure",
         "remapped-camera"
       ]
+    },
+    "rounded-spall-and-stony-bowl": {
+      "name": "磨圆剥落坑与粗石碗坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/wet-pavement",
+      "guide": "docs/27-wet-pavement.md",
+      "section": "重建两处实测坑床",
+      "assets": [
+        "P252",
+        "P253"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "seat-water"
+      ]
+    },
+    "seated-wet-pavement": {
+      "name": "路面实测坑随坡度变化的积水状态",
+      "launcher": "gen2hole/seat_water.py",
+      "recipe": "gen2hole/examples/wet-pavement",
+      "guide": "docs/27-wet-pavement.md",
+      "section": "按每处落点重建水面",
+      "assets": [
+        "P254",
+        "P255"
+      ],
+      "transfer": [
+        "seat-water",
+        "pavement-joint",
+        "native-pavement-support",
+        "water-reflection",
+        "remapped-camera"
+      ]
     }
   },
   "transfer_routes": {
@@ -2274,6 +2310,16 @@
       "name": "裁切、缩放、旋转及去畸变后，按原始像素光线和读出时刻迁入",
       "entry": "scripts/transfer-mesh-view.py",
       "guide": "docs/26-remapped-pits.md"
+    },
+    "seat-water": {
+      "name": "逐处拟合干坑落点并按目标重力重算水线",
+      "entry": "gen2hole/seat_water.py",
+      "guide": "docs/27-wet-pavement.md"
+    },
+    "water-reflection": {
+      "name": "带标定光线的宿主按观察方向渲染积水反射与折射",
+      "entry": "gen2hole/downstream/pavement_water.py",
+      "guide": "docs/27-wet-pavement.md"
     }
   },
   "groups": {
@@ -2302,7 +2348,8 @@
       "mixed-rgbd-pits",
       "measured-pavement-pair",
       "measured-asphalt-breakouts",
-      "broken-lip-and-bowl"
+      "broken-lip-and-bowl",
+      "rounded-spall-and-stony-bowl"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
@@ -2313,7 +2360,8 @@
       "displaced-paver",
       "observed-pavement",
       "paired-road-slots",
-      "transverse-repair"
+      "transverse-repair",
+      "seated-wet-pavement"
     ],
     "井盖、雨水篦与敞井": [
       "photo-chamber-BD-v2",

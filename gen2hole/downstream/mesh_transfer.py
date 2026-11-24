@@ -208,7 +208,7 @@ class RoadMesh:
         # Include the movable lid wherever it actually rests, including legacy height fields.
         self.cover_outline = (cv2.convexHull(np.float32(np.concatenate(cover_vertices))).reshape(-1, 2)
                               if cover_vertices else None)
-        self.measured_rim &= {surface[0] for surface in self.surfaces.values()} == {1, 2}
+        self.measured_rim &= {surface[0] for surface in self.surfaces.values()} in ({1, 2}, {1, 2, 4})
 
     def surface_normal(self, gid, face, bary, uv, footprint=None):
         verts, _ = self.materials[gid]

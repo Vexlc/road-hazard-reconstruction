@@ -30,11 +30,12 @@ SUBPIXELS = ((-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0.25, 0.25))
 class RayWindow:
     """Bound every calibrated subpixel ray in each tile, including fish-eye rays behind the optical plane."""
 
-    def __init__(self, model):
+    def __init__(self, model, *, reflection=False):
         (self.width, self.height), _, unproject = model
         self.tile = 32
         starts = np.arange(0, self.width, self.tile)
         low, high = [], []
+        probe_rays, probe_pixels = [], []
         for y in range(0, self.height, self.tile):
             h = min(self.tile, self.height - y)
             lo = np.full((len(starts), 3), np.inf, 'f4')
@@ -43,9 +44,18 @@ class RayWindow:
                 rays, valid = unproject(0, y, self.width, h, dx, dy)
                 lo = np.minimum(lo, np.minimum.reduceat(np.where(valid[..., None], rays, np.inf).min(0), starts))
                 hi = np.maximum(hi, np.maximum.reduceat(np.where(valid[..., None], rays, -np.inf).max(0), starts))
+            if reflection:
+                direction, valid = unproject(0, y, self.width, h)
+                r, c = np.mgrid[0:h:8, 0:self.width:8]
+                good = valid[r, c]
+                probe_rays.append(direction[r[good], c[good]])
+                probe_pixels.append(np.column_stack((r[good] + y, c[good])))
             low.append(lo)
             high.append(hi)
         self.low, self.high = np.stack(low), np.stack(high)
+        if reflection:
+            self.probe_rays = np.concatenate(probe_rays)
+            self.probe_pixels = np.concatenate(probe_pixels)
         self.valid = np.isfinite(self.low).all(-1)
         self.low[~self.valid] = self.high[~self.valid] = 0
 
@@ -249,12 +259,24 @@ def frame_crop(
             residual = np.abs(np.subtract(lidar, depth, out=np.zeros_like(lidar), where=both))
             confirmed = both & (residual < np.maximum(.12, .025 * depth))
             foreground = np.where(confirmed, np.maximum(lidar, depth), np.inf)
+    probe = None
+    if grouped and mesh.water_states:
+        from pavement_water import DirectionalProbe
+        full = np.asarray(Image.open(raw_image).convert("RGB"))
+        row, col = window.probe_pixels.T
+        allowed = row < np.interp(col, edge[:, 0], edge[:, 1])
+        # Reflect only observed light above the gravity horizon; deeper bank hits use the measured bed.
+        world = window.probe_rays @ pose[:3, :3].T
+        allowed &= (world @ anchor["gravity_up_world"]) > 0
+        if allowed.any():
+            lowpass = cv2.GaussianBlur(full, (0, 0), 1.4)
+            probe = DirectionalProbe(world[allowed].astype("f4"), lowpass[row[allowed], col[allowed]], 2.)
     samples, packet_rays, packet_masks = [], [], []
     for dx, dy in SUBPIXELS:
         rays, valid = unproject(x, y, w, h, dx, dy)
         protected = body | ~valid
         if grouped:
-            samples.append(mesh.sample(image, pose, rays, anchor, depth, protected, occluder_range=depth,
+            samples.append(mesh.sample(image, pose, rays, anchor, depth, protected, occluder_range=depth, reflection_probe=probe,
                                        pixel_width=len(SUBPIXELS)**-0.5))
         else:
             samples.append(mesh.render(image, pose, rays, anchor, depth, protected, with_shadow=mesh.standing,
@@ -275,6 +297,7 @@ def frame_crop(
             host_range=depth,
             **({"occluder_range": foreground} if foreground is not None else {}),
             **({"receiver_band_m": np.float64(receiver_band)} if receiver_band is not None else {}),
+            **(probe.packet() if probe is not None else {}),
             rays_camera=packet_rays,
             protected=packet_masks,
         )
@@ -450,7 +473,11 @@ def main():
         help="Export a frame jointly showing the layout members, ranked by their harmonic mean visible area",
     )
     parser.add_argument("--appearance-views",type=Path,help="Directory of surveyed original camera packets (same layout and metric placement)")
+    parser.add_argument("--survey-only", action="store_true", help="Write the two surveyed seats and world up before building site-dependent water")
+    parser.add_argument("--gravity-up", type=float, nargs=3, metavar=("X", "Y", "Z"), help="Measured gravity-opposing vector in the host world")
     args = parser.parse_args()
+    if (args.survey_only or args.gravity_up) and not args.layout:
+        parser.error("Road gravity and surveyed seats require --layout")
     if args.paired_preview and not args.layout:
         parser.error("--paired-preview requires a pavement layout")
     if args.appearance_views and not args.layout:
@@ -492,8 +519,19 @@ def main():
     if args.layout:
         layout = PavementLayout(args.layout, args.run)
         anchor = layout.fit(anchor, nearby, np.asarray(anchor["basis_columns"])[:, 2], args.support_radius)
+        if args.survey_only or args.gravity_up or layout.water_states:
+            from mesh_transfer import unit
+            up = args.gravity_up
+            if up is None and args.scene == "a2d2-frontleft":
+                # A2D2 visual odometry has an arbitrary world frame. Use reference body up when IMU gravity is unavailable.
+                optical_to_body = np.asarray(data["source_calibration"]["front_left"]["optical_to_body"])
+                up = (np.linalg.inv(cams[f"{args.group:03}00.png"]) @ np.linalg.inv(optical_to_body))[:3, 2]
+            anchor["gravity_up_world"] = unit([0, 0, 1] if up is None else up).tolist()
         layout.bind(anchor)
         anchor.update(host_scene=args.scene, placement_group=args.group)
+        if args.survey_only:
+            save_json(out / "anchor.json", anchor)
+            return
     else:
         anchor = fit_footprint(anchor, nearby, np.max([footprint_size(path) for path in assets.values()], axis=0))
     out.mkdir(parents=True, exist_ok=True)
@@ -541,7 +579,7 @@ def main():
             for cam, _ in views
         }
     save_json(out / "anchor.json", anchor)
-    windows = {cam: RayWindow(model) for cam, model in models.items()}
+    windows = {cam: RayWindow(model, reflection=bool(layout and layout.water_states)) for cam, model in models.items()}
     index = {}
     with ExitStack() as stack:
         writer = None

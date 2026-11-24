@@ -121,7 +121,7 @@ def review(a):
         record['reference_source']=metadata['source']
     reflective = metadata.get('water_optics')=='target-view-fresnel'
     pool = None
-    if metadata.get('water_optics')=='refracted-bed':
+    if metadata.get('water_optics')=='refracted-bed' and metadata['water']['free_surface_m'] is not None:
         from water_reflection import ShallowPool
         from camera_geometry import static_scene_points
         pool = ShallowPool(folder,placement,metadata)

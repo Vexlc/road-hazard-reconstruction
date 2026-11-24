@@ -199,6 +199,13 @@ def main():
         if args.matched_apron:
             intact_road(plugs[-1], objs, cut)
         beds[0].pass_index = 3 + index
+        if "water" in row:
+            pools = [o for o in objs if "Water surface" in o.name]
+            retained = json.loads((folder / "metadata.json").read_text())["water"]["retained_liters"]
+            if len(pools) != int(retained > 0):
+                raise ValueError("Water surface count disagrees with the retained volume")
+            for pool in pools:
+                pool.pass_index = 16 + index
         meshes.extend(objs)
         truth.append((world @ frame).tolist())
     bpy.ops.mesh.primitive_cube_add(size=1)

@@ -49,7 +49,7 @@ def remap_packet(view, source_xy, calibration=None):
             raise ValueError("road_albedo_srgb must match the uint8 RGB image")
         out["road_albedo_srgb"] = albedo[y, x].copy()
         out["road_albedo_srgb"][~valid] = 0
-    for name in ("sensor_name", "receiver_band_m"):
+    for name in ("sensor_name", "receiver_band_m", "reflection_rays_world", "reflection_srgb", "reflection_radius_deg"):
         if name in view:
             out[name] = view[name]
     return out
