@@ -1,0 +1,24 @@
+{
+  "id": "P246-P247",
+  "label": "龟裂碎集料坑与弧形剥落坑",
+  "instances": [
+    {
+      "id": "aggregate",
+      "asset": "P246",
+      "xy_m": [
+        1.15,
+        0.2
+      ],
+      "heading_deg": -12
+    },
+    {
+      "id": "spall",
+      "asset": "P247",
+      "xy_m": [
+        -1.15,
+        -0.15
+      ],
+      "heading_deg": 23
+    }
+  ]
+}

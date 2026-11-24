@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P246",
+    "label": "露出碎集料的龟裂坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_135325",
+    "fit": [
+      "20250305_135325"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

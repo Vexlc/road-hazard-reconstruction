@@ -20,9 +20,10 @@ def main():
     p.add_argument("--views", type=Path, default=ROOT / "outputs/measured-pavement/cycles")
     p.add_argument("--out", type=Path, default=ROOT / "outputs/measured-pavement/cycles-check")
     p.add_argument("--assets", type=Path, default=ROOT / "runs/measured-pavement")
+    p.add_argument("--layout",type=Path,default=ROOT / "gen2hole/examples/measured-pavement/crown-layout.json")
     a = p.parse_args()
     a.out.mkdir(exist_ok=True, parents=True)
-    recipe = ROOT / "gen2hole/examples/measured-pavement/crown-layout.json"
+    recipe = a.layout
     views = ["center", "edge", "rear"]
     cams = {}
     for name in views:

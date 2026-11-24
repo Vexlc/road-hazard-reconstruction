@@ -1,6 +1,8 @@
 # 可选下载
 
-所有数据包位于 [Google Drive 项目目录](https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_)，按 `assets/`、`inputs/`、`scenes/`、`visualizations/`、`documents/` 分开存放。已设置为“知道链接的任何人可查看”，无需 Google 账号即可查看和下载；没有编辑权限，且未开启搜索发现。
+新的道路资产按固定标签放在私有 GitHub Releases。每个专题给出原始输入、成品、相机包或宿主检查点的下载命令和校验值。只看效果时可直接下载专题页开头的 MP4。[实测双坑与车尾鱼眼](24-asphalt-breakouts.md) · [扫描井盖及缺盖状态](22-scanned-round-covers.md) · [道路遗落物](23-road-debris.md) · [按资产类型查找其他专题](asset-code-index.md)
+
+五类历史库的数据包位于 [Google Drive 项目目录](https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_)，按 `assets/`、`inputs/`、`scenes/`、`visualizations/`、`documents/` 分开存放。已设置为“知道链接的任何人可查看”，无需 Google 账号即可查看和下载；没有编辑权限，且未开启搜索发现。
 
 [云盘校验文件](https://drive.google.com/file/d/1OgOUPyyvvPmWBUiLI6VqRJSa1V95gaNb/view?usp=drivesdk) · [云盘下载索引](https://drive.google.com/file/d/1dgF3qYTP-uydcLfzlJhzHPLJRp-FyLlC/view?usp=drivesdk)
 

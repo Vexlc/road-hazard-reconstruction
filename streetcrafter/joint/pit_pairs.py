@@ -172,7 +172,7 @@ def particles(xyz, quat, scale, alpha, rgb, rest=None):
     return {k: torch.from_numpy(np.ascontiguousarray(v, dtype="f4")) for k, v in arrays.items()}
 
 
-def terrain_asset(key, case, site, plate, heading, *, voxel=.019):
+def terrain_asset(key, case, site, plate, heading, *, voxel=.019, apron_exposure=False):
     folder = (ROOT / case["model"]).parent
     path = folder / "asset.ply"
     if digest(path) != case["native_hashes"]["asset.ply"]:
@@ -203,10 +203,24 @@ def terrain_asset(key, case, site, plate, heading, *, voxel=.019):
     road_xy = ((world-center) @ road)[:, :2]
     axis, image = plate
     # Low-pass target road light carries tree shadows into the cavity. High frequencies come from the source.
-    light = colors((axis, cv2.GaussianBlur(image, (0, 0), 6)), road_xy)
-    ratio = np.clip((v[:, 6:9]*C0+.5)/np.maximum(road_rgb, .12), .16, 1.85)
     ao = .68 + .32 * visibility[ids]
-    rgb = np.clip(light * ratio * ao[:, None] * .94, .006, .985)
+    exposure = None
+    if apron_exposure:
+        from pavement_appearance import apply_apron, fit_apron
+
+        road_ids = np.flatnonzero(~bed)
+        road_ids = road_ids[:: max(1, len(road_ids) // 40000)]
+        road_ids = road_ids[foot.signed_distance(vertices[road_ids, :2]) > 0.035]
+        source_xy = vertices[road_ids, :2]
+        sample_world = vertices[road_ids, :3] @ basis.T + center
+        target = colors(plate, ((sample_world - center) @ road)[:, :2])
+        source = np.clip(vertices[road_ids, 6:9] * C0 + 0.5, 0, 1)
+        exposure = fit_apron(source_xy, source * 255, target * 255, [foot.width, foot.length])
+        rgb = apply_apron(np.clip(v[:, 6:9] * C0 + 0.5, 0, 1) * 255, v[:, :2], exposure, ao) / 255.0
+    else:
+        light = colors((axis, cv2.GaussianBlur(image, (0, 0), 6)), road_xy)
+        ratio = np.clip((v[:, 6:9] * C0 + 0.5) / np.maximum(road_rgb, 0.12), 0.16, 1.85)
+        rgb = np.clip(light * ratio * ao[:, None] * .94, .006, .985)
     alpha = np.clip(1/(1+np.exp(-v[:, 18])), .70, .986)
     # PLY first-order bands (-y,z,-x) are in source coordinates.
     sh = v[:, 9:18].reshape(-1, 3, 3)
@@ -233,6 +247,8 @@ def terrain_asset(key, case, site, plate, heading, *, voxel=.019):
                   source_sha256=case["native_hashes"]["asset.ply"], source_ply=case.get("source_ply") or str(path.relative_to(ROOT)),
                   scale=1.0, source_bed_points=int(bed.sum()), inserted_bed_points=len(ids),
                   road_support_points=len(xy), outline_area_m2=case["outline_area_m2"], **fit)
+    if exposure is not None:
+        record["pavement_appearance"] = exposure
     return (foot, center, basis), [bed_state, strip], edge, record
 
 

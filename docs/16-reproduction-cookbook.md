@@ -3,13 +3,13 @@
 从下列固定标签开始，可核对完整索引。获得单件模型、原生场景或相机回放的具体命令，见对应系列的操作章节。
 
 ~~~bash
-gh repo clone Vexlc/road-hazard-reconstruction -- --branch reproduction-guide-v1.0.0 --depth 1
+gh repo clone Vexlc/road-hazard-reconstruction -- --branch asphalt-breakouts-v1.0.0 --depth 1
 cd road-hazard-reconstruction
 python3 scripts/check-reproduction-index.py
 python3 gen2hole/gen2hole.py locate H234
 ~~~
 
-该标签包含 **1,493 个编号、47 个重建系列、17 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[逐系列代码对照表](asset-code-index.md) · [道路遗落物的模型、锚点与鱼眼重放](23-road-debris.md) · [实扫圆井的逐文件复建与非共心宿主](22-scanned-round-covers.md) · [完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
+该标签包含 **1,495 个编号、48 个重建系列、18 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[逐系列代码对照表](asset-code-index.md) · [沥青双坑、车尾鱼眼与换材质复现](24-asphalt-breakouts.md) · [道路遗落物的模型、锚点与鱼眼重放](23-road-debris.md) · [实扫圆井的逐文件复建与非共心宿主](22-scanned-round-covers.md) · [完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
 
 双联井盖及其整块占地检查、鱼眼边缘可见性、独立前景量程接入见[双联检查井与跨场景迁入](18-twin-hatch-transfer.md)。固定代码标签为 `twin-hatch-v1.0.0`。
 
@@ -27,7 +27,7 @@ python3 gen2hole/gen2hole.py locate P203
 python3 gen2hole/gen2hole.py locate P211
 ~~~
 
-第一项检查仅用 Python 标准库。该版本应输出 **1,463 个唯一编号、36 个重建系列、9 条迁入或展示路线、20 件 KITTI 双坑资产**。`locate` 的 `prepare` 指输入准备，`launcher` 指实际构建程序，`recipe` 指配方，`guide / section` 定位到该案例的操作步骤，`transfer` 给出对应的迁入程序及说明。P154 是带实测深度的翘砖，P203 是单图路面剥落，P211 是生成参考图的大坑，三者使用不同入口。统计以编号为单位，共用同一次采集的多种井盖姿态分别有编号。[机器可读索引](../catalog/reconstruction-index.json)
+第一项检查仅用 Python 标准库。该版本应输出 **1,495 个唯一编号、48 个重建系列、18 条迁入或展示路线、20 件 KITTI 双坑资产**。`locate` 的 `prepare` 指输入准备，`launcher` 指实际构建程序，`recipe` 指配方，`guide / section` 定位到该案例的操作步骤，`transfer` 给出对应的迁入程序及说明。P154 是带实测深度的翘砖，P203 是单图路面剥落，P211 是生成参考图的大坑，三者使用不同入口。统计以编号为单位，共用同一次采集的多种井盖姿态分别有编号。[机器可读索引](../catalog/reconstruction-index.json)
 
 ## 各类资产怎样重建
 
@@ -48,6 +48,7 @@ python3 gen2hole/gen2hole.py locate P211
 | 直立与侧倒交通锥 | 同一原始 glTF、颜色和反射纹理、落地与双件布局配方 | [单件姿态重建](../gen2hole/traffic_cones.py) · [成对布局、实车与 220° 鱼眼复现](20-traffic-cones.md) |
 | 通气铸铁盖、龟裂填芯盖和两种缺盖井 | 两套原始扫描和孔口掩膜均随代码提供；井壁、井底、座圈使用给定的尺寸 | [扫描准备和四态配方](../gen2hole/examples/scanned-round-covers) · [从扫描重建四个状态](22-scanned-round-covers.md#从扫描重建四个状态) |
 | 旧轮胎、锈蚀钢轮圈、侧倒的塑料周转筐、水泥袋 | 四份原版 1K glTF、几何与 PBR 贴图，随库提供 | [支撑凸包、材质法线与重建入口](../gen2hole/road_debris.py) · [源文件到两件布局与哈希核对](23-road-debris.md#从原始网格重建并成组) |
+| 破碎集料坑与残留沥青块剥落坑 P246/P247 | 两份颜色、毫米深度和原始轮廓，经小型输入包即可恢复 | [实测坑与近景亮度登记](24-asphalt-breakouts.md) |
 
 ## 先跑一个最小案例
 
@@ -82,6 +83,7 @@ echo '49759ba9e543495993f33a23896c7ead3bc83f2c42f6d0c47d6100ca3ccc5f38  runs/p10
 | 多件立体设施 → Blender Cycles、自定义鱼眼深度宿主 | [组合布局](../gen2hole/roadside_layout.py)和[鱼眼深度接入](../scripts/transfer-mesh-view.py)保留实例姿态，可由已标注的路面深度直接估计落点。 | [真实遮挡与反向机位复核](20-traffic-cones.md#在-blender-cycles-中独立复核) |
 | 分散光心、正交成像或自定义光线宿主 | [相机包读入与米制反投影](../gen2hole/downstream/host_depth.py) 支持共享或逐像素、逐子样本的光线起点 | [由深度重拟合两处井座，再重放后向鱼眼](22-scanned-round-covers.md#换鱼眼正交相机或其他宿主) |
 | 接地物体、斜视阴影、带双目和稀疏点云的道路 | [物体指纹、支撑网格与遮挡计算](../gen2hole/downstream/prop_registration.py) · [逐宿主回放](../scripts/render-mixed-road.py) | [两个原生联合检查点、真实前后视与新鱼眼宿主](23-road-debris.md) |
+| 坑底占满近景、目标路面换材质 → 实车相机包或新渲染器 | [从宽视野路面登记曝光](../gen2hole/downstream/pavement_appearance.py)，使用可选的宿主漫反射底色，登记结果可在驶过后的机位复用。 | [从两份原始采集到 220° 鱼眼的重放与逐文件核对](24-asphalt-breakouts.md) |
 
 接入自己的网格引擎时，GLB 使用米制 Y-up，Gaussian PLY 使用米制 Z-up。同一资产的高程场与切口需要随模型一起放置；坑口内要移除会遮挡坑底的宿主路面。原生高斯迁入还会旋转椭球朝向与球谐方向。自定义宿主需要世界坐标、锚点、原始相机、行车时间戳及遮挡信息。[坐标约定与自定义宿主接入](13-reproduce-and-transfer.md#接入自己的道路)
 
@@ -149,4 +151,4 @@ bash scripts/scene.sh joint kitti360-0000 pit-pairs-rear 30000
 | 重载了场景，但指标或二进制略有差异 | 先核对输入和宿主哈希、依赖与 GPU，再比对几何、留出深度、保护区像素和逐束量程。发布基准要求字节一致的案例会明确报告具体文件。 |
 | 仅需看效果 | 直接下载 Release 视频、查看仓库内图版。旧文档里的 `runs/`、`outputs/` 和本地图谱链接是完成对应步骤后的本地产物。 |
 
-本轮在独立检出目录复用了已安装的环境、道路数据与发布输入，从空输出目录重建。20 件大坑的 100 个原生文件均与基准 SHA-256 一致。10 组 KITTI 双坑的 480 张前视及 280 张虚拟后视渲染逐像素一致。P154 在 PandaSet 034 的检查点重载像素误差为 0，80 帧双雷达回放分别得到 433 和 1,485 个模拟命中。其余系列按代表样例执行，完整范围见[本次复现结果](../validation/reproduction-2026-11-25.json)。历史双目有 13 件存在已记录的数值差异，逐项容差与旧库全量检查见[既有验收记录](06-validation.md)。
+最初的全仓复现检查（标签 `reproduction-2026.11.25`）在独立检出目录复用了已安装的环境、道路数据与发布输入，从空输出目录重建。20 件大坑的 100 个原生文件均与基准 SHA-256 一致。10 组 KITTI 双坑的 480 张前视及 280 张虚拟后视渲染逐像素一致。P154 在 PandaSet 034 的检查点重载像素误差为 0，80 帧双雷达回放分别得到 433 和 1,485 个模拟命中。其余系列按代表样例执行，完整范围见[本次复现结果](../validation/reproduction-2026-11-25.json)。历史双目有 13 件存在已记录的数值差异，逐项容差与旧库全量检查见[既有验收记录](06-validation.md)。

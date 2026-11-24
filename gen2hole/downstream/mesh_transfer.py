@@ -252,7 +252,7 @@ class RoadMesh:
 
     def render(self, rgb, camera_to_world, rays_camera, anchor, host_range, protected, *,
                occluder_range=None, road_tolerance_m=0.10, with_shadow=False, receiver_mask=None, pixel_width=1.0,
-               ray_origins_camera=None, receiver_band_m=None):
+               ray_origins_camera=None, receiver_band_m=None, apron_samples=False):
         """Compare uncertain host pavement and optional positively identified foreground in radial metres."""
         h, w = rgb.shape[:2]
         pose, basis = np.asarray(camera_to_world), np.asarray(anchor["basis_columns"])
@@ -382,6 +382,12 @@ class RoadMesh:
             # A return positively identified as an object is not replaceable pavement.
             # Compare it with the actual hit, even when it lies inside the opening.
             blocked |= occluder_range < distance - 1e-5
+        if apron_samples:
+            context = (part == 1) & ~blocked & finite
+            if receiver_mask is not None:
+                context &= receiver_mask
+            xy = origins[context, :2] + directions[context, :2] * distance[context, None]
+            return xy, color[context], context
         visible = target & ~blocked
         if self.standing:
             from prop_lighting import compose
@@ -392,16 +398,8 @@ class RoadMesh:
                            None if geometric_normals is None else geometric_normals[visible])
         context = (part == 1) & ~blocked
         out = rgb.copy()
-        if visible.any() and context.sum() >= 8:
-            src = np.median(color[context], axis=0).clip(20)
-            host = np.median(rgb[context], axis=0).clip(10)
-            gain = np.clip(host / src, 0.48, 1.85)
-            smooth = cv2.GaussianBlur(rgb, (0, 0), 2.5)
-            local_light = np.clip(
-                (smooth.astype(float) @ [0.2126, 0.7152, 0.0722]) / (host @ [0.2126, 0.7152, 0.0722]),
-                0.50,
-                1.55,
-            )
+        reference = anchor.get("pavement_appearance")
+        if visible.any() and (reference is not None or context.sum() >= 8):
             ao = np.ones((h, w), 'f4')
             inside = visible & np.isin(part, [5, 6, 7, 8, 10, 11, 20])
             if inside.any():
@@ -410,8 +408,21 @@ class RoadMesh:
                 normals = hits["primitive_normals"].numpy()[inside].copy()
                 normals[(normals * directions_hit).sum(1) > 0] *= -1
                 ao[inside] = self.sky_gain(points, normals)
-            values = color[visible] * gain * (local_light[visible] * ao[visible])[:, None]
-            out[visible] = np.uint8(np.clip(np.rint(values), 0, 255))
+            if reference is not None:
+                from pavement_appearance import apply_apron
+                xy = origins[visible, :2] + directions[visible, :2] * distance[visible, None]
+                out[visible] = apply_apron(color[visible], xy, reference, ao[visible])
+            else:
+                src = np.median(color[context], axis=0).clip(20)
+                host = np.median(rgb[context], axis=0).clip(10)
+                gain = np.clip(host / src, 0.48, 1.85)
+                smooth = cv2.GaussianBlur(rgb, (0, 0), 2.5)
+                local_light = np.clip(
+                    (smooth.astype(float) @ [0.2126, 0.7152, 0.0722]) / (host @ [0.2126, 0.7152, 0.0722]),
+                    0.50, 1.55,
+                )
+                values = color[visible] * gain * (local_light[visible] * ao[visible])[:, None]
+                out[visible] = np.uint8(np.clip(np.rint(values), 0, 255))
         else:
             visible[:] = False
         result = out, np.where(visible, part, 0).astype("u1"), np.where(visible, distance, np.nan)

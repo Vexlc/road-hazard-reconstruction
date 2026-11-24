@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,493 个资产编号、47 个重建系列和 17 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,495 个资产编号、48 个重建系列和 18 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -34,6 +34,7 @@
 | [路口横向沥青剥落带](../docs/02-asset-reconstruction.md#p203-%E8%B7%AF%E5%8F%A3%E6%A8%AA%E5%90%91%E5%89%A5%E8%90%BD%E5%B8%A6) | 1 | P203 | [重建](../gen2hole/oblique_pits.py) · [配方](../gen2hole/examples/oblique-road-pits/P203-spall.json) · [输入准备](../gen2hole/infer_oblique_depth.py) | [drive](#route-drive) |
 | [实测沥青坑蚀与接缝掉块](../docs/17-mixed-road-transfer.md#%E7%94%A8%E5%8E%9F%E5%A7%8B%E8%BE%93%E5%85%A5%E9%87%8D%E5%BB%BA%E4%B9%9D%E4%BB%B6%E8%B5%84%E4%BA%A7) | 4 | P220 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/mixed-road) | [native](#route-native)、[mesh-view](#route-mesh-view) |
 | [实测片状剥落与粗集料碗坑](../docs/21-measured-pavement.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B-rgb-d-%E9%87%8D%E5%BB%BA%E4%B8%A4%E5%A4%84%E7%A0%B4%E6%8D%9F) | 2 | P238 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/measured-pavement) | [mesh-view](#route-mesh-view)、[pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint) |
+| [龟裂碎集料坑和弧形剥落坑](../docs/24-asphalt-breakouts.md#%E4%BB%8E%E4%B8%A4%E4%BB%BD%E5%AE%9E%E6%8B%8D-rgb-d-%E9%87%8D%E5%BB%BA) | 2 | P246 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/asphalt-breakouts) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure) |
 
 ## 裂缝、积水、铺装与修补
 
@@ -97,5 +98,6 @@
 | <a id="route-metric-ray-origins"></a>metric-ray-origins | 逐像素起点的米制光线与独立 Cycles 正交、后向鱼眼验收 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [指南](../docs/22-scanned-round-covers.md) |
 | <a id="route-surveyed-receivers"></a>surveyed-receivers | 实测路面支撑、双目前景与立体遗落物接地阴影 | [render-mixed-road.py](../scripts/render-mixed-road.py) | [指南](../docs/23-road-debris.md) |
 | <a id="route-cycles-debris"></a>cycles-debris | 独立 Cycles 鱼眼的透孔、径向深度与材质法线验收 | [render-debris-cycles.py](../scripts/render-debris-cycles.py) | [指南](../docs/23-road-debris.md) |
+| <a id="route-apron-exposure"></a>apron-exposure | 从真实路面登记曝光并回放只含坑床的鱼眼近景 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [指南](../docs/24-asphalt-breakouts.md) |
 
 更新目录后运行 `python3 scripts/check-reproduction-index.py --write-map`。常规检查运行同一命令并省略参数，检查编号、源文件、指南章节、迁入路线与本页是否一致。

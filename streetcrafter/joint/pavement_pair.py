@@ -41,6 +41,11 @@ def main():
         default="split",
         help="Use whole-particle removal to reproduce the comparison baseline",
     )
+    parser.add_argument(
+        "--apron-exposure",
+        action="store_true",
+        help="Fit exposure on intact road around each cut in the original native renders",
+    )
     args = parser.parse_args()
     from road_geometry import read_json
 
@@ -76,7 +81,7 @@ def main():
             native_hashes={"asset.ply": digest(folder / "asset.ply")},
         )
         plate = road_plate(center, basis, cameras, split)
-        members.append(terrain_asset(seat["asset"], case, (center, basis, stats), plate, None, voxel=0.009))
+        members.append(terrain_asset(seat["asset"], case, (center, basis, stats), plate, None, voxel=0.009,apron_exposure=args.apron_exposure))
     split_ground = args.ground_method == "split"
     trim_road_support(members, 0.18 if split_ground else 1.45)
     dest = args.out / layout.key

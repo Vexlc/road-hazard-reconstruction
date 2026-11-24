@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P247",
+    "label": "带残留沥青块的弧形剥落坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_122119",
+    "fit": [
+      "20250305_122119"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

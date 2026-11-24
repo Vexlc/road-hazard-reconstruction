@@ -1,5 +1,5 @@
 {
-  "asset_count": 1493,
+  "asset_count": 1495,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2093,6 +2093,22 @@
         "joint-props",
         "cycles-debris"
       ]
+    },
+    "measured-asphalt-breakouts": {
+      "name": "龟裂碎集料坑和弧形剥落坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/asphalt-breakouts",
+      "guide": "docs/24-asphalt-breakouts.md",
+      "section": "从两份实拍 RGB-D 重建",
+      "assets": [
+        "P246",
+        "P247"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure"
+      ]
     }
   },
   "transfer_routes": {
@@ -2180,6 +2196,11 @@
       "name": "独立 Cycles 鱼眼的透孔、径向深度与材质法线验收",
       "entry": "scripts/render-debris-cycles.py",
       "guide": "docs/23-road-debris.md"
+    },
+    "apron-exposure": {
+      "name": "从真实路面登记曝光并回放只含坑床的鱼眼近景",
+      "entry": "scripts/transfer-mesh-view.py",
+      "guide": "docs/24-asphalt-breakouts.md"
     }
   },
   "groups": {
@@ -2206,7 +2227,8 @@
       "photo-large-rgbd",
       "junction-spall",
       "mixed-rgbd-pits",
-      "measured-pavement-pair"
+      "measured-pavement-pair",
+      "measured-asphalt-breakouts"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

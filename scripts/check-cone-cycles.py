@@ -52,6 +52,8 @@ def packet(folder, axial, *, flat_reference=True):
         receiver_mask=ids == 1,
         occluder_range=np.where(ids == 2, distance, np.inf),
     )
+    if (folder / "albedo-srgb.npy").is_file():
+        data["road_albedo_srgb"] = np.load(folder / "albedo-srgb.npy", allow_pickle=False)
     data["host_z" if axial else "host_range"] = raw
     return data, world, p99
 

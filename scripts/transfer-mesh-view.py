@@ -50,13 +50,37 @@ def main():
     render.add_argument("--measured-rim", action="store_true", help="Use the scanned lip and adjoining continuous RGB-D pavement to resolve occlusion")
     render.add_argument("--road-tolerance-m", type=float, default=0.10,
                         help="Radial tolerance for uncertain host pavement; labelled occluders use their own range")
-    for command in (fit, render):
+    color = tasks.add_parser(
+        "calibrate-pavement",
+        help="Measure pavement exposure outside the openings and store it in a fitted layout anchor",
+    )
+    color.add_argument("asset", type=Path, help="Pavement layout JSON")
+    color.add_argument("anchor", type=Path)
+    color.add_argument("out", type=Path)
+    color.add_argument(
+        "views",
+        type=Path,
+        nargs="+",
+        help="Registered host exposures sharing one lighting and camera response",
+    )
+    color.add_argument("--calibration", type=Path)
+    for command in (fit, render, color):
         command.add_argument("--asset-root", type=Path, help="Built members of a pavement layout JSON")
     args = parser.parse_args()
     grouped = bool(getattr(args, "asset", None) and args.asset.is_file())
     if grouped and args.asset_root is None:
         parser.error("Provide --asset-root with a pavement layout recipe")
     layout = PavementLayout(args.asset, args.asset_root) if grouped else None
+    if args.task == "calibrate-pavement":
+        from pavement_appearance import apply_models, register_views
+
+        if layout is None:
+            parser.error("calibrate-pavement requires a layout recipe and its models")
+        anchor = json.loads(args.anchor.read_text())
+        models = register_views(layout, anchor, args.views, args.calibration)
+        anchor.pop("pavement_appearance_by_camera", None)
+        save_json(args.out, apply_models(anchor, models))
+        return
     if args.task == "road-points":
         clouds = []
         for path in args.views:
@@ -106,6 +130,10 @@ def main():
         rays, host, protected, pose, origins = geometry(view, args.calibration, with_origins=True)
         rgb = view["rgb"]
         anchor = json.loads(args.anchor.read_text())
+        if "pavement_appearance_by_camera" in anchor:
+            from pavement_appearance import camera_anchor
+
+            anchor = camera_anchor(anchor, str(view["sensor_name"].item()) if "sensor_name" in view else None)
         if not layout:
             check_geometry(anchor, args.asset)
         foreground = view.get("occluder_range")

@@ -185,7 +185,12 @@ def align_observed_road(anchor, pose, points):
     )
 
 
-def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego, packet_path=None):
+def frame_crop(
+    mesh, anchor, sensor_model, pose, raw_image, points, window, ego, packet_path=None, sensor_name=None
+):
+    from pavement_appearance import camera_anchor
+
+    anchor = camera_anchor(anchor, sensor_name)
     (width, height), project, unproject = sensor_model
     center, basis = np.asarray(anchor["center_world"]), np.asarray(anchor["basis_columns"])
 
@@ -264,6 +269,7 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
     if packet_path:
         np.savez_compressed(
             packet_path,
+            **({"sensor_name": np.array(sensor_name)} if "pavement_appearance_by_camera" in anchor else {}),
             rgb=image,
             camera_to_world=pose,
             host_range=depth,
@@ -438,7 +444,17 @@ def main():
     parser.add_argument(
         "--export-packet", help="Also save the best cropped rays, ranges, foreground and RGB for this ID"
     )
+    parser.add_argument(
+        "--paired-preview",
+        action="store_true",
+        help="Export a frame jointly showing the layout members, ranked by their harmonic mean visible area",
+    )
+    parser.add_argument("--appearance-views",type=Path,help="Directory of surveyed original camera packets (same layout and metric placement)")
     args = parser.parse_args()
+    if args.paired_preview and not args.layout:
+        parser.error("--paired-preview requires a pavement layout")
+    if args.appearance_views and not args.layout:
+        parser.error("--appearance-views requires a surveyed pavement layout")
     rig = ROOT / "work/streetcrafter-rig" / args.scene
     data, cams = load_rig(rig)
     if args.scene == "a2d2-frontleft":
@@ -512,6 +528,18 @@ def main():
         anchor['lighting'] = measure_road_light(anchor, views, cams, data, filename, ego_masks, models)
         if args.lighting:
             anchor['lighting'].update(json.loads(args.lighting.read_text()))
+    if args.appearance_views:
+        from pavement_appearance import register_views
+
+        previous = json.loads((args.appearance_views / "anchor.json").read_text())
+        if previous != anchor:
+            raise ValueError("Appearance packets must use the same host, layout and fitted metric anchors")
+        anchor["pavement_appearance_by_camera"] = {
+            data["sensors"][cam]: register_views(
+                layout, anchor, [args.appearance_views / layout.key / data["sensors"][cam] / "view.npz"]
+            )
+            for cam, _ in views
+        }
     save_json(out / "anchor.json", anchor)
     windows = {cam: RayWindow(model) for cam, model in models.items()}
     index = {}
@@ -557,14 +585,26 @@ def main():
                         photo,
                         points,
                         windows[cam],
-                        ego_masks[sensor],
+                        ego_masks[sensor], sensor_name=sensor,
                     )
                     if res:
                         res.update(alignment=correction, group=g, time=data["times"][name])
                         candidates.append((res["visible"], frame, res, photo))
                 if not candidates:
                     raise ValueError(f"{key}: no visible support for {sensor}")
-                _, f, best, photo = max(candidates, key=lambda c: c[0])
+                if args.paired_preview:
+
+                    def joint_area(candidate):
+                        ids = candidate[2]["instance"]
+                        counts = np.bincount(ids.ravel(), minlength=len(mesh.members) + 1)[1:]
+                        return 0.0 if np.any(counts < 12) else len(counts) / np.sum(1.0 / counts)
+
+                    chosen = max(candidates, key=joint_area)
+                    if not joint_area(chosen):
+                        raise ValueError(f"{key}: no {sensor} exposure jointly resolves all members")
+                else:
+                    chosen = max(candidates, key=lambda c: c[0])
+                _, f, best, photo = chosen
                 dest = out / key / sensor
                 dest.mkdir(parents=True, exist_ok=True)
                 Image.fromarray(best["before"]).save(dest / "before.png")
@@ -596,7 +636,7 @@ def main():
                         points,
                         windows[cam],
                         ego_masks[sensor],
-                        dest / "view.npz",
+                        dest / "view.npz",sensor_name=sensor,
                     )
                 row = dict(
                     frame=f,
