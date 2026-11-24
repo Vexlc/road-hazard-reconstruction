@@ -749,11 +749,11 @@ P190 的原图是带检测框的行车画面。沿可见坑沿标注轮廓，用
 | P192–P196 | [PothRGBD 原始 RGB 和深度记录](https://github.com/ymyurdakul/PData) | 坑口 1.0–3.0 m²。逐幅预留原始深度点，交付网格在预留点的光轴深度误差中位数为 0.4–0.9 mm。 |
 | P197 | [USGS 佛罗里达住宅车道边缘塌陷，公有领域](https://www.usgs.gov/media/images/sinkholes-west-central-florida-freeze-event-2010-2) | 近景只覆盖可见部分，左边界被画幅截断。近景与远景的单图估算分别约 108 和 79 m²，两张图的取景、坑缘和估计尺度不同。此件用于观察破坏形态，全坑面积仍需外部标定。 |
 
-P190 的原机位回投通过光线与交付 GLB 求交计算，优化前后坑口与原图标注的交并比分别为 0.990 和 0.983。这个数值衡量同一机位的轮廓一致性。RGB-D 的深度误差仅针对同一次拍摄的留出点，米制尺度采用数据集标称内参。[原机位对照](../outputs/photo-large-potholes/reference-comparison.jpg) · [逐件数据](../outputs/photo-large-potholes/measurements.json)
+P190 的原机位回投通过光线与交付 GLB 求交计算，优化前后坑口与原图标注的交并比分别为 0.990 和 0.983。这个数值衡量同一机位的轮廓一致性。RGB-D 的深度误差仅针对同一次拍摄的留出点，米制尺度采用数据集标称内参。原机位对照（本机 `outputs/photo-large-potholes/reference-comparison.jpg`） · 逐件数据（本机 `outputs/photo-large-potholes/measurements.json`）
 
-P190 的优化版用两幅经内参校正的局部图恢复坑底起伏，以照片上 18 处断口的上下缘约束可见坑壁。单图无法同时确定坑壁的深度和坡度，拟合时假定上段断口每下降 1 cm 向内收约 2.7 mm。近景细砂、散石及其微起伏采用扫描样本补全，原照片保留大尺度明暗和土色。贴图采样转到路面坐标，以减轻斜拍图像在旋转后的纵向拖影。两版在同机位、同灯光下对照，末段展示断面近景。[对比视频](../outputs/photo-large-potholes/P190-v2/comparison.mp4) · [街景合成](../outputs/photo-large-potholes/P190-v2/street-view.jpg) · [细砂](https://polyhaven.com/a/gravelly_sand) · [碎石](https://polyhaven.com/a/stony_dirt_path) · [沥青](https://ambientcg.com/a/Asphalt031)
+P190 的优化版用两幅经内参校正的局部图恢复坑底起伏，以照片上 18 处断口的上下缘约束可见坑壁。单图无法同时确定坑壁的深度和坡度，拟合时假定上段断口每下降 1 cm 向内收约 2.7 mm。近景细砂、散石及其微起伏采用扫描样本补全，原照片保留大尺度明暗和土色。贴图采样转到路面坐标，以减轻斜拍图像在旋转后的纵向拖影。两版在同机位、同灯光下对照，末段展示断面近景。对比视频（本机 `outputs/photo-large-potholes/P190-v2/comparison.mp4`） · 街景合成（本机 `outputs/photo-large-potholes/P190-v2/street-view.jpg`） · [细砂](https://polyhaven.com/a/gravelly_sand) · [碎石](https://polyhaven.com/a/stony_dirt_path) · [沥青](https://ambientcg.com/a/Asphalt031)
 
-优化版 P190 以原模型尺度迁入 PandaSet 109 右侧车道。编号 109_190 的场景保存了坑体、开口以及与周围路面匹配的高斯颜色。前视第 28 帧和后视第 42 帧从两个方向看到同一位置。视频以原始相机位姿回放，保留动态物体遮挡，并按太阳方向将原路面上的杆线阴影投到坑面。[行车视频](../outputs/photo-large-potholes/P190-v2/scene-109/drive.mp4) · [同机位原路面对比](../outputs/photo-large-potholes/P190-v2/scene-109/comparison.jpg) · [场景放置记录](../runs/large-pits-oblique/series/scenes/109_190/scene.json)
+优化版 P190 以原模型尺度迁入 PandaSet 109 右侧车道。编号 109_190 的场景保存了坑体、开口以及与周围路面匹配的高斯颜色。前视第 28 帧和后视第 42 帧从两个方向看到同一位置。视频以原始相机位姿回放，保留动态物体遮挡，并按太阳方向将原路面上的杆线阴影投到坑面。[109 行车视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190-scene-109.mp4) · [实拍与迁入对照](figures/large-dry-pit-road.jpg) · 场景放置记录（本机 `runs/large-pits-oblique/series/scenes/109_190/scene.json`）
 
 ~~~bash
 python gen2hole/downstream/place.py --bundle runs/large-pits-oblique/series --site 109 --group 190 --assets P190 --front
@@ -801,11 +801,11 @@ work/envs/streetcrafter/bin/python gen2hole/oblique_pits.py \
 
 ### P203 路口横向剥落带
 
-[原图选区](../outputs/junction-spall/P203/source-outline.jpg) · [三维模型](../runs/junction-spall/series/assets/pothole/P203/asset.glb) · [109 道路对比](../outputs/junction-spall/P203/scene-109/comparison.jpg) · [034 道路对比](../outputs/junction-spall/P203/scene-034/comparison.jpg)
+原图选区（本机 `outputs/junction-spall/P203/source-outline.jpg`） · 三维模型（本机 `runs/junction-spall/series/assets/pothole/P203/asset.glb`） · 109 道路对比（本机 `outputs/junction-spall/P203/scene-109/comparison.jpg`） · 034 道路对比（本机 `outputs/junction-spall/P203/scene-034/comparison.jpg`）
 
 只取车头前方破损的宽头、碎边和伸向右路缘的窄尾，不取整片补过的路面。按[截图轮廓](../gen2hole/examples/oblique-road-pits/P203.json)拟合和展开道路平面，估计外接矩形 6.59 × 1.91 m，实际轮廓内面积约 4.35 m²。原图没有现场量尺。仅用单目深度时，凹深 P95 为 5.4 mm，小于留出路面的平面残差 P95（13–14 mm），不能据此测深。用于迁入的[浅层配方](../gen2hole/examples/oblique-road-pits/P203-spall.json)保留原始高程，另用距碎边的距离和照片中骨料的局部明暗补足起伏。交付面凹深 P95 为 2.73 cm，最深限制在 4 cm；两者都是建模结果。
 
-两段道路都使用同一件高斯资产、同一尺度。按各自的路面法线放置并切开原路面，以目标沥青校正曝光和色偏，不改轮廓和高度。两段场景均已[独立重载](../outputs/junction-spall/P203/checkpoint-replay.json)。[质检记录](../outputs/junction-spall/P203/quality.json)区分同机位轮廓回投和颜色复核；回投交并比 0.978 表示与标注一致，不是深度精度。前视第 29 帧的可见剥落面相对原地面同像素的 ΔE76 中位数是 6.75（109）和 5.61（034）；此值包含应该看得出的碎边和裸露骨料。
+两段道路都使用同一件高斯资产、同一尺度。按各自的路面法线放置并切开原路面，以目标沥青校正曝光和色偏，不改轮廓和高度。两段场景均已独立重载（本机 `outputs/junction-spall/P203/checkpoint-replay.json`）。质检记录（本机 `outputs/junction-spall/P203/quality.json`）区分同机位轮廓回投和颜色复核；回投交并比 0.978 表示与标注一致，不是深度精度。前视第 29 帧的可见剥落面相对原地面同像素的 ΔE76 中位数是 6.75（109）和 5.61（034）；此值包含应该看得出的碎边和裸露骨料。
 
 从仓库根目录复建，需自行提供与标注哈希一致的原截图、[MoGe 环境和权重](15-large-dry-pits.md)以及本机的 PandaSet 道路环境。将原图不经缩放保存为 `work/p203-cross-spall/inputs/P203.jpg`。已有匹配的 `P203-depth.npz` 时可跳过第一条推断命令；`--out` 为新建目录，不覆盖交付件。
 
@@ -826,7 +826,7 @@ done
 
 ### P204 路缘积水坑
 
-[旧版 / 新版同帧视频](../outputs/curb-puddle-v2/P204/revision.mp4) · [原图水线与三个路段](../outputs/curb-puddle-v2/P204/overview.jpg) · [新版 GLB](../runs/curb-puddle-v2/source/series/assets/pothole/P204/asset.glb) · [核验及敏感性数据](../outputs/curb-puddle-v2/P204/quality.json) · [保留的旧版](../outputs/curb-puddle/P204/overview.jpg)
+旧版 / 新版同帧视频（本机 `outputs/curb-puddle-v2/P204/revision.mp4`） · 原图水线与三个路段（本机 `outputs/curb-puddle-v2/P204/overview.jpg`） · 新版 GLB（本机 `runs/curb-puddle-v2/source/series/assets/pothole/P204/asset.glb`） · 核验及敏感性数据（本机 `outputs/curb-puddle-v2/P204/quality.json`） · 保留的旧版（本机 `outputs/curb-puddle/P204/overview.jpg`）
 
 **水线从哪里来。** 只重建右侧箭头前的主水池；白色箭头、路缘和不确定的沟边反光不属于资产。[坑沿](../gen2hole/examples/oblique-road-pits/P204.json)规定外边界，[水线草图](../gen2hole/examples/oblique-road-pits/P204-water.json)只限定搜索范围。新版在草图两边 3 像素内，用亮水和暗岸的局部对比校正连通轮廓。将交付网格投回照片，轮廓到最近图像边缘的平均距离从 0.86 降至 0.51 像素，90 分位从 2 降至 1 像素。与手描草图的 IoU 从 0.996 降为 0.924；这是改为贴合图像而不是逐点复刻草图的结果。两项都不是独立的现场精度验证。
 
@@ -836,9 +836,9 @@ done
 
 | 目标路段及回放 | 局部坡度 | 中档模型留水 | 水面面积（浅 / 中 / 深假设） |
 | --- | ---: | ---: | --- |
-| [110](../outputs/curb-puddle-v2/P204/scene-110/drive.mp4) | 3.2% | 31.4 L | 1.72 / 1.94 / 2.07 m² |
-| [109](../outputs/curb-puddle-v2/P204/scene-109/drive.mp4) | 5.1% | 11.9 L | 0.79 / 1.24 / 1.51 m² |
-| [034](../outputs/curb-puddle-v2/P204/scene-034/drive.mp4) | 14.2% | 不到 0.01 L | 三档均不到 0.01 m²；最大水深约 3 mm，小于路面拟合 RMS（约 10 mm），仅按湿痕解读 |
+| 110（本机 `outputs/curb-puddle-v2/P204/scene-110/drive.mp4`） | 3.2% | 31.4 L | 1.72 / 1.94 / 2.07 m² |
+| 109（本机 `outputs/curb-puddle-v2/P204/scene-109/drive.mp4`） | 5.1% | 11.9 L | 0.79 / 1.24 / 1.51 m² |
+| 034（本机 `outputs/curb-puddle-v2/P204/scene-034/drive.mp4`） | 14.2% | 不到 0.01 L | 三档均不到 0.01 m²；最大水深约 3 mm，小于路面拟合 RMS（约 10 mm），仅按湿痕解读 |
 
 **复建。** 在上节相同的 MoGe 环境中，用 `P204.json` 替换 `--spec`，将未经缩放的原截图存为 `work/p204-puddle/inputs/P204.jpg`，推断结果存为同目录的 `P204-depth.npz`。下例从已校验的输入分别重建原形和到达各坡面的状态，用新目录避免覆盖；场景回放需要本机 PandaSet 数据和配置。不要将一个站点的水面网格直接拷贝到另一个坡度。
 

@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,499 个资产编号、50 个重建系列和 20 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,501 个资产编号、51 个重建系列和 21 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -35,6 +35,7 @@
 | [实测沥青坑蚀与接缝掉块](../docs/17-mixed-road-transfer.md#%E7%94%A8%E5%8E%9F%E5%A7%8B%E8%BE%93%E5%85%A5%E9%87%8D%E5%BB%BA%E4%B9%9D%E4%BB%B6%E8%B5%84%E4%BA%A7) | 4 | P220 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/mixed-road) | [native](#route-native)、[mesh-view](#route-mesh-view) |
 | [实测片状剥落与粗集料碗坑](../docs/21-measured-pavement.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B-rgb-d-%E9%87%8D%E5%BB%BA%E4%B8%A4%E5%A4%84%E7%A0%B4%E6%8D%9F) | 2 | P238 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/measured-pavement) | [mesh-view](#route-mesh-view)、[pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint) |
 | [龟裂碎集料坑和弧形剥落坑](../docs/24-asphalt-breakouts.md#%E4%BB%8E%E4%B8%A4%E4%BB%BD%E5%AE%9E%E6%8B%8D-rgb-d-%E9%87%8D%E5%BB%BA) | 2 | P246 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/asphalt-breakouts) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure) |
+| [断边露底坑与粗集料碗坑](../docs/26-remapped-pits.md#%E4%BB%8E%E5%AE%9E%E6%8B%8D%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%BB%BA%E4%B8%A4%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | P250 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/remapped-pits) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[native-pavement-support](#route-native-pavement-support)、[apron-exposure](#route-apron-exposure)、[remapped-camera](#route-remapped-camera) |
 
 ## 裂缝、积水、铺装与修补
 
@@ -66,8 +67,8 @@
 | [实扫双联检查井与半缺盖](../docs/18-twin-hatch-transfer.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E4%BA%94%E4%BB%B6%E8%B5%84%E4%BA%A7) | 5 | A228 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/mixed-road/twin-hatch/survey.json) | [native](#route-native)、[mesh-view](#route-mesh-view) |
 | [带双圈排水孔的铸铁盖与缺盖井](../docs/22-scanned-round-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%B8%AA%E7%8A%B6%E6%80%81) | 2 | A240 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/scanned-round-covers/005/survey.json) · [输入准备](../gen2hole/examples/scanned-round-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins) |
 | [裂纹填芯盖与缺盖井](../docs/22-scanned-round-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%B8%AA%E7%8A%B6%E6%80%81) | 2 | A241 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/scanned-round-covers/008/survey.json) · [输入准备](../gen2hole/examples/scanned-round-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins) |
-| [沉降填芯井盖和沉降敞井](../docs/25-rolling-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | A248 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/rolling-covers/003/survey.json) · [输入准备](../gen2hole/examples/rolling-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins)、[rolling-readout](#route-rolling-readout)、[native-pavement-support](#route-native-pavement-support) |
-| [错位十孔铸铁盖和敞井](../docs/25-rolling-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | A249 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/rolling-covers/006/survey.json) · [输入准备](../gen2hole/examples/rolling-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins)、[rolling-readout](#route-rolling-readout)、[native-pavement-support](#route-native-pavement-support) |
+| [沉降填芯井盖和沉降敞井](../docs/25-rolling-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | A248 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/rolling-covers/003/survey.json) · [输入准备](../gen2hole/examples/rolling-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins)、[rolling-readout](#route-rolling-readout)、[native-pavement-support](#route-native-pavement-support)、[remapped-camera](#route-remapped-camera) |
+| [错位十孔铸铁盖和敞井](../docs/25-rolling-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | A249 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/rolling-covers/006/survey.json) · [输入准备](../gen2hole/examples/rolling-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins)、[rolling-readout](#route-rolling-readout)、[native-pavement-support](#route-native-pavement-support)、[remapped-camera](#route-remapped-camera) |
 
 ## 路侧与路面立体设施
 
@@ -103,5 +104,6 @@
 | <a id="route-apron-exposure"></a>apron-exposure | 从真实路面登记曝光并回放只含坑床的鱼眼近景 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [指南](../docs/24-asphalt-breakouts.md) |
 | <a id="route-rolling-readout"></a>rolling-readout | 由纳秒行曝光时间和相机轨迹迁入行间移动的鱼眼宿主 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [指南](../docs/25-rolling-covers.md) |
 | <a id="route-native-pavement-support"></a>native-pavement-support | 由测量孔口、修补带和盖板悬出部分限定原生回放范围 | [local_pavement_replay.py](../streetcrafter/joint/local_pavement_replay.py) | [指南](../docs/25-rolling-covers.md) |
+| <a id="route-remapped-camera"></a>remapped-camera | 裁切、缩放、旋转及去畸变后，按原始像素光线和读出时刻迁入 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [指南](../docs/26-remapped-pits.md) |
 
 更新目录后运行 `python3 scripts/check-reproduction-index.py --write-map`。常规检查运行同一命令并省略参数，检查编号、源文件、指南章节、迁入路线与本页是否一致。

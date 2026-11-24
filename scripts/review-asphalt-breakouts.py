@@ -99,7 +99,13 @@ def append_rear_hold(site, pair, labels, dest):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--views", type=Path, default=ROOT / "outputs/asphalt-breakouts")
+    parser.add_argument("--layout", type=Path, help="Use the pair ID and asset labels from this pavement layout")
     args = parser.parse_args()
+    if args.layout:
+        layout = json.loads(args.layout.read_text())
+        labels = [row["asset"] for row in layout["instances"]]
+        append_rear_hold(args.views / "audi", layout["id"], labels, args.views / "audi-front-rear.mp4")
+        return
     append_rear_hold(args.views / "audi", "P246-P247", ["P246   碎集料龟裂坑", "P247   弧形剥落坑"], args.views / "audi-front-rear.mp4")
 
 

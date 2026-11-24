@@ -1,0 +1,24 @@
+{
+  "id": "P250-P251",
+  "label": "断边沥青坑与粗集料碗坑",
+  "instances": [
+    {
+      "id": "broken-lip",
+      "asset": "P250",
+      "xy_m": [
+        1.15,
+        0.2
+      ],
+      "heading_deg": -12
+    },
+    {
+      "id": "coarse-bowl",
+      "asset": "P251",
+      "xy_m": [
+        -1.15,
+        -0.15
+      ],
+      "heading_deg": 23
+    }
+  ]
+}

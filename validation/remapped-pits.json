@@ -1,0 +1,473 @@
+{
+  "assets": {
+    "P250": {
+      "area_m2": 1.1041990367308951,
+      "bounds_m": [
+        1.6381069421768188,
+        0.8679440021514893
+      ],
+      "depth_p95_m": 0.04924756043497982,
+      "depth_validation": {
+        "glb_sha256": "2b141f86050a29d8c1f4512336733b3bce83a940ba6e546231df6914354a1f5c",
+        "source": "PothRGBD",
+        "fit": [
+          "20250305_045702"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 11389,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 90291,
+        "withheld_mesh": {
+          "samples": 11389,
+          "median_mm": 0.5595684051513672,
+          "p95_mm": 1.6418218612670898
+        },
+        "withheld_road_plane": {
+          "samples": 11389,
+          "median_mm": 30.537946631529202,
+          "p95_mm": 58.10733786001396
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      },
+      "hashes": {
+        "asset.ply": "02179d41f57c02d4e627a7b3228155793c7355f7da2ff71a36736bb12692286f",
+        "metadata.json": "3f7ecead9cb2582f0d440973d879bed2fd96730f44651bae4b62f2fb34faadaf",
+        "splat_material.npz": "c341900c331bcae546a6f7070d8e9fa3fd6cb0badb510f7e82b5841d9aeb371a",
+        "surface.npz": "2c4d43cbc0e4cddb8f0d4fc1f9b4aa4f1f9832f60a86c756b13c103710162f15",
+        "asset.glb": "2b141f86050a29d8c1f4512336733b3bce83a940ba6e546231df6914354a1f5c"
+      }
+    },
+    "P251": {
+      "area_m2": 0.9128155636356261,
+      "bounds_m": [
+        1.266279697418213,
+        0.9274048805236816
+      ],
+      "depth_p95_m": 0.07683294072653275,
+      "depth_validation": {
+        "glb_sha256": "e9705eb427b89ace6198a365e7b56f8cdb36aa19b82a92512fce4a7e79014160",
+        "source": "PothRGBD",
+        "fit": [
+          "20250305_125432"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 18095,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 144171,
+        "withheld_mesh": {
+          "samples": 18095,
+          "median_mm": 0.37860870361328125,
+          "p95_mm": 1.1480212211608887
+        },
+        "withheld_road_plane": {
+          "samples": 18095,
+          "median_mm": 47.00165631895259,
+          "p95_mm": 80.16104451304115
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      },
+      "hashes": {
+        "asset.ply": "98df11e36337120b8d97d4e8993a5c0ccaa47b07b9c0a4d19b9628494a1f2394",
+        "metadata.json": "d9bcecadb1eeb6c1e9a4306b25cea94335cb16006035611aae7c4ec4289f7a64",
+        "splat_material.npz": "b5e0e22168ad3608cc10c5f34c8165b0ce560e20cb5de0bec2d2c85ed987ac1d",
+        "surface.npz": "32e6ac7b8a3b7dafa5b289ee70d02e1f31285f1a8b2523b45302324710199aa5",
+        "asset.glb": "e9705eb427b89ace6198a365e7b56f8cdb36aa19b82a92512fce4a7e79014160"
+      }
+    }
+  },
+  "real": {
+    "audi": {
+      "front_left": {
+        "best_frame_instance_pixels": {
+          "broken-lip": 4086,
+          "coarse-bowl": 6582
+        },
+        "frame": 1505,
+        "frames_showing_all_instances": [
+          1500,
+          1501,
+          1502,
+          1503,
+          1504,
+          1505,
+          1506,
+          1507
+        ],
+        "protected_edits": 0,
+        "source_rgb_sha256": "34377f9dbfdc6684c1e3b0c6c11756e76cb8cf032f4ba7aa491db99d5a06365a"
+      },
+      "rear_center": {
+        "best_frame_instance_pixels": {
+          "broken-lip": 10268,
+          "coarse-bowl": 5459
+        },
+        "frame": 1518,
+        "frames_showing_all_instances": [
+          1516,
+          1517,
+          1518,
+          1519,
+          1520,
+          1521,
+          1522,
+          1523,
+          1524,
+          1525,
+          1526,
+          1527,
+          1528,
+          1529,
+          1530,
+          1531,
+          1532,
+          1533,
+          1534
+        ],
+        "protected_edits": 0,
+        "source_rgb_sha256": "463bad4d85e3528d959597840a4fb1f6e9b6d2a70355992f21e2156a398bb61b"
+      }
+    },
+    "kitti": {
+      "image_00": {
+        "best_frame_instance_pixels": {
+          "broken-lip": 1586,
+          "coarse-bowl": 3507
+        },
+        "frame": 217,
+        "frames_showing_all_instances": [
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218
+        ],
+        "protected_edits": 0,
+        "source_rgb_sha256": "49cfb6cc159b6c1e45890bb8e39c3042c7597c4076b048544401d8b528c0a889"
+      },
+      "image_03": {
+        "best_frame_instance_pixels": {
+          "broken-lip": 5264,
+          "coarse-bowl": 10621
+        },
+        "frame": 228,
+        "frames_showing_all_instances": [
+          227,
+          228,
+          229,
+          230,
+          231,
+          232,
+          233
+        ],
+        "protected_edits": 0,
+        "source_rgb_sha256": "fc63cf1f3c9fab39ffa8a0bcb5294d11d9f7568769eadfa1d190b88c2123fca1"
+      }
+    }
+  },
+  "native": {
+    "host_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+    "joint_sha256": "d56ee00c997027e705173e4f5749a919390d9a79dfadb4402adaaff8bc11513f",
+    "local": {
+      "support_m": 0.18,
+      "views": {
+        "front": {
+          "frames": 48,
+          "raw_outside_changes": 17781,
+          "localized_outside_changes": 0,
+          "preserved_interior_changes": 7113,
+          "max_interior_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "raw_outside_changes": 939943,
+          "localized_outside_changes": 0,
+          "preserved_interior_changes": 367395,
+          "max_interior_error": 0
+        }
+      }
+    },
+    "replay": {
+      "front": {
+        "frames": 48,
+        "peak_changed_pixels": 3460,
+        "max_baseline_error": 0
+      },
+      "rear": {
+        "frames": 48,
+        "peak_changed_pixels": 212114,
+        "max_baseline_error": 0
+      }
+    }
+  },
+  "optics_sha256": {
+    "top-down/rectilinear/after.png": "668fbdf3384150a24846c749a8ced9f4e8173d5ad5d39dfce6d2258a5c28c3d5",
+    "top-down/rectilinear/part.png": "563590f7e2f3735e9d7fe4935e190e75d95645d79adb8da8cce98acc890efd5f",
+    "top-down/rectilinear/instance.png": "3fef7bc6c455062717f2f938d40608c2477271bdc8557ef236d272726043a7ff",
+    "top-down/rectilinear/range.npy": "ac789c73d5aeac46d148e8d939de420d94805893dc8986e6aaa6d7230323a106",
+    "top-down/rotated-crop/after.png": "bad1f416b25caf4c61d96a52231c7e0b189ebe1057efbeb15d879b293361bd33",
+    "top-down/rotated-crop/part.png": "ce7ce3f1dbc91bc66ba00937a33b4c34c5ad2e2e9037dcb51d71eaf1e8f5364b",
+    "top-down/rotated-crop/instance.png": "62532c6ad1491e9a79f8d45154cc5ea042f0fdcf00ff94c3fc02feef5e68260c",
+    "top-down/rotated-crop/range.npy": "a7f639ac24bc2827583418c1d57b477f52fb527f13c781fab817b1d04f975146",
+    "bottom-up/rectilinear/after.png": "22faf7802359e77bcbf26f295f3ae5d02bd8b661a5eeba5f40dd1bcd04ca4c14",
+    "bottom-up/rectilinear/part.png": "5b5fa7e029afed4df2a1937513a11202cbdd3fb0c4a41b1306efae7251c0500f",
+    "bottom-up/rectilinear/instance.png": "148dd2a1bb7a797c412bbec57db02fc34c057bc42d2ddf9bc42a0ae60adc93d9",
+    "bottom-up/rectilinear/range.npy": "1aef026666c3900102d306e39d4ae5484e009454177f65f37b5f7e736d1bf8d5",
+    "bottom-up/rotated-crop/after.png": "ec81cd7bffe3c3e8806fd0368496242e0a5852714749bf2a0f572b75b362cfc3",
+    "bottom-up/rotated-crop/part.png": "e12961c6b8972e47f0c02dc662d74b3a76f983f73ac38d1daf52f6b37467a85b",
+    "bottom-up/rotated-crop/instance.png": "c39cbbfba92f868effca38a17b210d443e96214c35dbd89d21a4bfd5b658f868",
+    "bottom-up/rotated-crop/range.npy": "c29cdb9da01b8e77cbd20707e56f58da9e3ee931d91cd398c292a636ca1791a3"
+  },
+  "remapped_covers": {
+    "top-down/rotated-crop": {
+      "registered": {
+        "M248": {
+          "native_pixels": 1469,
+          "instance_iou": 0.9993192648059904,
+          "part_agreement": 0.9993192648059904,
+          "p95_range_error_m": 2.6452541351318262e-05,
+          "parts": {
+            "5": 432,
+            "6": 906,
+            "8": 130
+          }
+        },
+        "A249": {
+          "native_pixels": 1055,
+          "instance_iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 2.5892257690429666e-05,
+          "parts": {
+            "5": 66,
+            "6": 28,
+            "9": 821,
+            "11": 140
+          }
+        }
+      },
+      "output_row_pose": {
+        "M248": {
+          "native_pixels": 1469,
+          "instance_iou": 0.8907138344914719,
+          "part_agreement": 0.8543226684819605,
+          "p95_range_error_m": 0.05519537925720214,
+          "parts": {
+            "5": 333,
+            "6": 853,
+            "8": 69
+          }
+        },
+        "A249": {
+          "native_pixels": 1055,
+          "instance_iou": 0.9164467897977133,
+          "part_agreement": 0.8085308056872038,
+          "p95_range_error_m": 0.023998260498046875,
+          "parts": {
+            "5": 27,
+            "6": 3,
+            "9": 783,
+            "11": 40
+          }
+        }
+      },
+      "protected_pixels": 304
+    },
+    "top-down/rectilinear": {
+      "registered": {
+        "M248": {
+          "native_pixels": 3541,
+          "instance_iou": 0.9991527817000847,
+          "part_agreement": 0.9991527817000847,
+          "p95_range_error_m": 2.6702880859375e-05,
+          "parts": {
+            "5": 1026,
+            "6": 2220,
+            "8": 292
+          }
+        },
+        "A249": {
+          "native_pixels": 2204,
+          "instance_iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 2.6226043701171875e-05,
+          "parts": {
+            "5": 170,
+            "6": 63,
+            "9": 1681,
+            "11": 290
+          }
+        }
+      },
+      "output_row_pose": {
+        "M248": {
+          "native_pixels": 3541,
+          "instance_iou": 0.9822435174746336,
+          "part_agreement": 0.9582038972041796,
+          "p95_range_error_m": 0.008671092987060246,
+          "parts": {
+            "5": 970,
+            "6": 2187,
+            "8": 236
+          }
+        },
+        "A249": {
+          "native_pixels": 2204,
+          "instance_iou": 0.9092809364548495,
+          "part_agreement": 0.8030852994555354,
+          "p95_range_error_m": 0.031128752231597834,
+          "parts": {
+            "5": 68,
+            "6": 7,
+            "9": 1607,
+            "11": 88
+          }
+        }
+      },
+      "protected_pixels": 201
+    },
+    "bottom-up/rotated-crop": {
+      "registered": {
+        "M248": {
+          "native_pixels": 1525,
+          "instance_iou": 0.999344262295082,
+          "part_agreement": 0.999344262295082,
+          "p95_range_error_m": 2.7418136596679688e-05,
+          "parts": {
+            "5": 443,
+            "6": 947,
+            "8": 134
+          }
+        },
+        "A249": {
+          "native_pixels": 1156,
+          "instance_iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 2.676248550415039e-05,
+          "parts": {
+            "5": 74,
+            "6": 26,
+            "9": 927,
+            "11": 129
+          }
+        }
+      },
+      "output_row_pose": {
+        "M248": {
+          "native_pixels": 1525,
+          "instance_iou": 0.889520202020202,
+          "part_agreement": 0.8222950819672131,
+          "p95_range_error_m": 0.055249047279357894,
+          "parts": {
+            "5": 332,
+            "6": 853,
+            "8": 69
+          }
+        },
+        "A249": {
+          "native_pixels": 1156,
+          "instance_iou": 0.9187339606501284,
+          "part_agreement": 0.7655709342560554,
+          "p95_range_error_m": 0.017301082611083984,
+          "parts": {
+            "5": 27,
+            "6": 3,
+            "9": 815,
+            "11": 40
+          }
+        }
+      },
+      "protected_pixels": 330
+    },
+    "bottom-up/rectilinear": {
+      "registered": {
+        "M248": {
+          "native_pixels": 3759,
+          "instance_iou": 0.9992019154030327,
+          "part_agreement": 0.9992019154030327,
+          "p95_range_error_m": 2.7418136596679688e-05,
+          "parts": {
+            "5": 1077,
+            "6": 2375,
+            "8": 304
+          }
+        },
+        "A249": {
+          "native_pixels": 2432,
+          "instance_iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 2.7418136596679688e-05,
+          "parts": {
+            "5": 180,
+            "6": 62,
+            "9": 1907,
+            "11": 283
+          }
+        }
+      },
+      "output_row_pose": {
+        "M248": {
+          "native_pixels": 3759,
+          "instance_iou": 0.981913499344692,
+          "part_agreement": 0.9720670391061452,
+          "p95_range_error_m": 0.0015087127685546875,
+          "parts": {
+            "5": 1034,
+            "6": 2375,
+            "8": 245
+          }
+        },
+        "A249": {
+          "native_pixels": 2432,
+          "instance_iou": 0.9118244616009752,
+          "part_agreement": 0.7561677631578947,
+          "p95_range_error_m": 0.027984619140625,
+          "parts": {
+            "5": 68,
+            "6": 7,
+            "9": 1676,
+            "11": 88
+          }
+        }
+      },
+      "protected_pixels": 272
+    }
+  },
+  "remapped_audi": {
+    "pixels": 68052,
+    "asset_pixels": 15727,
+    "matched_instance_part_range": true,
+    "max_rgb_delta": 0,
+    "asset_p99_rgb_delta": 0.0
+  },
+  "videos": {
+    "audi-front-rear.mp4": {
+      "frames": 48,
+      "seconds": 4.8
+    },
+    "kitti-front-side.mp4": {
+      "frames": 44,
+      "seconds": 4.4
+    },
+    "joint-front-rear.mp4": {
+      "frames": 48,
+      "seconds": 8.0
+    },
+    "joint-local-front-rear.mp4": {
+      "frames": 48,
+      "seconds": 8.0
+    },
+    "common-20.mp4": {
+      "frames": 880,
+      "seconds": 88.0
+    }
+  }
+}

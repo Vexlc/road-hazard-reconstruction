@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P250",
+    "label": "断边露出基层的沥青坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_045702",
+    "fit": [
+      "20250305_045702"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

@@ -1,6 +1,14 @@
 # 代码作用与执行顺序
 
-本文件说明核心重建、场景迁入和全部可视化代码的作用。大文件不存入 Git；固定依赖的第三方源码由安装脚本按提交号获取。
+按具体编号查程序、配方、输入和宿主，请使用[资产系列与迁入代码对照](asset-code-index.md)。首次运行可以从[全仓复现手册](16-reproduction-cookbook.md)开始。下表给出当前维护的代码入口，后文保留历史 1,199 件资产管线及综合视频的执行顺序。
+
+| 从哪一步开始 | 代码入口 | 运行后核对什么 |
+|---|---|---|
+| 手里有资产编号 | [编号查询](../gen2hole/gen2hole.py) | 在仓库根目录执行 `python3 gen2hole/gen2hole.py locate P250`，按返回的 launcher、recipe 和 guide 找到该系列的操作步骤。 |
+| 按照片、扫描或深度建模 | [重建方法与输入表](16-reproduction-cookbook.md#各类资产怎样重建) | 先核对原图及深度的来源和单位，再核对成品 GLB、PLY 和坑沿或接触面。 |
+| 已有模型和训练好的 KITTI 联合场景 | [成对安装坑洞和检查井](../streetcrafter/joint/pavement_pair.py) · [安装立体设施和重载渲染](../streetcrafter/joint/roadside_pairs.py) | 对照基准宿主和新检查点的 SHA-256，在同一段轨迹检查前视与驶过后的后视。 |
+| 接入另一套相机或渲染器 | [米制光线与深度适配器](../scripts/transfer-mesh-view.py) · [相机包字段、裁切与去畸变](26-remapped-pits.md#接入重采样的相机) | 用宿主自身的路面点拟合落点，检查 RGB、可见部件、实例、前景遮挡和径向距离。 |
+| 核验已有发布 | [系列索引检查](../scripts/check-reproduction-index.py) · [各阶段验收](16-reproduction-cookbook.md#验收与排错) | 索引检查只需 Python 标准库。需要验证模型或渲染时，再执行专题中的输入、重建和回放命令。 |
 
 ## 目录分工
 

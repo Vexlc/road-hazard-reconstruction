@@ -17,7 +17,7 @@
 
 每个包的 SHA-256 和实际云盘文件链接见 `catalog/downloads.json`。该校验使用服务端哈希元数据，并未把全部 17.54 GB 再下载一遍；用户下载后仍由 `scripts/packages.py` 校验 SHA-256。
 
-GitHub 仓库已公开，当前入口见[项目首页](../README.md)；Google Drive 已设置为“知道链接的任何人可查看”，允许下载、不允许编辑，且未开启搜索发现。45 个包的权限核验与免登录下载抽查记录见 `validation/drive-sharing-verification.json`。模型、数据、虚拟环境、缓存和视频不进入 Git 历史。
+GitHub 仓库及其 Releases 为私有，下载需要仓库读取权限。早期这 45 个 Google Drive 包发布时设置为“知道链接的任何人可查看”，允许下载、不允许编辑，且未开启搜索发现。45 个包的权限核验与免登录下载抽查记录见 `validation/drive-sharing-verification.json`。模型、数据、虚拟环境、缓存和视频不进入 Git 历史。
 
 ## 2026-11-20 增量同步状态
 

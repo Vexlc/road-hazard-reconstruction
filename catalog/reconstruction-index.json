@@ -1,5 +1,5 @@
 {
-  "asset_count": 1499,
+  "asset_count": 1501,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2126,7 +2126,8 @@
         "pavement-joint",
         "metric-ray-origins",
         "rolling-readout",
-        "native-pavement-support"
+        "native-pavement-support",
+        "remapped-camera"
       ]
     },
     "rusted-ten-vent-cover": {
@@ -2145,7 +2146,26 @@
         "pavement-joint",
         "metric-ray-origins",
         "rolling-readout",
-        "native-pavement-support"
+        "native-pavement-support",
+        "remapped-camera"
+      ]
+    },
+    "broken-lip-and-bowl": {
+      "name": "断边露底坑与粗集料碗坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/remapped-pits",
+      "guide": "docs/26-remapped-pits.md",
+      "section": "从实拍深度重建两件资产",
+      "assets": [
+        "P250",
+        "P251"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "native-pavement-support",
+        "apron-exposure",
+        "remapped-camera"
       ]
     }
   },
@@ -2249,6 +2269,11 @@
       "name": "由测量孔口、修补带和盖板悬出部分限定原生回放范围",
       "entry": "streetcrafter/joint/local_pavement_replay.py",
       "guide": "docs/25-rolling-covers.md"
+    },
+    "remapped-camera": {
+      "name": "裁切、缩放、旋转及去畸变后，按原始像素光线和读出时刻迁入",
+      "entry": "scripts/transfer-mesh-view.py",
+      "guide": "docs/26-remapped-pits.md"
     }
   },
   "groups": {
@@ -2276,7 +2301,8 @@
       "junction-spall",
       "mixed-rgbd-pits",
       "measured-pavement-pair",
-      "measured-asphalt-breakouts"
+      "measured-asphalt-breakouts",
+      "broken-lip-and-bowl"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

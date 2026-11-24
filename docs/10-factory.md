@@ -69,7 +69,7 @@ check_recovery.py 是首批验收夹具：要求专用目录恰好含种子 2026
 
 ## 换目录恢复
 
-公开仓库的 catalog/factory-v3-*.json 与下载包共同保存配方、选择计划与分组编号。先恢复 factory-v3-assets、factory-v3-inputs、factory-v3-extra-material、原始20个实拍资产和三条道路运行包，再在 CUDA 环境运行 scripts/hazard_factory/configure.py。基础 PBR 包的内容会补到原生成器使用的 work/road_hazard_sources 路径；额外 Road008C 两个输入参与已发布生成版本的指纹，也需要恢复。配置器仅重定位 YAML 与相应完成记录中的配置哈希，原生检查点字节保持不变。迁入缓存签名包含本机 job/config，换目录后重新迁入会生成新缓存。
+仓库内的 `catalog/factory-v3-*.json` 与下载包共同保存配方、选择计划与分组编号。先恢复 factory-v3-assets、factory-v3-inputs、factory-v3-extra-material、原始20个实拍资产和三条道路运行包，再在 CUDA 环境运行 scripts/hazard_factory/configure.py。基础 PBR 包的内容会补到原生成器使用的 work/road_hazard_sources 路径；额外 Road008C 两个输入参与已发布生成版本的指纹，也需要恢复。配置器仅重定位 YAML 与相应完成记录中的配置哈希，原生检查点字节保持不变。迁入缓存签名包含本机 job/config，换目录后重新迁入会生成新缓存。
 
 当前独立标注高度核对仅取每条道路第一组作为几何诊断，不能支持所有补面已被独立多帧核对的结论。110 道路的多帧有效观测不足，诊断保留 insufficient_support；可见性探针也保留待复查的微弱残留。
 
@@ -104,7 +104,7 @@ P160–P189 是程序化造坑路线封存时的最后一批设计资产，包�
 
 用水平路面以下至少 1 厘米处的网格采样统计水平投影，新坑覆盖 3.33–14.44 平方米。按同一口径，原扩充库和 v3 工厂的 130 个程序化坑洞最大为 1.10 平方米。独立复核在同一高度裁切导出 GLB 的三角形，30 个面积与采样结果的相对差均小于 0.52%。[同尺度俯视图](figures/large-potholes.jpg) · [逐件面积与模型校验值](../validation/large-potholes-areas.json)
 
-归档包按项目相对路径保存这 30 件成品、生成与审查源码、实际用到的扫描材质和环绕视频。可解压到新目录查看，或用项目已有的 assets、streetcrafter 环境复现。[本地封存包](../data/history/2026-11-23/procedural-potholes-P160-P189.tar.zst) · [归档 SHA-256](../catalog/procedural-potholes-P160-P189.sha256) · [原环绕视频](../outputs/large-potholes/orbits.mp4)
+归档包按项目相对路径保存这 30 件成品、生成与审查源码、实际用到的扫描材质和环绕视频。可解压到新目录查看，或用项目已有的 assets、streetcrafter 环境复现。本地封存包（本机 `data/history/2026-11-23/procedural-potholes-P160-P189.tar.zst`） · [归档 SHA-256](../catalog/procedural-potholes-P160-P189.sha256) · 原环绕视频（本机 `outputs/large-potholes/orbits.mp4`）
 
 在仓库根目录复现时使用以下命令。材质取自 `inputs-procedural` 恢复的 `work/reconstruction-inputs/pbr`，也支持原库的 `work/road_hazard_sources`。构建程序向新目录发布已核验的资产。只复建一个编号可用 `--ids P181 --out runs/P181-large`。
 

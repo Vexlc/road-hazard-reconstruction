@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P251",
+    "label": "粗集料路面碗状坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_125432",
+    "fit": [
+      "20250305_125432"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

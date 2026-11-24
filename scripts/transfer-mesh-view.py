@@ -24,6 +24,11 @@ def main():
     readout.add_argument("view", type=Path, help="Host packet with int64 row_time_ns")
     readout.add_argument("trajectory", type=Path, help="NPZ with time_ns and camera_to_world at each knot")
     readout.add_argument("out", type=Path)
+    remap = tasks.add_parser("remap-camera", help="Transport a registered exposure through a nearest-pixel inverse map")
+    remap.add_argument("view", type=Path)
+    remap.add_argument("source_xy", type=Path, help="Hout×Wout×2 .npy map into original pixel centres (x, y)")
+    remap.add_argument("out", type=Path)
+    remap.add_argument("--calibration", type=Path, help="Original lens JSON if the input omits explicit rays")
     road = tasks.add_parser("road-points", help="Unproject labelled metric road depth from calibrated host views")
     road.add_argument("out", type=Path, help="World-space XYZ .npy")
     road.add_argument("views", type=Path, nargs="+")
@@ -73,7 +78,6 @@ def main():
     args = parser.parse_args()
     if args.task == "register-readout":
         from camera_readout import interpolate_rows
-        from tempfile import NamedTemporaryFile
 
         with np.load(args.view, allow_pickle=False) as data:
             packet = dict(data)
@@ -83,6 +87,14 @@ def main():
             parser.error("row_time_ns must match the image height")
         packet["camera_to_world_rows"] = rows
         packet.setdefault("camera_to_world", rows.reshape(-1, *rows.shape[-3:])[0, rows.shape[-3] // 2])
+    if args.task == "remap-camera":
+        from camera_remap import remap_packet
+
+        with np.load(args.view, allow_pickle=False) as source:
+            packet = remap_packet(source, np.load(args.source_xy, allow_pickle=False), args.calibration)
+    if args.task in ("register-readout", "remap-camera"):
+        from tempfile import NamedTemporaryFile
+
         args.out.parent.mkdir(exist_ok=True, parents=True)
         with NamedTemporaryFile(dir=args.out.parent, delete=False) as tmp:
             path = Path(tmp.name)

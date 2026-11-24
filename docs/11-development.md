@@ -1,6 +1,6 @@
 # 在 I2hole2road 开发
 
-日常从项目根目录工作。图生资产与传感器的维护源码在 [pipelines](../pipelines)，11 月 21 日的完整交付在 [data/releases/2026-11-21](../data/releases/2026-11-21)。两批图生资产和传感器包沿用各自原名并排存放，离线页面可以按相对路径打开原图、模型和点云。
+日常从项目根目录工作。图生资产与传感器的维护源码在 [pipelines](../pipelines)，11 月 21 日的完整交付在 data/releases/2026-11-21（本机 `data/releases/2026-11-21`）。两批图生资产和传感器包沿用各自原名并排存放，离线页面可以按相对路径打开原图、模型和点云。
 
 | 目录 | 用途 |
 | --- | --- |
@@ -9,7 +9,7 @@
 | [scripts/hazard_factory](../scripts/hazard_factory)、[tools/multiscene](../tools/multiscene) | 五类资产的原尺度工厂和三路段运行工具，也是图生资产迁入的基础。 |
 | [catalog](../catalog)、[validation](../validation) | 版本清单、文件 SHA-256、基线指标和本次迁移的实际验证结果。 |
 | [work](../work)、[outputs](../outputs) | 本机 Python 环境、原始输入、派生缓存，以及沿用原仓库路径的历史资产和道路模型。 |
-| [data/history](../data/history)、[runs](../runs) | 历史交付与工作记录，以及每次新实验的独立目录。 |
+| data/history（本机 `data/history`）、runs（本机 `runs`） | 历史交付与工作记录，以及每次新实验的独立目录。 |
 
 ## 新坑洞的输入
 
@@ -17,10 +17,9 @@
 
 ## 改一个资产
 
-从当前基线新建一个功能分支，在 `pipelines/image100/rebuild/` 修改源码。下面以 P04 为例。初始化会记录当前提交与实际工作区源码的逐文件哈希，并复制参考图、校准参数和放置计划。新模型写入本次实验目录。
+在当前检出目录的 `pipelines/image100/rebuild/` 中修改源码。下面以 P04 为例。初始化会记录当前提交与实际工作区源码的逐文件哈希，并复制参考图、校准参数和放置计划。新模型写入本次实验目录。
 
 ~~~bash
-git switch -c feat/p04-geometry
 python scripts/roadgs.py init p04-geometry --component image100
 
 bundle="$PWD/runs/p04-geometry/道路病害图生三维_新增100"

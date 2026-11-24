@@ -25,7 +25,7 @@ python -m gen2hole.large_pits example P201
 
 ## 二十件车行道坑洞
 
-这套合集包含原有 P190、P198–P201 和新增 P205–P219。新增的 15 件各自使用一张独立生成的沥青路面参考图。宽碗坑、车轮磨出的长坑、接缝和补丁边缘破损、相邻坑连通均保留完整坑口。参考图中标定的上缘和可见断壁与整图、局部深度一起用于建模。新增模型的坑口投影面积为 3.29–10.62 平方米，长轴为 4.1–5.6 米，坑床凹深 P95 为 11–24 厘米。这些是设计尺度下的模型尺寸。合集视频先播放新增的 15 件，再播放原有的 5 件，每件都显示参考图、建成的网格及 PandaSet 109 前后视回放。[合集视频](../outputs/photo-large-potholes/common-20/common-20.mp4) · [二十件网格总览](../outputs/photo-large-potholes/common-20/overview.jpg) · [全部 GLB](../outputs/photo-large-potholes/common-20/models-glb.zip) · [逐件视频与模型](../outputs/photo-large-potholes/common-20/list.md)
+这套合集包含原有 P190、P198–P201 和新增 P205–P219。新增的 15 件各自使用一张独立生成的沥青路面参考图。宽碗坑、车轮磨出的长坑、接缝和补丁边缘破损、相邻坑连通均保留完整坑口。参考图中标定的上缘和可见断壁与整图、局部深度一起用于建模。新增模型的坑口投影面积为 3.29–10.62 平方米，长轴为 4.1–5.6 米，坑床凹深 P95 为 11–24 厘米。这些是设计尺度下的模型尺寸。合集视频先播放新增的 15 件，再播放原有的 5 件，每件都显示参考图、建成的网格及 PandaSet 109 前后视回放。[合集视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/remapped-pits-v1.0.0/common-20.mp4) · [20 件网格总览](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/common-pits-overview.jpg) · [20 件 GLB](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/remapped-pits-v1.0.0/common-20-glb.zip) · [逐件配方与模型路径](../catalog/common-pit-kit.json)
 
 在固定版本 `reproduction-2026.11.25` 下，先依照[下载与合并步骤](16-reproduction-cookbook.md#从发布输入复建-20-个大坑)获取输入并配置环境。以下命令重建 P205，核对五个文件，再放入已配置的 PandaSet 109。要复建全部 20 件，省略首条命令最后的编号。[版本下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25) · [新增件配方及生成提示词](../gen2hole/examples/oblique-road-pits/common-large/cases.json)
 
