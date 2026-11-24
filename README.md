@@ -30,7 +30,7 @@ RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资�
 
 **实拍大坑子模块**　P190 已按原尺度放入两段实拍道路。109 可以看阳光和电线投影，034 可以看背阴坡道上的断边。安装项目环境后可运行 `python -m gen2hole.large_pits example P201` 自动取回输入包、重建并校验文件。[109 行车视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190-scene-109.mp4) · [034 行车视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190-scene-034.mp4) · [同帧新旧对照](docs/figures/large-dry-pit-road.jpg) · [输入包与复现命令](docs/15-large-dry-pits.md)
 
-**实拍大坑 P190–P197**　P190 根据护栏旁的塌坑照片重建，坑口投影面积估计为 14.2 m²。另有一个住宅车道边缘塌陷、一处湿坑和五个带深度图的路面样本。[P190 上一版车载视频](outputs/photo-large-potholes/P190-v2/scene-109/drive.mp4) · [P190 优化前后视频](outputs/photo-large-potholes/P190-v2/comparison.mp4) · [八件环绕视频](outputs/photo-large-potholes/orbits.mp4) · [参考图与模型](outputs/photo-large-potholes/reference-comparison.jpg) · [八个 GLB](outputs/photo-large-potholes/models-glb.zip) · [重建与检验](docs/02-asset-reconstruction.md#从斜拍照片重建大面积坑洞)
+**实拍大坑 P190–P197**　P190 根据护栏旁的塌坑照片重建，坑口投影面积估计为 14.2 m²。另有一个住宅车道边缘塌陷、一处湿坑和五个带深度图的路面样本。[P190 上一版车载视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-guide-v1.0.0/p190-v2-scene-109.mp4) · [P190 优化前后视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-guide-v1.0.0/p190-v2-comparison.mp4) · [八件环绕视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-guide-v1.0.0/p190-p197-orbits.mp4) · [参考图与模型](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-guide-v1.0.0/p190-p197-reference.jpg) · [八个 GLB](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-guide-v1.0.0/p190-p197-models.zip) · [重建与检验](docs/02-asset-reconstruction.md#从斜拍照片重建大面积坑洞)
 
 **中文项目百科**　46 页图解从坑洞和井盖的原始观测讲到米制网格、三维高斯和车载回放，附 16 个常见问题、实跑示例与 27 组配方索引。网页版可放大图版、检索全部 1,403 个资产编号，下载后可离线阅读。[阅读 PDF](docs/encyclopedia/RoadGS-道路病害重建百科.pdf) · [下载后用浏览器打开网页版](docs/encyclopedia/index.html)
 
@@ -106,9 +106,9 @@ P112 的两张近景各拍到一个坑。重建后，两个坑能在同一张留
 | 用两张彩照、相机内参和一段已知路面长度重建凹陷 | [双照片视差重建与独立深度检查](docs/02-asset-reconstruction.md#两张彩照重建坑底起伏) |
 | 从多张不同角度或局部近景合成一个坑洞资产 | [多帧 RGB-D、双目与留出帧检查](docs/02-asset-reconstruction.md#多帧实拍重建同一组坑洞) |
 | 从自己的对齐 RGB、深度与掩膜重建坑洞 | [RGB-D 文件入口](docs/02-asset-reconstruction.md#自带-rgb-d-文件) |
-| 看同一病害在相机、点云和剖面中的变化 | [离线传感器对照页](data/releases/2026-11-21/道路病害_传感器与几何增强/传感器对照.html) |
-| 按编号打开新增资产的原图、GLB 和 Gaussian PLY | [100 件资产浏览页](data/releases/2026-11-21/道路病害图生三维_新增100/资产浏览.html) |
-| 查看首批九件的模型与场景 | [九件资产索引](data/releases/2026-11-21/道路病害图生三维/资产与场景索引.md) |
+| 看同一病害在相机、点云和剖面中的变化 | [传感器离线页与数据恢复](docs/01-downloads.md#恢复旧版离线浏览页) |
+| 按编号打开新增资产的原图、GLB 和 Gaussian PLY | [100 件资产浏览页与原始输入](docs/01-downloads.md#恢复旧版离线浏览页) |
+| 查看首批九件的模型与场景 | [九件资产的模型与场景索引](docs/01-downloads.md#恢复旧版离线浏览页) |
 | 查阅已封存的程序化造坑路线（末批 P160–P189） | [封存记录、视频和复现入口](docs/10-factory.md#大面积坑洞) |
 | 修改算法、开始实验、切回旧版 | [开发与版本管理](docs/11-development.md) |
 | 查四段对话、历史版本、原目录和复现记录 | [整合来源](docs/12-integration.md) · [本次校验](validation/roadgs-2026-11-21.json) |
