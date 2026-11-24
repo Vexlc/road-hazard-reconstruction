@@ -6,7 +6,7 @@ scene=${1:?expected driving scene}
 op=${2:-all}
 steps=${3:-3000}
 case "$scene" in 055|056|a2d2-frontleft|kitti360-0000|kitti360-0003-right) ;; *) exit 2;; esac
-case "$op" in train|render|video|all|prepare|pit-pairs|pit-pairs-rear) ;; *) exit 2;; esac
+case "$op" in train|render|video|all|prepare|pit-pairs|pit-pairs-rear|roadside-props) ;; *) exit 2;; esac
 [[ $steps =~ ^[1-9][0-9]*$ ]] || exit 2
 official=${OFFICIAL_ROOT:-$(cd "$root/../.." && pwd)/01_official}
 python=${GUT_PYTHON:-$official/3dgrut/.venv/bin/python}
@@ -17,6 +17,17 @@ out="$root/runs/streetgs-joint/$scene/$steps"
 mkdir -p "$out"
 exec 9>"$root/runs/streetgs-joint/$scene/.lock"
 flock 9
+if [[ $op == roadside-props ]]; then
+    if [[ $scene != kitti360-0000 || $steps != 30000 || ! -s "$out/joint.pt" ]]; then
+        echo "roadside-props requires the original kitti360-0000 30000 joint.pt" >&2
+        exit 2
+    fi
+    compute=${STREETCRAFTER_PYTHON:-$root/work/envs/streetcrafter/bin/python}
+    anchors=${ROADSIDE_ANCHORS:-$root/gen2hole/examples/roadside-props/anchors}
+    "$compute" "$here/roadside_pairs.py" build --views "$anchors"
+    "$python" "$here/roadside_pairs.py" render
+    exec "$compute" "$root/scripts/review-roadside-props.py" --joint-only
+fi
 if [[ $op == pit-pairs || $op == pit-pairs-rear ]]; then
     if [[ $scene != kitti360-0000 || $steps != 30000 || ! -s "$out/joint.pt" ]]; then
         echo "pit-pairs requires the trained kitti360-0000 30000 joint.pt" >&2

@@ -125,7 +125,8 @@ def footprint_size(folder):
     """Return the centre-symmetric road-contact envelope recorded in the asset cut and height fields."""
     with np.load(Path(folder) / "surface.npz", allow_pickle=False) as field:
         extent = np.array([float(field["width"]), float(field["length"])])
-        mask = (field["defect_mask"] > 0.5) | (field["height"] > 0.003)
+        mask = (field["contact_mask"].astype(bool) if "contact_mask" in field else
+                (field["defect_mask"] > 0.5) | (field["height"] > 0.003))
     y, x = np.nonzero(mask)
     if not len(x):
         raise ValueError("No contact footprint in the asset field")
@@ -171,10 +172,16 @@ class RoadMesh:
         with np.load(folder / "surface.npz", allow_pickle=False) as field:
             self.cut = field["defect_mask"].astype(bool)
             self.extent = np.array([float(field["width"]), float(field["length"])])
-        for part, xyz, tri, uv, image in glb_triangles(folder / "asset.glb", appearance=True):
+            self.standing = "sky_blocked" in field
+            if self.standing:
+                self.sky_blocked = field["sky_blocked"]
+        self.materials = {}
+        for part, xyz, tri, uv, image, *pbr in glb_triangles(folder / "asset.glb", appearance=True, packed_material=self.standing):
             gid = self.scene.add_triangles(o3d.core.Tensor(xyz), o3d.core.Tensor(tri))
             texture = np.asarray(Image.open(BytesIO(image)).convert("RGB"))
             self.surfaces[gid] = part, tri, uv, texture
+            if pbr:
+                self.materials[gid] = pbr[0], np.asarray(Image.open(BytesIO(pbr[1])).convert("RGB"))
             bounds.extend([xyz.min(axis=0), xyz.max(axis=0)])
         self.bounds = np.array([np.min(bounds, axis=0), np.max(bounds, axis=0)])
 
@@ -197,7 +204,7 @@ class RoadMesh:
         return 0.26 + 0.74 * np.clip(light / sky[:, 2].sum(), 0, 1)
 
     def render(self, rgb, camera_to_world, rays_camera, anchor, host_range, protected, *,
-               occluder_range=None, road_tolerance_m=0.10):
+               occluder_range=None, road_tolerance_m=0.10, with_shadow=False, receiver_mask=None):
         """Compare uncertain host pavement and optional positively identified foreground in radial metres."""
         h, w = rgb.shape[:2]
         pose, basis = np.asarray(camera_to_world), np.asarray(anchor["basis_columns"])
@@ -212,6 +219,7 @@ class RoadMesh:
             or road_tolerance_m < 0
             or (occluder_range is not None and
                 (occluder_range.shape != (h, w) or np.any(occluder_range <= 0)))
+            or (receiver_mask is not None and (receiver_mask.shape != (h,w) or receiver_mask.dtype != bool))
             or pose.shape != (4, 4)
             or not np.allclose(pose[3], [0, 0, 0, 1])
             or not np.isfinite(pose).all()
@@ -234,6 +242,9 @@ class RoadMesh:
         weights = hits["primitive_uvs"].numpy()
         part = np.zeros((h, w), "u1")
         color = np.zeros_like(rgb)
+        if self.standing:
+            normals = np.zeros((*part.shape, 3), 'f4')
+            ambient_visibility = np.ones(part.shape, 'f4')
         for gid, (code, tri, uv, texture) in self.surfaces.items():
             mask = geom == gid
             if not mask.any():
@@ -245,11 +256,17 @@ class RoadMesh:
             coords = (texcoord * texture.shape[1::-1] - 0.5)[:, ::-1].T
             color[mask] = np.stack(
                 [
-                    map_coordinates(channel, coords, order=1, mode="nearest")
+                    map_coordinates(channel, coords, order=1, mode="grid-wrap" if self.standing else "nearest")
                     for channel in texture.transpose(2, 0, 1)
                 ],
                 axis=1,
             )
+            if self.standing:
+                verts, arm = self.materials[gid]
+                n = (verts[tri[faces[mask]]] * bary[:, :, None]).sum(1)
+                normals[mask] = n / np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-8)
+                rc = (texcoord * arm.shape[1::-1] - .5)[:, ::-1].T
+                ambient_visibility[mask] = map_coordinates(arm[..., 0], rc, order=1, mode="grid-wrap") / 255
         # Only a ray entering the cut at pavement height may see buried sidewalls or floor.
         plane = np.divide(
             -origin[2], directions[..., 2], out=np.full((h, w), np.inf), where=directions[..., 2] < -1e-6
@@ -270,6 +287,11 @@ class RoadMesh:
             # Compare it with the actual hit, even when it lies inside the opening.
             blocked |= occluder_range < distance - 1e-5
         visible = target & ~blocked
+        if self.standing:
+            from prop_lighting import compose
+            return compose(self, rgb, part, color, normals, ambient_visibility, visible, distance, plane, crossing,
+                           host_range, protected, occluder_range, road_tolerance_m, anchor, with_shadow, receiver_mask,
+                           origin + directions[visible] * distance[visible,None])
         context = (part == 1) & ~blocked
         out = rgb.copy()
         if visible.any() and context.sum() >= 8:
@@ -294,7 +316,8 @@ class RoadMesh:
             out[visible] = np.uint8(np.clip(np.rint(values), 0, 255))
         else:
             visible[:] = False
-        return out, np.where(visible, part, 0).astype("u1"), np.where(visible, distance, np.nan)
+        result = out, np.where(visible, part, 0).astype("u1"), np.where(visible, distance, np.nan)
+        return (*result, np.zeros((h, w), "f4")) if with_shadow else result
 
 
 def resolve_samples(samples):
@@ -305,4 +328,6 @@ def resolve_samples(samples):
     distance = np.take_along_axis(ranges, nearest, axis=0)[0]
     part = np.take_along_axis(np.stack([v[1] for v in samples]), nearest, axis=0)[0]
     distance[part == 0] = np.nan
+    if len(samples[0]) == 4:
+        return after, part, distance, np.mean([s[3] for s in samples], axis=0)
     return after, part, distance

@@ -1,0 +1,153 @@
+{
+  "sources": {
+    "concrete_road_barrier": {
+      "page": "https://polyhaven.com/a/concrete_road_barrier",
+      "author": "Amal Kumar",
+      "license": "CC0",
+      "files": {
+        "concrete_road_barrier_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/concrete_road_barrier/concrete_road_barrier_1k.gltf",
+          "sha256": "c371e87d303fff3f0c9fbe88520f7837514364e5c66aac3244e115ffa673d061",
+          "bytes": 2868
+        },
+        "concrete_road_barrier.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/concrete_road_barrier/concrete_road_barrier.bin",
+          "sha256": "64a4f9bc6e4af64d714a252c3c13428c430a60569deba3d52ca6b7dd3aa70d8c",
+          "bytes": 1374016
+        },
+        "textures/concrete_road_barrier_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/concrete_road_barrier/concrete_road_barrier_arm_1k.jpg",
+          "sha256": "b940847648012f2db8c24b16e07ad1e39b3bd33ea493203364deca209606e4b4",
+          "bytes": 619502
+        },
+        "textures/concrete_road_barrier_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/concrete_road_barrier/concrete_road_barrier_diff_1k.jpg",
+          "sha256": "88b2d79829ffec7b11ac4d9c8554328f30b665d2c17f634197fde4f1ca8696fe",
+          "bytes": 792641
+        },
+        "textures/concrete_road_barrier_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/concrete_road_barrier/concrete_road_barrier_nor_gl_1k.jpg",
+          "sha256": "c1072f51ff5c3d7158f0fbb0aa26e82b816b745b9f03639c4816832af2b37c52",
+          "bytes": 961760
+        }
+      }
+    },
+    "concrete_road_barrier_02": {
+      "page": "https://polyhaven.com/a/concrete_road_barrier_02",
+      "author": "Amal Kumar",
+      "license": "CC0",
+      "files": {
+        "concrete_road_barrier_02_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/concrete_road_barrier_02/concrete_road_barrier_02_1k.gltf",
+          "sha256": "52d13b5105ce861db5dd1413a1a924ad5594dee5a8eb37dbe1a9df441fcd7caf",
+          "bytes": 2910
+        },
+        "concrete_road_barrier_02.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/concrete_road_barrier_02/concrete_road_barrier_02.bin",
+          "sha256": "254ee05467733e224e127dc76e019e5b5211c0da4248fa3fc75117ec005d7c90",
+          "bytes": 542900
+        },
+        "textures/concrete_road_barrier_02_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/concrete_road_barrier_02/concrete_road_barrier_02_arm_1k.jpg",
+          "sha256": "6fb282f242ce86a3e44663678c2e0366c37de8244b08acc003d99771cb780e53",
+          "bytes": 717138
+        },
+        "textures/concrete_road_barrier_02_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/concrete_road_barrier_02/concrete_road_barrier_02_diff_1k.jpg",
+          "sha256": "9329260ebfc8632a5d47d9b344ab6f916e26604e73ebd2c495fee544df4bdefa",
+          "bytes": 741673
+        },
+        "textures/concrete_road_barrier_02_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/concrete_road_barrier_02/concrete_road_barrier_02_nor_gl_1k.jpg",
+          "sha256": "42ec702843df209f0aef1d247c76dfb91385f0bf3b226b752d22a4c0e3780a31",
+          "bytes": 923479
+        }
+      }
+    },
+    "fire_hydrant": {
+      "page": "https://polyhaven.com/a/fire_hydrant",
+      "author": "Gonçalo Felício",
+      "license": "CC0",
+      "files": {
+        "fire_hydrant_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/fire_hydrant/fire_hydrant_1k.gltf",
+          "sha256": "aaca81b2904e6e5f1fb10a854c7b9a921232624387d1f8757b5c6bdaedcd9eb0",
+          "bytes": 20926
+        },
+        "fire_hydrant.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/fire_hydrant/fire_hydrant.bin",
+          "sha256": "a3c7ed023bc4aff190902764326e7f83ae1a108f6bac2a1b637c38a8e03eb516",
+          "bytes": 1928772
+        },
+        "textures/fire_hydrant_aged_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fire_hydrant/fire_hydrant_aged_arm_1k.jpg",
+          "sha256": "9c46b014735a4e8df5a80e4c030ddb321c9aeaa715ad4ea3eb60e6f0909c9d0a",
+          "bytes": 665642
+        },
+        "textures/fire_hydrant_aged_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fire_hydrant/fire_hydrant_aged_diff_1k.jpg",
+          "sha256": "3198cabcaf5107e59109bd07dfe8e4c87b3f0533173d10fafdaf86f8024a291e",
+          "bytes": 629331
+        },
+        "textures/fire_hydrant_aged_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fire_hydrant/fire_hydrant_aged_nor_gl_1k.jpg",
+          "sha256": "6fadc78fd5d696bf594ff021aaf93a0c6aced761830f9aa6971c51b17c869c35",
+          "bytes": 543768
+        },
+        "textures/fire_hydrant_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fire_hydrant/fire_hydrant_arm_1k.jpg",
+          "sha256": "d15bf8fc6389ae48a1060a38057c2093469e62f585c8033d300b80af81d40f9d",
+          "bytes": 671743
+        },
+        "textures/fire_hydrant_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fire_hydrant/fire_hydrant_diff_1k.jpg",
+          "sha256": "a3d0b8b6fcd8a39c8d5067f8ef95e3290053131887398f89baf57c1f8d24ab45",
+          "bytes": 570746
+        },
+        "textures/fire_hydrant_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fire_hydrant/fire_hydrant_nor_gl_1k.jpg",
+          "sha256": "f6786775276c7b48f0582fdd7c43984b63b15b7a8e0ea0e2f2af8cdab98c06d7",
+          "bytes": 490552
+        }
+      }
+    }
+  },
+  "assets": {
+    "B232": {
+      "label": "棋盘涂装混凝土隔离墩",
+      "source": "concrete_road_barrier",
+      "nodes": [
+        0
+      ]
+    },
+    "B233": {
+      "label": "裸露吊环混凝土隔离墩",
+      "source": "concrete_road_barrier_02",
+      "nodes": [
+        0
+      ]
+    },
+    "H234": {
+      "label": "路侧消防栓",
+      "source": "fire_hydrant",
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "H235": {
+      "label": "风化路侧消防栓",
+      "source": "fire_hydrant",
+      "nodes": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  }
+}

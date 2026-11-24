@@ -63,13 +63,22 @@ def main():
     ap.add_argument("--out", type=Path, default=ROOT / "outputs/mixed-road/sc-gs")
     ap.add_argument("--runs", type=Path, default=ROOT / "runs/mixed-road")
     ap.add_argument("--views", type=Path, default=ROOT / "outputs/mixed-road")
+    ap.add_argument("--view-dir", type=Path, help="One registered site directory containing anchor.json")
     ap.add_argument("--ids", nargs="+", default=["P223", "A225", "M224"])
     ap.add_argument("--packet-id", default="M224")
     sensors = {"kitti360-0000": "image_03", "kitti360-0003-right": "image_00", "a2d2-frontleft": "rear_center"}
     ap.add_argument("--scenes", nargs="+", choices=sensors, default=["kitti360-0000", "a2d2-frontleft"])
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
-    assets = {key: next(args.runs.glob("*/series/assets/*/" + key)) for key in args.ids}
+    if args.view_dir and len(args.scenes) != 1:
+        ap.error("--view-dir describes one scene")
+    assets = {}
+    for key in args.ids:
+        flat = args.runs / key
+        if (flat / "asset.glb").is_file():
+            assets[key] = flat
+        else:
+            (assets[key],) = args.runs.glob("*/series/assets/*/" + key)
     meshes = {key: RoadMesh(path) for key, path in assets.items()}
     result = {}
     gallery = Image.new("RGB", (12 + (len(assets) + 1) * 301, 130 + 251 * len(args.scenes)), "#f2f1eb")
@@ -82,7 +91,7 @@ def main():
         draw.text((18 + j * 301, 75), label, font=font, fill="#233330")
     for i, scene in enumerate(args.scenes):
         sensor = sensors[scene]
-        base = args.views / scene
+        base = args.view_dir or args.views / scene
         anchor = read_json(base / "anchor.json")
         chosen = read_json(base / "index.json")[args.packet_id]["views"][sensor]
         split = read_json(ROOT / "work/streetcrafter-rig" / scene / "all/split.json")
@@ -130,17 +139,18 @@ def main():
 
             def render(background):
                 return resolve_samples(
-                    [mesh.render(background, pose, r, anchor, host_range, m) for r, m in zip(rays, guarded)]
+                    [mesh.render(background, pose, r, anchor, host_range, m, with_shadow=True) for r, m in zip(rays, guarded)]
                 )
 
-            out, part, dist = render(target)
-            _, reference, ref_dist = render(photo)
+            out, part, dist, shadow = render(target)
+            _, reference, ref_dist, ref_shadow = render(photo)
             hits = part > 0
             if (
                 hits.sum() < 25
                 or not np.array_equal(part, reference)
                 or not np.allclose(dist, ref_dist, rtol=0, atol=0, equal_nan=True)
-                or not np.array_equal(out[~hits], target[~hits])
+                or not np.array_equal(shadow, ref_shadow)
+                or not np.array_equal(out[~hits & (shadow == 0)], target[~hits & (shadow == 0)])
                 or np.any(hits & ~fully_valid)
             ):
                 raise ValueError(f"SC-GS replay, depth or protected pixels differ for {scene}/{key}: "
@@ -150,21 +160,28 @@ def main():
             Image.fromarray(out).save(folder / "after.png")
             Image.fromarray(part).save(folder / "part.png")
             np.save(folder / "asset-range.npy", dist)
-            full, native_part, _ = resolve_samples(
-                [mesh.render(host, pose, r, anchor, near, mask) for r, near, mask in native]
+            full, native_part, _, native_shadow = resolve_samples(
+                [mesh.render(host, pose, r, anchor, near, mask, with_shadow=True) for r, near, mask in native]
             )
             support = native_part > 0
-            if not support.any() or not np.array_equal(full[~support], host[~support]):
+            outside = ~support & (native_shadow == 0)
+            if mesh.standing:
+                if not np.any(native_shadow) or not np.any(shadow):
+                    raise ValueError("No verified shadow receivers in the registered sensor")
+                np.save(folder / "shadow.npy", shadow)
+                np.save(folder / "sensor-shadow.npy", native_shadow)
+            if not support.any() or not np.array_equal(full[outside], host[outside]):
                 raise ValueError("Invalid native SC-GS sensor support")
             Image.fromarray(full).save(folder / "sensor-after.png")
             Image.fromarray(native_part).save(folder / "sensor-part.png")
-            union |= support
+            union |= support | (native_shadow > .05)
             panels.append(full)
             row["models"][key] = dict(
                 glb_sha256=mesh.digest,
                 visible_pixels=int(hits.sum()),
                 native_sensor_pixels=int(support.sum()),
                 changed_pixels=int(np.any(target != out, axis=-1).sum()),
+                native_shadow_pixels=int((native_shadow > 0).sum()),
                 depth_matches_photo_exactly=True,
             )
         top = 115 + i * 251

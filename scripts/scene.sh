@@ -15,7 +15,7 @@ if [[ ${1:-} == backend || ${1:-} == backend-baselines || ${1:-} == backend-sing
     exec bash "$(dirname "$0")/../streetcrafter/backends/run.sh" "${@:2}"
 fi
 if [[ $# -lt 2 || ! "$2" =~ ^05[56]$ ]]; then
-    echo "Usage: $0 {prepare|train|export} {055|056} [StreetCrafter overrides], or $0 joint {055|056|kitti360-0000|kitti360-0003-right|a2d2-frontleft} {prepare|train|render|video|all} [steps]" >&2
+    echo "Usage: $0 {prepare|train|export} {055|056} [StreetCrafter overrides], or $0 joint {055|056|kitti360-0000|kitti360-0003-right|a2d2-frontleft} {prepare|train|render|video|all|pit-pairs|pit-pairs-rear|roadside-props} [steps]" >&2
     exit 2
 fi
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

@@ -19,7 +19,9 @@ sys.path[:0] = [
 from mesh_transfer import RoadMesh, fit_footprint, fit_road, footprint_size, pixel_rays, resolve_samples  # noqa: E402
 from prepare import load_rig  # noqa: E402
 from prepare_kitti import project_mei, homogeneous  # noqa: E402
-from road_geometry import save_json, sha256  # noqa: E402
+from road_geometry import glb_triangles, save_json, sha256  # noqa: E402
+from prop_lighting import fit_receivers, view_bounds
+from prop_registration import driving_clearance, stereo_ranges
 
 SUBPIXELS = ((-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0.25, 0.25))
 
@@ -191,8 +193,7 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
 
     # Buried geometry can only be seen through its road-plane opening. Include every
     # above-ground vertex and the entire aperture/apron, independent of forward projection.
-    bounds = mesh.bounds.copy()
-    bounds[0, 2] = min(-0.0015, bounds[1, 2])
+    bounds = view_bounds(mesh, anchor)
     mid = (bounds[0] + bounds[1]) / 2
     crop = window.crop(to_cam(mid @ basis.T + center), np.linalg.norm(bounds[1] - mid))
     if crop is None:
@@ -225,15 +226,18 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
         matches = valid[rows, cols] & ((rays[rows, cols] * candidates).sum(-1) > 0.999 * radial)
         np.minimum.at(depth, (rows[matches], cols[matches]), radial[matches].astype("f4"))
     depth = cv2.erode(depth, np.ones((7, 7), "u1"))
+    if mesh.standing and raw_image.parent.name == "image_00":
+        depth = stereo_ranges(raw_image)[y:y+h, x:x+w]
     samples, packet_rays, packet_masks = [], [], []
     for dx, dy in SUBPIXELS:
         rays, valid = unproject(x, y, w, h, dx, dy)
         protected = body | ~valid
-        samples.append(mesh.render(image, pose, rays, anchor, depth, protected))
+        samples.append(mesh.render(image, pose, rays, anchor, depth, protected, with_shadow=mesh.standing))
         if packet_path:
             packet_rays.append(rays)
             packet_masks.append(protected)
-    after, part, distance = resolve_samples(samples)
+    after, part, distance, *receiver = resolve_samples(samples)
+    shadow = receiver[0] if receiver else np.zeros(part.shape,'f4')
     if packet_path:
         np.savez_compressed(
             packet_path,
@@ -247,7 +251,7 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
     if hit.sum() < 12:
         return None
     mod = np.any(after != image, axis=2)
-    if mod[~hit].any() or mod[body].any():
+    if mod[~hit & (shadow == 0)].any() or mod[body].any():
         raise ValueError("A protected or out-of-support pixel changed")
     edges = [side for side, touches in (
         ("left", x == 0 and hit[:, 0].any()), ("right", hi[0] == width and hit[:, -1].any()),
@@ -262,6 +266,7 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
         visible=int(hit.sum()),
         changed=int(mod.sum()),
         protected_ego=int(body.sum()),
+        shadow=shadow,
         clipped_sides=edges,
     )
 
@@ -294,6 +299,42 @@ def audi_inputs(raw, data, cams, group, offset):
     nearby = np.concatenate([c for (g, cam), c in clouds.items() if g % 3 == 0])
     anchor = fit_road(nearby, seed, body[:3, 0], up_world=up, radius_m=2.1)
     return anchor, views, lambda g, cam: clouds[g, cam], filename
+
+
+def measure_road_light(anchor, views, cameras, data, filename, ego_masks, models):
+    """Fix exposure from the original support patch across usable physical-camera observations."""
+    basis = np.asarray(anchor["basis_columns"])
+    xx, yy = np.meshgrid(np.linspace(-.5,.5,13), np.linspace(-.5,.5,9))
+    size = anchor["footprint_support"]["size_m"]
+    points = np.stack([xx*size[0], yy*size[1], np.zeros_like(xx)], -1).reshape(-1,3) @ basis.T + anchor["center_world"]
+    colors = []
+    for cam, groups in views:
+        sensor = data["sensors"][cam]
+        (width, height), project, inverse = models[cam]
+        mask = ego_masks[sensor]
+        edge = np.array(mask['edge']) * [width/mask['grid'][0],height/mask['grid'][1]]
+        for g in list(groups)[::3]:
+            w2c = cameras[f"{g:03}{cam}0.png"]
+            xyz = points @ w2c[:3,:3].T + w2c[:3,3]
+            uv = project(xyz)
+            usable = ((uv >= 1).all(1) & (uv < [width-2,height-2]).all(1) &
+                      (uv[:,1] < np.interp(uv[:,0],edge[:,0],edge[:,1])-2))
+            uv = np.rint(uv[usable]).astype(int)
+            if len(uv) < 35:
+                continue
+            lo,hi = uv.min(0),uv.max(0)+1
+            rays, valid = inverse(*lo, *(hi-lo))
+            coords = uv-lo
+            directions = xyz[usable] / np.linalg.norm(xyz[usable],axis=1,keepdims=True)
+            good = valid[coords[:,1],coords[:,0]] & ((rays[coords[:,1],coords[:,0]]*directions).sum(1)>.999)
+            if good.sum() < 35:
+                continue
+            with Image.open(filename(g,sensor)) as photo:
+                patch = np.asarray(photo.convert("RGB").crop((*lo,*hi)))
+            colors.append(np.median(patch[coords[good,1],coords[good,0]],axis=0))
+    if not colors:
+        raise ValueError("No registered exposures of the support surface for object illumination")
+    return dict(road_srgb=np.median(colors,axis=0).tolist(), reference_exposures=len(colors), direct_fraction=0.)
 
 
 def timed_frames(candidates):
@@ -355,6 +396,9 @@ def main():
     parser.add_argument("--out", type=Path)
     parser.add_argument("--group", type=int, default=26, help="host trajectory index used to seed the anchor")
     parser.add_argument("--offset", type=float, default=2.25, help="metres toward camera right")
+    parser.add_argument("--support-radius", type=float, default=2.1, help="KITTI candidate terrain search radius in metres")
+    parser.add_argument("--seed-lift", type=float, default=0., help="KITTI candidate height above the nominal road, e.g. a sidewalk")
+    parser.add_argument("--lighting", type=Path, help="Optional standing-object ground RGB, sun_world and direct_fraction JSON")
     parser.add_argument(
         "--ids", nargs="+", default=["P220", "P221", "P222", "P223", "A224", "A225", "A226", "A227", "M224"]
     )
@@ -375,9 +419,9 @@ def main():
         raw = ROOT / "work/data" / ("kitti360-0000-0200" if args.scene == "kitti360-0000" else args.scene)
         clouds = scans(raw, data, cams)
         rig_pose = np.linalg.inv(cams[f"{args.group:03}00.png"])
-        seed = rig_pose[:3, 3] + args.offset * rig_pose[:3, 0] - [0, 0, 1.6]
+        seed = rig_pose[:3, 3] + args.offset * rig_pose[:3, 0] - [0, 0, 1.6-args.seed_lift]
         nearby = np.concatenate(clouds[max(0, args.group - 7) : args.group + 8 : 2])
-        anchor = fit_road(nearby, seed, rig_pose[:3, 2], up_world=[0, 0, 1], radius_m=2.1)
+        anchor = fit_road(nearby, seed, rig_pose[:3, 2], up_world=[0, 0, 1], radius_m=args.support_radius)
         views = [
             (0, range(max(0, args.group - 18), args.group)),
             (3, range(max(0, args.group - 6), min(len(clouds), args.group + 8))),
@@ -399,9 +443,31 @@ def main():
     registration_anchor = anchor
     anchor = fit_footprint(anchor, nearby, np.max([footprint_size(path) for path in assets.values()], axis=0))
     out.mkdir(parents=True, exist_ok=True)
-    save_json(out / "anchor.json", anchor)
     ego_masks = json.loads((ROOT / "gen2hole/examples/mixed-road/ego-masks.json").read_text())[args.scene]
     models = {cam: view_model(data["sensors"][cam], data) for cam, _ in views}
+    standing_bounds = []
+    for folder in assets.values():
+        with np.load(folder / "surface.npz", allow_pickle=False) as field:
+            standing = "sky_blocked" in field
+        if standing:
+            for _, xyz, _ in glb_triangles(folder / "asset.glb"):
+                standing_bounds.extend((xyz[:, :2].min(0), xyz[:, :2].max(0)))
+    if standing_bounds:
+        anchor["host_scene"] = args.scene
+        anchor["placement_group"] = args.group
+        ref = data['source_calibration'][data['sensors'][0]]
+        to_body = np.array(ref.get('camera_to_pose', ref.get('optical_to_body')))
+        body = np.stack([np.linalg.inv(cams[f'{g:03}00.png']) @ np.linalg.inv(to_body) for g in range(len(data['frames']))])
+        centers = body[:,:3,3] + body[:,:3,0]
+        bounds = np.stack(standing_bounds)
+        anchor['vehicle_clearance'] = driving_clearance(anchor, [bounds.min(0),bounds.max(0)], centers,
+                                                       half_width_m=1.03,half_length_m=2.55)
+        anchor['vehicle_clearance']['envelope_center_forward_of_rig_m'] = 1.
+        anchor['ground_receivers'] = fit_receivers(nearby, anchor)
+        anchor['lighting'] = measure_road_light(anchor, views, cams, data, filename, ego_masks, models)
+        if args.lighting:
+            anchor['lighting'].update(json.loads(args.lighting.read_text()))
+    save_json(out / "anchor.json", anchor)
     windows = {cam: RayWindow(model) for cam, model in models.items()}
     index = {}
     with ExitStack() as stack:
@@ -460,6 +526,8 @@ def main():
                 Image.fromarray(best["after"]).save(dest / "after.png")
                 Image.fromarray(best["part"]).save(dest / "part.png")
                 np.save(dest / "range.npy", best["range"])
+                if mesh.standing:
+                    np.save(dest / "shadow.npy", best["shadow"])
                 image = Image.open(photo).convert("RGB")
                 image.paste(Image.fromarray(best["after"]), tuple(best["xy"]))
                 image.save(dest / "full.jpg", quality=94)

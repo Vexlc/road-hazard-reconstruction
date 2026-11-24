@@ -1,0 +1,76 @@
+{
+  "scene": "kitti360-0000",
+  "sensor": "image_03",
+  "description": "Original 1400 x 1400 MEI pixels. The top and base of the same red/white roadside delineator and the end of its cast shadow on grass. Paired grass patches near the middle of its shadow provide the lit/shaded radiance ratio.",
+  "frames": [
+    {
+      "frame": 212,
+      "top": [
+        664,
+        840
+      ],
+      "base": [
+        666,
+        1022
+      ],
+      "tip": [
+        906,
+        918
+      ],
+      "shade": [
+        820,
+        964
+      ],
+      "lit": [
+        806,
+        954
+      ]
+    },
+    {
+      "frame": 213,
+      "top": [
+        825,
+        837
+      ],
+      "base": [
+        802,
+        1012
+      ],
+      "tip": [
+        979,
+        902
+      ],
+      "shade": [
+        921,
+        946
+      ],
+      "lit": [
+        906,
+        938
+      ]
+    },
+    {
+      "frame": 214,
+      "top": [
+        955,
+        824
+      ],
+      "base": [
+        919,
+        989
+      ],
+      "tip": [
+        1045,
+        889
+      ],
+      "shade": [
+        1002,
+        925
+      ],
+      "lit": [
+        987,
+        919
+      ]
+    }
+  ]
+}

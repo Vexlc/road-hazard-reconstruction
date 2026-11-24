@@ -1,5 +1,5 @@
 {
-  "asset_count": 1477,
+  "asset_count": 1481,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -1963,6 +1963,36 @@
         "native",
         "mesh-view"
       ]
+    },
+    "concrete-barriers": {
+      "name": "实物模型混凝土隔离墩",
+      "launcher": "gen2hole/roadside_props.py",
+      "recipe": "gen2hole/examples/roadside-props/sources.json",
+      "guide": "docs/19-roadside-props.md",
+      "section": "从原始模型重建四件资产",
+      "assets": [
+        "B232",
+        "B233"
+      ],
+      "transfer": [
+        "mesh-view",
+        "joint-props"
+      ]
+    },
+    "fire-hydrants": {
+      "name": "消防栓与风化涂层",
+      "launcher": "gen2hole/roadside_props.py",
+      "recipe": "gen2hole/examples/roadside-props/sources.json",
+      "guide": "docs/19-roadside-props.md",
+      "section": "从原始模型重建四件资产",
+      "assets": [
+        "H234",
+        "H235"
+      ],
+      "transfer": [
+        "mesh-view",
+        "joint-props"
+      ]
     }
   },
   "transfer_routes": {
@@ -2015,6 +2045,11 @@
       "name": "米制网格、标定光线与宿主遮挡合成",
       "entry": "scripts/transfer-mesh-view.py",
       "guide": "docs/17-mixed-road-transfer.md"
+    },
+    "joint-props": {
+      "name": "KITTI 0000 原生联合场景的成对立体设施及前后视",
+      "entry": "streetcrafter/joint/roadside_pairs.py",
+      "guide": "docs/19-roadside-props.md"
     }
   }
 }

@@ -1,0 +1,436 @@
+{
+  "assets": {
+    "B232": {
+      "files": {
+        "asset.glb": "97a60e619ce675e1e78a28dd82c32a1470751ad8fa71b4e9b7ced4430350cc94",
+        "surface.npz": "8f6ffeadf48d3accf614604a6e91a3a521e6ee0d3e9a6ebbd3095e755bb20d53",
+        "samples.npz": "6821fb7e20376a42927fd01386087e6f03e63df7cfdfbe1e9fc86f79f353e331",
+        "metadata.json": "318592844502d38106d59358e6ccb8fb3d5c16d340f0a1a18b0b892827456a11"
+      },
+      "labels": [
+        21
+      ],
+      "triangles": 60928,
+      "surface_samples": 108315,
+      "base_p90_m": 0.007811212539672851
+    },
+    "B233": {
+      "files": {
+        "asset.glb": "bfadddc88a1e7426f1126f94374f1363efaf340bf7749a666376a691a725a06d",
+        "surface.npz": "350ca4b1383c65f979e4698ba1dab5a7a7504e2cda88683cc8831f4a05160428",
+        "samples.npz": "97a9d2aeabb74de2d3633a71857296b4f0280e4ce50ed471e79f64d322d88b47",
+        "metadata.json": "252fd94480554fa502d48c7ff5ad2dc59c98ecbd6b0f1b47dd54123db0c5c4c1"
+      },
+      "labels": [
+        21
+      ],
+      "triangles": 23822,
+      "surface_samples": 113242,
+      "base_p90_m": 0.015541630983352662
+    },
+    "H234": {
+      "files": {
+        "asset.glb": "bd491fd7983b6c2119e911a61c2c40ceb4a53aca1f1b0a83a7c6d8c5ffc6fa21",
+        "surface.npz": "79ad95c839b4772bbe452500d3595b3a02687ff42ab319e826f3c0e57d45a1ab",
+        "samples.npz": "5adb3b141a5d0a7d9c553b41822ba95facd24e974d5ecc5166f5661a3c2ef3f1",
+        "metadata.json": "797820dedd07102616105e0f8ce5bafcce4c1437ac9ba46d7498b650095fc095"
+      },
+      "labels": [
+        22,
+        23,
+        24
+      ],
+      "triangles": 43158,
+      "surface_samples": 28625,
+      "base_p90_m": 1.1920928955078125e-07
+    },
+    "H235": {
+      "files": {
+        "asset.glb": "68dc47b254d2905f40c1ceafccc24336b90924a14d02876753e5ed924348bc25",
+        "surface.npz": "c5a68ca0c1848698760b9bd9e558ea4801c1049717e845a9d8301ef4ff09fa2f",
+        "samples.npz": "af7e1d87251feaebaef793a4102ec37f1927047d563e3dfe986397441d8b690f",
+        "metadata.json": "f0d52fd2d3f5d8b86d04d1c96bbba08a12a458f2aef532a1594d98c016922d9f"
+      },
+      "labels": [
+        22,
+        23,
+        24
+      ],
+      "triangles": 43158,
+      "surface_samples": 28625,
+      "base_p90_m": 1.1920928955078125e-07
+    }
+  },
+  "identical_rebuilt_files": 16,
+  "physical": {
+    "hydrant": {
+      "clearance": {
+        "minimum_clearance_m": 2.7021717627938515,
+        "required_margin_m": 0.12,
+        "half_width_m": 1.03,
+        "half_length_m": 2.55,
+        "trajectory_samples": 401,
+        "sample_spacing_m": 0.07496800612168744,
+        "envelope_center_forward_of_rig_m": 1.0
+      },
+      "photos": {
+        "H234/image_00": {
+          "frame": 207,
+          "object_pixels": 4272,
+          "shadow_only_pixels": 461
+        },
+        "H234/image_03": {
+          "frame": 214,
+          "object_pixels": 2012,
+          "shadow_only_pixels": 6368
+        },
+        "H235/image_00": {
+          "frame": 207,
+          "object_pixels": 4272,
+          "shadow_only_pixels": 461
+        },
+        "H235/image_03": {
+          "frame": 214,
+          "object_pixels": 2012,
+          "shadow_only_pixels": 6368
+        }
+      }
+    },
+    "barrier": {
+      "clearance": {
+        "minimum_clearance_m": 0.3175068497657776,
+        "required_margin_m": 0.12,
+        "half_width_m": 1.03,
+        "half_length_m": 2.55,
+        "trajectory_samples": 402,
+        "sample_spacing_m": 0.07486953742004204,
+        "envelope_center_forward_of_rig_m": 1.0
+      },
+      "photos": {
+        "B232/image_00": {
+          "frame": 221,
+          "object_pixels": 12857,
+          "shadow_only_pixels": 5707
+        },
+        "B232/image_03": {
+          "frame": 227,
+          "object_pixels": 56688,
+          "shadow_only_pixels": 68378
+        },
+        "B233/image_00": {
+          "frame": 222,
+          "object_pixels": 23058,
+          "shadow_only_pixels": 6244
+        },
+        "B233/image_03": {
+          "frame": 227,
+          "object_pixels": 68249,
+          "shadow_only_pixels": 79209
+        }
+      }
+    },
+    "audi": {
+      "clearance": {
+        "minimum_clearance_m": 0.41628581285476685,
+        "required_margin_m": 0.12,
+        "half_width_m": 1.03,
+        "half_length_m": 2.55,
+        "trajectory_samples": 317,
+        "sample_spacing_m": 0.07477206747006264,
+        "envelope_center_forward_of_rig_m": 1.0
+      },
+      "photos": {
+        "B232/front_left": {
+          "frame": 1509,
+          "object_pixels": 26276,
+          "shadow_only_pixels": 17243
+        },
+        "B232/rear_center": {
+          "frame": 1513,
+          "object_pixels": 39871,
+          "shadow_only_pixels": 24851
+        },
+        "B233/front_left": {
+          "frame": 1509,
+          "object_pixels": 30714,
+          "shadow_only_pixels": 20845
+        },
+        "B233/rear_center": {
+          "frame": 1513,
+          "object_pixels": 51990,
+          "shadow_only_pixels": 26956
+        }
+      }
+    }
+  },
+  "native": {
+    "H234-B232": {
+      "placement": {
+        "source_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+        "checkpoint_sha256": "18eb235f8efcc0e4b176fb6d4b28cfa79c1547738b166014a25b3663a4a6d814",
+        "placements": [
+          {
+            "id": "H234",
+            "asset_sha256": "bd491fd7983b6c2119e911a61c2c40ceb4a53aca1f1b0a83a7c6d8c5ffc6fa21",
+            "samples_sha256": "5adb3b141a5d0a7d9c553b41822ba95facd24e974d5ecc5166f5661a3c2ef3f1",
+            "samples": 28625,
+            "anchor_sha256": "9693c302666c6c2e95eef4c97549f21108942f75a2980464f943e24321a6338a",
+            "center_world": [
+              7.896230150105777,
+              -8.521490205860212,
+              -0.8358782635943872
+            ],
+            "basis_columns": [
+              [
+                0.920064091722739,
+                0.38857987956293416,
+                0.04987729264171152
+              ],
+              [
+                -0.3868694207661268,
+                0.9212365057596886,
+                -0.0406860139576325
+              ],
+              [
+                -0.061758549193556445,
+                0.018137741164066294,
+                0.9979263018615013
+              ]
+            ],
+            "ground_gaussians_with_shadow": 10,
+            "minimum_vehicle_clearance_m": 2.7021717627938515
+          },
+          {
+            "id": "B232",
+            "asset_sha256": "97a60e619ce675e1e78a28dd82c32a1470751ad8fa71b4e9b7ced4430350cc94",
+            "samples_sha256": "6821fb7e20376a42927fd01386087e6f03e63df7cfdfbe1e9fc86f79f353e331",
+            "samples": 108315,
+            "anchor_sha256": "8ff439b9bf7f42d169a6afc81816c7458c133e61090c0f5bcf91347d73f8291b",
+            "center_world": [
+              18.197386345172536,
+              -8.236528519449985,
+              -0.9042222970069445
+            ],
+            "basis_columns": [
+              [
+                0.9959320578166524,
+                -0.09006278184235861,
+                0.0028339971601626557
+              ],
+              [
+                0.09003915107182289,
+                0.9959093579424451,
+                0.007583009754189877
+              ],
+              [
+                -0.0035053512453883835,
+                -0.007296991810493069,
+                0.9999672326747332
+              ]
+            ],
+            "ground_gaussians_with_shadow": 310,
+            "minimum_vehicle_clearance_m": 0.3175068497657776
+          }
+        ],
+        "original_count": 79605,
+        "actors_exact": true,
+        "original_geometry_exact": true
+      },
+      "replay": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 2942,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 95147,
+          "max_baseline_error": 0
+        }
+      }
+    },
+    "H235-B233": {
+      "placement": {
+        "source_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+        "checkpoint_sha256": "9b0a6aedfe18872a3e607edb7fdba9f5fb405e0a8fb83abde7fa8787340093b3",
+        "placements": [
+          {
+            "id": "H235",
+            "asset_sha256": "68dc47b254d2905f40c1ceafccc24336b90924a14d02876753e5ed924348bc25",
+            "samples_sha256": "af7e1d87251feaebaef793a4102ec37f1927047d563e3dfe986397441d8b690f",
+            "samples": 28625,
+            "anchor_sha256": "9693c302666c6c2e95eef4c97549f21108942f75a2980464f943e24321a6338a",
+            "center_world": [
+              7.896230150105777,
+              -8.521490205860212,
+              -0.8358782635943872
+            ],
+            "basis_columns": [
+              [
+                0.920064091722739,
+                0.38857987956293416,
+                0.04987729264171152
+              ],
+              [
+                -0.3868694207661268,
+                0.9212365057596886,
+                -0.0406860139576325
+              ],
+              [
+                -0.061758549193556445,
+                0.018137741164066294,
+                0.9979263018615013
+              ]
+            ],
+            "ground_gaussians_with_shadow": 10,
+            "minimum_vehicle_clearance_m": 2.7021717627938515
+          },
+          {
+            "id": "B233",
+            "asset_sha256": "bfadddc88a1e7426f1126f94374f1363efaf340bf7749a666376a691a725a06d",
+            "samples_sha256": "97a9d2aeabb74de2d3633a71857296b4f0280e4ce50ed471e79f64d322d88b47",
+            "samples": 113242,
+            "anchor_sha256": "8ff439b9bf7f42d169a6afc81816c7458c133e61090c0f5bcf91347d73f8291b",
+            "center_world": [
+              18.197386345172536,
+              -8.236528519449985,
+              -0.9042222970069445
+            ],
+            "basis_columns": [
+              [
+                0.9959320578166524,
+                -0.09006278184235861,
+                0.0028339971601626557
+              ],
+              [
+                0.09003915107182289,
+                0.9959093579424451,
+                0.007583009754189877
+              ],
+              [
+                -0.0035053512453883835,
+                -0.007296991810493069,
+                0.9999672326747332
+              ]
+            ],
+            "ground_gaussians_with_shadow": 392,
+            "minimum_vehicle_clearance_m": 0.3175068497657776
+          }
+        ],
+        "original_count": 79605,
+        "actors_exact": true,
+        "original_geometry_exact": true
+      },
+      "replay": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 5053,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 133098,
+          "max_baseline_error": 0
+        }
+      }
+    }
+  },
+  "original_front_error": 0,
+  "scgs": {
+    "kitti360-0000": {
+      "sensor": "image_03",
+      "source_frame": 214,
+      "scgs_frame": "01430.png",
+      "host_rgb_sha256": "860364441a8103fd9fc0151eafbe41a24ff32dc37223473dbcadfc82c66385ad",
+      "point_cloud_sha256": "fd095bd48baf42c04e601beaf79d87eaea3edf2802d3d28ba5862b888b190e56",
+      "deformation_sha256": "c28c5bf4e343a95bf03687b5101fc7a63f8f9160332bb12449f65e777770f19d",
+      "models": {
+        "H234": {
+          "glb_sha256": "bd491fd7983b6c2119e911a61c2c40ceb4a53aca1f1b0a83a7c6d8c5ffc6fa21",
+          "visible_pixels": 2012,
+          "native_sensor_pixels": 411,
+          "changed_pixels": 5932,
+          "native_shadow_pixels": 1304,
+          "depth_matches_photo_exactly": true
+        },
+        "H235": {
+          "glb_sha256": "68dc47b254d2905f40c1ceafccc24336b90924a14d02876753e5ed924348bc25",
+          "visible_pixels": 2012,
+          "native_sensor_pixels": 411,
+          "changed_pixels": 5932,
+          "native_shadow_pixels": 1304,
+          "depth_matches_photo_exactly": true
+        }
+      }
+    },
+    "a2d2-frontleft": {
+      "sensor": "rear_center",
+      "source_frame": 1513,
+      "scgs_frame": "03650.png",
+      "host_rgb_sha256": "d9fe6edff523cc15e6b62ab20a65ae21695e5835012707d25c756bc70c6b2260",
+      "point_cloud_sha256": "181e6432c4d784ee21f1dd890463944a5887044adf87ff034ba66aebba138468",
+      "deformation_sha256": "96f6c418fef994cde411693c862aa52eb6f95fccc01da9adc8e43c08ce1a4f2f",
+      "models": {
+        "B232": {
+          "glb_sha256": "97a60e619ce675e1e78a28dd82c32a1470751ad8fa71b4e9b7ced4430350cc94",
+          "visible_pixels": 39871,
+          "native_sensor_pixels": 2530,
+          "changed_pixels": 59755,
+          "native_shadow_pixels": 1632,
+          "depth_matches_photo_exactly": true
+        },
+        "B233": {
+          "glb_sha256": "bfadddc88a1e7426f1126f94374f1363efaf340bf7749a666376a691a725a06d",
+          "visible_pixels": 51990,
+          "native_sensor_pixels": 3282,
+          "changed_pixels": 75683,
+          "native_shadow_pixels": 1768,
+          "depth_matches_photo_exactly": true
+        }
+      }
+    }
+  },
+  "light": {
+    "road_srgb": [
+      187.0,
+      176.0,
+      146.5
+    ],
+    "reference_exposures": 8,
+    "direct_fraction": 0.8707896350034355,
+    "sun_world": [
+      0.8747505099993635,
+      -0.0475403032425195,
+      0.4822359016326582
+    ],
+    "source_frames": [
+      212,
+      213,
+      214
+    ],
+    "post_height_m": 1.0307748698962893,
+    "max_reprojection_px": 3.108958906537993,
+    "reference_contrasts": [
+      0.7997903608668229,
+      0.8784399012701782,
+      0.8707896350034355
+    ],
+    "points_world": {
+      "top": [
+        7.727195647592884,
+        -6.714038996544,
+        0.4471095169223621
+      ],
+      "base": [
+        7.755545474942035,
+        -6.686057400603498,
+        -0.5828954102443034
+      ],
+      "tip": [
+        5.968054834756891,
+        -6.618434493622845,
+        -0.5226765492525406
+      ]
+    }
+  }
+}
