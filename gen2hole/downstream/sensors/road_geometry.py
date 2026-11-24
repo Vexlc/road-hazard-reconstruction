@@ -16,7 +16,7 @@ PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidew
 EXACT_PARTS = {
     'Fracture inset rim': 19, 'Road around the aperture': 1, 'Road adjoining the fracture': 1,
     'Fracture lip and exposed bed': 2, 'Fracture sidewall in surface coordinates': 3,
-    'Water surface': 4, 'Cast ring and cover seat': 5, 'Inspection shaft': 6,
+    'Water surface': 4, 'Cast ring and cover seat': 5, 'Cast seat riser and ledge': 5, 'Inspection shaft': 6,
     'Shaft bottom': 7, 'Chipped concrete collar': 8, 'Lid face': 9,
     'Lid underside with casting ribs': 10, 'Lid rolled edge': 11,
     'Lid underside': 10, 'Lid aperture walls and perimeter': 11,

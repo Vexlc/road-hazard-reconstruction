@@ -1,4 +1,4 @@
-"""Cut and seat independently surveyed RGB-D pavement damage in the native KITTI joint checkpoint."""
+"""Cut and seat independently surveyed pavement openings in the native KITTI joint checkpoint."""
 
 import argparse
 import sys

@@ -1,5 +1,7 @@
 # 下载与复现入口
 
+已有资产编号或准备接入新宿主，可先看[全仓复现手册](16-reproduction-cookbook.md)与[逐系列重建、迁入代码对照](asset-code-index.md)。
+
 首次克隆或交接项目，请先看[资产重建与场景迁入复现手册](16-reproduction-cookbook.md)。其中列出按编号查询的方法、可下载输入、各宿主的代码入口和验收标准。
 
 全项目入口：[按输入选择重建方法](13-reproduce-and-transfer.md#按输入选择重建方法) · [按交付物选择迁入方法](13-reproduce-and-transfer.md#按交付物选择迁入方法) · [按编号查配方](../catalog/reconstruction-index.json)。下表只统计历史下载包，不是项目总量。

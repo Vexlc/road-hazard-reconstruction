@@ -15,7 +15,22 @@ def sampled(array, shape, name):
     return value
 
 
-def geometry(view, calibration=None):
+def sample_origins(view, rays, protected):
+    """Ray starts in metres in the camera reference frame, shared or per subpixel."""
+    if "ray_origins_camera" not in view:
+        return None
+    origins = np.asarray(view["ray_origins_camera"])
+    if origins.shape == rays.shape[1:]:
+        origins = np.broadcast_to(origins, rays.shape)
+    if origins.shape != rays.shape or not np.issubdtype(origins.dtype, np.number) or np.iscomplexobj(origins):
+        raise ValueError("ray_origins_camera must be a metric H×W×3 or S×H×W×3 array")
+    valid = np.isfinite(origins).all(-1)
+    if np.any(~valid & ~protected):
+        raise ValueError("Unmasked ray origins must be finite")
+    return origins if valid.all() else np.where(valid[..., None], origins, 0.)
+
+
+def geometry(view, calibration=None, *, with_origins=False):
     if ("rays_camera" in view) == (calibration is not None):
         raise ValueError("Provide registered rays or one lens calibration")
     if calibration is None:
@@ -39,13 +54,16 @@ def geometry(view, calibration=None):
         raise ValueError("Unmasked rays must be unit vectors")
     if ("host_z" in view) == ("host_range" in view):
         raise ValueError("Supply exactly one of host_range or host_z")
+    origins = sample_origins(view, rays, protected)
     if "host_z" in view:
         z = sampled(view["host_z"], shape, "host_z")
+        if origins is not None:
+            z = z - origins[..., 2]
         rz = rays[..., 2]
         known = np.isfinite(z) & ~protected
         # A signed axial plane degenerates at a 90-degree bearing; that pixel needs radial data.
         if np.any(known & ((z * rz <= 0) | (abs(rz) < 1e-6))):
-            raise ValueError("Axial depth needs the sign of ray.z; use radial range at the optical horizon")
+            raise ValueError("Axial displacement from the ray origin needs the sign of ray.z; use radial range at the optical horizon")
         distance = np.divide(
             z, rz, out=np.full(shape, np.inf, dtype=np.result_type(z, np.float32)), where=known
         )
@@ -59,13 +77,14 @@ def geometry(view, calibration=None):
     rot = pose[:3, :3]
     if not np.allclose(rot.T @ rot, np.eye(3), atol=1e-5) or np.linalg.det(rot) < 0.99999:
         raise ValueError("Expected metric right-handed rotation")
-    return rays, distance, protected, pose
+    result = rays, distance, protected, pose
+    return (*result, origins) if with_origins else result
 
 
 def road_samples(view, calibration=None, stride=1):
     if stride < 1 or "receiver_mask" not in view:
         raise ValueError("Provide a positive stride and a registered road receiver_mask")
-    rays, dist, protected, pose = geometry(view, calibration)
+    rays, dist, protected, pose, origins = geometry(view, calibration, with_origins=True)
     selected = sampled(view["receiver_mask"], dist.shape, "receiver_mask")
     if selected.dtype != bool:
         raise ValueError("receiver_mask must be boolean")
@@ -76,4 +95,6 @@ def road_samples(view, calibration=None, stride=1):
     subs = (slice(None), slice(None, None, stride), slice(None, None, stride))
     valid = valid[subs]
     points = rays[subs][valid] * dist[subs][valid, None]
+    if origins is not None:
+        points = points + origins[subs][valid]
     return points @ pose[:3, :3].T + pose[:3, 3]

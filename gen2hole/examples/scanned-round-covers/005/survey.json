@@ -1,0 +1,71 @@
+{
+  "family": "vented-cast-cover",
+  "source_url": "https://ambientcg.com/a/ManholeCover005",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "credit": "ambientCG, Manhole Cover 005, CC0. Scan of the upper face. Hidden surfaces and alternate states are designed.",
+  "frame": {
+    "image": "Color.png"
+  },
+  "perforations": {
+    "shape": "round",
+    "corners_xy": [
+      [
+        84,
+        91
+      ],
+      [
+        926,
+        91
+      ],
+      [
+        926,
+        933
+      ],
+      [
+        84,
+        933
+      ]
+    ],
+    "mask": "openings.png",
+    "lining": "../../perforated-covers/lining.jpg",
+    "displacement": "Displacement.png",
+    "pavement": "../../perforated-covers/split-iron/pavement.jpg",
+    "surround_mask": "Opacity.png",
+    "metalness": "Metalness.png",
+    "roughness": "Roughness.png",
+    "normal_gl": "NormalGL.png",
+    "relief_span_m": 0.006,
+    "photographed_surround": true,
+    "edge_patch_xyxy": [
+      516,
+      77,
+      530,
+      85
+    ],
+    "size_m": [
+      0.6578125,
+      0.6578125
+    ],
+    "frame_band_m": 0.037500000000000006,
+    "seat_overlap_m": 0.014,
+    "thickness_m": 0.035,
+    "shaft_depth_m": 0.63,
+    "solid_face": false,
+    "scale_source": "Plan scale from 0.80 m published texture extent over 1024 pixels. Circular seam fitted to the photograph. Relief amplitude, shaft depth, seat, thickness and altered poses are design values."
+  },
+  "states": [
+    {
+      "id": "A240",
+      "label": "错位的通气铸铁井盖",
+      "offset_m": [
+        0.086,
+        -0.035
+      ]
+    },
+    {
+      "id": "M240",
+      "label": "通气井盖整体缺失",
+      "absent": true
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "assets": {
+    "M240": {
+      "asset.glb": "913f68c9631c93a856fa32f484b18f833205f1374e4bf3b05d9dfc81234e39af",
+      "asset.ply": "756b95c05e93e78aa1e9358871e438524c68b3ae2336641609187b869c2ffbc0",
+      "metadata.json": "4c03aa058a9f5a32e1e4cc952aa59c5d7f480f846d177970c5016306bc61f103",
+      "splat_material.npz": "64556340ff9a3ff29bf46cc3cdfd8b2f49ad43f3b59f709db4e987b415699485",
+      "surface.npz": "aa1ade4aa41f53e42f133b8a73a7f2ae02b3c71e49c1706ab963c224fc7dc08e"
+    },
+    "A240": {
+      "asset.glb": "3c4e11674ee6f4d15b26f0e08b3e2d17b955724e1ef252e204afb10fc4828a4e",
+      "asset.ply": "ed884fe97a3baae0faa112aa87bddc732969f8cb85440ceba4148faa80329486",
+      "metadata.json": "d9a3576a990d5004088f68999a26dd7ccd8955ae7d8274800e2664c7d37b8e43",
+      "splat_material.npz": "11a6def313e0dc6117ec37e01ef94aebe9d079d38b34d4baf20e450ad53266c0",
+      "surface.npz": "c0d431ca1632ecc6ad9da76bf0b9140f01554d512ed3098fac6f32a79d685384"
+    },
+    "M241": {
+      "asset.glb": "409c443536219d8c1313b8145804075ef0d8dc9baa94392db22953bd76dc448e",
+      "asset.ply": "8140f80ff7d2017f45c77cda771aae0b895bf80657f2378bdef0572ac1e6b35c",
+      "metadata.json": "989f6746ed6fc9716083c628ee478494007fc4678422a86d366b450c48d96ed9",
+      "splat_material.npz": "6c2d4d9ad3d4f3a2a4f9b7e95e950beb87c4d064651eaec9cbd8523ad8465c16",
+      "surface.npz": "4c93e92b216ace2a6f0601a279acc8e91798c2a1b0a2f891652b7c8f287546d3"
+    },
+    "A241": {
+      "asset.glb": "ee69cefb0d7556e4879227e661ba3c0ced943d1b201b5c891aea80d82596d93b",
+      "asset.ply": "acda9c93f36bbf22cc7cf00f25aace7d4a328a3b6508f4e72a6875fc69a5f87e",
+      "metadata.json": "c8633e7dbbb34eb066b133e8763ebef5b0fa979e873298d2251f9325c983f231",
+      "splat_material.npz": "c64c07dab0e8e8d0ce5675bb2f15f3af8beeefbef25b98fa1090ae3d51aedd9d",
+      "surface.npz": "94e85bd979149fd9034da473b95a9e96cafb5a0fa77764451fabd245c16a9874"
+    }
+  },
+  "source_archives": {
+    "ManholeCover005_1K-PNG.zip": "3cf173c8d898bb050f875cc609b10d30a38231a686dbda57a4130cea7d8a8e82",
+    "ManholeCover008_1K-PNG.zip": "72bc358ed55496023f90fc1d8a70bc5d5eb891d1f616882cc17b6f7ca986e803"
+  },
+  "native": {
+    "M240-A241": {
+      "sha256": "eec9eafea92e7c39a58050340e2f25efe6dba7f4f0cf0d2f97dfc4aa96226059",
+      "source_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+      "replay": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 2195,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 212656,
+          "max_baseline_error": 0
+        }
+      }
+    },
+    "A240-M241": {
+      "sha256": "1aa38108e6104090062e9b1fba6875ee212ddc8d8d3311415ec007fecc0bda91",
+      "source_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+      "replay": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 2191,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 212094,
+          "max_baseline_error": 0
+        }
+      }
+    }
+  },
+  "visible_physical_parts": {
+    "M240-A241": {
+      "audi": {
+        "front_left": {
+          "M240": {
+            "5": 1269,
+            "6": 1055
+          },
+          "A241": {
+            "5": 1500,
+            "9": 3225,
+            "11": 15
+          }
+        },
+        "rear_center": {
+          "M240": {
+            "5": 2766,
+            "6": 3777
+          },
+          "A241": {
+            "5": 1461,
+            "9": 3078
+          }
+        }
+      },
+      "kitti": {
+        "image_00": {
+          "M240": {
+            "5": 576,
+            "6": 426
+          },
+          "A241": {
+            "5": 720,
+            "9": 1506,
+            "11": 7
+          }
+        },
+        "image_03": {
+          "M240": {
+            "5": 1612,
+            "6": 469
+          },
+          "A241": {
+            "5": 2704,
+            "9": 7824
+          }
+        }
+      }
+    },
+    "A240-M241": {
+      "audi": {
+        "front_left": {
+          "A240": {
+            "5": 381,
+            "6": 247,
+            "9": 1653,
+            "11": 529
+          },
+          "M241": {
+            "5": 2816,
+            "6": 1924
+          }
+        },
+        "rear_center": {
+          "A240": {
+            "5": 717,
+            "6": 11,
+            "9": 5481,
+            "11": 474
+          },
+          "M241": {
+            "5": 2704,
+            "6": 1835
+          }
+        }
+      },
+      "kitti": {
+        "image_00": {
+          "A240": {
+            "5": 185,
+            "6": 103,
+            "9": 717,
+            "11": 239
+          },
+          "M241": {
+            "5": 1320,
+            "6": 913
+          }
+        },
+        "image_03": {
+          "A240": {
+            "5": 283,
+            "6": 9,
+            "9": 2516,
+            "11": 139
+          },
+          "M241": {
+            "5": 4063,
+            "6": 5729,
+            "7": 736
+          }
+        }
+      }
+    }
+  },
+  "cycles": {
+    "M240-A241": {
+      "ortho": {
+        "M240": {
+          "iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 1.8596649169921875e-05,
+          "matched_part_pixels": {
+            "5": 2698,
+            "6": 3641,
+            "7": 3416
+          }
+        },
+        "A241": {
+          "iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 1.6689300537109375e-06,
+          "matched_part_pixels": {
+            "5": 3778,
+            "9": 8730,
+            "11": 30
+          }
+        }
+      },
+      "rear": {
+        "M240": {
+          "iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 2.6702880859375e-05,
+          "matched_part_pixels": {
+            "5": 182,
+            "6": 320
+          }
+        },
+        "A241": {
+          "iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 3.690719604492185e-05,
+          "matched_part_pixels": {
+            "5": 137,
+            "9": 307,
+            "11": 5
+          }
+        }
+      }
+    },
+    "A240-M241": {
+      "ortho": {
+        "A240": {
+          "iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 9.298324584960938e-06,
+          "matched_part_pixels": {
+            "5": 1693,
+            "6": 703,
+            "7": 268,
+            "9": 7281,
+            "11": 527
+          }
+        },
+        "M241": {
+          "iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 1.71661376953125e-05,
+          "matched_part_pixels": {
+            "5": 4687,
+            "6": 4236,
+            "7": 3615
+          }
+        }
+      },
+      "rear": {
+        "A240": {
+          "iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 3.2782554626464844e-05,
+          "matched_part_pixels": {
+            "5": 71,
+            "6": 76,
+            "9": 359,
+            "11": 65
+          }
+        },
+        "M241": {
+          "iou": 1.0,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 3.123283386230469e-05,
+          "matched_part_pixels": {
+            "5": 222,
+            "6": 227
+          }
+        }
+      }
+    }
+  },
+  "videos": {
+    "audi-front-rear.mp4": {
+      "frames": 46,
+      "seconds": 4.6
+    },
+    "joint-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    },
+    "kitti-front-side.mp4": {
+      "frames": 81,
+      "seconds": 8.1
+    }
+  },
+  "clean_reproduction": {
+    "source": "independent source-only checkout with existing pinned interpreters; empty output directories",
+    "restored_scan_png_identical": 14,
+    "asset_files_identical": 20,
+    "native_checkpoints_identical": 2,
+    "anchors_identical": 2,
+    "portable_outputs_identical": 16,
+    "previous_p103_glb_sha256": "49759ba9e543495993f33a23896c7ead3bc83f2c42f6d0c47d6100ca3ccc5f38",
+    "previous_central_fisheye_files_identical": 12
+  },
+  "layout_overlap_control": {
+    "asset_ids": [
+      "A240",
+      "M241"
+    ],
+    "first_xy_m": [
+      0,
+      0
+    ],
+    "second_y_m": -0.035,
+    "heading_deg": 0,
+    "rejected_second_x_m": 0.797,
+    "accepted_second_x_m": 0.85
+  }
+}

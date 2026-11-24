@@ -311,20 +311,16 @@ def shaft_mesh(profile, trace, pose=None):
     if np.any(top_edge[:, 2]):
         band_part("Chipped concrete collar", [(top_edge[:, :2], 0), (top_edge[:, :2], top_edge[:, 2])],
                   concrete, "strip")
-    band_part(
-        "Cast ring and cover seat",
-        [
-            (outer, 0),
-            (bands[band*.88], 0.0015),
-            (rim, 0.0015),
-            (rim, -t),
-            (shelf, -t),
-            (shelf, -t - 0.018),
-        ],
-        pavement if profile["photographed_surround"] else iron,
-        "photo" if profile["photographed_surround"] else "strip",
-        transform=pose,
-    )
+    flange = [(outer, 0), (bands[band * .88], .0015), (rim, .0015)]
+    seat_levels = [(rim, -t), (shelf, -t), (shelf, -t - .018)]
+    if "normal_gl" in profile:
+        # Only the horizontal top is observed. A top-down photograph has no UV area on a vertical riser.
+        band_part("Cast ring and cover seat", flange, pavement, "photo", transform=pose)
+        band_part("Cast seat riser and ledge", [flange[-1], *seat_levels], iron, "strip", transform=pose)
+    else:
+        band_part("Cast ring and cover seat", flange + seat_levels,
+                  pavement if profile["photographed_surround"] else iron,
+                  "photo" if profile["photographed_surround"] else "strip", transform=pose)
     band_part("Inspection shaft", [(wall_edge[:, :2], wall_edge[:, 2]), (shelf, -depth)], concrete, "strip")
     xy = np.vstack([[0, 0], shelf[:-1]])
     idx = np.arange(1, len(xy))
@@ -434,7 +430,7 @@ def build():
                 vertices = []
                 faces = []
                 for name, v, f, *_ in stock.parts:
-                    if name in ("Cast ring and cover seat", "Road around the aperture"):
+                    if name in ("Cast ring and cover seat", "Cast seat riser and ledge", "Road around the aperture"):
                         faces.extend((f + len(vertices)).tolist())
                         vertices.extend(v.tolist())
                 tree = BVHTree.FromPolygons(vertices, faces, all_triangles=True)
@@ -450,6 +446,11 @@ def build():
                     raise ValueError("Displaced grate has no support")
                 pose[2, 3] += max(contacts)
             mesh.materials.update(lid.materials)
+            if "normal_gl" in profile:
+                face_material = lid.parts[0][4]
+                mesh.orm_maps[face_material] = pixels("lid_orm.png")
+                mesh.normal_maps[face_material] = pixels("lid_normal.png")
+                mesh.lossless_color.add(face_material)
             for name, v, f, uv, m, isroad in lid.parts:
                 mesh.parts.append((name, (v @ pose[:3, :3].T + pose[:3, 3]).astype("f4"), f, uv, m, isroad))
             if offset.any():
@@ -477,7 +478,7 @@ def build():
                 distance = distance_transform_edt(np.asarray(mask) == 0) * field['width'] / (n - 1)
                 result['alpha'] = np.maximum(field['alpha'], smooth((0.045 - distance) / 0.04))
         category = "missing" if absent else "raised"
-        if installation is not None or polygon:
+        if installation is not None or polygon or "normal_gl" in profile:
             result['substrate_height'] = sample_surface(stock.parts, field)
             result['height'] = result['substrate_height'] if absent else sample_surface(mesh.parts, field)
         if absent:
@@ -516,6 +517,9 @@ def build():
             **fracture,
             **stats,
         )
+        if "normal_gl" in profile:
+            meta.update(source_url=cfg["source_url"], credit=cfg["credit"], license_url=cfg["license_url"],
+                        registered_channels=["color", "displacement", "roughness", "metalness", "normal_gl"])
         if polygon:
             meta.update(recipe_version='polygon-cover-v1', perimeter_sides=len(profile['rim_uv']),
                         perimeter_recesses=len(trace['recesses_uv']), yaw_degrees=float(state.get('yaw_deg',0)),

@@ -1,6 +1,9 @@
 """Check the complete ID-to-reconstruction and transfer map in a source-only checkout."""
+import argparse
 import json
 from pathlib import Path
+
+from reproduction_map import render
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -16,6 +19,9 @@ def source(entry):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--write-map", action="store_true", help="Refresh docs/asset-code-index.md")
+    args = parser.parse_args()
     index = json.loads((ROOT / "catalog/reconstruction-index.json").read_text())
     routes = index["transfer_routes"]
     owners, used = {}, set()
@@ -41,6 +47,12 @@ def main():
     paired = {asset for row in index["families"].values() if "kitti-pair" in row["transfer"] for asset in row["assets"]}
     if len(paired) != 20 or paired != set(kit):
         raise ValueError("KITTI routing and 20-pit rebuild selection disagree")
+    page = ROOT / "docs/asset-code-index.md"
+    expected = render(index)
+    if args.write_map:
+        page.write_text(expected, encoding="utf-8")
+    elif not page.is_file() or page.read_text(encoding="utf-8") != expected:
+        raise ValueError("Refresh the asset code map with --write-map")
     print(f"{len(owners)} IDs, {len(index['families'])} reconstruction families, {len(used)} transfer routes, 20 paired pits")
 
 

@@ -2,7 +2,9 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
-**[资产重建与场景迁入复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按资产编号找到配方、迁入代码、所需数据和验收方法。KITTI-360 示例用同一宿主生成十个场景，每次放入两个坑洞。[私有 Release 输入包与宿主检查点](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25) · [前视驶入、后视驶离](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4) · [只看后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-rear.mp4)
+**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,489 个编号所属的 45 个系列与 15 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+
+**两套圆井盖、四个状态**　从实扫铸铁通气盖和龟裂混凝土填芯盖重建，每组两件，包含两种敞井。可在原生 KITTI 场景或由宿主给出逐像素光线的渲染器复现。[固定版本指南](docs/22-scanned-round-covers.md) · [Audi 实车前后鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/scanned-round-covers-v1.0.0/audi-front-rear.mp4) · [联合场景同帧回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/scanned-round-covers-v1.0.0/joint-front-rear.mp4)
 
 **两处实测路面破损**　宽 1.76 米的片状剥落与宽 1.37 米的粗集料碗坑，共同迁入 30,000 步联合场景和三段实拍道路。两处坑沿可在不同横坡上分别贴地。[按编号复现与换宿主](docs/21-measured-pavement.md) · [Audi 驶过后的实拍后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/measured-pavement-v1.0.0/audi-front-rear.mp4) · [联合场景前后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/measured-pavement-v1.0.0/joint-front-rear.mp4)
 

@@ -20,7 +20,7 @@ def ray_derivatives(directions):
     ]
 
 
-def projected_axes(xyz, texcoords, rays, distance, derivatives, size, pixel_width):
+def projected_axes(xyz, texcoords, rays, distance, derivatives, size, pixel_width, origin_deltas=None):
     e1, e2 = xyz[:, 1] - xyz[:, 0], xyz[:, 2] - xyz[:, 0]
     normal = np.cross(e1, e2)
     squared = np.maximum((normal * normal).sum(1), 1e-20)
@@ -31,10 +31,14 @@ def projected_axes(xyz, texcoords, rays, distance, derivatives, size, pixel_widt
     du1 = (texcoords[:, 1] - texcoords[:, 0]) * size
     du2 = (texcoords[:, 2] - texcoords[:, 0]) * size
     axes = []
-    for derivative in derivatives:
+    for axis, derivative in enumerate(derivatives):
         # Differentiate the intersection of a ray with this specific triangle's tangent plane.
         dt = (normal * derivative).sum(1) / safe
         delta = (distance * pixel_width)[:, None] * (derivative - rays * dt[:, None])
+        if origin_deltas is not None:
+            shift = origin_deltas[axis]
+            dt_origin = (normal * shift).sum(1) / safe
+            delta += pixel_width * (shift - rays * dt_origin[:, None])
         axes.append((delta * bary1).sum(1)[:, None] * du1 + (delta * bary2).sum(1)[:, None] * du2)
     return axes
 

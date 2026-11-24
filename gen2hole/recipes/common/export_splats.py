@@ -13,7 +13,7 @@ PART_IMPORTANCE = {
     'Road adjoining the fracture': .7, 'Road around the aperture': .62,
     'Fracture lip and exposed bed': 3.1, 'Water surface': 2.,
     'Chipped concrete collar': 2.1, 'Inspection shaft': .85,
-    'Cast ring and cover seat': 4.8, 'Shaft bottom': .42,
+    'Cast ring and cover seat': 4.8, 'Cast seat riser and ledge': 4.8, 'Shaft bottom': .42,
     'Lid face': 4.8, 'Lid fragment face': 4.8, 'Lid underside with casting ribs': 1.9, 'Lid rolled edge': 2.8,
     'Left lid face': 4.8, 'Right lid face': 4.8,
 }

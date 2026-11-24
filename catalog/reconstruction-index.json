@@ -1,5 +1,5 @@
 {
-  "asset_count": 1485,
+  "asset_count": 1489,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2025,6 +2025,40 @@
         "pavement-layout",
         "pavement-joint"
       ]
+    },
+    "vented-cast-cover": {
+      "name": "带双圈排水孔的铸铁盖与缺盖井",
+      "launcher": "gen2hole/survey.py",
+      "prepare": "gen2hole/examples/scanned-round-covers/prepare.py",
+      "recipe": "gen2hole/examples/scanned-round-covers/005/survey.json",
+      "guide": "docs/22-scanned-round-covers.md",
+      "section": "从扫描重建四个状态",
+      "assets": [
+        "A240",
+        "M240"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "metric-ray-origins"
+      ]
+    },
+    "cracked-infill-cover": {
+      "name": "裂纹填芯盖与缺盖井",
+      "launcher": "gen2hole/survey.py",
+      "prepare": "gen2hole/examples/scanned-round-covers/prepare.py",
+      "recipe": "gen2hole/examples/scanned-round-covers/008/survey.json",
+      "guide": "docs/22-scanned-round-covers.md",
+      "section": "从扫描重建四个状态",
+      "assets": [
+        "A241",
+        "M241"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "metric-ray-origins"
+      ]
     }
   },
   "transfer_routes": {
@@ -2094,9 +2128,71 @@
       "guide": "docs/21-measured-pavement.md"
     },
     "pavement-joint": {
-      "name": "实测双坑的原生联合检查点与边缘高斯分割",
+      "name": "坑洞和检查井成对迁入 KITTI 联合检查点，按开口切分原路面高斯",
       "entry": "streetcrafter/joint/pavement_pair.py",
       "guide": "docs/21-measured-pavement.md"
+    },
+    "metric-ray-origins": {
+      "name": "逐像素起点的米制光线与独立 Cycles 正交、后向鱼眼验收",
+      "entry": "scripts/transfer-mesh-view.py",
+      "guide": "docs/22-scanned-round-covers.md"
     }
+  },
+  "groups": {
+    "历史库与封存路线": [
+      "baseline-stereo",
+      "baseline-rgbd",
+      "baseline-pothole",
+      "baseline-missing",
+      "baseline-raised",
+      "factory",
+      "large-potholes"
+    ],
+    "照片、双目及 RGB-D 路面破损": [
+      "generated-pilot",
+      "generated-series",
+      "rgb-box-P90",
+      "multiview-pit-survey",
+      "rgb-parallax",
+      "pit-depth-completion",
+      "large-dry-pit",
+      "lane-pits-batch",
+      "common-large-pits",
+      "photo-large-oblique",
+      "photo-large-rgbd",
+      "junction-spall",
+      "mixed-rgbd-pits",
+      "measured-pavement-pair"
+    ],
+    "裂缝、积水、铺装与修补": [
+      "photo-cracks",
+      "scanned-cracks",
+      "concrete-slab",
+      "standing-water",
+      "photo-shoreline-water",
+      "displaced-paver",
+      "observed-pavement",
+      "paired-road-slots",
+      "transverse-repair"
+    ],
+    "井盖、雨水篦与敞井": [
+      "photo-chamber-BD-v2",
+      "pandaset-034-metric",
+      "pandaset-109-apron",
+      "yokota-grate-metric",
+      "cobble-cover",
+      "split-iron-cover",
+      "grade-cover",
+      "hexagonal-access",
+      "square-infill-hatch",
+      "twin-infill-hatch",
+      "vented-cast-cover",
+      "cracked-infill-cover"
+    ],
+    "路侧与路面立体设施": [
+      "concrete-barriers",
+      "fire-hydrants",
+      "traffic-cones"
+    ]
   }
 }

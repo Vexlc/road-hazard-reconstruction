@@ -170,6 +170,7 @@ class RoadMesh:
         self.scene = o3d.t.geometry.RaycastingScene(nthreads=2)
         self.surfaces = {}
         bounds = []
+        cover_vertices = []
         with np.load(folder / "surface.npz", allow_pickle=False) as field:
             self.cut = field["defect_mask"].astype(bool)
             self.extent = np.array([float(field["width"]), float(field["length"])])
@@ -185,6 +186,8 @@ class RoadMesh:
             texture = np.asarray(Image.open(BytesIO(image)).convert("RGB"))
             self.surfaces[gid] = part, tri, uv, texture
             if filter_pavement:
+                if part in (9, 10, 11, 12):
+                    cover_vertices.append(xyz[:, :2])
                 from pavement_texture import pyramid
                 self.filtered_textures[gid] = xyz, pyramid(texture)
             if pbr:
@@ -195,6 +198,9 @@ class RoadMesh:
                 if spec is not None: self.dielectrics[gid] = spec
             bounds.extend([xyz.min(axis=0), xyz.max(axis=0)])
         self.bounds = np.array([np.min(bounds, axis=0), np.max(bounds, axis=0)])
+        # Include the movable lid wherever it actually rests, including legacy height fields.
+        self.cover_outline = (cv2.convexHull(np.float32(np.concatenate(cover_vertices))).reshape(-1, 2)
+                              if cover_vertices else None)
         self.measured_rim &= {surface[0] for surface in self.surfaces.values()} == {1, 2}
 
     def sky_gain(self, points, normals):
@@ -216,7 +222,8 @@ class RoadMesh:
         return 0.26 + 0.74 * np.clip(light / sky[:, 2].sum(), 0, 1)
 
     def render(self, rgb, camera_to_world, rays_camera, anchor, host_range, protected, *,
-               occluder_range=None, road_tolerance_m=0.10, with_shadow=False, receiver_mask=None, pixel_width=1.0):
+               occluder_range=None, road_tolerance_m=0.10, with_shadow=False, receiver_mask=None, pixel_width=1.0,
+               ray_origins_camera=None):
         """Compare uncertain host pavement and optional positively identified foreground in radial metres."""
         h, w = rgb.shape[:2]
         pose, basis = np.asarray(camera_to_world), np.asarray(anchor["basis_columns"])
@@ -247,7 +254,13 @@ class RoadMesh:
                 raise ValueError("Expected right-handed rigid transforms")
         origin = (pose[:3, 3] - anchor["center_world"]) @ basis
         directions = rays_camera @ (pose[:3, :3].T @ basis)
-        rays = np.concatenate([np.broadcast_to(origin, directions.shape), directions], -1).astype("f4")
+        if ray_origins_camera is not None:
+            offsets = np.asarray(ray_origins_camera)
+            if offsets.shape != directions.shape or not np.isfinite(offsets).all():
+                raise ValueError("Expected one finite metric origin per camera ray")
+            origin = origin + offsets @ (pose[:3, :3].T @ basis)
+        origins = np.broadcast_to(origin, directions.shape)
+        rays = np.concatenate([origins, directions], -1).astype("f4")
         hits = self.scene.cast_rays(o3d.core.Tensor(rays), nthreads=2)
         distance = hits["t_hit"].numpy()
         geom, faces = hits["geometry_ids"].numpy(), hits["primitive_ids"].numpy()
@@ -263,6 +276,7 @@ class RoadMesh:
         if self.filtered_textures:
             from pavement_texture import filtered, projected_axes, ray_derivatives
             derivatives = ray_derivatives(directions)
+            origin_deltas = ray_derivatives(origin) if ray_origins_camera is not None else None
         for gid, (code, tri, uv, texture) in self.surfaces.items():
             mask = geom == gid
             if not mask.any():
@@ -275,7 +289,8 @@ class RoadMesh:
                 xyz, levels = self.filtered_textures[gid]
                 face = tri[faces[mask]]
                 dx, dy = projected_axes(xyz[face], uv[face], directions[mask], distance[mask],
-                                        [d[mask] for d in derivatives], texture.shape[1::-1], pixel_width)
+                                        [d[mask] for d in derivatives], texture.shape[1::-1], pixel_width,
+                                        None if origin_deltas is None else [d[mask] for d in origin_deltas])
                 color[mask] = filtered(levels, texcoord, dx, dy)
             else:
                 coords = (texcoord * texture.shape[1::-1] - 0.5)[:, ::-1].T
@@ -300,11 +315,11 @@ class RoadMesh:
                 ambient_visibility[mask] = map_coordinates(arm[..., 0], rc, order=1, mode="grid-wrap") / 255
         # Only a ray entering the cut at pavement height may see buried sidewalls or floor.
         plane = np.divide(
-            -origin[2], directions[..., 2], out=np.full((h, w), np.inf), where=directions[..., 2] < -1e-6
+            -origin[..., 2], directions[..., 2], out=np.full((h, w), np.inf), where=directions[..., 2] < -1e-6
         )
         finite = np.isfinite(distance)
-        ray_z = origin[2] + directions[..., 2] * np.where(finite, distance, 0)
-        crossing = origin[:2] + directions[..., :2] * np.where(np.isfinite(plane), plane, 0)[..., None]
+        ray_z = origin[..., 2] + directions[..., 2] * np.where(finite, distance, 0)
+        crossing = origin[..., :2] + directions[..., :2] * np.where(np.isfinite(plane), plane, 0)[..., None]
         uv = 0.5 + crossing / self.extent * [1, -1]
         gr = np.rint(np.clip(uv, 0, 1) * (np.array(self.cut.shape[::-1]) - 1)).astype(int)
         surveyed = (uv >= 0).all(-1) & (uv <= 1).all(-1)
@@ -328,7 +343,7 @@ class RoadMesh:
             from prop_lighting import compose
             return compose(self, rgb, part, color, normals, ambient_visibility, visible, distance, plane, crossing,
                            host_range, protected, occluder_range, road_tolerance_m, anchor, with_shadow, receiver_mask,
-                           origin + directions[visible] * distance[visible,None], None if sky is None else sky[visible],
+                           origins[visible] + directions[visible] * distance[visible,None], None if sky is None else sky[visible],
                            None if f0 is None else (f0[visible],rough[visible],-directions[visible]))
         context = (part == 1) & ~blocked
         out = rgb.copy()
@@ -346,7 +361,7 @@ class RoadMesh:
             inside = visible & np.isin(part, [5, 6, 7, 8, 10, 11, 20])
             if inside.any():
                 directions_hit = directions[inside]
-                points = origin + directions_hit * distance[inside, None]
+                points = origins[inside] + directions_hit * distance[inside, None]
                 normals = hits["primitive_normals"].numpy()[inside].copy()
                 normals[(normals * directions_hit).sum(1) > 0] *= -1
                 ao[inside] = self.sky_gain(points, normals)

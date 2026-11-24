@@ -156,7 +156,17 @@ def trace(spec):
         variants[key] = repaired
         Image.fromarray(damaged * 255).save(calibration / (key + "_openings.png"))
     Image.fromarray(canonical).save(refs / "lid_ortho.png")
-    if 'twin_seam_uv' in profile:
+    if 'normal_gl' in profile:
+        # Tangent-space normal vectors keep their original axes only for an upright scan.
+        if not (quad[0, 1] == quad[1, 1] and quad[2, 1] == quad[3, 1]
+                and quad[0, 0] == quad[3, 0] and quad[1, 0] == quad[2, 0]
+                and np.all(quad[2] > quad[0])):
+            raise ValueError("Registered normal maps require an upright orthographic source")
+        normal = np.asarray(Image.open(refs / profile['normal_gl']).convert('RGB'))
+        if normal.shape != photo.shape:
+            raise ValueError("Unregistered normal map")
+        Image.fromarray(cv2.warpPerspective(normal, mapping, (n, n))).save(refs / 'lid_normal.png')
+    if 'roughness' in profile or 'metalness' in profile:
         measured = []
         for name in ('roughness', 'metalness'):
             source = np.asarray(Image.open(refs / profile[name]).convert('L'))

@@ -1,0 +1,24 @@
+{
+  "id": "M240-A241",
+  "label": "通气井缺盖与龟裂填芯盖",
+  "instances": [
+    {
+      "id": "vented",
+      "asset": "M240",
+      "xy_m": [
+        0.65,
+        0.12
+      ],
+      "heading_deg": -9
+    },
+    {
+      "id": "infill",
+      "asset": "A241",
+      "xy_m": [
+        -0.7,
+        -0.22
+      ],
+      "heading_deg": 15
+    }
+  ]
+}

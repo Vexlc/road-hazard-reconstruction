@@ -102,7 +102,7 @@ def main():
         return
     mesh = layout if layout else RoadMesh(args.asset, measured_rim=args.measured_rim)
     with np.load(args.view, allow_pickle=False) as view:
-        rays, host, protected, pose = geometry(view, args.calibration)
+        rays, host, protected, pose, origins = geometry(view, args.calibration, with_origins=True)
         rgb = view["rgb"]
         anchor = json.loads(args.anchor.read_text())
         foreground = view.get("occluder_range")
@@ -120,7 +120,8 @@ def main():
             layout.bind(anchor)
         samples = []
         for i, (subray, mask) in enumerate(zip(rays, protected)):
-            options = dict(occluder_range=None if foreground is None else foreground[i],
+            options = dict(ray_origins_camera=None if origins is None else origins[i],
+                           occluder_range=None if foreground is None else foreground[i],
                            road_tolerance_m=args.road_tolerance_m,
                            receiver_mask=None if receivers is None else receivers[i])
             if layout:

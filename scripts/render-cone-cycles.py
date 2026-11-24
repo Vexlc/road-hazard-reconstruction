@@ -69,11 +69,11 @@ def plane(scene, world):
     return road
 
 
-def render(scene, camera, world, objects, out, name, yaw, with_pair, *, eye=None):
+def render(scene, camera, world, objects, out, name, yaw, with_pair, *, eye=None, pitch_deg=15):
     folder = out / name / ("native" if with_pair else "host")
     folder.mkdir(exist_ok=True, parents=True)
     yaw = np.deg2rad(yaw)
-    pitch = np.deg2rad(15)
+    pitch = np.deg2rad(pitch_deg)
     forward = np.array([np.sin(yaw) * np.cos(pitch), np.cos(yaw) * np.cos(pitch), -np.sin(pitch)])
     right = np.array([np.cos(yaw), -np.sin(yaw), 0])
     pose = np.eye(4)
@@ -102,7 +102,7 @@ def render(scene, camera, world, objects, out, name, yaw, with_pair, *, eye=None
         json.dumps(
             dict(
                 camera_to_world=pose.tolist(),
-                fov_deg=FOV,
+                **({"ortho_width_m": camera.data.ortho_scale} if camera.data.type == "ORTHO" else {"fov_deg": FOV}),
                 size=SIZE,
                 reference_ground_to_world=world.tolist(),
             ),

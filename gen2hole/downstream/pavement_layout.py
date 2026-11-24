@@ -63,11 +63,21 @@ class PavementLayout:
             seed = origin + basis[:, :2] @ row["xy_m"]
             heading = basis[:, :2] @ [np.cos(theta), np.sin(theta)]
             seat = fit_road(points, seed, heading, up_world=up, radius_m=radius)
-            seat = fit_footprint(seat, points, footprint_size(path))
             mesh = self.meshes[row["asset"]]
+            size = footprint_size(path)
+            if mesh.cover_outline is not None:
+                # A rasterized top surface can stop one cell inside the GLB edge. Older
+                # fields can omit an entire moved lid; extend the fit for that overhang.
+                cell = mesh.extent / (np.array(mesh.cut.shape[::-1]) - 1)
+                cover_span = 2 * abs(mesh.cover_outline).max(axis=0)
+                if np.any(cover_span > size + 2 * cell):
+                    size = np.maximum(size, cover_span)
+            seat = fit_footprint(seat, points, size)
             y, x = np.nonzero(mesh.cut)
             uv = np.column_stack([x, y]) / (np.array(mesh.cut.shape[::-1]) - 1)
             xy = (uv - 0.5) * mesh.extent * [1, -1]
+            if mesh.cover_outline is not None:
+                xy = np.concatenate([xy, mesh.cover_outline])
             seat_basis = np.array(seat["basis_columns"])
             world = xy @ seat_basis[:, :2].T + seat["center_world"]
             hulls.append(cv2.convexHull(np.float32(((world - origin) @ basis)[:, :2])))
