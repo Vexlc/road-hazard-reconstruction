@@ -1,5 +1,5 @@
 {
-  "asset_count": 1489,
+  "asset_count": 1493,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2059,6 +2059,40 @@
         "pavement-joint",
         "metric-ray-origins"
       ]
+    },
+    "discarded-wheels": {
+      "name": "遗落轮胎与锈蚀轮圈",
+      "launcher": "gen2hole/road_debris.py",
+      "recipe": "gen2hole/examples/road-debris/sources.json",
+      "guide": "docs/23-road-debris.md",
+      "section": "从原始网格重建并成组",
+      "assets": [
+        "R242",
+        "R243"
+      ],
+      "transfer": [
+        "surveyed-receivers",
+        "mesh-view",
+        "joint-props",
+        "cycles-debris"
+      ]
+    },
+    "dropped-cargo": {
+      "name": "侧倒周转筐与水泥袋",
+      "launcher": "gen2hole/road_debris.py",
+      "recipe": "gen2hole/examples/road-debris/sources.json",
+      "guide": "docs/23-road-debris.md",
+      "section": "从原始网格重建并成组",
+      "assets": [
+        "R244",
+        "R245"
+      ],
+      "transfer": [
+        "surveyed-receivers",
+        "mesh-view",
+        "joint-props",
+        "cycles-debris"
+      ]
     }
   },
   "transfer_routes": {
@@ -2136,6 +2170,16 @@
       "name": "逐像素起点的米制光线与独立 Cycles 正交、后向鱼眼验收",
       "entry": "scripts/transfer-mesh-view.py",
       "guide": "docs/22-scanned-round-covers.md"
+    },
+    "surveyed-receivers": {
+      "name": "实测路面支撑、双目前景与立体遗落物接地阴影",
+      "entry": "scripts/render-mixed-road.py",
+      "guide": "docs/23-road-debris.md"
+    },
+    "cycles-debris": {
+      "name": "独立 Cycles 鱼眼的透孔、径向深度与材质法线验收",
+      "entry": "scripts/render-debris-cycles.py",
+      "guide": "docs/23-road-debris.md"
     }
   },
   "groups": {
@@ -2192,7 +2236,9 @@
     "路侧与路面立体设施": [
       "concrete-barriers",
       "fire-hydrants",
-      "traffic-cones"
+      "traffic-cones",
+      "discarded-wheels",
+      "dropped-cargo"
     ]
   }
 }

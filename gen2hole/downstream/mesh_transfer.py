@@ -181,6 +181,8 @@ class RoadMesh:
         self.materials = {}
         self.baked_sky = {}
         self.dielectrics = {}
+        self.normal_textures = {}
+        self.normal_pyramids = {}
         for part, xyz, tri, uv, image, *pbr in glb_triangles(folder / "asset.glb", appearance=True, packed_material=self.standing):
             gid = self.scene.add_triangles(o3d.core.Tensor(xyz), o3d.core.Tensor(tri))
             texture = np.asarray(Image.open(BytesIO(image)).convert("RGB"))
@@ -196,12 +198,39 @@ class RoadMesh:
                 sky, spec = pbr[2]
                 if sky is not None: self.baked_sky[gid] = sky
                 if spec is not None: self.dielectrics[gid] = spec
+            if len(pbr) > 3:
+                tangent, normal_image, scale = pbr[3]
+                self.normal_textures[gid] = tangent, np.asarray(Image.open(BytesIO(normal_image)).convert("RGB")), scale
+                from pavement_texture import pyramid
+                self.normal_pyramids[gid] = xyz, pyramid(self.normal_textures[gid][1])
             bounds.extend([xyz.min(axis=0), xyz.max(axis=0)])
         self.bounds = np.array([np.min(bounds, axis=0), np.max(bounds, axis=0)])
         # Include the movable lid wherever it actually rests, including legacy height fields.
         self.cover_outline = (cv2.convexHull(np.float32(np.concatenate(cover_vertices))).reshape(-1, 2)
                               if cover_vertices else None)
         self.measured_rim &= {surface[0] for surface in self.surfaces.values()} == {1, 2}
+
+    def surface_normal(self, gid, face, bary, uv, footprint=None):
+        verts, _ = self.materials[gid]
+        n = (verts[face] * bary[:, :, None]).sum(1)
+        n = n / np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-8)
+        if gid not in self.normal_textures:
+            return n, n
+        from surface_normals import mapped_normal
+        tangents, tex, scale = self.normal_textures[gid]
+        tangent = (tangents[face] * bary[:, :, None]).sum(1)
+        if footprint is None:
+            coords = (uv * tex.shape[1::-1] - .5)[:, ::-1].T
+            detail = np.column_stack([map_coordinates(ch, coords, order=1, mode="grid-wrap", output="f4")
+                                      for ch in tex.transpose(2, 0, 1)])
+        else:
+            from pavement_texture import filtered, projected_axes
+            directions, distance, derivatives, pixel_width, origin_deltas = footprint
+            xyz, levels = self.normal_pyramids[gid]
+            axes = projected_axes(xyz[face], self.surfaces[gid][2][face], directions, distance, derivatives,
+                                  tex.shape[1::-1], pixel_width, origin_deltas)
+            detail = filtered(levels, uv, *axes, wrap=True)
+        return n, mapped_normal(n, tangent, detail, scale)
 
     def sky_gain(self, points, normals):
         """Diffuse skylight reaching the exposed frame, cut edges and well, plus a soft bounce floor."""
@@ -223,7 +252,7 @@ class RoadMesh:
 
     def render(self, rgb, camera_to_world, rays_camera, anchor, host_range, protected, *,
                occluder_range=None, road_tolerance_m=0.10, with_shadow=False, receiver_mask=None, pixel_width=1.0,
-               ray_origins_camera=None):
+               ray_origins_camera=None, receiver_band_m=None):
         """Compare uncertain host pavement and optional positively identified foreground in radial metres."""
         h, w = rgb.shape[:2]
         pose, basis = np.asarray(camera_to_world), np.asarray(anchor["basis_columns"])
@@ -269,11 +298,12 @@ class RoadMesh:
         color = np.zeros_like(rgb)
         if self.standing:
             normals = np.zeros((*part.shape, 3), 'f4')
+            geometric_normals = np.zeros_like(normals) if self.normal_textures else None
             ambient_visibility = np.ones(part.shape, 'f4')
             f0 = np.zeros((*part.shape,3), "f4") if self.dielectrics else None
             rough = np.ones(part.shape, "f4") if self.dielectrics else None
             sky = np.ones(part.shape, 'f4') if self.baked_sky else None
-        if self.filtered_textures:
+        if self.filtered_textures or self.normal_textures:
             from pavement_texture import filtered, projected_axes, ray_derivatives
             derivatives = ray_derivatives(directions)
             origin_deltas = ray_derivatives(origin) if ray_origins_camera is not None else None
@@ -304,9 +334,15 @@ class RoadMesh:
             if self.standing:
                 if gid in self.baked_sky:
                     sky[mask] = (self.baked_sky[gid][tri[faces[mask]]] * bary).sum(1)
-                verts, arm = self.materials[gid]
-                n = (verts[tri[faces[mask]]] * bary[:, :, None]).sum(1)
-                normals[mask] = n / np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-8)
+                footprint = None
+                if gid in self.normal_textures:
+                    footprint = (directions[mask], distance[mask], [d[mask] for d in derivatives], pixel_width,
+                                 None if origin_deltas is None else [o[mask] for o in origin_deltas])
+                base, shaded = self.surface_normal(gid, tri[faces[mask]], bary, texcoord, footprint)
+                normals[mask] = shaded
+                if geometric_normals is not None:
+                    geometric_normals[mask] = base
+                arm = self.materials[gid][1]
                 rc = (texcoord * arm.shape[1::-1] - .5)[:, ::-1].T
                 if gid in self.dielectrics:
                     spec, factor = self.dielectrics[gid]
@@ -333,7 +369,15 @@ class RoadMesh:
         # The original pavement will be removed. Only measured returns in front of both
         # the impact and the entry plane may hide the replacement surface.
         near = np.minimum(plane, distance)
-        blocked = np.asarray(protected, bool) | (host_range < near - road_tolerance_m)
+        occlusion_host = host_range
+        if receiver_band_m is not None:
+            if not self.standing:
+                raise ValueError("Surveyed receiver depth is only supported for freestanding objects")
+            from prop_registration import surveyed_road_pixels
+            on_ground = surveyed_road_pixels(origin, directions, plane, host_range, anchor, receiver_mask,
+                                             receiver_band_m)
+            occlusion_host = np.where(on_ground, np.inf, host_range)
+        blocked = np.asarray(protected, bool) | (occlusion_host < near - road_tolerance_m)
         if occluder_range is not None:
             # A return positively identified as an object is not replaceable pavement.
             # Compare it with the actual hit, even when it lies inside the opening.
@@ -342,9 +386,10 @@ class RoadMesh:
         if self.standing:
             from prop_lighting import compose
             return compose(self, rgb, part, color, normals, ambient_visibility, visible, distance, plane, crossing,
-                           host_range, protected, occluder_range, road_tolerance_m, anchor, with_shadow, receiver_mask,
+                           occlusion_host, protected, occluder_range, road_tolerance_m, anchor, with_shadow, receiver_mask,
                            origins[visible] + directions[visible] * distance[visible,None], None if sky is None else sky[visible],
-                           None if f0 is None else (f0[visible],rough[visible],-directions[visible]))
+                           None if f0 is None else (f0[visible],rough[visible],-directions[visible]),
+                           None if geometric_normals is None else geometric_normals[visible])
         context = (part == 1) & ~blocked
         out = rgb.copy()
         if visible.any() and context.sum() >= 8:

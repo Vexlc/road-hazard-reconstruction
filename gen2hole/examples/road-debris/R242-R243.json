@@ -1,0 +1,24 @@
+{
+  "id": "R242-R243",
+  "label": "旧轮胎与钢轮圈",
+  "instances": [
+    {
+      "id": "tyre",
+      "asset": "R242",
+      "xy_m": [
+        0.37,
+        0.045
+      ],
+      "heading_deg": -22
+    },
+    {
+      "id": "rim",
+      "asset": "R243",
+      "xy_m": [
+        -0.41,
+        -0.045
+      ],
+      "heading_deg": 20
+    }
+  ]
+}

@@ -12,7 +12,7 @@ PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidew
          'water surface', 'cast ring and seat', 'shaft wall', 'shaft bottom',
          'concrete collar', 'lid face', 'lid underside', 'lid edge', 'hinge',
          'pavement block top', 'pavement block edge', 'pavement block underside', 'subgrade', 'socket wall', 'visible debris face', 'opening inner rim', 'central bearing beam',
-         'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain', 'traffic cone')
+         'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain', 'traffic cone', 'tyre', 'wheel rim', 'crate', 'cement sack')
 EXACT_PARTS = {
     'Fracture inset rim': 19, 'Road around the aperture': 1, 'Road adjoining the fracture': 1,
     'Fracture lip and exposed bed': 2, 'Fracture sidewall in surface coordinates': 3,
@@ -83,6 +83,9 @@ def load_inventory(parent):
 
 
 def part_id(name):
+    for prefix, code in [('Tyre ', 26), ('Wheel rim ', 27), ('Road crate ', 28), ('Cement sack ', 29)]:
+        if name.startswith(prefix):
+            return code
     if name.startswith('Traffic cone '):
         return 25
     if name.startswith('Barrier '):
@@ -122,7 +125,7 @@ def glb_triangles(path, *, names=False, appearance=False, normal_map=False, pack
         a = gltf['accessors'][i]
         view = gltf['bufferViews'][a['bufferView']]
         dtype = {5121:'u1', 5123:'<u2', 5125:'<u4', 5126:'<f4'}[a['componentType']]
-        size = {'VEC3': 3, 'VEC2': 2, 'SCALAR': 1}[a['type']]
+        size = {'VEC4': 4, 'VEC3': 3, 'VEC2': 2, 'SCALAR': 1}[a['type']]
         if view.get('byteStride', np.dtype(dtype).itemsize*size) != np.dtype(dtype).itemsize*size or 'sparse' in a:
             raise ValueError('Unexpected non-packed asset accessor')
         return np.frombuffer(binary, dtype=dtype, offset=view.get('byteOffset',0)+a.get('byteOffset',0),
@@ -156,6 +159,15 @@ def glb_triangles(path, *, names=False, appearance=False, normal_map=False, pack
                     part += (normals, binary[offset:offset + packed['byteLength']])
                     sky = primitive['attributes'].get('_SKY_VISIBILITY')
                     part += ((None if sky is None else accessor(sky).ravel(), dielectric_spec(material)),)
+                    tangent_id = primitive["attributes"].get("TANGENT")
+                    if tangent_id is not None and "normalTexture" in material:
+                        t = accessor(tangent_id)
+                        t = np.stack((t[:,0], -t[:,2], t[:,1], t[:,3]), axis=-1)
+                        normal_tex = material["normalTexture"]
+                        image_id = gltf["textures"][normal_tex["index"]]["source"]
+                        packed_normal = gltf["bufferViews"][gltf["images"][image_id]["bufferView"]]
+                        pos = packed_normal.get("byteOffset", 0)
+                        part += ((t, binary[pos:pos + packed_normal["byteLength"]], float(normal_tex.get("scale", 1))),)
             yield part
 
 

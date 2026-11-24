@@ -40,6 +40,7 @@ def build(args):
         srgb,
         surface_radiance,
     )
+    from prop_registration import check_geometry
     from road_geometry import read_json, save_json, sha256 as digest
 
     baseline = torch.load(BASE / "joint.pt", map_location="cpu", weights_only=False)
@@ -65,6 +66,7 @@ def build(args):
             ):
                 raise ValueError("Unverified vehicle clearance")
             path = args.assets / key
+            check_geometry(anchor, path, native=True)
             mesh = RoadMesh(path)
             with np.load(path / "samples.npz", allow_pickle=False) as packed:
                 samples = {name: packed[name] for name in packed.files}
@@ -79,7 +81,8 @@ def build(args):
             quat = Rotation.from_matrix(rotation).as_quat()[:, [3, 0, 1, 2]]
             _, direct, sun = geometry_light(anchor)
             vis = 1 - blocked_sun(mesh, pts + n * 0.001, sun) if direct else 1.0
-            gain = irradiance(n, samples["arm"][:, 0] / 255.0, anchor, vis, samples.get("sky_visibility"))
+            shading = samples.get("shading_normal", n)
+            gain = irradiance(shading, samples["arm"][:, 0] / 255.0, anchor, vis, samples.get("sky_visibility"))
             optics = (
                 (samples["dielectric_f0"], samples["specular_roughness"], None)
                 if "dielectric_f0" in samples
@@ -88,7 +91,7 @@ def build(args):
             rgb = (
                 srgb(
                     surface_radiance(
-                        samples["albedo"], gain, n, anchor, samples.get("sky_visibility"), vis, optics
+                        samples["albedo"], gain, shading, anchor, samples.get("sky_visibility"), vis, optics
                     )
                 ).astype("f4")
                 / 255.0

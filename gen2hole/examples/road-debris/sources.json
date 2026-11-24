@@ -1,0 +1,206 @@
+{
+  "sources": {
+    "old_tyre": {
+      "page": "https://polyhaven.com/a/old_tyre",
+      "author": "MP",
+      "license": "CC0",
+      "dimension_mm": [
+        600.0000238418579,
+        164.99999910593033,
+        600.0000238418579
+      ],
+      "files": {
+        "old_tyre.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/old_tyre/old_tyre.bin",
+          "bytes": 84160,
+          "sha256": "659e7982c2de92ca1d13194c97bf112b6dec22d91daecc88e3912d37ce1b7252"
+        },
+        "old_tyre_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/old_tyre/old_tyre_1k.gltf",
+          "bytes": 2734,
+          "sha256": "ba7b417eb3dc747c356ac3cd1f125754755684eb664737a9f1fc9e490c0b766e"
+        },
+        "textures/old_tyre_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/old_tyre/old_tyre_arm_1k.jpg",
+          "bytes": 776823,
+          "sha256": "3bcf192f5b99a7a574f9e21e75927043e6726c601a5da15e3210a31db05e12d4"
+        },
+        "textures/old_tyre_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/old_tyre/old_tyre_diff_1k.jpg",
+          "bytes": 650708,
+          "sha256": "0e34ce658c0844c0c94022233226d495930d514c917a5fa15ffee4760567439e"
+        },
+        "textures/old_tyre_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/old_tyre/old_tyre_nor_gl_1k.jpg",
+          "bytes": 722778,
+          "sha256": "34b716e140408985ddbab7d4bf1d8d430edf834cd2fd4639d82b14cb393fa73e"
+        }
+      }
+    },
+    "plastic_crate_01": {
+      "page": "https://polyhaven.com/a/plastic_crate_01",
+      "author": "PierreB3D",
+      "license": "CC0",
+      "dimension_mm": [
+        298.00063371658325,
+        408.00413489341736,
+        264.1694247722626
+      ],
+      "files": {
+        "plastic_crate_01.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/plastic_crate_01/plastic_crate_01.bin",
+          "bytes": 789920,
+          "sha256": "59b307238a27f304739aeef0b1c9622d1e4efb31a96d805d2cfc0c461f9bb06d"
+        },
+        "plastic_crate_01_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/plastic_crate_01/plastic_crate_01_1k.gltf",
+          "bytes": 2793,
+          "sha256": "42556fc8e39e5834ebf474dff79d4c0524fd3074be6c86c0c6704a10be8b3756"
+        },
+        "textures/plastic_crate_01_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/plastic_crate_01/plastic_crate_01_arm_1k.jpg",
+          "bytes": 993636,
+          "sha256": "9a4af28d6fe8d5459a3c1a8706c0f8877221873ac9b83de580e6cfa63c3ecaa0"
+        },
+        "textures/plastic_crate_01_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/plastic_crate_01/plastic_crate_01_diff_1k.jpg",
+          "bytes": 518288,
+          "sha256": "d9109a42e397e39bbd7f42976d93122dbd5ccdef8ff64bce353571e1c1b994f6"
+        },
+        "textures/plastic_crate_01_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/plastic_crate_01/plastic_crate_01_nor_gl_1k.jpg",
+          "bytes": 884228,
+          "sha256": "6f0c44778216d50672d6a23660b22dec8b96bb6e71518d699c24630c34cf9217"
+        }
+      }
+    },
+    "cement_bag": {
+      "page": "https://polyhaven.com/a/cement_bag",
+      "author": "PierreB3D",
+      "license": "CC0",
+      "dimension_mm": [
+        462.4738246202469,
+        699.5841264724731,
+        179.9098700284958
+      ],
+      "files": {
+        "cement_bag.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/cement_bag/cement_bag.bin",
+          "bytes": 22280,
+          "sha256": "6f5bb09b0a706d330b208c5a820b23b03d1ddf535fea8c459de398b55bb9e3b0"
+        },
+        "cement_bag_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/cement_bag/cement_bag_1k.gltf",
+          "bytes": 2745,
+          "sha256": "60749af5830f8df1bc1388b177763b1ab09b9f40de3577d21a8c88659f6562a7"
+        },
+        "textures/cement_bag_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cement_bag/cement_bag_arm_1k.jpg",
+          "bytes": 409263,
+          "sha256": "ab39330e5c00b8d8c3febc58076717394d261daea50faba1c9fa90d8c51f06a4"
+        },
+        "textures/cement_bag_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cement_bag/cement_bag_diff_1k.jpg",
+          "bytes": 616339,
+          "sha256": "0f1a45ba37e569b744325976b0a4514bc9e0b073bc12f1adb4d3232f6e90ed3e"
+        },
+        "textures/cement_bag_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cement_bag/cement_bag_nor_gl_1k.jpg",
+          "bytes": 397422,
+          "sha256": "4f9b5ff34b029b47744dca27b864d35c167472792073a2141a5f69fc4cb39ddd"
+        }
+      }
+    },
+    "rusted_wheel_rim_01": {
+      "page": "https://polyhaven.com/a/rusted_wheel_rim_01",
+      "author": "John Hutcheson",
+      "license": "CC0",
+      "dimension_mm": [
+        402.85147726535797,
+        154.13154661655426,
+        395.4814374446869
+      ],
+      "files": {
+        "rusted_wheel_rim_01.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/rusted_wheel_rim_01/rusted_wheel_rim_01.bin",
+          "bytes": 654048,
+          "sha256": "2dd5797a812d482f432b2a475c78dfddaa1a3e88f27d8d2d2cfebc3852737f5e"
+        },
+        "rusted_wheel_rim_01_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/rusted_wheel_rim_01/rusted_wheel_rim_01_1k.gltf",
+          "bytes": 3748,
+          "sha256": "ddbfc1b68e40d0efa8651ef2d62fbcd6d85050aae64fcc7c0ee56dd7e1293a0b"
+        },
+        "textures/rusted_wheel_rim_01_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rusted_wheel_rim_01/rusted_wheel_rim_01_arm_1k.jpg",
+          "bytes": 606086,
+          "sha256": "e3c5ec3531901f2b9901d232afb512bd0922289ba64cc9b9f975d1b4ed46da27"
+        },
+        "textures/rusted_wheel_rim_01_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rusted_wheel_rim_01/rusted_wheel_rim_01_diff_1k.jpg",
+          "bytes": 517042,
+          "sha256": "e533e5d6b7d1526218f3795f5e3694541d3a87e428242645d04783bc3e416e61"
+        },
+        "textures/rusted_wheel_rim_01_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rusted_wheel_rim_01/rusted_wheel_rim_01_nor_gl_1k.jpg",
+          "bytes": 816565,
+          "sha256": "6ec1550711bf462579f27237fab6fa77141dadc2b21dc13e6a37c59f185e7ecd"
+        }
+      }
+    }
+  },
+  "assets": {
+    "R242": {
+      "source": "old_tyre",
+      "label": "平放的旧轮胎",
+      "orientation_xyz_deg": [
+        -90,
+        0,
+        0
+      ],
+      "mesh_prefix": "Tyre",
+      "nodes": [
+        0
+      ]
+    },
+    "R243": {
+      "source": "rusted_wheel_rim_01",
+      "label": "锈蚀钢轮圈",
+      "orientation_xyz_deg": [
+        -90,
+        0,
+        0
+      ],
+      "mesh_prefix": "Wheel rim",
+      "nodes": [
+        0
+      ]
+    },
+    "R244": {
+      "source": "plastic_crate_01",
+      "label": "侧倒的塑料周转筐",
+      "orientation_xyz_deg": [
+        0,
+        0,
+        90
+      ],
+      "mesh_prefix": "Road crate",
+      "nodes": [
+        0
+      ]
+    },
+    "R245": {
+      "source": "cement_bag",
+      "label": "落地的水泥袋",
+      "orientation_xyz_deg": [
+        0,
+        0,
+        0
+      ],
+      "mesh_prefix": "Cement sack",
+      "nodes": [
+        0
+      ]
+    }
+  }
+}

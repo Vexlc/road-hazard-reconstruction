@@ -229,6 +229,8 @@ def write_asset(
     image_cache, materials, maps = {}, {}, {}
     triangles, normals, uvs, material_ids = [], [], [], []
     sky_values = []
+    normal_maps = {}
+    frame_tangents = []
     face_count = 0
     for name, mat, attrs, faces in parts:
         attrs["POSITION"] -= origin
@@ -291,6 +293,14 @@ def write_asset(
         triangles.append(attrs["POSITION"][faces])
         normals.append(attrs["NORMAL"][faces])
         uvs.append(attrs["TEXCOORD_0"][faces])
+        if "TANGENT" in attrs and "normalTexture" in src["materials"][mat]:
+            entry = src["materials"][mat]["normalTexture"]
+            if mat not in normal_maps:
+                uri = src["images"][src["textures"][entry["index"]]["source"]]["uri"]
+                normal_maps[mat] = np.array(Image.open(folder / uri).convert("RGB")), float(entry.get("scale", 1))
+            frame_tangents.append(attrs["TANGENT"][faces])
+        else:
+            frame_tangents.append(None)
         if spec.get("bake_sky"):
             sky_values.append(attrs["_SKY_VISIBILITY"][faces])
         material_ids.append(np.full(len(faces), mat))
@@ -349,6 +359,17 @@ def write_asset(
     ids = np.concatenate(material_ids)[chosen]
     base_rgb = np.empty((count, 3), "u1")
     arm = np.empty_like(base_rgb)
+    shading_normals = None
+    if normal_maps:
+        from surface_normals import mapped_normal
+        frames = np.concatenate([t if t is not None else np.zeros((*tri.shape[:2], 4), "f4")
+                                 for t, tri in zip(frame_tangents, triangles)])
+        tangent = interp(frames)
+        shading_normals = norm.copy()
+        for mat, (image, scale) in normal_maps.items():
+            mask = (ids == mat) & (abs(tangent[:, 3]) > .5)
+            if mask.any():
+                shading_normals[mask] = mapped_normal(norm[mask], tangent[mask], texture_at(image, uv[mask]), scale)
     optics = {mat: dielectric_spec(src["materials"][mat]) for mat in maps}
     reflectance = np.zeros((count, 3), "f4")
     rough = np.ones(count, "f4")
@@ -368,6 +389,7 @@ def write_asset(
         out / "samples.npz",
         xyz=local_z(xyz),
         normal=local_z(norm),
+        **({"shading_normal": local_z(shading_normals)} if shading_normals is not None else {}),
         albedo=base_rgb,
         arm=arm,
         **(

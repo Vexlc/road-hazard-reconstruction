@@ -7,6 +7,51 @@ import numpy as np
 from PIL import Image
 
 
+def registered_geometry(folder):
+    """Identify the actual geometry used for support and clearance at the time of survey."""
+    from road_geometry import sha256
+    record = {name: sha256(folder / name) for name in ("asset.glb", "surface.npz")}
+    if (folder / "samples.npz").is_file():
+        record["samples.npz"] = sha256(folder / "samples.npz")
+    return record
+
+
+def check_geometry(anchor, folder, *, native=False):
+    records = anchor.get("registered_geometry")
+    if records is None:  # Accept original anchors created before per-file survey records.
+        return
+    from road_geometry import sha256
+    names = ("asset.glb", "surface.npz", "samples.npz") if native else ("asset.glb", "surface.npz")
+    actual = {k: sha256(folder / k) for k in names}
+    if not any(all(r.get(k) == v for k, v in actual.items()) for r in records):
+        raise ValueError("This asset differs from the geometry used to survey road support and clearance")
+
+
+def surveyed_road_pixels(origin, directions, plane, host, anchor, receivers, band):
+    """Identify metric road returns supported by the survey on both ends of the registration error."""
+    from prop_lighting import ground_confidence
+    if not np.isfinite(band) or not 0 < band <= .10:
+        raise ValueError("Use a positive surveyed road-normal uncertainty of at most 10 cm")
+    if receivers is None and "ground_receivers" not in anchor:
+        raise ValueError("Surveyed road reconciliation needs registered receiver support")
+    # A height tolerance alone admits arbitrarily distant surfaces at the optical horizon.
+    # Limit the displacement to three local survey cells, and reject upward-looking rays.
+    pitch = anchor.get("ground_receivers", {}).get("pitch_m", .12)
+    finite = np.isfinite(host) & np.isfinite(plane)
+    error = np.abs(np.subtract(host, plane, out=np.zeros_like(plane), where=finite))
+    candidate = (finite & (plane > 0) & (directions[..., 2] < 0) & (error <= 3 * pitch)
+                 & (error * abs(directions[..., 2]) <= band))
+    if receivers is not None:
+        candidate &= receivers
+    if "ground_receivers" in anchor and candidate.any():
+        o = np.broadcast_to(origin, directions.shape)[candidate, :2]
+        d = directions[candidate, :2]
+        measured = o + d * host[candidate, None]
+        footprint = o + d * plane[candidate, None]
+        candidate[candidate] = (ground_confidence(anchor, measured) >= .8) & (ground_confidence(anchor, footprint) >= .8)
+    return candidate
+
+
 def driving_clearance(anchor, bounds_xy, positions, *, half_width_m, half_length_m, margin_m=0.12):
     """Sweep the measured vehicle-reference trajectory past the full asset envelope in its support plane."""
     if (

@@ -43,7 +43,7 @@ def projected_axes(xyz, texcoords, rays, distance, derivatives, size, pixel_widt
     return axes
 
 
-def filtered(levels, uv, dx, dy):
+def filtered(levels, uv, dx, dy, *, wrap=False):
     # Eigenaxes of the texture-space footprint. Cap anisotropy at four taps.
     a = dx[:, 0] ** 2 + dy[:, 0] ** 2
     c = dx[:, 1] ** 2 + dy[:, 1] ** 2
@@ -71,7 +71,7 @@ def filtered(levels, uv, dx, dy):
                 coords = ((uv[active] + shift) * tex.shape[1::-1] - 0.5)[:, ::-1].T
                 values = np.column_stack(
                     [
-                        map_coordinates(ch, coords, order=1, mode="nearest", output="f4")
+                        map_coordinates(ch, coords, order=1, mode="grid-wrap" if wrap else "nearest", output="f4")
                         for ch in tex.transpose(2, 0, 1)
                     ]
                 )

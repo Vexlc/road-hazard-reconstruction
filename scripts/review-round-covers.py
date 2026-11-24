@@ -13,14 +13,14 @@ ROOT = Path(__file__).resolve().parents[1]
 PAIRS = ("M240-A241", "A240-M241")
 
 
-def video(views, site, dest):
-    clips = [views / pair / site / "driving.mp4" for pair in PAIRS]
+def video(views, site, dest, pairs=PAIRS):
+    clips = [views / pair / site / "driving.mp4" for pair in pairs]
     with TemporaryDirectory() as temp:
         work = Path(temp)
         for i, path in enumerate(clips):
             (work / f"{i}.mp4").symlink_to(path.resolve(strict=True))
         manifest = work / "clips.txt"
-        manifest.write_text("file '0.mp4'\nfile '1.mp4'\n")
+        manifest.write_text("".join(f"file '{i}.mp4'\n" for i in range(len(clips))))
         subprocess.run(
             [
                 get_ffmpeg_exe(),

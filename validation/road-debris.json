@@ -1,0 +1,421 @@
+{
+  "models": {
+    "R242": {
+      "asset.glb": "0ab6434345bf4a2bafb472b0d1c0099aa37b1203a52ba5345b7c14b1cd1f47d6",
+      "metadata.json": "bbb2b96e90eb023b2462109d46044182493684b3c232f6032664edde656ad053",
+      "samples.npz": "99da5ac465a2b2d475a90c7419b89daddaf62db9bd4a46718f2520349ca30040",
+      "surface.npz": "d3e10987ae17e62583d2186e796f30e0ba88e68ee6863e63fe45c36c4a879447"
+    },
+    "R242-R243": {
+      "asset.glb": "efec3e746a66ee9e2608a7bbfba9f26de8ed1d51cb9890b8975ece1d3da281c7",
+      "metadata.json": "69862069baae558c4e72d4e0a2d64b3c785dbe6e0de2bc14bd1f219928a325e6",
+      "samples.npz": "e6c190098f76f3bbe65296693a344a183e28df92208ac9303354ce61532b452c",
+      "surface.npz": "ae06b4d5a45c4646240f0fc7b9d4c44a68a32e8e0d1ec822b77c5bf4e9312a63"
+    },
+    "R243": {
+      "asset.glb": "415cdac93f5f9375331a37410f79c224814c6f154bd7a7fbb4f1efd842f864cc",
+      "metadata.json": "5f3a78d7e4781a6b4f647f78f28fd628c94e982d0844c39525c6fc05665c7456",
+      "samples.npz": "4f4943c2668915e3e81262a645cca5baea5fc155d2a61eafeae98a01266393f5",
+      "surface.npz": "38c7b767486dcc2933a3869ade52328b7cf5f5af67e77d86746a2661848adf7b"
+    },
+    "R244": {
+      "asset.glb": "1afed4b4d926c6f9880dc34248245362c60fe34837827d11f8e3e96e71d8e864",
+      "metadata.json": "72bab09483d5a04f99eb81bcd83d3166ed7ca8725ea701d749d75ef960985b0f",
+      "samples.npz": "035ef98ed86d50fac6bf1860a44f198421248e8b81dcfc028d3d0b733f42beba",
+      "surface.npz": "1f9e4d5616750c75463434317d7604d3f838f904bf2fc6da040ae1a525556315"
+    },
+    "R244-R245": {
+      "asset.glb": "3dfc3c572492de8e1ed18ed88920ce90fd8061ca4630166fc2eaadb5cb26eb52",
+      "metadata.json": "53b4dc9a3e34c572d250186c6c87ea4918f97fb0c27d6388f86379b94125e1c7",
+      "samples.npz": "96340c2c6c8a88e2e4da906c6e58afe284b1a5a8960f5c3018e99c790e536db9",
+      "surface.npz": "472614f3b102081d51b6fa366e4efecf0d33fab7c01f7ea562999633dc37b8aa"
+    },
+    "R245": {
+      "asset.glb": "b17bf5c60dd2078a073e9f679da355815ab79ddfe2a4e9b152bedda9961c653d",
+      "metadata.json": "a6f1d94ffd692a1ed21b036d45a8eea5907c7e635d676ac36c7741f05159065d",
+      "samples.npz": "3750350dcdb6c1edf3d56498554f34d5d4349ce8f257fa8e2fff5410ad462d11",
+      "surface.npz": "42582c1b5651bbe0cdd2f58a372815128c3decbbd7cc2726e3e86d9d9f3c654b"
+    }
+  },
+  "native": {
+    "R242-R243": {
+      "sha256": "c9742ca49d0607529f47b5b724ce3a3854ed18020a625b9556d1be9223a0d437",
+      "source_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+      "views": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 685,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 30379,
+          "max_baseline_error": 0
+        }
+      }
+    },
+    "R244-R245": {
+      "sha256": "cb6a3014708f4225a6d96a51ce9a649908be63032198ead69e865d70d852e423",
+      "source_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+      "views": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 1641,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 20090,
+          "max_baseline_error": 0
+        }
+      }
+    }
+  },
+  "physical": {
+    "R242-R243": {
+      "audi": {
+        "minimum_clearance_m": 0.28291866183280945,
+        "road_rms_m": 0.023000624973973097,
+        "views": {
+          "front_left": {
+            "frame": 1510,
+            "frames_with_asset": 10,
+            "visible_parts": {
+              "26": 4360,
+              "27": 3299
+            },
+            "protected_edits": 0
+          },
+          "rear_center": {
+            "frame": 1514,
+            "frames_with_asset": 18,
+            "visible_parts": {
+              "26": 8564,
+              "27": 3776
+            },
+            "protected_edits": 0
+          }
+        }
+      },
+      "sun": {
+        "minimum_clearance_m": 2.471112012863159,
+        "road_rms_m": 0.02263938316506276,
+        "views": {
+          "image_00": {
+            "frame": 206,
+            "frames_with_asset": 9,
+            "visible_parts": {
+              "26": 2179,
+              "27": 2071
+            },
+            "protected_edits": 0
+          },
+          "image_03": {
+            "frame": 213,
+            "frames_with_asset": 14,
+            "visible_parts": {
+              "26": 2430,
+              "27": 1427
+            },
+            "protected_edits": 0
+          }
+        }
+      },
+      "urban": {
+        "minimum_clearance_m": 0.19880756735801697,
+        "road_rms_m": 0.01229327067670037,
+        "views": {
+          "image_00": {
+            "frame": 219,
+            "frames_with_asset": 14,
+            "visible_parts": {
+              "26": 1792,
+              "27": 1300
+            },
+            "protected_edits": 0
+          },
+          "image_03": {
+            "frame": 228,
+            "frames_with_asset": 14,
+            "visible_parts": {
+              "26": 9141,
+              "27": 4905
+            },
+            "protected_edits": 0
+          }
+        }
+      }
+    },
+    "R244-R245": {
+      "audi": {
+        "minimum_clearance_m": 0.32960185408592224,
+        "road_rms_m": 0.023000624973973097,
+        "views": {
+          "front_left": {
+            "frame": 1510,
+            "frames_with_asset": 10,
+            "visible_parts": {
+              "28": 4364,
+              "29": 5570
+            },
+            "protected_edits": 0
+          },
+          "rear_center": {
+            "frame": 1514,
+            "frames_with_asset": 18,
+            "visible_parts": {
+              "28": 8683,
+              "29": 5468
+            },
+            "protected_edits": 0
+          }
+        }
+      },
+      "sun": {
+        "minimum_clearance_m": 2.5076918601989746,
+        "road_rms_m": 0.02263938316506276,
+        "views": {
+          "image_00": {
+            "frame": 206,
+            "frames_with_asset": 9,
+            "visible_parts": {
+              "28": 2266,
+              "29": 3472
+            },
+            "protected_edits": 0
+          },
+          "image_03": {
+            "frame": 214,
+            "frames_with_asset": 14,
+            "visible_parts": {
+              "28": 1951,
+              "29": 2739
+            },
+            "protected_edits": 0
+          }
+        }
+      },
+      "urban": {
+        "minimum_clearance_m": 0.24154385924339294,
+        "road_rms_m": 0.01229327067670037,
+        "views": {
+          "image_00": {
+            "frame": 219,
+            "frames_with_asset": 14,
+            "visible_parts": {
+              "28": 1875,
+              "29": 1900
+            },
+            "protected_edits": 0
+          },
+          "image_03": {
+            "frame": 227,
+            "frames_with_asset": 14,
+            "visible_parts": {
+              "28": 5908,
+              "29": 12152
+            },
+            "protected_edits": 0
+          }
+        }
+      }
+    }
+  },
+  "cycles": {
+    "R242-R243": {
+      "front": {
+        "R242": {
+          "enclosed_road_pixels": 22,
+          "enclosed_road_preserved": 22,
+          "pixels": 897,
+          "iou": 1.0,
+          "p95_range_error_m": 2.3221969604492155e-05,
+          "core": 695,
+          "smooth_normal_mae_deg": 4.433420658111572,
+          "mapped_normal_mae_deg": 2.5587191581726074,
+          "behind_optical_plane": 0
+        },
+        "R243": {
+          "enclosed_road_pixels": 9,
+          "enclosed_road_preserved": 9,
+          "pixels": 635,
+          "iou": 1.0,
+          "p95_range_error_m": 2.803802490234373e-05,
+          "core": 412,
+          "smooth_normal_mae_deg": 3.658846855163574,
+          "mapped_normal_mae_deg": 3.4945287704467773,
+          "behind_optical_plane": 0
+        }
+      },
+      "edge": {
+        "R242": {
+          "enclosed_road_pixels": 10,
+          "enclosed_road_preserved": 10,
+          "pixels": 1197,
+          "iou": 1.0,
+          "p95_range_error_m": 2.2649765014648438e-05,
+          "core": 969,
+          "smooth_normal_mae_deg": 4.703020095825195,
+          "mapped_normal_mae_deg": 2.4375836849212646,
+          "behind_optical_plane": 0
+        },
+        "R243": {
+          "enclosed_road_pixels": 10,
+          "enclosed_road_preserved": 10,
+          "pixels": 1095,
+          "iou": 1.0,
+          "p95_range_error_m": 2.7251243591308583e-05,
+          "core": 801,
+          "smooth_normal_mae_deg": 2.8941030502319336,
+          "mapped_normal_mae_deg": 2.1323397159576416,
+          "behind_optical_plane": 853
+        }
+      },
+      "rear": {
+        "R242": {
+          "enclosed_road_pixels": 500,
+          "enclosed_road_preserved": 500,
+          "pixels": 2119,
+          "iou": 0.9995283018867924,
+          "p95_range_error_m": 1.633167266845703e-05,
+          "core": 1734,
+          "smooth_normal_mae_deg": 4.230820655822754,
+          "mapped_normal_mae_deg": 1.8236051797866821,
+          "behind_optical_plane": 0
+        },
+        "R243": {
+          "enclosed_road_pixels": 79,
+          "enclosed_road_preserved": 79,
+          "pixels": 1189,
+          "iou": 1.0,
+          "p95_range_error_m": 1.5854835510253906e-05,
+          "core": 692,
+          "smooth_normal_mae_deg": 4.02984094619751,
+          "mapped_normal_mae_deg": 2.7318592071533203,
+          "behind_optical_plane": 0
+        }
+      }
+    },
+    "R244-R245": {
+      "front": {
+        "R244": {
+          "enclosed_road_pixels": 56,
+          "enclosed_road_preserved": 56,
+          "pixels": 784,
+          "iou": 1.0,
+          "p95_range_error_m": 1.6194581985473622e-05,
+          "core": 201,
+          "smooth_normal_mae_deg": 7.615846157073975,
+          "mapped_normal_mae_deg": 6.993175983428955,
+          "behind_optical_plane": 0
+        },
+        "R245": {
+          "enclosed_road_pixels": 0,
+          "enclosed_road_preserved": 0,
+          "pixels": 1270,
+          "iou": 1.0,
+          "p95_range_error_m": 2.4557113647460938e-05,
+          "core": 1087,
+          "smooth_normal_mae_deg": 2.7599830627441406,
+          "mapped_normal_mae_deg": 0.5453534126281738,
+          "behind_optical_plane": 0
+        }
+      },
+      "edge": {
+        "R244": {
+          "enclosed_road_pixels": 87,
+          "enclosed_road_preserved": 87,
+          "pixels": 1057,
+          "iou": 1.0,
+          "p95_range_error_m": 1.921653747558593e-05,
+          "core": 302,
+          "smooth_normal_mae_deg": 5.958527565002441,
+          "mapped_normal_mae_deg": 5.2782087326049805,
+          "behind_optical_plane": 0
+        },
+        "R245": {
+          "enclosed_road_pixels": 0,
+          "enclosed_road_preserved": 0,
+          "pixels": 2172,
+          "iou": 0.9990800367985281,
+          "p95_range_error_m": 1.6862154006957986e-05,
+          "core": 1952,
+          "smooth_normal_mae_deg": 2.961470603942871,
+          "mapped_normal_mae_deg": 0.5083437561988831,
+          "behind_optical_plane": 1285
+        }
+      },
+      "rear": {
+        "R244": {
+          "enclosed_road_pixels": 63,
+          "enclosed_road_preserved": 63,
+          "pixels": 1479,
+          "iou": 1.0,
+          "p95_range_error_m": 9.5367431640625e-06,
+          "core": 703,
+          "smooth_normal_mae_deg": 5.295517444610596,
+          "mapped_normal_mae_deg": 5.842731952667236,
+          "behind_optical_plane": 0
+        },
+        "R245": {
+          "enclosed_road_pixels": 0,
+          "enclosed_road_preserved": 0,
+          "pixels": 2642,
+          "iou": 1.0,
+          "p95_range_error_m": 1.7523765563964844e-05,
+          "core": 2382,
+          "smooth_normal_mae_deg": 2.780276298522949,
+          "mapped_normal_mae_deg": 0.5181572437286377,
+          "behind_optical_plane": 0
+        }
+      }
+    },
+    "summary": {
+      "smooth_normal_mae_deg": 3.6919939435637508,
+      "mapped_normal_mae_deg": 1.866477872879687,
+      "core_pixels": 11930,
+      "enclosed_road_pixels": 836,
+      "enclosed_road_preserved": 836
+    }
+  },
+  "surveyed_visibility": {
+    "road_polygon_pixels": 5248,
+    "strong_shadow_pixels": 751,
+    "radial_missing": 434,
+    "surveyed_missing": 42,
+    "post_pixels": 4315,
+    "projection_crossing_post": 402,
+    "changed_post_pixels": 43,
+    "post_max_srgb_delta": 1,
+    "post_asset_pixels": 0
+  },
+  "videos": {
+    "audi-front-rear.mp4": {
+      "frames": 84,
+      "seconds": 8.4
+    },
+    "joint-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    },
+    "kitti-sun-front-side.mp4": {
+      "frames": 70,
+      "seconds": 7.0
+    },
+    "kitti-urban-front-side.mp4": {
+      "frames": 80,
+      "seconds": 8.0
+    }
+  },
+  "clean_reproduction": {
+    "original_files_sha256_verified": 20,
+    "identical_asset_and_assembly_files": 24,
+    "refit_anchors_identical": 2,
+    "camera_products_identical": 24,
+    "native_checkpoints_identical": 2,
+    "legacy_cone_camera_products_identical": 4,
+    "legacy_cone_native_checkpoints_identical": 1,
+    "rejected_wrong_assembly": true,
+    "rejected_changed_native_samples": true
+  }
+}

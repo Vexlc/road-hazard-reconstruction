@@ -2,7 +2,9 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
-**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,489 个编号所属的 45 个系列与 15 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,493 个编号所属的 47 个系列与 17 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+
+**道路遗落物 R242–R245**　旧轮胎、钢轮圈、侧倒的周转筐和水泥袋，每次两件。原始纹理网格随库提供，可从空目录复建，并在真实车尾鱼眼或独立渲染器回放。[从零复现](docs/23-road-debris.md) · [指定 KITTI 检查点前后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/road-debris-v1.0.0/joint-front-rear.mp4) · [Audi 实车驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/road-debris-v1.0.0/audi-front-rear.mp4)
 
 **两套圆井盖、四个状态**　从实扫铸铁通气盖和龟裂混凝土填芯盖重建，每组两件，包含两种敞井。可在原生 KITTI 场景或由宿主给出逐像素光线的渲染器复现。[固定版本指南](docs/22-scanned-round-covers.md) · [Audi 实车前后鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/scanned-round-covers-v1.0.0/audi-front-rear.mp4) · [联合场景同帧回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/scanned-round-covers-v1.0.0/joint-front-rear.mp4)
 

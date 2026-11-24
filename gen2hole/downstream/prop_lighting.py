@@ -182,6 +182,7 @@ def compose(
     visible_xyz,
     sky_visibility=None,
     optics=None,
+    geometric_normals=None,
 ):
     _, direct, sun = geometry_light(anchor)
     out = rgb.copy()
@@ -206,7 +207,8 @@ def compose(
         out[apply] = srgb(linear(rgb[apply]) * (1 - shadow[apply, None]))
     if visible.any():
         n = normals[visible]
-        direct_vis = 1 - blocked_sun(mesh, visible_xyz + n * 0.001, sun) if direct else 1.0
+        offset_normal = n if geometric_normals is None else geometric_normals
+        direct_vis = 1 - blocked_sun(mesh, visible_xyz + offset_normal * 0.001, sun) if direct else 1.0
         light = irradiance(n, ambient[visible], anchor, direct_vis, sky_visibility)
         out[visible] = srgb(
             surface_radiance(color[visible], light, n, anchor, sky_visibility, direct_vis, optics)

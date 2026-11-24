@@ -1,10 +1,6 @@
 # 下载与复现入口
 
-已有资产编号或准备接入新宿主，可先看[全仓复现手册](16-reproduction-cookbook.md)与[逐系列重建、迁入代码对照](asset-code-index.md)。
-
-首次克隆或交接项目，请先看[资产重建与场景迁入复现手册](16-reproduction-cookbook.md)。其中列出按编号查询的方法、可下载输入、各宿主的代码入口和验收标准。
-
-全项目入口：[按输入选择重建方法](13-reproduce-and-transfer.md#按输入选择重建方法) · [按交付物选择迁入方法](13-reproduce-and-transfer.md#按交付物选择迁入方法) · [按编号查配方](../catalog/reconstruction-index.json)。下表只统计历史下载包，不是项目总量。
+从[全仓复现手册](16-reproduction-cookbook.md)开始。手头已有编号，查[逐系列重建与迁入代码表](asset-code-index.md)；已有新相机或道路，查[按宿主选择迁入入口](16-reproduction-cookbook.md#各类资产怎样迁入道路)。常见大坑、异常井盖和路面遗落物各有从原始输入到驶过后回看的示例。[20 件常见大坑](16-reproduction-cookbook.md#kitti-360-双坑与后视) · [缺盖井与通气盖](22-scanned-round-covers.md) · [轮胎、轮圈、筐和水泥袋](23-road-debris.md)
 
 本文记录五类历史资产库的下载与复现方法，共 1,199 条资产记录。当前图生三维、场景与传感器的本地开发入口见[项目首页](../README.md)。
 

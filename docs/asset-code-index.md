@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,489 个资产编号、45 个重建系列和 15 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,493 个资产编号、47 个重建系列和 17 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -73,6 +73,8 @@
 | [实物模型混凝土隔离墩](../docs/19-roadside-props.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E6%A8%A1%E5%9E%8B%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | B232 | [重建](../gen2hole/roadside_props.py) · [配方](../gen2hole/examples/roadside-props/sources.json) | [mesh-view](#route-mesh-view)、[joint-props](#route-joint-props) |
 | [消防栓与风化涂层](../docs/19-roadside-props.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E6%A8%A1%E5%9E%8B%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | H234 | [重建](../gen2hole/roadside_props.py) · [配方](../gen2hole/examples/roadside-props/sources.json) | [mesh-view](#route-mesh-view)、[joint-props](#route-joint-props) |
 | [直立与倒地交通锥](../docs/20-traffic-cones.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E6%A8%A1%E5%9E%8B%E9%87%8D%E5%BB%BA%E5%B9%B6%E6%88%90%E5%AF%B9%E6%94%BE%E7%BD%AE) | 2 | C236 | [重建](../gen2hole/traffic_cones.py) · [配方](../gen2hole/examples/traffic-cones/source.json) | [mesh-view](#route-mesh-view)、[joint-props](#route-joint-props)、[cycles](#route-cycles) |
+| [遗落轮胎与锈蚀轮圈](../docs/23-road-debris.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E7%BD%91%E6%A0%BC%E9%87%8D%E5%BB%BA%E5%B9%B6%E6%88%90%E7%BB%84) | 2 | R242 | [重建](../gen2hole/road_debris.py) · [配方](../gen2hole/examples/road-debris/sources.json) | [surveyed-receivers](#route-surveyed-receivers)、[mesh-view](#route-mesh-view)、[joint-props](#route-joint-props)、[cycles-debris](#route-cycles-debris) |
+| [侧倒周转筐与水泥袋](../docs/23-road-debris.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E7%BD%91%E6%A0%BC%E9%87%8D%E5%BB%BA%E5%B9%B6%E6%88%90%E7%BB%84) | 2 | R244 | [重建](../gen2hole/road_debris.py) · [配方](../gen2hole/examples/road-debris/sources.json) | [surveyed-receivers](#route-surveyed-receivers)、[mesh-view](#route-mesh-view)、[joint-props](#route-joint-props)、[cycles-debris](#route-cycles-debris) |
 
 ## 按宿主选迁入入口
 
@@ -93,5 +95,7 @@
 | <a id="route-pavement-layout"></a>pavement-layout | 独立支撑面上的成组开口、实车鱼眼与 Cycles 冠形路面 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [指南](../docs/21-measured-pavement.md) |
 | <a id="route-pavement-joint"></a>pavement-joint | 坑洞和检查井成对迁入 KITTI 联合检查点，按开口切分原路面高斯 | [pavement_pair.py](../streetcrafter/joint/pavement_pair.py) | [指南](../docs/21-measured-pavement.md) |
 | <a id="route-metric-ray-origins"></a>metric-ray-origins | 逐像素起点的米制光线与独立 Cycles 正交、后向鱼眼验收 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [指南](../docs/22-scanned-round-covers.md) |
+| <a id="route-surveyed-receivers"></a>surveyed-receivers | 实测路面支撑、双目前景与立体遗落物接地阴影 | [render-mixed-road.py](../scripts/render-mixed-road.py) | [指南](../docs/23-road-debris.md) |
+| <a id="route-cycles-debris"></a>cycles-debris | 独立 Cycles 鱼眼的透孔、径向深度与材质法线验收 | [render-debris-cycles.py](../scripts/render-debris-cycles.py) | [指南](../docs/23-road-debris.md) |
 
 更新目录后运行 `python3 scripts/check-reproduction-index.py --write-map`。常规检查运行同一命令并省略参数，检查编号、源文件、指南章节、迁入路线与本页是否一致。

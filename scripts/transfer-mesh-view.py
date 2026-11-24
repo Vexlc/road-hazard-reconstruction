@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "gen2hole/downstrea
 from mesh_transfer import RoadMesh, fit_footprint, fit_road, footprint_size, resolve_samples
 from road_geometry import save_json
 from prop_lighting import fit_receivers
-from prop_registration import driving_clearance
+from prop_registration import check_geometry, driving_clearance, registered_geometry
 from host_depth import geometry, road_samples
 from pavement_layout import PavementLayout, resolve_instances
 
@@ -86,6 +86,7 @@ def main():
             anchor = fit_footprint(anchor, points, footprint_size(args.asset))
             with np.load(args.asset / "surface.npz", allow_pickle=False) as field:
                 if "contact_mask" in field:
+                    anchor["registered_geometry"] = [registered_geometry(args.asset)]
                     anchor["ground_receivers"] = fit_receivers(points, anchor)
         if args.trajectory:
             if not args.asset:
@@ -105,6 +106,8 @@ def main():
         rays, host, protected, pose, origins = geometry(view, args.calibration, with_origins=True)
         rgb = view["rgb"]
         anchor = json.loads(args.anchor.read_text())
+        if not layout:
+            check_geometry(anchor, args.asset)
         foreground = view.get("occluder_range")
         if foreground is not None:
             if foreground.shape == rgb.shape[:2]:
@@ -118,6 +121,11 @@ def main():
             parser.error("Expected boolean H×W or S×H×W registered receiver_mask")
         if layout:
             layout.bind(anchor)
+        receiver_band = view.get("receiver_band_m")
+        if receiver_band is not None:
+            if receiver_band.shape != () or layout or not mesh.standing:
+                parser.error("receiver_band_m must be a scalar for an above-road asset")
+            receiver_band = float(receiver_band)
         samples = []
         for i, (subray, mask) in enumerate(zip(rays, protected)):
             options = dict(ray_origins_camera=None if origins is None else origins[i],
@@ -127,6 +135,9 @@ def main():
             if layout:
                 sample = layout.sample(rgb, pose, subray, anchor, host[i], mask, pixel_width=len(rays)**-0.5, **options)
             else:
+                options["receiver_band_m"] = receiver_band
+                if mesh.normal_textures:
+                    options["pixel_width"] = len(rays)**-.5
                 sample = mesh.render(rgb, pose, subray, anchor, host[i], mask, with_shadow=mesh.standing, **options)
             samples.append(sample)
         after, ids, ranges, *shadow = resolve_samples([s[:3] for s in samples] if layout else samples)

@@ -22,7 +22,7 @@ from prepare_kitti import project_mei, homogeneous  # noqa: E402
 from road_geometry import glb_triangles, save_json, sha256  # noqa: E402
 from pavement_layout import PavementLayout, resolve_instances
 from prop_lighting import fit_receivers, view_bounds
-from prop_registration import driving_clearance, stereo_ranges
+from prop_registration import driving_clearance, registered_geometry, stereo_ranges
 
 SUBPIXELS = ((-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0.25, 0.25))
 
@@ -228,8 +228,22 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
         matches = valid[rows, cols] & ((rays[rows, cols] * candidates).sum(-1) > 0.999 * radial)
         np.minimum.at(depth, (rows[matches], cols[matches]), radial[matches].astype("f4"))
     depth = cv2.erode(depth, np.ones((7, 7), "u1"))
+    foreground = depth if grouped else None
+    receiver_band = None
     if mesh.standing and raw_image.parent.name == "image_00":
+        if "stereo_receiver_band_m" in anchor:
+            # Keep independently observed non-road LiDAR in front of the replacement,
+            # even where an uncertain binocular match appears close to the road.
+            lidar = depth
+            receiver_band = anchor["stereo_receiver_band_m"]
         depth = stereo_ranges(raw_image)[y:y+h, x:x+w]
+        if receiver_band is not None:
+            # An eroded LiDAR range alone can extend the side of a pole over unrelated
+            # asphalt. Require independent binocular support before treating it as a hard occluder.
+            both = np.isfinite(lidar) & np.isfinite(depth)
+            residual = np.abs(np.subtract(lidar, depth, out=np.zeros_like(lidar), where=both))
+            confirmed = both & (residual < np.maximum(.12, .025 * depth))
+            foreground = np.where(confirmed, np.maximum(lidar, depth), np.inf)
     samples, packet_rays, packet_masks = [], [], []
     for dx, dy in SUBPIXELS:
         rays, valid = unproject(x, y, w, h, dx, dy)
@@ -238,7 +252,9 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
             samples.append(mesh.sample(image, pose, rays, anchor, depth, protected, occluder_range=depth,
                                        pixel_width=len(SUBPIXELS)**-0.5))
         else:
-            samples.append(mesh.render(image, pose, rays, anchor, depth, protected, with_shadow=mesh.standing))
+            samples.append(mesh.render(image, pose, rays, anchor, depth, protected, with_shadow=mesh.standing,
+                                       occluder_range=foreground, receiver_band_m=receiver_band,
+                                       pixel_width=len(SUBPIXELS)**-.5))
         if packet_path:
             packet_rays.append(rays)
             packet_masks.append(protected)
@@ -251,7 +267,8 @@ def frame_crop(mesh, anchor, sensor_model, pose, raw_image, points, window, ego,
             rgb=image,
             camera_to_world=pose,
             host_range=depth,
-            **({"occluder_range": depth} if grouped else {}),
+            **({"occluder_range": foreground} if foreground is not None else {}),
+            **({"receiver_band_m": np.float64(receiver_band)} if receiver_band is not None else {}),
             rays_camera=packet_rays,
             protected=packet_masks,
         )
@@ -406,6 +423,8 @@ def main():
     parser.add_argument("--layout", type=Path, help="Fit and render all openings of a pavement recipe together")
     parser.add_argument("--group", type=int, default=26, help="host trajectory index used to seed the anchor")
     parser.add_argument("--offset", type=float, default=2.25, help="metres toward camera right")
+    parser.add_argument("--surveyed-depth", action="store_true",
+                        help="Compare stereo road returns against measured local normal uncertainty and LiDAR foreground")
     parser.add_argument("--ego-mask",type=Path,help="Optional per-scene calibrated physical camera body outlines")
     parser.add_argument("--support-radius", type=float, default=2.1, help="KITTI candidate terrain search radius in metres")
     parser.add_argument("--seed-lift", type=float, default=0., help="KITTI candidate height above the nominal road, e.g. a sidewalk")
@@ -467,13 +486,16 @@ def main():
         ego_masks.update(json.loads(args.ego_mask.read_text())[args.scene])
     models = {cam: view_model(data["sensors"][cam], data) for cam, _ in views}
     standing_bounds = []
+    registered = []
     for folder in assets.values():
         with np.load(folder / "surface.npz", allow_pickle=False) as field:
             standing = "sky_blocked" in field
         if standing:
+            registered.append(registered_geometry(folder))
             for _, xyz, _ in glb_triangles(folder / "asset.glb"):
                 standing_bounds.extend((xyz[:, :2].min(0), xyz[:, :2].max(0)))
     if standing_bounds:
+        anchor["registered_geometry"] = registered
         anchor["host_scene"] = args.scene
         anchor["placement_group"] = args.group
         ref = data['source_calibration'][data['sensors'][0]]
@@ -485,6 +507,8 @@ def main():
                                                        half_width_m=1.03,half_length_m=2.55)
         anchor['vehicle_clearance']['envelope_center_forward_of_rig_m'] = 1.
         anchor['ground_receivers'] = fit_receivers(nearby, anchor)
+        if args.surveyed_depth:
+            anchor["stereo_receiver_band_m"] = float(np.clip(3 * anchor["rms_m"], .025, .065))
         anchor['lighting'] = measure_road_light(anchor, views, cams, data, filename, ego_masks, models)
         if args.lighting:
             anchor['lighting'].update(json.loads(args.lighting.read_text()))
