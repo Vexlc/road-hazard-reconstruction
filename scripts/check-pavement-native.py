@@ -22,9 +22,11 @@ def main():
     p.add_argument("--whole", type=Path, help="Optional replays with whole-particle removal")
     p.add_argument("--assets", type=Path, default=ROOT / "runs/measured-pavement")
     p.add_argument("--anchor", type=Path, default=ROOT / "outputs/measured-pavement/kitti/anchor.json")
+    p.add_argument("--pair", help="Rendered layout ID when it differs from the ordered asset IDs")
     p.add_argument("--out", type=Path, required=True)
     a = p.parse_args()
     seats = json.loads(a.anchor.read_text())["instances"]
+    pair = a.pair or "-".join(s["asset"] for s in seats)
     edges = []
     for s in seats:
         k = s["asset"]
@@ -66,7 +68,7 @@ def main():
                 continue
             exterior = cv2.dilate(mask, np.ones((21, 21), "u1")) == 0
             for k, s in sources.items():
-                img = np.asarray(Image.open(s / "P238-P239" / camera / pth.name), dtype=int)
+                img = np.asarray(Image.open(s / pair / camera / pth.name), dtype=int)
                 changed = np.max(abs(img - b), axis=2) > 8
                 stats[k]["outside_changed"] += int((exterior & changed).sum())
                 stats[k]["outside_samples"] += int(exterior.sum())

@@ -25,7 +25,7 @@ def check_navigation():
     """Follow relative links on source-checkout entry pages, including explicit HTML anchors."""
     pages = ["README.md", "docs/00-start-here.md", "docs/01-downloads.md",
              "docs/16-reproduction-cookbook.md", "docs/asset-code-index.md", "docs/23-road-debris.md",
-             "docs/24-asphalt-breakouts.md"]
+             "docs/24-asphalt-breakouts.md", "docs/25-rolling-covers.md"]
     anchors = {}
     count = 0
     for name in pages:

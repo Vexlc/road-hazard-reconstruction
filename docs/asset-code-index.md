@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,495 个资产编号、48 个重建系列和 18 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,499 个资产编号、50 个重建系列和 20 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -66,6 +66,8 @@
 | [实扫双联检查井与半缺盖](../docs/18-twin-hatch-transfer.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E4%BA%94%E4%BB%B6%E8%B5%84%E4%BA%A7) | 5 | A228 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/mixed-road/twin-hatch/survey.json) | [native](#route-native)、[mesh-view](#route-mesh-view) |
 | [带双圈排水孔的铸铁盖与缺盖井](../docs/22-scanned-round-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%B8%AA%E7%8A%B6%E6%80%81) | 2 | A240 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/scanned-round-covers/005/survey.json) · [输入准备](../gen2hole/examples/scanned-round-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins) |
 | [裂纹填芯盖与缺盖井](../docs/22-scanned-round-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%B8%AA%E7%8A%B6%E6%80%81) | 2 | A241 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/scanned-round-covers/008/survey.json) · [输入准备](../gen2hole/examples/scanned-round-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins) |
+| [沉降填芯井盖和沉降敞井](../docs/25-rolling-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | A248 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/rolling-covers/003/survey.json) · [输入准备](../gen2hole/examples/rolling-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins)、[rolling-readout](#route-rolling-readout)、[native-pavement-support](#route-native-pavement-support) |
+| [错位十孔铸铁盖和敞井](../docs/25-rolling-covers.md#%E4%BB%8E%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | A249 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/rolling-covers/006/survey.json) · [输入准备](../gen2hole/examples/rolling-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[metric-ray-origins](#route-metric-ray-origins)、[rolling-readout](#route-rolling-readout)、[native-pavement-support](#route-native-pavement-support) |
 
 ## 路侧与路面立体设施
 
@@ -99,5 +101,7 @@
 | <a id="route-surveyed-receivers"></a>surveyed-receivers | 实测路面支撑、双目前景与立体遗落物接地阴影 | [render-mixed-road.py](../scripts/render-mixed-road.py) | [指南](../docs/23-road-debris.md) |
 | <a id="route-cycles-debris"></a>cycles-debris | 独立 Cycles 鱼眼的透孔、径向深度与材质法线验收 | [render-debris-cycles.py](../scripts/render-debris-cycles.py) | [指南](../docs/23-road-debris.md) |
 | <a id="route-apron-exposure"></a>apron-exposure | 从真实路面登记曝光并回放只含坑床的鱼眼近景 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [指南](../docs/24-asphalt-breakouts.md) |
+| <a id="route-rolling-readout"></a>rolling-readout | 由纳秒行曝光时间和相机轨迹迁入行间移动的鱼眼宿主 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [指南](../docs/25-rolling-covers.md) |
+| <a id="route-native-pavement-support"></a>native-pavement-support | 由测量孔口、修补带和盖板悬出部分限定原生回放范围 | [local_pavement_replay.py](../streetcrafter/joint/local_pavement_replay.py) | [指南](../docs/25-rolling-covers.md) |
 
 更新目录后运行 `python3 scripts/check-reproduction-index.py --write-map`。常规检查运行同一命令并省略参数，检查编号、源文件、指南章节、迁入路线与本页是否一致。

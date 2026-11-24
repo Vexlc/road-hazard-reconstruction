@@ -1,5 +1,5 @@
 {
-  "asset_count": 1495,
+  "asset_count": 1499,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2109,6 +2109,44 @@
         "pavement-joint",
         "apron-exposure"
       ]
+    },
+    "settled-infill-well": {
+      "name": "沉降填芯井盖和沉降敞井",
+      "launcher": "gen2hole/survey.py",
+      "recipe": "gen2hole/examples/rolling-covers/003/survey.json",
+      "prepare": "gen2hole/examples/rolling-covers/prepare.py",
+      "guide": "docs/25-rolling-covers.md",
+      "section": "从扫描重建四件资产",
+      "assets": [
+        "A248",
+        "M248"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "metric-ray-origins",
+        "rolling-readout",
+        "native-pavement-support"
+      ]
+    },
+    "rusted-ten-vent-cover": {
+      "name": "错位十孔铸铁盖和敞井",
+      "launcher": "gen2hole/survey.py",
+      "recipe": "gen2hole/examples/rolling-covers/006/survey.json",
+      "prepare": "gen2hole/examples/rolling-covers/prepare.py",
+      "guide": "docs/25-rolling-covers.md",
+      "section": "从扫描重建四件资产",
+      "assets": [
+        "A249",
+        "M249"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "metric-ray-origins",
+        "rolling-readout",
+        "native-pavement-support"
+      ]
     }
   },
   "transfer_routes": {
@@ -2201,6 +2239,16 @@
       "name": "从真实路面登记曝光并回放只含坑床的鱼眼近景",
       "entry": "scripts/transfer-mesh-view.py",
       "guide": "docs/24-asphalt-breakouts.md"
+    },
+    "rolling-readout": {
+      "name": "由纳秒行曝光时间和相机轨迹迁入行间移动的鱼眼宿主",
+      "entry": "scripts/transfer-mesh-view.py",
+      "guide": "docs/25-rolling-covers.md"
+    },
+    "native-pavement-support": {
+      "name": "由测量孔口、修补带和盖板悬出部分限定原生回放范围",
+      "entry": "streetcrafter/joint/local_pavement_replay.py",
+      "guide": "docs/25-rolling-covers.md"
     }
   },
   "groups": {
@@ -2253,7 +2301,9 @@
       "square-infill-hatch",
       "twin-infill-hatch",
       "vented-cast-cover",
-      "cracked-infill-cover"
+      "cracked-infill-cover",
+      "settled-infill-well",
+      "rusted-ten-vent-cover"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

@@ -14,14 +14,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--views", type=Path, default=ROOT / "outputs/asphalt-breakouts"
-    )
-    a = parser.parse_args()
-    site = a.views / "audi"
-    pair = "P246-P247"
+def append_rear_hold(site, pair, labels, dest):
     folder = site / pair / "rear_center"
     frame = json.loads((site / "index.json").read_text())[pair]["views"]["rear_center"][
         "frame"
@@ -35,7 +28,7 @@ def main():
     draw.text(
         (16, 9), f"Audi 车尾鱼眼 · 驶离后同帧停留   {frame}", font=title, fill="white"
     )
-    for i, label in enumerate(["P246   碎集料龟裂坑", "P247   弧形剥落坑"], 1):
+    for i, label in enumerate(labels, 1):
         x0 = (i - 1) * 480 + 12
         draw.text((x0, 54), label, font=small, fill="#d4dedb")
         yy, xx = np.nonzero(ids == i)
@@ -61,8 +54,7 @@ def main():
                     112 + j * 194 + (158 - crop.height) // 2,
                 ),
             )
-    dest = a.views / "audi-front-rear.mp4"
-    with TemporaryDirectory(dir=a.views) as temp:
+    with TemporaryDirectory(dir=dest.parent) as temp:
         work = Path(temp).resolve()
         (work / "drive.mp4").symlink_to((site / "driving.mp4").resolve())
         with imageio.get_writer(
@@ -102,6 +94,13 @@ def main():
         ):
             raise ValueError("Missing drive frames or rear inspection")
         result.replace(dest)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--views", type=Path, default=ROOT / "outputs/asphalt-breakouts")
+    args = parser.parse_args()
+    append_rear_hold(args.views / "audi", "P246-P247", ["P246   碎集料龟裂坑", "P247   弧形剥落坑"], args.views / "audi-front-rear.mp4")
 
 
 if __name__ == "__main__":

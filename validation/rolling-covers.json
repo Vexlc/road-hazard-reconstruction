@@ -1,0 +1,1202 @@
+{
+  "source_archives": {
+    "ManholeCover003_1K-PNG.zip": "65862f21a505337daf9e77edd86afc3e9066d0118e56a5acecdc9419054d1e18",
+    "ManholeCover006_1K-PNG.zip": "dce260d2c2c778a763069dd8d9aac72796f89fb95cb2da7bde4d6d9768ef5a55"
+  },
+  "assets": {
+    "M249": {
+      "files": {
+        "asset.ply": "a834986db47c91b9dafc75fe8897ee3ce0518b7b199e4e065ac48583ad2ea2d6",
+        "metadata.json": "6802c7d9ba897156d9f3972c5f4fa4b4ff7f5684a442cce6d37ca36c630e0a2a",
+        "splat_material.npz": "39a7580f915b014c44fb303426ad741d0a39bc7d124f72a0de8875bca740b2de",
+        "surface.npz": "fabce471d1b32814df917c7f0d79e4645fed9bf9de75cdd76f55d2036ae2cadc",
+        "asset.glb": "c8a6b9736852833bb80312aeb705752605faeece83512ab57d8d78ea905c1b5f"
+      },
+      "construction": {
+        "id": "M249",
+        "label": "十孔铸铁盖整体缺失",
+        "state": "十孔铸铁盖整体缺失",
+        "family": "rusted-ten-vent-cover",
+        "category": "missing",
+        "recipe_version": "perforated-cover-v1",
+        "scale_kind": "Estimated from 0.80 m published texture extent and the visible circular seam. Hidden structure, installation states and relief amplitude are specified design dimensions.",
+        "break_polygon_uv": null,
+        "source_image": "references/frame.png",
+        "source_sha256": "ad64c266cbad10fcf4d91cda227a6f30dd1f1146de0bd5c99918886b0392d58e",
+        "mask_sha256": "d687f096a9a5b8aaeaabe5f6be2216eef8b1203bf786326db5198ff30c344bf8",
+        "geometry_source": "Rectified photographed face and individually marked through-openings. Designed recessed seat and hidden surfaces.",
+        "width_m": 0.687625,
+        "length_m": 0.687625,
+        "panel_size_m": [
+          0.7156250000000001,
+          0.7156250000000001
+        ],
+        "depth_design_m": 0.68,
+        "lid_thickness_m": 0.038,
+        "lid_angle_degrees": null,
+        "lid_offset_m": null,
+        "lid_transform": null,
+        "exponent": 2.0,
+        "road_projection": [
+          239.5,
+          239.5,
+          425.54136590782895,
+          425.54136590782895,
+          768
+        ],
+        "seed": 504031,
+        "reference_through_holes": 10,
+        "through_holes": 0,
+        "open_area_m2": null,
+        "open_face_fraction": null,
+        "source_url": "https://ambientcg.com/a/ManholeCover006",
+        "credit": "ambientCG, Manhole Cover 006. Scanned visible face. Installation, thickness, seat and buried shaft are designed.",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "registered_channels": [
+          "color",
+          "displacement",
+          "roughness",
+          "metalness",
+          "normal_gl"
+        ],
+        "geometry_parts": {
+          "Road around the aperture": 8192,
+          "Cast ring and cover seat": 1024,
+          "Cast seat riser and ledge": 1536,
+          "Inspection shaft": 512,
+          "Shaft bottom": 256
+        },
+        "units": "metres",
+        "glb_up": "Y",
+        "gaussian_up": "Z",
+        "origin": "aperture or defect centre on local road plane",
+        "highest_z_m": 0.001500000013038516,
+        "lowest_z_m": -0.6800000071525574,
+        "textures": [
+          "Pavement",
+          "Fixed frame and seat",
+          "Designed concrete well",
+          "Designed shaft floor"
+        ],
+        "size_multiplier": 1.0,
+        "gaussians": 389611,
+        "sh_degree": 1,
+        "appearance_sh_fit_mae": 0.0008126630733992594,
+        "gaussian_sigma_median_m": 0.002326805613338496
+      }
+    },
+    "A249": {
+      "files": {
+        "asset.ply": "851912378272ee3e757242e40242c30eb9b31e64474a2b007f3b494246072202",
+        "metadata.json": "31406cdffc01a6db97345f865f2d8f81e0f364f9daa81161ce3083d6d899e48f",
+        "splat_material.npz": "0780139e73be6450abdc750601a14764a3c1ac787418bac1a5935eaaefd4ab03",
+        "surface.npz": "24bd2b7b49b2dbef4889d8a3377c9611ee944edfe007e5be0fa99aeb9bc8345a",
+        "asset.glb": "492cc56ad6a106ac27a46d60f196184538937597f9df117e6aca365dd0aaed73"
+      },
+      "construction": {
+        "id": "A249",
+        "label": "轻微错位的十孔铸铁盖",
+        "state": "轻微错位的十孔铸铁盖",
+        "family": "rusted-ten-vent-cover",
+        "category": "raised",
+        "recipe_version": "perforated-cover-v1",
+        "scale_kind": "Estimated from 0.80 m published texture extent and the visible circular seam. Hidden structure, installation states and relief amplitude are specified design dimensions.",
+        "break_polygon_uv": null,
+        "source_image": "references/frame.png",
+        "source_sha256": "ad64c266cbad10fcf4d91cda227a6f30dd1f1146de0bd5c99918886b0392d58e",
+        "mask_sha256": "d687f096a9a5b8aaeaabe5f6be2216eef8b1203bf786326db5198ff30c344bf8",
+        "geometry_source": "Rectified photographed face and individually marked through-openings. Designed recessed seat and hidden surfaces.",
+        "width_m": 0.687625,
+        "length_m": 0.687625,
+        "panel_size_m": [
+          0.7156250000000001,
+          0.7156250000000001
+        ],
+        "depth_design_m": 0.68,
+        "lid_thickness_m": 0.038,
+        "lid_angle_degrees": 0.0,
+        "lid_offset_m": [
+          0.045,
+          -0.013
+        ],
+        "lid_transform": [
+          [
+            1.0,
+            0.0,
+            -0.0,
+            0.045
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            -0.013
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.03950018808245659
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "exponent": 2.0,
+        "road_projection": [
+          239.5,
+          239.5,
+          425.54136590782895,
+          425.54136590782895,
+          768
+        ],
+        "seed": 504031,
+        "through_holes": 10,
+        "open_area_m2": 0.01285806086226594,
+        "open_face_fraction": 0.0319711450780454,
+        "source_url": "https://ambientcg.com/a/ManholeCover006",
+        "credit": "ambientCG, Manhole Cover 006. Scanned visible face. Installation, thickness, seat and buried shaft are designed.",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "registered_channels": [
+          "color",
+          "displacement",
+          "roughness",
+          "metalness",
+          "normal_gl"
+        ],
+        "geometry_parts": {
+          "Road around the aperture": 8192,
+          "Cast ring and cover seat": 1024,
+          "Cast seat riser and ledge": 1536,
+          "Inspection shaft": 512,
+          "Shaft bottom": 256,
+          "Lid face": 18779,
+          "Lid underside": 18779,
+          "Lid aperture walls and perimeter": 886
+        },
+        "units": "metres",
+        "glb_up": "Y",
+        "gaussian_up": "Z",
+        "origin": "aperture or defect centre on local road plane",
+        "highest_z_m": 0.04250018671154976,
+        "lowest_z_m": -0.6800000071525574,
+        "textures": [
+          "Pavement",
+          "Fixed frame and seat",
+          "Designed concrete well",
+          "Designed shaft floor",
+          "Photographed perforated face",
+          "Exposed cast and cut iron"
+        ],
+        "size_multiplier": 1.0,
+        "gaussians": 629267,
+        "sh_degree": 1,
+        "appearance_sh_fit_mae": 0.000584502652203903,
+        "gaussian_sigma_median_m": 0.0011700600389279584
+      }
+    },
+    "M248": {
+      "files": {
+        "asset.ply": "cd561a9a063bbc8d7c1f38e15333fa10a65101c7b21433de945c601c3b96f36d",
+        "metadata.json": "294cfaee4e7c79724b78b5c0bdb544960622eb2b4f02daccb480b201ce43aea9",
+        "splat_material.npz": "97dd3b85fcb08eeaee1643bacf601da28ba0cf709f1e96a069445108882d66b4",
+        "surface.npz": "f195ee960ffb8cb24ecfcbbe9d91f6a1aae0f453fde7674b36102dfc56ae12c1",
+        "asset.glb": "21c340a8aa449866e9e98faf0e457d49867d4e1420e6d6ef3da791b684a92df3"
+      },
+      "construction": {
+        "id": "M248",
+        "label": "沉降检查井缺盖",
+        "state": "沉降检查井缺盖",
+        "family": "settled-infill-well",
+        "category": "missing",
+        "recipe_version": "perforated-cover-v1",
+        "scale_kind": "Estimated from 0.80 m published texture extent and the visible circular seam. Hidden structure, installation states and relief amplitude are specified design dimensions.",
+        "break_polygon_uv": null,
+        "source_image": "references/frame.png",
+        "source_sha256": "8daf8bc68a60f889158695841e2a0f67e5fd70330318371aaa61e4a4a1174318",
+        "mask_sha256": "b8e2552ec0978e0d07eed81978684fb437145c41a05251469c7cda8f9d72f2ec",
+        "geometry_source": "Registered solid face and displacement scan. Designed recessed seat and hidden surfaces.",
+        "width_m": 0.64075,
+        "length_m": 0.64075,
+        "panel_size_m": [
+          0.6687500000000001,
+          0.6687500000000001
+        ],
+        "depth_design_m": 0.64,
+        "lid_thickness_m": 0.043,
+        "lid_angle_degrees": null,
+        "lid_offset_m": null,
+        "lid_transform": null,
+        "exponent": 2.0,
+        "road_projection": [
+          239.5,
+          239.5,
+          442.49422632794455,
+          442.49422632794455,
+          768
+        ],
+        "seed": 504031,
+        "reference_through_holes": 0,
+        "through_holes": 0,
+        "open_area_m2": null,
+        "open_face_fraction": null,
+        "source_url": "https://ambientcg.com/a/ManholeCover003",
+        "credit": "ambientCG, Manhole Cover 003. Scanned visible face. Installation, thickness, seat and buried shaft are designed.",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "registered_channels": [
+          "color",
+          "displacement",
+          "roughness",
+          "metalness",
+          "normal_gl"
+        ],
+        "installation_grade": {
+          "center_z_m": -0.038,
+          "tilt_deg": 0.0,
+          "uphill_deg": 0.0
+        },
+        "frame_transform": [
+          [
+            1.0,
+            0.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -0.038
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "geometry_parts": {
+          "Road around the aperture": 8192,
+          "Chipped concrete collar": 512,
+          "Cast ring and cover seat": 1024,
+          "Cast seat riser and ledge": 1536,
+          "Inspection shaft": 512,
+          "Shaft bottom": 256
+        },
+        "units": "metres",
+        "glb_up": "Y",
+        "gaussian_up": "Z",
+        "origin": "aperture or defect centre on local road plane",
+        "highest_z_m": 0.0,
+        "lowest_z_m": -0.6399999856948853,
+        "textures": [
+          "Pavement",
+          "Fixed frame and seat",
+          "Designed concrete well",
+          "Designed shaft floor"
+        ],
+        "size_multiplier": 1.0,
+        "gaussians": 417103,
+        "sh_degree": 1,
+        "appearance_sh_fit_mae": 0.0007617713887996685,
+        "gaussian_sigma_median_m": 0.0014803341495198009
+      }
+    },
+    "A248": {
+      "files": {
+        "asset.ply": "7ff0cddd86b4d70c53ef232e189d203889a6f813566f1541311edf939730974e",
+        "metadata.json": "b514d73a99df673aca1dc373d3dc9e632d7c156e3734e6c93352f402ec96f0a8",
+        "splat_material.npz": "4cc683ab266155a6a2b548dbefcc46631cd9d797fe5c4a1880b6efc8b6503dbd",
+        "surface.npz": "d5efb7f5a68fb212aeef452a4e21aaec0ef79ac1eb5e6a4ea076aeb16af972b8",
+        "asset.glb": "0433dd4ff73fcdd26b7e809b70aa31ce65710aa2e74920444100ae2fc6ba4494"
+      },
+      "construction": {
+        "id": "A248",
+        "label": "沉降的石质填芯检查井盖",
+        "state": "沉降的石质填芯检查井盖",
+        "family": "settled-infill-well",
+        "category": "raised",
+        "recipe_version": "perforated-cover-v1",
+        "scale_kind": "Estimated from 0.80 m published texture extent and the visible circular seam. Hidden structure, installation states and relief amplitude are specified design dimensions.",
+        "break_polygon_uv": null,
+        "source_image": "references/frame.png",
+        "source_sha256": "8daf8bc68a60f889158695841e2a0f67e5fd70330318371aaa61e4a4a1174318",
+        "mask_sha256": "b8e2552ec0978e0d07eed81978684fb437145c41a05251469c7cda8f9d72f2ec",
+        "geometry_source": "Registered solid face and displacement scan. Designed recessed seat and hidden surfaces.",
+        "width_m": 0.64075,
+        "length_m": 0.64075,
+        "panel_size_m": [
+          0.6687500000000001,
+          0.6687500000000001
+        ],
+        "depth_design_m": 0.64,
+        "lid_thickness_m": 0.043,
+        "lid_angle_degrees": 0.0,
+        "lid_offset_m": [
+          0.0,
+          0.0
+        ],
+        "lid_transform": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -0.038
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "exponent": 2.0,
+        "road_projection": [
+          239.5,
+          239.5,
+          442.49422632794455,
+          442.49422632794455,
+          768
+        ],
+        "seed": 504031,
+        "through_holes": 0,
+        "open_area_m2": 0.0,
+        "open_face_fraction": 0.0,
+        "source_url": "https://ambientcg.com/a/ManholeCover003",
+        "credit": "ambientCG, Manhole Cover 003. Scanned visible face. Installation, thickness, seat and buried shaft are designed.",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "registered_channels": [
+          "color",
+          "displacement",
+          "roughness",
+          "metalness",
+          "normal_gl"
+        ],
+        "installation_grade": {
+          "center_z_m": -0.038,
+          "tilt_deg": 0.0,
+          "uphill_deg": 0.0
+        },
+        "frame_transform": [
+          [
+            1.0,
+            0.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -0.038
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "geometry_parts": {
+          "Road around the aperture": 8192,
+          "Chipped concrete collar": 512,
+          "Cast ring and cover seat": 1024,
+          "Cast seat riser and ledge": 1536,
+          "Inspection shaft": 512,
+          "Shaft bottom": 256,
+          "Lid face": 19184,
+          "Lid underside": 19184,
+          "Lid aperture walls and perimeter": 512
+        },
+        "units": "metres",
+        "glb_up": "Y",
+        "gaussian_up": "Z",
+        "origin": "aperture or defect centre on local road plane",
+        "highest_z_m": 0.0,
+        "lowest_z_m": -0.6399999856948853,
+        "textures": [
+          "Pavement",
+          "Fixed frame and seat",
+          "Designed concrete well",
+          "Designed shaft floor",
+          "Photographed perforated face",
+          "Exposed cast and cut iron"
+        ],
+        "size_multiplier": 1.0,
+        "gaussians": 629285,
+        "sh_degree": 1,
+        "appearance_sh_fit_mae": 0.0005309258017521829,
+        "gaussian_sigma_median_m": 0.0011384221094959265
+      }
+    }
+  },
+  "host_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+  "readout": {
+    "A248-M249": {
+      "top-down": {
+        "support_check": {
+          "native_asset_pixels": 1765,
+          "unchanged_distant_road": 2187
+        },
+        "max_pose_entry_error": 1.7763568394002505e-15,
+        "registered": {
+          "A248": {
+            "native_pixels": 1058,
+            "instance_iou": 0.999054820415879,
+            "part_agreement": 0.999054820415879,
+            "p95_range_error_m": 1.5306472778320296e-05,
+            "parts": {
+              "5": 153,
+              "8": 94,
+              "9": 809,
+              "11": 1
+            }
+          },
+          "M249": {
+            "native_pixels": 707,
+            "instance_iou": 1.0,
+            "part_agreement": 1.0,
+            "p95_range_error_m": 2.2578239440917952e-05,
+            "parts": {
+              "5": 199,
+              "6": 508
+            }
+          }
+        },
+        "single_pose": {
+          "A248": {
+            "native_pixels": 1058,
+            "instance_iou": 0.885589519650655,
+            "part_agreement": 0.8402646502835539,
+            "p95_range_error_m": 0.009898567199707017,
+            "parts": {
+              "5": 76,
+              "8": 49,
+              "9": 764
+            }
+          },
+          "M249": {
+            "native_pixels": 707,
+            "instance_iou": 0.9061277705345502,
+            "part_agreement": 0.8826025459688827,
+            "p95_range_error_m": 0.057775473594665526,
+            "parts": {
+              "5": 148,
+              "6": 476
+            }
+          }
+        },
+        "road_p95_m": 2.824871683981613e-05,
+        "single_pose_road_p95_m": 2.821567982467659e-05,
+        "subray_origin_max_error_m": 1.072395507506485e-06,
+        "protected_pixels": 56318
+      },
+      "bottom-up": {
+        "support_check": {
+          "native_asset_pixels": 1878,
+          "unchanged_distant_road": 2179
+        },
+        "max_pose_entry_error": 1.7763568394002505e-15,
+        "registered": {
+          "A248": {
+            "native_pixels": 1102,
+            "instance_iou": 0.9990925589836661,
+            "part_agreement": 0.9990925589836661,
+            "p95_range_error_m": 1.4543533325195312e-05,
+            "parts": {
+              "5": 162,
+              "8": 96,
+              "9": 843
+            }
+          },
+          "M249": {
+            "native_pixels": 776,
+            "instance_iou": 1.0,
+            "part_agreement": 1.0,
+            "p95_range_error_m": 2.1755695343017578e-05,
+            "parts": {
+              "5": 250,
+              "6": 526
+            }
+          }
+        },
+        "single_pose": {
+          "A248": {
+            "native_pixels": 1102,
+            "instance_iou": 0.8839441535776614,
+            "part_agreement": 0.8058076225045372,
+            "p95_range_error_m": 0.009922790527343746,
+            "parts": {
+              "5": 75,
+              "8": 49,
+              "9": 764
+            }
+          },
+          "M249": {
+            "native_pixels": 776,
+            "instance_iou": 0.9086294416243654,
+            "part_agreement": 0.8311855670103093,
+            "p95_range_error_m": 0.05769681930541992,
+            "parts": {
+              "5": 169,
+              "6": 476
+            }
+          }
+        },
+        "road_p95_m": 2.8095657092338377e-05,
+        "single_pose_road_p95_m": 2.8140337147421887e-05,
+        "subray_origin_max_error_m": 1.3842733892488468e-07,
+        "protected_pixels": 56342
+      }
+    },
+    "M248-A249": {
+      "top-down": {
+        "support_check": {
+          "native_asset_pixels": 1816,
+          "unchanged_distant_road": 2187
+        },
+        "max_pose_entry_error": 1.7763568394002505e-15,
+        "registered": {
+          "M248": {
+            "native_pixels": 1058,
+            "instance_iou": 0.999054820415879,
+            "part_agreement": 0.999054820415879,
+            "p95_range_error_m": 2.5796890258789046e-05,
+            "parts": {
+              "5": 313,
+              "6": 650,
+              "8": 94
+            }
+          },
+          "A249": {
+            "native_pixels": 758,
+            "instance_iou": 1.0,
+            "part_agreement": 1.0,
+            "p95_range_error_m": 2.6226043701171875e-05,
+            "parts": {
+              "5": 52,
+              "6": 19,
+              "9": 591,
+              "11": 96
+            }
+          }
+        },
+        "single_pose": {
+          "M248": {
+            "native_pixels": 1058,
+            "instance_iou": 0.885589519650655,
+            "part_agreement": 0.8506616257088847,
+            "p95_range_error_m": 0.0553435206413269,
+            "parts": {
+              "5": 242,
+              "6": 609,
+              "8": 49
+            }
+          },
+          "A249": {
+            "native_pixels": 758,
+            "instance_iou": 0.9143206854345165,
+            "part_agreement": 0.8126649076517151,
+            "p95_range_error_m": 0.02476447820663452,
+            "parts": {
+              "5": 21,
+              "6": 2,
+              "9": 564,
+              "11": 29
+            }
+          }
+        },
+        "road_p95_m": 2.824871683981613e-05,
+        "single_pose_road_p95_m": 2.821567982467659e-05,
+        "subray_origin_max_error_m": 1.072395507506485e-06,
+        "protected_pixels": 56318
+      },
+      "bottom-up": {
+        "support_check": {
+          "native_asset_pixels": 1934,
+          "unchanged_distant_road": 2179
+        },
+        "max_pose_entry_error": 1.7763568394002505e-15,
+        "registered": {
+          "M248": {
+            "native_pixels": 1102,
+            "instance_iou": 0.9990925589836661,
+            "part_agreement": 0.9990925589836661,
+            "p95_range_error_m": 2.7418136596679688e-05,
+            "parts": {
+              "5": 324,
+              "6": 681,
+              "8": 96
+            }
+          },
+          "A249": {
+            "native_pixels": 832,
+            "instance_iou": 1.0,
+            "part_agreement": 1.0,
+            "p95_range_error_m": 2.7155876159667936e-05,
+            "parts": {
+              "5": 54,
+              "6": 18,
+              "9": 665,
+              "11": 95
+            }
+          }
+        },
+        "single_pose": {
+          "M248": {
+            "native_pixels": 1102,
+            "instance_iou": 0.8839441535776614,
+            "part_agreement": 0.8157894736842105,
+            "p95_range_error_m": 0.05539014339447021,
+            "parts": {
+              "5": 241,
+              "6": 609,
+              "8": 49
+            }
+          },
+          "A249": {
+            "native_pixels": 832,
+            "instance_iou": 0.9169632265717675,
+            "part_agreement": 0.7716346153846154,
+            "p95_range_error_m": 0.02360473871231034,
+            "parts": {
+              "5": 21,
+              "6": 2,
+              "9": 590,
+              "11": 29
+            }
+          }
+        },
+        "road_p95_m": 2.8095657092338377e-05,
+        "single_pose_road_p95_m": 2.8140337147421887e-05,
+        "subray_origin_max_error_m": 1.3842733892488468e-07,
+        "protected_pixels": 56342
+      }
+    }
+  },
+  "cycles": {
+    "A248-M249": {
+      "ortho": {
+        "A248": {
+          "iou": 0.998299480396788,
+          "part_agreement": 0.9983938019652305,
+          "p95_range_error_m": 1.9073486328125e-06,
+          "matched_part_pixels": {
+            "5": 2161,
+            "8": 299,
+            "9": 8082,
+            "11": 25
+          }
+        },
+        "M249": {
+          "iou": 0.9999106185198426,
+          "part_agreement": 1.0,
+          "p95_range_error_m": 1.811981201171875e-05,
+          "matched_part_pixels": {
+            "5": 2281,
+            "6": 4312,
+            "7": 4594
+          }
+        }
+      },
+      "rear": {
+        "A248": {
+          "iou": 0.9981515711645101,
+          "part_agreement": 0.9981515711645101,
+          "p95_range_error_m": 2.695322036743163e-05,
+          "matched_part_pixels": {
+            "5": 68,
+            "8": 56,
+            "9": 416
+          }
+        },
+        "M249": {
+          "iou": 0.9975062344139651,
+          "part_agreement": 0.9975062344139651,
+          "p95_range_error_m": 3.006458282470701e-05,
+          "matched_part_pixels": {
+            "5": 130,
+            "6": 270
+          }
+        }
+      }
+    },
+    "M248-A249": {
+      "ortho": {
+        "M248": {
+          "iou": 0.998299480396788,
+          "part_agreement": 0.9982993197278912,
+          "p95_range_error_m": 1.8358230590820312e-05,
+          "matched_part_pixels": {
+            "5": 3024,
+            "6": 3483,
+            "7": 3760,
+            "8": 299
+          }
+        },
+        "A249": {
+          "iou": 0.999913329866528,
+          "part_agreement": 0.9998266447083297,
+          "p95_range_error_m": 5.7220458984375e-06,
+          "matched_part_pixels": {
+            "5": 1037,
+            "6": 269,
+            "7": 347,
+            "9": 9477,
+            "11": 405
+          }
+        }
+      },
+      "rear": {
+        "M248": {
+          "iou": 0.9981515711645101,
+          "part_agreement": 0.9981515711645101,
+          "p95_range_error_m": 3.105401992797846e-05,
+          "matched_part_pixels": {
+            "5": 168,
+            "6": 316,
+            "8": 56
+          }
+        },
+        "A249": {
+          "iou": 0.9977220956719818,
+          "part_agreement": 0.9977220956719818,
+          "p95_range_error_m": 3.821849822998046e-05,
+          "matched_part_pixels": {
+            "5": 32,
+            "6": 10,
+            "9": 338,
+            "11": 58
+          }
+        }
+      }
+    }
+  },
+  "real": {
+    "A248-M249": {
+      "audi": {
+        "front_left": {
+          "parts": {
+            "A248": {
+              "5": 281,
+              "8": 545,
+              "9": 1646
+            },
+            "M249": {
+              "5": 1905,
+              "6": 2367
+            }
+          },
+          "protected_edits": 0,
+          "both_frames": [
+            1500,
+            1501,
+            1502,
+            1503,
+            1504,
+            1505,
+            1506,
+            1507,
+            1508
+          ],
+          "source_sha256": "fcb1a7e3e902260c869b65a49eb8c93f5f3cd8c87d38f0d790d50f6baf8b14ad",
+          "frame": 1506
+        },
+        "rear_center": {
+          "parts": {
+            "A248": {
+              "5": 925,
+              "8": 1164,
+              "9": 4894
+            },
+            "M249": {
+              "5": 1800,
+              "6": 2265
+            }
+          },
+          "protected_edits": 0,
+          "both_frames": [
+            1516,
+            1517,
+            1518,
+            1519,
+            1520,
+            1521,
+            1522,
+            1523,
+            1524,
+            1525,
+            1526,
+            1527,
+            1528,
+            1529,
+            1530,
+            1531,
+            1532,
+            1533,
+            1534
+          ],
+          "source_sha256": "49f8f48a3a15887a7e633a16b29ad2331745f137b2b8284d5303ce722619dd19",
+          "frame": 1517
+        }
+      },
+      "kitti": {
+        "image_00": {
+          "parts": {
+            "A248": {
+              "5": 127,
+              "8": 236,
+              "9": 716
+            },
+            "M249": {
+              "5": 901,
+              "6": 1121
+            }
+          },
+          "protected_edits": 0,
+          "both_frames": [
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219
+          ],
+          "source_sha256": "7bd54957309c649caa8fc95493020c3592f00d0ac4607617158df084d018b717",
+          "frame": 218
+        },
+        "image_03": {
+          "parts": {
+            "A248": {
+              "5": 1209,
+              "8": 585,
+              "9": 1941
+            },
+            "M249": {
+              "5": 1082,
+              "6": 2698,
+              "7": 363
+            }
+          },
+          "protected_edits": 0,
+          "both_frames": [
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233
+          ],
+          "source_sha256": "777a1f126a3e9c44eaf6535f31aa3bbf4f17a8bda77e48a69597af3e532b656a",
+          "frame": 229
+        }
+      }
+    },
+    "M248-A249": {
+      "audi": {
+        "front_left": {
+          "parts": {
+            "M248": {
+              "5": 1121,
+              "6": 806,
+              "8": 545
+            },
+            "A249": {
+              "5": 450,
+              "6": 257,
+              "9": 3468,
+              "11": 872
+            }
+          },
+          "protected_edits": 0,
+          "both_frames": [
+            1500,
+            1501,
+            1502,
+            1503,
+            1504,
+            1505,
+            1506,
+            1507,
+            1508
+          ],
+          "source_sha256": "fcb1a7e3e902260c869b65a49eb8c93f5f3cd8c87d38f0d790d50f6baf8b14ad",
+          "frame": 1506
+        },
+        "rear_center": {
+          "parts": {
+            "M248": {
+              "5": 2795,
+              "6": 3024,
+              "8": 1164
+            },
+            "A249": {
+              "5": 95,
+              "9": 3484,
+              "11": 834
+            }
+          },
+          "protected_edits": 0,
+          "both_frames": [
+            1516,
+            1517,
+            1518,
+            1519,
+            1520,
+            1521,
+            1522,
+            1523,
+            1524,
+            1525,
+            1526,
+            1527,
+            1528,
+            1529,
+            1530,
+            1531,
+            1532,
+            1533,
+            1534
+          ],
+          "source_sha256": "49f8f48a3a15887a7e633a16b29ad2331745f137b2b8284d5303ce722619dd19",
+          "frame": 1517
+        }
+      },
+      "kitti": {
+        "image_00": {
+          "parts": {
+            "M248": {
+              "5": 498,
+              "6": 345,
+              "8": 236
+            },
+            "A249": {
+              "5": 222,
+              "6": 107,
+              "9": 1637,
+              "11": 411
+            }
+          },
+          "protected_edits": 0,
+          "both_frames": [
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219
+          ],
+          "source_sha256": "7bd54957309c649caa8fc95493020c3592f00d0ac4607617158df084d018b717",
+          "frame": 218
+        },
+        "image_03": {
+          "parts": {
+            "M248": {
+              "5": 2111,
+              "6": 1039,
+              "8": 585
+            },
+            "A249": {
+              "5": 33,
+              "6": 1,
+              "7": 1,
+              "9": 4055,
+              "11": 327
+            }
+          },
+          "protected_edits": 0,
+          "both_frames": [
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233
+          ],
+          "source_sha256": "777a1f126a3e9c44eaf6535f31aa3bbf4f17a8bda77e48a69597af3e532b656a",
+          "frame": 229
+        }
+      }
+    }
+  },
+  "native": {
+    "A248-M249": {
+      "sha256": "8fe4a7f5bfb4441aad3d110ed2b3b6494c5d54b8e4d065190ce5ac50214d3620",
+      "edge_gap_m": 0.6312075858028767,
+      "raw": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 1893,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 202878,
+          "max_baseline_error": 0
+        }
+      },
+      "localized": {
+        "support_m": 0.18,
+        "views": {
+          "front": {
+            "frames": 48,
+            "raw_outside_changes": 6172,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 3095,
+            "max_interior_error": 0
+          },
+          "rear": {
+            "frames": 48,
+            "raw_outside_changes": 610738,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 179191,
+            "max_interior_error": 0
+          }
+        }
+      },
+      "raw_projected_rim": {
+        "front": {
+          "split": {
+            "inside_samples": 4029,
+            "inside_changed": 3223,
+            "outside_changed": 2853,
+            "outside_samples": 1723310,
+            "frames": 16
+          }
+        },
+        "rear": {
+          "split": {
+            "inside_samples": 135352,
+            "inside_changed": 123128,
+            "outside_changed": 488208,
+            "outside_samples": 14525896,
+            "frames": 16
+          }
+        }
+      }
+    },
+    "M248-A249": {
+      "sha256": "82608230e8d5a8cacad8029912925d5d2a4ed73a44cf58728e2e9fdbcbaa08f2",
+      "edge_gap_m": 0.631223217433151,
+      "raw": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 1944,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 201908,
+          "max_baseline_error": 0
+        }
+      },
+      "localized": {
+        "support_m": 0.18,
+        "views": {
+          "front": {
+            "frames": 48,
+            "raw_outside_changes": 6155,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 3670,
+            "max_interior_error": 0
+          },
+          "rear": {
+            "frames": 48,
+            "raw_outside_changes": 608932,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 167835,
+            "max_interior_error": 0
+          }
+        }
+      },
+      "raw_projected_rim": {
+        "front": {
+          "split": {
+            "inside_samples": 4028,
+            "inside_changed": 3334,
+            "outside_changed": 2853,
+            "outside_samples": 1723307,
+            "frames": 16
+          }
+        },
+        "rear": {
+          "split": {
+            "inside_samples": 135846,
+            "inside_changed": 113896,
+            "outside_changed": 487059,
+            "outside_samples": 14525277,
+            "frames": 16
+          }
+        }
+      }
+    }
+  },
+  "videos": {
+    "joint-local-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    },
+    "joint-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    },
+    "audi-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 9.6
+    },
+    "kitti-front-side.mp4": {
+      "frames": 80,
+      "seconds": 8.0
+    }
+  },
+  "clean_reproduction": {
+    "identical_scan_inputs": 14,
+    "identical_asset_files": 20,
+    "identical_registered_anchors": 4,
+    "identical_readout_outputs": 16,
+    "identical_native_checkpoints": 2,
+    "historical_asphalt_camera_products": 24,
+    "historical_audi_video_identical": true
+  }
+}

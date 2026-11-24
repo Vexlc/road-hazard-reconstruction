@@ -1,6 +1,7 @@
 """Install surveyed above-ground props in pairs in the KITTI 30k joint checkpoint; replay from disk."""
 
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -13,7 +14,7 @@ from PIL import Image
 from scipy.spatial.transform import Rotation
 import torch
 
-from pit_pairs import BASE, ROOT, RIG, SCENE, C0, particles, rear_mount, hd_camera
+from pit_pairs import BASE, ROOT, RIG, SCENE, C0, particles, rear_mount, hd_camera, digest
 from prepare import load_rig
 
 PAIRS = [("H234", "B232"), ("H235", "B233")]
@@ -182,11 +183,18 @@ def render(args):
         for label, path in [("original", BASE / "joint.pt")] + [
             (name, args.out / name / "joint.pt") for name, _ in scenes(args)
         ]:
-            model.restore(torch.load(path, map_location="cpu", weights_only=False))
+            state = torch.load(path, map_location="cpu", weights_only=False)
+            model.restore(state)
+            if args.save_pavement_inputs:
+                source = dict(checkpoint_sha256=digest(path), views={})
+                if label != "original":
+                    source["placement"] = state["pit_pair"]
             metrics = {}
             for camera in ["front", "rear"]:
                 dest = args.renders / label / camera
                 dest.mkdir(exist_ok=True, parents=True)
+                if args.save_pavement_inputs:
+                    source["views"][camera] = {}
                 changed = []
                 errors = []
                 template = None
@@ -225,6 +233,9 @@ def render(args):
                         base_image = np.asarray(Image.open(args.renders / "original" / camera / name))
                         changed.append(int((abs(arr.astype(int) - base_image).max(2) > 8).sum()))
                     Image.fromarray(arr).save(dest / name, compress_level=2)
+                    if args.save_pavement_inputs:
+                        source["views"][camera][name] = dict(world_to_camera=w2c.tolist(), calibration=k,
+                                                             rgb_sha256=hashlib.sha256(arr.tobytes()).hexdigest())
                 if errors and max(errors) > 2 or changed and max(changed) < 50:
                     raise ValueError(f"No visible geometry or unreproduced original host: {label}/{camera}")
                 metrics[camera] = dict(
@@ -233,6 +244,8 @@ def render(args):
                     max_baseline_error=max(errors, default=0),
                 )
             (args.renders / label / "replay.json").write_text(json.dumps(metrics, indent=2) + "\n")
+            if args.save_pavement_inputs:
+                (args.renders / label / "native-source.json").write_text(json.dumps(source, indent=2, allow_nan=False) + "\n")
             print(label, metrics, flush=True)
 
 
@@ -245,6 +258,7 @@ if __name__ == "__main__":
     p.add_argument("--renders", type=Path, default=ROOT / "outputs/roadside-props/joint")
     p.add_argument("--assembly", help="ID of a baked freestanding layout")
     p.add_argument("--site", help="Anchor subdirectory for the layout")
+    p.add_argument("--save-pavement-inputs", action="store_true", help="Record each native RGB digest, calibration and registered pavement geometry")
     args = p.parse_args()
     for key in ["assets", "views", "out", "renders"]:
         setattr(args, key, getattr(args, key).resolve())

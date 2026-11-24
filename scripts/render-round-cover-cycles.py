@@ -21,6 +21,7 @@ PARTS = {
     "Cast ring and cover seat": 5,
     "Cast seat riser and ledge": 5,
     "Inspection shaft": 6,
+    "Chipped concrete collar": 8,
     "Shaft bottom": 7,
     "Lid face": 9,
     "Lid underside": 10,
@@ -28,7 +29,7 @@ PARTS = {
 }
 
 
-def build(scene, world, recipe, assets):
+def build(scene, world, recipe, assets, profiles):
     source = rig.plane(scene, world)
     asphalt = source.data.materials[0]
     bpy.data.objects.remove(source, do_unlink=True)
@@ -36,8 +37,7 @@ def build(scene, world, recipe, assets):
     corners = np.array([[-12.0, -12.0], [12.0, -12.0], [12.0, 12.0], [-12.0, 12.0]])
     for i, row in enumerate(recipe["instances"], 1):
         key = row["asset"]
-        survey = "005" if key.endswith("240") else "008"
-        config = json.loads((EXAMPLES / survey / "survey.json").read_text())["perforations"]
+        config = profiles[key]
         radius = config["size_m"][0] / 2 + config["frame_band_m"]
         frame = np.eye(4)
         frame[:2, 3] = row["xy_m"]
@@ -87,16 +87,32 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--assets", type=Path, default=ROOT / "runs/scanned-round-covers")
     parser.add_argument("--out", type=Path, default=ROOT / "outputs/scanned-round-covers/cycles")
+    parser.add_argument("--layout", type=Path, action="append", help="Layout JSON beside the numbered scan folders")
+    parser.add_argument("--readout", action="store_true", help="Also render eight consecutive moving camera poses")
     args = parser.parse_args()
     world = np.eye(4)
     world[:3, :3] = Rotation.from_euler("zyx", [37, -3, 4], degrees=True).as_matrix()
     world[:3, 3] = [-3.27, 7.55, 1.85]
-    for key in ("M240-A241", "A240-M241"):
+    layouts = args.layout or [EXAMPLES / (k + ".json") for k in ("M240-A241", "A240-M241")]
+    for path in layouts:
+        layout = json.loads(path.read_text())
+        key = layout["id"]
+        profiles = {}
+        for survey in sorted(path.parent.glob("*/survey.json")):
+            config = json.loads(survey.read_text())
+            for state in config["states"]:
+                profiles[state["id"]] = config["perforations"]
         scene, camera = rig.setup_scene(32)
         objects, plugs = build(
-            scene, world, json.loads((EXAMPLES / (key + ".json")).read_text()), args.assets
+            scene, world, layout, args.assets, profiles
         )
-        for view, yaw, pitch, eye in [("rear", 180, 28, [0, 2.4, 1.3]), ("ortho", 0, 67, [0, -1.17, 2.76])]:
+        shots = [("rear", 180, 28, [0, 2.4, 1.3]), ("ortho", 0, 67, [0, -1.17, 2.76])]
+        if args.readout:
+            # Eight time slices of a 24 ms readout: forward speed 12.5 m/s and yaw rate 25 deg/s.
+            for index in range(8):
+                fraction = (index + 0.5) / 8
+                shots.append((f"readout-{index}", 180 + 0.6 * fraction, 28, [0, 1.58 + .30 * fraction, 1.19]))
+        for view, yaw, pitch, eye in shots:
             camera.data.type = "ORTHO" if view == "ortho" else "PANO"
             camera.data.ortho_scale = 3.15
             for show in (False, True):

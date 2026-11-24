@@ -1,0 +1,24 @@
+{
+  "id": "A248-M249",
+  "label": "沉降填芯盖和缺失通气盖",
+  "instances": [
+    {
+      "id": "infill",
+      "asset": "A248",
+      "xy_m": [
+        0.65,
+        0.12
+      ],
+      "heading_deg": -9
+    },
+    {
+      "id": "vented",
+      "asset": "M249",
+      "xy_m": [
+        -0.7,
+        -0.22
+      ],
+      "heading_deg": 15
+    }
+  ]
+}

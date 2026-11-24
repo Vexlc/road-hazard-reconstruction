@@ -1,0 +1,77 @@
+{
+  "family": "settled-infill-well",
+  "source_url": "https://ambientcg.com/a/ManholeCover003",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "credit": "ambientCG, Manhole Cover 003. Scanned visible face. Installation, thickness, seat and buried shaft are designed.",
+  "frame": {
+    "image": "Color.png"
+  },
+  "perforations": {
+    "shape": "round",
+    "corners_xy": [
+      [
+        78,
+        84
+      ],
+      [
+        934,
+        84
+      ],
+      [
+        934,
+        940
+      ],
+      [
+        78,
+        940
+      ]
+    ],
+    "mask": "openings.png",
+    "lining": "../../perforated-covers/lining.jpg",
+    "displacement": "Displacement.png",
+    "pavement": "../../perforated-covers/split-iron/pavement.jpg",
+    "surround_mask": "Opacity.png",
+    "metalness": "Metalness.png",
+    "roughness": "Roughness.png",
+    "normal_gl": "NormalGL.png",
+    "relief_span_m": 0.006,
+    "photographed_surround": true,
+    "edge_patch_xyxy": [
+      499,
+      70,
+      513,
+      78
+    ],
+    "size_m": [
+      0.6687500000000001,
+      0.6687500000000001
+    ],
+    "frame_band_m": 0.046875,
+    "seat_overlap_m": 0.014,
+    "thickness_m": 0.043,
+    "shaft_depth_m": 0.64,
+    "solid_face": true,
+    "scale_source": "Estimated from 0.80 m published texture extent and the visible circular seam. Hidden structure, installation states and relief amplitude are specified design dimensions."
+  },
+  "states": [
+    {
+      "id": "A248",
+      "label": "沉降的石质填芯检查井盖",
+      "installation_grade": {
+        "center_z_m": -0.038,
+        "tilt_deg": 0.0,
+        "uphill_deg": 0.0
+      }
+    },
+    {
+      "id": "M248",
+      "label": "沉降检查井缺盖",
+      "absent": true,
+      "installation_grade": {
+        "center_z_m": -0.038,
+        "tilt_deg": 0.0,
+        "uphill_deg": 0.0
+      }
+    }
+  ]
+}

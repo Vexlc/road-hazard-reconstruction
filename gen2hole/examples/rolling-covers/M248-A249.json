@@ -1,0 +1,24 @@
+{
+  "id": "M248-A249",
+  "label": "沉降敞井和错位通气盖",
+  "instances": [
+    {
+      "id": "infill",
+      "asset": "M248",
+      "xy_m": [
+        0.65,
+        0.12
+      ],
+      "heading_deg": -9
+    },
+    {
+      "id": "vented",
+      "asset": "A249",
+      "xy_m": [
+        -0.7,
+        -0.22
+      ],
+      "heading_deg": 15
+    }
+  ]
+}

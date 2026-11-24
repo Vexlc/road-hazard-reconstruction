@@ -120,7 +120,7 @@ done
 
 输入相机包为 NPZ。世界系和相机平移使用米，相机坐标为右、下、前。基本字段为 `rgb`、`camera_to_world`、`protected`、单位方向 `rays_camera`，以及 `host_range` 或 `host_z` 二选一。建议另给可替换道路 `receiver_mask` 与已知前景的径向距离 `occluder_range`；缺少可靠道路深度时可改用同坐标系的路面点云拟合。宿主需自己提供真实标定与尺度。[字段和遮挡约定](20-traffic-cones.md#用现成的非高斯相机包复现) · [光线入口](../scripts/transfer-mesh-view.py)
 
-对于非共心镜头，可提供 `ray_origins_camera`，表示每条光线在参考相机系中的起点，单位为米，形状为 H×W×3 或 S×H×W×3。省略时所有光线从相机中心出发。世界系命中点为 `R @ (origin + range * direction) + translation`。`host_z` 表示命中点在参考相机系里的有符号 Z；径向距离为 `(host_z - origin.z) / direction.z`。接近光学地平线时请使用径向距离。`occluder_range` 同样从各自的光线起点量起。相机有分块、曝光或滚动快门差异时，需由宿主完成相应注册或逐帧拆包。
+对于非共心镜头，可提供 `ray_origins_camera`，表示每条光线在参考相机系中的起点，单位为米，形状为 H×W×3 或 S×H×W×3。省略时所有光线从相机中心出发。世界系命中点为 `R @ (origin + range * direction) + translation`。`host_z` 表示命中点在参考相机系里的有符号 Z；径向距离为 `(host_z - origin.z) / direction.z`。接近光学地平线时请使用径向距离。`occluder_range` 同样从各自的光线起点量起。此固定标签对行间运动需要预先注册。后续版本可直接接收逐行曝光时间与相机轨迹。[运动鱼眼接入与验收](https://github.com/Vexlc/road-hazard-reconstruction/blob/rolling-covers-v1.0.0/docs/25-rolling-covers.md)
 
 以下命令只需 CPU 和上一节的下载包。正交机位中各像素光线平行、起点不同。用它恢复米制路面，再从未参与拟合的 220° 后向鱼眼重放。样例的拟合种子和朝向来自控制场景；自己的场景要使用自己的世界系与落点。
 

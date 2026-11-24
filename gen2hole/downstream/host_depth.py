@@ -77,6 +77,15 @@ def geometry(view, calibration=None, *, with_origins=False):
     rot = pose[:3, :3]
     if not np.allclose(rot.T @ rot, np.eye(3), atol=1e-5) or np.linalg.det(rot) < 0.99999:
         raise ValueError("Expected metric right-handed rotation")
+    if "row_time_ns" in view and "camera_to_world_rows" not in view:
+        raise ValueError("Register row_time_ns with the sensor trajectory before rendering a rolling exposure")
+    if "camera_to_world_rows" in view:
+        from camera_readout import rolling_rays
+
+        if not with_origins:
+            raise ValueError("Rolling readout requires origins as well as directions")
+        # Convert signed Z to radial metres in the row's optical frame before changing frame.
+        rays, origins = rolling_rays(view["camera_to_world_rows"], pose, rays, origins)
     result = rays, distance, protected, pose
     return (*result, origins) if with_origins else result
 

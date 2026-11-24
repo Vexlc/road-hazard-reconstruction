@@ -1,0 +1,71 @@
+{
+  "family": "rusted-ten-vent-cover",
+  "source_url": "https://ambientcg.com/a/ManholeCover006",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "credit": "ambientCG, Manhole Cover 006. Scanned visible face. Installation, thickness, seat and buried shaft are designed.",
+  "frame": {
+    "image": "Color.png"
+  },
+  "perforations": {
+    "shape": "round",
+    "corners_xy": [
+      [
+        50,
+        52
+      ],
+      [
+        966,
+        52
+      ],
+      [
+        966,
+        968
+      ],
+      [
+        50,
+        968
+      ]
+    ],
+    "mask": "openings.png",
+    "lining": "../../perforated-covers/lining.jpg",
+    "displacement": "Displacement.png",
+    "pavement": "../../perforated-covers/split-iron/pavement.jpg",
+    "surround_mask": "Opacity.png",
+    "metalness": "Metalness.png",
+    "roughness": "Roughness.png",
+    "normal_gl": "NormalGL.png",
+    "relief_span_m": 0.006,
+    "photographed_surround": true,
+    "edge_patch_xyxy": [
+      501,
+      38,
+      515,
+      46
+    ],
+    "size_m": [
+      0.7156250000000001,
+      0.7156250000000001
+    ],
+    "frame_band_m": 0.025,
+    "seat_overlap_m": 0.014,
+    "thickness_m": 0.038,
+    "shaft_depth_m": 0.68,
+    "solid_face": false,
+    "scale_source": "Estimated from 0.80 m published texture extent and the visible circular seam. Hidden structure, installation states and relief amplitude are specified design dimensions."
+  },
+  "states": [
+    {
+      "id": "A249",
+      "label": "轻微错位的十孔铸铁盖",
+      "offset_m": [
+        0.045,
+        -0.013
+      ]
+    },
+    {
+      "id": "M249",
+      "label": "十孔铸铁盖整体缺失",
+      "absent": true
+    }
+  ]
+}

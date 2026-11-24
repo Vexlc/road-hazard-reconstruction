@@ -20,6 +20,10 @@ from pavement_layout import PavementLayout, resolve_instances
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     tasks = parser.add_subparsers(dest="task", required=True)
+    readout = tasks.add_parser("register-readout", help="Register scanline mid-exposures against a timed sensor trajectory")
+    readout.add_argument("view", type=Path, help="Host packet with int64 row_time_ns")
+    readout.add_argument("trajectory", type=Path, help="NPZ with time_ns and camera_to_world at each knot")
+    readout.add_argument("out", type=Path)
     road = tasks.add_parser("road-points", help="Unproject labelled metric road depth from calibrated host views")
     road.add_argument("out", type=Path, help="World-space XYZ .npy")
     road.add_argument("views", type=Path, nargs="+")
@@ -67,6 +71,28 @@ def main():
     for command in (fit, render, color):
         command.add_argument("--asset-root", type=Path, help="Built members of a pavement layout JSON")
     args = parser.parse_args()
+    if args.task == "register-readout":
+        from camera_readout import interpolate_rows
+        from tempfile import NamedTemporaryFile
+
+        with np.load(args.view, allow_pickle=False) as data:
+            packet = dict(data)
+        with np.load(args.trajectory, allow_pickle=False) as traj:
+            rows = interpolate_rows(traj["time_ns"], traj["camera_to_world"], packet["row_time_ns"])
+        if rows.shape[-3] != packet["rgb"].shape[0]:
+            parser.error("row_time_ns must match the image height")
+        packet["camera_to_world_rows"] = rows
+        packet.setdefault("camera_to_world", rows.reshape(-1, *rows.shape[-3:])[0, rows.shape[-3] // 2])
+        args.out.parent.mkdir(exist_ok=True, parents=True)
+        with NamedTemporaryFile(dir=args.out.parent, delete=False) as tmp:
+            path = Path(tmp.name)
+        try:
+            with path.open("wb") as target:
+                np.savez_compressed(target, **packet)
+            path.replace(args.out)
+        finally:
+            path.unlink(missing_ok=True)
+        return
     grouped = bool(getattr(args, "asset", None) and args.asset.is_file())
     if grouped and args.asset_root is None:
         parser.error("Provide --asset-root with a pavement layout recipe")

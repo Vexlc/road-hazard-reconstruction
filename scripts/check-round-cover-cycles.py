@@ -48,13 +48,15 @@ def main():
     parser.add_argument("--assets", type=Path, default=ROOT / "runs/scanned-round-covers")
     parser.add_argument("--views", type=Path, default=ROOT / "outputs/scanned-round-covers/cycles")
     parser.add_argument("--out", type=Path, default=ROOT / "outputs/scanned-round-covers/oracle")
+    parser.add_argument("--layout", type=Path, action="append", help="Check the selected layout recipes")
     args = parser.parse_args()
     report = {}
-    for pair in ("M240-A241", "A240-M241"):
+    inputs = args.layout or [ROOT / "gen2hole/examples/scanned-round-covers" / (key + ".json") for key in ("M240-A241", "A240-M241")]
+    for recipe in inputs:
+        pair = json.loads(recipe.read_text())["id"]
         dest = args.out / pair
         dest.mkdir(parents=True, exist_ok=True)
         source = args.views / pair
-        recipe = ROOT / "gen2hole/examples/scanned-round-covers" / (pair + ".json")
         packets = {}
         packets["ortho"], world = ortho_packet(source / "ortho/host")
         packets["rear"], _, _ = reference.packet(source / "rear/host", False)
