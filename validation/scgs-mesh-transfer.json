@@ -1,0 +1,64 @@
+{
+  "kitti360-0000": {
+    "sensor": "image_03",
+    "source_frame": 227,
+    "scgs_frame": "02730.png",
+    "host_rgb_sha256": "e45d12772475257dafb6ad242b2a5de5402c445e73f39ccc9199889b616a268e",
+    "point_cloud_sha256": "fd095bd48baf42c04e601beaf79d87eaea3edf2802d3d28ba5862b888b190e56",
+    "deformation_sha256": "c28c5bf4e343a95bf03687b5101fc7a63f8f9160332bb12449f65e777770f19d",
+    "models": {
+      "P223": {
+        "glb_sha256": "a40393b0ebc80ac193026d207d715b49096b65b102b5ab77609760308969d1f5",
+        "visible_pixels": 4584,
+        "native_sensor_pixels": 917,
+        "changed_pixels": 4584,
+        "depth_matches_photo_exactly": true
+      },
+      "A225": {
+        "glb_sha256": "b250470323f5e834c707ddbb954740de2bc29bf25b22feb3bd37d97499827a6d",
+        "visible_pixels": 17997,
+        "native_sensor_pixels": 3514,
+        "changed_pixels": 17997,
+        "depth_matches_photo_exactly": true
+      },
+      "M224": {
+        "glb_sha256": "476c633f689206610ca220e31132e29341aa32a574e8c9ebf733e9912ec84275",
+        "visible_pixels": 16471,
+        "native_sensor_pixels": 3216,
+        "changed_pixels": 16471,
+        "depth_matches_photo_exactly": true
+      }
+    }
+  },
+  "a2d2-frontleft": {
+    "sensor": "rear_center",
+    "source_frame": 1516,
+    "scgs_frame": "03950.png",
+    "host_rgb_sha256": "09bb9f635fcb5a71ae8fb41208be3b2079a1c54b8ea99912314b7400a6eaacda",
+    "point_cloud_sha256": "181e6432c4d784ee21f1dd890463944a5887044adf87ff034ba66aebba138468",
+    "deformation_sha256": "96f6c418fef994cde411693c862aa52eb6f95fccc01da9adc8e43c08ce1a4f2f",
+    "models": {
+      "P223": {
+        "glb_sha256": "a40393b0ebc80ac193026d207d715b49096b65b102b5ab77609760308969d1f5",
+        "visible_pixels": 1524,
+        "native_sensor_pixels": 107,
+        "changed_pixels": 1521,
+        "depth_matches_photo_exactly": true
+      },
+      "A225": {
+        "glb_sha256": "b250470323f5e834c707ddbb954740de2bc29bf25b22feb3bd37d97499827a6d",
+        "visible_pixels": 8486,
+        "native_sensor_pixels": 557,
+        "changed_pixels": 8486,
+        "depth_matches_photo_exactly": true
+      },
+      "M224": {
+        "glb_sha256": "476c633f689206610ca220e31132e29341aa32a574e8c9ebf733e9912ec84275",
+        "visible_pixels": 8422,
+        "native_sensor_pixels": 551,
+        "changed_pixels": 8422,
+        "depth_matches_photo_exactly": true
+      }
+    }
+  }
+}

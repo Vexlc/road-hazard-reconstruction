@@ -116,3 +116,21 @@ for name in after.png part.png range.npy; do cmp "$sample/$name" "work/packet-ch
 当地表切口挡住地下视线，井外的井壁和井底不会穿过路面显露。显式保护区域与比目标更近的宿主前景保留原像素。输出包含 RGB、部件 ID、命中资产表面的径向量程，可用于宿主自有的成像或深度管线。当前接口支持仓库这种自带部件名、UV 纹理与切口场的资产。自有引擎若需要可训练的场景检查点，仍需实现该引擎的几何写入、路面开孔与重载。[网格求交与光照融合](../gen2hole/downstream/mesh_transfer.py) · [宿主接口](../scripts/transfer-mesh-view.py)
 
 **已实测的边界。** 两段路分别使用实车坐标，Audi 还对每次曝光的局部路面重新配准，以校正视觉里程计的高程与倾角漂移。可见纹理来自实拍，接触位置取自几何，光照以当地路面为参照。镜面反射、湿路和强动态投影仍需要宿主提供相应材质或照明。遮挡检查含近物量程、车身轮廓以及全遮挡反例。切换车身或镜头时要重新提供车体掩膜。[本次逐项结果](../validation/mixed-road-transfer.json) · [两段实车的车身保护范围](../gen2hole/examples/mixed-road/ego-masks.json)
+
+## 直接使用 SC-GS 的鱼眼渲染结果
+
+源代码标签 `mixed-road-v1.0.1` 补充了独立 SC-GS 宿主的实跑案例。KITTI 的右侧鱼眼和 Audi 的后视鱼眼各使用一套训练 3,000 步的 SC-GS 点云、控制节点形变权重和该次曝光的渲染 RGB。三件资产分别是 P223 相邻浅坑、A225 横移方盖和 M224 缺盖井。下图的第一列是两套宿主本身的渲染，右边三列使用相同宿主和机位。放大图保留各自原有的渲染清晰度。[逐机位模型和检查点指纹](../validation/scgs-mesh-transfer.json)
+
+![两个 SC-GS 鱼眼宿主的原路面与三件资产](figures/scgs-mesh-transfer.jpg)
+
+从上文的 `mixed-road-v1.0.0` 浅克隆开始，可用下面的命令切换到带此案例的固定代码。准备好 SC-GS 环境，并先生成上文两个宿主的 `--export-packet M224` 输出。SC-GS 回放会检查已有权重。没有权重时会从准备好的道路数据训练。重新训练的底图允许有差异，资产位置、部件和量程可独立核对。[SC-GS 环境和回放入口](../streetcrafter/backends/README.md)
+
+~~~bash
+git fetch --depth 1 origin tag mixed-road-v1.0.1
+git switch --detach mixed-road-v1.0.1
+bash streetcrafter/backends/run.sh kitti360-0000 sc-gs 3000
+bash streetcrafter/backends/run.sh a2d2-frontleft sc-gs 3000
+work/envs/streetcrafter/bin/python scripts/check-scgs-mesh-transfer.py
+~~~
+
+结果在 `outputs/mixed-road/sc-gs/<场景>/<编号>/sensor-after.png`。KITTI 输出为 400 × 400，Audi 为 480 × 300。`sensor-part.png` 保存相同原生镜头网格上的部件标签。程序从 SC-GS 输出镜头的每条射线反投影到实车的遮挡记录，再在原生像素位置求交。切换底图后，四重采样数据包上的部件与径向量程在全部六例逐像素一致。这里使用 SC-GS 产生底图，并在输出阶段合成米制网格。若要继续训练已编辑的 SC-GS 点云，还需要相应的写回适配器。[可执行的独立宿主检查](../scripts/check-scgs-mesh-transfer.py)
