@@ -1,0 +1,57 @@
+[
+  {
+    "id": "P192",
+    "label": "不规则大块面层剥落",
+    "source": "PothRGBD",
+    "mode": "single_rgbd",
+    "anchor": "20250305_121222",
+    "fit": [
+      "20250305_121222"
+    ],
+    "holdout": []
+  },
+  {
+    "id": "P193",
+    "label": "长边断裂与裸露坑床",
+    "source": "PothRGBD",
+    "mode": "single_rgbd",
+    "anchor": "20250305_062512",
+    "fit": [
+      "20250305_062512"
+    ],
+    "holdout": []
+  },
+  {
+    "id": "P194",
+    "label": "陡边碎石坑",
+    "source": "PothRGBD",
+    "mode": "single_rgbd",
+    "anchor": "20250305_123631",
+    "fit": [
+      "20250305_123631"
+    ],
+    "holdout": []
+  },
+  {
+    "id": "P195",
+    "label": "斜长形浅坑",
+    "source": "PothRGBD",
+    "mode": "single_rgbd",
+    "anchor": "20250305_132557",
+    "fit": [
+      "20250305_132557"
+    ],
+    "holdout": []
+  },
+  {
+    "id": "P196",
+    "label": "沿路缘延伸的冲蚀坑",
+    "source": "PothRGBD",
+    "mode": "single_rgbd",
+    "anchor": "20250305_061439",
+    "fit": [
+      "20250305_061439"
+    ],
+    "holdout": []
+  }
+]

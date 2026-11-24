@@ -1,0 +1,307 @@
+{
+  "release": "reproduction-2026.11.25",
+  "archive": "common-pit-inputs.zip",
+  "archive_sha256": "e02af88a5e97f7eeec2c79e85ce1b82ec5145c4e611986a072b4309bfd854c4c",
+  "assets": {
+    "P205": {
+      "label": "宽椭圆浅坑",
+      "model": "runs/common-large-pits/P205/series/assets/pothole/P205/asset.glb",
+      "native_hashes": {
+        "asset.glb": "cc6e4ad5d1835bfa0c56928bf6498219a889999cd55efc45c757d90498f3187d",
+        "surface.npz": "9be4c4442157667f2c99974bb8073b1ccdf886a5d38248aaf497f1264fcaa9d7",
+        "metadata.json": "9ce21841c63accc1e74fa7a63b80cf322e42495f9c82750534ffa5d9693696ab",
+        "asset.ply": "45012684ac676abecca8bdca0cad946963019fa11d5f6b7ead7a9e617995e963",
+        "splat_material.npz": "be0a6193d5699979f2c4cefa2f1ade327e17f445dea94fef6b71b94113d56d4d"
+      },
+      "outline_area_m2": 8.96834009746035,
+      "source_sha256": "eaebd29123a397e156b916d4a9d767257e542786bc83ade3107b6dd4eb001e32",
+      "geometry_sha256": "34b617a35e3b5ef582204475796862b5f2afdbd605a8c13ce565095387a6e8a2",
+      "reference_kind": "generated"
+    },
+    "P206": {
+      "label": "轮迹带长坑",
+      "model": "runs/common-large-pits/P206/series/assets/pothole/P206/asset.glb",
+      "native_hashes": {
+        "asset.glb": "270384631f306adcf5d0a72408ff11c76e8ee3fa2bb84a9edfc2522013c7815d",
+        "surface.npz": "1656b86e4d244d269f1a66e6b19594e3772a58299c71653d37dbd1de2debe498",
+        "metadata.json": "b37827a54be76465382849240da5338ece982d44202a3f271f0f1ae121c38745",
+        "asset.ply": "b46c43b5112e6c506d4d46d8fb04c17f40a72e6d5ef188c30ed83cb6b6c5833f",
+        "splat_material.npz": "775be24015588dcab9c9f1ca42ec9ab9599e0238b28fde41fbf7670b6713efb6"
+      },
+      "outline_area_m2": 3.2890489702619234,
+      "source_sha256": "465d3bb03ae5aad0facbffb74b5a597bc90f1b248a067a08f73c6794906e5ee3",
+      "geometry_sha256": "b0ac1c9d70cc6243aab694d5402338ce12f5665d67f0af07418ba981edc37c99",
+      "reference_kind": "generated"
+    },
+    "P207": {
+      "label": "补丁边缘剥落坑",
+      "model": "runs/common-large-pits/P207/series/assets/pothole/P207/asset.glb",
+      "native_hashes": {
+        "asset.glb": "7a41a7178a3ad5fff6c60ea68f78360aaa82d2c238fd0380bfd1d08ce73961ee",
+        "surface.npz": "1fb687e4a7585f35b28622f1fa6b8f1d64afcb6dce43014df12986b41a0f0b8a",
+        "metadata.json": "5948390bd74f0a952f46e69b2eec3db856d96fae771eff526bcb82b373c851cf",
+        "asset.ply": "c1de8f8c9259648bf88e4fb13b1e8c1bf9627c10f725ee5816e1356ba39a37e6",
+        "splat_material.npz": "bcbc61ab65225efa2bfc5080a0b1a897ca54702e9214ca2fbb243610651c6768"
+      },
+      "outline_area_m2": 6.405528560493666,
+      "source_sha256": "62607ddee6fb5603ab0715b33fd29f19a67882fb7bc2e3001f5bc224b9ba0012",
+      "geometry_sha256": "28fdac6e10807b962f629ab84b09ffbcc1a01b6e7877eb6981ead6c415b88dcc",
+      "reference_kind": "generated"
+    },
+    "P208": {
+      "label": "双坑连通",
+      "model": "runs/common-large-pits/P208/series/assets/pothole/P208/asset.glb",
+      "native_hashes": {
+        "asset.glb": "5347927533a5fe7374bb5307d22b7548370d618fe96288f48ce35cae76cbc704",
+        "surface.npz": "78c6773affc0183312e096dca48d9cffc79242f5da49e5d7093369db2796d921",
+        "metadata.json": "d100a716ad113ac82891c1a85d94b741b0818de57d7528a8db3b213e226300c6",
+        "asset.ply": "3566f5990613213ed51018a4493422c79e21b9d024f50906456dfaa0b79a7af2",
+        "splat_material.npz": "7a33fe5b4fdf86808205fd5837ccad1b321e4464a887dc465f58676cda2b5ec2"
+      },
+      "outline_area_m2": 7.368524581046582,
+      "source_sha256": "a1ebafe8c733371e46050f31888d23c5253231e241ddfa31a89bd5f4d489fb4d",
+      "geometry_sha256": "2abeecdd23e25cee8e3640ccee85d737a3047cbde5128ee7c20742cd92224284",
+      "reference_kind": "generated"
+    },
+    "P209": {
+      "label": "宽口剥落坑",
+      "model": "runs/common-large-pits/P209/series/assets/pothole/P209/asset.glb",
+      "native_hashes": {
+        "asset.glb": "974d4ae16add6c3878c50870e5d2828155f98cbb5c269607c8c93ac9b1eea307",
+        "surface.npz": "9f0208bffaf4a53bc024236ede874e70943af4438bb758388232bd2d16c7a40a",
+        "metadata.json": "a95b37d4ace5c7eb1bd756470aea6c5163057eb6fb34960b4a752e1357d02e0f",
+        "asset.ply": "83c76017f40af6df2705629264b05636b8fbf330a77751efe5d19c4ff2a55fae",
+        "splat_material.npz": "d5bbafa942df390c788f734e0162cdd9e2137c0201553254471a912e533b3dfd"
+      },
+      "outline_area_m2": 9.18687550889739,
+      "source_sha256": "73dc31637eee329d1627b2a884a44051d26364f178b34ee74aa963f708e185c5",
+      "geometry_sha256": "66dd59a00c0843944ba44ce7c3e9e7d9eb2e40fe3e0bf23eb4198725fa31799b",
+      "reference_kind": "generated"
+    },
+    "P210": {
+      "label": "纵向磨蚀坑",
+      "model": "runs/common-large-pits/P210/series/assets/pothole/P210/asset.glb",
+      "native_hashes": {
+        "asset.glb": "7fdac7c211b03ad675e1b268388f8f76d3833791bb2586d6f411a55e81db970c",
+        "surface.npz": "dc263c4fbc49b0d8ea33db745bf3b5cf02a2b0cd7e5af15effda4aae56b822a6",
+        "metadata.json": "dda0ec476f9733103eb0f2d0dc1c3d9a006011c520be4cfebe0e052194d20c7e",
+        "asset.ply": "b716fadee44348569421d4e9b1bba1000cb45b48703bc0584d38cbf9fafff5ea",
+        "splat_material.npz": "1d8b1cf51f6629a1894fcdcfb075b1c5629fb451a0024785b579bfb3dede173f"
+      },
+      "outline_area_m2": 9.244242407495186,
+      "source_sha256": "c3babec93dd9b223b60c191309808b1a54546ada0c517846f1bdfc495b965753",
+      "geometry_sha256": "db9bd7444b2c889d7e5a390fad81e9583e6720df98308898ab6e5e8e14f71ed7",
+      "reference_kind": "generated"
+    },
+    "P211": {
+      "label": "浅圆碗坑",
+      "model": "runs/common-large-pits/P211/series/assets/pothole/P211/asset.glb",
+      "native_hashes": {
+        "asset.glb": "f15e82e0d2be906b027af2b16a5ddfd4762051066e612639f6e97a2bc229e981",
+        "surface.npz": "aadbbcf6d8a19646d26e6f3e84d5ef217ed463284c254ba6a524dfcca40bb526",
+        "metadata.json": "d0aa0cf62da5aa8394be11ae16e53bba56ec5eecfbb01a16ee6f26e607b8420b",
+        "asset.ply": "316be871c0c3e0030b3ea73c5f54b5af3749012ef5ce082673e38cfd309459d4",
+        "splat_material.npz": "bb226c4e0f6c22a13bc0b6e1f879c0c28138db58627c0fa6e0070b180d258392"
+      },
+      "outline_area_m2": 10.619245547808724,
+      "source_sha256": "573080b47789e0d6ae29d52ce463778a6b20c47af73a701c62fedecb4dcc1c09",
+      "geometry_sha256": "16789ac3dc325e12c3e3dbfa3929a3e9bfa76edbffb061d85a887349a0d11f41",
+      "reference_kind": "generated"
+    },
+    "P212": {
+      "label": "碎边椭圆坑",
+      "model": "runs/common-large-pits/P212/series/assets/pothole/P212/asset.glb",
+      "native_hashes": {
+        "asset.glb": "b2c0622ffbde88cd7fafcd623708a98f079147202459f82aab367d9a5f1fe622",
+        "surface.npz": "e195b85ce97b2cf156ef53fb2c9cf8e4582baf52b7e85fd360d9900b815ede59",
+        "metadata.json": "f57f592be11041c71dae3bdec9935fb6561e828b50c7276ea865a8d9192d5a99",
+        "asset.ply": "68c14189fac92ee384afecaace00c2d2ee773b443b1f28d20890ba397c9d47f1",
+        "splat_material.npz": "af89a527058b1cf095d7e2f6980ad0d85052c47cf3f5f51cc32b1e8a9e71d28e"
+      },
+      "outline_area_m2": 6.180692062385348,
+      "source_sha256": "a5ae6ebe6eb0f04aa284a5874b3ab5dc65e5d8aa7c2faa1f329768d6b1be0d34",
+      "geometry_sha256": "89f544b9683238626f01e31d3fc17e33c63998a3e7194a89fbff6bea34412b3b",
+      "reference_kind": "generated"
+    },
+    "P213": {
+      "label": "接缝旁长坑",
+      "model": "runs/common-large-pits/P213/series/assets/pothole/P213/asset.glb",
+      "native_hashes": {
+        "asset.glb": "857e5761daeb0f61a20c7620f21f17d6f107d5a43dc422aa51cc5728c3587484",
+        "surface.npz": "67383c8ed121096342b5a4bffe5ca3e25c20fdaa00df48701c7c6ff5894ea77c",
+        "metadata.json": "29412d0d26c8a19f68fecdbbb26f75eb7e14b546bebe8cec60fe228df73aee32",
+        "asset.ply": "d8ef81e0ca99e69b76e2f1065851afe1847bed9ea8e28eb90a047ec7cf75bd3e",
+        "splat_material.npz": "2f4fee7b060cd53f09c500da8371e374dc63b6de8c71ba7c1f2cb2c1fd81942d"
+      },
+      "outline_area_m2": 4.747164820425246,
+      "source_sha256": "285c7ab675e74d7b0de78dd1032a326ecbc5dd66b90fd6982a6e3f2dd850b264",
+      "geometry_sha256": "d0f40438549561fa8b3230a0b710c59429022f4450449e2615c8a3c2fca89299",
+      "reference_kind": "generated"
+    },
+    "P214": {
+      "label": "磨平底浅坑",
+      "model": "runs/common-large-pits/P214/series/assets/pothole/P214/asset.glb",
+      "native_hashes": {
+        "asset.glb": "3b5f6f4b5b408cecc9657b93e4028a22ac1eb4f62dac0ec45e6b2199134781f2",
+        "surface.npz": "81213184ff02bb8e6063327ff7d9933b16a186e02239b147dc71e8a050bd6fbe",
+        "metadata.json": "2501bc64da32bbb93d772538e891f825ac7ee8e4b36bcdb6cbd67b7db07c6d2b",
+        "asset.ply": "0c3ef78dcbfe535e3bb2c3dfa375228184cb0013e3d1f7095bec87e86986b74e",
+        "splat_material.npz": "6acf437bc3ab586ab8565b783f4a6304db83982fc987ef45960550239fd278e7"
+      },
+      "outline_area_m2": 6.235473229142767,
+      "source_sha256": "687dc087c60dab17623dadf80b94c5ceb49eabccf269b1755b5c3305d59c91b0",
+      "geometry_sha256": "2d241cb93e3c265dce78bd170d468687c43de757dd04cc74490148e154a31baf",
+      "reference_kind": "generated"
+    },
+    "P215": {
+      "label": "补丁角破损坑",
+      "model": "runs/common-large-pits/P215/series/assets/pothole/P215/asset.glb",
+      "native_hashes": {
+        "asset.glb": "b86d234064edb25acad58f0fc32b1807b7c72aef19186ef0670d1df8301d7e89",
+        "surface.npz": "1562b2a6af07df31800b8c4fcf513c6b0a276d87064ccfa9f623e0f0914cb551",
+        "metadata.json": "e7740d0b2a68767e1ac67b273aa9b35e4d3d996477ee90640dc8635a0bce5ac5",
+        "asset.ply": "1d294379191979753ce6ca8d6e6c43d563c28755b83231f0a72e016c4e4c3b14",
+        "splat_material.npz": "f6c8686639d932d1a63c4d21e6cd9757a7485d5fbbbb1a4f0ff6804591ca6639"
+      },
+      "outline_area_m2": 5.146143901517623,
+      "source_sha256": "b7b977f1e06588d923cb408c78b791c0f0a6b6f996f0988262018949dae9295f",
+      "geometry_sha256": "01023aae0949d5c89325f9ffc2da79c639960860e00dd28d54f18d81aecfe74f",
+      "reference_kind": "generated"
+    },
+    "P216": {
+      "label": "短宽连片坑",
+      "model": "runs/common-large-pits/P216/series/assets/pothole/P216/asset.glb",
+      "native_hashes": {
+        "asset.glb": "6f84c10bb25e39ad55645ba75895edbeef1aa292f2cd2b9734666991ac6c5659",
+        "surface.npz": "e271736045e1ac36e495f5572fb947458e6e43cc93b886f27d6b49bd7e48d596",
+        "metadata.json": "ae6450e148b3cca5eed29c9c240313cfbd42a2c19a9c28cf1793de811b64a2ba",
+        "asset.ply": "f088c76a3046444ce5e2b4058b7aec35d69b178f2ed2131e5021e7a33229bc4b",
+        "splat_material.npz": "b8ac7a8ac34f12824926a60675e1b384d24bf61028d3f6d483ecf7e446d140a5"
+      },
+      "outline_area_m2": 6.470762619924994,
+      "source_sha256": "fb3d06fef33e1a895c4f227e3982854cc9b9d7d8ce0cd80c391df00ed35f2447",
+      "geometry_sha256": "2fb31a43785be50cac4452bba86e72c3ffc38b05fbcea0856736ce18e7176965",
+      "reference_kind": "generated"
+    },
+    "P217": {
+      "label": "轮迹端部扩宽坑",
+      "model": "runs/common-large-pits/P217/series/assets/pothole/P217/asset.glb",
+      "native_hashes": {
+        "asset.glb": "b6bc1e2f9366c5599b538f0aaad749bfd7f2a4b428ba8f5e69a83571e1b59e4f",
+        "surface.npz": "205f58866673990d031018cb879abf9462366d185a795807d516426c0426311f",
+        "metadata.json": "9d41ed9f55a4afd15b3edc5a3d42290cc97b6b59dacbc296682b4c10bf61576a",
+        "asset.ply": "3be2e9291bc720e05bb0adfa06ae8b00276b1f09dea5df82255af060dda5716e",
+        "splat_material.npz": "77e6b196bdce7b4979c1bc646c0ca2e757f64f87084b292af87db883c1d0a6eb"
+      },
+      "outline_area_m2": 5.9472056396292095,
+      "source_sha256": "cf3476488513eb50f01122471bb98da261dc126d99d6a0dec732a5ef7a0edaa4",
+      "geometry_sha256": "bb2ad74b0865e210383b61eab0beaa4a6fd77e0d56ec0883c89a215dc091627c",
+      "reference_kind": "generated"
+    },
+    "P218": {
+      "label": "薄层碎边坑",
+      "model": "runs/common-large-pits/P218/series/assets/pothole/P218/asset.glb",
+      "native_hashes": {
+        "asset.glb": "ee8df09cddf35f16f854bfdc2e80951cf9d12d6aa8db29b8b2672c263bcca036",
+        "surface.npz": "708ea2e0154715a4b3844e5e1a82ce1299c86dad143ee80e979a4d654aecd6ac",
+        "metadata.json": "3420aad4daab0053b978cdd613692671c0aa844dfcaf67f906f14fd96656f28a",
+        "asset.ply": "4c20853461241568391a46af47f7fb3f8455016e3799bc904ab617fae0be13e1",
+        "splat_material.npz": "2ce6bd6115b2e9f479d4f99cbdcb43d530e7289d9b1202ede6b5064d89a48cc7"
+      },
+      "outline_area_m2": 6.108895294585406,
+      "source_sha256": "4078d29328dcadfdaa1167ab419cc6ef8832f82a3dbb1b393599339b4f8e183a",
+      "geometry_sha256": "e27abdb9fd31a5417f878d52681e2d6d3ac6875c3f1fe3eb2bd0bc2a6141f4b2",
+      "reference_kind": "generated"
+    },
+    "P219": {
+      "label": "偏心浅碗坑",
+      "model": "runs/common-large-pits/P219/series/assets/pothole/P219/asset.glb",
+      "native_hashes": {
+        "asset.glb": "3ab55dfd6897320ce7fcc6c2fcfb54202fa8ae567d7f362ccae28b0a48166c51",
+        "surface.npz": "8083ac4c109b29877a455eb5e612ce178dc43ad9e7750059ae5abe6a0ecb8844",
+        "metadata.json": "3142e9d378673bd6690fefc48ee111569671559bda5821a3c59ba668955083ed",
+        "asset.ply": "e2ccf9c1e5c744a564dafd07655f4b60ef5342def2acbdd7cf340492d26ddd49",
+        "splat_material.npz": "85a199a9f0651b874450dce48b9a3b0b89693090694355cf176b49e72fc279c5"
+      },
+      "outline_area_m2": 8.2115987608104,
+      "source_sha256": "3367c170a373baeb174b0fe6ae38aa200b2527e2790ac83e8a74a94d4e4248ca",
+      "geometry_sha256": "3c438773edb4def6a20d85d1cfa5986f0da276a2a19054495c756cb8aeca1c40",
+      "reference_kind": "generated"
+    },
+    "P190": {
+      "label": "护栏旁的路面塌坑",
+      "model": "runs/large-pits-v3/series/assets/pothole/P190/asset.glb",
+      "native_hashes": {
+        "asset.glb": "aa25a5ec3ea873ef43e16b52db2234657fa58f7725efc3b8adece96a742b8d6a",
+        "surface.npz": "a2806304dffbb0f2794267b6432e10bf91f163e478cf551a0d0fa035bf9b67bb",
+        "metadata.json": "04efca33af543222dba4b9f34fcfd56e149e7d770ec4b8d8e9b04d1773356437",
+        "asset.ply": "218fce46280150d2647d37055a647c4874fc48054501ffff3db0ee4abaf6a8ea",
+        "splat_material.npz": "fb23a4152b44707531519d8739ae29b314548aa60eadea5da88a5ff49db1ebc7"
+      },
+      "outline_area_m2": 14.236880441267324,
+      "source_sha256": "38fb53d438ac8913d6c0adad6c4f511be41c9fdf6c415147ceb7c8bd3a3d3049",
+      "geometry_sha256": "ed206a5b20d447097a30b752588a5f8232b422a5ac0f646f8cd6baa04bc1d4c0",
+      "reference_kind": "photograph"
+    },
+    "P198": {
+      "label": "街道路面开挖露出的断面",
+      "model": "runs/lane-pits-batch/P198/series/assets/pothole/P198/asset.glb",
+      "native_hashes": {
+        "asset.glb": "02e6b2d8d5ae1139f01778967905f1b17d6eb396e8e1b292ed56194105268f1d",
+        "surface.npz": "52dd092f768645ac5342968ccc3440c26be4e2315f131908c0d5f12c377a8660",
+        "metadata.json": "9a03a686431c096a8a8e087210da49ef2549ed6469f38bc79251c42c5af1d307",
+        "asset.ply": "13c61e23a4e2af1768b2ac9784f8fb90e84c1c01ba77155f3666caec1ec1290e",
+        "splat_material.npz": "159c30dc7ae83e27ab27aa78d06837260814f75c0feaa10903b3736684fa1def"
+      },
+      "outline_area_m2": 2.7898490317210993,
+      "source_sha256": "d6d0f11bae3592b27f0104946279cf5f5176effe4acd4772c4459ac4a2b16beb",
+      "geometry_sha256": "3cefa1ac96000e857e3698d84f1c7d30f43fad6a30516be0d1f702cb32686593",
+      "reference_kind": "photograph"
+    },
+    "P199": {
+      "label": "双叶连通碎石坑",
+      "model": "runs/lane-pits-batch/P199/series/assets/pothole/P199/asset.glb",
+      "native_hashes": {
+        "asset.glb": "6b1f262636d89590e09bb817ab832e17c552832bb59d6d5f87773c3613c55604",
+        "surface.npz": "19782b83217e926411dd7583f577662bc5bcc5c43e6adc20dcbeede8ecce79ca",
+        "metadata.json": "5e824c9dd9435aa0470c585db41b0622d36fe2bde63fde171fab4b917c2f53b6",
+        "asset.ply": "aa74fabe976226454f768b57de8fbe3c1f2648ced806fbc525ab56e1b10780e4",
+        "splat_material.npz": "cc77bb0788ff8a3dceeb04d2aee3c4d6ecb2de2d7b3b6cfad91c28fe2f0c5483"
+      },
+      "outline_area_m2": 9.21641833745122,
+      "source_sha256": "6d3f44422d54f6ec7408c5c44f0d5d9364d057ae35ab489964e01a0da98273f9",
+      "geometry_sha256": "16075f09b762f20ef3104c2712eb5f665212dac001200a7e2c6ae2ebc0a21cfd",
+      "reference_kind": "generated"
+    },
+    "P200": {
+      "label": "纵向冲蚀沟坑",
+      "model": "runs/lane-pits-batch/P200/series/assets/pothole/P200/asset.glb",
+      "native_hashes": {
+        "asset.glb": "52000345e6f960c6134243db6c9e2acc87d0d03bc8ed27efa2199afeee67b1b6",
+        "surface.npz": "2fbe95d3f6440f6075fc144fa621b95ebdbd234bbc280a2d7fb117a90d2a2332",
+        "metadata.json": "917591a408276d8d689f76aca300b99b71fbacc2ad92d7452ed44ef9e07107eb",
+        "asset.ply": "397566a05ddf3e6200fd43705b05ca3d35834b2e8c1e533469c00af3a004361a",
+        "splat_material.npz": "939dfe5299a9ea0300a8de997c126cd67ad6b557608e575abd73107cfbf1b098"
+      },
+      "outline_area_m2": 5.075319685450275,
+      "source_sha256": "847fa3f627d3ff746cfeba89c159ea4572a3b6b5689662ece58ab9c965a0f3ad",
+      "geometry_sha256": "85baee81e77031e2628c0d239fdf1bf39d6c7f81df7dee444372cd7814ef53b3",
+      "reference_kind": "generated"
+    },
+    "P201": {
+      "label": "弧形断壁砾石坑",
+      "model": "runs/lane-pits-batch/P201/series/assets/pothole/P201/asset.glb",
+      "native_hashes": {
+        "asset.glb": "7f4fc264c27298132137ed07f74084a37c0efd193b4cf5e95f8c263b0721049d",
+        "surface.npz": "1661a70dcbe00fe3df8b8e60008b765a4e7856fb718f51f1ffdf43e86227def4",
+        "metadata.json": "e18f5b140e527d7ceb007bfe9d3d0800f95b430a6c765b43fe32d134733046ab",
+        "asset.ply": "1e4b633e0473529588c468a9c800378f27ea4f65511b180986ecd287cbb441a4",
+        "splat_material.npz": "78d33f153a67bdb28b917a121351ed4aeb4dfdd787453af0025992abc525111b"
+      },
+      "outline_area_m2": 15.301003495028063,
+      "source_sha256": "ef28db3640dc612e1161705c37a83bd1390fc328396c4185613f208ff814b683",
+      "geometry_sha256": "c8ef6fb1773496d39118a126527a9f825e99d5b84091cb05e69a289e9b5f6c3d",
+      "reference_kind": "generated"
+    }
+  }
+}

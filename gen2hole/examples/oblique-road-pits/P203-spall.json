@@ -1,0 +1,10 @@
+{
+  "id": "P203",
+  "lip_width_m": 0.09,
+  "basin_width_m": 0.30,
+  "aggregate_radius_m": 0.10,
+  "dark_contrast_srgb": 24,
+  "bed_m": 0.014,
+  "chip_m": 0.022,
+  "cap_m": 0.040
+}

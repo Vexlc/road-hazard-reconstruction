@@ -119,6 +119,16 @@ def review(a):
     if provenance:
         record['reference_kind']=metadata['reference_kind']
         record['reference_source']=metadata['source']
+    reflective = metadata.get('water_optics')=='target-view-fresnel'
+    pool = None
+    if metadata.get('water_optics')=='refracted-bed':
+        from water_reflection import ShallowPool
+        from camera_geometry import static_scene_points
+        pool = ShallowPool(folder,placement,metadata)
+        record['water_reflection']='Snell rays into the exported bed, path attenuation and unpolarized dielectric Fresnel. Local bank ray hits, measured static LiDAR mirror projections, then directional target frame/sky fallback.'
+    if reflective:
+        from water_reflection import reflect
+        record['water_reflection']='Horizontal world plane; Schlick Fresnel (IOR 1.333); direction-only target frame probe, fading from the upper border to an upper-frame median outside coverage. Not a 3D reflection trace.'
     if finish:
         record['surface_lighting']=dict(material='GLB colour and tangent normals, three-tap anisotropic filter',
             sky_horizon_azimuths=16,sky_horizon_radial_samples=26,
@@ -137,12 +147,16 @@ def review(a):
             if not bounds:
                 raise ValueError('No in-frame road views for '+name)
             peak=ranked[0][2]
-            numbers=(range(max(min(bounds),peak-28),peak+1) if name=='front_camera'
-                     else range(peak,min(max(bounds),peak+24)+1))
+            step,limit=(-1,29) if name=='front_camera' else (1,25)
+            numbers=[]
+            for offset in range(limit):
+                frame_id=peak+step*offset
+                if frame_id not in bounds:
+                    break
+                numbers.append(frame_id)
+            numbers.sort()
             best=0;shots=[];report_frames[name]=[]
             for fr in numbers:
-                if fr not in bounds:
-                    raise ValueError('Discontinuous in-frame shot')
                 bb=bounds[fr]
                 l,t=np.maximum(np.floor(bb[:2]).astype(int)-22,0)
                 r,b=np.minimum(np.ceil(bb[2:]).astype(int)+23,[w,h])
@@ -165,35 +179,42 @@ def review(a):
                     own=np.zeros_like(cast)
                     shaded=cast>0
                     after[shaded]=np.uint8(np.clip(np.rint(after[shaded]*(1-cast[shaded,None]*(1-shade))),0,255))
+                optics = reflect(after,pixels,part,alpha,protected,pose,K,rect) if reflective else {}
+                if pool:
+                    cloud = static_scene_points(a.scans,site,fr,str(a.raw))
+                    optics = pool.apply(after,pixels,part,depth,alpha,protected,pose,K,rect,cloud)
+                target = (part==2)|(part==4)
                 # Retain only the true opening and contact fringe, including one-pixel antialiasing.
                 if not np.array_equal(src[protected],after[protected]):
                     raise ValueError('Foreground was overwritten')
-                fringe=cv2.dilate((part==2).astype('u1'),np.ones((3,3),'u1'))>0
+                fringe=cv2.dilate(target.astype('u1'),np.ones((3,3),'u1'))>0
                 outside=(part==0)&~fringe
                 outside_edits=int(np.any(src[outside]!=after[outside],axis=1).sum())
                 if outside_edits:
                     raise ValueError('Edited pixels outside the mesh and antialias fringe')
                 composite=before.copy();composite.paste(Image.fromarray(after),(l,t))
-                mask=(part==2)&~protected&(alpha>.48)
+                mask=target&~protected&(alpha>.48)
                 count=int(mask.sum())
                 if count:
                     y,x=np.where(mask);box=[l+int(x.min()),t+int(y.min()),l+int(x.max())+1,t+int(y.max())+1]
                 else:box=[]
-                report_frames[name].append(dict(frame=fr,bbox=box,visible_bed_pixels=count,
-                    protected_target_pixels=int(((part==2)&protected).sum()),shadowed_bed_pixels=int((cast>.35).sum()),
+                visible_bed=int((mask&(part==2)).sum())
+                wet_info=dict(visible_water_pixels=count-visible_bed,reflection=optics) if reflective or pool else {}
+                report_frames[name].append(dict(frame=fr,bbox=box,visible_bed_pixels=visible_bed,**wet_info,
+                    protected_target_pixels=int((target&protected).sum()),shadowed_bed_pixels=int((cast>.35).sum()),
                     self_shadow_pixels=int((own>.35).sum()),outside_changed_pixels=outside_edits,
                     protected_changed_pixels=0))
                 frame=composite.resize(size,Image.Resampling.LANCZOS);draw_label(frame,credit+title)
                 shots.append(frame)
                 if count>best:
-                    best=count;stills[name]=(before,composite,box,fr,path)
+                    best=count;stills[name]=(before,composite,box,fr,path,visible_bed,wet_info)
             if not best:
                 raise ValueError('No visible asset in '+name)
-            before,composite,box,fr,path=stills[name]
+            before,composite,box,fr,path,visible_bed,wet_info=stills[name]
             stem=name.split('_')[0]
             before.save(out/(stem+'-before.webp'),lossless=True,method=2)
             composite.save(out/(stem+'-after.webp'),lossless=True,method=2)
-            record['selected'][name]=dict(frame=fr,bbox=box,visible_bed_pixels=best,original_sha256=sha256(path))
+            record['selected'][name]=dict(frame=fr,bbox=box,visible_bed_pixels=visible_bed,**wet_info,original_sha256=sha256(path))
             for frame in shots:movie.append_data(np.asarray(frame))
             if stem=='front':
                 hold=composite.resize(size,Image.Resampling.LANCZOS);draw_label(hold,credit+'前视 · 近处定格')

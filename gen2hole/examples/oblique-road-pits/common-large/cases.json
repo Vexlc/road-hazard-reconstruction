@@ -1,0 +1,107 @@
+[
+  {
+    "id": "P205",
+    "label": "宽椭圆浅坑",
+    "long_axis": 4.8,
+    "depth": 0.16,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: a wide single oval depression, gently tapering into a shallow bowl, small rounded gravel, a short eroded far rim, light grey-brown roadbase."
+  },
+  {
+    "id": "P206",
+    "label": "轮迹带长坑",
+    "long_axis": 5.4,
+    "depth": 0.21,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: one long, moderately narrow wheel-path pothole angled from near left toward far right. Broken topcoat at one end and a strip of exposed tan aggregate."
+  },
+  {
+    "id": "P207",
+    "label": "补丁边缘剥落坑",
+    "long_axis": 4.3,
+    "depth": 0.15,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: a formerly patched section of asphalt where part of a patch edge has ravelled away into one broad uneven-sided shallow hole. One faint straight remnant of patch seam, rest of the rim naturally worn."
+  },
+  {
+    "id": "P208",
+    "label": "双坑连通",
+    "long_axis": 5.1,
+    "depth": 0.2,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: two ordinary adjacent asphalt potholes eroded into a SINGLE connected peanut-shaped opening with a very wide neck. One lobe slightly larger, small crushed stone across the shared bed."
+  },
+  {
+    "id": "P209",
+    "label": "宽口剥落坑",
+    "long_axis": 4.6,
+    "depth": 0.11,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: broad sheet of wearing course missing with a low rough lip. Irregular gently rounded trapezoid footprint. Sandy fine aggregate bed, nearly level, a couple thin remaining slabs at far edge."
+  },
+  {
+    "id": "P210",
+    "label": "纵向磨蚀坑",
+    "long_axis": 5.5,
+    "depth": 0.18,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: an elongated road pothole aligned mostly away from the viewer, a slightly tapering footprint and rounded ends. Smooth worn gravel bed with subtly different shallow depths, no standing water."
+  },
+  {
+    "id": "P211",
+    "label": "浅圆碗坑",
+    "long_axis": 4.1,
+    "depth": 0.18,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: one nearly round saucer-shaped pothole, ordinary weathered edges very slightly scalloped, compact medium-grey stones with beige dust at the bottom."
+  },
+  {
+    "id": "P212",
+    "label": "碎边椭圆坑",
+    "long_axis": 4.8,
+    "depth": 0.24,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: a single broad diagonal oval pavement failure with visibly crumbled but low far rim, a few palm-sized dark flakes at the rim, brown-grey sandy gravel in the bed."
+  },
+  {
+    "id": "P213",
+    "label": "接缝旁长坑",
+    "long_axis": 5.2,
+    "depth": 0.17,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: a lengthwise pothole along a worn asphalt joint. One long rim roughly straight, other rim irregular and rounded. Exposed compact gravel, a faint bituminous joint running out from one end."
+  },
+  {
+    "id": "P214",
+    "label": "磨平底浅坑",
+    "long_axis": 4.7,
+    "depth": 0.12,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: one broad worn shallow depression with a flat, traffic-polished fine gravel floor. Soft uneven oval edges, only a short strip of visible asphalt thickness, slightly warm-grey road base."
+  },
+  {
+    "id": "P215",
+    "label": "补丁角破损坑",
+    "long_axis": 4.3,
+    "depth": 0.19,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: an old asphalt patch with one rounded corner and adjoining pavement broken out as a single off-square hole. Time-softened corners, exposed pale brown gravel, subtle intact repair visible behind it."
+  },
+  {
+    "id": "P216",
+    "label": "短宽连片坑",
+    "long_axis": 5,
+    "depth": 0.21,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: one short broad irregular opening formed by neighbouring areas of worn-away surfacing merging. Low broad shoulder to the left, slightly deeper on the right. Natural blunt outline without narrow branching."
+  },
+  {
+    "id": "P217",
+    "label": "轮迹端部扩宽坑",
+    "long_axis": 5.6,
+    "depth": 0.22,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: a long ordinary single wheel-track pothole with one end broader than the other, slight diagonal in plan, naturally rounded contours. Worn far lip, loose fine gravel scattered within the floor."
+  },
+  {
+    "id": "P218",
+    "label": "薄层碎边坑",
+    "long_axis": 4.5,
+    "depth": 0.13,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: one medium-wide patch of asphalt delamination with a low ragged dark edge and rough grey-brown granular base. Rounded irregular quadrilateral footprint; no precise straight construction cuts."
+  },
+  {
+    "id": "P219",
+    "label": "偏心浅碗坑",
+    "long_axis": 4.9,
+    "depth": 0.2,
+    "prompt": "Generate ONE photorealistic road-maintenance inspection photograph, landscape 3:2, no composite. Ordinary aged paved urban driving lane, camera held about 2 meters high looking obliquely down at about 55 degrees, filling frame with drivable asphalt only. One complete, large but commonplace pothole about 4–5 meters in long dimension, modest depth about 10–23 cm. Clearly readable unbroken perimeter and dry exposed granular floor, enough bed-to-road colour contrast for tracing. Center the entire hole, leave at least 12% intact asphalt on each side and 15% above and below. It should span 65–75% of the frame horizontally. Soft overcast daylight, documentary phone photograph, sharp genuine aggregate textures, realistic subdued colours, no horizon, scenery, water, dramatic sinkholes, pipes, tunnels, alien shapes, deep black voids, cones, rulers, lane paint, labels or text. Specific subject: one broad shallow oval asphalt pothole, deepest point offset to the left, loose pea gravel on that side and a gradual worn-out sandy slope on the right. A very common traffic-worn pavement fault."
+  }
+]

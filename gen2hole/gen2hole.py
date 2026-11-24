@@ -49,8 +49,10 @@ def inventory(custom):
     return rows
 
 
-def published_asset(query):
-    families = load(ROOT.parent / "catalog/reconstruction-index.json")["families"]
+def published_asset(query, index=None):
+    if index is None:
+        index = load(ROOT.parent / "catalog/reconstruction-index.json")
+    families = index["families"]
     code = query.upper()
     short_query = re.fullmatch(r"[PMA]([0-9]+)", code)
     alternatives = []
@@ -72,11 +74,15 @@ def example_inputs(group):
 
 
 def locate(query):
-    name, group = published_asset(query)
+    index = load(ROOT.parent / "catalog/reconstruction-index.json")
+    name, group = published_asset(query, index)
     print(f"{name}  {group['name']}")
     for field in ("prepare", "launcher", "recipe", "guide", "section"):
         if field in group:
             print(f"{field}: {group[field]}")
+    for key in group["transfer"]:
+        route = index["transfer_routes"][key]
+        print(f"transfer: {route['name']}  {route['entry']}  ({route['guide']})")
     inputs = example_inputs(group)
     if inputs:
         print(f"python gen2hole/gen2hole.py build --inputs {inputs} {name} --mesh-only --out runs/{name}")

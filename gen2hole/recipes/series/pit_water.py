@@ -194,6 +194,8 @@ def add_water(mesh, xyz, faces, field, color, spec):
     thickness = np.maximum(0, map_coordinates(depth, coords, order=1)) * spec['up_local'][2]
     trans = np.exp(-thickness[:, :, None] * np.array([13.0, 9.0, 7.0]))
     water_color = 0.73 * color * trans + np.array([57.0, 67.0, 62.0]) * (1 - trans) + [7.0, 10.0, 12.0]
+    if spec.get('bed_optics') == 'wet-asphalt':
+        water_color = color * (.85 * np.exp(-thickness[:, :, None]*np.array([3.2,2.8,2.5])))
     material = mesh.material(
         'Standing water over photographed bed', np.uint8(water_color.clip(0, 255)), 0.07, 0, 0
     )

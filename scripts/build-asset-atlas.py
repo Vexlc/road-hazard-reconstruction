@@ -78,15 +78,20 @@ def large_photographed_pits():
     rows = {}
     review = ROOT / 'outputs/photo-large-potholes'
     runs = ROOT / 'runs'
-    bundles = [runs / name / 'series' for name in ('large-pits-oblique', 'large-pits-rgbd', 'large-pits-driveway', 'large-pits-v3')]
-    batch = runs / 'lane-pits-batch'
-    for bundle in bundles + sorted(batch.glob('P*/series')):
+    bundles = [runs / name / 'series' for name in ('large-pits-oblique', 'large-pits-rgbd', 'large-pits-driveway', 'large-pits-v3', 'junction-spall')]
+    bundles.append(runs/'curb-puddle/source/series')
+    bundles.append(runs/'curb-puddle-v2/source/series')
+    batch_reviews = {runs/'lane-pits-batch': review/'lane-batch', runs/'common-large-pits': review/'common-20'}
+    for batch in batch_reviews:
+        bundles.extend(sorted(batch.glob('P*/series')))
+    for bundle in bundles:
         manifest = bundle / 'assets/asset_manifest.json'
         if not (manifest.is_file() and (bundle / 'checks.json').is_file()):
             continue
         for meta in read(manifest):
             key = meta['id']
-            single = meta['state'] == 'estimated'
+            puddle = meta.get('recipe_version') in ('oblique-photo-shoreline-v1','oblique-photo-shoreline-v2')
+            single = meta['state'] == 'estimated' or puddle
             synthetic = meta.get('reference_kind') == 'generated'
             method = '生成 RGB' if synthetic else ('单张实拍估计' if single else '实拍 RGB-D')
             row = entry(meta, bundle / 'assets', method,
@@ -97,10 +102,11 @@ def large_photographed_pits():
             row['note'] = ('坑缘按照片标注，照片提供可见纹理。单目模型估计高程和尺度，遮挡区由邻近表面补全。'
                            if single else '根据同一机位的 RGB 和深度重建，预留一部分原始深度点检验网格。')
             v3 = meta.get('recipe_version') == 'oblique-photo-visible-v3'
+            spall = meta.get('recipe_version') == 'oblique-photo-shallow-spall-v1'
             detail_dir = review / (key + ('-v3' if v3 else '-v2'))
             pose_dir = detail_dir / 'comparison/v3' if v3 else review
-            if bundle.parent.parent == batch:
-                detail_dir = review / 'lane-batch' / key
+            if bundle.parent.parent in batch_reviews:
+                detail_dir = batch_reviews[bundle.parent.parent] / key
                 pose_dir = detail_dir / 'reference'
                 row['outlineArea'] = meta['outline_area_m2']
             if (pose_dir / (key + '-source-pose.jpg')).is_file():
@@ -115,6 +121,21 @@ def large_photographed_pits():
                     preview = detail_dir / filename
                     if preview.is_file():
                         row.setdefault('sourceViews', []).append(dict(label=title, image=link(preview)))
+            if spall:
+                detail_dir = ROOT / 'outputs/junction-spall' / key
+                row.update(depthLabel='建模凹深 P95（非实测）', outlineArea=meta['outline_area_m2'],
+                           note='轮廓和骨料纹理来自原图，凹深由有上限的浅剥落配方补全。两条道路使用同一几何。')
+                outline = detail_dir / 'source-outline.jpg'
+                if outline.is_file():
+                    row['sourceViews'] = [dict(label='原图剥落边界', image=link(outline))]
+            if puddle:
+                detail_dir = ROOT / 'outputs' / bundle.parents[1].name / key
+                row.update(depthLabel='假设坑床凹深 P95（非水深）',outlineArea=meta['outline_area_m2'],
+                           note='原图提供坑沿和水线；水下坑床为设计值，按目标路坡重新蓄水。')
+                overview = detail_dir/'overview.jpg'
+                if overview.is_file():
+                    row['sourceViews'] = [dict(label='水线回投与三种坡度',image=link(overview))]
+            if v3 or meta.get('recipe_version') == 'oblique-photo-detail-v2' or spall or puddle:
                 for placed in sorted(detail_dir.glob('scene-*/placement.json')):
                     observation = read(placed)
                     if observation['asset'] != key or observation['size_multiplier'] != 1:
@@ -139,7 +160,11 @@ def large_photographed_pits():
 
 def captured_and_designed():
     rows = {}
-    for folder in (EXPANSION, FACTORY / "资产库"):
+    libraries = [EXPANSION, FACTORY / "资产库"]
+    large_pits = ROOT / "outputs/large-potholes"
+    if (large_pits / "asset_manifest.json").is_file():
+        libraries.append(large_pits)
+    for folder in libraries:
         for r in read(folder / "asset_manifest.json"):
             cat = r["category"]
             if cat in METHODS:
@@ -147,6 +172,11 @@ def captured_and_designed():
             else:
                 label = " · ".join(TERMS[r[k]] for k in ("family","state","material") if r.get(k))
             row = entry(r, folder, METHODS.get(cat,"程序化"), label, folder / r["preview"])
+            if cat == "pothole":
+                row["note"] = "程序化造坑路线已封存，保留此模型供历史对照。"
+            if folder == large_pits:
+                row.update(label="大面积 · " + label, depressionArea=r["depression_area_m2"],
+                           note=row["note"] + "宽、长和水平投影面积按低于路面至少 1 厘米的区域计算。尺寸取自合成模型。")
             row["triangles"] = r.get("glb_triangles") or sum(r["geometry_parts"].values())
             if cat in METHODS:
                 row["reference"] = link((folder / r["metadata"]).parent / "source_crop.png")
@@ -1201,7 +1231,7 @@ def main():
             rows[row["related"]]["related"] = row["id"]
             if row.get("reverseRelatedLabel"):
                 rows[row["related"]]["relatedLabel"] = row["reverseRelatedLabel"]
-    featured = ["P154","P150","P149","P148","P145","P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
+    featured = ["P190","P197","P192","P154","P150","P149","P148","P145","P143","A141","P142","P135","P130","A127","P134","P133","P121","A128","A117","P124","A119","P122","P112","A116","M118","A104","A108","A93","P90","P102","A13","M11","P02_wet_wheel_track","rgbd_pothole_20250227_135438","A20",
                 "model_raised_rectangular_removed_side_chip_seal","stereo_pothole_fan_1_03","P20",
                 "M03_brick_lined","A11","model_pothole_cluster_chip_seal_01","M13","P13"]
     ordered = [rows[k] for k in dict.fromkeys(featured + sorted(rows)) if k in rows]

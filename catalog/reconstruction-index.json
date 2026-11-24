@@ -1,5 +1,5 @@
 {
-  "asset_count": 1408,
+  "asset_count": 1463,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -73,6 +73,9 @@
         "stereo_pothole_fan_3_03",
         "stereo_pothole_fan_3_04",
         "stereo_pothole_fan_3_05"
+      ],
+      "transfer": [
+        "legacy"
       ]
     },
     "baseline-rgbd": {
@@ -904,10 +907,13 @@
         "rgbd_pothole_20250305_150518",
         "rgbd_pothole_20250305_151641",
         "rgbd_pothole_20250305_153008"
+      ],
+      "transfer": [
+        "legacy"
       ]
     },
     "baseline-pothole": {
-      "name": "设计坑洞",
+      "name": "设计坑洞（程序化路线已封存）",
       "launcher": "scripts/reconstruct-assets.py",
       "recipe": "outputs/road_hazard_expansion/asset_manifest.json",
       "guide": "docs/02-asset-reconstruction.md",
@@ -1033,6 +1039,9 @@
         "model_pothole_wheel_rut_fine_asphalt_01",
         "model_pothole_wheel_rut_fine_asphalt_02",
         "model_pothole_wheel_rut_fine_asphalt_03"
+      ],
+      "transfer": [
+        "legacy"
       ]
     },
     "baseline-missing": {
@@ -1106,6 +1115,9 @@
         "model_missing_square_settled_chip_seal",
         "model_missing_square_settled_concrete",
         "model_missing_square_settled_fine_asphalt"
+      ],
+      "transfer": [
+        "legacy"
       ]
     },
     "baseline-raised": {
@@ -1243,6 +1255,9 @@
         "model_raised_square_upright82_chip_seal",
         "model_raised_square_upright82_concrete",
         "model_raised_square_upright82_fine_asphalt"
+      ],
+      "transfer": [
+        "legacy"
       ]
     },
     "factory": {
@@ -1282,6 +1297,9 @@
         "factory_raised_20261120_000008_4676785bab446fc9",
         "factory_raised_20261120_000011_c945a5a3b22954e4",
         "factory_raised_20261120_000014_25f490d64cd5ca64"
+      ],
+      "transfer": [
+        "factory"
       ]
     },
     "generated-pilot": {
@@ -1300,6 +1318,9 @@
         "P01_ravelled_asphalt",
         "P02_wet_wheel_track",
         "P03_concrete_delamination"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "generated-series": {
@@ -1409,6 +1430,9 @@
         "P35",
         "P36",
         "P37"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "displaced-paver": {
@@ -1419,6 +1443,9 @@
       "section": "泥水坑旁的倾斜联锁砖",
       "assets": [
         "P154"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "observed-pavement": {
@@ -1430,6 +1457,9 @@
       "assets": [
         "P149",
         "P150"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "paired-road-slots": {
@@ -1440,6 +1470,9 @@
       "section": "从双排凹痕提取单个槽口",
       "assets": [
         "P148"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "concrete-slab": {
@@ -1454,7 +1487,10 @@
         "P146",
         "P147"
       ],
-      "prepare": "gen2hole/examples/faulted-slab/prepare.py"
+      "prepare": "gen2hole/examples/faulted-slab/prepare.py",
+      "transfer": [
+        "native"
+      ]
     },
     "pit-depth-completion": {
       "name": "双目深度缺口与照片补全",
@@ -1465,6 +1501,9 @@
       "assets": [
         "P142",
         "P143"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "grade-cover": {
@@ -1479,6 +1518,9 @@
         "A140",
         "A141",
         "M138"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "scanned-cracks": {
@@ -1493,7 +1535,10 @@
         "P136",
         "P137"
       ],
-      "prepare": "gen2hole/examples/scanned-cracks/prepare.py"
+      "prepare": "gen2hole/examples/scanned-cracks/prepare.py",
+      "transfer": [
+        "native"
+      ]
     },
     "standing-water": {
       "name": "实拍坑床的积水状态",
@@ -1507,6 +1552,10 @@
         "P131",
         "P132",
         "P133"
+      ],
+      "transfer": [
+        "wet",
+        "native"
       ]
     },
     "split-iron-cover": {
@@ -1520,6 +1569,9 @@
         "A126",
         "A127",
         "A128"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "rgb-parallax": {
@@ -1533,6 +1585,9 @@
         "P122",
         "P123",
         "P124"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "yokota-grate-metric": {
@@ -1546,6 +1601,9 @@
         "A116",
         "A117",
         "M115"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "cobble-cover": {
@@ -1559,6 +1617,9 @@
         "A119",
         "A120",
         "M118"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "multiview-pit-survey": {
@@ -1573,6 +1634,9 @@
         "P112",
         "P113",
         "P114"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "pandaset-034-metric": {
@@ -1586,7 +1650,10 @@
         "A105",
         "M104"
       ],
-      "prepare": "gen2hole/fit_road_cover.py"
+      "prepare": "gen2hole/fit_road_cover.py",
+      "transfer": [
+        "native"
+      ]
     },
     "pandaset-109-apron": {
       "name": "自驾相机和 LiDAR · 109",
@@ -1599,7 +1666,10 @@
         "A108",
         "M107"
       ],
-      "prepare": "gen2hole/fit_road_cover.py"
+      "prepare": "gen2hole/fit_road_cover.py",
+      "transfer": [
+        "native"
+      ]
     },
     "photo-chamber-BD-v2": {
       "name": "可动圆井盖",
@@ -1614,6 +1684,9 @@
         "A94",
         "A95",
         "M91"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "rgb-box-P90": {
@@ -1624,6 +1697,9 @@
       "section": "5. 用一张实拍 RGB 重建干坑",
       "assets": [
         "P90"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "photo-cracks": {
@@ -1636,6 +1712,9 @@
         "P101",
         "P102",
         "P103"
+      ],
+      "transfer": [
+        "native"
       ]
     },
     "hexagonal-access": {
@@ -1649,6 +1728,51 @@
         "A152",
         "A153",
         "M151"
+      ],
+      "transfer": [
+        "native"
+      ]
+    },
+    "large-potholes": {
+      "name": "大面积程序化坑洞（已封存）",
+      "launcher": "scripts/build-large-potholes.py",
+      "recipe": "scripts/build-large-potholes.py",
+      "guide": "docs/10-factory.md",
+      "section": "大面积坑洞",
+      "assets": [
+        "P160",
+        "P161",
+        "P162",
+        "P163",
+        "P164",
+        "P165",
+        "P166",
+        "P167",
+        "P168",
+        "P169",
+        "P170",
+        "P171",
+        "P172",
+        "P173",
+        "P174",
+        "P175",
+        "P176",
+        "P177",
+        "P178",
+        "P179",
+        "P180",
+        "P181",
+        "P182",
+        "P183",
+        "P184",
+        "P185",
+        "P186",
+        "P187",
+        "P188",
+        "P189"
+      ],
+      "transfer": [
+        "archive"
       ]
     },
     "large-dry-pit": {
@@ -1656,18 +1780,183 @@
       "launcher": "python -m gen2hole.large_pits build",
       "recipe": "gen2hole/examples/oblique-road-pits/P190-detail.json",
       "prepare": "python -m gen2hole.large_pits prepare",
-      "assets": ["P190"],
+      "assets": [
+        "P190"
+      ],
       "guide": "docs/15-large-dry-pits.md",
-      "section": "用输入包重建"
+      "section": "用输入包重建",
+      "transfer": [
+        "drive",
+        "kitti-pair"
+      ]
+    },
+    "common-large-pits": {
+      "name": "常见大型车行道坑洞",
+      "launcher": "python -m gen2hole.large_pits build",
+      "recipe": "gen2hole/examples/oblique-road-pits/common-large",
+      "prepare": "python -m gen2hole.large_pits prepare",
+      "assets": [
+        "P205",
+        "P206",
+        "P207",
+        "P208",
+        "P209",
+        "P210",
+        "P211",
+        "P212",
+        "P213",
+        "P214",
+        "P215",
+        "P216",
+        "P217",
+        "P218",
+        "P219"
+      ],
+      "guide": "docs/15-large-dry-pits.md",
+      "section": "二十件车行道坑洞",
+      "transfer": [
+        "drive",
+        "kitti-pair"
+      ]
     },
     "lane-pits-batch": {
       "name": "车行道大坑的实拍与生成参考图重建",
       "launcher": "python -m gen2hole.large_pits build",
       "recipe": "gen2hole/examples/oblique-road-pits/lane-batch",
       "prepare": "python -m gen2hole.large_pits prepare",
-      "assets": ["P198", "P199", "P200", "P201"],
+      "assets": [
+        "P198",
+        "P199",
+        "P200",
+        "P201"
+      ],
       "guide": "docs/15-large-dry-pits.md",
-      "section": "车行道上的四个坑"
+      "section": "车行道上的四个坑",
+      "transfer": [
+        "drive",
+        "kitti-pair"
+      ]
+    },
+    "photo-large-oblique": {
+      "name": "实拍单图大坑与路缘塌陷",
+      "launcher": "gen2hole/oblique_pits.py",
+      "recipe": "gen2hole/examples/oblique-road-pits",
+      "prepare": "gen2hole/infer_oblique_depth.py",
+      "assets": [
+        "P191",
+        "P197"
+      ],
+      "guide": "docs/02-asset-reconstruction.md",
+      "section": "从斜拍照片重建大面积坑洞",
+      "transfer": [
+        "native"
+      ]
+    },
+    "photo-shoreline-water": {
+      "name": "单图路缘积水坑（观测水线、假设坑床，按目标坡度重新蓄水）",
+      "launcher": "gen2hole/oblique_pits.py",
+      "prepare": "gen2hole/infer_oblique_depth.py",
+      "recipe": "gen2hole/examples/oblique-road-pits/P204-water.json",
+      "guide": "docs/02-asset-reconstruction.md",
+      "section": "P204 路缘积水坑",
+      "assets": [
+        "P204"
+      ],
+      "transfer": [
+        "photo-water",
+        "drive"
+      ]
+    },
+    "transverse-repair": {
+      "name": "横向沥青修补带（本地样例，需原截图）",
+      "launcher": "gen2hole/repair_patch.py",
+      "recipe": "gen2hole/examples/transverse-repair/P202.json",
+      "guide": "gen2hole/examples/transverse-repair/README.md",
+      "section": "重建",
+      "assets": [
+        "P202"
+      ],
+      "transfer": [
+        "repair"
+      ]
+    },
+    "photo-large-rgbd": {
+      "name": "大面积实拍 RGB-D 坑洞",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/oblique-road-pits/rgbd.json",
+      "assets": [
+        "P192",
+        "P193",
+        "P194",
+        "P195",
+        "P196"
+      ],
+      "guide": "docs/02-asset-reconstruction.md",
+      "section": "从斜拍照片重建大面积坑洞",
+      "transfer": [
+        "native"
+      ]
+    },
+    "junction-spall": {
+      "name": "路口横向沥青剥落带",
+      "launcher": "gen2hole/oblique_pits.py",
+      "recipe": "gen2hole/examples/oblique-road-pits/P203-spall.json",
+      "prepare": "gen2hole/infer_oblique_depth.py",
+      "assets": [
+        "P203"
+      ],
+      "guide": "docs/02-asset-reconstruction.md",
+      "section": "P203 路口横向剥落带",
+      "transfer": [
+        "drive"
+      ]
+    }
+  },
+  "transfer_routes": {
+    "legacy": {
+      "name": "055/056 历史八件组合",
+      "entry": "outputs/road_hazard_joint_scenes/reproduction/run.sh",
+      "guide": "docs/04-scene-insertion.md"
+    },
+    "factory": {
+      "name": "034/109/110 五类工厂组合",
+      "entry": "scripts/hazard_factory/migrate_all.py",
+      "guide": "docs/10-factory.md"
+    },
+    "native": {
+      "name": "034/109/110 原生 Gaussian 场景、相机及 LiDAR",
+      "entry": "gen2hole/downstream/place.py",
+      "guide": "docs/13-reproduce-and-transfer.md"
+    },
+    "drive": {
+      "name": "PandaSet 单坑原尺度行车回放",
+      "entry": "gen2hole/large_pits/__main__.py",
+      "guide": "docs/15-large-dry-pits.md"
+    },
+    "kitti-pair": {
+      "name": "KITTI-360 0000 两坑一组及虚拟后视",
+      "entry": "streetcrafter/joint/pit_pairs.py",
+      "guide": "streetcrafter/joint/README.md"
+    },
+    "wet": {
+      "name": "先按目标坡面求水位，再迁入湿态",
+      "entry": "gen2hole/fill_pits.py",
+      "guide": "docs/02-asset-reconstruction.md"
+    },
+    "photo-water": {
+      "name": "按站点重建水面、坑床及折射回放",
+      "entry": "gen2hole/oblique_pits.py",
+      "guide": "docs/02-asset-reconstruction.md"
+    },
+    "repair": {
+      "name": "实拍沥青基色迁移及同机位投影",
+      "entry": "scripts/review-repair-transfer.py",
+      "guide": "gen2hole/examples/transverse-repair/README.md"
+    },
+    "archive": {
+      "name": "封存成品及环绕复核；独立 GLB 的宿主接入见手册",
+      "entry": "scripts/review-large-potholes.py",
+      "guide": "docs/10-factory.md"
     }
   }
 }

@@ -160,6 +160,7 @@ function inspect(id) {
   el("sourceType").textContent = selected.category+" / "+selected.method;
   el("note").textContent = selected.note || notes[selected.method];
   el("metrics").replaceChildren();
+  if (selected.depressionArea != null) metric("凹深 ≥ 1 cm 的面积（平方米）",selected.depressionArea.toFixed(2));
   if (selected.outlineArea != null) metric("坑口投影面积（平方米）",selected.outlineArea.toFixed(2));
   if (selected.components) metric("整组槽口 / 独立网格",selected.componentCount+" / "+selected.components.length);
   if (selected.slab) {

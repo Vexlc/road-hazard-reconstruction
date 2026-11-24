@@ -6,7 +6,7 @@
 
 ## 用普通电脑生成 GLB
 
-以下命令在 Linux、Python 3.11 上验证过。输入随 Git 提供。CPU 即可运行，所需的五个 Python 包用于图像处理、网格导出和几何核验。先从公开仓库克隆，在仓库根目录执行后续命令。
+以下命令在 Linux、Python 3.11 上验证过。输入随 Git 提供。CPU 即可运行，所需的五个 Python 包用于图像处理、网格导出和几何核验。先用有读取权限的 GitHub 账号克隆，在仓库根目录执行后续命令。
 
 ~~~bash
 git clone https://github.com/Vexlc/road-hazard-reconstruction.git

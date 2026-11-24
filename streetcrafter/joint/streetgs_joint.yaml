@@ -1,0 +1,19 @@
+task: streetgs_joint
+exp_name: joint_rig
+mode: train
+model:
+  gaussian:
+    sh_degree: 3
+    fourier_dim: 1
+    flip_prob: 0.0
+  nsg:
+    include_bkgd: True
+    include_obj: True
+    include_sky: False
+    include_cube_map: True
+    opt_track: False
+  sky:
+    resolution: 96
+data:
+  white_background: True
+  box_scale: 1.0

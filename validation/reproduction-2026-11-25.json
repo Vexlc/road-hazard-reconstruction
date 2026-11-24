@@ -1,0 +1,278 @@
+{
+  "date": "2026-11-25",
+  "platform": "Linux x86_64, NVIDIA RTX 4070 Ti SUPER",
+  "source_tree": "Isolated staged source export. Reused installed interpreters, prepared KITTI rig/scans, historical source packages, and PandaSet 034 host/raw data. Native models and merged checkpoints were regenerated in empty output directories.",
+  "asset_count": 1463,
+  "reconstruction_families": 36,
+  "transfer_routes": 9,
+  "historical_cpu_mesh_samples": {
+    "model_missing_oval_broken_flange_aged_asphalt": "299508c5061d0e3cea8bdca66a9856fcc39c1ced61d9831eccf3245e332a5dc0",
+    "model_pothole_bowled_aged_asphalt_01": "740a1e6a4200b2f483123a12e467ad60b09b362c2bb2a9163356735802f963f4",
+    "model_raised_oval_ajar14_aged_asphalt": "8b837e7a52b85ef021232a78a58cdfb5d8216b54a160eeba4c06ea0316c59673",
+    "rgbd_pothole_20250227_135438": "1bb4551b9fbb8acfb6ca6122e0a50ae4c35bffbfcdcd5aaff2da819a231ab201",
+    "stereo_pothole_fan_1_01": "555f53366afb2b477148644f50b83a28b66a604a8884e209b8a3258fa5c63725"
+  },
+  "P103_mesh": {
+    "triangles": 816642,
+    "geometry_sha256": "bd7d036d3d48748955c0018ba6c66c5d5468379da8e570108c7dca2a869e2dae",
+    "lowest_z_m": -0.02199999988079071,
+    "highest_z_m": -0.0,
+    "sha256": {
+      "asset.glb": "49759ba9e543495993f33a23896c7ead3bc83f2c42f6d0c47d6100ca3ccc5f38",
+      "surface.npz": "15c8758c316efe654bd52cb7cad996575721b41227233f0cf7d87ccbfd01b87f",
+      "metadata.json": "5f5f0dde76571ca27070a04645dcb0caef503a0bfb420b470306ad15b39bf2f5"
+    }
+  },
+  "photo_chamber_mesh_ids": [
+    "M91",
+    "A91",
+    "A92",
+    "A93",
+    "A94",
+    "A95"
+  ],
+  "P202_mesh_from_released_field_sha256": "72779a56687e74be653cca268617b98bbeec81b29e47676e3205eed5fa556889",
+  "P154_pandaset_034": {
+    "assets": {
+      "P154": {
+        "glb_sha256": "67ffa66b070d61758784752d17c74e897c32bc9bece74a6e4230c2472e48ffb7",
+        "ply_sha256": "d1e06c704fee764e16089735462cc8bc662ace2def7b8c95a1fa5544029f8d2f",
+        "sites": [
+          "034"
+        ]
+      }
+    },
+    "scenes": {
+      "034_154": {
+        "asset": "P154",
+        "native_checkpoint_reloaded": true,
+        "size_multiplier": 1.0,
+        "reload_max_pixel_error": 0,
+        "frames": 80,
+        "simulated_returns_by_lidar": [
+          433,
+          1485
+        ],
+        "camera_frames": {
+          "front_camera": 30,
+          "back_camera": 47
+        }
+      }
+    }
+  },
+  "common_pits": {
+    "P205": {
+      "native_files_matched": 5,
+      "geometry_sha256": "34b617a35e3b5ef582204475796862b5f2afdbd605a8c13ce565095387a6e8a2"
+    },
+    "P206": {
+      "native_files_matched": 5,
+      "geometry_sha256": "b0ac1c9d70cc6243aab694d5402338ce12f5665d67f0af07418ba981edc37c99"
+    },
+    "P207": {
+      "native_files_matched": 5,
+      "geometry_sha256": "28fdac6e10807b962f629ab84b09ffbcc1a01b6e7877eb6981ead6c415b88dcc"
+    },
+    "P208": {
+      "native_files_matched": 5,
+      "geometry_sha256": "2abeecdd23e25cee8e3640ccee85d737a3047cbde5128ee7c20742cd92224284"
+    },
+    "P209": {
+      "native_files_matched": 5,
+      "geometry_sha256": "66dd59a00c0843944ba44ce7c3e9e7d9eb2e40fe3e0bf23eb4198725fa31799b"
+    },
+    "P210": {
+      "native_files_matched": 5,
+      "geometry_sha256": "db9bd7444b2c889d7e5a390fad81e9583e6720df98308898ab6e5e8e14f71ed7"
+    },
+    "P211": {
+      "native_files_matched": 5,
+      "geometry_sha256": "16789ac3dc325e12c3e3dbfa3929a3e9bfa76edbffb061d85a887349a0d11f41"
+    },
+    "P212": {
+      "native_files_matched": 5,
+      "geometry_sha256": "89f544b9683238626f01e31d3fc17e33c63998a3e7194a89fbff6bea34412b3b"
+    },
+    "P213": {
+      "native_files_matched": 5,
+      "geometry_sha256": "d0f40438549561fa8b3230a0b710c59429022f4450449e2615c8a3c2fca89299"
+    },
+    "P214": {
+      "native_files_matched": 5,
+      "geometry_sha256": "2d241cb93e3c265dce78bd170d468687c43de757dd04cc74490148e154a31baf"
+    },
+    "P215": {
+      "native_files_matched": 5,
+      "geometry_sha256": "01023aae0949d5c89325f9ffc2da79c639960860e00dd28d54f18d81aecfe74f"
+    },
+    "P216": {
+      "native_files_matched": 5,
+      "geometry_sha256": "2fb31a43785be50cac4452bba86e72c3ffc38b05fbcea0856736ce18e7176965"
+    },
+    "P217": {
+      "native_files_matched": 5,
+      "geometry_sha256": "bb2ad74b0865e210383b61eab0beaa4a6fd77e0d56ec0883c89a215dc091627c"
+    },
+    "P218": {
+      "native_files_matched": 5,
+      "geometry_sha256": "e27abdb9fd31a5417f878d52681e2d6d3ac6875c3f1fe3eb2bd0bc2a6141f4b2"
+    },
+    "P219": {
+      "native_files_matched": 5,
+      "geometry_sha256": "3c438773edb4def6a20d85d1cfa5986f0da276a2a19054495c756cb8aeca1c40"
+    },
+    "P190": {
+      "native_files_matched": 5,
+      "geometry_sha256": "ed206a5b20d447097a30b752588a5f8232b422a5ac0f646f8cd6baa04bc1d4c0"
+    },
+    "P198": {
+      "native_files_matched": 5,
+      "geometry_sha256": "3cefa1ac96000e857e3698d84f1c7d30f43fad6a30516be0d1f702cb32686593"
+    },
+    "P199": {
+      "native_files_matched": 5,
+      "geometry_sha256": "16075f09b762f20ef3104c2712eb5f665212dac001200a7e2c6ae2ebc0a21cfd"
+    },
+    "P200": {
+      "native_files_matched": 5,
+      "geometry_sha256": "85baee81e77031e2628c0d239fdf1bf39d6c7f81df7dee444372cd7814ef53b3"
+    },
+    "P201": {
+      "native_files_matched": 5,
+      "geometry_sha256": "c8ef6fb1773496d39118a126527a9f825e99d5b84091cb05e69a289e9b5f6c3d"
+    }
+  },
+  "KITTI360": {
+    "host_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+    "original_camera_frames": 192,
+    "original_max_rgb_difference": 0,
+    "pairs": [
+      {
+        "pair": "01-P205-P206",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          245,
+          246,
+          247
+        ]
+      },
+      {
+        "pair": "02-P207-P208",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          245,
+          246,
+          247
+        ]
+      },
+      {
+        "pair": "03-P209-P210",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          245,
+          246,
+          247
+        ]
+      },
+      {
+        "pair": "04-P211-P212",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          244,
+          245,
+          246,
+          247
+        ]
+      },
+      {
+        "pair": "05-P213-P214",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          244,
+          245,
+          246,
+          247
+        ]
+      },
+      {
+        "pair": "06-P215-P216",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          244,
+          245,
+          246,
+          247
+        ]
+      },
+      {
+        "pair": "07-P217-P218",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          244,
+          245,
+          246,
+          247
+        ]
+      },
+      {
+        "pair": "08-P219-P190",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          246,
+          247
+        ]
+      },
+      {
+        "pair": "09-P198-P199",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          245,
+          246,
+          247
+        ]
+      },
+      {
+        "pair": "10-P200-P201",
+        "front_frames": 48,
+        "rear_frames": 28,
+        "max_rgb_difference_front": 0,
+        "max_rgb_difference_rear": 0,
+        "simultaneous_post_pass_frames": [
+          245,
+          246,
+          247
+        ]
+      }
+    ],
+    "front_seconds": 62.0,
+    "rear_seconds": 48.6,
+    "front_to_rear_seconds": 78.3
+  }
+}

@@ -56,3 +56,5 @@ __pycache__/
 /tools/asset_atlas/catalog.js
 
 /tools/asset_atlas/relief/
+
+/.codex-attachments/

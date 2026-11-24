@@ -1,0 +1,129 @@
+{
+  "original_geometry_sha256": "1aa83ab33193b0cf89a8bd4be63c412ff3d9dd5cb0813f31f7a5a93d2a3553bf",
+  "sites": {
+    "034": {
+      "geometry_sha256": "1aa83ab33193b0cf89a8bd4be63c412ff3d9dd5cb0813f31f7a5a93d2a3553bf",
+      "mesh_sha256": "bb33bf9bc8c79774b967833e775ff8567bb8da3c214d40eab16e9e56da71e2a5",
+      "anchor": {
+        "slot": "01",
+        "center_world": [
+          -36.16243798230243,
+          -5.790768920867825,
+          -5.150513699017868
+        ],
+        "basis_columns": [
+          [
+            -0.15583637906672923,
+            -0.9776676350399915,
+            -0.14100006508750496
+          ],
+          [
+            0.9875661737497854,
+            -0.15719661918618416,
+            -0.00150843682079268
+          ],
+          [
+            -0.02068998367759607,
+            -0.13948196410914124,
+            0.9900084374709527
+          ]
+        ]
+      },
+      "frames": {
+        "25": {
+          "host_median_rgb": [
+            94.0,
+            94.0,
+            96.0
+          ],
+          "body_delta_E76_median": 2.0508408546447754,
+          "joint_luminance_ratio": 0.817290533588835,
+          "body_luminance_ratio": 1.0509397406745622,
+          "visible_joint_pixels": 171,
+          "visible_body_pixels": 6038,
+          "outside_edits": 0,
+          "protected_edits": 0,
+          "source_sha256": "d302e5b5123abf346c2e916b5890af4f02058624c31546f831f6c54a1a7dc092"
+        },
+        "29": {
+          "host_median_rgb": [
+            94.0,
+            94.0,
+            96.0
+          ],
+          "body_delta_E76_median": 2.0686635971069336,
+          "joint_luminance_ratio": 0.7971814821325514,
+          "body_luminance_ratio": 1.0524308420380777,
+          "visible_joint_pixels": 558,
+          "visible_body_pixels": 19021,
+          "outside_edits": 0,
+          "protected_edits": 0,
+          "source_sha256": "c2e104e4338444404fc92202bb9b74ba01af9de5373e0c65f007f9252f13dd27"
+        }
+      },
+      "splat_shape_sha256": "478959045abc0dbe73fa33fa627b916360c3c055bbb1f32bdb17dd3e1d72b47c"
+    },
+    "109": {
+      "geometry_sha256": "1aa83ab33193b0cf89a8bd4be63c412ff3d9dd5cb0813f31f7a5a93d2a3553bf",
+      "mesh_sha256": "b0de20b1721c54367a42a2227c3891a981c0d8268b8cb2f14a31e117d1970ea1",
+      "anchor": {
+        "slot": "01",
+        "center_world": [
+          -38.60890679637467,
+          39.414138021219195,
+          -0.5507427847349833
+        ],
+        "basis_columns": [
+          [
+            0.7022745068784205,
+            -0.7111999369127098,
+            0.031704364431875125
+          ],
+          [
+            0.7101220131204765,
+            0.7029704320496952,
+            0.03948794937176009
+          ],
+          [
+            -0.05037105786454429,
+            -0.005217413077624456,
+            0.998716944449419
+          ]
+        ]
+      },
+      "frames": {
+        "25": {
+          "host_median_rgb": [
+            116.0,
+            116.0,
+            117.0
+          ],
+          "body_delta_E76_median": 2.5453579425811768,
+          "joint_luminance_ratio": 0.8936432176517822,
+          "body_luminance_ratio": 1.0505266458426261,
+          "visible_joint_pixels": 70,
+          "visible_body_pixels": 3584,
+          "outside_edits": 0,
+          "protected_edits": 0,
+          "source_sha256": "de2bb40f63b78af64c9704cd016ad4dafd585eaf79cc2612915b80c272f15f68"
+        },
+        "29": {
+          "host_median_rgb": [
+            116.0,
+            116.0,
+            117.0
+          ],
+          "body_delta_E76_median": 2.490675449371338,
+          "joint_luminance_ratio": 0.8250027793676218,
+          "body_luminance_ratio": 1.0518837016070741,
+          "visible_joint_pixels": 523,
+          "visible_body_pixels": 18192,
+          "outside_edits": 0,
+          "protected_edits": 0,
+          "source_sha256": "92cd2898d563ef7e6387bee6d7eae373cd28d4bf9f6049fab10b75c97d36f806"
+        }
+      },
+      "splat_shape_sha256": "478959045abc0dbe73fa33fa627b916360c3c055bbb1f32bdb17dd3e1d72b47c"
+    }
+  }
+}

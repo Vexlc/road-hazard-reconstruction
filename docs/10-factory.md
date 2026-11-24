@@ -1,5 +1,7 @@
 # 道路病害资产工厂
 
+**路线状态（2026-11-23）**　程序化造坑已封存，P160–P189 为最后一批。以下造坑命令供历史复现使用。新增坑洞优先从带尺度的参考照片、双目或 RGB-D 观测重建。[末批归档](#大面积坑洞) · [实拍重建入口](02-asset-reconstruction.md#多帧实拍重建同一组坑洞)
+
 2026-11-20 已验证：30个新设计资产；五类各10条资产记录，迁入3条道路，共150处放置、30份原生检查点。五份综合视频各120秒，另有30个设计资产的两页4×4环绕。实拍记录尚未按物理坑洞去重。当前44个新增文件中8个已完成云端大小、SHA-256和公开只读权限核对并进入下载清单，另36个尚未完成；状态见 catalog/factory-v3-download-status.json。共享rclone客户端项目触发每分钟请求配额，当前暂停重试并调整传输通道。连接器单文件上限为100MiB。
 
 按米制设计连续追加坑洞、缺盖井和异常井盖，并将五类资产迁入标定道路场景。双目与 RGB-D 继续使用原实拍库；放大演示资产不参与本流程。
@@ -95,3 +97,21 @@ python scripts/hazard_factory/migrate_all.py --job work/hazard_factory_v3/migrat
 camera_fit.py 根据完整井框、井盖的几何包围盒和15mm外扩量求解相机距离，保留28px画面边距。review_framing.py 已对60处井类放置、1440个观察角度检查几何范围，原生检查点保持不变；109_10的2秒实渲染对照中，原固定距离镜头裁切井盖上沿，新镜头显示完整井盖。此预览尚未集成到五类综合视频或联合迁入主入口，不能据此声称主入口已修正局部裁切。
 
 运行时设置 HAZARD_FACTORY_JOB、ROAD_BATCH_WORK、FRAMING_REVIEW_OUTPUT；用相应配置运行 review_framing.py --config /absolute/pandaset_109.yaml mode trajectory。FRAMING_REVIEW_CASE 默认为109_10。该脚本只写入指定预览输出目录，不改变原生场景。
+
+## 大面积坑洞
+
+P160–P189 是程序化造坑路线封存时的最后一批设计资产，包含碗状坑、车辙坑、连通坑、月牙坑、群坑、浅层剥落、补丁破损、深层破损、板角破损和积水坑。每种形态建了三档面积。模型保留米制尺寸，坑沿、坑底和局部碎块由几何生成，使用现有路面扫描材质。积水坑单独保存水面和坑底。
+
+用水平路面以下至少 1 厘米处的网格采样统计水平投影，新坑覆盖 3.33–14.44 平方米。按同一口径，原扩充库和 v3 工厂的 130 个程序化坑洞最大为 1.10 平方米。独立复核在同一高度裁切导出 GLB 的三角形，30 个面积与采样结果的相对差均小于 0.52%。[同尺度俯视图](figures/large-potholes.jpg) · [逐件面积与模型校验值](../validation/large-potholes-areas.json)
+
+归档包按项目相对路径保存这 30 件成品、生成与审查源码、实际用到的扫描材质和环绕视频。可解压到新目录查看，或用项目已有的 assets、streetcrafter 环境复现。[本地封存包](../data/history/2026-11-23/procedural-potholes-P160-P189.tar.zst) · [归档 SHA-256](../catalog/procedural-potholes-P160-P189.sha256) · [原环绕视频](../outputs/large-potholes/orbits.mp4)
+
+在仓库根目录复现时使用以下命令。材质取自 `inputs-procedural` 恢复的 `work/reconstruction-inputs/pbr`，也支持原库的 `work/road_hazard_sources`。构建程序向新目录发布已核验的资产。只复建一个编号可用 `--ids P181 --out runs/P181-large`。
+
+~~~bash
+work/envs/assets/bin/python scripts/build-large-potholes.py
+work/envs/streetcrafter/bin/python scripts/review-large-potholes.py --video
+python scripts/build-asset-atlas.py
+~~~
+
+本地资产在 `outputs/large-potholes/pothole/<编号>/`，每个目录有 GLB、高斯 PLY、米制高度场、尺寸记录和预览。面积对照图和 40 秒环绕视频位于 `outputs/large-potholes/`。图谱中搜索「大面积」可查看全部 30 件。

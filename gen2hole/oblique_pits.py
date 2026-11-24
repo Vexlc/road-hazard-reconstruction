@@ -63,7 +63,23 @@ def project(world, K):
     return np.float32(world[..., :2] / world[..., 2:] * K.diagonal()[:2] + K[:2, 2])
 
 
-def build_case(spec_path, inputs, bundle):
+def spall_relief(height, footprint, pitch, rgb, origin, axes, span, camera, profile):
+    surface = grid_world(len(height), span, origin, axes)
+    photo = cv2.remap(rgb, project(surface, camera), None, cv2.INTER_LINEAR)
+    luminance = cv2.cvtColor(photo, cv2.COLOR_RGB2GRAY).astype('f4')
+    support = footprint.astype('f4')
+    distance = np.maximum(distance_transform_edt(footprint) - 1, 0) * pitch
+    edge = np.clip(distance / profile['lip_width_m'], 0, 1)
+    bowl = np.clip(distance / profile['basin_width_m'], 0, 1)
+    sigma = profile['aggregate_radius_m'] / pitch
+    surround = cv2.GaussianBlur(luminance * support, (0, 0), sigma) / np.maximum(
+        cv2.GaussianBlur(support, (0, 0), sigma), 1e-5)
+    dark = np.clip((surround - luminance) / profile['dark_contrast_srgb'], 0, 1)
+    depth = profile['bed_m'] * bowl + profile['chip_m'] * dark + np.maximum(-height, 0)
+    return np.float32(-edge * np.minimum(depth, profile['cap_m']))
+
+
+def build_case(spec_path, inputs, bundle, spall_profile=None):
     spec = json.loads(spec_path.read_text())
     key = spec['id']
     refs, cal = bundle/'references', bundle/'calibration'
@@ -73,6 +89,8 @@ def build_case(spec_path, inputs, bundle):
     shape = rgb.shape[:2]
     if spec['image_size'] != list(shape[::-1]):
         raise ValueError(f'{key}: annotation coordinates do not match the photo dimensions')
+    if 'source_sha256' in spec and spec['source_sha256'] != digest(src):
+        raise ValueError(f'{key}: annotated source hash does not match the photo')
     mask = polygon_mask(shape, [spec['rim']])
     excluded = polygon_mask(shape, spec.get('exclude_polygons', []))
     overlay = np.zeros(shape, 'u1')
@@ -157,6 +175,16 @@ def build_case(spec_path, inputs, bundle):
     height = np.zeros((size, size), 'f4')
     height[footprint] = (xyz[ix, 2]*weights).sum(1)/weights.sum(1)
     height = np.minimum(median_filter(height, 3), 0)*np.clip(distance_transform_edt(footprint)/2, 0, 1)
+    if spall_profile:
+        profile = json.loads(spall_profile.read_text())
+        params = [profile[name] for name in ('lip_width_m','basin_width_m','aggregate_radius_m',
+                                             'dark_contrast_srgb','bed_m','chip_m','cap_m')]
+        if profile['id'] != key or not np.isfinite(params).all() or min(params) <= 0:
+            raise ValueError('Expected a matching shallow-spall profile with positive finite parameters')
+        np.savez_compressed(cal/(key+'_monocular.npz'), height=height, defect_mask=footprint, width=span)
+        raw_p95 = float(np.percentile(-height[footprint], 95))
+        height = spall_relief(height, footprint, pitch, rgb, origin, axes, span, K, profile)
+        shutil.copyfile(spall_profile, cal/(key+'-spall.json'))
     outside = distance_transform_edt(~footprint)*pitch
     alpha = np.float32(np.clip(1-outside/border, 0, 1))
     tex_size = 1025
@@ -205,6 +233,8 @@ def build_case(spec_path, inputs, bundle):
                  source_valid_pit_pixels=int(observed.sum()), pavement_texture='Quilt of radiometrically filtered intact-road samples in plane coordinates')
     if design:
         stats['design_scale'] = design
+    if spall_profile:
+        stats['relief_prior'] = dict(profile=profile, monocular_p95_m=raw_p95, measured=False)
     put(cal/(key+'_capture.json'), stats)
     meta = dict(id=key,label=spec['label'],category='pothole',family=key,state='estimated',seed=307101+int(key[1:]),
         recipe_version='oblique-photo-depth-v1',source_image='references/'+src.name,source_sha256=digest(src),
@@ -216,6 +246,10 @@ def build_case(spec_path, inputs, bundle):
     if design:
         meta.update(scale_kind='Designed long axis; relative depth inferred from a generated image',
                     design_long_axis_m=target)
+    if spall_profile:
+        meta.update(recipe_version='oblique-photo-shallow-spall-v1',
+                    geometry_source='Photographed rim and monocular road plane; bounded shallow relief guided by local aggregate contrast, not measured depth',
+                    relief_profile='calibration/'+key+'-spall.json', relief_cap_m=profile['cap_m'])
     for field in ('source_url', 'license', 'license_url', 'author', 'framing', 'reference_kind'):
         if field in spec:
             meta[field] = spec[field]
@@ -231,6 +265,9 @@ def main():
     p.add_argument('--config',type=Path,default=ROOT/'config/local.json')
     p.add_argument('--detail-profile', type=Path, help='Fit marked scarp and scan detail for this profile ID')
     p.add_argument('--detail-inputs', type=Path, help='Cached inset depths and checked scan maps')
+    p.add_argument('--spall-profile', type=Path, help='Use an explicit shallow-relief prior for one photographed spall')
+    p.add_argument('--puddle-profile', type=Path, help='Fit a photographed shoreline over an explicitly designed submerged bed')
+    p.add_argument('--water-site', choices=['109','034','110'], help='Refill for the destination pothole anchor in the configured road plan')
     p.add_argument('--visible-surface', action='store_true', help='Reproject the photo on final, visible triangles')
     p.add_argument('--pavement', type=Path, default=ROOT.parent/'work/reconstruction-inputs/pbr/Asphalt031')
     args = p.parse_args()
@@ -238,6 +275,12 @@ def main():
         p.error('Supply --detail-profile and --detail-inputs together')
     if args.visible_surface and not args.detail_profile:
         p.error('--visible-surface requires a dry-pit detail profile')
+    if args.spall_profile and (len(args.specs) != 1 or args.detail_profile):
+        p.error('--spall-profile requires one outline and cannot be combined with a scarp fit')
+    if args.water_site and not args.puddle_profile:
+        p.error('--water-site requires --puddle-profile')
+    if args.puddle_profile and (len(args.specs)!=1 or args.detail_profile or args.spall_profile):
+        p.error('--puddle-profile requires one outline and no other relief profiles')
     if args.out.exists():
         p.error('Choose a new output directory')
     cfg = json.loads(args.config.read_text())
@@ -252,7 +295,10 @@ def main():
         for part in ('common','series'):
             shutil.copytree(ROOT/'recipes'/part,rebuild,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
         for spec in args.specs:
-            build_case(spec,args.inputs,bundle)
+            build_case(spec,args.inputs,bundle,args.spall_profile)
+        if args.puddle_profile:
+            from photo_puddle import prepare
+            prepare(bundle,args.specs[0],args.puddle_profile,args.water_site,cfg.get('road_config'))
         keys = [json.loads(s.read_text())['id'] for s in args.specs]
         if args.detail_profile:
             from oblique_detail import refine

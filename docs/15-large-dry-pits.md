@@ -1,5 +1,7 @@
 # 实拍大坑子模块
 
+首次克隆或交接项目，请先看[资产重建与场景迁入复现手册](16-reproduction-cookbook.md)。其中列出按编号查询的方法、可下载输入、各宿主的代码入口和验收标准。
+
 `gen2hole.large_pits` 从斜拍照片重建露出土层的路面塌坑，导出带材质的 GLB、原生 3D 高斯 PLY 和高程场，然后把同一件资产迁入标定好的实拍道路。P190 使用护栏旁塌坑的原始照片。打开 109 前视第 28 帧能看到电线阴影穿过坑床，034 前视第 27 帧则能看到背阴路面的断边。[109 行车视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190-scene-109.mp4) · [034 行车视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190-scene-034.mp4) · [同机位版本对照](figures/large-dry-pit-road.jpg) · [GLB](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190.glb)
 
 ![同一段道路上两版坑洞的前视和后视近景](figures/large-dry-pit-road.jpg)
@@ -20,6 +22,18 @@ python -m gen2hole.large_pits example P201
 ```
 
 该命令自动下载和校验输入包，提取 P201，重建模型并核对五个成品的 SHA-256。默认输出为 `runs/reproduce-p201/series/assets/pothole/P201/`。可将编号换成 P190、P198、P199 或 P200，也可用 `--out 新目录` 指定输出位置。手动下载后传入 `--archive 文件路径` 即可离线重建。输入包已有整图和局部深度，重建发布样例时可直接使用。使用新照片需要准备其轮廓和断边并推断深度。车载回放另需 PandaSet 道路数据，中文视频标签使用 Noto Sans CJK 字体。[固定版本源码](https://github.com/Vexlc/road-hazard-reconstruction/tree/large-pits-v1.0.0) · [输入包、模型与视频下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/large-pits-v1.0.0) · [发布文件校验表](../gen2hole/large_pits/release-sha256.txt)
+
+## 二十件车行道坑洞
+
+这套合集包含原有 P190、P198–P201 和新增 P205–P219。新增的 15 件各自使用一张独立生成的沥青路面参考图。宽碗坑、车轮磨出的长坑、接缝和补丁边缘破损、相邻坑连通均保留完整坑口。参考图中标定的上缘和可见断壁与整图、局部深度一起用于建模。新增模型的坑口投影面积为 3.29–10.62 平方米，长轴为 4.1–5.6 米，坑床凹深 P95 为 11–24 厘米。这些是设计尺度下的模型尺寸。合集视频先播放新增的 15 件，再播放原有的 5 件，每件都显示参考图、建成的网格及 PandaSet 109 前后视回放。[合集视频](../outputs/photo-large-potholes/common-20/common-20.mp4) · [二十件网格总览](../outputs/photo-large-potholes/common-20/overview.jpg) · [全部 GLB](../outputs/photo-large-potholes/common-20/models-glb.zip) · [逐件视频与模型](../outputs/photo-large-potholes/common-20/list.md)
+
+在固定版本 `reproduction-2026.11.25` 下，先依照[下载与合并步骤](16-reproduction-cookbook.md#从发布输入复建-20-个大坑)获取输入并配置环境。以下命令重建 P205，核对五个文件，再放入已配置的 PandaSet 109。要复建全部 20 件，省略首条命令最后的编号。[版本下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25) · [新增件配方及生成提示词](../gen2hole/examples/oblique-road-pits/common-large/cases.json)
+
+```bash
+python3 scripts/rebuild-common-pits.py downloads/reproduction-2026.11.25/common-pit-inputs.zip P205
+python3 -m gen2hole.large_pits drive --bundle runs/common-large-pits/P205/series --asset P205 --group 205 \
+  --site 109 --out work/reproduce-common-20/scene-P205
+```
 
 ## 车行道上的四个坑
 

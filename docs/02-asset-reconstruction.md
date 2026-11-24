@@ -735,3 +735,125 @@ work/envs/assets/bin/python gen2hole/export_lids.py --bundle "$run/series"
 work/envs/streetcrafter/bin/python scripts/check-polygon-cover.py --run "$run" --out "$run/geometry.json" --transfer-out "$run/transfer.json"
 work/envs/streetcrafter/bin/python scripts/render-polygon-cover.py --run "$run" --audit "$run/geometry.json" --transfer "$run/transfer.json" --out "$run/hexagonal-cover.jpg"
 ~~~
+
+## 从斜拍照片重建大面积坑洞
+
+P190 现由子模块 `gen2hole.large_pits` 重建。可从一份输入包生成当前版 GLB 和高斯资产，再复现两段实拍道路的前视与后视。以下保留早期实验和其他七件资产的记录。[当前版的输入、完整命令与实测对照](15-large-dry-pits.md)
+
+P190 的原图是带检测框的行车画面。沿可见坑沿标注轮廓，用坑外的完整路面拟合局部基准面。MoGe-2 分别处理原图和水平翻转图，将两次预测投到同一坐标系。以坑沿约束高程，将原照片颜色投回网格，排除检测线和遮挡物。边缘遮挡由邻近样本补全。原图无现场尺度，长度和面积按单目模型的米制估计计算。旋转视角下远侧断面和近侧坑底的可信程度不同。[模型来源](https://github.com/microsoft/MoGe) · [P190 轮廓和遮挡标注](../gen2hole/examples/oblique-road-pits/P190.json)
+
+| 样本 | 实拍来源 | 坑口与深度 |
+| --- | --- | --- |
+| P190 | 用户提供的护栏旁路面塌坑 | 估计坑口 14.2 m²，朝向与坑长对齐的外接矩形约 6.7 × 2.7 m。按坑内网格统计，可见表面凹深 P95 约 23 cm。 |
+| P191 | [Uncl3dad 拍摄的乡道湿坑，公有领域](https://commons.wikimedia.org/wiki/File:Pothole_Big.jpg) | 估计坑口 3.4 m²，水面以下的形状未知。 |
+| P192–P196 | [PothRGBD 原始 RGB 和深度记录](https://github.com/ymyurdakul/PData) | 坑口 1.0–3.0 m²。逐幅预留原始深度点，交付网格在预留点的光轴深度误差中位数为 0.4–0.9 mm。 |
+| P197 | [USGS 佛罗里达住宅车道边缘塌陷，公有领域](https://www.usgs.gov/media/images/sinkholes-west-central-florida-freeze-event-2010-2) | 近景只覆盖可见部分，左边界被画幅截断。近景与远景的单图估算分别约 108 和 79 m²，两张图的取景、坑缘和估计尺度不同。此件用于观察破坏形态，全坑面积仍需外部标定。 |
+
+P190 的原机位回投通过光线与交付 GLB 求交计算，优化前后坑口与原图标注的交并比分别为 0.990 和 0.983。这个数值衡量同一机位的轮廓一致性。RGB-D 的深度误差仅针对同一次拍摄的留出点，米制尺度采用数据集标称内参。[原机位对照](../outputs/photo-large-potholes/reference-comparison.jpg) · [逐件数据](../outputs/photo-large-potholes/measurements.json)
+
+P190 的优化版用两幅经内参校正的局部图恢复坑底起伏，以照片上 18 处断口的上下缘约束可见坑壁。单图无法同时确定坑壁的深度和坡度，拟合时假定上段断口每下降 1 cm 向内收约 2.7 mm。近景细砂、散石及其微起伏采用扫描样本补全，原照片保留大尺度明暗和土色。贴图采样转到路面坐标，以减轻斜拍图像在旋转后的纵向拖影。两版在同机位、同灯光下对照，末段展示断面近景。[对比视频](../outputs/photo-large-potholes/P190-v2/comparison.mp4) · [街景合成](../outputs/photo-large-potholes/P190-v2/street-view.jpg) · [细砂](https://polyhaven.com/a/gravelly_sand) · [碎石](https://polyhaven.com/a/stony_dirt_path) · [沥青](https://ambientcg.com/a/Asphalt031)
+
+优化版 P190 以原模型尺度迁入 PandaSet 109 右侧车道。编号 109_190 的场景保存了坑体、开口以及与周围路面匹配的高斯颜色。前视第 28 帧和后视第 42 帧从两个方向看到同一位置。视频以原始相机位姿回放，保留动态物体遮挡，并按太阳方向将原路面上的杆线阴影投到坑面。[行车视频](../outputs/photo-large-potholes/P190-v2/scene-109/drive.mp4) · [同机位原路面对比](../outputs/photo-large-potholes/P190-v2/scene-109/comparison.jpg) · [场景放置记录](../runs/large-pits-oblique/series/scenes/109_190/scene.json)
+
+~~~bash
+python gen2hole/downstream/place.py --bundle runs/large-pits-oblique/series --site 109 --group 190 --assets P190 --front
+CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/render-placed-pit-drive.py \
+  --bundle runs/large-pits-oblique/series --case 109_190 --scans runs/paired-road-slots/sensors \
+  --out outputs/photo-large-potholes/P190-v2/scene-109
+~~~
+
+单图输入目录中按编号放置原始 JPEG。使用安装 MoGe 及其依赖的环境运行深度推断，然后使用项目计算环境导出网格、Gaussian PLY 和两张模型渲染图。下例从 P190 开始。重跑导出时选择新的运行目录。
+
+~~~bash
+python gen2hole/infer_oblique_depth.py \
+  --spec gen2hole/examples/oblique-road-pits/P190.json \
+  --image work/oblique-pit-study/P190.jpg \
+  --weights /path/to/moge-2-vitl-normal/model.pt \
+  --out work/oblique-pit-study/P190-depth.npz
+work/envs/streetcrafter/bin/python gen2hole/oblique_pits.py \
+  --specs gen2hole/examples/oblique-road-pits/P190.json \
+  --inputs work/oblique-pit-study --out runs/rebuilt-oblique-P190
+work/envs/streetcrafter/bin/python gen2hole/multiview_pits.py \
+  --survey gen2hole/examples/oblique-road-pits/rgbd.json \
+  --preview --out runs/rebuilt-large-pits-rgbd
+~~~
+
+单图深度推断支持 `--device cpu`。每份单图构建保留输入 JPEG、两次深度预测、相机估计、标注、权重和参考文件的 SHA-256。P197 对应的源文件是 USGS 的 `Sinkholes-Freeze_2010_-_010.jpg`。项目本机可从下列三个构建目录重新生成预览。
+
+~~~bash
+CUDA_HOME=/usr/local/cuda work/envs/streetcrafter/bin/python scripts/review-oblique-pits.py \
+  --runs runs/large-pits-oblique runs/large-pits-driveway runs/large-pits-rgbd \
+  --out outputs/photo-large-potholes
+~~~
+
+
+P190 精细版的局部深度使用与全图一致的 MoGe 权重。在已安装 MoGe 的环境中运行第一条命令。将细节配方中两个材质各自的 `albedo.url`、`displacement.url` 按原始文件名下载到局部深度目录，导出时会核对 MD5。本机已有这些缓存和 Asphalt031。标注和扫描材质比例保存在[细节配方](../gen2hole/examples/oblique-road-pits/P190-detail.json)。
+
+~~~bash
+python gen2hole/infer_oblique_inset.py --bundle runs/large-pits-oblique/series \
+  --profile gen2hole/examples/oblique-road-pits/P190-detail.json \
+  --weights /path/to/moge-2-vitl-normal/model.pt --out work/p190-refinement/P190-insets.npz
+work/envs/streetcrafter/bin/python gen2hole/oblique_pits.py \
+  --specs gen2hole/examples/oblique-road-pits/P190.json --inputs work/oblique-pit-study \
+  --detail-profile gen2hole/examples/oblique-road-pits/P190-detail.json \
+  --detail-inputs work/p190-refinement --out runs/rebuilt-P190-detail
+~~~
+
+### P203 路口横向剥落带
+
+[原图选区](../outputs/junction-spall/P203/source-outline.jpg) · [三维模型](../runs/junction-spall/series/assets/pothole/P203/asset.glb) · [109 道路对比](../outputs/junction-spall/P203/scene-109/comparison.jpg) · [034 道路对比](../outputs/junction-spall/P203/scene-034/comparison.jpg)
+
+只取车头前方破损的宽头、碎边和伸向右路缘的窄尾，不取整片补过的路面。按[截图轮廓](../gen2hole/examples/oblique-road-pits/P203.json)拟合和展开道路平面，估计外接矩形 6.59 × 1.91 m，实际轮廓内面积约 4.35 m²。原图没有现场量尺。仅用单目深度时，凹深 P95 为 5.4 mm，小于留出路面的平面残差 P95（13–14 mm），不能据此测深。用于迁入的[浅层配方](../gen2hole/examples/oblique-road-pits/P203-spall.json)保留原始高程，另用距碎边的距离和照片中骨料的局部明暗补足起伏。交付面凹深 P95 为 2.73 cm，最深限制在 4 cm；两者都是建模结果。
+
+两段道路都使用同一件高斯资产、同一尺度。按各自的路面法线放置并切开原路面，以目标沥青校正曝光和色偏，不改轮廓和高度。两段场景均已[独立重载](../outputs/junction-spall/P203/checkpoint-replay.json)。[质检记录](../outputs/junction-spall/P203/quality.json)区分同机位轮廓回投和颜色复核；回投交并比 0.978 表示与标注一致，不是深度精度。前视第 29 帧的可见剥落面相对原地面同像素的 ΔE76 中位数是 6.75（109）和 5.61（034）；此值包含应该看得出的碎边和裸露骨料。
+
+从仓库根目录复建，需自行提供与标注哈希一致的原截图、[MoGe 环境和权重](15-large-dry-pits.md)以及本机的 PandaSet 道路环境。将原图不经缩放保存为 `work/p203-cross-spall/inputs/P203.jpg`。已有匹配的 `P203-depth.npz` 时可跳过第一条推断命令；`--out` 为新建目录，不覆盖交付件。
+
+~~~bash
+spec=gen2hole/examples/oblique-road-pits
+src=work/p203-cross-spall/inputs
+PYTHONPATH=../SongYan_recon/work/deps/MoGe:../SongYan_recon/work/deps/utils3d-moge \
+  ../dynamic_benchmark/.venv/bin/python gen2hole/infer_oblique_depth.py --spec "$spec/P203.json" \
+  --image "$src/P203.jpg" --weights ../SongYan_recon/work/moge2/model.pt --out "$src/P203-depth.npz"
+work/envs/streetcrafter/bin/python gen2hole/oblique_pits.py --specs "$spec/P203.json" \
+  --spall-profile "$spec/P203-spall.json" --inputs "$src" --out runs/rebuilt-P203
+for site in 109 034; do
+  CUDA_HOME=/usr/local/cuda python3 -m gen2hole.large_pits drive --bundle runs/rebuilt-P203/series \
+    --asset P203 --group 203 --site "$site" --scans runs/paired-road-slots/sensors \
+    --out "outputs/rebuilt-P203/scene-$site"
+done
+~~~
+
+### P204 路缘积水坑
+
+[旧版 / 新版同帧视频](../outputs/curb-puddle-v2/P204/revision.mp4) · [原图水线与三个路段](../outputs/curb-puddle-v2/P204/overview.jpg) · [新版 GLB](../runs/curb-puddle-v2/source/series/assets/pothole/P204/asset.glb) · [核验及敏感性数据](../outputs/curb-puddle-v2/P204/quality.json) · [保留的旧版](../outputs/curb-puddle/P204/overview.jpg)
+
+**水线从哪里来。** 只重建右侧箭头前的主水池；白色箭头、路缘和不确定的沟边反光不属于资产。[坑沿](../gen2hole/examples/oblique-road-pits/P204.json)规定外边界，[水线草图](../gen2hole/examples/oblique-road-pits/P204-water.json)只限定搜索范围。新版在草图两边 3 像素内，用亮水和暗岸的局部对比校正连通轮廓。将交付网格投回照片，轮廓到最近图像边缘的平均距离从 0.86 降至 0.51 像素，90 分位从 2 降至 1 像素。与手描草图的 IoU 从 0.996 降为 0.924；这是改为贴合图像而不是逐点复刻草图的结果。两项都不是独立的现场精度验证。
+
+**水深为什么只能给假设。** 源路面暂按水平处理，单目深度只负责路面和尺度。在原图和镜像两套标定中，沿视线降低水面，直到投影的水面越出坑沿超过 0.1%，取较小上限的一半作为名义岸高差（2.22 cm）。在两套标定、岸高差和分割阈值间变化时，源面积约 1.79–2.41 m²；名义网格为 1.98 m²。用零水深边界向内求光滑坑底，分别试 2.5 / 4.5 / 7 cm 最大水深，中档作为交付版（源模型约 41 L）。这些是敏感性情景，不是统计置信区间，也没有用反光亮度推断水深。
+
+**迁入和外观。** 同一坑床和初始水量在每段路上单独求溢流，水面保持世界水平。车载回放从水平面折射到交付的坑底，按光程衰减水底纹理，再按观察角度混合倒影；几毫米深的岸边逐渐过渡为湿沥青。反射优先使用坑壁和从水面镜像投影的现场静态激光点，没有覆盖才使用目标帧远景或天空近似。微小法线变化固定在资产上，不改变几何水位。GLB/高斯保留网格与湿底材质，不包含车载相机的逐帧倒影。核验从 GLB 水面向坑底射线积分体积，检查三处坑床一致，并检查车载回放不改写前景及资产外部。
+
+| 目标路段及回放 | 局部坡度 | 中档模型留水 | 水面面积（浅 / 中 / 深假设） |
+| --- | ---: | ---: | --- |
+| [110](../outputs/curb-puddle-v2/P204/scene-110/drive.mp4) | 3.2% | 31.4 L | 1.72 / 1.94 / 2.07 m² |
+| [109](../outputs/curb-puddle-v2/P204/scene-109/drive.mp4) | 5.1% | 11.9 L | 0.79 / 1.24 / 1.51 m² |
+| [034](../outputs/curb-puddle-v2/P204/scene-034/drive.mp4) | 14.2% | 不到 0.01 L | 三档均不到 0.01 m²；最大水深约 3 mm，小于路面拟合 RMS（约 10 mm），仅按湿痕解读 |
+
+**复建。** 在上节相同的 MoGe 环境中，用 `P204.json` 替换 `--spec`，将未经缩放的原截图存为 `work/p204-puddle/inputs/P204.jpg`，推断结果存为同目录的 `P204-depth.npz`。下例从已校验的输入分别重建原形和到达各坡面的状态，用新目录避免覆盖；场景回放需要本机 PandaSet 数据和配置。不要将一个站点的水面网格直接拷贝到另一个坡度。
+
+~~~bash
+spec=gen2hole/examples/oblique-road-pits; src=work/p204-puddle/inputs
+export CUDA_HOME=/usr/local/cuda
+for site in source 110 109 034; do
+  bundle="runs/rebuilt-P204/$site"; out="outputs/rebuilt-P204/scene-$site"
+  args=(); if [ "$site" != source ]; then args=(--water-site "$site"); fi
+  work/envs/streetcrafter/bin/python gen2hole/oblique_pits.py --specs "$spec/P204.json" \
+    --puddle-profile "$spec/P204-water.json" --inputs "$src" --out "$bundle" "${args[@]}" || break
+  if [ "$site" != source ]; then
+    python3 -m gen2hole.large_pits drive --bundle "$bundle/series" --asset P204 --group 204 --site "$site" --out "$out" || break
+    python3 gen2hole/downstream/replay.py --bundle "$bundle/series" --case "${site}_204" --report "$out/checkpoint-replay.json" || break
+  fi
+done
+work/envs/streetcrafter/bin/python scripts/review-photo-puddle.py --run runs/rebuilt-P204 --out outputs/rebuilt-P204
+~~~

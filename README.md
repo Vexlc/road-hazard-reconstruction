@@ -2,17 +2,31 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**[资产重建与场景迁入复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按资产编号找到配方、迁入代码、所需数据和验收方法。KITTI-360 示例用同一宿主生成十个场景，每次放入两个坑洞。[私有 Release 输入包与宿主检查点](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25) · [前视驶入、后视驶离](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4) · [只看后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-rear.mp4)
+
+**StreetCrafter 自驾场景重建**支持从同一个场景入口运行 3DGUT 和动态 SC-GS，按实拍时间戳导出对照视频。已配置 PandaSet 前视 055、056 和 KITTI-360 左侧鱼眼片段。[运行方式与相机模型](streetcrafter/backends/README.md)
+
+**多视角鱼眼场景重建：** [3DGUT、SC-GS 和 Self-Cali-GS 的实拍对照](pipelines/fisheye/README.md)，含数据下载、相机转换、训练入口和留出视图评估。
+
+**从哪里开始：** 有照片或传感器数据，先[按输入选择重建方法](docs/13-reproduce-and-transfer.md#按输入选择重建方法)；已经有模型，先[按交付物选择迁入方法](docs/13-reproduce-and-transfer.md#按交付物选择迁入方法)。有资产编号则运行 `python3 gen2hole/gen2hole.py locate P154`，把 `P154` 换成自己的编号。
+
+**20 件车行道大坑**　新增 15 个常见的浅碗坑、轮迹长坑、连通坑和补丁边缘破损。视频逐件对照参考图、三维模型与同一实拍路段的行车效果。[模型总览](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/common-pits-overview.jpg) · [20 件模型的复建输入](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25) · [复建说明](docs/15-large-dry-pits.md#二十件车行道坑洞)
+
 **新增四个车行道坑洞 P198–P201**　一个根据街道实拍重建，另外三个来自独立生成的参考图。面积最大的是 15.30 m² 的弧形断壁坑，最长的是 5.62 m 的斜向沟坑。四件均已放入 PandaSet 109 的同一车道位置。[同帧对比视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/lane-pits-comparison.mp4) · [近景大图](docs/figures/lane-pits-overview.jpg) · [四件模型](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/lane-pits-models-glb.zip) · [参考图与复现](docs/15-large-dry-pits.md#车行道上的四个坑)
 
 **实拍大坑子模块**　P190 已按原尺度放入两段实拍道路。109 可以看阳光和电线投影，034 可以看背阴坡道上的断边。安装项目环境后可运行 `python -m gen2hole.large_pits example P201` 自动取回输入包、重建并校验文件。[109 行车视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190-scene-109.mp4) · [034 行车视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/large-pits-v1.0.0/p190-scene-034.mp4) · [同帧新旧对照](docs/figures/large-dry-pit-road.jpg) · [输入包与复现命令](docs/15-large-dry-pits.md)
+
+**实拍大坑 P190–P197**　P190 根据护栏旁的塌坑照片重建，坑口投影面积估计为 14.2 m²。另有一个住宅车道边缘塌陷、一处湿坑和五个带深度图的路面样本。[P190 上一版车载视频](outputs/photo-large-potholes/P190-v2/scene-109/drive.mp4) · [P190 优化前后视频](outputs/photo-large-potholes/P190-v2/comparison.mp4) · [八件环绕视频](outputs/photo-large-potholes/orbits.mp4) · [参考图与模型](outputs/photo-large-potholes/reference-comparison.jpg) · [八个 GLB](outputs/photo-large-potholes/models-glb.zip) · [重建与检验](docs/02-asset-reconstruction.md#从斜拍照片重建大面积坑洞)
+
+**中文项目百科**　46 页图解从坑洞和井盖的原始观测讲到米制网格、三维高斯和车载回放，附 16 个常见问题、实跑示例与 27 组配方索引。网页版可放大图版、检索全部 1,403 个资产编号，下载后可离线阅读。[阅读 PDF](docs/encyclopedia/RoadGS-道路病害重建百科.pdf) · [下载后用浏览器打开网页版](docs/encyclopedia/index.html)
 
 **了解重建原理**　从实拍坑洞、生成图、可动井盖到车载回放，按资产类型查阅数据来源、尺度依据、重建算法与实测误差。[道路病害资产重建详解](docs/14-reconstruction-principles.md)
 
 **按编号复建**　运行 `python gen2hole/gen2hole.py locate <编号>` 查询输入和配方。第一次交接可用 P103 实拍裂缝，从普通电脑上的 CPU 网格到完整高斯模型逐步核验。[P103 的照片、安装命令与成品校验值](gen2hole/examples/photo-cracks/README.md)
 
-**从 GitHub 复现**　[安装、逐资产重建与自驾场景迁移](docs/13-reproduce-and-transfer.md) · [1,408 个编号的源码和配方索引](catalog/reconstruction-index.json) · [可直接预览的资产与车载图版](docs/figures/road-asset-portfolio.jpg)。GitHub 保存重建、迁入、传感器与核验源码。大输入按组从 Google Drive 获取，下载后校验 SHA-256。[公开下载与复建核验记录](validation/github-reproduction.json)
+**从 GitHub 复现**　[安装、逐资产重建与自驾场景迁移](docs/13-reproduce-and-transfer.md) · [按编号查源码和配方](catalog/reconstruction-index.json) · [可直接预览的资产与车载图版](docs/figures/road-asset-portfolio.jpg)。配方索引包含本地样例，不等于公开下载清单。各配方分别注明需要随仓库提供、按包下载或自行提供的输入。[公开下载与复建核验记录](validation/github-reproduction.json)
 
-**[打开离线路面病害资产图谱](tools/asset_atlas/index.html)**。按编号、重建方式或病害形态查找资产，查看原图、模型斜视、米制尺寸和对应的 PandaSet 道路画面。图谱收录 826 条实拍 RGB-D、65 条实拍双目、342 件程序化、112 件生成 RGB、20 条实拍单目、6 条实拍相机加激光雷达、13 条摄影测量来源的井盖状态、4 条道路裂缝扫描重建、4 个实拍混凝土碎板状态、4 组双张实拍 RGB，以及 3 组多帧 RGB-D、4 组多帧双目重建及 5 个实拍坑底积水状态，共 1,408 条、3,875 个场景查看入口。采集帧可能来自同一处病害。六种井盖状态共用一套井体与盖面。展开任一条目的「网格高程与剖面」，可以在俯视图上取截线，读取该处的米制高度。
+**[打开离线路面病害资产图谱](tools/asset_atlas/index.html)**。按编号、重建方式或病害形态查找资产，查看原图、模型斜视、米制尺寸和对应的 PandaSet 道路画面。图谱收录 831 条实拍 RGB-D、65 条实拍双目、372 件程序化、127 件生成 RGB、24 条实拍单目、6 条实拍相机加激光雷达、13 条摄影测量来源的井盖状态、4 条道路裂缝扫描重建、4 个实拍混凝土碎板状态、4 组双张实拍 RGB，以及 3 组多帧 RGB-D、4 组多帧双目重建及 5 个实拍坑底积水状态，共 1,462 条、3,915 个场景查看入口。采集帧可能来自同一处病害。六种井盖状态共用一套井体与盖面。展开任一条目的「网格高程与剖面」，可以在俯视图上取截线，读取该处的米制高度。
 
 ![十六个道路病害样例的 GLB 模型与对应的行车相机局部](docs/figures/road-asset-portfolio.jpg)
 
@@ -68,6 +82,7 @@ P112 的两张近景各拍到一个坑。重建后，两个坑能在同一张留
 
 | 想做什么 | 本地入口 |
 | --- | --- |
+| 从车载截图重建横向修补带，迁移时匹配目标沥青颜色并保留断续接缝 | [P202 模型、调色与两段实拍复核](gen2hole/examples/transverse-repair/README.md) |
 | 从自己的 RGB 参考图重建坑洞、敞井、掀盖或移位井盖 | [单图重建与新设计](gen2hole/docs/new-assets.md) |
 | 从实拍井圈和盖面重建可动圆井盖，可选标定深度 | [可动井盖与深度测井](docs/02-asset-reconstruction.md#两张实拍重建可动圆井盖) |
 | 从完整实拍盖面派生断片缺失、落井和移至井旁 | [断片输入、实体核验和道路可见性](docs/02-asset-reconstruction.md#井盖断片与井内剖视) |
@@ -80,6 +95,7 @@ P112 的两张近景各拍到一个坑。重建后，两个坑能在同一张留
 | 看同一病害在相机、点云和剖面中的变化 | [离线传感器对照页](data/releases/2026-11-21/道路病害_传感器与几何增强/传感器对照.html) |
 | 按编号打开新增资产的原图、GLB 和 Gaussian PLY | [100 件资产浏览页](data/releases/2026-11-21/道路病害图生三维_新增100/资产浏览.html) |
 | 查看首批九件的模型与场景 | [九件资产索引](data/releases/2026-11-21/道路病害图生三维/资产与场景索引.md) |
+| 查阅已封存的程序化造坑路线（末批 P160–P189） | [封存记录、视频和复现入口](docs/10-factory.md#大面积坑洞) |
 | 修改算法、开始实验、切回旧版 | [开发与版本管理](docs/11-development.md) |
 | 查四段对话、历史版本、原目录和复现记录 | [整合来源](docs/12-integration.md) · [本次校验](validation/roadgs-2026-11-21.json) |
 
