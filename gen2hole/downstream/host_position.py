@@ -6,6 +6,16 @@ from host_depth import optical_samples, reference_samples, sampled, sun_samples
 from host_exposure import exposure
 
 
+def empty_samples(view, shape):
+    """Optional renderer-confirmed misses; unknown or low-confidence depth is not empty space."""
+    if "empty_space_mask" not in view:
+        return None
+    clear = sampled(view["empty_space_mask"], shape, "empty_space_mask")
+    if clear.dtype != bool:
+        raise ValueError("empty_space_mask must identify confirmed empty rays using booleans")
+    return clear
+
+
 def register_positions(view, tolerance=0.001, calibration=None):
     if not np.isfinite(tolerance) or tolerance < 0:
         raise ValueError("max-ray-error-m must be finite and nonnegative")
@@ -37,6 +47,9 @@ def register_positions(view, tolerance=0.001, calibration=None):
         (basis / scale).T @ (basis / scale), np.eye(3), atol=1e-6, rtol=0
     ):
         raise ValueError("Position axes must be orthogonal and share one metric scale")
+    empty = empty_samples(view, shape)
+    if empty is not None and np.any(empty & known):
+        raise ValueError("A registered hit cannot also be confirmed empty")
     use = known & ~protected
     rgb = np.asarray(view["rgb"])
     if rgb.shape != (*shape[1:], 3) or rgb.dtype != np.uint8:
@@ -74,7 +87,7 @@ def register_positions(view, tolerance=0.001, calibration=None):
         rgb=rgb,
         camera_to_world=pose,
         rays_camera=directions,
-        protected=~use,
+        protected=~use if empty is None else ~(use | (empty & ~protected)),
         host_range=distance,
     )
     if origins is not None:

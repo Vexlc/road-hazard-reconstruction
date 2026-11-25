@@ -3,7 +3,8 @@
 import numpy as np
 
 from host_depth import optical_samples, reference_samples, sampled
-from host_position import register_positions
+from host_position import empty_samples, register_positions
+from spherical_camera import longitude_period
 
 
 def optics(view, calibration):
@@ -23,10 +24,17 @@ def pixel_map(value, shape, name):
     return value
 
 
-def interpolate(xy, rays, protected, origins, reverse):
+def interpolate(
+    xy, rays, protected, origins, reverse, periodic_x, primary_period, query_x
+):
     """Transport a secondary bearing, centre and optional reverse match together."""
     h, w = rays.shape[:2]
-    valid = np.isfinite(xy).all(-1) & (xy >= 0).all(-1) & (xy <= [w - 1, h - 1]).all(-1)
+    valid = np.isfinite(xy).all(-1) & (xy[:, 1] >= 0) & (xy[:, 1] <= h - 1)
+    if periodic_x:
+        # Support both [-.5, width-.5] and [0, width) longitude conventions.
+        valid &= (xy[:, 0] >= -0.5) & (xy[:, 0] < w)
+    else:
+        valid &= (xy[:, 0] >= 0) & (xy[:, 0] <= w - 1)
     xy = np.where(valid[..., None], xy, 0.0)
     x, y = np.floor(xy).astype(np.intp).T
     fx, fy = (xy - np.column_stack([x, y])).T
@@ -40,7 +48,8 @@ def interpolate(xy, rays, protected, origins, reverse):
         (1, 1, fx * fy),
     ):
         active = weight > 0
-        iy, ix = np.minimum(y + dy, h - 1), np.minimum(x + dx, w - 1)
+        iy = np.minimum(y + dy, h - 1)
+        ix = (x + dx) % w if periodic_x else np.minimum(x + dx, w - 1)
         usable = ~protected[iy, ix]
         if reverse is not None:
             r = reverse[iy, ix]
@@ -52,7 +61,17 @@ def interpolate(xy, rays, protected, origins, reverse):
         if origins is not None:
             centre[use] += weight * origins[iy[use], ix[use]]
         if reverse is not None:
-            back[use] += weight * r[use]
+            target = r[use]
+            if primary_period is not None:
+                # Unwrap each reverse correspondence around its primary pixel before averaging.
+                target = target.astype(float)
+                delta = target[:, 0] - query_x[use]
+                target[:, 0] = (
+                    query_x[use]
+                    + (delta + primary_period / 2) % primary_period
+                    - primary_period / 2
+                )
+            back[use] += weight * target
     norm = np.linalg.norm(direction, axis=1)
     valid &= norm > 1e-6
     return direction / np.maximum(norm[:, None], 1e-6), centre, back, valid
@@ -92,15 +111,23 @@ def triangulate(
         raise ValueError("The primary exposure must have a single source of geometry")
     lp, lr, lp_mask, lo = optics(left, left_calibration)
     rp, rr, rp_mask, ro = optics(right, right_calibration)
+    primary_period = longitude_period(left, left_calibration)
+    secondary_period = longitude_period(right, right_calibration)
     shape = lr.shape[:-1]
     if rr.shape[0] not in (1, shape[0]):
         raise ValueError(
             "Use one secondary ray field or one per primary optical sample"
         )
+    right_empty = empty_samples(right, rr.shape[:-1])
+    if right_empty is not None:
+        rp_mask = rp_mask | right_empty
     xy = pixel_map(matches["right_xy"], shape, "right_xy")
     known = sampled(matches["match_valid"], shape, "match_valid")
     if known.dtype != bool:
         raise ValueError("match_valid must be boolean")
+    empty = empty_samples(left, shape)
+    if empty is not None and np.any(empty & known):
+        raise ValueError("A declared stereo match cannot also be confirmed empty")
     back = (
         pixel_map(matches["left_xy"], rr.shape[:-1], "left_xy")
         if "left_xy" in matches
@@ -122,6 +149,9 @@ def triangulate(
                 rp_mask[j],
                 None if ro is None else ro[j],
                 None if back is None else back[j],
+                secondary_period is not None,
+                primary_period,
+                col,
             )
             if back is not None:
                 ok &= (
@@ -152,5 +182,9 @@ def triangulate(
             mask = sampled(packet[name], shape, name)
             if mask.dtype != bool:
                 raise ValueError(f"{name} must label optical samples using booleans")
+            if empty is not None and np.any(empty & mask):
+                raise ValueError(
+                    "Confirmed empty samples cannot label a receiver or occluder"
+                )
             packet[name] = mask & valid
     return register_positions(packet, calibration=left_calibration)

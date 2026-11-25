@@ -74,6 +74,7 @@ def main():
     fit.add_argument("--trajectory", type=Path, help="N × 3 .npy, measured vehicle centre trajectory in world metres")
     fit.add_argument("--vehicle-width", type=float, default=2.06, help="Full vehicle width in metres")
     fit.add_argument("--vehicle-length", type=float, default=5.10, help="Full vehicle length in metres")
+    fit.add_argument("--placement-search-m", type=float, help="Allow a new freestanding assembly seat within this distance of the requested seed")
     fit.add_argument("--clearance", type=float, default=.12, help="Minimum lateral clearance in metres")
     render = tasks.add_parser(
         "render", help="Return matched RGB, visible part IDs and asset hit range in metres"
@@ -193,6 +194,20 @@ def main():
         return
     if args.task == "fit":
         points = np.load(args.points, allow_pickle=False)
+        if args.placement_search_m is not None:
+            from cargo_placement import find_seat
+            if layout or not args.asset or not args.trajectory:
+                parser.error("Placement search needs a freestanding assembly folder and --trajectory")
+            mesh = RoadMesh(args.asset)
+            anchor = find_seat(args.asset, points, args.seed, args.heading, args.up, args.radius,
+                               args.placement_search_m, mesh.bounds[:, :2], np.load(args.trajectory, allow_pickle=False),
+                               half_width_m=args.vehicle_width/2, half_length_m=args.vehicle_length/2, margin_m=args.clearance)
+            anchor["registered_geometry"] = [registered_geometry(args.asset)]
+            anchor["ground_receivers"] = fit_receivers(points, anchor)
+            if args.lighting:
+                anchor["lighting"] = json.loads(args.lighting.read_text())
+            save_json(args.out, anchor)
+            return
         anchor = fit_road(
             points,
             np.asarray(args.seed),

@@ -9,7 +9,7 @@ git clone https://github.com/Vexlc/road-hazard-reconstruction.git
 cd road-hazard-reconstruction
 ```
 
-GitHub 仓库已公开，源码和发布附件均可匿名下载。Google Drive 数据目录使用只读共享链接。
+GitHub 仓库为私有。克隆源码或下载附件前，先登录有仓库读取权限的账号。Google Drive 数据目录使用只读共享链接。
 
 克隆后在仓库根目录运行 `python scripts/configure-gen2hole.py`，为照片与 RGB-D 重建、道路放置和仿真写入本机解释器与目录路径。[可直接运行的重建样例](13-reproduce-and-transfer.md)
 

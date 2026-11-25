@@ -1,6 +1,8 @@
 # 可选下载
 
-[两组坑与雨水口的公开附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/stereo-drains-v1.0.0)提供四件模型、双目输入、两个独立联合检查点和五段视频。[逐文件下载和校验](35-stereo-drains.md#从公开版本开始)
+四件散落物的成品、实拍车尾、两个联合检查点和全景双目观测已随版本提供。[按需下载与校验](36-street-clutter.md#克隆与下载)
+
+[两组坑与雨水口的发布附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/stereo-drains-v1.0.0)提供四件模型、双目输入、两个独立联合检查点和五段视频。[逐文件下载和校验](35-stereo-drains.md#从固定版本开始)
 
 两组实测坑与异常井口的四件模型、原始采集、紧凑曝光、两个联合检查点和四段前后视影片已按附件分别提供。[下载与校验](34-sun-openings.md#下载与校验)
 

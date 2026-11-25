@@ -146,10 +146,14 @@ def calibrated_samples(path, packet):
     if window.shape != (4,) or window.dtype.kind not in "iu":
         raise ValueError("sensor_window_xywh must contain four integer sensor pixels")
     left, top, width, height = map(int, window)
+    spherical = lens is None and params[0] == "EQUIRECTANGULAR"
+    if spherical and len(params) != 3:
+        raise ValueError("EQUIRECTANGULAR expects only native width and height")
     if (
         min(left, top) < 0
         or min(width, height) < 1
-        or left + width > size[0]
+        or left >= size[0] or width > size[0]
+        or (not spherical and left + width > size[0])
         or top + height > size[1]
         or ("rgb" in packet and packet["rgb"].shape[:2] != (height, width))
     ):
@@ -170,7 +174,10 @@ def calibrated_samples(path, packet):
         )
     rays, masks = [], []
     for dx, dy in offsets:
-        if lens:
+        if spherical:
+            from spherical_camera import spherical_rays
+            direction, valid = spherical_rays(size, window, (dx, dy))
+        elif lens:
             direction, valid = lens.unproject(left, top, width, height, dx, dy)
         else:
             model, _, _, fx, fy, cx, cy, *dist = params

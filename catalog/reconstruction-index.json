@@ -1,5 +1,5 @@
 {
-  "asset_count": 1536,
+  "asset_count": 1540,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2471,6 +2471,30 @@
         "pavement-sun",
         "stereo-rays"
       ]
+    },
+    "street-clutter": {
+      "name": "扎口垃圾袋、倒扣周转筐、蓝色钢桶及遗落管钳",
+      "launcher": "gen2hole/road_debris.py",
+      "prepare": "gen2hole/roadside_layout.py",
+      "recipe": "gen2hole/examples/street-clutter/sources.json",
+      "guide": "docs/36-street-clutter.md",
+      "section": "从原始模型重建四件散落物",
+      "assets": [
+        "R282",
+        "R283",
+        "R284",
+        "R285"
+      ],
+      "transfer": [
+        "cargo-support",
+        "surveyed-receivers",
+        "mesh-view",
+        "joint-props",
+        "raw-mei",
+        "stereo-rays",
+        "bounded-cargo-seat",
+        "spherical-panorama"
+      ]
     }
   },
   "transfer_routes": {
@@ -2659,6 +2683,18 @@
       "entry": "gen2hole/downstream/host_stereo.py",
       "guide": "docs/35-stereo-drains.md",
       "section": "从已标定双目接入新宿主"
+    },
+    "bounded-cargo-seat": {
+      "name": "有限范围内按逐件接地与整车行驶净距选择落点",
+      "entry": "gen2hole/downstream/cargo_placement.py",
+      "guide": "docs/36-street-clutter.md",
+      "section": "在允许范围内重新选择落点"
+    },
+    "spherical-panorama": {
+      "name": "全景左右接缝、跨界窗口和有证据的空背景",
+      "entry": "gen2hole/downstream/spherical_camera.py",
+      "guide": "docs/36-street-clutter.md",
+      "section": "全景相机接缝与远背景"
     }
   },
   "groups": {
@@ -2737,7 +2773,8 @@
       "traffic-cones",
       "discarded-wheels",
       "dropped-cargo",
-      "lost-cargo"
+      "lost-cargo",
+      "street-clutter"
     ]
   }
 }

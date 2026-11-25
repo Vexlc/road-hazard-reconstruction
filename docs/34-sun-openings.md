@@ -13,7 +13,7 @@
 
 ## 下载与校验
 
-以下命令在同一 Linux Bash 会话、仓库根目录执行。源码固定在 sun-openings-v1.0.1，模型和相机附件固定在 sun-openings-v1.0.0。可从公开发布页直接下载附件。[固定发布](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/sun-openings-v1.0.0)
+以下命令在同一 Linux Bash 会话、仓库根目录执行。源码固定在 sun-openings-v1.0.1，模型和相机附件固定在 sun-openings-v1.0.0。登录有仓库读取权限的账号后可从发布页下载附件。[固定发布](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/sun-openings-v1.0.0)
 
 ~~~bash
 set -e

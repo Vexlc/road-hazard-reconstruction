@@ -11,30 +11,21 @@
 
 两处坑来自不同的 RGB-D 采集。雨篦由一张实物照片恢复外观和开孔，参考宽度、井深及安装状态采用配方尺寸。三段实车分别重新拟合路面和曝光。同一组布局在不同路段的世界坐标各自独立。[采集来源与单位](../gen2hole/examples/stereo-drains/SOURCES.md) · [逐件观测与哈希](../validation/stereo-drains.json)
 
-## 从公开版本开始
+## 从固定版本开始
 
-以下为 Linux Bash 命令。任选一节下载所需附件。ZIP 保留内部逐文件指纹，外层 SHA256SUMS 包含视频及两个场景检查点。下载函数用 Python 标准库，可匿名读取。[全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/stereo-drains-v1.0.0)
+以下为 Linux Bash 命令。任选一节下载所需附件。ZIP 保留内部逐文件指纹，外层 SHA256SUMS 包含视频及两个场景检查点。先用有仓库读取权限的账号登录 GitHub CLI。[全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/stereo-drains-v1.0.0)
 
 ~~~bash
 set -e
 tag=stereo-drains-v1.0.0
-git clone --depth 1 --branch "$tag" https://github.com/Vexlc/road-hazard-reconstruction.git
+repo=Vexlc/road-hazard-reconstruction
+gh auth status
+gh repo clone "$repo" -- --depth 1 --branch "$tag"
 cd road-hazard-reconstruction
 kit="$PWD/downloads/$tag"
 mkdir -p "$kit"
 get() {
-  python3 - "$tag" "$kit" "$@" <<'PY'
-import sys
-from pathlib import Path
-from urllib.request import urlretrieve
-tag, folder, *files = sys.argv[1:]
-for name in files:
-    p = Path(folder) / name
-    if not p.is_file():
-        tmp = p.with_suffix(p.suffix + ".part")
-        urlretrieve(f"https://github.com/Vexlc/road-hazard-reconstruction/releases/download/{tag}/{name}", tmp)
-        tmp.replace(p)
-PY
+  for name in "$@"; do gh release download "$tag" -R "$repo" -D "$kit" --skip-existing -p "$name"; done
   (cd "$kit" && sha256sum --ignore-missing -c SHA256SUMS)
 }
 unpack() { python3 -m zipfile -e "$kit/$1" "$2" && (cd "$2" && sha256sum --quiet -c SHA256SUMS); }

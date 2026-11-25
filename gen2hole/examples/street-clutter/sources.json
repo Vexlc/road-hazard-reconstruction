@@ -1,0 +1,206 @@
+{
+  "sources": {
+    "trashbag": {
+      "page": "https://polyhaven.com/a/trashbag",
+      "author": "Benny Weimer",
+      "license": "CC0",
+      "dimension_mm": [
+        528.0700623989105,
+        462.893009185791,
+        574.9993845820427
+      ],
+      "files": {
+        "textures/trashbag_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/trashbag/trashbag_arm_1k.jpg",
+          "bytes": 684660,
+          "sha256": "95e69ba47bc7b84f342cdbe4385cfab670295827740fb09407b967ea2114c0aa"
+        },
+        "textures/trashbag_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/trashbag/trashbag_diff_1k.jpg",
+          "bytes": 332301,
+          "sha256": "676e01cbeef39b51c9ecd67315c952a605c8db9c11544fbe11e14dcbd00be27f"
+        },
+        "textures/trashbag_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/trashbag/trashbag_nor_gl_1k.jpg",
+          "bytes": 573449,
+          "sha256": "33ddb9711bb3ab2ff1ed19fa361a4251909643fada7e5579a28f6346a58b4daf"
+        },
+        "trashbag.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/trashbag/trashbag.bin",
+          "bytes": 106316,
+          "sha256": "7bfac5b9c39a058af347944b437f712718ec129ec883c16339179862cc155fe2"
+        },
+        "trashbag_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/trashbag/trashbag_1k.gltf",
+          "bytes": 2738,
+          "sha256": "22202e1ec48d924577584dce6751d5ab198fd7c0aee44602e9a7317b5b60a4a7"
+        }
+      }
+    },
+    "plastic_crate_03": {
+      "page": "https://polyhaven.com/a/plastic_crate_03",
+      "author": "Pacific Penguin",
+      "license": "CC0",
+      "dimension_mm": [
+        481.1011254787445,
+        264.971524477005,
+        265.92550610776743
+      ],
+      "files": {
+        "plastic_crate_03.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/plastic_crate_03/plastic_crate_03.bin",
+          "bytes": 897608,
+          "sha256": "bbe5394d543ab57819e926bd23158e8c00706b929273508d79e3b3230001b33e"
+        },
+        "plastic_crate_03_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/plastic_crate_03/plastic_crate_03_1k.gltf",
+          "bytes": 2817,
+          "sha256": "cb4629a4ab7e6f7aa5d6ba9d3dcd6affe59553386acc7612cd5a8bb8f263f05f"
+        },
+        "textures/plastic_crate_03_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/plastic_crate_03/plastic_crate_03_arm_1k.jpg",
+          "bytes": 937207,
+          "sha256": "b102504f012af9f5b8d3e229a106f6cd74df485f3650558e03fad22b33147452"
+        },
+        "textures/plastic_crate_03_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/plastic_crate_03/plastic_crate_03_diff_1k.jpg",
+          "bytes": 730169,
+          "sha256": "fb7f0b70da651e260aec7ee3506ecdc8aad62e65d2bf9341609e2a18749591bd"
+        },
+        "textures/plastic_crate_03_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/plastic_crate_03/plastic_crate_03_nor_gl_1k.jpg",
+          "bytes": 772566,
+          "sha256": "a7d01166ab720a51036e9390cb6aa2f8ef057b9d976062bf78205a089100e087"
+        }
+      }
+    },
+    "barrel_03": {
+      "page": "https://polyhaven.com/a/barrel_03",
+      "author": "Serhii Khromov",
+      "license": "CC0",
+      "dimension_mm": [
+        633.943498134613,
+        638.5995149612427,
+        930.4736243899824
+      ],
+      "files": {
+        "barrel_03.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/barrel_03/barrel_03.bin",
+          "bytes": 44872,
+          "sha256": "10f3202e9ac9acf8dd896f1562c64db58311ffef89efb402d8433e03ad486427"
+        },
+        "barrel_03_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/barrel_03/barrel_03_1k.gltf",
+          "bytes": 2638,
+          "sha256": "80e2faf48b7423bb522b573e459d99c5656a16763285ec8268e957fc7d41f9b8"
+        },
+        "textures/barrel_03_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/barrel_03/barrel_03_arm_1k.jpg",
+          "bytes": 249922,
+          "sha256": "2cec2338b36d7322bef55e6a1d0884b223c5ed383cf986a58bfa461478c64c7e"
+        },
+        "textures/barrel_03_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/barrel_03/barrel_03_diff_1k.jpg",
+          "bytes": 149997,
+          "sha256": "62feb27dfa9a0daf3f323fdc1ddc2d8e4a5996cf2c72fe50197b55c2b9cba7f3"
+        },
+        "textures/barrel_03_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/barrel_03/barrel_03_nor_gl_1k.jpg",
+          "bytes": 126707,
+          "sha256": "ade97c52985047858a4f38226a9b8a888e3a766ba0434700b4618fb25424c4b6"
+        }
+      }
+    },
+    "pipe_wrench": {
+      "page": "https://polyhaven.com/a/pipe_wrench",
+      "author": "Will Evarts",
+      "license": "CC0",
+      "dimension_mm": [
+        83.97936820983887,
+        34.34488922357559,
+        404.66518700122833
+      ],
+      "files": {
+        "pipe_wrench.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/pipe_wrench/pipe_wrench.bin",
+          "bytes": 284764,
+          "sha256": "6d21de348f1fb4b2194b1f91a4529e48cac721debaaec9cb6fba37939d503bfc"
+        },
+        "pipe_wrench_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/pipe_wrench/pipe_wrench_1k.gltf",
+          "bytes": 2756,
+          "sha256": "f6b9b8bcb40842411a9b8d4c74b7e5d5623f64e55c04f54b7e4747759dcba9ed"
+        },
+        "textures/pipe_wrench_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pipe_wrench/pipe_wrench_arm_1k.jpg",
+          "bytes": 820365,
+          "sha256": "1d6a908b19d21a5d592a3faba3cb6d2536b2d24b9048873f34d4bfa9fcd7392a"
+        },
+        "textures/pipe_wrench_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pipe_wrench/pipe_wrench_diff_1k.jpg",
+          "bytes": 886835,
+          "sha256": "f9a43727c70db8344ee780ce73064681a7a4c97e918c16b071c08cdc3c7a1fdd"
+        },
+        "textures/pipe_wrench_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pipe_wrench/pipe_wrench_nor_gl_1k.jpg",
+          "bytes": 1020433,
+          "sha256": "504c2d5b09c87e2fbf5aca5e3cddfb9c77eb9966531fe5c6219f9813b176b44a"
+        }
+      }
+    }
+  },
+  "assets": {
+    "R282": {
+      "source": "trashbag",
+      "label": "扎口垃圾袋",
+      "mesh_prefix": "Tied refuse sack",
+      "nodes": [
+        0
+      ],
+      "orientation_xyz_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    "R283": {
+      "source": "plastic_crate_03",
+      "label": "倒扣的旧塑料筐",
+      "mesh_prefix": "Upturned basket",
+      "nodes": [
+        0
+      ],
+      "orientation_xyz_deg": [
+        180,
+        0,
+        0
+      ]
+    },
+    "R284": {
+      "source": "barrel_03",
+      "label": "路侧蓝色钢桶",
+      "mesh_prefix": "Roadworks drum",
+      "nodes": [
+        0
+      ],
+      "orientation_xyz_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    "R285": {
+      "source": "pipe_wrench",
+      "label": "遗落在沥青上的管钳",
+      "mesh_prefix": "Dropped wrench",
+      "nodes": [
+        0
+      ],
+      "orientation_xyz_deg": [
+        90,
+        0,
+        0
+      ]
+    }
+  }
+}

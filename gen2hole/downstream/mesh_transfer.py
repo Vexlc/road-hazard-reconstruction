@@ -135,7 +135,14 @@ def footprint_size(folder):
 
 
 def pixel_rays(calibration, *, return_valid=False):
-    """Unit optical-frame directions at pixel centres. Supports COLMAP PINHOLE and OPENCV_FISHEYE."""
+    """Unit optical-frame directions at pixel centres. Supports pinhole, OpenCV fisheye and full-sphere panoramas."""
+    if calibration[0] == "EQUIRECTANGULAR":
+        from spherical_camera import spherical_rays
+        _, w, h = calibration
+        if any(type(v) is not int or v < 1 for v in (w, h)):
+            raise ValueError("Expected positive integer panorama dimensions")
+        rays, valid = spherical_rays((w, h), (0, 0, w, h))
+        return (rays, valid) if return_valid else rays
     model, w, h, fx, fy, cx, cy, *dist = calibration
     if w < 1 or h < 1 or not np.isfinite([fx, fy, cx, cy, *dist]).all() or min(fx, fy) <= 0:
         raise ValueError("Invalid calibration")

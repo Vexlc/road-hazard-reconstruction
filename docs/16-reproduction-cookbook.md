@@ -3,13 +3,13 @@
 从下列固定标签开始，可核对完整索引。获得单件模型、原生场景或相机回放的具体命令，见对应系列的操作章节。
 
 ~~~bash
-git clone --branch stereo-drains-v1.0.0 --depth 1 https://github.com/Vexlc/road-hazard-reconstruction.git
+gh repo clone Vexlc/road-hazard-reconstruction -- --branch street-clutter-v1.0.0 --depth 1
 cd road-hazard-reconstruction
 python3 scripts/check-reproduction-index.py
 python3 gen2hole/gen2hole.py locate H234
 ~~~
 
-该标签包含 **1,536 个编号、67 个重建系列、31 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[逐系列代码对照表](asset-code-index.md) · [沥青双坑、车尾鱼眼与换材质复现](24-asphalt-breakouts.md) · [道路遗落物的模型、锚点与鱼眼重放](23-road-debris.md) · [实扫圆井的逐文件复建与非共心宿主](22-scanned-round-covers.md) · [完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
+该标签包含 **1,540 个编号、68 个重建系列、33 条迁入或展示路线**。下文基础示例固定在各自发布时的标签，便于核对历史文件哈希。[逐系列代码对照表](asset-code-index.md) · [沥青双坑、车尾鱼眼与换材质复现](24-asphalt-breakouts.md) · [道路遗落物的模型、锚点与鱼眼重放](23-road-debris.md) · [实扫圆井的逐文件复建与非共心宿主](22-scanned-round-covers.md) · [完整编号与代码索引](../catalog/reconstruction-index.json) · [隔离墩、消防栓和原生场景复现](19-roadside-props.md)
 
 ### 按手头材料选入口
 
@@ -22,6 +22,7 @@ python3 gen2hole/gen2hole.py locate H234
 | 渲染器有六面颜色和 GPU 深度缓冲 | 从[六面鱼眼输入表与可运行命令](31-cube-pits.md#将六面深度缓冲接入其他鱼眼宿主)开始 | 纹素方向、遮挡、路面锚点与原生栅格渲染对照 |
 | 渲染器能导出每条光线的 XYZ 命中位置 | 按[三维位置缓冲接入](32-utility-covers.md#将其他渲染器的三维命中位置接入鱼眼)准备像素或子采样 | 轴向、单位、逐行位姿、井口遮挡与独立 Cycles 对照 |
 | 原始 MEI 鱼眼标定和原始图像或裁剪区 | 从[标定和采样字段](33-mei-pits.md#用原始标定接入自己的鱼眼图像)开始 | 光轴后方、子像素、三角形可见性和径向距离 |
+| 有完整经纬度全景，或需在可接受范围内给路侧物体找支点 | [全景边界与双目回放](36-street-clutter.md#全景相机接缝与远背景) · [有界落点搜索](36-street-clutter.md#在允许范围内重新选择落点) | 跨接缝光线、逐件支点、车辆扫过区域 |
 | 目标宿主有两路已标定相机和左右对应点 | [双目三角化与路面拟合](35-stereo-drains.md#从已标定双目接入新宿主) | 基线、双向匹配、接地支撑与前景遮挡 |
 | 目标路面有明显日照和树影，或宿主提供直射光可见度 | [在原路面登记日照、检查井沿遮挡](34-sun-openings.md#把日照登记到其他宿主) | 实测亮暗、米制路面上的光照和井内光线遮挡 |
 | 只想看效果、比较车驶过之后的画面 | 从[附件与视频导航](01-downloads.md)选系列 | 每个专题都注明实拍车尾、虚拟后视或独立渲染机位 |
@@ -30,7 +31,7 @@ python3 gen2hole/gen2hole.py locate H234
 
 双联井盖及其整块占地检查、鱼眼边缘可见性、独立前景量程接入见[双联检查井与跨场景迁入](18-twin-hatch-transfer.md)。固定代码标签为 `twin-hatch-v1.0.0`。
 
-有资产编号，先运行 `locate`。只有参考图或深度，按下表的输入选重建入口。已有资产要放入道路，直接看下文的宿主表。所有命令均从仓库根目录执行，路径为相对路径。可从公开标签下载固定版本。[版本源码与下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25)
+有资产编号，先运行 `locate`。只有参考图或深度，按下表的输入选重建入口。已有资产要放入道路，直接看下文的宿主表。所有命令均从仓库根目录执行，路径为相对路径。可从仓库标签下载固定版本。[版本源码与下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-2026.11.25)
 
 九件实测坑洞与异常方井的首发标签为 `mixed-road-v1.0.0`。独立 SC-GS 鱼眼复核记录在 `mixed-road-v1.0.1`，当前标签包含两版代码。[方井、坑洞和原始鱼眼复现](17-mixed-road-transfer.md)
 
@@ -57,7 +58,7 @@ python3 gen2hole/gen2hole.py locate P203
 python3 gen2hole/gen2hole.py locate P211
 ~~~
 
-第一项检查仅用 Python 标准库。该版本应输出 **1,536 个唯一编号、67 个重建系列、31 条迁入或展示路线、20 件 KITTI 双坑资产**。`locate` 的 `prepare` 指输入准备，`launcher` 指实际构建程序，`recipe` 指配方，`guide / section` 定位到该案例的操作步骤，`transfer` 给出对应的迁入程序及说明。P154 是带实测深度的翘砖，P203 是单图路面剥落，P211 是生成参考图的大坑，三者使用不同入口。统计以编号为单位，共用同一次采集的多种井盖姿态分别有编号。[机器可读索引](../catalog/reconstruction-index.json)
+第一项检查仅用 Python 标准库。该版本应输出 **1,540 个唯一编号、68 个重建系列、33 条迁入或展示路线、20 件 KITTI 双坑资产**。`locate` 的 `prepare` 指输入准备，`launcher` 指实际构建程序，`recipe` 指配方，`guide / section` 定位到该案例的操作步骤，`transfer` 给出对应的迁入程序及说明。P154 是带实测深度的翘砖，P203 是单图路面剥落，P211 是生成参考图的大坑，三者使用不同入口。统计以编号为单位，共用同一次采集的多种井盖姿态分别有编号。[机器可读索引](../catalog/reconstruction-index.json)
 
 ## 各类资产怎样重建
 
@@ -88,6 +89,7 @@ python3 gen2hole/gen2hole.py locate P211
 | P266–P269 常见沥青坑 | 五份 RGB-D 原始曝光，三处留出深度块、一处留出第二机位 | [重建四件、逐文件对照与测量局限](31-cube-pits.md#从五份原始曝光重建四个坑) |
 | A270、M270、A271、M271 燃气方井与辐条圆井 | 两套 CC0 PBR 材质，盖框分界、设计尺寸与安装姿态 | [从原始材料生成四件、验算方盖的四角承托](32-utility-covers.md#从原始材质重建两种井盖) |
 | P272–P275 双叶剥落、轮迹坑、集料坑与直边浅陷 | 六份带轮廓的 RGB-D 曝光 | [重建四件、检查同帧留出深度与独立机位](33-mei-pits.md#从六份采集重建四处实测坑) |
+| R282–R285 路面散落物 | 四件米制 glTF 与原始材质 | [重建与组合](36-street-clutter.md#从原始模型重建四件散落物) |
 | P279、P281 与 A280、M280 实测坑、沉降雨篦与缺篦井口 | 两份 RGB-D 实测、雨篦照片及孔形、安装姿态 | [重建与成对迁入](35-stereo-drains.md) |
 | P276、P278 与 A277、M277 实测坑、错位通孔盖和敞井 | 两份原始 RGB-D、扫描派生图、井盖安装参数 | [从原始采集和扫描重建四件资产](34-sun-openings.md#从原始采集和扫描重建四件资产) |
 

@@ -15,7 +15,7 @@
 
 ## 下载固定版本
 
-以下命令在同一 Linux Bash 会话运行，源码和发布附件均公开。每个 ZIP 内有逐文件 SHA-256，版本附件另附总校验表。[全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/mei-pits-v1.0.0)
+以下命令在同一 Linux Bash 会话运行，克隆和下载需要仓库读取权限。每个 ZIP 内有逐文件 SHA-256，版本附件另附总校验表。[全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/mei-pits-v1.0.0)
 
 ~~~bash
 set -e

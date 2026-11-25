@@ -573,6 +573,7 @@ def main():
     )
     parser.add_argument("--pavement-sun", type=Path, help="Road sunlight references keyed by host sensor")
     parser.add_argument("--appearance-views",type=Path,help="Directory of surveyed original camera packets (same layout and metric placement)")
+    parser.add_argument("--placement-search-m", type=float, help="Allow a measured vehicle-clear cargo seat within this radius of the initial anchor")
     parser.add_argument("--cargo-pair", action="store_true", help="Survey both members and select registered two-object views")
     parser.add_argument("--native-mei", action="store_true", help="Use the native MEI inverse through the outer fisheye image")
     parser.add_argument("--survey-only", action="store_true", help="Write the two surveyed seats and world up before building site-dependent water")
@@ -596,6 +597,9 @@ def main():
         parser.error("--pavement-sun requires --appearance-views")
     if args.appearance_views and not args.layout:
         parser.error("--appearance-views requires a surveyed pavement layout")
+    if args.placement_search_m is not None and (not args.cargo_pair or
+                            not np.isfinite(args.placement_search_m) or args.placement_search_m <= 0):
+        parser.error("--placement-search-m requires --cargo-pair and a positive finite radius")
     rig = ROOT / "work/streetcrafter-rig" / args.scene
     data, cams = load_rig(rig)
     if args.scene == "a2d2-frontleft":
@@ -663,7 +667,7 @@ def main():
         if args.survey_only:
             save_json(out / "anchor.json", anchor)
             return
-    else:
+    elif args.placement_search_m is None:
         anchor = fit_footprint(anchor, nearby, np.max([footprint_size(path) for path in assets.values()], axis=0))
     out.mkdir(parents=True, exist_ok=True)
     ego_masks = json.loads((ROOT / "gen2hole/examples/mixed-road/ego-masks.json").read_text())[args.scene]
@@ -679,13 +683,13 @@ def main():
             registered.append(registered_geometry(folder))
             for _, xyz, _ in glb_triangles(folder / "asset.glb"):
                 standing_bounds.extend((xyz[:, :2].min(0), xyz[:, :2].max(0)))
-    for folder in assets.values():
+    for folder in (assets.values() if args.placement_search_m is None else ()):
         support = check_members(folder, anchor, nearby)
         if support:
             if len(assets) != 1:
                 raise ValueError("Survey each freestanding assembly separately")
             anchor["member_support"] = support
-    if args.cargo_pair and not anchor.get("member_support"):
+    if args.cargo_pair and (not standing_bounds or (args.placement_search_m is None and not anchor.get("member_support"))):
         parser.error("Select a layout with member_ground_check enabled")
     if standing_bounds:
         anchor["registered_geometry"] = registered
@@ -696,8 +700,15 @@ def main():
         body = np.stack([np.linalg.inv(cams[f'{g:03}00.png']) @ np.linalg.inv(to_body) for g in range(len(data['frames']))])
         centers = body[:,:3,3] + body[:,:3,0]
         bounds = np.stack(standing_bounds)
-        anchor['vehicle_clearance'] = driving_clearance(anchor, [bounds.min(0),bounds.max(0)], centers,
-                                                       half_width_m=1.03,half_length_m=2.55)
+        envelope = np.stack([bounds.min(0), bounds.max(0)])
+        if args.placement_search_m is not None:
+            from cargo_placement import find_seat
+            basis = np.array(anchor["basis_columns"])
+            anchor = find_seat(next(iter(assets.values())), nearby, anchor["center_world"], basis[:, 0],
+                               basis[:, 2], args.support_radius, args.placement_search_m, envelope, centers, initial=anchor)
+            anchor.update(registered_geometry=registered, host_scene=args.scene, placement_group=args.group)
+        else:
+            anchor['vehicle_clearance'] = driving_clearance(anchor, envelope, centers, half_width_m=1.03,half_length_m=2.55)
         anchor['vehicle_clearance']['envelope_center_forward_of_rig_m'] = 1.
         anchor['ground_receivers'] = fit_receivers(nearby, anchor)
         if args.surveyed_depth:

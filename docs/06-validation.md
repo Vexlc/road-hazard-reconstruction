@@ -1,5 +1,7 @@
 # 代码发布与复现验证状态
 
+两组路面散落物以 12 份实拍曝光复核 60 个产物，另外用四个全经度双目机位检查接缝、空背景与前景遮挡。[方法与逐资产记录](36-street-clutter.md)
+
 两段 KITTI 左右图的三角化距离由 12,667 个独立激光投影点检验。另有四个 220° Cycles 机位检查非平行双目的资产轮廓、部件和近景遮挡。[检验方法与精度范围](35-stereo-drains.md#在-cpu-上重放实车与双目实验) · [逐机位记录](../validation/stereo-drains.json)
 
 历史生成图两批共 109 件，干净目录从归档输入构建后，218 个 GLB、PLY 均与原发布指纹一致。可运行 `python3 gen2hole/gen2hole.py audit --rebuilt runs/all-generated` 直接复查文件。[逐件哈希](../validation/generated-rgb-replay.json) · [重建命令](13-reproduce-and-transfer.md#重建-109-件生成-rgb-资产)

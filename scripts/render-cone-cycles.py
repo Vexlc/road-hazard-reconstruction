@@ -96,16 +96,20 @@ def render(scene, camera, world, objects, out, name, yaw, with_pair, *, eye=None
         image = bpy.data.images.load(str(path))
         values = np.empty(len(image.pixels), "f4")
         image.pixels.foreach_get(values)
-        pixels = values.reshape(SIZE, SIZE, 4)[::-1]
+        pixels = values.reshape(image.size[1], image.size[0], 4)[::-1]
         channel = pixels[..., :3] if stem == "position" else pixels[..., 0]
         np.save(folder / (stem + ".npy"), channel.astype("u1") if stem == "id" else channel)
         bpy.data.images.remove(image)
+    if camera.data.type == "PANO" and camera.data.panorama_type == "EQUIRECTANGULAR":
+        lens = {"projection": ["EQUIRECTANGULAR", scene.render.resolution_x, scene.render.resolution_y]}
+    else:
+        lens = {"ortho_width_m": camera.data.ortho_scale} if camera.data.type == "ORTHO" else {"fov_deg": FOV}
+        lens["size"] = SIZE
     (folder / "camera.json").write_text(
         json.dumps(
             dict(
                 camera_to_world=pose.tolist(),
-                **({"ortho_width_m": camera.data.ortho_scale} if camera.data.type == "ORTHO" else {"fov_deg": FOV}),
-                size=SIZE,
+                **lens,
                 reference_ground_to_world=world.tolist(),
             ),
             indent=2,

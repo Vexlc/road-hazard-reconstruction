@@ -40,7 +40,7 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def pack(out, views, pairs=PAIRS, sites=SITES):
+def pack(out, views, pairs=PAIRS, sites=SITES, products=PRODUCTS):
     from importlib import import_module
 
     subpixels = import_module("render-mixed-road").SUBPIXELS
@@ -60,7 +60,7 @@ def pack(out, views, pairs=PAIRS, sites=SITES):
                 folder.mkdir(exist_ok=True)
                 spec = rig[sensor]
                 if spec["model"] == "MEI":
-                    road = "kitti360-0000-0200" if site == "kitti" else scene
+                    road = "kitti360-0000-0200" if scene == "kitti360-0000" else scene
                     calibration = folder / "calibration.yaml"
                     shutil.copyfile(
                         ROOT / "work/data" / road / "calibration" / (sensor + ".yaml"),
@@ -113,7 +113,7 @@ def pack(out, views, pairs=PAIRS, sites=SITES):
                         "pixels": assets,
                         "original_packet_bytes": (raw / "view.npz").stat().st_size,
                         "compact_packet_bytes": (folder / "view.npz").stat().st_size,
-                        "sha256": {key: digest(raw / key) for key in PRODUCTS},
+                        "sha256": {key: digest(raw / key) for key in products},
                     },
                 )
 

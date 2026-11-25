@@ -50,3 +50,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Tear down the embedded Blender scene before the Python runtime releases its drivers.
+    import os
+    import sys
+    bpy.ops.wm.read_factory_settings(use_empty=True)
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os._exit(0)

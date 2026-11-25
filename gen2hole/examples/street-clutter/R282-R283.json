@@ -1,0 +1,25 @@
+{
+  "id": "R282-R283",
+  "label": "扎口垃圾袋与倒扣旧筐",
+  "instances": [
+    {
+      "id": "r282",
+      "asset": "R282",
+      "xy_m": [
+        0.46,
+        0.005
+      ],
+      "heading_deg": -16
+    },
+    {
+      "id": "r283",
+      "asset": "R283",
+      "xy_m": [
+        -0.44,
+        -0.015
+      ],
+      "heading_deg": 22
+    }
+  ],
+  "member_ground_check": true
+}

@@ -1,0 +1,25 @@
+{
+  "id": "R284-R285",
+  "label": "蓝色钢桶与遗落管钳",
+  "instances": [
+    {
+      "id": "r284",
+      "asset": "R284",
+      "xy_m": [
+        -0.42,
+        -0.025
+      ],
+      "heading_deg": -10
+    },
+    {
+      "id": "r285",
+      "asset": "R285",
+      "xy_m": [
+        0.44,
+        0.035
+      ],
+      "heading_deg": 71
+    }
+  ],
+  "member_ground_check": true
+}

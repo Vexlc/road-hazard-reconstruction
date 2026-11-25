@@ -8,7 +8,7 @@
 
 ## 从 GitHub 按编号复现
 
-本模块随主仓库发布。可从空目录克隆公开仓库的固定标签。
+本模块随主仓库发布。可从空目录克隆仓库的固定标签。
 
 ```bash
 gh repo clone Vexlc/road-hazard-reconstruction -- --branch large-pits-v1.0.0 --depth 1

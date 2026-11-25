@@ -85,7 +85,9 @@ def load_inventory(parent):
 
 def part_id(name):
     for prefix, code in [('Tyre ', 26), ('Wheel rim ', 27), ('Road crate ', 28), ('Cement sack ', 29),
-                         ('Shipping carton ', 30), ('Tool chest ', 31), ('Garden sack ', 32), ('Wood box ', 33)]:
+                         ('Shipping carton ', 30), ('Tool chest ', 31), ('Garden sack ', 32), ('Wood box ', 33),
+                         ('Tied refuse sack ', 34), ('Upturned basket ', 35), ('Roadworks drum ', 36),
+                         ('Dropped wrench ', 37)]:
         if name.startswith(prefix):
             return code
     if name.startswith('Traffic cone '):
