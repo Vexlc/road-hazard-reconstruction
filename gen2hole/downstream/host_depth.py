@@ -30,7 +30,7 @@ def sample_origins(view, rays, protected):
     return origins if valid.all() else np.where(valid[..., None], origins, 0.)
 
 
-def geometry(view, calibration=None, *, with_origins=False):
+def optical_samples(view, calibration=None):
     if ("rays_camera" in view) == (calibration is not None):
         raise ValueError("Provide registered rays or one lens calibration")
     if calibration is None:
@@ -55,9 +55,32 @@ def geometry(view, calibration=None, *, with_origins=False):
     unit = np.isclose(np.linalg.norm(rays, axis=-1), 1, atol=1e-4)
     if np.any(~unit & ~protected):
         raise ValueError("Unmasked rays must be unit vectors")
+    return rays, protected, sample_origins(view, rays, protected)
+
+
+def reference_samples(view, rays, origins, *, with_origins):
+    pose = np.asarray(view["camera_to_world"])
+    if pose.shape != (4, 4) or not np.isfinite(pose).all() or not np.allclose(pose[3], [0, 0, 0, 1]):
+        raise ValueError("Expected a finite homogeneous camera_to_world")
+    rot = pose[:3, :3]
+    if not np.allclose(rot.T @ rot, np.eye(3), atol=1e-5) or np.linalg.det(rot) < 0.99999:
+        raise ValueError("Expected metric right-handed rotation")
+    if "row_time_ns" in view and "camera_to_world_rows" not in view:
+        raise ValueError("Register row_time_ns with the sensor trajectory before rendering a rolling exposure")
+    if "camera_to_world_rows" in view:
+        from camera_readout import rolling_rays
+
+        if not with_origins:
+            raise ValueError("Rolling readout requires origins as well as directions")
+        rays, origins = rolling_rays(view["camera_to_world_rows"], pose, rays, origins)
+    return pose, rays, origins
+
+
+def geometry(view, calibration=None, *, with_origins=False):
+    rays, protected, origins = optical_samples(view, calibration)
+    shape = rays.shape[:-1]
     if ("host_z" in view) == ("host_range" in view):
         raise ValueError("Supply exactly one of host_range or host_z")
-    origins = sample_origins(view, rays, protected)
     if "host_z" in view:
         z = sampled(view["host_z"], shape, "host_z")
         if origins is not None:
@@ -74,21 +97,8 @@ def geometry(view, calibration=None, *, with_origins=False):
         distance = sampled(view["host_range"], shape, "host_range")
         if np.any((distance <= 0) & ~protected):
             raise ValueError("Expected positive radial range or unknown")
-    pose = np.asarray(view["camera_to_world"])
-    if pose.shape != (4, 4) or not np.isfinite(pose).all() or not np.allclose(pose[3], [0, 0, 0, 1]):
-        raise ValueError("Expected a finite homogeneous camera_to_world")
-    rot = pose[:3, :3]
-    if not np.allclose(rot.T @ rot, np.eye(3), atol=1e-5) or np.linalg.det(rot) < 0.99999:
-        raise ValueError("Expected metric right-handed rotation")
-    if "row_time_ns" in view and "camera_to_world_rows" not in view:
-        raise ValueError("Register row_time_ns with the sensor trajectory before rendering a rolling exposure")
-    if "camera_to_world_rows" in view:
-        from camera_readout import rolling_rays
-
-        if not with_origins:
-            raise ValueError("Rolling readout requires origins as well as directions")
-        # Convert signed Z to radial metres in the row's optical frame before changing frame.
-        rays, origins = rolling_rays(view["camera_to_world_rows"], pose, rays, origins)
+    # Decode signed Z before expressing the row's rays in the reference camera.
+    pose, rays, origins = reference_samples(view, rays, origins, with_origins=with_origins)
     result = rays, distance, protected, pose
     return (*result, origins) if with_origins else result
 

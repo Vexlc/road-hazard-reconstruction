@@ -1,0 +1,78 @@
+{
+  "family": "spoked-utility-chamber",
+  "source_url": "https://ambientcg.com/a/ManholeCover001",
+  "credit": "ambientCG, Manhole Cover 001, CC0. Publisher classifies the PBR material as Approximation.",
+  "geometry_source": "Registered PBR color, relative displacement, normal, roughness and metalness from ambientCG. Absolute scale, buried surfaces and installation are designed.",
+  "frame": {
+    "image": "Color.png"
+  },
+  "perforations": {
+    "shape": "round",
+    "solid_face": true,
+    "corners_xy": [
+      [
+        175,
+        166
+      ],
+      [
+        857,
+        166
+      ],
+      [
+        857,
+        848
+      ],
+      [
+        175,
+        848
+      ]
+    ],
+    "mask": "solid.png",
+    "lining": "../materials/lining.jpg",
+    "pavement": "../materials/pavement.jpg",
+    "displacement": "Displacement.png",
+    "surround_mask": "Opacity.png",
+    "normal_gl": "NormalGL.png",
+    "roughness": "Roughness.png",
+    "metalness": "Metalness.png",
+    "relief_span_m": 0.005,
+    "photographed_surround": true,
+    "edge_patch_xyxy": [
+      495,
+      85,
+      505,
+      99
+    ],
+    "size_m": [
+      0.49,
+      0.49
+    ],
+    "frame_band_m": 0.1,
+    "seat_overlap_m": 0.015,
+    "thickness_m": 0.041,
+    "shaft_depth_m": 0.61,
+    "scale_source": "Design metric size; publisher does not provide a physical scale. Relative seam, face relief and ring proportions come from registered material channels."
+  },
+  "states": [
+    {
+      "id": "A271",
+      "label": "辐条圆盖的宽井圈隆起",
+      "installation_grade": {
+        "center_z_m": 0.028,
+        "tilt_deg": 1.6,
+        "uphill_deg": 115
+      }
+    },
+    {
+      "id": "M271",
+      "label": "宽井圈隆起且圆盖缺失",
+      "absent": true,
+      "installation_grade": {
+        "center_z_m": 0.028,
+        "tilt_deg": 1.6,
+        "uphill_deg": 115
+      }
+    }
+  ],
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+}

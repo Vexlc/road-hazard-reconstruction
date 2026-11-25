@@ -1,0 +1,24 @@
+{
+  "id": "M270-A271",
+  "label": "方形燃气井与辐条圆井",
+  "instances": [
+    {
+      "id": "gas-hatch",
+      "asset": "M270",
+      "xy_m": [
+        0.67,
+        0.1
+      ],
+      "heading_deg": -12
+    },
+    {
+      "id": "spoked-cover",
+      "asset": "A271",
+      "xy_m": [
+        -0.72,
+        -0.21
+      ],
+      "heading_deg": 18
+    }
+  ]
+}

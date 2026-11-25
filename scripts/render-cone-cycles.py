@@ -90,12 +90,14 @@ def render(scene, camera, world, objects, out, name, yaw, with_pair, *, eye=None
     file.base_path = str(folder)
     bpy.ops.render.render(write_still=True)
     # Cycles writes named scalar EXR channels; use its own reader to preserve metres and object IDs.
-    for stem in ("range", "id"):
+    passes = ("range", "id", "position") if "position-" in file.inputs else ("range", "id")
+    for stem in passes:
         path = folder / (stem + "-0001.exr")
         image = bpy.data.images.load(str(path))
         values = np.empty(len(image.pixels), "f4")
         image.pixels.foreach_get(values)
-        channel = values.reshape(SIZE, SIZE, 4)[::-1, :, 0]
+        pixels = values.reshape(SIZE, SIZE, 4)[::-1]
+        channel = pixels[..., :3] if stem == "position" else pixels[..., 0]
         np.save(folder / (stem + ".npy"), channel.astype("u1") if stem == "id" else channel)
         bpy.data.images.remove(image)
     (folder / "camera.json").write_text(

@@ -1,0 +1,69 @@
+{
+  "family": "diamond-gas-hatch",
+  "source_url": "https://ambientcg.com/a/ManholeCover002",
+  "credit": "ambientCG, Manhole Cover 002, CC0. Publisher classifies the PBR material as Approximation.",
+  "geometry_source": "Registered PBR color, relative displacement, normal, roughness and metalness from ambientCG. Absolute scale, buried surfaces and installation are designed.",
+  "frame": {
+    "image": "Color.png"
+  },
+  "perforations": {
+    "shape": "rect",
+    "solid_face": true,
+    "corners_xy": [
+      [
+        52,
+        55
+      ],
+      [
+        964,
+        55
+      ],
+      [
+        964,
+        965
+      ],
+      [
+        52,
+        965
+      ]
+    ],
+    "mask": "solid.png",
+    "lining": "../materials/lining.jpg",
+    "pavement": "../materials/pavement.jpg",
+    "displacement": "Displacement.png",
+    "surround_mask": "Opacity.png",
+    "normal_gl": "NormalGL.png",
+    "roughness": "Roughness.png",
+    "metalness": "Metalness.png",
+    "relief_span_m": 0.005,
+    "photographed_surround": true,
+    "edge_patch_xyxy": [
+      504,
+      32,
+      520,
+      44
+    ],
+    "size_m": [
+      0.6,
+      0.599
+    ],
+    "frame_band_m": 0.024,
+    "seat_overlap_m": 0.015,
+    "thickness_m": 0.039,
+    "shaft_depth_m": 0.67,
+    "scale_source": "Design metric size; publisher does not provide a physical scale. Relative seam, face relief and ring proportions come from registered material channels."
+  },
+  "states": [
+    {
+      "id": "A270",
+      "label": "菱纹方形燃气井盖转角后架在井框上",
+      "seat_yaw_deg": 8.0
+    },
+    {
+      "id": "M270",
+      "label": "菱纹燃气井盖缺失",
+      "absent": true
+    }
+  ],
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+}

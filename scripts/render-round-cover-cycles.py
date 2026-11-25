@@ -29,7 +29,32 @@ PARTS = {
 }
 
 
-def build(scene, world, recipe, assets, profiles):
+def cut_road(corners, rings):
+    from mathutils import Vector
+    from mathutils.geometry import delaunay_2d_cdt
+
+    loops = [corners, *rings]
+    boundaries = []
+    start = 0
+    for loop in loops:
+        boundaries.append(list(range(start, start + len(loop))))
+        start += len(loop)
+    points, _, faces, _, _, owners = delaunay_2d_cdt(
+        [Vector(p) for p in np.concatenate(loops)], [], boundaries, 0, 1e-7
+    )
+    xy = np.asarray(points)
+    tri = np.asarray([face for face, source in zip(faces, owners) if list(source) == [0]])
+    edge1 = xy[tri[:, 1]] - xy[tri[:, 0]]
+    edge2 = xy[tri[:, 2]] - xy[tri[:, 0]]
+    area = abs(np.cross(edge1, edge2)).sum() / 2
+    loop_areas = [abs(np.cross(p, np.roll(p, -1, axis=0)).sum()) / 2 for p in loops]
+    expected = loop_areas[0] - sum(loop_areas[1:])
+    if abs(area - expected) > 1e-4:
+        raise ValueError("Reference host surface does not match the requested apertures")
+    return xy, tri
+
+
+def build(scene, world, recipe, assets, profiles, position_pass=False):
     source = rig.plane(scene, world)
     asphalt = source.data.materials[0]
     bpy.data.objects.remove(source, do_unlink=True)
@@ -43,20 +68,34 @@ def build(scene, world, recipe, assets, profiles):
         frame[:2, 3] = row["xy_m"]
         frame[:3, :3] = Rotation.from_euler("z", row["heading_deg"], degrees=True).as_matrix()
         angles = np.arange(256) * 2 * np.pi / 256
-        circle = radius * np.stack([np.cos(angles), np.sin(angles)], -1) @ frame[:2, :2].T + frame[:2, 3]
-        rings.append(circle)
+        unit_circle = np.stack([np.cos(angles), np.sin(angles)], axis=1)
+        direct = assets / key / "asset.glb"
+        if not direct.exists():
+            (direct,) = assets.glob(f"*/series/assets/*/{key}/asset.glb")
+        if position_pass:
+            half = np.array(config["size_m"]) / 2 + config["frame_band_m"]
+            if config["shape"] == "rect":
+                local = np.array([[-1, -1], [1, -1], [1, 1], [-1, 1]]) * half
+            elif config["shape"] == "round":
+                local = unit_circle * half
+            else:
+                raise ValueError("Expected a rectangular or round utility-cover frame")
+            meta = json.loads((direct.parent / "metadata.json").read_text())
+            install = np.array(meta.get("frame_transform") or np.eye(4))
+            outline = local @ install[:2, :2].T + install[:2, 3]
+        else:
+            outline = radius * unit_circle
+        outline = outline @ frame[:2, :2].T + frame[:2, 3]
+        rings.append(outline)
         plugs.append(
             tile(
                 "Original road disk",
-                np.c_[circle, np.zeros(len(circle))],
-                [list(range(len(circle)))],
+                np.c_[outline, np.zeros(len(outline))],
+                [list(range(len(outline)))],
                 asphalt,
                 world,
             )
         )
-        direct = assets / key / "asset.glb"
-        if not direct.exists():
-            (direct,) = assets.glob(f"*/series/assets/*/{key}/asset.glb")
         for obj in rig.imported(direct, world @ frame, 1):
             name = obj.name.split(".")[0]
             if name == "Road around the aperture":
@@ -64,14 +103,17 @@ def build(scene, world, recipe, assets, profiles):
                 continue
             obj.pass_index = i * 32 + PARTS[name]
             objects.append(obj)
-    xy = np.concatenate([corners, *rings])
-    faces = Delaunay(xy).simplices
-    for circle in rings:
-        center = circle.mean(0)
-        radius = np.linalg.norm(circle[0] - center)
-        faces = faces[
-            np.linalg.norm(xy[faces].mean(1) - center, axis=1) >= radius * np.cos(np.pi / len(circle))
-        ]
+    if position_pass:
+        xy, faces = cut_road(corners, rings)
+    else:
+        xy = np.concatenate([corners, *rings])
+        faces = Delaunay(xy).simplices
+        for circle in rings:
+            center = circle.mean(0)
+            radius = np.linalg.norm(circle[0] - center)
+            faces = faces[
+                np.linalg.norm(xy[faces].mean(1) - center, axis=1) >= radius * np.cos(np.pi / len(circle))
+            ]
     tile("Host asphalt with two open circles", np.c_[xy, np.zeros(len(xy))], faces.tolist(), asphalt, world)
     bpy.ops.mesh.primitive_cube_add(size=1)
     obstacle = bpy.context.object
@@ -89,6 +131,7 @@ def main():
     parser.add_argument("--out", type=Path, default=ROOT / "outputs/scanned-round-covers/cycles")
     parser.add_argument("--layout", type=Path, action="append", help="Layout JSON beside the numbered scan folders")
     parser.add_argument("--readout", action="store_true", help="Also render eight consecutive moving camera poses")
+    parser.add_argument("--position-pass", action="store_true", help="Export an unfiltered world-position pass and cut registered rectangular or round frames")
     args = parser.parse_args()
     world = np.eye(4)
     world[:3, :3] = Rotation.from_euler("zyx", [37, -3, 4], degrees=True).as_matrix()
@@ -103,10 +146,18 @@ def main():
             for state in config["states"]:
                 profiles[state["id"]] = config["perforations"]
         scene, camera = rig.setup_scene(32)
+        if args.position_pass:
+            bpy.context.view_layer.use_pass_position = True
+            file = scene.node_tree.nodes["Passes"]
+            file.file_slots.new("position-")
+            source = next(n for n in scene.node_tree.nodes if n.type == "R_LAYERS")
+            scene.node_tree.links.new(source.outputs["Position"], file.inputs["position-"])
         objects, plugs = build(
-            scene, world, layout, args.assets, profiles
+            scene, world, layout, args.assets, profiles, args.position_pass
         )
         shots = [("rear", 180, 28, [0, 2.4, 1.3]), ("ortho", 0, 67, [0, -1.17, 2.76])]
+        if args.position_pass:
+            shots.append(("side", 76, 24, [0, -1.38, 0.92]))
         if args.readout:
             # Eight time slices of a 24 ms readout: forward speed 12.5 m/s and yaw rate 25 deg/s.
             for index in range(8):

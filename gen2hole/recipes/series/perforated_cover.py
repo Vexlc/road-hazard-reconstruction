@@ -410,6 +410,10 @@ def build():
             or (absent and (angle or offset.any()))
         ):
             raise ValueError("Invalid grate pose for " + key)
+        yaw = float(state.get("seat_yaw_deg", 0))
+        if not np.isfinite(yaw) or (yaw and (profile["shape"] != "rect" or absent or angle or fragment)):
+            raise ValueError("In-plane seating rotation requires a present flat rectangular lid")
+        bearing = {}
         mesh = Mesh()
         mesh.materials.update(stock.materials)
         mesh.parts.extend(stock.parts)
@@ -421,9 +425,12 @@ def build():
                 pose = panel_pose(profile, state)
             else:
                 pose = lid_pose(size[0] / 2, angle, offset, 0)
+            if yaw:
+                c, s = np.cos(np.deg2rad(yaw)), np.sin(np.deg2rad(yaw))
+                pose[:2, :2] = [[c, -s], [s, c]]
             if installation is not None:
                 pose = installation @ pose
-            if offset.any():
+            if offset.any() or yaw:
                 # Compute first contact with the fixed road, flange or seat under the moved cover.
                 from mathutils.bvhtree import BVHTree
 
@@ -438,13 +445,29 @@ def build():
                     next(p[1] for p in lid.parts if p[0] == "Lid underside") @ pose[:3, :3].T + pose[:3, 3]
                 )
                 contacts = []
+                bearing_xy = []
                 for x, y, z in bottom:
                     hit, *_ = tree.ray_cast((x, y, 1.0), (0, 0, -1.0))
                     if hit is not None:
                         contacts.append(hit.z - z)
+                        if yaw:
+                            bearing_xy.append((x, y))
                 if not contacts:
                     raise ValueError("Displaced grate has no support")
-                pose[2, 3] += max(contacts)
+                rise = max(contacts)
+                pose[2, 3] += rise
+                if yaw:
+                    from scipy.spatial import ConvexHull
+                    xy = np.asarray(bearing_xy)[np.asarray(contacts) >= rise - 0.0005]
+                    if len(xy) < 3 or np.linalg.matrix_rank(xy - xy.mean(0)) < 2:
+                        raise ValueError("Rotated cover lacks a bearing area")
+                    hull = ConvexHull(xy)
+                    centre = pose[:2, 3]
+                    margin = -np.max(hull.equations[:, :2] @ centre + hull.equations[:, 2])
+                    if margin <= 0:
+                        raise ValueError("Rotated cover centre falls outside its supporting contacts")
+                    bearing = dict(seat_yaw_deg=yaw, support_margin_m=float(margin),
+                                   bearing_contact_count=len(xy), bearing_area_m2=float(hull.volume))
             mesh.materials.update(lid.materials)
             if "normal_gl" in profile:
                 face_material = lid.parts[0][4]
@@ -453,10 +476,19 @@ def build():
                 mesh.lossless_color.add(face_material)
             for name, v, f, uv, m, isroad in lid.parts:
                 mesh.parts.append((name, (v @ pose[:3, :3].T + pose[:3, 3]).astype("f4"), f, uv, m, isroad))
-            if offset.any():
+            if offset.any() or yaw:
                 a = np.linspace(-field["width"] / 2, field["width"] / 2, field["height"].shape[0])
                 x, y = np.meshgrid(a, -a)
-                d = np.maximum(abs(x - offset[0]) - size[0] / 2, abs(y - offset[1]) - size[1] / 2)
+                if yaw:
+                    # Project the actual rotated lid corners, including a tilted frame, onto the local road.
+                    from scipy.spatial import ConvexHull
+                    top = next(v for name, v, *_ in mesh.parts if name == "Lid face")
+                    edges = ConvexHull(top[:, :2]).equations
+                    d = np.maximum.reduce([a*x + b*y + c for a, b, c in edges])
+                    if min(d[0].min(), d[-1].min(), d[:, 0].min(), d[:, -1].min()) <= 0:
+                        raise ValueError("Rotated cover exceeds the captured pavement footprint")
+                else:
+                    d = np.maximum(abs(x - offset[0]) - size[0] / 2, abs(y - offset[1]) - size[1] / 2)
                 result["alpha"] = np.maximum(field["alpha"], smooth((0.065 - d) / 0.06))
         if fragment is not None and transform is not None:
             for name, v, f, uv, material, road in loose.parts:
@@ -514,6 +546,7 @@ def build():
             exponent=2.0 if profile["shape"] == "round" else 16.0,
             road_projection=[239.5, 239.5, 479 / field["width"], 479 / field["length"], 768],
             seed=504031,
+            **bearing,
             **fracture,
             **stats,
         )
@@ -528,6 +561,8 @@ def build():
         if installation is not None:
             meta.update(installation_grade=grade, frame_transform=installation.tolist())
         Image.fromarray(pixels("pavement.jpg")).save(cache / (key + "_ground.jpg"), quality=94)
+        if "geometry_source" in cfg:
+            meta["geometry_source"] = cfg["geometry_source"]
         mesh.save(ROOT / "assets" / category / key, cache, meta, result)
         print(key, stats, flush=True)
 

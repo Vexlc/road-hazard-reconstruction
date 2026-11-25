@@ -2,9 +2,11 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
-**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,520 个编号所属的 59 个系列与 27 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,524 个编号所属的 61 个系列与 28 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
 
 不知道编号时，可以运行 `python3 gen2hole/gen2hole.py search 井盖`。已有目标场景时，运行 `python3 gen2hole/gen2hole.py routes 鱼眼` 查看可用的迁入程序和指南，再按路线缩小范围，例如 `python3 gen2hole/gen2hole.py search --route kitti-pair`。每条结果列出代表编号、重建代码和操作章节。[按手头材料选择复现入口](docs/16-reproduction-cookbook.md#按手头材料选入口)
+
+**燃气方井与辐条圆井**　四种安装状态，每组两件。可以用逐光线的三维命中位置将同一组井盖迁入其他鱼眼或正交相机。[重建和跨渲染器迁入](docs/32-utility-covers.md) · [Audi 驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/utility-covers-v1.0.0/audi-front-rear.mp4)
 
 **历史双目库已可逐文件复现**　65 件坑洞全部从原始 RGB、标注与 XYZ 重建，与发布的 130 个 GLB、PLY 哈希一致。过去存在差异的 13 件另经三个角度的原生渲染复核。[从干净克隆重跑](docs/02-asset-reconstruction.md#从干净克隆验证历史双目) · [逐件和逐帧结果](validation/stereo-replay.json)
 

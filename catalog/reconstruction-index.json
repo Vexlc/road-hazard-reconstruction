@@ -1,5 +1,5 @@
 {
-  "asset_count": 1520,
+  "asset_count": 1524,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2319,6 +2319,44 @@
         "native-pavement-support",
         "cube-depth"
       ]
+    },
+    "diamond-gas-hatch": {
+      "name": "菱纹燃气方井、错转盖与缺盖井",
+      "launcher": "gen2hole/survey.py",
+      "prepare": "gen2hole/examples/utility-covers/prepare.py",
+      "recipe": "gen2hole/examples/utility-covers/002/survey.json",
+      "guide": "docs/32-utility-covers.md",
+      "section": "从原始材质重建两种井盖",
+      "assets": [
+        "A270",
+        "M270"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "position-pass"
+      ]
+    },
+    "spoked-utility-chamber": {
+      "name": "辐条圆井与隆起的井盖、井圈",
+      "launcher": "gen2hole/survey.py",
+      "prepare": "gen2hole/examples/utility-covers/prepare.py",
+      "recipe": "gen2hole/examples/utility-covers/001/survey.json",
+      "guide": "docs/32-utility-covers.md",
+      "section": "从原始材质重建两种井盖",
+      "assets": [
+        "A271",
+        "M271"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "position-pass"
+      ]
     }
   },
   "transfer_routes": {
@@ -2456,6 +2494,11 @@
       "name": "从六面透视颜色与硬件深度缓冲迁入共心鱼眼",
       "entry": "gen2hole/downstream/cube_camera.py",
       "guide": "docs/31-cube-pits.md"
+    },
+    "position-pass": {
+      "name": "从逐光线三维命中位置迁入鱼眼或非共心相机",
+      "entry": "gen2hole/downstream/host_position.py",
+      "guide": "docs/32-utility-covers.md"
     }
   },
   "groups": {
@@ -2518,7 +2561,9 @@
       "cracked-infill-cover",
       "settled-infill-well",
       "rusted-ten-vent-cover",
-      "sixteen-vent-infill"
+      "sixteen-vent-infill",
+      "diamond-gas-hatch",
+      "spoked-utility-chamber"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

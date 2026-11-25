@@ -1,6 +1,6 @@
 # 可选下载
 
-新的道路资产按固定标签放在私有 GitHub Releases。每个专题给出原始输入、成品、相机包或宿主检查点的下载命令和校验值。只看效果时可直接下载专题页开头的 MP4。[实测双坑与车尾鱼眼](24-asphalt-breakouts.md) · [扫描井盖及缺盖状态](22-scanned-round-covers.md) · [道路遗落物](23-road-debris.md) · [按资产类型查找其他专题](asset-code-index.md) · [行驶中的鱼眼与沉降、错位井盖](25-rolling-covers.md) · [双坑和裁切、去畸变相机](26-remapped-pits.md) · [干湿双坑、坡度与鱼眼反光](27-wet-pavement.md) · [三段道路与近物倒影](28-roadside-reflections.md) · [大坑搭配沉降盖或缺盖井](29-mixed-inlets.md) · [四件散落货物和逐件接地检查](30-lost-cargo.md) · [四处实测沥青坑与六面深度鱼眼](31-cube-pits.md)
+新的道路资产按固定标签放在私有 GitHub Releases。每个专题给出原始输入、成品、相机包或宿主检查点的下载命令和校验值。只看效果时可直接下载专题页开头的 MP4。[实测双坑与车尾鱼眼](24-asphalt-breakouts.md) · [扫描井盖及缺盖状态](22-scanned-round-covers.md) · [道路遗落物](23-road-debris.md) · [按资产类型查找其他专题](asset-code-index.md) · [行驶中的鱼眼与沉降、错位井盖](25-rolling-covers.md) · [双坑和裁切、去畸变相机](26-remapped-pits.md) · [干湿双坑、坡度与鱼眼反光](27-wet-pavement.md) · [三段道路与近物倒影](28-roadside-reflections.md) · [大坑搭配沉降盖或缺盖井](29-mixed-inlets.md) · [四件散落货物和逐件接地检查](30-lost-cargo.md) · [四处实测沥青坑与六面深度鱼眼](31-cube-pits.md) · [旋转方盖、隆起圆井与三维位置缓冲](32-utility-covers.md)
 
 五类历史库的数据包位于 [Google Drive 项目目录](https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_)，按 `assets/`、`inputs/`、`scenes/`、`visualizations/`、`documents/` 分开存放。已设置为“知道链接的任何人可查看”，无需 Google 账号即可查看和下载；没有编辑权限，且未开启搜索发现。
 

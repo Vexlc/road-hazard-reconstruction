@@ -24,6 +24,11 @@ def main():
     cube.add_argument("faces", type=Path)
     cube.add_argument("lens", type=Path)
     cube.add_argument("out", type=Path)
+    position = tasks.add_parser("from-position", help="Register a renderer's Cartesian surface-position pass to metric camera rays")
+    position.add_argument("view", type=Path)
+    position.add_argument("out", type=Path)
+    position.add_argument("--max-ray-error-m", type=float, default=0.001, help="Largest allowed lateral hit-to-ray error in metres")
+    position.add_argument("--calibration", type=Path, help="Lens JSON if the source omits explicit rays")
     readout = tasks.add_parser("register-readout", help="Register scanline mid-exposures against a timed sensor trajectory")
     readout.add_argument("view", type=Path, help="Host packet with int64 row_time_ns")
     readout.add_argument("trajectory", type=Path, help="NPZ with time_ns and camera_to_world at each knot")
@@ -107,6 +112,11 @@ def main():
             parser.error("row_time_ns must match the image height")
         packet["camera_to_world_rows"] = rows
         packet.setdefault("camera_to_world", rows.reshape(-1, *rows.shape[-3:])[0, rows.shape[-3] // 2])
+    if args.task == "from-position":
+        from host_position import register_positions
+
+        with np.load(args.view, allow_pickle=False) as view:
+            packet = register_positions(view, args.max_ray_error_m, args.calibration)
     if args.task == "from-cube":
         from cube_camera import convert
 
@@ -117,7 +127,7 @@ def main():
 
         with np.load(args.view, allow_pickle=False) as source:
             packet = remap_packet(source, np.load(args.source_xy, allow_pickle=False), args.calibration)
-    if args.task in ("register-readout", "remap-camera", "reflection-mesh", "from-cube"):
+    if args.task in ("register-readout", "remap-camera", "reflection-mesh", "from-cube", "from-position"):
         from tempfile import NamedTemporaryFile
 
         args.out.parent.mkdir(exist_ok=True, parents=True)
