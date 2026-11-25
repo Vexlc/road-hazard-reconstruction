@@ -13,13 +13,13 @@
 
 ## 下载与校验
 
-以下命令在同一 Linux Bash 会话、仓库根目录执行。访问私有附件需已登录有读取权限的 GitHub 账号。[固定发布](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/sun-openings-v1.0.0)
+以下命令在同一 Linux Bash 会话、仓库根目录执行。源码固定在 sun-openings-v1.0.1，模型和相机附件固定在 sun-openings-v1.0.0。访问私有附件需已登录有读取权限的 GitHub 账号。[固定发布](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/sun-openings-v1.0.0)
 
 ~~~bash
 set -e
 repo=Vexlc/road-hazard-reconstruction
 tag=sun-openings-v1.0.0
-gh repo clone "$repo" -- --branch "$tag" --depth 1
+gh repo clone "$repo" -- --branch sun-openings-v1.0.1 --depth 1
 cd road-hazard-reconstruction
 kit=downloads/$tag
 get() { gh release download "$tag" -R "$repo" -D "$kit" --skip-existing "$@"; }

@@ -3,7 +3,7 @@
 从下列固定标签开始，可核对完整索引。获得单件模型、原生场景或相机回放的具体命令，见对应系列的操作章节。
 
 ~~~bash
-gh repo clone Vexlc/road-hazard-reconstruction -- --branch sun-openings-v1.0.0 --depth 1
+gh repo clone Vexlc/road-hazard-reconstruction -- --branch sun-openings-v1.0.1 --depth 1
 cd road-hazard-reconstruction
 python3 scripts/check-reproduction-index.py
 python3 gen2hole/gen2hole.py locate H234

@@ -61,14 +61,17 @@ def check_release_links(pages):
                 links.setdefault((parts[1], None), page)
             elif len(parts) == 3 and parts[0] == "download":
                 links.setdefault((parts[1], parts[2]), page)
-    response = subprocess.run(
-        ["gh", "api", "--paginate", "--slurp", f"repos/{repo}/releases?per_page=100"],
-        check=True, stdout=subprocess.PIPE, text=True,
-    )
-    releases = {
-        release["tag_name"]: {asset["name"] for asset in release["assets"] if asset["state"] == "uploaded"}
-        for batch in json.loads(response.stdout) for release in batch if not release["draft"]
-    }
+    releases = {}
+    page_number = 1
+    while True:
+        endpoint = f"repos/{repo}/releases?per_page=100&page={page_number}"
+        batch = json.loads(subprocess.check_output(["gh", "api", endpoint], text=True))
+        for release in batch:
+            if not release["draft"]:
+                releases[release["tag_name"]] = {asset["name"] for asset in release["assets"] if asset["state"] == "uploaded"}
+        if len(batch) < 100:
+            break
+        page_number += 1
     for (tag, name), page in links.items():
         if tag not in releases or (name is not None and name not in releases[tag]):
             raise ValueError(f"Missing published GitHub target in {page.relative_to(ROOT)}: {tag} / {name or ''}")
