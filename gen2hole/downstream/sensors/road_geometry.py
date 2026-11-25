@@ -12,7 +12,8 @@ PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidew
          'water surface', 'cast ring and seat', 'shaft wall', 'shaft bottom',
          'concrete collar', 'lid face', 'lid underside', 'lid edge', 'hinge',
          'pavement block top', 'pavement block edge', 'pavement block underside', 'subgrade', 'socket wall', 'visible debris face', 'opening inner rim', 'central bearing beam',
-         'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain', 'traffic cone', 'tyre', 'wheel rim', 'crate', 'cement sack')
+         'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain', 'traffic cone', 'tyre', 'wheel rim', 'crate', 'cement sack',
+         'shipping carton', 'tool chest', 'garden sack', 'wood box')
 EXACT_PARTS = {
     'Fracture inset rim': 19, 'Road around the aperture': 1, 'Road adjoining the fracture': 1,
     'Fracture lip and exposed bed': 2, 'Fracture sidewall in surface coordinates': 3,
@@ -83,7 +84,8 @@ def load_inventory(parent):
 
 
 def part_id(name):
-    for prefix, code in [('Tyre ', 26), ('Wheel rim ', 27), ('Road crate ', 28), ('Cement sack ', 29)]:
+    for prefix, code in [('Tyre ', 26), ('Wheel rim ', 27), ('Road crate ', 28), ('Cement sack ', 29),
+                         ('Shipping carton ', 30), ('Tool chest ', 31), ('Garden sack ', 32), ('Wood box ', 33)]:
         if name.startswith(prefix):
             return code
     if name.startswith('Traffic cone '):

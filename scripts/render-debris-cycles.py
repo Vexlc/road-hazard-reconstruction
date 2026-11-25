@@ -1,6 +1,7 @@
 """Render the road debris in independent 220-degree Cycles cameras, including material-normal AOVs."""
 
 import argparse
+import json
 import os
 import sys
 from importlib import import_module
@@ -52,11 +53,17 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--assets", type=Path, default=ROOT / "runs/road-debris")
     p.add_argument("--out", type=Path, default=ROOT / "outputs/road-debris/cycles")
+    p.add_argument("--detail", action="store_true", help="Also inspect the near side of the second object")
+    p.add_argument("--pairs", nargs="+", default=PAIRS)
+    p.add_argument("--size", type=int, default=rig.SIZE, help="Width and height of the native fisheye image")
     a = p.parse_args()
+    if a.size < 64:
+        p.error("Choose a fisheye resolution of at least 64 pixels")
+    rig.SIZE = a.size
     world = np.eye(4)
     world[:3, :3] = Rotation.from_euler("zyx", [33, 3, -4], degrees=True).as_matrix()
     world[:3, 3] = [5.7, -3.3, 1.25]
-    for pair in PAIRS:
+    for pair in a.pairs:
         scene, camera = rig.setup_scene(64)
         rig.plane(scene, world)
         # A small raised host marker tests which object's visible surface is actually nearest.
@@ -67,10 +74,18 @@ def main():
         marker.matrix_world = Matrix((world @ transform).tolist())
         marker.pass_index = 2
         objects = rig.imported(a.assets / pair / "asset.glb", world, 3)
+        rows = json.loads((a.assets / pair / "metadata.json").read_text())["instances"]
         for obj in objects:
-            obj.pass_index = 3 if "@tyre" in obj.name or "@crate" in obj.name else 4
+            matches = [i for i, row in enumerate(rows) if "@" + row["id"] in obj.name]
+            if len(matches) != 1:
+                raise ValueError("Expected exactly one layout instance for " + obj.name)
+            obj.pass_index = 3 + matches[0]
         normal_pass(objects, scene)
-        for view, yaw, pitch, eye in VIEWS:
+        views = list(VIEWS)
+        if a.detail:
+            x, y = rows[1]["xy_m"]
+            views.append(("detail", 0, 23, [x, y - .72, .47]))
+        for view, yaw, pitch, eye in views:
             for show in (False, True):
                 rig.render(
                     scene,

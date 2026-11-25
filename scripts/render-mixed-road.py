@@ -23,6 +23,7 @@ from prepare_kitti import project_mei, homogeneous  # noqa: E402
 from road_geometry import glb_triangles, save_json, sha256  # noqa: E402
 from pavement_layout import PavementLayout, resolve_instances
 from prop_lighting import fit_receivers, view_bounds
+from cargo_support import check_members
 from prop_registration import driving_clearance, registered_geometry, stereo_ranges
 
 SUBPIXELS = ((-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0.25, 0.25))
@@ -353,12 +354,14 @@ def frame_crop(
         else:
             samples.append(mesh.render(image, pose, rays, anchor, depth, protected, with_shadow=mesh.standing,
                                        occluder_range=foreground, receiver_band_m=receiver_band,
-                                       pixel_width=len(SUBPIXELS)**-.5))
+                                       pixel_width=len(SUBPIXELS)**-.5, instance_ids=anchor.get("member_support", {}).get("geometry_instances")))
         if packet_path:
             packet_rays.append(rays)
             packet_masks.append(protected)
-    after, part, distance, *receiver = resolve_samples([s[:3] for s in samples] if grouped else samples)
+    after, part, distance, *receiver = resolve_samples([s[:3] for s in samples] if grouped else [s[:4] for s in samples])
     instance = resolve_instances(samples) if grouped else None
+    if not grouped and "member_support" in anchor:
+        instance = resolve_instances([(s[0], s[1], s[2], s[4]) for s in samples])
     shadow = receiver[0] if receiver else np.zeros(part.shape,'f4')
     if packet_path:
         np.savez_compressed(
@@ -563,6 +566,7 @@ def main():
         help="Export a frame jointly showing the layout members, ranked by their harmonic mean visible area",
     )
     parser.add_argument("--appearance-views",type=Path,help="Directory of surveyed original camera packets (same layout and metric placement)")
+    parser.add_argument("--cargo-pair", action="store_true", help="Survey both members and select registered two-object views")
     parser.add_argument("--survey-only", action="store_true", help="Write the two surveyed seats and world up before building site-dependent water")
     parser.add_argument("--stereo-reflections", action="store_true", help="Also recover finite reflecting surfaces from synchronized KITTI front stereo")
     parser.add_argument("--metric-reflections", action="store_true", help="Trace finite-distance reflections on the current registered LiDAR scan")
@@ -574,8 +578,12 @@ def main():
         parser.error("Road gravity and surveyed seats require --layout")
     if args.unclipped_preview:
         args.paired_preview = True
-    if args.paired_preview and not args.layout:
-        parser.error("--paired-preview requires a pavement layout")
+    if args.cargo_pair:
+        if args.layout or len(args.ids) != 1:
+            parser.error("--cargo-pair needs one baked assembly in --ids")
+        args.paired_preview = True
+    if args.paired_preview and not (args.layout or args.cargo_pair):
+        parser.error("--paired-preview requires --layout or --cargo-pair")
     if args.appearance_views and not args.layout:
         parser.error("--appearance-views requires a surveyed pavement layout")
     rig = ROOT / "work/streetcrafter-rig" / args.scene
@@ -584,14 +592,32 @@ def main():
         raw = ROOT / "work/data" / args.scene
         anchor, views, cloud_at, filename = audi_inputs(raw, data, cams, args.group, args.offset)
         nearby = np.concatenate([cloud_at(g, cam) for cam, groups in views for g in groups if g % 3 == 0])
+        registration_anchor = anchor
+        if args.cargo_pair:
+            # Evaluate contact in the same road registration as the images. Raw Audi odometry
+            # alone can put repeated observations of the same patch at different heights.
+            registered = []
+            for cam, groups in views:
+                for g in groups:
+                    if g % 3:
+                        continue
+                    adjusted = align_observed_road(anchor, np.linalg.inv(cams[f"{g:03}{cam}0.png"]), cloud_at(g, cam))
+                    if adjusted is not None:
+                        registered.append(adjusted[1])
+            if not registered:
+                raise ValueError("No registered Audi road scans at this site")
+            nearby = np.concatenate(registered)
+            basis = np.asarray(anchor["basis_columns"])
+            anchor = fit_road(nearby, anchor["center_world"], basis[:, 0], up_world=basis[:, 2], radius_m=1.15)
     else:
         raw = ROOT / "work/data" / ("kitti360-0000-0200" if args.scene == "kitti360-0000" else args.scene)
         clouds = scans(raw, data, cams)
         rig_pose = np.linalg.inv(cams[f"{args.group:03}00.png"])
         seed = rig_pose[:3, 3] + args.offset * rig_pose[:3, 0] - [0, 0, 1.6-args.seed_lift]
-        nearby = (np.concatenate(clouds[max(0, args.group - 12):args.group + 13]) if args.layout
+        nearby = (np.concatenate(clouds[max(0, args.group - 12):args.group + 13]) if args.layout or args.cargo_pair
                   else np.concatenate(clouds[max(0, args.group - 7) : args.group + 8 : 2]))
         anchor = fit_road(nearby, seed, rig_pose[:3, 2], up_world=[0, 0, 1], radius_m=args.support_radius)
+        registration_anchor = anchor
         views = [
             (0, range(max(0, args.group - 18), args.group)),
             (3, range(max(0, args.group - 6), min(len(clouds), args.group + 8))),
@@ -610,7 +636,6 @@ def main():
         if not (folder / "asset.glb").is_file():
             (folder,) = args.run.glob(f"*/series/assets/*/{key}")
         assets[key] = folder
-    registration_anchor = anchor
     layout = None
     if args.layout:
         layout = PavementLayout(args.layout, args.run)
@@ -644,6 +669,14 @@ def main():
             registered.append(registered_geometry(folder))
             for _, xyz, _ in glb_triangles(folder / "asset.glb"):
                 standing_bounds.extend((xyz[:, :2].min(0), xyz[:, :2].max(0)))
+    for folder in assets.values():
+        support = check_members(folder, anchor, nearby)
+        if support:
+            if len(assets) != 1:
+                raise ValueError("Survey each freestanding assembly separately")
+            anchor["member_support"] = support
+    if args.cargo_pair and not anchor.get("member_support"):
+        parser.error("Select a layout with member_ground_check enabled")
     if standing_bounds:
         anchor["registered_geometry"] = registered
         anchor["host_scene"] = args.scene
@@ -718,11 +751,12 @@ def main():
                         candidates.append((res["visible"], frame, res, photo))
                 if not candidates:
                     raise ValueError(f"{key}: no visible support for {sensor}")
+                members = anchor.get("instances", anchor.get("member_support", {}).get("instances", []))
                 if args.paired_preview:
 
                     def joint_area(candidate):
                         ids = candidate[2]["instance"]
-                        counts = np.bincount(ids.ravel(), minlength=len(mesh.members) + 1)[1:]
+                        counts = np.bincount(ids.ravel(), minlength=len(members) + 1)[1:]
                         return 0.0 if np.any(counts < 12) else len(counts) / np.sum(1.0 / counts)
 
                     pool = candidates
@@ -747,7 +781,7 @@ def main():
                 Image.fromarray(best["after"]).save(dest / "after.png")
                 Image.fromarray(best["part"]).save(dest / "part.png")
                 np.save(dest / "range.npy", best["range"])
-                if layout:
+                if best["instance"] is not None:
                     Image.fromarray(best["instance"]).save(dest / "instance.png")
                 if mesh.standing:
                     np.save(dest / "shadow.npy", best["shadow"])
@@ -790,13 +824,13 @@ def main():
                                        for _, frame, r, _ in candidates if r["clipped_sides"]],
                     model=data["source_calibration"][sensor]["model"],
                 )
-                if layout:
+                if members:
                     row["best_frame_instance_pixels"] = {
-                        item["id"]: int((best["instance"] == i).sum()) for i, item in enumerate(anchor["instances"], 1)
+                        item["id"]: int((best["instance"] == i).sum()) for i, item in enumerate(members, 1)
                     }
                     row["frames_showing_all_instances"] = [
                         frame for _, frame, result, _ in candidates
-                        if np.count_nonzero(np.bincount(result["instance"].ravel(), minlength=len(anchor["instances"])+1)[1:]) == len(anchor["instances"])
+                        if np.count_nonzero(np.bincount(result["instance"].ravel(), minlength=len(members)+1)[1:]) == len(members)
                     ]
                 index[key]["views"][sensor] = row
                 print(key, sensor, f, best["visible"], flush=True)

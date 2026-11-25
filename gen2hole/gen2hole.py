@@ -73,6 +73,31 @@ def example_inputs(group):
         return recipe.parents[1]
 
 
+def search_families(query, route):
+    index = load(ROOT.parent / "catalog/reconstruction-index.json")
+    routes = index["transfer_routes"]
+    if route and route not in routes:
+        raise ValueError("未知迁入路线。可选值为 " + "、".join(routes))
+    terms = query.casefold().split()
+    count = 0
+    for category, keys in index["groups"].items():
+        for key in keys:
+            family = index["families"][key]
+            if route and route not in family["transfer"]:
+                continue
+            fields = [category, key, family["name"], family["section"], *family["assets"],
+                      *family["transfer"], *(routes[r]["name"] for r in family["transfer"])]
+            haystack = " ".join(fields).casefold()
+            if not all(term in haystack for term in terms):
+                continue
+            count += 1
+            examples = ", ".join(family["assets"][:3])
+            print(f"{category} / {family['name']}  ({len(family['assets'])} 件，例 {examples})")
+            print(f"  {family['launcher']}  ·  {family['guide']}  ·  {', '.join(family['transfer'])}")
+    if not count:
+        raise ValueError("没有符合条件的系列。可用更短的关键词，或省略关键词列出全部系列。")
+
+
 def locate(query):
     index = load(ROOT.parent / "catalog/reconstruction-index.json")
     name, group = published_asset(query, index)
@@ -329,6 +354,9 @@ def main():
     p.add_argument("--config", type=Path, default=ROOT / "config/local.json", help="解释器与道路工程路径")
     commands = p.add_subparsers(dest="command", required=True)
     catalog = commands.add_parser("list", help="查看可用编号与类别")
+    search = commands.add_parser("search", help="按系列、资产编号或宿主检索全仓重建与迁入代码")
+    search.add_argument("query", nargs="?", default="", help="关键词，空格分隔的词需同时匹配")
+    search.add_argument("--route", help="仅列出支持指定路线的系列，如 kitti-pair、joint-props")
     lookup = commands.add_parser("locate", help="按编号查询整个发布索引中的配方、入口和指南")
     lookup.add_argument("id")
     prompt = commands.add_parser("show", help="查看单件资产的原始生图提示词、原图与成品路径")
@@ -359,6 +387,9 @@ def main():
     scan.add_argument("--mode", choices=["before", "after"], default="after")
     args = p.parse_args()
     try:
+        if args.command == "search":
+            search_families(args.query, args.route)
+            return
         if args.command == "locate":
             locate(args.id)
             return

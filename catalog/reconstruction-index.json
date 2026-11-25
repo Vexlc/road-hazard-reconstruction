@@ -1,5 +1,5 @@
 {
-  "asset_count": 1512,
+  "asset_count": 1516,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2278,6 +2278,27 @@
         "sampled-radiance"
       ],
       "prepare": "gen2hole/examples/mixed-inlets/prepare.py"
+    },
+    "lost-cargo": {
+      "name": "旧纸箱、开盖工具箱、侧倒基质袋和木箱",
+      "launcher": "gen2hole/road_debris.py",
+      "prepare": "gen2hole/roadside_layout.py",
+      "recipe": "gen2hole/examples/lost-cargo/sources.json",
+      "guide": "docs/30-lost-cargo.md",
+      "section": "从原始网格重建四件散落物",
+      "assets": [
+        "R262",
+        "R263",
+        "R264",
+        "R265"
+      ],
+      "transfer": [
+        "cargo-support",
+        "surveyed-receivers",
+        "mesh-view",
+        "joint-props",
+        "cycles"
+      ]
     }
   },
   "transfer_routes": {
@@ -2405,6 +2426,11 @@
       "name": "在有独立光线颜色和响应权重的鱼眼中迁入并保留前景边界",
       "entry": "gen2hole/downstream/host_exposure.py",
       "guide": "docs/29-mixed-inlets.md"
+    },
+    "cargo-support": {
+      "name": "逐件验证立体散落物接地与联合占地，再接入实车相机或原生场景",
+      "entry": "gen2hole/downstream/cargo_support.py",
+      "guide": "docs/30-lost-cargo.md"
     }
   },
   "groups": {
@@ -2473,7 +2499,8 @@
       "fire-hydrants",
       "traffic-cones",
       "discarded-wheels",
-      "dropped-cargo"
+      "dropped-cargo",
+      "lost-cargo"
     ]
   }
 }

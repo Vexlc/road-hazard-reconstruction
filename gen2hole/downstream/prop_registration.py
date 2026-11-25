@@ -17,6 +17,21 @@ def registered_geometry(folder):
 
 
 def check_geometry(anchor, folder, *, native=False):
+    import json
+    metadata_file = folder / "metadata.json"
+    if metadata_file.is_file():
+        metadata = json.loads(metadata_file.read_text())
+        if metadata.get("member_ground_check"):
+            support = anchor.get("member_support", {})
+            checked = support.get("instances", [])
+            expected = [(r["id"], r["asset"]) for r in metadata["instances"]]
+            if (not anchor.get("registered_geometry")
+                    or [(r["id"], r["asset"]) for r in checked] != expected
+                    or not 0 <= support.get("max_adjacent_step_m", float("inf")) <= .040
+                    or any(not all(0 <= r.get(metric, float("inf")) <= .020
+                                   for metric in ("max_plane_gap_m", "max_measured_gap_m", "cell_residual_p90_m"))
+                           for r in checked)):
+                raise ValueError("Fit the full cargo assembly and survey each member before transfer")
     records = anchor.get("registered_geometry")
     if records is None:  # Accept original anchors created before per-file survey records.
         return

@@ -252,7 +252,7 @@ class RoadMesh:
 
     def render(self, rgb, camera_to_world, rays_camera, anchor, host_range, protected, *,
                occluder_range=None, road_tolerance_m=0.10, with_shadow=False, receiver_mask=None, pixel_width=1.0,
-               ray_origins_camera=None, receiver_band_m=None, apron_samples=False):
+               ray_origins_camera=None, receiver_band_m=None, apron_samples=False, instance_ids=None):
         """Compare uncertain host pavement and optional positively identified foreground in radial metres."""
         h, w = rgb.shape[:2]
         pose, basis = np.asarray(camera_to_world), np.asarray(anchor["basis_columns"])
@@ -391,11 +391,17 @@ class RoadMesh:
         visible = target & ~blocked
         if self.standing:
             from prop_lighting import compose
-            return compose(self, rgb, part, color, normals, ambient_visibility, visible, distance, plane, crossing,
+            result = compose(self, rgb, part, color, normals, ambient_visibility, visible, distance, plane, crossing,
                            occlusion_host, protected, occluder_range, road_tolerance_m, anchor, with_shadow, receiver_mask,
                            origins[visible] + directions[visible] * distance[visible,None], None if sky is None else sky[visible],
                            None if f0 is None else (f0[visible],rough[visible],-directions[visible]),
                            None if geometric_normals is None else geometric_normals[visible])
+            if instance_ids is not None:
+                table = np.asarray(instance_ids, dtype="u1")
+                instance = np.zeros((h, w), "u1")
+                instance[visible] = table[geom[visible]]
+                return (*result, instance)
+            return result
         context = (part == 1) & ~blocked
         out = rgb.copy()
         reference = anchor.get("pavement_appearance")

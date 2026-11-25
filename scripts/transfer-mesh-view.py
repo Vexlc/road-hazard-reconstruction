@@ -166,6 +166,10 @@ def main():
                 layout.bind(anchor)
         elif args.asset:
             anchor = fit_footprint(anchor, points, footprint_size(args.asset))
+            from cargo_support import check_members
+            support = check_members(args.asset, anchor, points)
+            if support:
+                anchor["member_support"] = support
             with np.load(args.asset / "surface.npz", allow_pickle=False) as field:
                 if "contact_mask" in field:
                     anchor["registered_geometry"] = [registered_geometry(args.asset)]
@@ -239,11 +243,12 @@ def main():
                 sample = layout.sample(incident, pose, subray, anchor, host[i], mask, reflection_probe=reflection_probe, reflectors=reflectors, pixel_width=len(rays)**-0.5, **options)
             else:
                 options["receiver_band_m"] = receiver_band
+                options["instance_ids"] = anchor.get("member_support", {}).get("geometry_instances")
                 if mesh.normal_textures:
                     options["pixel_width"] = len(rays)**-.5
                 sample = mesh.render(incident, pose, subray, anchor, host[i], mask, with_shadow=mesh.standing, **options)
             samples.append(sample)
-        after, ids, ranges, *shadow = resolve_samples([s[:3] for s in samples] if layout else samples,
+        after, ids, ranges, *shadow = resolve_samples([s[:3] for s in samples] if layout else [s[:4] for s in samples],
             host_rgb=None if colors is None else rgb, weights=weights)
     args.out.mkdir(parents=True, exist_ok=True)
     Image.fromarray(after).save(args.out / "after.png")
@@ -251,6 +256,9 @@ def main():
     np.save(args.out / "range.npy", ranges)
     if layout:
         Image.fromarray(resolve_instances(samples)).save(args.out / "instance.png")
+    elif "member_support" in anchor:
+        instance = resolve_instances([(s[0], s[1], s[2], s[4]) for s in samples])
+        Image.fromarray(instance).save(args.out / "instance.png")
     if shadow:
         np.save(args.out / "shadow.npy", shadow[0])
     save_json(args.out / "result.json", dict(mesh_sha256=mesh.digest, visible_pixels=int((ids > 0).sum())))

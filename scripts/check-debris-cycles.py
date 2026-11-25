@@ -57,18 +57,24 @@ def main():
     p.add_argument("--views", type=Path, default=ROOT / "outputs/road-debris/cycles")
     p.add_argument("--out", type=Path, default=ROOT / "outputs/road-debris/cycles-check")
     p.add_argument("--assets", type=Path, default=ROOT / "runs/road-debris")
+    p.add_argument("--detail", action="store_true", help="Also inspect the near side of the second object")
+    p.add_argument("--pairs", nargs="+", default=["R242-R243", "R244-R245"])
     args = p.parse_args()
     stats = {}
-    for pair, first_code in [("R242-R243", 26), ("R244-R245", 28)]:
+    from road_geometry import glb_triangles
+    for pair in args.pairs:
         out = args.out / pair
         out.mkdir(parents=True, exist_ok=True)
         mesh = RoadMesh(args.assets / pair)
         packets = {}
-        for name in ("front", "edge", "rear"):
+        for name in (["front", "edge", "rear", "detail"] if args.detail else ["front", "edge", "rear"]):
             packets[name], world, _ = reference.packet(args.views / pair / name / "host", name == "edge")
             np.savez_compressed(out / (name + ".npz"), **packets[name])
         cli = reference.cli
-        cli("road-points", out / "road.npy", out / "front.npz", out / "edge.npz", "--stride", 2)
+        survey_views = [out / "front.npz", out / "edge.npz"]
+        if args.detail:
+            survey_views.append(out / "rear.npz")  # Observe road hidden behind the raised marker.
+        cli("road-points", out / "road.npy", *survey_views, "--stride", 2)
         color = packets["front"]["rgb"][packets["front"]["receiver_mask"]]
         save_json(
             out / "light.json",
@@ -109,7 +115,8 @@ def main():
             base, shaded = predicted_normals(mesh, packet, anchor)
             row = {}
             for i, key in enumerate(pair.split("-")):
-                hit = part == first_code + i
+                codes = {code for code, _, _ in glb_triangles(args.assets / key / "asset.glb")}
+                hit = np.isin(part, list(codes))
                 expected = ids == 3 + i
                 overlap = hit & expected
                 if not overlap.any():

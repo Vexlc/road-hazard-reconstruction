@@ -140,6 +140,8 @@ def build(assets, recipe, out):
         )
         meta = json.loads((dest / "metadata.json").read_text())
         meta["instances"] = records
+        if layout.get("member_ground_check"):
+            meta["member_ground_check"] = True
         save_json(dest / "metadata.json", meta)
         dest.rename(out)
 

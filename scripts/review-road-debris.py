@@ -1,6 +1,8 @@
 """Join both debris placements and export a still comparing their registered driving cameras."""
 
 import argparse
+import json
+from tempfile import TemporaryDirectory
 from importlib import import_module
 from pathlib import Path
 
@@ -16,13 +18,31 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--views", type=Path, default=ROOT / "outputs/road-debris")
     parser.add_argument("--plate", type=Path)
+    parser.add_argument("--layouts", type=Path, nargs="+", help="Cargo layouts with labels in sibling sources.json")
     args = parser.parse_args()
+    pairs = PAIRS
+    if args.layouts:
+        layouts = [json.loads(p.read_text()) for p in args.layouts]
+        pairs = {layout["id"]: layout["label"] for layout in layouts}
+        labels = json.loads((args.layouts[0].parent / "sources.json").read_text())["assets"]
+        append = import_module("review-asphalt-breakouts").append_rear_hold
+        with TemporaryDirectory(dir=args.views) as temp:
+            clips = []
+            for layout in layouts:
+                key = layout["id"]
+                clip = Path(temp) / (key + ".mp4")
+                append(args.views / key / "audi", key,
+                       [row["asset"] + "  " + labels[row["asset"]]["label"] for row in layout["instances"]], clip)
+                clips.append(clip)
+            video(args.views, "audi", args.views / "audi-front-rear.mp4", pairs, clips)
+
     for site, name in [
         ("sun", "kitti-sun-front-side"),
         ("urban", "kitti-urban-front-side"),
         ("audi", "audi-front-rear"),
     ]:
-        video(args.views, site, args.views / (name + ".mp4"), PAIRS)
+        if site != "audi" or not args.layouts:
+            video(args.views, site, args.views / (name + ".mp4"), pairs)
     if not args.plate:
         return
     page = Image.new("RGB", (1380, 586), "#24282b")
@@ -30,7 +50,7 @@ def main():
     font = ImageFont.truetype("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", 22, index=2)
     for j, title in enumerate(["KITTI 日照路段 · 前视", "Audi 左前鱼眼", "Audi 驶过后的车尾鱼眼"]):
         draw.text((j * 460 + 13, 8), title, font=font, fill="white")
-    for i, (pair, title) in enumerate(PAIRS.items()):
+    for i, (pair, title) in enumerate(pairs.items()):
         top = 45 + i * 270
         draw.text((13, top), pair + "   " + title, font=font, fill="#dad8d0")
         for j, (site, cam) in enumerate(

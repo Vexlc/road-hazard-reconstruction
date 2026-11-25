@@ -1,0 +1,25 @@
+{
+  "id": "R262-R263",
+  "label": "折角纸箱与开盖工具箱",
+  "instances": [
+    {
+      "id": "r262",
+      "asset": "R262",
+      "xy_m": [
+        0.43,
+        0.03
+      ],
+      "heading_deg": -13
+    },
+    {
+      "id": "r263",
+      "asset": "R263",
+      "xy_m": [
+        -0.43,
+        -0.04
+      ],
+      "heading_deg": 22
+    }
+  ],
+  "member_ground_check": true
+}

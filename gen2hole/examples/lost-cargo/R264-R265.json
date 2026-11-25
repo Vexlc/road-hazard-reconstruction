@@ -1,0 +1,25 @@
+{
+  "id": "R264-R265",
+  "label": "园艺基质袋与木条箱",
+  "instances": [
+    {
+      "id": "r264",
+      "asset": "R264",
+      "xy_m": [
+        0.56,
+        0.03
+      ],
+      "heading_deg": -13
+    },
+    {
+      "id": "r265",
+      "asset": "R265",
+      "xy_m": [
+        -0.56,
+        -0.04
+      ],
+      "heading_deg": 22
+    }
+  ],
+  "member_ground_check": true
+}

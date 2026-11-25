@@ -1,0 +1,213 @@
+{
+  "sources": {
+    "cardboard_box_01": {
+      "page": "https://polyhaven.com/a/cardboard_box_01",
+      "author": "Rahul Chaudhary",
+      "license": "CC0",
+      "dimension_mm": [
+        387.02359795570374,
+        515.8704221248627,
+        341.7995423078537
+      ],
+      "files": {
+        "cardboard_box_01.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/cardboard_box_01/cardboard_box_01.bin",
+          "bytes": 381936,
+          "sha256": "7212d43b4cb56459e46d31ab34dc7c310fcfbe170f4a588416dea07ae5628a4b"
+        },
+        "cardboard_box_01_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/cardboard_box_01/cardboard_box_01_1k.gltf",
+          "bytes": 2903,
+          "sha256": "6038bcc5bba5a08a5f6643a265977e37e3d14553e62981e144c33a89f10b78e1"
+        },
+        "textures/cardboard_box_01_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cardboard_box_01/cardboard_box_01_arm_1k.jpg",
+          "bytes": 398433,
+          "sha256": "5db63828d0f904c6a8d9c83afc912260b2a27261c15a28d06360519384574d2b"
+        },
+        "textures/cardboard_box_01_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cardboard_box_01/cardboard_box_01_diff_1k.jpg",
+          "bytes": 567741,
+          "sha256": "122c7ba8c5935e289804a730b480677a4bffdf74a45c91970cba682df92e171c"
+        },
+        "textures/cardboard_box_01_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cardboard_box_01/cardboard_box_01_nor_gl_1k.jpg",
+          "bytes": 817424,
+          "sha256": "d2d1f529a851966b65411b5094510dd9eba03cd5c0a89921f79325c377a8e8eb"
+        }
+      }
+    },
+    "metal_toolbox": {
+      "page": "https://polyhaven.com/a/metal_toolbox",
+      "author": "Mateusz Sadek",
+      "license": "CC0",
+      "dimension_mm": [
+        400.0099003314972,
+        292.32875257730484,
+        347.10586071014404
+      ],
+      "files": {
+        "metal_toolbox.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/metal_toolbox/metal_toolbox.bin",
+          "bytes": 468892,
+          "sha256": "fe5551028e5b398c78c86911abf549010f83831c30b01593ca3eb3d8ba7ceae7"
+        },
+        "metal_toolbox_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/metal_toolbox/metal_toolbox_1k.gltf",
+          "bytes": 10717,
+          "sha256": "9b8d240f1e41e83119771a063e4f4b4bb9ddfefd47f9f5baeda998107aa135c5"
+        },
+        "textures/metal_toolbox_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_toolbox/metal_toolbox_arm_1k.jpg",
+          "bytes": 1033149,
+          "sha256": "97676b2324b105b710904b20bfdeb32bfce3c6b4ccaaf215827b37961fc22763"
+        },
+        "textures/metal_toolbox_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_toolbox/metal_toolbox_diff_1k.jpg",
+          "bytes": 661804,
+          "sha256": "21e1d21880e49db3fde0457d53b78a70db61234a201da9f0181dd0880b110473"
+        },
+        "textures/metal_toolbox_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_toolbox/metal_toolbox_nor_gl_1k.jpg",
+          "bytes": 572273,
+          "sha256": "7ba19a233bcfff9c3d95b62c3a992c8e19cb2d6355c98d6e12bdc756a8af44cf"
+        }
+      }
+    },
+    "compost_bag_02": {
+      "page": "https://polyhaven.com/a/compost_bag_02",
+      "author": "Satyaki Mandal",
+      "license": "CC0",
+      "dimension_mm": [
+        539.3457114696503,
+        470.53681313991547,
+        433.6617160588503
+      ],
+      "files": {
+        "compost_bag_02.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/compost_bag_02/compost_bag_02.bin",
+          "bytes": 301024,
+          "sha256": "8e529d8a17c4e827a128b8b1b4898825db8507d3da665f78e4621ff9af31cd1d"
+        },
+        "compost_bag_02_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/compost_bag_02/compost_bag_02_1k.gltf",
+          "bytes": 2792,
+          "sha256": "56ede732d19c06d6f55827cf0f4fd6850fdc63ea0847d64a66ba6f341bba6aed"
+        },
+        "textures/compost_bag_02_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/compost_bag_02/compost_bag_02_arm_1k.jpg",
+          "bytes": 693929,
+          "sha256": "4936a8ff6f7b19bed93511071fea30fb4b04d4f5ef4e24914bee56692ab98f1b"
+        },
+        "textures/compost_bag_02_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/compost_bag_02/compost_bag_02_diff_1k.jpg",
+          "bytes": 627148,
+          "sha256": "5e6a4efb1f66e97d436574f40d1c1b7006269f8d014ac25caa1ca632a378ffd4"
+        },
+        "textures/compost_bag_02_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/compost_bag_02/compost_bag_02_nor_gl_1k.jpg",
+          "bytes": 728875,
+          "sha256": "5a9828cbaa87b74f435e9ae612accf95fcac9bf398f1d4e891063ef9c28e1a99"
+        }
+      }
+    },
+    "wooden_crate_01": {
+      "page": "https://polyhaven.com/a/wooden_crate_01",
+      "author": "James Ray Cock",
+      "license": "CC0",
+      "dimension_mm": [
+        825.2729177474976,
+        408.9537411928177,
+        349.6182831004262
+      ],
+      "files": {
+        "textures/wooden_crate_01_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_01/wooden_crate_01_arm_1k.jpg",
+          "bytes": 776699,
+          "sha256": "cd0b031c3924905e16ffd78ead062c2cc274148c4104d09635310097738b4679"
+        },
+        "textures/wooden_crate_01_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_01/wooden_crate_01_diff_1k.jpg",
+          "bytes": 711292,
+          "sha256": "16653f4abaf4c1d9bca94bde3bd8c54d0ea9a5298d1648abcf57de1f7ecc34cc"
+        },
+        "textures/wooden_crate_01_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_01/wooden_crate_01_nor_gl_1k.jpg",
+          "bytes": 594076,
+          "sha256": "f4ea44c7dc1686123d337039cb713d74e8a2dbc6d1bd2beeac276d06f5df3fab"
+        },
+        "wooden_crate_01.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/wooden_crate_01/wooden_crate_01.bin",
+          "bytes": 189408,
+          "sha256": "85f381f8035f7a6f2f3b848640894c6d3333b261946dd8a338c0fe19e0bea21e"
+        },
+        "wooden_crate_01_1k.gltf": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_crate_01/wooden_crate_01_1k.gltf",
+          "bytes": 5612,
+          "sha256": "fd9c6073acfc671e12b64666053f2805ae33aff5d3dbbcfe5c97c08c06644927"
+        }
+      }
+    }
+  },
+  "assets": {
+    "R262": {
+      "source": "cardboard_box_01",
+      "label": "折角旧纸箱",
+      "orientation_xyz_deg": [
+        0,
+        0,
+        0
+      ],
+      "mesh_prefix": "Shipping carton",
+      "nodes": [
+        0
+      ]
+    },
+    "R263": {
+      "source": "metal_toolbox",
+      "label": "开盖金属工具箱",
+      "orientation_xyz_deg": [
+        0,
+        0,
+        0
+      ],
+      "mesh_prefix": "Tool chest",
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "R264": {
+      "source": "compost_bag_02",
+      "label": "散落的园艺基质袋",
+      "orientation_xyz_deg": [
+        0,
+        0,
+        90
+      ],
+      "mesh_prefix": "Garden sack",
+      "nodes": [
+        0
+      ]
+    },
+    "R265": {
+      "source": "wooden_crate_01",
+      "label": "落在路边的木条箱",
+      "orientation_xyz_deg": [
+        0,
+        0,
+        0
+      ],
+      "mesh_prefix": "Wood box",
+      "nodes": [
+        0,
+        1,
+        2
+      ]
+    }
+  }
+}

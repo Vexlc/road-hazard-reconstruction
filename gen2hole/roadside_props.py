@@ -126,14 +126,40 @@ def read_parts(src, folder, chosen):
             strides=(view.get("byteStride", count * dt.itemsize), dt.itemsize),
         ).copy()
 
+    from scipy.spatial.transform import Rotation
+
+    parents = {}
+    for index, node in enumerate(src["nodes"]):
+        for child in node.get("children", []):
+            if child in parents:
+                raise ValueError("A mesh node cannot have multiple parents")
+            parents[child] = index
     parts = []
     for index in chosen:
         node = src["nodes"][index]
-        if set(node) - {"name", "mesh", "translation"}:
-            raise ValueError("Unexpected transform in pinned source")
+        transform = np.eye(4)
+        current = index
+        visited = set()
+        while current is not None:
+            if current in visited:
+                raise ValueError("Cycle in the glTF scene graph")
+            visited.add(current)
+            ancestor = src["nodes"][current]
+            if set(ancestor) - {"name", "mesh", "translation", "rotation", "children"}:
+                raise ValueError("Expected a rigid translation and rotation in the pinned source")
+            local = np.eye(4)
+            if "rotation" in ancestor:
+                local[:3, :3] = Rotation.from_quat(ancestor["rotation"]).as_matrix()
+            local[:3, 3] = ancestor.get("translation", [0, 0, 0])
+            transform = local @ transform
+            current = parents.get(current)
         for p in src["meshes"][node["mesh"]]["primitives"]:
             attrs = {k: access(v) for k, v in p["attributes"].items()}
-            attrs["POSITION"] += np.float32(node.get("translation", [0, 0, 0]))
+            if not np.array_equal(transform[:3, :3], np.eye(3)):
+                for field in ("POSITION", "NORMAL", "TANGENT"):
+                    if field in attrs:
+                        attrs[field][:, :3] = attrs[field][:, :3] @ transform[:3, :3].T
+            attrs["POSITION"] += np.float32(transform[:3, 3])
             faces = access(p["indices"]).ravel().reshape(-1, 3).astype("u4")
             parts.append((node["name"], p["material"], attrs, faces))
     return parts

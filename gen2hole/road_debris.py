@@ -48,8 +48,8 @@ def seat(parts, initial):
     raise ValueError("No supporting plane contains the estimated centre for this orientation")
 
 
-def build(out, sources, fetch):
-    recipe = json.loads(RECIPE.read_text())
+def build(out, sources, fetch, recipe_path=RECIPE):
+    recipe = json.loads(recipe_path.read_text())
     for name, source in recipe["sources"].items():
         source_files(sources / name, source, fetch)
     for key, spec in recipe["assets"].items():
@@ -88,7 +88,8 @@ def build(out, sources, fetch):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--sources", type=Path, default=RECIPE.parent / "original")
+    p.add_argument("--recipe", type=Path, default=RECIPE, help="Source fingerprints and per-object orientation")
+    p.add_argument("--sources", type=Path, help="Source cache; defaults to original/ next to the recipe")
     p.add_argument("--fetch", action="store_true", help="Download and verify missing original files")
     p.add_argument("--out", type=Path, default=ROOT / "runs/road-debris")
     a = p.parse_args()
@@ -97,7 +98,7 @@ def main():
     a.out.parent.mkdir(exist_ok=True, parents=True)
     with TemporaryDirectory(dir=a.out.parent) as tmp:
         stage = Path(tmp) / "assets"
-        build(stage, a.sources, a.fetch)
+        build(stage, a.sources or a.recipe.parent / "original", a.fetch, a.recipe)
         stage.rename(a.out)
 
 

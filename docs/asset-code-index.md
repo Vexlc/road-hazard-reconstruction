@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,512 个资产编号、57 个重建系列和 25 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,516 个资产编号、58 个重建系列和 26 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -85,6 +85,7 @@
 | [直立与倒地交通锥](../docs/20-traffic-cones.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E6%A8%A1%E5%9E%8B%E9%87%8D%E5%BB%BA%E5%B9%B6%E6%88%90%E5%AF%B9%E6%94%BE%E7%BD%AE) | 2 | C236 | [重建](../gen2hole/traffic_cones.py) · [配方](../gen2hole/examples/traffic-cones/source.json) | [mesh-view](#route-mesh-view)、[joint-props](#route-joint-props)、[cycles](#route-cycles) |
 | [遗落轮胎与锈蚀轮圈](../docs/23-road-debris.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E7%BD%91%E6%A0%BC%E9%87%8D%E5%BB%BA%E5%B9%B6%E6%88%90%E7%BB%84) | 2 | R242 | [重建](../gen2hole/road_debris.py) · [配方](../gen2hole/examples/road-debris/sources.json) | [surveyed-receivers](#route-surveyed-receivers)、[mesh-view](#route-mesh-view)、[joint-props](#route-joint-props)、[cycles-debris](#route-cycles-debris) |
 | [侧倒周转筐与水泥袋](../docs/23-road-debris.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E7%BD%91%E6%A0%BC%E9%87%8D%E5%BB%BA%E5%B9%B6%E6%88%90%E7%BB%84) | 2 | R244 | [重建](../gen2hole/road_debris.py) · [配方](../gen2hole/examples/road-debris/sources.json) | [surveyed-receivers](#route-surveyed-receivers)、[mesh-view](#route-mesh-view)、[joint-props](#route-joint-props)、[cycles-debris](#route-cycles-debris) |
+| [旧纸箱、开盖工具箱、侧倒基质袋和木箱](../docs/30-lost-cargo.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E7%BD%91%E6%A0%BC%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E6%95%A3%E8%90%BD%E7%89%A9) | 4 | R262 | [重建](../gen2hole/road_debris.py) · [配方](../gen2hole/examples/lost-cargo/sources.json) · [输入准备](../gen2hole/roadside_layout.py) | [cargo-support](#route-cargo-support)、[surveyed-receivers](#route-surveyed-receivers)、[mesh-view](#route-mesh-view)、[joint-props](#route-joint-props)、[cycles](#route-cycles) |
 
 ## 按宿主选迁入入口
 
@@ -115,5 +116,6 @@
 | <a id="route-water-reflection"></a>water-reflection | 带标定光线的宿主按观察方向渲染积水反射与折射 | [pavement_water.py](../gen2hole/downstream/pavement_water.py) | [指南](../docs/27-wet-pavement.md) |
 | <a id="route-metric-reflection"></a>metric-reflection | 按实测近物表面、岸壁与天空的可见性渲染积水 | [metric_reflection.py](../gen2hole/downstream/metric_reflection.py) | [指南](../docs/28-roadside-reflections.md) |
 | <a id="route-sampled-radiance"></a>sampled-radiance | 在有独立光线颜色和响应权重的鱼眼中迁入并保留前景边界 | [host_exposure.py](../gen2hole/downstream/host_exposure.py) | [指南](../docs/29-mixed-inlets.md) |
+| <a id="route-cargo-support"></a>cargo-support | 逐件验证立体散落物接地与联合占地，再接入实车相机或原生场景 | [cargo_support.py](../gen2hole/downstream/cargo_support.py) | [指南](../docs/30-lost-cargo.md) |
 
 更新目录后运行 `python3 scripts/check-reproduction-index.py --write-map`。常规检查运行同一命令并省略参数，检查编号、源文件、指南章节、迁入路线与本页是否一致。
