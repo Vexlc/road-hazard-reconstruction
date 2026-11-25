@@ -68,6 +68,58 @@ def verify():
         other["camera_to_world"][0, 3] = 0.15
         packet = triangulate(source, other, matches, lens, lens)
         assert np.array_equal(packet["protected"][0], ~clear | protected)
+        measured = np.full(x.shape, np.nan)
+        measured[:, :3] = 4.1
+        measured[:, 5] = 0.84
+        supplemented = triangulate(
+            dict(source, supplemental_range_m=measured), other, matches, lens, lens
+        )
+        for c, d in [(1, 4.1), (5, 0.84)]:
+            np.testing.assert_allclose(
+                supplemented["host_range"][:, :, c], d, rtol=0, atol=1e-6
+            )
+            assert supplemented["supplemental_range_used"][:, :, c].all()
+        assert (
+            supplemented["protected"][:, :, 4].all()
+            and supplemented["protected"][:, :, 9].all()
+        )
+        # Supplemental distances are measured from each moving pupil, even in a large world frame.
+        shifted = np.eye(4)
+        shifted[:3, 3] = [4100000, 5100000, 70]
+        rows = np.repeat(shifted[None], len(y), axis=0)
+        rows[:, 0, 3] += np.arange(len(y)) * 0.003
+        centers = np.zeros_like(wrapped)
+        centers[..., 2] = 0.06
+        moving = dict(
+            source,
+            camera_to_world=shifted,
+            camera_to_world_rows=rows,
+            ray_origins_camera=centers,
+            supplemental_range_m=measured,
+        )
+        moved = triangulate(moving, other, matches, lens, lens)
+        np.testing.assert_allclose(
+            moved["host_range"][:, :, 5], 0.84, rtol=0, atol=2e-7
+        )
+        np.testing.assert_allclose(
+            moved["ray_origins_camera"][:, :, 5, 2], 0.06, atol=1e-7
+        )
+        for value in (0.0, -1.0, np.inf):
+            illegal = measured.copy()
+            illegal[0, 0] = value
+            try:
+                triangulate(
+                    dict(source, supplemental_range_m=illegal),
+                    other,
+                    matches,
+                    lens,
+                    lens,
+                )
+            except ValueError as error:
+                if "Supplemental" not in str(error):
+                    raise
+            else:
+                raise AssertionError("Invalid supplemental measurement accepted")
         bad = dict(
             matches, match_valid=np.broadcast_to(clear, matches["match_valid"].shape)
         )

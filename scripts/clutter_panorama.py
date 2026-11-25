@@ -37,6 +37,16 @@ def prepare(root, dest, pairs):
             _, w, h = metas[0]["projection"]
             top = h // 2 - 42
             ids = [np.load(p / "id.npy")[top:] for p in hosts]
+            # A coarse registered far-road range strip from the pristine host, before insertion.
+            host_distance = np.load(hosts[0] / "range.npy")[top:]
+            measured = (
+                (ids[0] == 1)
+                & (host_distance >= 4)
+                & (np.arange(h - top)[:, None] < h // 5)
+            )
+            far_strip = np.where(
+                measured, np.round(host_distance * 10) / 10, np.nan
+            ).astype("f4")
             for i, name in enumerate(("primary", "secondary")):
                 pose = metas[i]["camera_to_world"]
                 rgb = np.array(Image.open(hosts[i] / "rgb.png").convert("RGB"))[top:]
@@ -50,7 +60,11 @@ def prepare(root, dest, pairs):
                     np.zeros_like(ids[i], bool),
                     empty_space_mask=ids[i] == 0,
                     **(
-                        {"receiver_mask": ids[i] == 1, "occluder_mask": ids[i] == 2}
+                        {
+                            "receiver_mask": ids[i] == 1,
+                            "occluder_mask": ids[i] == 2,
+                            "supplemental_range_m": far_strip,
+                        }
                         if i == 0
                         else {}
                     ),
@@ -75,6 +89,7 @@ def prepare(root, dest, pairs):
 def cropped_replay(model, anchor, src, host, dest):
     # Join the right and left strips in their original detector order. No raster reprojection.
     packet = dict(host)
+    packet.pop("supplemental_range_used", None)
     del packet["rays_camera"]
     w = packet["rgb"].shape[1]
     half = w // 5
@@ -96,6 +111,7 @@ def cropped_replay(model, anchor, src, host, dest):
         "--calibration",
         src / "primary.json",
     )
+    result = {"pixels": int((len(cols) - 4) * h)}
     for name in ("after.png", "part.png", "instance.png", "range.npy", "shadow.npy"):
 
         def read(p):
@@ -104,14 +120,20 @@ def cropped_replay(model, anchor, src, host, dest):
         a = read(dest / "full" / name)[:, cols]
         b = read(dest / "wrapped" / name)
         # Ray differentials at the outside crop boundaries have different neighbours.
-        if name.endswith(".npy"):
+        if name == "after.png":
+            delta = np.abs(a[:, 2:-2].astype("i2") - b[:, 2:-2])
+            result["rgb_max_u8"] = int(delta.max())
+            result["rgb_changed_channels"] = int(np.count_nonzero(delta))
+            if delta.max() > 1 or np.count_nonzero(delta) > delta.size * 1e-4:
+                raise ValueError("Recomputed camera rays changed the wrapped exposure")
+        elif name.endswith(".npy"):
             tol = 1e-5 if name == "range.npy" else 2e-6
             np.testing.assert_allclose(
                 a[:, 2:-2], b[:, 2:-2], rtol=0, atol=tol, equal_nan=True, err_msg=name
             )
         else:
             np.testing.assert_array_equal(a[:, 2:-2], b[:, 2:-2], err_msg=name)
-    return int((len(cols) - 4) * h)
+    return result
 
 
 def inspect(src, dest, model, anchor, focus):
@@ -127,7 +149,8 @@ def inspect(src, dest, model, anchor, focus):
     frozen = ~valid | ((truth["host_id"] == 2) & (native == 2))
     if detected[frozen].any() or not np.array_equal(after[frozen], host["rgb"][frozen]):
         raise ValueError("An unmatched sample or visible foreground marker changed")
-    host_mask = valid & (truth["host_id"] > 0) & (truth["host_range"] < 8)
+    supplement = host["supplemental_range_used"][0]
+    host_mask = valid & ~supplement & (truth["host_id"] > 0) & (truth["host_range"] < 8)
     error = abs(host["host_range"][0][host_mask] - truth["host_range"][host_mask])
     stats = dict(
         host_errors_p95_m=float(np.percentile(error, 95)),
@@ -166,9 +189,16 @@ def inspect(src, dest, model, anchor, focus):
         values["visible_over_confirmed_background"] = int(
             (shared & (truth["host_id"] == 0)).sum()
         )
+        values["visible_with_supplemental_range"] = int((shared & supplement).sum())
         values["finite_stereo_coverage"] = float(
-            (valid & (truth["host_id"] > 0))[expected].mean()
+            (valid & ~supplement & (truth["host_id"] > 0))[expected].mean()
         )
+        if key == "R284" and (
+            values["visible_with_supplemental_range"] < 80
+            or values["coverage"] < 0.99
+            or values["matched_iou"] < 0.999
+        ):
+            raise ValueError(f"Lost the barrel silhouette near the horizon: {values}")
         if i == focus:
             values["native_left_seam_pixels"] = int(expected[:, :12].sum())
             values["native_right_seam_pixels"] = int(expected[:, -12:].sum())
@@ -187,9 +217,7 @@ def inspect(src, dest, model, anchor, focus):
         ):
             raise ValueError(f"Native geometry disagrees: {key} {values}")
         stats["assets"][key] = values
-    stats["compared_wrapped_pixels_per_channel"] = cropped_replay(
-        model, anchor, src, host, dest
-    )
+    stats["wrapped_comparison"] = cropped_replay(model, anchor, src, host, dest)
     return stats
 
 

@@ -174,6 +174,27 @@ def triangulate(
             ok &= (denom >= sin2) & (t > 0) & (s > 0) & (gap <= max_ray_gap_m)
             point[i, row, col] = a + disp
             valid[i, row, col] = ok
+    supplement = None
+    if "supplemental_range_m" in left:
+        measured = sampled(left["supplemental_range_m"], shape, "supplemental_range_m")
+        if (
+            measured.dtype.kind != "f"
+            or np.isinf(measured).any()
+            or (measured <= 0).any()
+        ):
+            raise ValueError(
+                "Supplemental primary ranges must be positive radial metres or NaN for missing"
+            )
+        known_range = np.isfinite(measured)
+        if empty is not None and np.any(empty & known_range):
+            raise ValueError("Confirmed empty samples conflict with supplemental range")
+        supplement = known_range & ~valid & ~lp_mask
+        direction = lr[supplement].astype(float)
+        direction /= np.linalg.norm(direction, axis=1)[:, None]
+        point[supplement] = direction * measured[supplement, None]
+        if lo is not None:
+            point[supplement] += lo[supplement]
+        valid |= supplement
     packet = dict(
         left, surface_position=point, position_valid=valid, world_from_position=lp
     )
@@ -187,4 +208,7 @@ def triangulate(
                     "Confirmed empty samples cannot label a receiver or occluder"
                 )
             packet[name] = mask & valid
-    return register_positions(packet, calibration=left_calibration)
+    out = register_positions(packet, calibration=left_calibration)
+    if supplement is not None:
+        out["supplemental_range_used"] = supplement
+    return out

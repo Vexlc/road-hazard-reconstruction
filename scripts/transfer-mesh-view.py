@@ -25,7 +25,7 @@ def main():
     cube.add_argument("lens", type=Path)
     cube.add_argument("out", type=Path)
     stereo = tasks.add_parser(
-        "from-stereo", help="Triangulate matched pixels from two registered ray fields or fisheye calibrations"
+        "from-stereo", help="Triangulate registered camera rays and fill gaps with optional primary supplemental_range_m"
     )
     stereo.add_argument("primary", type=Path)
     stereo.add_argument("secondary", type=Path)
