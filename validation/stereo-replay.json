@@ -1,0 +1,1820 @@
+{
+  "source": "Original RGB, masks and XYZ from Fan stereo datasets 1–3",
+  "code_tag": "reproduction-index-v1.1.0",
+  "reference": "outputs/road_hazard_expansion/asset_manifest.json",
+  "rebuilt_stereo": 65,
+  "exact_glb_and_ply": 65,
+  "exact_companion_files": 260,
+  "generated_from_empty_outputs": true,
+  "historical_13_views": {
+    "stereo_pothole_fan_1_01": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 43087,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 21146,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 33113,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_1_04": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 43520,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 21064,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 33653,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_1_06": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 39378,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 19507,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 30708,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_1_07": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 36367,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 17809,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 28500,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_1_08": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 42521,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 20988,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 32909,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_1_09": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 38623,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 18573,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 30286,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_1_14": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 42192,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 20799,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 33182,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_2_05": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 48174,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 24353,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 38272,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_2_06": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 54715,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 28717,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 43762,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_2_22": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 40627,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 20626,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 32374,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_2_24": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 48773,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 24907,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 39195,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_2_30": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 55227,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 28854,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 44000,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ],
+    "stereo_pothole_fan_2_38": [
+      {
+        "azimuth_deg": -18,
+        "polar_deg": 42,
+        "common_foreground_pixels": 51823,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 115,
+        "polar_deg": 68,
+        "common_foreground_pixels": 26825,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      },
+      {
+        "azimuth_deg": 218,
+        "polar_deg": 54,
+        "common_foreground_pixels": 41160,
+        "rgb_max_u8": 0,
+        "changed_rgb_pixels": 0,
+        "alpha_max": 0.0,
+        "foreground_depth_max_m": 0.0
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "stereo_pothole_fan_1_01",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "2de6b708347f953d4fae795ca6b71258b7100684efb6fca37824e12aa7d046c2",
+          "expected": "2de6b708347f953d4fae795ca6b71258b7100684efb6fca37824e12aa7d046c2",
+          "match": true
+        },
+        "ply": {
+          "sha256": "37ac48e4f08b7d61c76fda1e77cf9000aa268c10d7105ea837a7ed23941c3c97",
+          "expected": "37ac48e4f08b7d61c76fda1e77cf9000aa268c10d7105ea837a7ed23941c3c97",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_03",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "68a53470ed75eeca90a6c4204d420272ef1a1ab2cec8f4cea8934d3d9c12488a",
+          "expected": "68a53470ed75eeca90a6c4204d420272ef1a1ab2cec8f4cea8934d3d9c12488a",
+          "match": true
+        },
+        "ply": {
+          "sha256": "17468ea2b3d53cd0cf710eb8afcdf23d6f84a6eb70ac06c219cbeca4c256da7a",
+          "expected": "17468ea2b3d53cd0cf710eb8afcdf23d6f84a6eb70ac06c219cbeca4c256da7a",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_04",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "03643e5f72a4b195ecde8898cc87e681a7805b2047d209503c156b3fd97caeec",
+          "expected": "03643e5f72a4b195ecde8898cc87e681a7805b2047d209503c156b3fd97caeec",
+          "match": true
+        },
+        "ply": {
+          "sha256": "8c827f1c8d209906e21801ea8f002e480a2b8b99e5c985bfaee8d63da87a8cd5",
+          "expected": "8c827f1c8d209906e21801ea8f002e480a2b8b99e5c985bfaee8d63da87a8cd5",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_05",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "5d8312c413e6de8ae0af8ba4ec55c1bf5e9422f119c14774cc2ccf08aaa0fde3",
+          "expected": "5d8312c413e6de8ae0af8ba4ec55c1bf5e9422f119c14774cc2ccf08aaa0fde3",
+          "match": true
+        },
+        "ply": {
+          "sha256": "06c4aff14cd2f4b404a1ff671b1809b3d804cebcac5aca24a3b7a17f83ccb995",
+          "expected": "06c4aff14cd2f4b404a1ff671b1809b3d804cebcac5aca24a3b7a17f83ccb995",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_06",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "d1feb5bc58719c7437271cccaadb424d522ff976b99eec2f9783d161834a28d1",
+          "expected": "d1feb5bc58719c7437271cccaadb424d522ff976b99eec2f9783d161834a28d1",
+          "match": true
+        },
+        "ply": {
+          "sha256": "b3729d205a50328aa0d580333a232ab1e87b985885650f55ed81897d666b2c39",
+          "expected": "b3729d205a50328aa0d580333a232ab1e87b985885650f55ed81897d666b2c39",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_07",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "746f71ee872ce023a16863c501f12de0c1980fdf2544f18b7d2369cccd46c7c3",
+          "expected": "746f71ee872ce023a16863c501f12de0c1980fdf2544f18b7d2369cccd46c7c3",
+          "match": true
+        },
+        "ply": {
+          "sha256": "e3c3a669ec357cb2fb57ef3793164b2692afcb020da0db52e8851f720138d43e",
+          "expected": "e3c3a669ec357cb2fb57ef3793164b2692afcb020da0db52e8851f720138d43e",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_08",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "587366550486b1eff03cf2eb69ac9fcb4a957480e3d194be8be899ceee01ea47",
+          "expected": "587366550486b1eff03cf2eb69ac9fcb4a957480e3d194be8be899ceee01ea47",
+          "match": true
+        },
+        "ply": {
+          "sha256": "ebb2e4a22f947cf96a42752756b7a9071f8544ed34d9adff5d4aef1b533b8e06",
+          "expected": "ebb2e4a22f947cf96a42752756b7a9071f8544ed34d9adff5d4aef1b533b8e06",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_09",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "90e794318279bbaf01f11c0c4d6976a372d44d26b6c7743a2f295767742e1ea9",
+          "expected": "90e794318279bbaf01f11c0c4d6976a372d44d26b6c7743a2f295767742e1ea9",
+          "match": true
+        },
+        "ply": {
+          "sha256": "c281adafa2e3a5faa16d770970536c9daec23115252b09c612bd86ab384027b9",
+          "expected": "c281adafa2e3a5faa16d770970536c9daec23115252b09c612bd86ab384027b9",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_10",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "6150ee8fd9c10d1bb5cd5618334a03b34b5813a01aa35704ea90f6e23514ed70",
+          "expected": "6150ee8fd9c10d1bb5cd5618334a03b34b5813a01aa35704ea90f6e23514ed70",
+          "match": true
+        },
+        "ply": {
+          "sha256": "48f97d87eb2d31b68db19e2741ecc093bbafa0fbeca0bc1b4173c660ad8ded74",
+          "expected": "48f97d87eb2d31b68db19e2741ecc093bbafa0fbeca0bc1b4173c660ad8ded74",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_11",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "52d44e594a68888bc211c88a46c8c89eeceb912341ac78283d6d14eb9342e36a",
+          "expected": "52d44e594a68888bc211c88a46c8c89eeceb912341ac78283d6d14eb9342e36a",
+          "match": true
+        },
+        "ply": {
+          "sha256": "383933217ca1d6559000e41e12bc2beef9e01b3fb56eea89c753db05b68fd4c1",
+          "expected": "383933217ca1d6559000e41e12bc2beef9e01b3fb56eea89c753db05b68fd4c1",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_12",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "8cff7975a44644e3ddd5a0c9e6563f8b8d88a36b9b4447fcda57a72b15bd53cd",
+          "expected": "8cff7975a44644e3ddd5a0c9e6563f8b8d88a36b9b4447fcda57a72b15bd53cd",
+          "match": true
+        },
+        "ply": {
+          "sha256": "1f3f07d9e9734fb011b0de904a751721562c01b916822a4049b17c1b1e48b164",
+          "expected": "1f3f07d9e9734fb011b0de904a751721562c01b916822a4049b17c1b1e48b164",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_13",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "345cd989abb5e32592fb1bffd7c82113e46d14c02f2eda5f387df0cfa9492f99",
+          "expected": "345cd989abb5e32592fb1bffd7c82113e46d14c02f2eda5f387df0cfa9492f99",
+          "match": true
+        },
+        "ply": {
+          "sha256": "164b6641bac1c092aa545bb61ae0e6e75ad1aa19272da9a3eefa51631c710ec5",
+          "expected": "164b6641bac1c092aa545bb61ae0e6e75ad1aa19272da9a3eefa51631c710ec5",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_14",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "aa47458807d46d2cd844bc6bc0ae7d0f01ea4ea9f0c3024e71bcb75a018d1a91",
+          "expected": "aa47458807d46d2cd844bc6bc0ae7d0f01ea4ea9f0c3024e71bcb75a018d1a91",
+          "match": true
+        },
+        "ply": {
+          "sha256": "fb08ba9291e894e0e5f710dc98414f1ab58ccad5a1ec916f34daa6c51bc75480",
+          "expected": "fb08ba9291e894e0e5f710dc98414f1ab58ccad5a1ec916f34daa6c51bc75480",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_15",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "bc9f822a95baf2c5d9765e4d2afe4aa866a363de382b1f66cc4a7c67e3b9ba04",
+          "expected": "bc9f822a95baf2c5d9765e4d2afe4aa866a363de382b1f66cc4a7c67e3b9ba04",
+          "match": true
+        },
+        "ply": {
+          "sha256": "8f64b3473276e183df60263414c4de9ccfe57ddbf4120e48374e3e4ab7423acb",
+          "expected": "8f64b3473276e183df60263414c4de9ccfe57ddbf4120e48374e3e4ab7423acb",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_16",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "ab238969de444ab24cadd3ff618dce461cb28da0d5adfee34c0f0d4f0742183b",
+          "expected": "ab238969de444ab24cadd3ff618dce461cb28da0d5adfee34c0f0d4f0742183b",
+          "match": true
+        },
+        "ply": {
+          "sha256": "4cb5e5a37d70e8b019dc492275b1cc9d2b0f5ac2d75ba3829cb4d38e968bc577",
+          "expected": "4cb5e5a37d70e8b019dc492275b1cc9d2b0f5ac2d75ba3829cb4d38e968bc577",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_17",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "39247faa04e95197feb1becf58532828381c2177f91b5376a0690d6ee548374b",
+          "expected": "39247faa04e95197feb1becf58532828381c2177f91b5376a0690d6ee548374b",
+          "match": true
+        },
+        "ply": {
+          "sha256": "f44dac5835d1dda8bdab720adac8861cd561355a46ec57b28fa0ce1778a58b8e",
+          "expected": "f44dac5835d1dda8bdab720adac8861cd561355a46ec57b28fa0ce1778a58b8e",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_18",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "9c73cbade655c818252e4e4693d731ead30197a3e91b62c39a088f281b1a4e9b",
+          "expected": "9c73cbade655c818252e4e4693d731ead30197a3e91b62c39a088f281b1a4e9b",
+          "match": true
+        },
+        "ply": {
+          "sha256": "4f4c437f3c7bd2941b25bb98b31b3fc226360cc7723afea03a6765b6ed2fad44",
+          "expected": "4f4c437f3c7bd2941b25bb98b31b3fc226360cc7723afea03a6765b6ed2fad44",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_19",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "4ba26ed82f9b3a1e6461703d32cde701a702bbf1f6cf63450c4fcc4f4d43f1ef",
+          "expected": "4ba26ed82f9b3a1e6461703d32cde701a702bbf1f6cf63450c4fcc4f4d43f1ef",
+          "match": true
+        },
+        "ply": {
+          "sha256": "c90acd6e55c9aa2beb1a45a10199dd8c9541deb298497d56411bf749dacbeea5",
+          "expected": "c90acd6e55c9aa2beb1a45a10199dd8c9541deb298497d56411bf749dacbeea5",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_20",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "966a16e8e37e3f3101f7ce146724fe0fb5fd32af902c140d91e547cecd58101a",
+          "expected": "966a16e8e37e3f3101f7ce146724fe0fb5fd32af902c140d91e547cecd58101a",
+          "match": true
+        },
+        "ply": {
+          "sha256": "7af589f9f51171a30ef6e170784f5ffb83a971d61a1eb9e7dd22920c7f7dade6",
+          "expected": "7af589f9f51171a30ef6e170784f5ffb83a971d61a1eb9e7dd22920c7f7dade6",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_21",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "d29d340786b6f6511dd0273a2cce1f0502eecbb6c8a630e74bde21123b76659a",
+          "expected": "d29d340786b6f6511dd0273a2cce1f0502eecbb6c8a630e74bde21123b76659a",
+          "match": true
+        },
+        "ply": {
+          "sha256": "46869e42b186ee35ed694136eecf6574d99136431c896abb16cd04f06c0b8281",
+          "expected": "46869e42b186ee35ed694136eecf6574d99136431c896abb16cd04f06c0b8281",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_1_22",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "730c24c70713d05f4ea67e84d9495d8ceb40ab96b69214e45624e0fa252ca442",
+          "expected": "730c24c70713d05f4ea67e84d9495d8ceb40ab96b69214e45624e0fa252ca442",
+          "match": true
+        },
+        "ply": {
+          "sha256": "b5dfeccec22615a746e5ad19efb70e5dd577834bd98488054c1a64fada66702b",
+          "expected": "b5dfeccec22615a746e5ad19efb70e5dd577834bd98488054c1a64fada66702b",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_01",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "7a23bdee7ff50caa635d272f23604c382064a4c21148dfb5e8a2e57946ec5837",
+          "expected": "7a23bdee7ff50caa635d272f23604c382064a4c21148dfb5e8a2e57946ec5837",
+          "match": true
+        },
+        "ply": {
+          "sha256": "93e2d571263d9df2a82ad1a9ce07ae68ca168c275bddf84f04f99e4dcd77fa86",
+          "expected": "93e2d571263d9df2a82ad1a9ce07ae68ca168c275bddf84f04f99e4dcd77fa86",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_02",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "1bf81ed7eb0d024e4b27f6e7f66c94685d0b1fe3a63254706a4c427518e51eed",
+          "expected": "1bf81ed7eb0d024e4b27f6e7f66c94685d0b1fe3a63254706a4c427518e51eed",
+          "match": true
+        },
+        "ply": {
+          "sha256": "051d70fde5e213d1fe6059c2f6ee4042d6b088a263254254e05f25637e3a4054",
+          "expected": "051d70fde5e213d1fe6059c2f6ee4042d6b088a263254254e05f25637e3a4054",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_03",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "8ee170233519e5ffe90511bf5675bf89c73e3b65bb15f06f22656572b9d21afa",
+          "expected": "8ee170233519e5ffe90511bf5675bf89c73e3b65bb15f06f22656572b9d21afa",
+          "match": true
+        },
+        "ply": {
+          "sha256": "720df0ced3b2ad7aac8ba1f11b7ff52208352901e9e0a95cae25177b4c0577de",
+          "expected": "720df0ced3b2ad7aac8ba1f11b7ff52208352901e9e0a95cae25177b4c0577de",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_04",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "931faf3c649e3eb82d91030467efe59458603c4d77a1e4aae4a1ad2eb03aafda",
+          "expected": "931faf3c649e3eb82d91030467efe59458603c4d77a1e4aae4a1ad2eb03aafda",
+          "match": true
+        },
+        "ply": {
+          "sha256": "e3162a72cdc8ec35acb1b354223bcad76ae07b49738164c848acd6cd71a664f0",
+          "expected": "e3162a72cdc8ec35acb1b354223bcad76ae07b49738164c848acd6cd71a664f0",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_05",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "98bae9f699561858fe6d025b96e4c85684ba47046f1be418cd2e48b075524a12",
+          "expected": "98bae9f699561858fe6d025b96e4c85684ba47046f1be418cd2e48b075524a12",
+          "match": true
+        },
+        "ply": {
+          "sha256": "276c4c42cfe54ec11b1825fec7e73848759837492226f92cc7fca17cfc5a50f2",
+          "expected": "276c4c42cfe54ec11b1825fec7e73848759837492226f92cc7fca17cfc5a50f2",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_06",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "fc1ef5e23779b348a30d7322f7f35794e2cc76754136f14c381445bad338dad6",
+          "expected": "fc1ef5e23779b348a30d7322f7f35794e2cc76754136f14c381445bad338dad6",
+          "match": true
+        },
+        "ply": {
+          "sha256": "bb4ed2580c2d2e7d9e307f1e461a50158dd91df951c51bcd6b4bcd9a94f51e81",
+          "expected": "bb4ed2580c2d2e7d9e307f1e461a50158dd91df951c51bcd6b4bcd9a94f51e81",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_07",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "c01281971407b80b8cbe476a99adc98f74cc580172398a990c6fb247161a94cd",
+          "expected": "c01281971407b80b8cbe476a99adc98f74cc580172398a990c6fb247161a94cd",
+          "match": true
+        },
+        "ply": {
+          "sha256": "3e1fa7a8225a821e517364c617c3dc2b051e9b4920b7a626e191fa3866819d6d",
+          "expected": "3e1fa7a8225a821e517364c617c3dc2b051e9b4920b7a626e191fa3866819d6d",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_08",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "bd22e8779c3d13c910a3b77be52c736dee79ea76292e5a01438acd02a3e127c7",
+          "expected": "bd22e8779c3d13c910a3b77be52c736dee79ea76292e5a01438acd02a3e127c7",
+          "match": true
+        },
+        "ply": {
+          "sha256": "6b1962740d5658ea4fb5b479e71bf3625f28e831de6d3d10cd6818cdc6741ac8",
+          "expected": "6b1962740d5658ea4fb5b479e71bf3625f28e831de6d3d10cd6818cdc6741ac8",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_09",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "82bd3a95125ce61afd468e9fb95c310c263d65819558cd1568aa71cdc3ec5658",
+          "expected": "82bd3a95125ce61afd468e9fb95c310c263d65819558cd1568aa71cdc3ec5658",
+          "match": true
+        },
+        "ply": {
+          "sha256": "27795b5c5ba74fd65a113b452d39e762e16d1129922a6a0fa314027b24ab2b5b",
+          "expected": "27795b5c5ba74fd65a113b452d39e762e16d1129922a6a0fa314027b24ab2b5b",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_10",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "41fc56e754e6b574f2da9dc1aac4460832deb113d6fa8874226f01fbcfa241c2",
+          "expected": "41fc56e754e6b574f2da9dc1aac4460832deb113d6fa8874226f01fbcfa241c2",
+          "match": true
+        },
+        "ply": {
+          "sha256": "4b2638c163cd8572afeeec18a6e241304bb3e763d34c2939d0e820afcad395be",
+          "expected": "4b2638c163cd8572afeeec18a6e241304bb3e763d34c2939d0e820afcad395be",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_11",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "ba78ad671846d002bf8a9804d7fc081c2c105d7e9cd086744018e3d60256f833",
+          "expected": "ba78ad671846d002bf8a9804d7fc081c2c105d7e9cd086744018e3d60256f833",
+          "match": true
+        },
+        "ply": {
+          "sha256": "f705ad4cd483d9d2aa9f024f519f93292878e7d09f3a134793368a4a841c5a16",
+          "expected": "f705ad4cd483d9d2aa9f024f519f93292878e7d09f3a134793368a4a841c5a16",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_12",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "57e91b002d3a2efc191541452deaa962218ab9373bc882b295c4b37cf6300357",
+          "expected": "57e91b002d3a2efc191541452deaa962218ab9373bc882b295c4b37cf6300357",
+          "match": true
+        },
+        "ply": {
+          "sha256": "bba46670b11677d53cd9bceddfed53a882dcb191ae6166d2caee19e16f41552d",
+          "expected": "bba46670b11677d53cd9bceddfed53a882dcb191ae6166d2caee19e16f41552d",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_13",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "a6601fead20f668a7b9ab016aa4d7adbc5e417ca6b92978f745b8f3dcc40e258",
+          "expected": "a6601fead20f668a7b9ab016aa4d7adbc5e417ca6b92978f745b8f3dcc40e258",
+          "match": true
+        },
+        "ply": {
+          "sha256": "2198c0d832fa280b2eff3536770414c4c5a9715cdbebb2d2059aadcffd2f7b0d",
+          "expected": "2198c0d832fa280b2eff3536770414c4c5a9715cdbebb2d2059aadcffd2f7b0d",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_14",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "520ff0752caa95a8ac26e862e4ea31a9e6ad98575b79c075bd2ebe009028f5c7",
+          "expected": "520ff0752caa95a8ac26e862e4ea31a9e6ad98575b79c075bd2ebe009028f5c7",
+          "match": true
+        },
+        "ply": {
+          "sha256": "279009d6c49bf9097c088fc5239200a86ef722a6ab9aed5ad6abcfff2b3b1516",
+          "expected": "279009d6c49bf9097c088fc5239200a86ef722a6ab9aed5ad6abcfff2b3b1516",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_15",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "2253bc2c2fa64d499d06c8119f88a0a1b5673838eee0d4f7f4226c2ebb865eee",
+          "expected": "2253bc2c2fa64d499d06c8119f88a0a1b5673838eee0d4f7f4226c2ebb865eee",
+          "match": true
+        },
+        "ply": {
+          "sha256": "a35b60d9a4e2ff85978b3ca1af3e26b557dd483891829faf7eded4cfe374c547",
+          "expected": "a35b60d9a4e2ff85978b3ca1af3e26b557dd483891829faf7eded4cfe374c547",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_16",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "db6ce793681fd7e2732f9fbb831251e7d9900735c19cb66e31e1bbb68a28f586",
+          "expected": "db6ce793681fd7e2732f9fbb831251e7d9900735c19cb66e31e1bbb68a28f586",
+          "match": true
+        },
+        "ply": {
+          "sha256": "6f204fb4862529d3e7bd83d799bc137d06c5ee6055a46e2528d40ecff80e6398",
+          "expected": "6f204fb4862529d3e7bd83d799bc137d06c5ee6055a46e2528d40ecff80e6398",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_17",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "9f49d79cd8e8f0e0d4bb55c4301bad64098fc48b0b1c2083d132447f362c9660",
+          "expected": "9f49d79cd8e8f0e0d4bb55c4301bad64098fc48b0b1c2083d132447f362c9660",
+          "match": true
+        },
+        "ply": {
+          "sha256": "28e448de3016b168c91b593b2ffd7c6cbb4ec949f72600b5fcfd0c314cc67a51",
+          "expected": "28e448de3016b168c91b593b2ffd7c6cbb4ec949f72600b5fcfd0c314cc67a51",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_18",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "92e9bc02c49265465ef0ec522c12332c585837a86eea8f5f8223c77fd749d0a8",
+          "expected": "92e9bc02c49265465ef0ec522c12332c585837a86eea8f5f8223c77fd749d0a8",
+          "match": true
+        },
+        "ply": {
+          "sha256": "1034e0d5db6169ce688cf58efd07d2062416a8b89912b3635ee1ef313f70a99a",
+          "expected": "1034e0d5db6169ce688cf58efd07d2062416a8b89912b3635ee1ef313f70a99a",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_19",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "46cd0cc511050aa70aed722c286d7f1cbfcbd4226cca24dcf132ad87c1a279b4",
+          "expected": "46cd0cc511050aa70aed722c286d7f1cbfcbd4226cca24dcf132ad87c1a279b4",
+          "match": true
+        },
+        "ply": {
+          "sha256": "4be389ceb63242505e9a487a3367a751233435ae22d6e8405857b9753a1e742d",
+          "expected": "4be389ceb63242505e9a487a3367a751233435ae22d6e8405857b9753a1e742d",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_20",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "e0e63150261289089c967abf870c047db11b798d1b559903e49034f4c45a0f59",
+          "expected": "e0e63150261289089c967abf870c047db11b798d1b559903e49034f4c45a0f59",
+          "match": true
+        },
+        "ply": {
+          "sha256": "3231dc15264c4a2f31f73084e825662e770bfc9a9bc0cf402a015bfdb1b56f76",
+          "expected": "3231dc15264c4a2f31f73084e825662e770bfc9a9bc0cf402a015bfdb1b56f76",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_21",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "a2c550cf589f5b20f7853f67fdf1110d560c3216acb0678928989b9a3b25edbd",
+          "expected": "a2c550cf589f5b20f7853f67fdf1110d560c3216acb0678928989b9a3b25edbd",
+          "match": true
+        },
+        "ply": {
+          "sha256": "50ac486a592fd5653b97947b4192391b62bf225e3864544e572addf419956f1c",
+          "expected": "50ac486a592fd5653b97947b4192391b62bf225e3864544e572addf419956f1c",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_22",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "14c8ed32f3d6b9b22bf378ee93731e80c17f83fbaba0de2af4cfc09010feee24",
+          "expected": "14c8ed32f3d6b9b22bf378ee93731e80c17f83fbaba0de2af4cfc09010feee24",
+          "match": true
+        },
+        "ply": {
+          "sha256": "3a1d50e4a1066d2a13f2b9bf091934c049406730a9576e52243724c8e0411929",
+          "expected": "3a1d50e4a1066d2a13f2b9bf091934c049406730a9576e52243724c8e0411929",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_23",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "25e9234b4be8f6d7f94bfa81d07a80646626177d503101f8b849d114512c06c4",
+          "expected": "25e9234b4be8f6d7f94bfa81d07a80646626177d503101f8b849d114512c06c4",
+          "match": true
+        },
+        "ply": {
+          "sha256": "4e30c43711d38b73d19d13f4e5022cd00a209f77b2d5866e1333ece44ea2db0a",
+          "expected": "4e30c43711d38b73d19d13f4e5022cd00a209f77b2d5866e1333ece44ea2db0a",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_24",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "c1dae1bb40ac4cbae536a2a01d4983ee1842933dbfa9e258d14f013151bd4618",
+          "expected": "c1dae1bb40ac4cbae536a2a01d4983ee1842933dbfa9e258d14f013151bd4618",
+          "match": true
+        },
+        "ply": {
+          "sha256": "2f5325849985a18b89f3c6a3f2cdaeba514d3262ddfda5f3448824ecc0169d79",
+          "expected": "2f5325849985a18b89f3c6a3f2cdaeba514d3262ddfda5f3448824ecc0169d79",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_26",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "b98a63b748df219a4a19c55b1e48063c53fa41cdc1ffd61d086aa44cfa0b363d",
+          "expected": "b98a63b748df219a4a19c55b1e48063c53fa41cdc1ffd61d086aa44cfa0b363d",
+          "match": true
+        },
+        "ply": {
+          "sha256": "1bc8930259b7d5c2abccb9c1f20cee414c2d50765fad9da4f13e9108369983fd",
+          "expected": "1bc8930259b7d5c2abccb9c1f20cee414c2d50765fad9da4f13e9108369983fd",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_27",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "4b4f1c4b8197463a423d06330882b073c955291f05b22712271b582dc37e43ba",
+          "expected": "4b4f1c4b8197463a423d06330882b073c955291f05b22712271b582dc37e43ba",
+          "match": true
+        },
+        "ply": {
+          "sha256": "850d52a16cb572c7feec07236bcf3fc902154c1bda5a6dc1cc39531310ebfbd8",
+          "expected": "850d52a16cb572c7feec07236bcf3fc902154c1bda5a6dc1cc39531310ebfbd8",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_28",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "9c38a25a1c11f9afa6f61874d72c582066d1eddf83a119b8dcd5dc06cb331669",
+          "expected": "9c38a25a1c11f9afa6f61874d72c582066d1eddf83a119b8dcd5dc06cb331669",
+          "match": true
+        },
+        "ply": {
+          "sha256": "6c219778b6d2ef56a4d8f6a02745416f7d4c2540d92d622cd8351a6696fdcb1a",
+          "expected": "6c219778b6d2ef56a4d8f6a02745416f7d4c2540d92d622cd8351a6696fdcb1a",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_29",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "8e3104d5979554f93be21aa63a0d311269f6bf79bfcb404c9c0631d23e6db7e9",
+          "expected": "8e3104d5979554f93be21aa63a0d311269f6bf79bfcb404c9c0631d23e6db7e9",
+          "match": true
+        },
+        "ply": {
+          "sha256": "83f9a8f9b2b9be1e088122cd3b0fa0ef7b80daa591cc1d7dd3a1dd6e835a25fb",
+          "expected": "83f9a8f9b2b9be1e088122cd3b0fa0ef7b80daa591cc1d7dd3a1dd6e835a25fb",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_30",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "3443e14f2dfb167c61935423fd32e6574d032624a509cc393ab5598866175ed7",
+          "expected": "3443e14f2dfb167c61935423fd32e6574d032624a509cc393ab5598866175ed7",
+          "match": true
+        },
+        "ply": {
+          "sha256": "c26be1d897880b8da7b8abcad1332a7a3e2433d885da270b1c1cde5a15e46ad2",
+          "expected": "c26be1d897880b8da7b8abcad1332a7a3e2433d885da270b1c1cde5a15e46ad2",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_31",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "c93de44654abc86eb02e5f42bc85ce3b5954f901d3de5f8a6f8514bbcac79878",
+          "expected": "c93de44654abc86eb02e5f42bc85ce3b5954f901d3de5f8a6f8514bbcac79878",
+          "match": true
+        },
+        "ply": {
+          "sha256": "0bc04f6085e4820a4986e780e9b17ca041d1092ad1973ada27599a7c0f277767",
+          "expected": "0bc04f6085e4820a4986e780e9b17ca041d1092ad1973ada27599a7c0f277767",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_32",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "5ca5d66ca224f9696ea74e6e42b169804fe3f04fd686d5f26e910c0a041fa8ba",
+          "expected": "5ca5d66ca224f9696ea74e6e42b169804fe3f04fd686d5f26e910c0a041fa8ba",
+          "match": true
+        },
+        "ply": {
+          "sha256": "99ea555fe76f983f9eb244211c5a1206820459a92ba5e2f285a466c46bb626ab",
+          "expected": "99ea555fe76f983f9eb244211c5a1206820459a92ba5e2f285a466c46bb626ab",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_33",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "12a978eb7f3c2a5a2142252c924b2740a6cffe17f5e4de5c0011c75b4947830b",
+          "expected": "12a978eb7f3c2a5a2142252c924b2740a6cffe17f5e4de5c0011c75b4947830b",
+          "match": true
+        },
+        "ply": {
+          "sha256": "dad2b4eaff0cd692bfaafbd934527e0a570b5936cbc50aee96faa7c707f87fee",
+          "expected": "dad2b4eaff0cd692bfaafbd934527e0a570b5936cbc50aee96faa7c707f87fee",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_34",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "6e156b682fb4c79f0b96ca44f749203d951de832f83b988e2af86b21a78cdff9",
+          "expected": "6e156b682fb4c79f0b96ca44f749203d951de832f83b988e2af86b21a78cdff9",
+          "match": true
+        },
+        "ply": {
+          "sha256": "916285a542042247dae6e83d0107bdbc48eb28d41f247e040310bb022a66930e",
+          "expected": "916285a542042247dae6e83d0107bdbc48eb28d41f247e040310bb022a66930e",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_35",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "1c1b8edf821746f7454ac2d368114586bca01f572bdabb2cde1df212481bfded",
+          "expected": "1c1b8edf821746f7454ac2d368114586bca01f572bdabb2cde1df212481bfded",
+          "match": true
+        },
+        "ply": {
+          "sha256": "0d27fec57590327f81daff146435ac4960af87186d426f774519186491395829",
+          "expected": "0d27fec57590327f81daff146435ac4960af87186d426f774519186491395829",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_36",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "8e2565ebaa893f126842a2d805b7083b40624f032b808ba608fa46fbe8a594e9",
+          "expected": "8e2565ebaa893f126842a2d805b7083b40624f032b808ba608fa46fbe8a594e9",
+          "match": true
+        },
+        "ply": {
+          "sha256": "8cd8666d9c15d80c99ab4b85791961fb9c0e551a7cba0aad97d0747969ee5e59",
+          "expected": "8cd8666d9c15d80c99ab4b85791961fb9c0e551a7cba0aad97d0747969ee5e59",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_37",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "3d9d399934b2da6df880fa159defdea8d36864de8c432e447d6fecc35bd3474f",
+          "expected": "3d9d399934b2da6df880fa159defdea8d36864de8c432e447d6fecc35bd3474f",
+          "match": true
+        },
+        "ply": {
+          "sha256": "288cfe36d159e1182cff13637a3faa69ffb32f6174a9d78e944f68179d8b7b12",
+          "expected": "288cfe36d159e1182cff13637a3faa69ffb32f6174a9d78e944f68179d8b7b12",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_38",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "2344e61126fbfc64d9c3189453cc523a670e10b6b286126c0b9758314f4fb5d6",
+          "expected": "2344e61126fbfc64d9c3189453cc523a670e10b6b286126c0b9758314f4fb5d6",
+          "match": true
+        },
+        "ply": {
+          "sha256": "7862888e03fde3354833ff90d6d7afab4fb02fb69fe0e4c26dc6d84b6e92c33e",
+          "expected": "7862888e03fde3354833ff90d6d7afab4fb02fb69fe0e4c26dc6d84b6e92c33e",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_39",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "83a75d1bc26be5630294ad2a505526f47e85f1593e51999daa7ea98d463ec33d",
+          "expected": "83a75d1bc26be5630294ad2a505526f47e85f1593e51999daa7ea98d463ec33d",
+          "match": true
+        },
+        "ply": {
+          "sha256": "933a9e498a2de85fd7b90045c5d4518609deaf25d157750a96bd3c9d4fc9f2e7",
+          "expected": "933a9e498a2de85fd7b90045c5d4518609deaf25d157750a96bd3c9d4fc9f2e7",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_2_40",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "9c3dfd5e603615bbefc2268861d91a13c21cc3330b2fbbd9784e6da5a9fbda0f",
+          "expected": "9c3dfd5e603615bbefc2268861d91a13c21cc3330b2fbbd9784e6da5a9fbda0f",
+          "match": true
+        },
+        "ply": {
+          "sha256": "e30947e7aac52e223eb9cd1f50de8ef5bc3b9a5d9fb13737de00728a1ba8f554",
+          "expected": "e30947e7aac52e223eb9cd1f50de8ef5bc3b9a5d9fb13737de00728a1ba8f554",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_3_01",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "6ec190699781c89d0f4f78ba78156318081df568744c5c5083d229cb5d6c753d",
+          "expected": "6ec190699781c89d0f4f78ba78156318081df568744c5c5083d229cb5d6c753d",
+          "match": true
+        },
+        "ply": {
+          "sha256": "30642a606e6fb37fbcd7e7ea08071cc13457fb29fc01725a3d7ab2aa60b6fc29",
+          "expected": "30642a606e6fb37fbcd7e7ea08071cc13457fb29fc01725a3d7ab2aa60b6fc29",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_3_02",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "91c07f1a2bca068453a19d4231712ae7ae2a91f1df41285c4f53cd6e1e01bb5b",
+          "expected": "91c07f1a2bca068453a19d4231712ae7ae2a91f1df41285c4f53cd6e1e01bb5b",
+          "match": true
+        },
+        "ply": {
+          "sha256": "172ecb083db5abb5aa1ab7f66670014cac889657e5786c2e1fe0833ffa942b4d",
+          "expected": "172ecb083db5abb5aa1ab7f66670014cac889657e5786c2e1fe0833ffa942b4d",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_3_03",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "b18267cedb62b07307b12d90570fd0ab93e93c0094b447b235f82b19d40a1ff7",
+          "expected": "b18267cedb62b07307b12d90570fd0ab93e93c0094b447b235f82b19d40a1ff7",
+          "match": true
+        },
+        "ply": {
+          "sha256": "1b85cb2faeeb9cf4740e40e10f071cfec7bf134ba62b0edff97c040a9f9cc476",
+          "expected": "1b85cb2faeeb9cf4740e40e10f071cfec7bf134ba62b0edff97c040a9f9cc476",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_3_04",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "824af42c1c159e299a029a1f8a32f3542239f6b35e8ebda80f4a7397116b6b54",
+          "expected": "824af42c1c159e299a029a1f8a32f3542239f6b35e8ebda80f4a7397116b6b54",
+          "match": true
+        },
+        "ply": {
+          "sha256": "6d1621d025040d3f274b14c43ddfa21cd23e96239a607e7cef652092c378098c",
+          "expected": "6d1621d025040d3f274b14c43ddfa21cd23e96239a607e7cef652092c378098c",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    },
+    {
+      "id": "stereo_pothole_fan_3_05",
+      "category": "stereo",
+      "files": {
+        "glb": {
+          "sha256": "bf004fdde5f934fce6b7dcf9cd2430cfdde1943aacb43d184097707b17d498c8",
+          "expected": "bf004fdde5f934fce6b7dcf9cd2430cfdde1943aacb43d184097707b17d498c8",
+          "match": true
+        },
+        "ply": {
+          "sha256": "0deba5b6a2585a40871a59c22ec8836b9958e93d026606b9a2a17981a116597e",
+          "expected": "0deba5b6a2585a40871a59c22ec8836b9958e93d026606b9a2a17981a116597e",
+          "match": true
+        }
+      },
+      "companion_matches": {
+        "surface.npz": true,
+        "photo_texture.png": true,
+        "capture_metadata.json": true,
+        "source_mask.png": true
+      }
+    }
+  ]
+}

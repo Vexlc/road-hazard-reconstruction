@@ -38,7 +38,7 @@ def build(job):
                     xyz_key="xyzPoints", metres_per_unit=.001, border=border,
                     output=dest, samples=sample,
                     source=f"{REPOSITORY}/tree/{REVISION}/dataset{dataset} ({frame:02d})"
-                ))
+                ), fit_around_primary=True)
             detail = json.loads((dest / "capture_metadata.json").read_text())
             d50, depth, _ = detail["depth_mm_p50_p95_p99_in_mask"]
             w, l = detail["pothole_extent_xy_m_p0_4_to_p99_6"]

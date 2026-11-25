@@ -6,6 +6,8 @@ RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资�
 
 不知道编号时，可以运行 `python3 gen2hole/gen2hole.py search 井盖`。已有目标场景时，运行 `python3 gen2hole/gen2hole.py routes 鱼眼` 查看可用的迁入程序和指南，再按路线缩小范围，例如 `python3 gen2hole/gen2hole.py search --route kitti-pair`。每条结果列出代表编号、重建代码和操作章节。[按手头材料选择复现入口](docs/16-reproduction-cookbook.md#按手头材料选入口)
 
+**历史双目库已可逐文件复现**　65 件坑洞全部从原始 RGB、标注与 XYZ 重建，与发布的 130 个 GLB、PLY 哈希一致。过去存在差异的 13 件另经三个角度的原生渲染复核。[从干净克隆重跑](docs/02-asset-reconstruction.md#从干净克隆验证历史双目) · [逐件和逐帧结果](validation/stereo-replay.json)
+
 **四处实测沥青坑**　两组双坑已放入指定 KITTI 检查点，最大的可见坑口约 1.79 m²。其他渲染器可用六个透视面的深度缓冲接入鱼眼。教程从原始采集、实车曝光与 GPU 深度三个入口分别给出可重跑的命令。[复现指南](docs/31-cube-pits.md) · [Audi 驶过后的车尾画面](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/cube-pits-v1.0.0/audi-front-rear.mp4)
 
 **道路散落货物**　纸箱、开盖工具箱、基质袋和带盖木箱分两组迁入。每个物体单独核验与实测路面的接触。四件原始网格和纹理随代码提供。[重建与迁入](docs/30-lost-cargo.md) · [Audi 实车驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/lost-cargo-v1.0.0/audi-front-rear.mp4)

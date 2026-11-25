@@ -3,7 +3,7 @@
 从下列固定标签开始，可核对完整索引。获得单件模型、原生场景或相机回放的具体命令，见对应系列的操作章节。
 
 ~~~bash
-gh repo clone Vexlc/road-hazard-reconstruction -- --branch cube-pits-v1.0.0 --depth 1
+gh repo clone Vexlc/road-hazard-reconstruction -- --branch reproduction-index-v1.1.0 --depth 1
 cd road-hazard-reconstruction
 python3 scripts/check-reproduction-index.py
 python3 gen2hole/gen2hole.py locate H234
@@ -82,7 +82,9 @@ python3 gen2hole/gen2hole.py locate P211
 
 ## 先跑一个最小案例
 
-首次验证建议选 P103。Linux 上用 Python 3.11 建立环境，运行后会得到约 81.7 万个三角面的裂缝网格。仅执行这一节时不用下载场景和 GPU 模型。
+手头有 NVIDIA 环境、想先验证一件实拍病害时，可以直接用 48 MiB 的双目案例包，从 XYZ 重建并核对三个视角。[单件从下载到验收](02-asset-reconstruction.md#从干净克隆验证历史双目)
+
+只做 CPU 网格的首次验证可选 P103。Linux 上用 Python 3.11 建立环境，运行后会得到约 81.7 万个三角面的裂缝网格。仅执行这一节时不用下载场景和 GPU 模型。
 
 ~~~bash
 python3.11 -m venv work/envs/cracks
@@ -182,7 +184,7 @@ bash scripts/scene.sh joint kitti360-0000 pit-pairs-rear 30000
 | 执行到哪一步 | 用什么判断 | 已知差异或依赖 |
 |---|---|---|
 | 在新克隆中找代码和配方 | 运行开头的索引检查，再用 `search` 或 `locate` 找到对应的程序、配方和专题。 | 索引检查覆盖所有编号；几何和相机的验收按系列独立记录。 |
-| 重建历史五类资产 | 用发布清单比较 GLB、PLY，检查高度场和元数据。 | 历史全量重建有 13 个双目样本存在毫米级数值或点数差异。[详细记录](06-validation.md) |
+| 重建历史五类资产 | 用发布清单比较 GLB、PLY，检查高度场和元数据。 | 65 件双目均已恢复原 GLB、PLY 哈希，原有差异的 13 件另核对 39 帧原生回放。[从原始 XYZ 到逐件验收](02-asset-reconstruction.md#从干净克隆验证历史双目) |
 | 复建 20 件常见大坑或新井盖 | 大坑逐件比对 5 个文件；扫描井盖另查留出扫描、通孔和安装状态。 | 单图设计尺度与实测 RGB-D 深度分别登记；P203、P204 重算照片几何需提供与哈希匹配的原截图。[大坑输入](15-large-dry-pits.md) · [井盖实例](29-mixed-inlets.md) |
 | 迁入保存的 `joint.pt` | 核对原宿主 SHA-256、每组资产、姿态和整车净距，再重载前后视。 | 保存的 KITTI 后视是虚拟相机。要查看真实尾部曝光，可用 Audi 实拍相机包。[原生迁入](19-roadside-props.md) · [实拍前后相机](30-lost-cargo.md) |
 | 接入新渲染器 | 先复现固定相机包的颜色、实例、距离和遮挡，再换自己的标定、米制深度与点云。 | 固定机位的参照值适用于该场景。换镜头、宿主或光照后，需要重新检验配准和可见性。[鱼眼包和独立对照](30-lost-cargo.md#在-cpu-上复现前后视实例和距离) |

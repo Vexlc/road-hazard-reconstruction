@@ -17,7 +17,49 @@ work/envs/assets/bin/python scripts/reconstruct-assets.py --category stereo --sa
 work/envs/assets/bin/python scripts/reconstruct-assets.py --category stereo
 ```
 
-源码：`outputs/road_hazard_expansion/reproduction/batch_stereo.py` 与 `reconstruct_pothole.py`。重建结果写入 `work/rebuilt-assets/stereo/`，不会覆盖下载的原始成品。
+旧版双目采集用填孔后的主坑轮廓划定平面拟合排除区，向外扩张 12 像素；RGB-D 路线使用同一幅图内的全部病害标注。重建在 work/rebuilt-assets/stereo 下生成每件的 pothole.glb、asset.ply、surface.npz 和采集记录。65 份双目 GLB、PLY 都能逐字节复现发布包。[双目构建入口](../outputs/road_hazard_expansion/reproduction/batch_stereo.py) · [平面拟合实现](../outputs/road_hazard_expansion/reproduction/reconstruct_pothole.py) · [逐件验证](../validation/stereo-replay.json)
+
+### 从干净克隆验证历史双目
+
+首次复现可只跑 dataset2 的第 24 帧。这是修正前点数有差异的样本。约 48 MiB 的私有 GitHub 附件含原始照片、标注、XYZ 和发布对照件。完整重建需要 Linux 网格环境及 CUDA 环境。以下命令从新克隆开始；已在仓库中时从设置 kit 开始。[安装两套环境](03-environment-and-relocation.md) · [案例附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-index-v1.1.0)
+
+~~~bash
+set -e
+repo=Vexlc/road-hazard-reconstruction
+tag=reproduction-index-v1.1.0
+gh repo clone "$repo" -- --branch "$tag" --depth 1
+cd road-hazard-reconstruction
+kit=downloads/$tag
+gh release download "$tag" -R "$repo" -D "$kit" --skip-existing
+(cd "$kit" && sha256sum -c SHA256SUMS)
+python3 -m zipfile -e "$kit/stereo-case-2-24.zip" work/stereo-case
+(cd work/stereo-case && sha256sum -c SHA256SUMS)
+id=stereo_pothole_fan_2_24
+mesh=work/envs/assets/bin/python
+gpu=work/envs/streetcrafter/bin/python
+out=work/stereo-single
+"$mesh" scripts/reconstruct-assets.py --asset "$id" --inputs work/stereo-case/inputs --output "$out" --gaussian-python "$gpu"
+"$mesh" scripts/verify-assets.py --asset "$id" --library "$out"
+"$gpu" scripts/check-stereo-views.py --asset "$id" --reference work/stereo-case/reference --rebuilt "$out" --report "$out/views.json"
+~~~
+
+要重建全部 65 件，在同一版本恢复 inputs-stereo 和 assets-stereo 两组数据。前者提供 RGB、标注和原始 XYZ，后者用于独立对照。以下命令从仓库根执行。[按组下载与校验](01-downloads.md)
+
+~~~bash
+for group in inputs-stereo assets-stereo; do
+  python3 scripts/packages.py fetch --group "$group"
+  python3 scripts/packages.py restore --group "$group"
+done
+mesh=work/envs/assets/bin/python
+gpu=work/envs/streetcrafter/bin/python
+out=work/stereo-from-source
+"$mesh" scripts/reconstruct-assets.py --category stereo --output "$out" --gaussian-python "$gpu" --workers 3
+"$mesh" scripts/verify-assets.py --category stereo --library "$out" --report "$out/hashes.json"
+"$gpu" scripts/check-stereo-views.py --reference outputs/road_hazard_expansion --rebuilt "$out" --report "$out/views.json"
+~~~
+
+预期哈希检查为 checked 65、omitted 0、failures 空数组。最后一步独立读入发布件与重建件，为原先出现差异的 13 件各渲染三个相同机位。每帧检查可见前景、完整 RGB 和透明度，以及共同前景的米制深度。已验证 39 帧均一致。以前点数有差异的 stereo_pothole_fan_2_24 复建为 84,188 个 Gaussian。所有操作均在当前 Linux/NVIDIA 环境实际执行。[原生渲染核对](../scripts/check-stereo-views.py) · [旧差异记录](../validation/stereo-reconstruction-differences.json)
+
 
 ## 2. RGB-D 实拍坑洞：822 条
 
@@ -93,7 +135,7 @@ work/envs/streetcrafter/bin/python scripts/compare-reconstruction.py \
   --report work/reconstruction-comparison.json
 ```
 
-浮点库、GPU、边界采样和并行归约顺序可能使重新生成的二进制哈希变化。比较脚本报告点数、几何位置、高度场、尺度、旋转、透明度与球谐系数。当前审阅稿中仍有 13 个双目资产的精度与外观验收待完成，不能声称已通过全部数值阈值；详见[验证状态](06-validation.md)。需要原始字节时直接使用已校验的成品包。
+跨机器对照时，比较脚本还可报告点数、几何位置、高度场、尺度、旋转、透明度与球谐系数。本机 65 项历史双目均已通过发布哈希检查；原先 13 项差异的成因和复核方法见上文。[双目复建步骤](#从干净克隆验证历史双目) · [验证状态](06-validation.md)
 
 ## 两张实拍重建可动圆井盖
 

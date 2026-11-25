@@ -63,7 +63,7 @@ def project_grid(rgb, pixel_map, xyz):
     return coordinates, color
 
 
-def reconstruct(args, frames=None):
+def reconstruct(args, frames=None, *, fit_around_primary=False):
     output, sample_path = args.output, args.samples
     output.mkdir(parents=True, exist_ok=True)
     if frames is None:
@@ -90,7 +90,10 @@ def reconstruct(args, frames=None):
 
     cropped = xyz[region]
     valid = np.isfinite(cropped).all(axis=-1) & (cropped[:, :, 2] > .10) & (cropped[:, :, 2] < 50)
-    near_target = ndimage.binary_dilation(all_defects[region], iterations=12)
+    # The original stereo survey fitted around the filled primary component.
+    # The RGB-D survey excludes every annotated defect in the surrounding area.
+    exclusion = mask if fit_around_primary else all_defects
+    near_target = ndimage.binary_dilation(exclusion[region], iterations=12)
     ground = cropped[valid & ~near_target]
     pit = cropped[valid & mask[region]]
     if min(len(ground), len(pit)) < 100:
