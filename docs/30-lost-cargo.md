@@ -6,7 +6,7 @@ R262–R265 分为两组，一组是折角纸箱和开盖工具箱，另一组�
 
 ## 从原始网格重建四件散落物
 
-在 Linux 上运行以下命令。克隆私有仓库需要有读取权限的 GitHub 账号。四件资产的 20 个原文件均在 Git 中。这一阶段使用 CPU，复现环境为 Python 3.9、Open3D 0.18 和系统的 libGL、libgomp。[输入来源和署名](../gen2hole/examples/lost-cargo/SOURCES.md) · [按编号重建](../gen2hole/road_debris.py) · [组合几何与材质](../gen2hole/roadside_layout.py)
+在 Linux 上运行以下命令。四件资产的 20 个原文件均在 Git 中。这一阶段使用 CPU，复现环境为 Python 3.9、Open3D 0.18 和系统的 libGL、libgomp。[输入来源和署名](../gen2hole/examples/lost-cargo/SOURCES.md) · [按编号重建](../gen2hole/road_debris.py) · [组合几何与材质](../gen2hole/roadside_layout.py)
 
 ~~~bash
 gh repo clone Vexlc/road-hazard-reconstruction -- --branch lost-cargo-v1.0.0 --depth 1

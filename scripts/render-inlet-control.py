@@ -17,7 +17,7 @@ pavement = import_module("render-pavement-cycles")
 cover = import_module("render-round-cover-cycles")
 
 
-def build(scene, ground, recipe, models):
+def build(scene, ground, recipe, models, split_x=-0.15):
     road = rig.plane(scene, ground)
     material = road.data.materials[0]
     bpy.data.objects.remove(road, do_unlink=True)
@@ -33,7 +33,7 @@ def build(scene, ground, recipe, models):
             half = np.array([float(field["width"]), float(field["length"])]) / 2
         corners = pavement.rectangle(-half[0], half[0], -half[1], half[1])
         inner = corners @ pose[:2, :2].T + pose[:2, 3]
-        lo, hi = (-0.15, 20.0) if row["id"] == "pit" else (-20.0, -0.15)
+        lo, hi = (split_x, 20.0) if row["id"] == "pit" else (-20.0, split_x)
         if inner[:, 0].min() < lo or inner[:, 0].max() > hi:
             raise ValueError("Reference pavement tiles must enclose their own opening")
         xy = np.vstack([pavement.rectangle(lo, hi, -20, 20), inner])

@@ -13,7 +13,7 @@ P246 和 P247 一起放入指定的 KITTI 30,000 步联合场景。Audi 用真�
 
 重建使用源 RGB、毫米深度、轮廓标注和标称内参。P246 和 P247 在拟合前分别留出了 13,582、9,170 个坑内有效像素，用于在同一次曝光上检验几何插值。尺度沿用采集，没有放大。[源数据与文件指纹](../gen2hole/examples/asphalt-breakouts/SOURCES.md) · [重建入口](../gen2hole/multiview_pits.py) · [逐件测量](../validation/asphalt-breakouts.json)
 
-在有权读取私有仓库的账号下，从固定标签开始。以下 Bash 命令均从仓库根目录执行。只看视频可以直接打开上方链接。
+从固定标签开始。以下 Bash 命令均从仓库根目录执行。只看视频可以直接打开上方链接。
 
 ~~~bash
 gh repo clone Vexlc/road-hazard-reconstruction -- --branch asphalt-breakouts-v1.0.0 --depth 1

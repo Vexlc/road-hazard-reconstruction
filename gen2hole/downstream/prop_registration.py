@@ -146,11 +146,10 @@ def stereo_rig(root):
     return a, b, times
 
 
-@lru_cache(maxsize=3)
-def stereo_ranges(left, *, disparity_allowance=1.0):
-    """Left-right checked foreground range from the synchronized camera pair. Unknown depth stays unknown."""
+def rectified_disparities(left):
+    """Match full-resolution rectified images in both directions."""
     root = left.parents[1]
-    a, b, times = stereo_rig(root)
+    _, _, times = stereo_rig(root)
     frame = int(left.stem)
     if abs((times[0][frame] - times[1][frame]) / np.timedelta64(1, "ms")) > 1:
         raise ValueError("Stereo exposures differ by over one millisecond")
@@ -169,6 +168,14 @@ def stereo_ranges(left, *, disparity_allowance=1.0):
     )
     dl = cv2.StereoSGBM_create(minDisparity=0, **params).compute(*imgs).astype("f4") / 16
     dr = cv2.StereoSGBM_create(minDisparity=-159, **params).compute(*imgs[::-1]).astype("f4") / 16
+    return dl, dr
+
+
+@lru_cache(maxsize=3)
+def stereo_ranges(left, *, disparity_allowance=1.0):
+    """Left-right checked foreground range from the synchronized camera pair. Unknown depth stays unknown."""
+    a, b, _ = stereo_rig(left.parents[1])
+    dl, dr = rectified_disparities(left)
     yy, xx = np.indices(dl.shape)
     rx = xx - np.rint(dl).astype(int)
     check = dr[yy, np.clip(rx, 0, dl.shape[1] - 1)]

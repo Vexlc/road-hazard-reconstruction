@@ -48,7 +48,7 @@ def check_navigation(pages):
 
 
 def check_release_links(pages):
-    """Verify private GitHub release and attachment links without downloading the large assets."""
+    """Verify GitHub release and attachment links without downloading the large assets."""
     repo = "Vexlc/road-hazard-reconstruction"
     prefix = f"https://github.com/{repo}/releases/"
     links = {}

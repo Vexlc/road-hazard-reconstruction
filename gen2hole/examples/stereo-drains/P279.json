@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P279",
+    "label": "长条形露底沥青坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_043912",
+    "fit": [
+      "20250305_043912"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

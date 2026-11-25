@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P281",
+    "label": "石料外露的圆弧边坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_144032",
+    "fit": [
+      "20250305_144032"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

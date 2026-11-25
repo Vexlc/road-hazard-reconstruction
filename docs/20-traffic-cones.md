@@ -10,7 +10,7 @@ C236 是直立交通锥，C237 是它的侧倒状态。原始带纹理模型由 
 
 重建器在凸包上寻找能支撑侧倒锥体的接触面，以均匀薄壳估算重心。最终锥轴与竖直方向夹角为 110.82°，底座边缘与靠近锥尖的部位同时接地，估计重心的投影位于支撑多边形内约 9.4 cm。重建器按每个顶点的可见天空比例处理空腔阴影，并将原模型的反射材质保留在 GLB 中。白天的相机回放用介质反射近似天空反光与阳光高光；夜间车灯的逆反射效果尚未实测。[姿态求解](../gen2hole/traffic_cones.py) · [表面与光照](../gen2hole/downstream/prop_lighting.py)
 
-以下命令从仓库根目录运行。克隆和下载需要私有仓库读取权限。CPU 环境可使用 Python 3.9.23、NumPy 1.26.4、SciPy 1.13.1、Open3D 0.18.0、Pillow 11.3.0、OpenCV 4.10.0.84。环境已安装时可将 `py` 指向项目的 `work/envs/streetcrafter/bin/python`。[CPU 环境配置](19-roadside-props.md#从原始模型重建四件资产)
+以下命令从仓库根目录运行。CPU 环境可使用 Python 3.9.23、NumPy 1.26.4、SciPy 1.13.1、Open3D 0.18.0、Pillow 11.3.0、OpenCV 4.10.0.84。环境已安装时可将 `py` 指向项目的 `work/envs/streetcrafter/bin/python`。[CPU 环境配置](19-roadside-props.md#从原始模型重建四件资产)
 
 ~~~bash
 gh repo clone Vexlc/road-hazard-reconstruction -- --branch traffic-cones-v1.0.0 --depth 1

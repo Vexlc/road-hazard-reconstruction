@@ -11,7 +11,7 @@
 
 ## 从固定版本开始
 
-在有仓库读取权限的 Bash 环境执行。常规环境、原始 KITTI 及 Audi 宿主、原生 GPU 后端各有独立准备步骤。只用 CPU 检查已发布曝光可直接跳到下文的 CPU 章节。[环境与目录](03-environment-and-relocation.md) · [纯 CPU 环境安装](19-roadside-props.md#从原始模型重建四件资产) · [全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/mixed-inlets-v1.0.0)
+在 Bash 中执行。常规环境、原始 KITTI 及 Audi 宿主、原生 GPU 后端各有独立准备步骤。只用 CPU 检查已发布曝光可直接跳到下文的 CPU 章节。[环境与目录](03-environment-and-relocation.md) · [纯 CPU 环境安装](19-roadside-props.md#从原始模型重建四件资产) · [全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/mixed-inlets-v1.0.0)
 
 ~~~bash
 set -e

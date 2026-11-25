@@ -1,0 +1,24 @@
+{
+  "id": "P279-A280",
+  "label": "窄长沥青坑与单侧沉降雨篦",
+  "instances": [
+    {
+      "id": "pit",
+      "asset": "P279",
+      "xy_m": [
+        0.96,
+        0.12
+      ],
+      "heading_deg": 14
+    },
+    {
+      "id": "drain",
+      "asset": "A280",
+      "xy_m": [
+        -0.94,
+        -0.32
+      ],
+      "heading_deg": 8
+    }
+  ]
+}

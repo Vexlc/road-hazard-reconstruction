@@ -24,7 +24,7 @@
 | H234 | 红色消防栓，含盖帽和链条 | 0.275 × 0.318 × 0.799 | 43,158 |
 | H235 | 相同几何，风化涂层 | 0.275 × 0.318 × 0.799 | 43,158 |
 
-在 Linux 上从固定标签开始。访问发布附件需要有该私有仓库的读取权限。下列下载仅涉及约 31 MB 的输入和模型。
+在 Linux 上从固定标签开始。下列下载仅涉及约 31 MB 的输入和模型。
 
 ~~~bash
 gh repo clone Vexlc/road-hazard-reconstruction -- --branch roadside-props-v1.0.0 --depth 1

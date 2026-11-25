@@ -15,7 +15,7 @@ R242–R245 是两组成对放置的常见道路遗落物。一个场景放平�
 | R244 | 侧倒塑料周转筐 | 0.264 × 0.408 × 0.298 | 18,320 |
 | R245 | 落地水泥袋 | 0.462 × 0.700 × 0.180 | 844 |
 
-以下为 Linux Bash 命令，在可读取私有仓库的 GitHub 账号下操作。已有仓库时，在新目录检出固定标签即可。模型和鱼眼回放均可在 CPU 上运行。验证环境为 Python 3.9.23，Open3D 的 Linux 运行库包含 libGL 与 libgomp。
+以下命令在 Linux Bash 中运行。已有仓库时，在新目录检出固定标签即可。模型和鱼眼回放均可在 CPU 上运行。验证环境为 Python 3.9.23，Open3D 的 Linux 运行库包含 libGL 与 libgomp。
 
 ~~~bash
 gh repo clone Vexlc/road-hazard-reconstruction -- --branch road-debris-v1.0.0 --depth 1

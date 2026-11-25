@@ -13,7 +13,7 @@ P252–P255 来自两处真实沥青坑。第一组放入浅干坑和积水碗�
 | 重建两份联合检查点 | `kitti-models.zip`、原始宿主与基准帧 | 联合场景环境。文件校验可用两份发布的 `*-joint.pt` |
 | 从实车原始序列重选位置并拍视频 | 上述模型或重建输入，加 KITTI-360、Audi A2D2 道路数据 | 实车数据、标定、Open3D 与视频编码环境 |
 
-用有读取权限的账号，从固定标签进入。下面各节沿用这些变量，命令在仓库根目录执行。需要哪些附件就下载哪些，每次新增附件后可重跑校验。[本次全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/wet-pavement-v1.0.0)
+从固定标签进入。下面各节沿用这些变量，命令在仓库根目录执行。需要哪些附件就下载哪些，每次新增附件后可重跑校验。[本次全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/wet-pavement-v1.0.0)
 
 ~~~bash
 set -e

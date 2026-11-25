@@ -21,7 +21,7 @@ work/envs/assets/bin/python scripts/reconstruct-assets.py --category stereo
 
 ### 从干净克隆验证历史双目
 
-首次复现可只跑 dataset2 的第 24 帧。这是修正前点数有差异的样本。约 48 MiB 的私有 GitHub 附件含原始照片、标注、XYZ 和发布对照件。完整重建需要 Linux 网格环境及 CUDA 环境。以下命令从新克隆开始；已在仓库中时从设置 kit 开始。[安装两套环境](03-environment-and-relocation.md) · [案例附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-index-v1.1.0)
+首次复现可只跑 dataset2 的第 24 帧。这是修正前点数有差异的样本。约 48 MiB 的GitHub 附件含原始照片、标注、XYZ 和发布对照件。完整重建需要 Linux 网格环境及 CUDA 环境。以下命令从新克隆开始；已在仓库中时从设置 kit 开始。[安装两套环境](03-environment-and-relocation.md) · [案例附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/reproduction-index-v1.1.0)
 
 ~~~bash
 set -e

@@ -1,0 +1,681 @@
+{
+  "assets": {
+    "P279": {
+      "hashes": {
+        "asset.ply": "0e323779c062be791f2604232e3feb61df075ce8fa9d68c2fa2bcea47613b7b6",
+        "metadata.json": "202d1198eb021fa043771dca504ef78ff66e10e71b78b86d6aee2c56c38abb1c",
+        "splat_material.npz": "a7a25830046f9a5677438c216df167fff5aafe3540d587253a3af1f1071092a2",
+        "surface.npz": "d9f0b6a93372cdb0d0bcad5c3ce7e9c4954a57d5602667fc7ed76001b50d9654",
+        "asset.glb": "ff888cb1c52e0bbeb41330a6c2d0d4bd0902b9a85671cb7637f7392251d41fca"
+      },
+      "area_m2": 0.9027177999232644,
+      "extent_m": [
+        1.8064426183700562,
+        0.8411718010902405
+      ],
+      "depth_p95_m": 0.04382946087636119,
+      "holdout": {
+        "glb_sha256": "ff888cb1c52e0bbeb41330a6c2d0d4bd0902b9a85671cb7637f7392251d41fca",
+        "source": "PothRGBD",
+        "fit": [
+          "20250305_043912"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 8837,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 70738,
+        "withheld_mesh": {
+          "samples": 8837,
+          "median_mm": 0.5859136581420898,
+          "p95_mm": 1.7918348312377903
+        },
+        "withheld_road_plane": {
+          "samples": 8837,
+          "median_mm": 23.75282497719744,
+          "p95_mm": 53.52594918153819
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      }
+    },
+    "P281": {
+      "hashes": {
+        "asset.ply": "438cfc1c339de256fada4cd9887b11900f1fea371c691a20969dfc4bccbb1b66",
+        "metadata.json": "12dcfe8e07eeb54c9c6022246e303fa021c496ef9eee1b1e53f13f75ff3a2044",
+        "splat_material.npz": "264d4154e0dc28ffc0c7ff9e5e876fb808f8b85cf2317ac064a747f31186ac3f",
+        "surface.npz": "eca79225f8b23eb6607165138cd37538d7a05046c35fd3824bf86b27be1c48c6",
+        "asset.glb": "eedd4fc44fd790df5c85583ef93bc76e19c4de282f2541bb0da89e7bb7a7912b"
+      },
+      "area_m2": 0.9787768972813591,
+      "extent_m": [
+        1.1185375452041626,
+        1.0871992111206055
+      ],
+      "depth_p95_m": 0.08247592940877184,
+      "holdout": {
+        "glb_sha256": "eedd4fc44fd790df5c85583ef93bc76e19c4de282f2541bb0da89e7bb7a7912b",
+        "source": "PothRGBD",
+        "fit": [
+          "20250305_144032"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 15006,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 119866,
+        "withheld_mesh": {
+          "samples": 15006,
+          "median_mm": 0.4951953887939453,
+          "p95_mm": 1.6157925128936768
+        },
+        "withheld_road_plane": {
+          "samples": 15006,
+          "median_mm": 64.98325702444352,
+          "p95_mm": 87.6620865801701
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      }
+    },
+    "M280": {
+      "hashes": {
+        "asset.ply": "655f44da1a9c791e4be7d8395cb79e530e8e0b1a425480ae3e1b4da5e177eaf7",
+        "metadata.json": "3a4346d0965ba9c959d4c50e9ffee26aff5925c2f7a52bd5e27f3155779239f3",
+        "splat_material.npz": "26816cf5c418697c47b646a3ba8a45a8e387cdc5d610a80da8cbfdb103098e82",
+        "surface.npz": "3c7cce00cab662671c642a9667847b527b08522f2783460ad38c702b3cdc8a75",
+        "asset.glb": "9204eef41493ba43500f2c6827b368b11c72475e17f826fee9e764ff205938a5"
+      },
+      "width_m": 0.426,
+      "panel_size_m": [
+        0.45,
+        0.601127244860207
+      ],
+      "depth_design_m": 0.58,
+      "installation_grade": {
+        "center_z_m": -0.028,
+        "tilt_deg": 3.8,
+        "uphill_deg": 90
+      },
+      "through_holes": 0,
+      "highest_z_m": 0.0,
+      "lowest_z_m": -0.5799999833106995
+    },
+    "A280": {
+      "hashes": {
+        "asset.ply": "f0c417913460cfda0a60796cfeef81adb41d2d2be5b974c00f7930b23aaffe96",
+        "metadata.json": "14e7c208f0969452cc82d4b95ace19cc14172bae45d2c6f0d3d839c8e0e42eb6",
+        "splat_material.npz": "294d7a5da224ef92d7473104a43ed1196534bd51d5dc12284f395b65b49c8cb3",
+        "surface.npz": "fb398870c6433926aad624bfcf3b6de01b0cd8b10fb4b94163be264c2b6f95a3",
+        "asset.glb": "ffe625a53fcf167c1fe999a3f2a2d8f2ad1922cec6cd3f76bee9feac74017c4a"
+      },
+      "width_m": 0.426,
+      "panel_size_m": [
+        0.45,
+        0.601127244860207
+      ],
+      "depth_design_m": 0.58,
+      "installation_grade": {
+        "center_z_m": -0.028,
+        "tilt_deg": 3.8,
+        "uphill_deg": 90
+      },
+      "through_holes": 60,
+      "highest_z_m": 0.0,
+      "lowest_z_m": -0.5799999833106995
+    }
+  },
+  "source_host_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+  "native": {
+    "P279-A280": {
+      "checkpoint_sha256": "9c05a77f23a181cc006159f286591f2fa50e07cb1cfbfa0c7f500aa8bb976abc",
+      "native": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 2516,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 191908,
+          "max_baseline_error": 0
+        }
+      },
+      "local": {
+        "support_m": 0.18,
+        "views": {
+          "front": {
+            "frames": 48,
+            "raw_outside_changes": 12694,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 4545,
+            "max_interior_error": 0
+          },
+          "rear": {
+            "frames": 48,
+            "raw_outside_changes": 768895,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 241665,
+            "max_interior_error": 0
+          }
+        }
+      }
+    },
+    "P281-M280": {
+      "checkpoint_sha256": "0922372a497acdda631b736dfa8140fb7acca6c3305cb0b18cf5abd151eb4729",
+      "native": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 2593,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 191042,
+          "max_baseline_error": 0
+        }
+      },
+      "local": {
+        "support_m": 0.18,
+        "views": {
+          "front": {
+            "frames": 48,
+            "raw_outside_changes": 12699,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 4546,
+            "max_interior_error": 0
+          },
+          "rear": {
+            "frames": 48,
+            "raw_outside_changes": 799397,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 250335,
+            "max_interior_error": 0
+          }
+        }
+      }
+    }
+  },
+  "real": {
+    "P279-A280/audi/front_left": {
+      "frame": 1505,
+      "calibration": "calibration.json",
+      "frame_count_both": 8,
+      "unclipped": true,
+      "pixels": {
+        "pit": 3468,
+        "drain": 3096
+      },
+      "original_packet_bytes": 21468077,
+      "compact_packet_bytes": 1073325,
+      "sha256": {
+        "after.png": "4f24e1c23e19c24666d4362da8f2e073be8c4b179b4d667142d76286f2064a2c",
+        "part.png": "66ed9090df39aff828c72739f146999839a88a275a54c6b899a6b40c01bcf68c",
+        "instance.png": "3de5f43768489fcbc619cf2e2e680b45a4ce6d1ea4b1325f421b6bc61293674d",
+        "range.npy": "9e0e745603489afb2b7229e56cb538c3f511c7a28689b52ee28d12b75bdb9330"
+      }
+    },
+    "P279-A280/audi/rear_center": {
+      "frame": 1520,
+      "calibration": "calibration.json",
+      "frame_count_both": 20,
+      "unclipped": true,
+      "pixels": {
+        "pit": 11139,
+        "drain": 1480
+      },
+      "original_packet_bytes": 24485665,
+      "compact_packet_bytes": 1307609,
+      "sha256": {
+        "after.png": "8de4f039f4bd809126eec977c477d1fbc3da86b7f70a28de7de2e56f555ef59d",
+        "part.png": "3b44924935b7677f19a12fc46e033373288f77eeb266688abfd37530825e7200",
+        "instance.png": "1704d8d34887a889b04e898156b74a342fd41ebbfc64921a09119c10ffca16d1",
+        "range.npy": "510ace1c607d7ea98b7ca6597d70e859c81dc87c73706cc4e40044a1c58bbceb"
+      }
+    },
+    "P279-A280/avenue/image_00": {
+      "frame": 500,
+      "calibration": "calibration.json",
+      "frame_count_both": 16,
+      "unclipped": true,
+      "pixels": {
+        "pit": 850,
+        "drain": 773
+      },
+      "original_packet_bytes": 4323680,
+      "compact_packet_bytes": 245001,
+      "sha256": {
+        "after.png": "c8e48ff4a85cb54a4c8dd723c743a0e57f5117e7956517dd9330b2e14bdaf6c9",
+        "part.png": "e340a7caecab4be6e227245cb24b7c633134311aaff5918f764c929f26008b83",
+        "instance.png": "396e9c08d12ce5356ec2ed07261211e9b8dce5584cdc03a71ccb16d06924d47a",
+        "range.npy": "53221c3ade4263b384d2eb9c4c09def6feb3d3c00e5637ed31e285405c57dd94"
+      }
+    },
+    "P279-A280/avenue/image_03": {
+      "frame": 500,
+      "calibration": "calibration.yaml",
+      "frame_count_both": 6,
+      "unclipped": true,
+      "pixels": {
+        "pit": 543,
+        "drain": 450
+      },
+      "original_packet_bytes": 3664820,
+      "compact_packet_bytes": 211005,
+      "sha256": {
+        "after.png": "c46e316a24366c4ee7cf3e17671c1dec5ba5a61e87181b59928e1af88e465769",
+        "part.png": "bb7ed86afa2e34c1c0ab66e73e7002ec480e13438090ec857fcc546723ae9b17",
+        "instance.png": "73a36147046decdc6bd3cd48fcc6f6cd42693800a622c628dca0173a5a4c8ba0",
+        "range.npy": "9f041e0908f433fc43cdf086e6840c2b6b61eb51b89aed2a67f1b71bd4e464ec"
+      }
+    },
+    "P279-A280/kitti/image_00": {
+      "frame": 217,
+      "calibration": "calibration.json",
+      "frame_count_both": 11,
+      "unclipped": true,
+      "pixels": {
+        "pit": 1303,
+        "drain": 1107
+      },
+      "original_packet_bytes": 6100327,
+      "compact_packet_bytes": 329488,
+      "sha256": {
+        "after.png": "343b7f3ed47f02ec4b69840cde8f5aec134704ca099b044508f15e14475254e3",
+        "part.png": "f7c5e25e41e8b6b7f4cb97dd2fa44cfa2dab915703e1f5182ab177f44872f5b8",
+        "instance.png": "782c7cd889682b80f1c5da89db3aef7d2bd7ac43d650f2b76d5ea4a62b9914a2",
+        "range.npy": "e709f0c34aa635aae73d7b6b705736bfc61bc32257828352c604741d403e22a2"
+      }
+    },
+    "P279-A280/kitti/image_03": {
+      "frame": 228,
+      "calibration": "calibration.yaml",
+      "frame_count_both": 9,
+      "unclipped": false,
+      "pixels": {
+        "pit": 8014,
+        "drain": 7343
+      },
+      "original_packet_bytes": 75642930,
+      "compact_packet_bytes": 3733229,
+      "sha256": {
+        "after.png": "f41a4f476c4e63a976fba3f24247410c5c11b1e336584b273c0c981e6e14d72c",
+        "part.png": "92333769c765b9257970cb973ddf952870995f3227dbeabf0e1a0d24eb5cb0f0",
+        "instance.png": "e145b9a491597aaf2e70e90cbb7f4c8ea4b97c8bdbfa3aa013fce01c0a067449",
+        "range.npy": "e34a3d27a35d45b3b9333a907bd8390942733d1511e4f14c1d3751bee9c0d30f"
+      }
+    },
+    "P281-M280/audi/front_left": {
+      "frame": 1505,
+      "calibration": "calibration.json",
+      "frame_count_both": 8,
+      "unclipped": true,
+      "pixels": {
+        "pit": 4114,
+        "drain": 3096
+      },
+      "original_packet_bytes": 17669576,
+      "compact_packet_bytes": 869647,
+      "sha256": {
+        "after.png": "41101637cadd56d7cf7b8f0dc345e0cda949152bfdd236761c166840702e4886",
+        "part.png": "bcbfa640969b624c3696bc056de8da07a9a8ffe2b3eb57d17789beb5d8bbb7c6",
+        "instance.png": "bc574935d0f080edfae124902be4be864f7b529eb80737496a4ddb588abd89ee",
+        "range.npy": "14480d8e62737f51985d95a800cd47c24303795795624f7720a958c6db8e01e4"
+      }
+    },
+    "P281-M280/audi/rear_center": {
+      "frame": 1519,
+      "calibration": "calibration.json",
+      "frame_count_both": 19,
+      "unclipped": true,
+      "pixels": {
+        "pit": 12962,
+        "drain": 1731
+      },
+      "original_packet_bytes": 20338388,
+      "compact_packet_bytes": 1056482,
+      "sha256": {
+        "after.png": "55a44063439617c94965906cd304e87f4a69274c7c2c7d798afa70a5de86622f",
+        "part.png": "1aa0146d06268dc41736c0d7593a36ee1903d476af5b19296e3951bb9a46812e",
+        "instance.png": "9c3b75f67a41641822c3439f4a496fdb2f8893f06f7ecfe522d06caa0b36b740",
+        "range.npy": "029c75d0c66cf1e6e278a7b76c63438de72bab18c25eb544e420a2ff95613aac"
+      }
+    },
+    "P281-M280/avenue/image_00": {
+      "frame": 500,
+      "calibration": "calibration.json",
+      "frame_count_both": 16,
+      "unclipped": true,
+      "pixels": {
+        "pit": 999,
+        "drain": 773
+      },
+      "original_packet_bytes": 4324296,
+      "compact_packet_bytes": 245617,
+      "sha256": {
+        "after.png": "e0764fe7cd6999ea0279ce3c72dd0237a862d12607956362558f130991d21a5e",
+        "part.png": "51f78bbe3a1fd13dce67f3b64b9029ce32af81beeca783bc14fba7291f44a443",
+        "instance.png": "21ace1d74c31dd1a95b605e75c747cbe1dc4c53fda5614dceef537213f9eed0f",
+        "range.npy": "30c7c081993f33eae4b4c82d043ac9436012f3808dc79d8bfae0fc4a4b2f456a"
+      }
+    },
+    "P281-M280/avenue/image_03": {
+      "frame": 500,
+      "calibration": "calibration.yaml",
+      "frame_count_both": 5,
+      "unclipped": true,
+      "pixels": {
+        "pit": 612,
+        "drain": 450
+      },
+      "original_packet_bytes": 3395114,
+      "compact_packet_bytes": 205774,
+      "sha256": {
+        "after.png": "e74ed6564e965cb194749b71fccc25354d3c525df85db67158eeded8d8be9d81",
+        "part.png": "488ff9bec80fed8c205631b00f16af6563f4bf5c13ab1e51dbc038e75e64f72c",
+        "instance.png": "7bd1c1f5461652580d07bb46b8d77b75963ddeecb50d8a5a2bdcb76b4290e3d8",
+        "range.npy": "2d8c2f5c599e922117955aec58ad67a124f8a34476721d694b9f7793fd86b719"
+      }
+    },
+    "P281-M280/kitti/image_00": {
+      "frame": 217,
+      "calibration": "calibration.json",
+      "frame_count_both": 11,
+      "unclipped": true,
+      "pixels": {
+        "pit": 1594,
+        "drain": 1107
+      },
+      "original_packet_bytes": 4683196,
+      "compact_packet_bytes": 263969,
+      "sha256": {
+        "after.png": "2012b0f2ed9f8516abfd5f8054884bf3ab12df07d5839e714159d150e2ca7c70",
+        "part.png": "a5507a15638816ef2a6f8d868751651679bc54390804aa9f6d532634defa245f",
+        "instance.png": "b60e1f392cb34b995cd4dba947e3504e34294813d19cecd0bb941db942dfbffb",
+        "range.npy": "5650cc609d444bf413afb225cf06888484d2ab3ebe91038979d7cec356f2db06"
+      }
+    },
+    "P281-M280/kitti/image_03": {
+      "frame": 228,
+      "calibration": "calibration.yaml",
+      "frame_count_both": 8,
+      "unclipped": false,
+      "pixels": {
+        "pit": 9106,
+        "drain": 7343
+      },
+      "original_packet_bytes": 32914601,
+      "compact_packet_bytes": 1720615,
+      "sha256": {
+        "after.png": "788f6b946f238175ed74c9ff0cc37696708cd49bbed489cebf057b6a019d2b66",
+        "part.png": "e56c18f13e10ea1bf9942904a2c93065ddb8e2628536491c119744ecdac03617",
+        "instance.png": "d4c3a4726a29cb9b590cee4045261a2ee27376beb5e039f1053188f14fa78b5a",
+        "range.npy": "2c73505b4ea566d5029363f6326fae9557c3060f72b47d83fa82a2bff5857a6f"
+      }
+    }
+  },
+  "products": {
+    "P279-A280/audi/front_left": {
+      "after.png": "4f24e1c23e19c24666d4362da8f2e073be8c4b179b4d667142d76286f2064a2c",
+      "part.png": "66ed9090df39aff828c72739f146999839a88a275a54c6b899a6b40c01bcf68c",
+      "instance.png": "3de5f43768489fcbc619cf2e2e680b45a4ce6d1ea4b1325f421b6bc61293674d",
+      "range.npy": "9e0e745603489afb2b7229e56cb538c3f511c7a28689b52ee28d12b75bdb9330"
+    },
+    "P279-A280/audi/rear_center": {
+      "after.png": "8de4f039f4bd809126eec977c477d1fbc3da86b7f70a28de7de2e56f555ef59d",
+      "part.png": "3b44924935b7677f19a12fc46e033373288f77eeb266688abfd37530825e7200",
+      "instance.png": "1704d8d34887a889b04e898156b74a342fd41ebbfc64921a09119c10ffca16d1",
+      "range.npy": "510ace1c607d7ea98b7ca6597d70e859c81dc87c73706cc4e40044a1c58bbceb"
+    },
+    "P279-A280/avenue/image_00": {
+      "after.png": "c8e48ff4a85cb54a4c8dd723c743a0e57f5117e7956517dd9330b2e14bdaf6c9",
+      "part.png": "e340a7caecab4be6e227245cb24b7c633134311aaff5918f764c929f26008b83",
+      "instance.png": "396e9c08d12ce5356ec2ed07261211e9b8dce5584cdc03a71ccb16d06924d47a",
+      "range.npy": "53221c3ade4263b384d2eb9c4c09def6feb3d3c00e5637ed31e285405c57dd94"
+    },
+    "P279-A280/avenue/image_03": {
+      "after.png": "c46e316a24366c4ee7cf3e17671c1dec5ba5a61e87181b59928e1af88e465769",
+      "part.png": "bb7ed86afa2e34c1c0ab66e73e7002ec480e13438090ec857fcc546723ae9b17",
+      "instance.png": "73a36147046decdc6bd3cd48fcc6f6cd42693800a622c628dca0173a5a4c8ba0",
+      "range.npy": "9f041e0908f433fc43cdf086e6840c2b6b61eb51b89aed2a67f1b71bd4e464ec"
+    },
+    "P279-A280/kitti/image_00": {
+      "after.png": "343b7f3ed47f02ec4b69840cde8f5aec134704ca099b044508f15e14475254e3",
+      "part.png": "f7c5e25e41e8b6b7f4cb97dd2fa44cfa2dab915703e1f5182ab177f44872f5b8",
+      "instance.png": "782c7cd889682b80f1c5da89db3aef7d2bd7ac43d650f2b76d5ea4a62b9914a2",
+      "range.npy": "e709f0c34aa635aae73d7b6b705736bfc61bc32257828352c604741d403e22a2"
+    },
+    "P279-A280/kitti/image_03": {
+      "after.png": "f41a4f476c4e63a976fba3f24247410c5c11b1e336584b273c0c981e6e14d72c",
+      "part.png": "92333769c765b9257970cb973ddf952870995f3227dbeabf0e1a0d24eb5cb0f0",
+      "instance.png": "e145b9a491597aaf2e70e90cbb7f4c8ea4b97c8bdbfa3aa013fce01c0a067449",
+      "range.npy": "e34a3d27a35d45b3b9333a907bd8390942733d1511e4f14c1d3751bee9c0d30f"
+    },
+    "P281-M280/audi/front_left": {
+      "after.png": "41101637cadd56d7cf7b8f0dc345e0cda949152bfdd236761c166840702e4886",
+      "part.png": "bcbfa640969b624c3696bc056de8da07a9a8ffe2b3eb57d17789beb5d8bbb7c6",
+      "instance.png": "bc574935d0f080edfae124902be4be864f7b529eb80737496a4ddb588abd89ee",
+      "range.npy": "14480d8e62737f51985d95a800cd47c24303795795624f7720a958c6db8e01e4"
+    },
+    "P281-M280/audi/rear_center": {
+      "after.png": "55a44063439617c94965906cd304e87f4a69274c7c2c7d798afa70a5de86622f",
+      "part.png": "1aa0146d06268dc41736c0d7593a36ee1903d476af5b19296e3951bb9a46812e",
+      "instance.png": "9c3b75f67a41641822c3439f4a496fdb2f8893f06f7ecfe522d06caa0b36b740",
+      "range.npy": "029c75d0c66cf1e6e278a7b76c63438de72bab18c25eb544e420a2ff95613aac"
+    },
+    "P281-M280/avenue/image_00": {
+      "after.png": "e0764fe7cd6999ea0279ce3c72dd0237a862d12607956362558f130991d21a5e",
+      "part.png": "51f78bbe3a1fd13dce67f3b64b9029ce32af81beeca783bc14fba7291f44a443",
+      "instance.png": "21ace1d74c31dd1a95b605e75c747cbe1dc4c53fda5614dceef537213f9eed0f",
+      "range.npy": "30c7c081993f33eae4b4c82d043ac9436012f3808dc79d8bfae0fc4a4b2f456a"
+    },
+    "P281-M280/avenue/image_03": {
+      "after.png": "e74ed6564e965cb194749b71fccc25354d3c525df85db67158eeded8d8be9d81",
+      "part.png": "488ff9bec80fed8c205631b00f16af6563f4bf5c13ab1e51dbc038e75e64f72c",
+      "instance.png": "7bd1c1f5461652580d07bb46b8d77b75963ddeecb50d8a5a2bdcb76b4290e3d8",
+      "range.npy": "2d8c2f5c599e922117955aec58ad67a124f8a34476721d694b9f7793fd86b719"
+    },
+    "P281-M280/kitti/image_00": {
+      "after.png": "2012b0f2ed9f8516abfd5f8054884bf3ab12df07d5839e714159d150e2ca7c70",
+      "part.png": "a5507a15638816ef2a6f8d868751651679bc54390804aa9f6d532634defa245f",
+      "instance.png": "b60e1f392cb34b995cd4dba947e3504e34294813d19cecd0bb941db942dfbffb",
+      "range.npy": "5650cc609d444bf413afb225cf06888484d2ab3ebe91038979d7cec356f2db06"
+    },
+    "P281-M280/kitti/image_03": {
+      "after.png": "788f6b946f238175ed74c9ff0cc37696708cd49bbed489cebf057b6a019d2b66",
+      "part.png": "e56c18f13e10ea1bf9942904a2c93065ddb8e2628536491c119744ecdac03617",
+      "instance.png": "d4c3a4726a29cb9b590cee4045261a2ee27376beb5e039f1053188f14fa78b5a",
+      "range.npy": "2c73505b4ea566d5029363f6326fae9557c3060f72b47d83fa82a2bff5857a6f"
+    }
+  },
+  "stereo": {
+    "road": {
+      "kitti": {
+        "lidar_compared": 6873,
+        "lidar_available": 7206,
+        "abs_error_median_m": 0.14076497648693032,
+        "abs_error_p95_m": 0.36622321646248324,
+        "pairs": {
+          "P279-A280": {
+            "P279": {
+              "anchor_error_m": 0.024499841984641637,
+              "normal_error_deg": 0.6569355538678034,
+              "pixels": 1040,
+              "supported_cells": 24
+            },
+            "A280": {
+              "anchor_error_m": 0.03425877459990331,
+              "normal_error_deg": 0.25254516296930335,
+              "pixels": 1046,
+              "supported_cells": 24
+            }
+          },
+          "P281-M280": {
+            "P281": {
+              "anchor_error_m": 0.027310111110052628,
+              "normal_error_deg": 0.39574234075189996,
+              "pixels": 1359,
+              "supported_cells": 24
+            },
+            "M280": {
+              "anchor_error_m": 0.03425877459990331,
+              "normal_error_deg": 0.25254516296930335,
+              "pixels": 1046,
+              "supported_cells": 24
+            }
+          }
+        },
+        "relative_error_p95": 0.035295191800331555
+      },
+      "avenue": {
+        "lidar_compared": 5794,
+        "lidar_available": 5794,
+        "abs_error_median_m": 0.1451608873257535,
+        "abs_error_p95_m": 0.4519849825658037,
+        "pairs": {
+          "P279-A280": {
+            "P279": {
+              "anchor_error_m": 0.032932944273935866,
+              "normal_error_deg": 0.31074469558471857,
+              "pixels": 754,
+              "supported_cells": 24
+            },
+            "A280": {
+              "anchor_error_m": 0.0377482909314804,
+              "normal_error_deg": 0.7628285604693864,
+              "pixels": 685,
+              "supported_cells": 24
+            }
+          },
+          "P281-M280": {
+            "P281": {
+              "anchor_error_m": 0.033362703640456716,
+              "normal_error_deg": 0.15119264588679127,
+              "pixels": 941,
+              "supported_cells": 24
+            },
+            "M280": {
+              "anchor_error_m": 0.0377482909314804,
+              "normal_error_deg": 0.7628285604693864,
+              "pixels": 685,
+              "supported_cells": 24
+            }
+          }
+        },
+        "relative_error_p95": 0.03828090233848267
+      }
+    },
+    "cycles": {
+      "P279-A280/rear": {
+        "host_pixels": 78994,
+        "host_p95_m": 0.0006760126349981893,
+        "accepted_behind_optical_plane": 16898,
+        "occluder_pixels": 661,
+        "assets": {
+          "P279": {
+            "coverage": 1.0,
+            "native_pixels": 1085,
+            "matched_iou": 1.0,
+            "part_agreement": 1.0,
+            "depth_p95_m": 0.00011787414550781247
+          },
+          "A280": {
+            "coverage": 1.0,
+            "native_pixels": 324,
+            "matched_iou": 1.0,
+            "part_agreement": 0.9969135802469136,
+            "depth_p95_m": 2.6631355285644515e-05
+          }
+        }
+      },
+      "P279-A280/side": {
+        "host_pixels": 74801,
+        "host_p95_m": 0.0006552098132788231,
+        "accepted_behind_optical_plane": 17974,
+        "occluder_pixels": 915,
+        "assets": {
+          "P279": {
+            "coverage": 1.0,
+            "native_pixels": 1274,
+            "matched_iou": 0.9992156862745099,
+            "part_agreement": 1.0,
+            "depth_p95_m": 0.00012453794479370115
+          },
+          "A280": {
+            "coverage": 1.0,
+            "native_pixels": 955,
+            "matched_iou": 1.0,
+            "part_agreement": 1.0,
+            "depth_p95_m": 1.9073486328125e-05
+          }
+        }
+      },
+      "P281-M280/rear": {
+        "host_pixels": 78994,
+        "host_p95_m": 0.0006745178029361908,
+        "accepted_behind_optical_plane": 16898,
+        "occluder_pixels": 661,
+        "assets": {
+          "P281": {
+            "coverage": 1.0,
+            "native_pixels": 1572,
+            "matched_iou": 1.0,
+            "part_agreement": 1.0,
+            "depth_p95_m": 9.017586708068845e-05
+          },
+          "M280": {
+            "coverage": 1.0,
+            "native_pixels": 324,
+            "matched_iou": 1.0,
+            "part_agreement": 1.0,
+            "depth_p95_m": 3.095865249633788e-05
+          }
+        }
+      },
+      "P281-M280/side": {
+        "host_pixels": 74801,
+        "host_p95_m": 0.000656301983958052,
+        "accepted_behind_optical_plane": 17974,
+        "occluder_pixels": 915,
+        "assets": {
+          "P281": {
+            "coverage": 1.0,
+            "native_pixels": 1258,
+            "matched_iou": 0.9992050874403816,
+            "part_agreement": 1.0,
+            "depth_p95_m": 0.00011448860168457032
+          },
+          "M280": {
+            "coverage": 1.0,
+            "native_pixels": 955,
+            "matched_iou": 1.0,
+            "part_agreement": 1.0,
+            "depth_p95_m": 3.440380096435546e-05
+          }
+        }
+      }
+    }
+  },
+  "videos": {
+    "audi-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 9.6
+    },
+    "kitti-front-side.mp4": {
+      "frames": 87,
+      "seconds": 8.7
+    },
+    "kitti-0003-front-side.mp4": {
+      "frames": 80,
+      "seconds": 8.0
+    },
+    "joint-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    },
+    "joint-local-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    }
+  }
+}

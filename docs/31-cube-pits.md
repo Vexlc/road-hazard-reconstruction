@@ -15,7 +15,7 @@
 
 ## 下载与准备
 
-在 Linux 上从有读取权限的 GitHub 账号执行下列 Bash 命令。四个压缩包均含逐文件 SHA-256，版本附件另附总清单。只需看视频可直接使用上方链接。[全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/cube-pits-v1.0.0)
+在 Linux 上执行下列 Bash 命令。四个压缩包均含逐文件 SHA-256，版本附件另附总清单。只需看视频可直接使用上方链接。[全部附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/cube-pits-v1.0.0)
 
 ~~~bash
 set -e

@@ -13,7 +13,7 @@
 
 ## 从原始 RGB-D 重建两处破损
 
-先克隆固定标签，需要有该私有仓库的读取权限。以下 Bash 命令从克隆根目录执行。[完整资产与计算环境](03-environment-and-relocation.md) · [按编号定位全部系列](16-reproduction-cookbook.md)
+先克隆固定标签。以下 Bash 命令从克隆根目录执行。[完整资产与计算环境](03-environment-and-relocation.md) · [按编号定位全部系列](16-reproduction-cookbook.md)
 
 ~~~bash
 gh repo clone Vexlc/road-hazard-reconstruction -- --branch measured-pavement-v1.0.0 --depth 1

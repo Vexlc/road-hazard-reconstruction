@@ -1,0 +1,24 @@
+{
+  "id": "P281-M280",
+  "label": "粗石碗坑与缺篦雨水口",
+  "instances": [
+    {
+      "id": "pit",
+      "asset": "P281",
+      "xy_m": [
+        0.96,
+        0.12
+      ],
+      "heading_deg": -18
+    },
+    {
+      "id": "drain",
+      "asset": "M280",
+      "xy_m": [
+        -0.94,
+        -0.32
+      ],
+      "heading_deg": 8
+    }
+  ]
+}

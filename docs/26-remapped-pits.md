@@ -13,7 +13,7 @@ P250 和 P251 来自两处实拍道路破损，已按原尺度一起放入 KITTI
 
 留出深度来自同一次曝光。拟合前移除分块选中的深度，保留照片颜色与标注。面积依据拟合坑口投影和数据集标称内参，外接矩形两边长用于判断能否放进目标道路。[采集成员和尺度](../gen2hole/examples/remapped-pits/SOURCES.md) · [重建代码](../gen2hole/multiview_pits.py) · [指标和文件 SHA-256](../validation/remapped-pits.json)
 
-以下命令从拥有仓库读取权限的 Linux 账号运行。只看成品时可直接解开两个模型包。每件含米制 GLB、Gaussian PLY、高度与边界、材质及元数据。
+以下命令在 Linux 上运行。只看成品时可直接解开两个模型包。每件含米制 GLB、Gaussian PLY、高度与边界、材质及元数据。
 
 ~~~bash
 set -e

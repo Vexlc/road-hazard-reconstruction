@@ -13,7 +13,7 @@
 
 盖面来自两份真实扫描。盖径由发布的平面范围与可见接缝推算；安装状态、盖厚、井壁和井底按配方设计。003 的暗色小凹窝保留扫描外观，006 的孔口则具有三维通孔与实体孔壁。[原始通道、孔洞依据与材料来源](../gen2hole/examples/rolling-covers/SOURCES.md) · [资产和相机的逐项记录](../validation/rolling-covers.json)
 
-以下为 Linux Bash 命令，固定标签需要已获私有仓库读取权限的 GitHub 账号。每个模型 ZIP 都可单独使用，三个核心产物分别是用于网格渲染的 asset.glb、用于 Gaussian 放置的 asset.ply 与米制高度和边界 surface.npz。只看视频可以打开页首链接。
+以下为 Linux Bash 命令，从固定标签开始。每个模型 ZIP 都可单独使用，三个核心产物分别是用于网格渲染的 asset.glb、用于 Gaussian 放置的 asset.ply 与米制高度和边界 surface.npz。只看视频可以打开页首链接。
 
 ~~~bash
 gh repo clone Vexlc/road-hazard-reconstruction -- --branch rolling-covers-v1.0.0 --depth 1

@@ -1,5 +1,5 @@
 {
-  "asset_count": 1532,
+  "asset_count": 1536,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2431,6 +2431,46 @@
         "raw-mei",
         "pavement-sun"
       ]
+    },
+    "long-rut-aggregate-bed": {
+      "name": "长条露底坑与圆弧集料坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/stereo-drains",
+      "guide": "docs/35-stereo-drains.md",
+      "section": "从两次坑洞采集和格栅照片重建",
+      "assets": [
+        "P279",
+        "P281"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "raw-mei",
+        "pavement-sun",
+        "stereo-rays"
+      ]
+    },
+    "settled-welded-storm-drain": {
+      "name": "沉降钢格栅与缺篦雨水口",
+      "launcher": "gen2hole/survey.py",
+      "recipe": "gen2hole/examples/stereo-drains/survey.json",
+      "guide": "docs/35-stereo-drains.md",
+      "section": "从两次坑洞采集和格栅照片重建",
+      "assets": [
+        "A280",
+        "M280"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "raw-mei",
+        "pavement-sun",
+        "stereo-rays"
+      ]
     }
   },
   "transfer_routes": {
@@ -2613,6 +2653,12 @@
       "entry": "gen2hole/downstream/pavement_sun.py",
       "guide": "docs/34-sun-openings.md",
       "section": "把日照登记到其他宿主"
+    },
+    "stereo-rays": {
+      "name": "从双目标定与浮点匹配恢复路面和前景的米制距离",
+      "entry": "gen2hole/downstream/host_stereo.py",
+      "guide": "docs/35-stereo-drains.md",
+      "section": "从已标定双目接入新宿主"
     }
   },
   "groups": {
@@ -2648,7 +2694,8 @@
       "cubemap-road-pits",
       "measured-lobed-rut",
       "heldout-gravel-spalls",
-      "forked-aggregate-pits"
+      "forked-aggregate-pits",
+      "long-rut-aggregate-bed"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
@@ -2681,7 +2728,8 @@
       "sixteen-vent-infill",
       "diamond-gas-hatch",
       "spoked-utility-chamber",
-      "offset-vented-opening"
+      "offset-vented-opening",
+      "settled-welded-storm-drain"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

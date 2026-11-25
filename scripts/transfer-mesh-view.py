@@ -24,6 +24,16 @@ def main():
     cube.add_argument("faces", type=Path)
     cube.add_argument("lens", type=Path)
     cube.add_argument("out", type=Path)
+    stereo = tasks.add_parser("from-stereo", help="Triangulate matched pixels from two registered ray fields or fisheye calibrations")
+    stereo.add_argument("primary", type=Path)
+    stereo.add_argument("secondary", type=Path)
+    stereo.add_argument("matches", type=Path, help="NPZ with right_xy, match_valid and optional reverse left_xy")
+    stereo.add_argument("out", type=Path)
+    stereo.add_argument("--primary-calibration", type=Path)
+    stereo.add_argument("--secondary-calibration", type=Path)
+    stereo.add_argument("--min-parallax-deg", type=float, default=0.5)
+    stereo.add_argument("--max-ray-gap-m", type=float, default=0.03)
+    stereo.add_argument("--max-cycle-px", type=float, default=1.0)
     position = tasks.add_parser("from-position", help="Register a renderer's Cartesian surface-position pass to metric camera rays")
     position.add_argument("view", type=Path)
     position.add_argument("out", type=Path)
@@ -113,6 +123,13 @@ def main():
             parser.error("row_time_ns must match the image height")
         packet["camera_to_world_rows"] = rows
         packet.setdefault("camera_to_world", rows.reshape(-1, *rows.shape[-3:])[0, rows.shape[-3] // 2])
+    if args.task == "from-stereo":
+        from host_stereo import triangulate
+
+        with np.load(args.primary, allow_pickle=False) as left, np.load(args.secondary, allow_pickle=False) as right, np.load(args.matches, allow_pickle=False) as matches:
+            packet = triangulate(left, right, matches, args.primary_calibration, args.secondary_calibration,
+                                 min_parallax_deg=args.min_parallax_deg, max_ray_gap_m=args.max_ray_gap_m,
+                                 max_cycle_px=args.max_cycle_px)
     if args.task == "from-position":
         from host_position import register_positions
 
@@ -128,7 +145,7 @@ def main():
 
         with np.load(args.view, allow_pickle=False) as source:
             packet = remap_packet(source, np.load(args.source_xy, allow_pickle=False), args.calibration)
-    if args.task in ("register-readout", "remap-camera", "reflection-mesh", "from-cube", "from-position"):
+    if args.task in ("register-readout", "remap-camera", "reflection-mesh", "from-cube", "from-position", "from-stereo"):
         from tempfile import NamedTemporaryFile
 
         args.out.parent.mkdir(exist_ok=True, parents=True)

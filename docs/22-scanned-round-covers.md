@@ -15,7 +15,7 @@
 
 ## 从扫描重建四个状态
 
-固定标签可避免后续修改配方影响结果。以下为 Linux Bash 命令，从仓库根目录执行。私有仓库的下载需要已登录且有读取权限的 GitHub 账号。只想迁入成品可以直接从下一节开始。[重建环境](03-environment-and-relocation.md) · [全仓按系列查代码](asset-code-index.md)
+固定标签可避免后续修改配方影响结果。以下为 Linux Bash 命令，从仓库根目录执行。只想迁入成品可以直接从下一节开始。[重建环境](03-environment-and-relocation.md) · [全仓按系列查代码](asset-code-index.md)
 
 ~~~bash
 gh repo clone Vexlc/road-hazard-reconstruction -- --branch scanned-round-covers-v1.0.0 --depth 1
