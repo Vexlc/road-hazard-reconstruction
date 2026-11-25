@@ -94,8 +94,11 @@ def check_road(source, dest, models, examples, pairs):
             if pair not in pairs:
                 raise ValueError("Unexpected road layout")
             pose = np.eye(4)
-            pose[:3, 3] = ref["center_world"]
-            pose[:3, :3] = ref["basis_columns"]
+            # Supply only the requested horizontal layout and gravity for this road rig.
+            # An offset initial height prevents the survey plane from setting the fitted height.
+            pose[:3, 3] = np.asarray(ref["center_world"]) + [0, 0, 0.06]
+            pose[:2, 0] = np.asarray(ref["basis_columns"])[:2, 0]
+            pose[:2, 0] /= np.linalg.norm(pose[:2, 0])
             out = dest / site / pair
             anchor = fit_render(
                 examples / (pair + ".json"), models, {"front": path}, pose, out, 1.35

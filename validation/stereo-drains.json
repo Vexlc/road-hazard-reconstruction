@@ -498,28 +498,28 @@
         "pairs": {
           "P279-A280": {
             "P279": {
-              "anchor_error_m": 0.024499841984641637,
-              "normal_error_deg": 0.6569355538678034,
-              "pixels": 1040,
+              "anchor_error_m": 0.02465845609675174,
+              "normal_error_deg": 0.6732558064606095,
+              "pixels": 1035,
               "supported_cells": 24
             },
             "A280": {
-              "anchor_error_m": 0.03425877459990331,
-              "normal_error_deg": 0.25254516296930335,
+              "anchor_error_m": 0.03426370010877543,
+              "normal_error_deg": 0.25225636997217205,
               "pixels": 1046,
               "supported_cells": 24
             }
           },
           "P281-M280": {
             "P281": {
-              "anchor_error_m": 0.027310111110052628,
-              "normal_error_deg": 0.39574234075189996,
-              "pixels": 1359,
+              "anchor_error_m": 0.027321077078778903,
+              "normal_error_deg": 0.39566688185519727,
+              "pixels": 1361,
               "supported_cells": 24
             },
             "M280": {
-              "anchor_error_m": 0.03425877459990331,
-              "normal_error_deg": 0.25254516296930335,
+              "anchor_error_m": 0.03426370010877543,
+              "normal_error_deg": 0.25225636997217205,
               "pixels": 1046,
               "supported_cells": 24
             }
@@ -535,28 +535,28 @@
         "pairs": {
           "P279-A280": {
             "P279": {
-              "anchor_error_m": 0.032932944273935866,
-              "normal_error_deg": 0.31074469558471857,
-              "pixels": 754,
+              "anchor_error_m": 0.03294434779609566,
+              "normal_error_deg": 0.3106035119452885,
+              "pixels": 753,
               "supported_cells": 24
             },
             "A280": {
-              "anchor_error_m": 0.0377482909314804,
-              "normal_error_deg": 0.7628285604693864,
+              "anchor_error_m": 0.037758588143570394,
+              "normal_error_deg": 0.7628054417115542,
               "pixels": 685,
               "supported_cells": 24
             }
           },
           "P281-M280": {
             "P281": {
-              "anchor_error_m": 0.033362703640456716,
-              "normal_error_deg": 0.15119264588679127,
-              "pixels": 941,
+              "anchor_error_m": 0.03335981047965504,
+              "normal_error_deg": 0.1470837239475385,
+              "pixels": 939,
               "supported_cells": 24
             },
             "M280": {
-              "anchor_error_m": 0.0377482909314804,
-              "normal_error_deg": 0.7628285604693864,
+              "anchor_error_m": 0.037758588143570394,
+              "normal_error_deg": 0.7628054417115542,
               "pixels": 685,
               "supported_cells": 24
             }

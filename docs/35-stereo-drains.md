@@ -72,7 +72,7 @@ bash scripts/reproduce-stereo-drains.sh replay
 bash scripts/reproduce-stereo-drains.sh stereo-check
 ~~~
 
-KITTI 0000 第 217 帧、0003 第 500 帧使用同步校验后的左右针孔原图计算双向 SGBM 匹配。同帧激光单独投影作对照。12,667 个有效路面点的两段径向绝对误差中位数分别为 14.1、14.5 cm，P95 为 36.6、45.2 cm。用相同布点和朝向重新拟合后，各资产中心与原激光路面基准相差 2.4–3.8 cm，法向差低于 0.8°。有纹理的两段路面支持全部四件的占地；其他路面须按自己的标定和点云重新检查。
+KITTI 0000 第 217 帧、0003 第 500 帧使用同步校验后的左右针孔原图计算双向 SGBM 匹配。同帧激光单独投影作对照。12,667 个有效路面点的两段径向绝对误差中位数分别为 14.1、14.5 cm，P95 为 36.6、45.2 cm。只传入相同水平布点、行车方位、世界竖直方向和比原路面高 6 cm 的初值，重新拟合后，各资产中心与原激光路面基准相差 2.5–3.8 cm，法向差低于 0.8°。有纹理的两段路面支持全部四件的占地；其他路面须按自己的标定和点云重新检查。
 
 另外四组 Cycles 构图使用有基线、方向不同的 220° 等距鱼眼，镜头前有一根窄横杆。对应点来自独立位置通道的投影，因此这项实验衡量给定对应关系后的几何与可见性。四组中资产原生可见像素均有匹配，逐实例轮廓 IoU 最低 0.9992，横杆覆盖像素保持原样。两段真实双目的匹配误差见上段；本次真实鱼眼重放使用原车相机标定。各项数值的分母与匹配覆盖率保存在验收文件。[逐曝光指标](../validation/stereo-drains.json) · [独立鱼眼构图](../scripts/render-drain-stereo.py)
 
@@ -90,7 +90,7 @@ pair=P279-A280
 layout="gen2hole/examples/stereo-drains/$pair.json"
 "$DRAIN_CPU_PYTHON" "$tool" from-stereo "$cam/primary.npz" "$cam/secondary.npz" "$cam/matches.npz" "$out/host.npz" --primary-calibration "$cam/primary.json" --secondary-calibration "$cam/secondary.json"
 "$DRAIN_CPU_PYTHON" "$tool" road-points "$out/road.npy" "$out/host.npz" --stride 2
-read -ra axes <<< "$(python3 -c 'import json,sys; a=json.load(open(sys.argv[1]))[sys.argv[2]]; print(*a["center_world"],*[row[0] for row in a["basis_columns"]],*[row[2] for row in a["basis_columns"]])' "$cam/survey.json" "$pair")"
+read -ra axes <<< "$(python3 -c 'import json,sys; a=json.load(open(sys.argv[1]))[sys.argv[2]]; x,y,z=a["center_world"]; b=a["basis_columns"]; print(x,y,z+0.06,b[0][0],b[1][0],0,0,0,1)' "$cam/survey.json" "$pair")"
 "$DRAIN_CPU_PYTHON" "$tool" fit "$out/road.npy" "$out/anchor.json" --seed "${axes[@]:0:3}" --heading "${axes[@]:3:3}" --up "${axes[@]:6:3}" --radius 1.35 --asset "$layout" --asset-root "$DRAIN_MODELS"
 "$DRAIN_CPU_PYTHON" "$tool" calibrate-pavement "$layout" "$out/anchor.json" "$out/appearance.json" "$out/host.npz" --asset-root "$DRAIN_MODELS"
 "$DRAIN_CPU_PYTHON" "$tool" render "$layout" "$out/appearance.json" "$out/host.npz" "$out/result" --asset-root "$DRAIN_MODELS"
@@ -100,7 +100,7 @@ read -ra axes <<< "$(python3 -c 'import json,sys; a=json.load(open(sys.argv[1]))
 
 ## 复现指定联合场景与其他实车
 
-恢复原始 joint.pt 和宿主帧，安装原生 GPU 渲染环境。在本仓库的 base 下分别生成两个检查点，每个检查点渲染 48 帧前视和 48 帧虚拟后视。局部版本重用原生宿主底图，保留足迹周边的真实路面。完整后视受原场景在车尾方向的训练覆盖限制。[基础检查点与输入帧](16-reproduction-cookbook.md#kitti-360-双坑与后视) · [GPU 环境](19-roadside-props.md#迁入指定的-30000-步原生场景)
+从下方基础检查点指南恢复 joint.pt，并运行 prepare 和 render 生成 work/streetcrafter-rig/kitti360-0000 的标定、位姿和原始基准帧。安装原生 GPU 渲染环境。在本仓库的 base 下分别生成两个检查点，每个检查点渲染 48 帧前视和 48 帧虚拟后视。局部版本重用原生宿主底图，保留足迹周边的真实路面。完整后视受原场景在车尾方向的训练覆盖限制。[基础检查点与输入帧](16-reproduction-cookbook.md#kitti-360-双坑与后视) · [GPU 环境](19-roadside-props.md#迁入指定的-30000-步原生场景)
 
 ~~~bash
 base=runs/streetgs-joint/kitti360-0000/30000
@@ -112,7 +112,7 @@ bash scripts/reproduce-stereo-drains.sh joint-render
 bash scripts/reproduce-stereo-drains.sh joint-local
 ~~~
 
-从原车数据重新生成三段实拍迁入需要对应的 RGB、标定、车辆位姿和点云。drive 可按路段或单组运行，例如 drive avenue P281-M280。cycles 另需网格环境的 bpy 4.2.0、trimesh 5.2.1；其后 stereo-inputs 需要原始左右帧与独立激光扫描。以下命令分别生成影片、紧凑曝光和双目检验输入。[实车数据准备](17-mixed-road-transfer.md#kitti-和-audi-的原始鱼眼回放) · [KITTI 0000 前视和右鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/kitti-front-side.mp4) · [KITTI 0003 前视和右鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/kitti-0003-front-side.mp4)
+从原车数据重新生成三段实拍迁入需要对应的 RGB、标定、车辆位姿和点云。drive 可按路段或单组运行，例如 drive avenue P281-M280。cycles 另需网格环境的 bpy 4.2.0、trimesh 5.2.1；随后运行 stereo-inputs，需要前面 drive 的锚点、cycles 的双目真值、原始左右帧与独立激光扫描。以下命令分别生成影片、紧凑曝光和双目检验输入。[实车数据准备](17-mixed-road-transfer.md#kitti-和-audi-的原始鱼眼回放) · [KITTI 0000 前视和右鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/kitti-front-side.mp4) · [KITTI 0003 前视和右鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/kitti-0003-front-side.mp4)
 
 ~~~bash
 bash scripts/reproduce-stereo-drains.sh drive
@@ -122,3 +122,5 @@ bash scripts/reproduce-stereo-drains.sh cycles
 bash scripts/reproduce-stereo-drains.sh stereo-inputs
 bash scripts/reproduce-stereo-drains.sh stereo-check
 ~~~
+
+本版在干净源码目录中从采集重新构建，20 个资产文件、两个联合检查点、384 张原生及局部前后视画面、五段视频均与发布基准逐字节一致。独立重跑实车匹配及 Cycles 后，六份双目观测的输入也逐文件一致。上述新宿主接入示例的四项输出与批处理验收一致。

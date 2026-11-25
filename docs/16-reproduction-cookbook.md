@@ -3,7 +3,7 @@
 从下列固定标签开始，可核对完整索引。获得单件模型、原生场景或相机回放的具体命令，见对应系列的操作章节。
 
 ~~~bash
-gh repo clone Vexlc/road-hazard-reconstruction -- --branch stereo-drains-v1.0.0 --depth 1
+git clone --branch stereo-drains-v1.0.0 --depth 1 https://github.com/Vexlc/road-hazard-reconstruction.git
 cd road-hazard-reconstruction
 python3 scripts/check-reproduction-index.py
 python3 gen2hole/gen2hole.py locate H234
@@ -26,7 +26,7 @@ python3 gen2hole/gen2hole.py locate H234
 | 目标路面有明显日照和树影，或宿主提供直射光可见度 | [在原路面登记日照、检查井沿遮挡](34-sun-openings.md#把日照登记到其他宿主) | 实测亮暗、米制路面上的光照和井内光线遮挡 |
 | 只想看效果、比较车驶过之后的画面 | 从[附件与视频导航](01-downloads.md)选系列 | 每个专题都注明实拍车尾、虚拟后视或独立渲染机位 |
 
-已知编号和宿主时，使用 `locate 编号 --route 路线名` 可同时定位重建与迁入的具体操作章节。未登记的组合会列出该编号已支持的路线。全仓索引检查覆盖每个编号、重建系列和迁入入口及其章节。109 件历史生成图资产另从归档 RGB、标注与深度拟合重建，两批共 218 个 GLB、PLY 可直接对照历史指纹。[从完整输入到逐件验收](13-reproduce-and-transfer.md#重建-109-件生成-rgb-资产)已登录 GitHub CLI 的环境可再运行 `python3 scripts/check-reproduction-index.py --release-links`，逐个核对指南中的Release 与下载文件名。附件内容用各个版本的 SHA256SUMS 核验。逐文件重建、检查点重载和相机精度的验收范围记录在相应专题的 validation 文件。不同历史系列使用的原始输入、单位和环境版本各见其固定标签。
+已知编号和宿主时，使用 `locate 编号 --route 路线名` 可同时定位重建与迁入的具体操作章节。未登记的组合会列出该编号已支持的路线。全仓索引检查覆盖每个编号、重建系列和迁入入口及其章节。109 件历史生成图资产另从归档 RGB、标注与深度拟合重建，两批共 218 个 GLB、PLY 可直接对照历史指纹。[从完整输入到逐件验收](13-reproduce-and-transfer.md#重建-109-件生成-rgb-资产)。已登录 GitHub CLI 的环境可再运行 `python3 scripts/check-reproduction-index.py --release-links`，逐个核对指南中的 Release 与下载文件名。附件内容用各个版本的 SHA256SUMS 核验。逐文件重建、检查点重载和相机精度的验收范围记录在相应专题的 validation 文件。不同历史系列使用的原始输入、单位和环境版本各见其固定标签。
 
 双联井盖及其整块占地检查、鱼眼边缘可见性、独立前景量程接入见[双联检查井与跨场景迁入](18-twin-hatch-transfer.md)。固定代码标签为 `twin-hatch-v1.0.0`。
 

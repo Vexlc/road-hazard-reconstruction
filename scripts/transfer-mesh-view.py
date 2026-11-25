@@ -24,7 +24,9 @@ def main():
     cube.add_argument("faces", type=Path)
     cube.add_argument("lens", type=Path)
     cube.add_argument("out", type=Path)
-    stereo = tasks.add_parser("from-stereo", help="Triangulate matched pixels from two registered ray fields or fisheye calibrations")
+    stereo = tasks.add_parser(
+        "from-stereo", help="Triangulate matched pixels from two registered ray fields or fisheye calibrations"
+    )
     stereo.add_argument("primary", type=Path)
     stereo.add_argument("secondary", type=Path)
     stereo.add_argument("matches", type=Path, help="NPZ with right_xy, match_valid and optional reverse left_xy")
@@ -126,10 +128,14 @@ def main():
     if args.task == "from-stereo":
         from host_stereo import triangulate
 
-        with np.load(args.primary, allow_pickle=False) as left, np.load(args.secondary, allow_pickle=False) as right, np.load(args.matches, allow_pickle=False) as matches:
-            packet = triangulate(left, right, matches, args.primary_calibration, args.secondary_calibration,
-                                 min_parallax_deg=args.min_parallax_deg, max_ray_gap_m=args.max_ray_gap_m,
-                                 max_cycle_px=args.max_cycle_px)
+        with np.load(args.primary, allow_pickle=False) as left, np.load(args.secondary, allow_pickle=False) as right:
+            with np.load(args.matches, allow_pickle=False) as matches:
+                packet = triangulate(
+                    left, right, matches, args.primary_calibration, args.secondary_calibration,
+                    min_parallax_deg=args.min_parallax_deg,
+                    max_ray_gap_m=args.max_ray_gap_m,
+                    max_cycle_px=args.max_cycle_px,
+                )
     if args.task == "from-position":
         from host_position import register_positions
 
