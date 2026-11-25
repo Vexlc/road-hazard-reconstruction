@@ -1,0 +1,62 @@
+{
+  "sun_world": [
+    0.8747505099993635,
+    -0.0475403032425195,
+    0.4822359016326582
+  ],
+  "direction_observations": "gen2hole/examples/roadside-props/kitti-sun-observations.json",
+  "sensors": {
+    "image_00": {
+      "source_frame": 217,
+      "source_sha256": "49cfb6cc159b6c1e45890bb8e39c3042c7597c4076b048544401d8b528c0a889",
+      "lit_xyxy": [
+        696,
+        354,
+        705,
+        363
+      ],
+      "lit_srgb": [
+        232,
+        232,
+        221
+      ],
+      "shade_xyxy": [
+        643,
+        321,
+        652,
+        330
+      ],
+      "shade_srgb": [
+        82,
+        90,
+        95
+      ]
+    },
+    "image_03": {
+      "source_frame": 228,
+      "source_sha256": "fc63cf1f3c9fab39ffa8a0bcb5294d11d9f7568769eadfa1d190b88c2123fca1",
+      "lit_xyxy": [
+        386,
+        1103,
+        395,
+        1112
+      ],
+      "lit_srgb": [
+        150,
+        147,
+        132
+      ],
+      "shade_xyxy": [
+        583,
+        1076,
+        592,
+        1085
+      ],
+      "shade_srgb": [
+        40,
+        42,
+        46
+      ]
+    }
+  }
+}

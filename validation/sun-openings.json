@@ -1,0 +1,583 @@
+{
+  "assets": {
+    "P276": {
+      "hashes": {
+        "asset.ply": "12523091c1b149c29e175a166fcd0956105fd9da91a90037be13933efd681098",
+        "metadata.json": "484489d8fb93a9695fade3901c218794009d39c1467b0c254903625a66d4bb63",
+        "splat_material.npz": "1e0835a3324b2ff95debbb1af01808d96920b096ace6600e043f34295cb3da20",
+        "surface.npz": "173ba14e29dbb30b0ce7e9b1e829a4e19f4a11ff7ec074be84d9e8d7c31c57f0",
+        "asset.glb": "9ecbc59bfb7b62b4af9f9fcd38569e3fc0443472f1a8e5cc034e149fb2407f0d"
+      },
+      "area_m2": 1.1727077028922475,
+      "extent_m": [
+        1.4600417613983154,
+        1.0146620273590088
+      ],
+      "depth_p95_m": 0.08466021016253913,
+      "holdout": {
+        "glb_sha256": "9ecbc59bfb7b62b4af9f9fcd38569e3fc0443472f1a8e5cc034e149fb2407f0d",
+        "source": "PothRGBD",
+        "fit": [
+          "20250227_185200"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 11887,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 94936,
+        "withheld_mesh": {
+          "samples": 11887,
+          "median_mm": 0.67901611328125,
+          "p95_mm": 2.2124528884887678
+        },
+        "withheld_road_plane": {
+          "samples": 11887,
+          "median_mm": 63.979297210595035,
+          "p95_mm": 93.56599241178984
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      }
+    },
+    "P278": {
+      "hashes": {
+        "asset.ply": "90ea9d3ccb4f6d3bd75f10f3c0aede44f1518751b66d1cb889abf7b1681e9a89",
+        "metadata.json": "fa711c316c98374a5f72f01ebf18d9602da24cc5ef91d821f657fe25a55c4b32",
+        "splat_material.npz": "249ca05175be325955a4c8c370aa5fc0797bd64466b60bc6d451dcc0f5f5e092",
+        "surface.npz": "9ce6d469c035c21c0534dab8ef773f5da538dfdf1d670f770dc116216576b8d7",
+        "asset.glb": "0523b316326e2e725509940cea0d344040c3fa3b16ac93cc3dbab03d29be406d"
+      },
+      "area_m2": 1.173570294481762,
+      "extent_m": [
+        1.318034291267395,
+        1.124769687652588
+      ],
+      "depth_p95_m": 0.06396684866300247,
+      "holdout": {
+        "glb_sha256": "0523b316326e2e725509940cea0d344040c3fa3b16ac93cc3dbab03d29be406d",
+        "source": "PothRGBD",
+        "fit": [
+          "20250227_173336"
+        ],
+        "holdout_type": "same_capture_depth_blocks",
+        "reserved_pit_pixels": 10746,
+        "meshed_fraction": 1.0,
+        "fitted_valid_pit_pixels": 86168,
+        "withheld_mesh": {
+          "samples": 10746,
+          "median_mm": 0.6474852561950684,
+          "p95_mm": 2.947568893432617
+        },
+        "withheld_road_plane": {
+          "samples": 10746,
+          "median_mm": 36.96701855713069,
+          "p95_mm": 80.33186567202638
+        },
+        "region_results": {},
+        "comparison_meshes": {},
+        "fit_rebuilt_without_reserved_ranges": true
+      }
+    },
+    "M277": {
+      "hashes": {
+        "asset.ply": "61a794dc04eb77b5da3c507f35038e5ff771f143bd755c990f6afd13cdf5a1b1",
+        "metadata.json": "f2f38206679c2ca662888d4f54ef2b2ce458d45a2aa25b3b5431c7496971a260",
+        "splat_material.npz": "fe62fb099594227341a481ce0e4fd399c68e380caebb34f81421d803f6a92e5d",
+        "surface.npz": "1de60c772bef952d42234777100a2f9725b93ecd4e66183477b620d48be84476",
+        "asset.glb": "1d48889b469ef42f1baf19e76f96ef3bb7431b64b9aaf350ccd3ad5136074d35"
+      },
+      "width_m": 0.596,
+      "panel_size_m": [
+        0.62,
+        0.62
+      ],
+      "depth_design_m": 0.54,
+      "through_holes": 0,
+      "highest_z_m": 0.001500000013038516,
+      "lowest_z_m": -0.5400000214576721
+    },
+    "A277": {
+      "hashes": {
+        "asset.ply": "f302100d014ef33c033fec0300956a49aa641c5badf56c424933708501e078f5",
+        "metadata.json": "f21c1faca9e8d0807c0a7a27e0cc7bdcc385976fc3bbaf6b826306a205946087",
+        "splat_material.npz": "46bc93d96327cb59f517660bd557b9ed0d4587d301534d78cc4510974d688bde",
+        "surface.npz": "b90dbedf457785255ccf12103068a9207e0a6140962a8c89055bf9769c20a7e6",
+        "asset.glb": "2d85b3dd87b018d373a79c6f2ab8b846c6ffffbaf99e63c1f51a0a90c8668dbb"
+      },
+      "width_m": 0.596,
+      "panel_size_m": [
+        0.62,
+        0.62
+      ],
+      "depth_design_m": 0.54,
+      "through_holes": 14,
+      "highest_z_m": 0.032500188797712326,
+      "lowest_z_m": -0.5400000214576721
+    }
+  },
+  "source_host_sha256": "0a1ed5554d10ee6948ad0ef4920b7a64e33c7005b39baba2aaafde441f86d0a8",
+  "native": {
+    "P276-A277": {
+      "checkpoint_sha256": "36a3ea080c5cad8697104801f8770d994f8cce490a41a05330711bf04073150e",
+      "native": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 2664,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 216907,
+          "max_baseline_error": 0
+        }
+      },
+      "local": {
+        "support_m": 0.18,
+        "views": {
+          "front": {
+            "frames": 48,
+            "raw_outside_changes": 14219,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 5579,
+            "max_interior_error": 0
+          },
+          "rear": {
+            "frames": 48,
+            "raw_outside_changes": 803681,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 308806,
+            "max_interior_error": 0
+          }
+        }
+      }
+    },
+    "P278-M277": {
+      "checkpoint_sha256": "016ff7c939275e63d3080316eee7abb5a4735e88c98c2f39c9bf7b0540348785",
+      "native": {
+        "front": {
+          "frames": 48,
+          "peak_changed_pixels": 2623,
+          "max_baseline_error": 0
+        },
+        "rear": {
+          "frames": 48,
+          "peak_changed_pixels": 214925,
+          "max_baseline_error": 0
+        }
+      },
+      "local": {
+        "support_m": 0.18,
+        "views": {
+          "front": {
+            "frames": 48,
+            "raw_outside_changes": 11964,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 5497,
+            "max_interior_error": 0
+          },
+          "rear": {
+            "frames": 48,
+            "raw_outside_changes": 813415,
+            "localized_outside_changes": 0,
+            "preserved_interior_changes": 286550,
+            "max_interior_error": 0
+          }
+        }
+      }
+    }
+  },
+  "real": {
+    "P276-A277/audi/front_left": {
+      "frame": 1505,
+      "calibration": "calibration.json",
+      "frame_count_both": 8,
+      "unclipped": true,
+      "pixels": {
+        "pit": 4802,
+        "well": 4341
+      },
+      "original_packet_bytes": 19507092,
+      "compact_packet_bytes": 964187,
+      "sha256": {
+        "after.png": "02e13cf0c348fbebbb94aa3a581ba1e7e81d2641680cf585edb2a5b9fdd34be4",
+        "part.png": "4db54e7b38249015a86126f36ee07f409c597dc4017e35b2120a936220d8a95c",
+        "instance.png": "34102609ebb078d31e12b5a3b86ff5655136bced930402b7ed097b16aa59a3c3",
+        "range.npy": "d3d6ccd1f7f8bc5b67618ebc7133d38c828fdd3f4d13e20ec8a3d8a8aedcbacc"
+      }
+    },
+    "P276-A277/audi/rear_center": {
+      "frame": 1520,
+      "calibration": "calibration.json",
+      "frame_count_both": 19,
+      "unclipped": true,
+      "pixels": {
+        "pit": 12730,
+        "well": 2135
+      },
+      "original_packet_bytes": 20488833,
+      "compact_packet_bytes": 1051622,
+      "sha256": {
+        "after.png": "2937413631bcd595a2f83ee6ed0a73456aaa425e13079d0dfb62e65571bc4e78",
+        "part.png": "0ada9936f805079d419ba58dd42a19c06e7a18ec3a9dd831ddd2d6b6529e6a29",
+        "instance.png": "14fe46619d0f9768c23d54822f6607422776d112a91dbb3f21545815d95a780f",
+        "range.npy": "95237660185372127597f684352fcf76f69c9ca83970246aafc07e322cef06c8"
+      }
+    },
+    "P276-A277/kitti/image_00": {
+      "frame": 217,
+      "calibration": "calibration.json",
+      "frame_count_both": 11,
+      "unclipped": true,
+      "pixels": {
+        "pit": 1830,
+        "well": 1676
+      },
+      "original_packet_bytes": 5047354,
+      "compact_packet_bytes": 281562,
+      "sha256": {
+        "after.png": "42e8112d923e0def41996d9d3d398c86028fd96e9138795910a5accb2967af2d",
+        "part.png": "4a8dac565c8a5f5acd98ac0ac4eda4c25ed4f6161a08547a5a62f2bc9231ce86",
+        "instance.png": "b15e7a6a766d7ab6acab9d12534fab8dff8ea6703f565aba7fbb6c677bf36a78",
+        "range.npy": "1b78af10680fc1e249f8a1f97e10cb5aeaa9fa6eff2c74fd9a06cf26872c4ab0"
+      }
+    },
+    "P276-A277/kitti/image_03": {
+      "frame": 228,
+      "calibration": "calibration.yaml",
+      "frame_count_both": 6,
+      "unclipped": false,
+      "pixels": {
+        "pit": 11246,
+        "well": 6800
+      },
+      "original_packet_bytes": 38787022,
+      "compact_packet_bytes": 2134688,
+      "sha256": {
+        "after.png": "0498f421ed885496b7bf2354616789f7b7ffeff309efae3590f7c41c3c74b44a",
+        "part.png": "a9e63b947a48aa72f6bc4a8a3ce19b1a909891a29eed6aa1d0a02ac5d6b31f4e",
+        "instance.png": "b2b199e0159bc31c4c98b0d035f5ffb34f9de2c0a174d2ebe3f16ca9c46aa311",
+        "range.npy": "2d420e8fff2095480140504620512e7e0f797c5e33d8bdd950710871cc11bbf7"
+      }
+    },
+    "P278-M277/audi/front_left": {
+      "frame": 1505,
+      "calibration": "calibration.json",
+      "frame_count_both": 8,
+      "unclipped": true,
+      "pixels": {
+        "pit": 4730,
+        "well": 3580
+      },
+      "original_packet_bytes": 19507922,
+      "compact_packet_bytes": 965017,
+      "sha256": {
+        "after.png": "d5dde51ded16b5a84f055cadc3fbb15c70d90c56a2b5b60e820b3627330966c4",
+        "part.png": "02cc6ba7974cb2e5ac9e275effd9a10fed768d8fcdc941f9e7f8aaff8fae0dfe",
+        "instance.png": "539bb9cd5133f88e26f0eb9e805132e29aa8378f1c9639dbe65ba249321b69c7",
+        "range.npy": "c7b4be27b4ad6f634b4c5f5958db29198712849f5de21caf04efe993c63904cd"
+      }
+    },
+    "P278-M277/audi/rear_center": {
+      "frame": 1519,
+      "calibration": "calibration.json",
+      "frame_count_both": 19,
+      "unclipped": true,
+      "pixels": {
+        "pit": 15836,
+        "well": 2325
+      },
+      "original_packet_bytes": 21411761,
+      "compact_packet_bytes": 1095943,
+      "sha256": {
+        "after.png": "bb0a202080bbf54119dd049586682986c3afea1b699c9ec6381dc2b7205b293e",
+        "part.png": "4f5f9a7b0414110ba9049959847b5336ae46f1515cc49da97a9d105dc48e0cab",
+        "instance.png": "6b436e5e6a611465d1eb9f9a3dd7487b73bd3efc3226b133dd312bcd611f265b",
+        "range.npy": "78e456dd3aaaf4af7f08bddfbf31c38637404666d8cd362ee267b5f5a775197c"
+      }
+    },
+    "P278-M277/kitti/image_00": {
+      "frame": 217,
+      "calibration": "calibration.json",
+      "frame_count_both": 11,
+      "unclipped": true,
+      "pixels": {
+        "pit": 1855,
+        "well": 1418
+      },
+      "original_packet_bytes": 5047418,
+      "compact_packet_bytes": 281626,
+      "sha256": {
+        "after.png": "669b95b1c6e8aacea51992695f4f30e87ea144cdc53287c47887275dda899ee9",
+        "part.png": "269d4194ecf2c632c575811145fcfad706d6972d3b41882a0963849676822cc3",
+        "instance.png": "3b14f42d4bf0f12e67c022599657f69e1f7660d75b4e2388922599424e908e7d",
+        "range.npy": "8fef5594d0f7ccba3eb1d1acfb9f9008e7b5def154beb3b4729d430e893f48d2"
+      }
+    },
+    "P278-M277/kitti/image_03": {
+      "frame": 228,
+      "calibration": "calibration.yaml",
+      "frame_count_both": 6,
+      "unclipped": false,
+      "pixels": {
+        "pit": 14033,
+        "well": 6204
+      },
+      "original_packet_bytes": 35887856,
+      "compact_packet_bytes": 1927303,
+      "sha256": {
+        "after.png": "e2f59c2ab149b650b1364b55b9bb6738dad8bbfdd2d9379638be48df37003463",
+        "part.png": "6fadb7100ab8e88c53fe5b7784f3c5540d87f2d398b7789827c48ec85eca9bbd",
+        "instance.png": "45e73a0e22225f017ba367634156a1e4e3ec106af1e2ce8d2de45dc02d291647",
+        "range.npy": "4c296474a6e71151321aa7ee81dc762d22dd380fe3273660d72da8acd5e30f84"
+      }
+    }
+  },
+  "products": {
+    "P276-A277/audi/front_left": {
+      "after.png": "02e13cf0c348fbebbb94aa3a581ba1e7e81d2641680cf585edb2a5b9fdd34be4",
+      "part.png": "4db54e7b38249015a86126f36ee07f409c597dc4017e35b2120a936220d8a95c",
+      "instance.png": "34102609ebb078d31e12b5a3b86ff5655136bced930402b7ed097b16aa59a3c3",
+      "range.npy": "d3d6ccd1f7f8bc5b67618ebc7133d38c828fdd3f4d13e20ec8a3d8a8aedcbacc"
+    },
+    "P276-A277/audi/rear_center": {
+      "after.png": "2937413631bcd595a2f83ee6ed0a73456aaa425e13079d0dfb62e65571bc4e78",
+      "part.png": "0ada9936f805079d419ba58dd42a19c06e7a18ec3a9dd831ddd2d6b6529e6a29",
+      "instance.png": "14fe46619d0f9768c23d54822f6607422776d112a91dbb3f21545815d95a780f",
+      "range.npy": "95237660185372127597f684352fcf76f69c9ca83970246aafc07e322cef06c8"
+    },
+    "P276-A277/kitti/image_00": {
+      "after.png": "42e8112d923e0def41996d9d3d398c86028fd96e9138795910a5accb2967af2d",
+      "part.png": "4a8dac565c8a5f5acd98ac0ac4eda4c25ed4f6161a08547a5a62f2bc9231ce86",
+      "instance.png": "b15e7a6a766d7ab6acab9d12534fab8dff8ea6703f565aba7fbb6c677bf36a78",
+      "range.npy": "1b78af10680fc1e249f8a1f97e10cb5aeaa9fa6eff2c74fd9a06cf26872c4ab0"
+    },
+    "P276-A277/kitti/image_03": {
+      "after.png": "0498f421ed885496b7bf2354616789f7b7ffeff309efae3590f7c41c3c74b44a",
+      "part.png": "a9e63b947a48aa72f6bc4a8a3ce19b1a909891a29eed6aa1d0a02ac5d6b31f4e",
+      "instance.png": "b2b199e0159bc31c4c98b0d035f5ffb34f9de2c0a174d2ebe3f16ca9c46aa311",
+      "range.npy": "2d420e8fff2095480140504620512e7e0f797c5e33d8bdd950710871cc11bbf7"
+    },
+    "P278-M277/audi/front_left": {
+      "after.png": "d5dde51ded16b5a84f055cadc3fbb15c70d90c56a2b5b60e820b3627330966c4",
+      "part.png": "02cc6ba7974cb2e5ac9e275effd9a10fed768d8fcdc941f9e7f8aaff8fae0dfe",
+      "instance.png": "539bb9cd5133f88e26f0eb9e805132e29aa8378f1c9639dbe65ba249321b69c7",
+      "range.npy": "c7b4be27b4ad6f634b4c5f5958db29198712849f5de21caf04efe993c63904cd"
+    },
+    "P278-M277/audi/rear_center": {
+      "after.png": "bb0a202080bbf54119dd049586682986c3afea1b699c9ec6381dc2b7205b293e",
+      "part.png": "4f5f9a7b0414110ba9049959847b5336ae46f1515cc49da97a9d105dc48e0cab",
+      "instance.png": "6b436e5e6a611465d1eb9f9a3dd7487b73bd3efc3226b133dd312bcd611f265b",
+      "range.npy": "78e456dd3aaaf4af7f08bddfbf31c38637404666d8cd362ee267b5f5a775197c"
+    },
+    "P278-M277/kitti/image_00": {
+      "after.png": "669b95b1c6e8aacea51992695f4f30e87ea144cdc53287c47887275dda899ee9",
+      "part.png": "269d4194ecf2c632c575811145fcfad706d6972d3b41882a0963849676822cc3",
+      "instance.png": "3b14f42d4bf0f12e67c022599657f69e1f7660d75b4e2388922599424e908e7d",
+      "range.npy": "8fef5594d0f7ccba3eb1d1acfb9f9008e7b5def154beb3b4729d430e893f48d2"
+    },
+    "P278-M277/kitti/image_03": {
+      "after.png": "e2f59c2ab149b650b1364b55b9bb6738dad8bbfdd2d9379638be48df37003463",
+      "part.png": "6fadb7100ab8e88c53fe5b7784f3c5540d87f2d398b7789827c48ec85eca9bbd",
+      "instance.png": "45e73a0e22225f017ba367634156a1e4e3ec106af1e2ce8d2de45dc02d291647",
+      "range.npy": "4c296474a6e71151321aa7ee81dc762d22dd380fe3273660d72da8acd5e30f84"
+    }
+  },
+  "sunlight": {
+    "P276-A277/audi/front_left": {
+      "edited_outside_instances": 0,
+      "edited_fully_protected": 0,
+      "foreground_and_depth_match_reference": true,
+      "visible_pixels": {
+        "pit": 4802,
+        "well": 4341
+      },
+      "fully_protected_pixels": 153610
+    },
+    "P276-A277/audi/rear_center": {
+      "edited_outside_instances": 0,
+      "edited_fully_protected": 0,
+      "foreground_and_depth_match_reference": true,
+      "visible_pixels": {
+        "pit": 12730,
+        "well": 2135
+      },
+      "fully_protected_pixels": 118661
+    },
+    "P276-A277/kitti/image_00": {
+      "edited_outside_instances": 0,
+      "edited_fully_protected": 0,
+      "foreground_and_depth_match_reference": true,
+      "visible_pixels": {
+        "pit": 1830,
+        "well": 1676
+      },
+      "fully_protected_pixels": 0,
+      "survey": {
+        "pit": {
+          "cells": 5833,
+          "heldout_cells": 1171,
+          "constant_mae": 0.09954478158130382,
+          "spatial_mae": 0.02231373728257448
+        },
+        "well": {
+          "cells": 3494,
+          "heldout_cells": 707,
+          "constant_mae": 0.11265615718720998,
+          "spatial_mae": 0.02594077104139242
+        }
+      }
+    },
+    "P276-A277/kitti/image_03": {
+      "edited_outside_instances": 0,
+      "edited_fully_protected": 0,
+      "foreground_and_depth_match_reference": true,
+      "visible_pixels": {
+        "pit": 11246,
+        "well": 6800
+      },
+      "fully_protected_pixels": 453980,
+      "survey": {
+        "pit": {
+          "cells": 3163,
+          "heldout_cells": 633,
+          "constant_mae": 0.061667397512717666,
+          "spatial_mae": 0.01912764923471614
+        },
+        "well": {
+          "cells": 2580,
+          "heldout_cells": 517,
+          "constant_mae": 0.06742666301375383,
+          "spatial_mae": 0.01838443313223849
+        }
+      }
+    },
+    "P278-M277/audi/front_left": {
+      "edited_outside_instances": 0,
+      "edited_fully_protected": 0,
+      "foreground_and_depth_match_reference": true,
+      "visible_pixels": {
+        "pit": 4730,
+        "well": 3580
+      },
+      "fully_protected_pixels": 153610
+    },
+    "P278-M277/audi/rear_center": {
+      "edited_outside_instances": 0,
+      "edited_fully_protected": 0,
+      "foreground_and_depth_match_reference": true,
+      "visible_pixels": {
+        "pit": 15836,
+        "well": 2325
+      },
+      "fully_protected_pixels": 123718
+    },
+    "P278-M277/kitti/image_00": {
+      "edited_outside_instances": 0,
+      "edited_fully_protected": 0,
+      "foreground_and_depth_match_reference": true,
+      "visible_pixels": {
+        "pit": 1855,
+        "well": 1418
+      },
+      "fully_protected_pixels": 0,
+      "survey": {
+        "pit": {
+          "cells": 5381,
+          "heldout_cells": 1077,
+          "constant_mae": 0.10670576761336986,
+          "spatial_mae": 0.022889314785760707
+        },
+        "well": {
+          "cells": 3494,
+          "heldout_cells": 705,
+          "constant_mae": 0.11217367552425786,
+          "spatial_mae": 0.026593782579385314
+        }
+      }
+    },
+    "P278-M277/kitti/image_03": {
+      "edited_outside_instances": 0,
+      "edited_fully_protected": 0,
+      "foreground_and_depth_match_reference": true,
+      "visible_pixels": {
+        "pit": 14033,
+        "well": 6204
+      },
+      "fully_protected_pixels": 426068,
+      "survey": {
+        "pit": {
+          "cells": 2928,
+          "heldout_cells": 585,
+          "constant_mae": 0.06352274782424129,
+          "spatial_mae": 0.018509592485527526
+        },
+        "well": {
+          "cells": 2575,
+          "heldout_cells": 517,
+          "constant_mae": 0.06717120659628542,
+          "spatial_mae": 0.018284467325047998
+        }
+      }
+    }
+  },
+  "independent": {
+    "A277-high": {
+      "samples": 3062,
+      "below_grade": 682,
+      "directly_lit": 1714,
+      "shadowed_by_opening": 483,
+      "canopy_shaded": 826,
+      "channel_error_p99": 2.0,
+      "max_channel_error": 2.0,
+      "fraction_within_two_levels": 1.0
+    },
+    "A277-low": {
+      "samples": 4087,
+      "below_grade": 1908,
+      "directly_lit": 1029,
+      "shadowed_by_opening": 1612,
+      "canopy_shaded": 1223,
+      "channel_error_p99": 2.0,
+      "max_channel_error": 2.0,
+      "fraction_within_two_levels": 1.0
+    },
+    "M277-high": {
+      "samples": 5987,
+      "below_grade": 4992,
+      "directly_lit": 1789,
+      "shadowed_by_opening": 1664,
+      "canopy_shaded": 649,
+      "channel_error_p99": 1.0,
+      "max_channel_error": 2.0,
+      "fraction_within_two_levels": 1.0
+    },
+    "M277-low": {
+      "samples": 8570,
+      "below_grade": 7566,
+      "directly_lit": 480,
+      "shadowed_by_opening": 5285,
+      "canopy_shaded": 584,
+      "channel_error_p99": 0.0,
+      "max_channel_error": 3.0,
+      "fraction_within_two_levels": 0.9998833138856477
+    }
+  },
+  "videos": {
+    "audi-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 9.6
+    },
+    "kitti-front-side.mp4": {
+      "frames": 84,
+      "seconds": 8.4
+    },
+    "joint-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    },
+    "joint-local-front-rear.mp4": {
+      "frames": 96,
+      "seconds": 16.0
+    }
+  }
+}

@@ -1,5 +1,9 @@
 # 代码发布与复现验证状态
 
+历史生成图两批共 109 件，干净目录从归档输入构建后，218 个 GLB、PLY 均与原发布指纹一致。可运行 `python3 gen2hole/gen2hole.py audit --rebuilt runs/all-generated` 直接复查文件。[逐件哈希](../validation/generated-rgb-replay.json) · [重建命令](13-reproduce-and-transfer.md#重建-109-件生成-rgb-资产)
+
+两组混合资产用 8 份实拍曝光检查 RGB、实例、部件和径向距离。独立 Blender 几何对照另检查 21,706 个井内外表面样点的直接光。[新资产与迁入验收](34-sun-openings.md) · [逐机位记录](../validation/sun-openings.json)
+
 本次发布核心重建、场景迁入、全部可视化源码及其说明。源码清单、语法、本地模块引用和统一视频执行顺序已检查；模型与视频不进入 Git。Google Drive 的 45 个包、17.54 GB 已全部上传，并完成云端大小与可用哈希核对，详见存储计划。
 
 最新源码检出的资产覆盖与验证命令见[全仓手册](16-reproduction-cookbook.md)。20 个常见大坑的输入与原生输出核对记录在[双坑合集验收](../validation/reproduction-2026-11-25.json)，P250/P251 的留出深度、检查点、真实前后视和重采样机位记录在[双坑与相机验收](../validation/remapped-pits.json)。四件散落货物另有原始层级顶点、逐件接地、实拍前后视、独立 Cycles 对照和重载检查点记录。[散落货物验证](../validation/lost-cargo.json)

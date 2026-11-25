@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P278",
+    "label": "露出浅色集料的椭圆坑",
+    "source": "PothRGBD",
+    "anchor": "20250227_173336",
+    "fit": [
+      "20250227_173336"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

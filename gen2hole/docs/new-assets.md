@@ -48,7 +48,7 @@ python gen2hole.py build --inputs experiments/batch-38 P38 M38 A38 --mesh-only -
 | 侧铰或移位圆盖 | `ellipse` 为盖面投影的 `[cx,cy,rx,ry]`，侧铰可另标 `bow_x`。 |
 | 上翻方盖 | `quad` 按左上、右上、右下、左下给出盖板四个对应点。保留与铰边的方向关系，才能区分过竖直姿态。 |
 
-已有的 A13 给出了同一件侧铰盖的设计、标记、最终拟合与实物尺度。新主图需要按自身像素位置修订。[A13 原图](../inputs/series/references/A13.png) · [发布批的逐件修订](../inputs/series/calibration/overrides.json) · [A13 最终拟合](../inputs/series/calibration/A13_fit.json)
+已有的 A13 给出了同一件侧铰盖的设计、标记、最终拟合与实物尺度。新主图需要按自身像素位置修订。原图在恢复后的 `gen2hole/inputs/series/references/A13.png`。[原图获取与校验](../../docs/13-reproduce-and-transfer.md#重建-109-件生成-rgb-资产) · [发布批的逐件修订](../inputs/series/calibration/overrides.json) · [A13 最终拟合](../inputs/series/calibration/A13_fit.json)
 
 ## 4. 导出、核验和迁入
 

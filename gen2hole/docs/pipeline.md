@@ -1,6 +1,8 @@
 # 生成参考图到米制资产
 
-三维重建的观测量来自生成图，包括破损轮廓、井口内外边界、盖板投影以及可见纹理。整幅图覆盖多少米、坑洞尺度、井深、盖厚和不可见结构来自设计配方。车载相机和 LiDAR 实测的是置入病害以前的道路。三类信息分别保存在校准、资产元数据和场景记录中。[资产清单](../catalog/assets.json) · [PandaSet 034 放置记录](../runs/demo/series/scenes/034_13/scene.json)
+下文的原图相对 `gen2hole/`，可通过 109 件输入包恢复。以 `runs/demo/` 或 `published/` 开头的历史结果路径可在样例记录包中查找，解压后在包根目录运行 `sha256sum -c SHA256SUMS`。整套历史场景和浏览页见恢复指南。[建模输入与命令](../../docs/13-reproduce-and-transfer.md#重建-109-件生成-rgb-资产) · [样例记录与视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/generated-demo-records.zip) · [完整离线浏览页恢复](../../docs/01-downloads.md#恢复旧版离线浏览页)
+
+三维重建的观测量来自生成图，包括破损轮廓、井口内外边界、盖板投影以及可见纹理。整幅图覆盖多少米、坑洞尺度、井深、盖厚和不可见结构来自设计配方。车载相机和 LiDAR 实测的是置入病害以前的道路。三类信息分别保存在校准、资产元数据和场景记录中。[资产清单](../catalog/assets.json) · PandaSet 034 放置记录 `runs/demo/series/scenes/034_13/scene.json`
 
 ~~~mermaid
 flowchart TD
@@ -37,15 +39,15 @@ flowchart TD
 
 ### 坑洞 P
 
-Depth Anything V2 Small 对原图及其水平翻转分别推理，在 518 和 770 两个分辨率上估计相对逆深度，以 0.45 和 0.55 加权。坑外完好路面约束一个二次趋势面。移除此趋势后，在轮廓内按设计深度缩放，结合到坑沿的距离和纹理细节生成高程。陡壁使用单独展开的截面纹理。可见积水有独立的平面几何与低粗糙度材质。以 P23 为例，整张图设为 1.423 m，拟合出的坑口约 1.129 × 0.845 m，设计深 0.131 m，成品最低点为 −0.137 m。[P23 设计与拟合](../inputs/series/calibration/P23_fit.json) · [P23 成品元数据](../published/道路病害图生三维_新增100/assets/pothole/P23/metadata.json)
+Depth Anything V2 Small 对原图及其水平翻转分别推理，在 518 和 770 两个分辨率上估计相对逆深度，以 0.45 和 0.55 加权。坑外完好路面约束一个二次趋势面。移除此趋势后，在轮廓内按设计深度缩放，结合到坑沿的距离和纹理细节生成高程。陡壁使用单独展开的截面纹理。可见积水有独立的平面几何与低粗糙度材质。以 P23 为例，整张图设为 1.423 m，拟合出的坑口约 1.129 × 0.845 m，设计深 0.131 m，成品最低点为 −0.137 m。[P23 设计与拟合](../inputs/series/calibration/P23_fit.json) · P23 成品元数据 `published/道路病害图生三维_新增100/assets/pothole/P23/metadata.json`
 
 ### 缺盖井 M
 
-图像给出内外框像素位置，设计的外框宽长把像素换算成米。沿轮廓生成井框、承口、向下的井壁和井底，分别映射井圈、衬壁及沉积物纹理。模型的 `width_m/length_m` 描述净开口，`frame_width_m/frame_length_m` 描述外框，切口文件的 `width/length` 则覆盖带过渡带的整个局部地块。以 M13 为例，外框为 0.918 × 0.918 m，净开口为 0.783 × 0.774 m，设计井深为 0.971 m。[M13 原图](../inputs/series/references/M13.png) · [M13 元数据](../runs/demo/series/assets/missing/M13/metadata.json)
+图像给出内外框像素位置，设计的外框宽长把像素换算成米。沿轮廓生成井框、承口、向下的井壁和井底，分别映射井圈、衬壁及沉积物纹理。模型的 `width_m/length_m` 描述净开口，`frame_width_m/frame_length_m` 描述外框，切口文件的 `width/length` 则覆盖带过渡带的整个局部地块。以 M13 为例，外框为 0.918 × 0.918 m，净开口为 0.783 × 0.774 m，设计井深为 0.971 m。M13 原图 `inputs/series/references/M13.png` · M13 元数据 `runs/demo/series/assets/missing/M13/metadata.json`
 
 ### 异常井盖 A
 
-侧铰圆盖结合椭圆投影、井框尺度和铰点估算倾角。方盖用四角相对于铰边的有向投影恢复姿态。脱座盖用盖心与开口中心的水平偏移定位。盖面、背面、边缘、厚度与适用的铰链均有实体。A13 的提示词要求约 55°，按实际生成图拟合后是 **74.23°**。其盖厚 0.027 m、井深 1.03 m 采用设计值，遮挡内壁使用 M13 参考图。[A13 图像标记](../inputs/series/calibration/A13_fit.json) · [A13 元数据](../runs/demo/series/assets/raised/A13/metadata.json) · [反向几何视图](../runs/demo/series/views/A13_reverse.jpg)
+侧铰圆盖结合椭圆投影、井框尺度和铰点估算倾角。方盖用四角相对于铰边的有向投影恢复姿态。脱座盖用盖心与开口中心的水平偏移定位。盖面、背面、边缘、厚度与适用的铰链均有实体。A13 的提示词要求约 55°，按实际生成图拟合后是 **74.23°**。其盖厚 0.027 m、井深 1.03 m 采用设计值，遮挡内壁使用 M13 参考图。[A13 图像标记](../inputs/series/calibration/A13_fit.json) · A13 元数据 `runs/demo/series/assets/raised/A13/metadata.json` · 反向几何视图 `runs/demo/series/views/A13_reverse.jpg`
 
 ### 外观与 3DGS
 
@@ -61,16 +63,16 @@ Depth Anything V2 Small 对原图及其水平翻转分别推理，在 518 和 77
 | `surface.npz` | `width/length/height` 单位米，`alpha` 为融合权重，`defect_mask` 为病害区域。井类有 `opening_mask`，坑洞有 `water_mask`。行从 +Y 到 −Y，列从 −X 到 +X。 |
 | `metadata.json` | ID、类别、源图 SHA-256、设计深度与网格实际高低点、部件三角形数、高斯数及坐标约定。`assets/asset_manifest.json` 给出本次构建的相对路径。 |
 
-资产原点在病害或井口中心的局部路面，Z = 0。行向量按 `world = local @ basis_columns.T + center_world` 变换。将资产从 GLB 引擎坐标转换回此局部坐标时使用 `(x, −z, y)`。宿主路面要按切口挖空，否则井下几何会被原路面遮住。高度场保存每个平面位置的单个值，井口上方的盖板及下方井腔通过 GLB 的多层表面查询。[坐标与逐次放置基底](../runs/demo/series/scenes/034_13/scene.json)
+资产原点在病害或井口中心的局部路面，Z = 0。行向量按 `world = local @ basis_columns.T + center_world` 变换。将资产从 GLB 引擎坐标转换回此局部坐标时使用 `(x, −z, y)`。宿主路面要按切口挖空，否则井下几何会被原路面遮住。高度场保存每个平面位置的单个值，井口上方的盖板及下方井腔通过 GLB 的多层表面查询。坐标与逐次放置基底 `runs/demo/series/scenes/034_13/scene.json`
 
 ## 道路和传感器
 
-原交付的三条 PandaSet 路段为 034、109、110。每个资产各放三次，109 件合计 327 次放置、111 个组合案例。01–35 组各包含同号的 P/M/A 三件，36 组用 P36 与 M36，37 组用 P37 与 A36。不同组合复用同一路段的采集轨迹。历史道路原生检查点位于 `scenes/<案例>/trained_model/iteration_7000.pth`。[场景映射](../published/道路病害图生三维_新增100/场景映射.json)
+原交付的三条 PandaSet 路段为 034、109、110。每个资产各放三次，109 件合计 327 次放置、111 个组合案例。01–35 组各包含同号的 P/M/A 三件，36 组用 P36 与 M36，37 组用 P37 与 A36。不同组合复用同一路段的采集轨迹。历史道路原生检查点位于 `scenes/<案例>/trained_model/iteration_7000.pth`。场景映射 `published/道路病害图生三维_新增100/场景映射.json`
 
-- **车载前视**为每个案例保存 40 帧、10 Hz、1920 × 1080 的合成视频。034 和 109 使用源帧 020–059，110 使用 000–039。`classes.npz` 中的 `class_id` 取 0 背景、1 坑洞、2 缺盖井、3 异常盖板。`source_frames` 与原帧号对齐。相机标定与实拍背景沿用原帧，同时合成新病害并保留遮挡。[样例视频](../runs/demo/series/sensor_views/034_13/front_after.mp4) · [逐帧标注](../runs/demo/series/sensor_views/034_13/frames.json)
-- **相机几何**覆盖前后两种视角。增强包为每次放置分别选择一次前视和一次后视曝光，累计 654 组裁切。`views.json` 记录全图内参、位姿、源帧、时间和裁切框。使用裁切图时，主点减去框的左、上偏移。`depth_z_m` 为相机光轴深度，另有 `world_normal/part/instance/protected`。局部网格提供轮廓和遮挡。场景高斯提供颜色。[本次前后相机配对](../runs/demo/sensors/camera/034_13/views.json)
-- **激光雷达回放**分别计算 Pandar64 与 PandarGT 发射中心，按每条回波时间插值，再与已放置的网格求最近交点。低于路面的命中需要穿过切口。更近的原有前景保留。每个案例 80 帧，历史 8,880 个案例帧复用 240 次原始扫描。`base` 保存实测点，`cases/<案例>.npz` 保存逐帧变更的原始行号与命中。合成回波强度为 NaN，原强度可按行号找回。由回放程序导出的点云 PLY 保存回波，与资产目录中的高斯 PLY 用途不同。[本次雷达回放记录](../runs/demo/sensors/cases/034_13.json)
-- **局部几何**以 1 cm 间距从上方求交得到 `top_z_m`。去掉盖板、铰链和水面后得到 `substrate_z_m`。`rigid_z_m` 保存可见固体高度。原库 7 个积水资产的部分水下坑底保留为未知。几何一致性可用 Blender BVH 独立复核。现场病害绝对尺度仍属于设计值。[几何网格](../runs/demo/sensors/geometry/inventory.json) · [独立求交核验](../runs/demo/sensors/checks/independent_geometry.json)
+- **车载前视**为每个案例保存 40 帧、10 Hz、1920 × 1080 的合成视频。034 和 109 使用源帧 020–059，110 使用 000–039。`classes.npz` 中的 `class_id` 取 0 背景、1 坑洞、2 缺盖井、3 异常盖板。`source_frames` 与原帧号对齐。相机标定与实拍背景沿用原帧，同时合成新病害并保留遮挡。样例视频 `runs/demo/series/sensor_views/034_13/front_after.mp4` · 逐帧标注 `runs/demo/series/sensor_views/034_13/frames.json`
+- **相机几何**覆盖前后两种视角。增强包为每次放置分别选择一次前视和一次后视曝光，累计 654 组裁切。`views.json` 记录全图内参、位姿、源帧、时间和裁切框。使用裁切图时，主点减去框的左、上偏移。`depth_z_m` 为相机光轴深度，另有 `world_normal/part/instance/protected`。局部网格提供轮廓和遮挡。场景高斯提供颜色。本次前后相机配对 `runs/demo/sensors/camera/034_13/views.json`
+- **激光雷达回放**分别计算 Pandar64 与 PandarGT 发射中心，按每条回波时间插值，再与已放置的网格求最近交点。低于路面的命中需要穿过切口。更近的原有前景保留。每个案例 80 帧，历史 8,880 个案例帧复用 240 次原始扫描。`base` 保存实测点，`cases/<案例>.npz` 保存逐帧变更的原始行号与命中。合成回波强度为 NaN，原强度可按行号找回。由回放程序导出的点云 PLY 保存回波，与资产目录中的高斯 PLY 用途不同。本次雷达回放记录 `runs/demo/sensors/cases/034_13.json`
+- **局部几何**以 1 cm 间距从上方求交得到 `top_z_m`。去掉盖板、铰链和水面后得到 `substrate_z_m`。`rigid_z_m` 保存可见固体高度。原库 7 个积水资产的部分水下坑底保留为未知。几何一致性可用 Blender BVH 独立复核。现场病害绝对尺度仍属于设计值。几何网格 `runs/demo/sensors/geometry/inventory.json` · 独立求交核验 `runs/demo/sensors/checks/independent_geometry.json`
 
 ## 运行环境
 

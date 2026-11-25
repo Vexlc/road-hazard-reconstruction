@@ -78,13 +78,13 @@ def list_routes(query):
     terms = query.casefold().split()
     matched = False
     for key, route in index["transfer_routes"].items():
-        description = " ".join([key, route["name"], route["entry"], route["guide"]]).casefold()
+        description = " ".join([key, route["name"], route["entry"], route["guide"], route["section"]]).casefold()
         if not all(term in description for term in terms):
             continue
         families = [f for f in index["families"].values() if key in f["transfer"]]
         size = sum(len(f["assets"]) for f in families)
         print(f"{key}  {route['name']}  ({len(families)} 个系列，{size} 个编号)")
-        print(f"  {route['entry']}  ·  {route['guide']}")
+        print(f"  {route['entry']}  ·  {route['guide']}  ›  {route['section']}")
         matched = True
     if not matched:
         raise ValueError("没有符合条件的迁入路线。省略关键词可列出全部路线。")
@@ -115,16 +115,18 @@ def search_families(query, route):
         raise ValueError("没有符合条件的系列。可用更短的关键词，或省略关键词列出全部系列。")
 
 
-def locate(query):
+def locate(query, route_key=None):
     index = load(ROOT.parent / "catalog/reconstruction-index.json")
     name, group = published_asset(query, index)
+    if route_key is not None and route_key not in group["transfer"]:
+        raise ValueError(f"{name} 已登记的路线为 " + "、".join(group["transfer"]))
     print(f"{name}  {group['name']}")
     for field in ("prepare", "launcher", "recipe", "guide", "section"):
         if field in group:
             print(f"{field}: {group[field]}")
-    for key in group["transfer"]:
+    for key in ([route_key] if route_key is not None else group["transfer"]):
         route = index["transfer_routes"][key]
-        print(f"transfer: {route['name']}  {route['entry']}  ({route['guide']})")
+        print(f"transfer: {route['name']}  {route['entry']}  ({route['guide']} › {route['section']})")
     inputs = example_inputs(group)
     if inputs:
         print(f"python gen2hole/gen2hole.py build --inputs {inputs} {name} --mesh-only --out runs/{name}")
@@ -187,8 +189,18 @@ def image_jobs(rows, selected, custom):
     return jobs
 
 
+def audit_model_files(rows, run=None):
+    for row in rows.values():
+        base = (ROOT / "published" / row["published_dir"] if run is None
+                else run / row["edition"] / "assets" / row["category"] / row["id"])
+        for name, field in (("asset.glb", "glb_sha256"), ("asset.ply", "ply_sha256")):
+            path = base / name
+            if not path.is_file() or sha(path) != row[field]:
+                raise ValueError(f"模型缺失或与发布 SHA-256 不符：{path}")
+    print(f"{len(rows)} 件资产的 {2 * len(rows)} 个 GLB/PLY 与历史发布指纹一致")
+
+
 def audit(rows, published):
-    files = 0
     fingerprints = {}
     for line in read(ROOT / "catalog/inputs.sha256").splitlines():
         digest, name = line.split("  ", 1)
@@ -202,15 +214,9 @@ def audit(rows, published):
         rgb = Path("inputs") / row["edition"] / "references" / (row["key"] + ".png")
         if fingerprints[str(rgb)] != row["source_sha256"]:
             raise ValueError(f"原图不匹配：{rgb}")
-        if published:
-            base = ROOT / "published" / row["published_dir"]
-            for name, digest in (("asset.glb", "glb_sha256"), ("asset.ply", "ply_sha256")):
-                if sha(base / name) != row[digest]:
-                    raise ValueError(f"发布文件不匹配：{base / name}")
-                files += 1
     print(f"{len(fingerprints)} 个归档输入的 SHA-256 通过核验，覆盖 {len(rows)} 张资产主图")
     if published:
-        print(f"{files} 个发布 GLB/PLY 的 SHA-256 通过核验")
+        audit_model_files(rows)
 
 
 def required_keys(requested, specs, overrides):
@@ -378,12 +384,15 @@ def main():
     routes.add_argument("query", nargs="?", default="", help="如 鱼眼、KITTI、cube-depth，缺省列出全部路线")
     lookup = commands.add_parser("locate", help="按编号查询整个发布索引中的配方、入口和指南")
     lookup.add_argument("id")
+    lookup.add_argument("--route", help="仅显示该编号在指定宿主的迁入代码和操作章节")
     prompt = commands.add_parser("show", help="查看单件资产的原始生图提示词、原图与成品路径")
     prompt.add_argument("id")
     prompts = commands.add_parser("prompts", help="列出生图任务，每张图附原始提示词与落盘路径")
     prompts.add_argument("ids", nargs="*", help="缺省列出整个批次")
     audit_cmd = commands.add_parser("audit", help="核对项目收录的参考图、提示词和模型")
-    audit_cmd.add_argument("--published", action="store_true", help="同时核对 109 件发布模型的 GLB、PLY 字节")
+    audit_mode = audit_cmd.add_mutually_exclusive_group()
+    audit_mode.add_argument("--rebuilt", type=Path, metavar="RUN", help="直接读取完整 109 件重建结果，与原 GLB、PLY 指纹逐个对照")
+    audit_mode.add_argument("--published", action="store_true", help="同时核对 109 件发布模型的 GLB、PLY 字节")
     create = commands.add_parser("build", help="从生成图和配方重建资产")
     for cmd in (catalog, prompt, prompts, create):
         cmd.add_argument("--inputs", type=Path, help="自定义批次，含 calibration/designs.json 和 references/")
@@ -413,13 +422,16 @@ def main():
             list_routes(args.query)
             return
         if args.command == "locate":
-            locate(args.id)
+            locate(args.id, args.route)
             return
         if args.command == "verify":
             verify(args.run, load(args.config))
             return
         if args.command == "audit":
-            audit(inventory(None), args.published)
+            if args.rebuilt is not None:
+                audit_model_files(inventory(None), args.rebuilt)
+            else:
+                audit(inventory(None), args.published)
             return
         if args.command == "scan":
             args.output.parent.mkdir(parents=True, exist_ok=True)

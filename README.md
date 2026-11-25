@@ -2,13 +2,17 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
-**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,528 个编号所属的 63 个系列与 29 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,532 个编号所属的 65 个系列与 30 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
 
 不知道编号时，可以运行 `python3 gen2hole/gen2hole.py search 井盖`。已有目标场景时，运行 `python3 gen2hole/gen2hole.py routes 鱼眼` 查看可用的迁入程序和指南，再按路线缩小范围，例如 `python3 gen2hole/gen2hole.py search --route kitti-pair`。每条结果列出代表编号、重建代码和操作章节。[按手头材料选择复现入口](docs/16-reproduction-cookbook.md#按手头材料选入口)
+
+**实测坑与异常井口的日照迁入**　两处约 1.17 m² 的沥青坑分别搭配错位通孔盖和缺盖井。逐路线代码表现在可直接跳到具体的迁入操作章节。[重建与测光复现](docs/34-sun-openings.md) · [Audi 驶过后的实拍车尾](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/audi-front-rear.mp4)
 
 **实测剥落坑与原始鱼眼标定**　四处完整坑口分两组驶过，分别可在两段 KITTI 道路和 Audi 真实车尾查看。其他渲染器可以直接从原始标定和裁剪区重放相机。十二份实拍曝光的 48 个产物已逐文件复核。[重建与原始鱼眼接入](docs/33-mei-pits.md) · [Audi 驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/mei-pits-v1.0.0/audi-front-rear.mp4)
 
 **燃气方井与辐条圆井**　四种安装状态，每组两件。可以用逐光线的三维命中位置将同一组井盖迁入其他鱼眼或正交相机。[重建和跨渲染器迁入](docs/32-utility-covers.md) · [Audi 驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/utility-covers-v1.0.0/audi-front-rear.mp4)
+
+**历史 109 件生成图资产复建**　37 个坑洞、36 个缺盖井、36 个异常井盖已从干净目录用归档输入重建。218 个 GLB、PLY 与原发布文件的 SHA-256 全部相同。[下载输入和运行命令](docs/13-reproduce-and-transfer.md#重建-109-件生成-rgb-资产) · [逐件核验记录](validation/generated-rgb-replay.json)
 
 **历史双目库已可逐文件复现**　65 件坑洞全部从原始 RGB、标注与 XYZ 重建，与发布的 130 个 GLB、PLY 哈希一致。过去存在差异的 13 件另经三个角度的原生渲染复核。[从干净克隆重跑](docs/02-asset-reconstruction.md#从干净克隆验证历史双目) · [逐件和逐帧结果](validation/stereo-replay.json)
 

@@ -1,6 +1,6 @@
 # 鱼眼实拍场景重建
 
-**视频回放：** [街边挖掘机](../../outputs/fisheye/videos/dozer.mp4) · [红杉林](../../outputs/fisheye/videos/redwoods2.mp4)。每段 32 秒：0–12 秒为 3DGUT（7,000 步）与静态 SC-GS（1,500 步）同轨迹漫游，使用共同针孔视场；12–22 秒为完整鱼眼实拍对照；22–32 秒为三种方法各 1,500 步的共同视场对照。对照部分每个机位停留 1.25 秒，分数对应当帧，而非序列均值。
+**视频回放：** [街边挖掘机](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/dozer-host.mp4) · [红杉林](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/redwoods2-host.mp4)。每段 32 秒：0–12 秒为 3DGUT（7,000 步）与静态 SC-GS（1,500 步）同轨迹漫游，使用共同针孔视场；12–22 秒为完整鱼眼实拍对照；22–32 秒为三种方法各 1,500 步的共同视场对照。对照部分每个机位停留 1.25 秒，分数对应当帧，而非序列均值。
 
 从有标定、多视角的鱼眼照片训练三维高斯场景。这里不使用道路病害资产生成器，也不把普通照片加畸变来充当鱼眼数据。
 
@@ -60,7 +60,7 @@ done
 
 单位 dB，越高越好。Dozer 的 3DGUT 长跑保留了机械臂、锥桶和建筑轮廓，但第一张留出图的近地面仍模糊；红杉林在同样的 1,500 步下，共同针孔视场的 SC-GS 表现最好，不能据此推断它能重建最外围的鱼眼像素。共同针孔视场内有效像素占比为 Dozer 100%、Redwoods2 98.55%。
 
-本机对照图：[Dozer 完整鱼眼](../../outputs/fisheye/dozer/full-fisheye.jpg) · [Redwoods2 完整鱼眼](../../outputs/fisheye/redwoods2/full-fisheye.jpg) · [Dozer 共同针孔](../../outputs/fisheye/dozer/shared-perspective.jpg) · [Redwoods2 共同针孔](../../outputs/fisheye/redwoods2/shared-perspective.jpg)。模型、日志和原始图像不放入 Git。
+本机对照图：[Dozer 完整鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/dozer-full-fisheye.jpg) · [Redwoods2 完整鱼眼](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/redwoods2-full-fisheye.jpg) · [Dozer 共同针孔](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/dozer-shared-perspective.jpg) · [Redwoods2 共同针孔](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/redwoods2-shared-perspective.jpg)。模型、日志和原始图像不放入 Git。
 
 ## 重做视频
 

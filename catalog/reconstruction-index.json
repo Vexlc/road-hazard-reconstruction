@@ -1,5 +1,5 @@
 {
-  "asset_count": 1528,
+  "asset_count": 1532,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2393,153 +2393,226 @@
         "native-pavement-support",
         "raw-mei"
       ]
+    },
+    "forked-aggregate-pits": {
+      "name": "分叉边缘剥落坑与浅色集料坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/sun-openings",
+      "guide": "docs/34-sun-openings.md",
+      "section": "从原始采集和扫描重建四件资产",
+      "assets": [
+        "P276",
+        "P278"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "raw-mei",
+        "pavement-sun"
+      ]
+    },
+    "offset-vented-opening": {
+      "name": "十四通孔铸铁盖错位与缺盖敞井",
+      "launcher": "gen2hole/survey.py",
+      "recipe": "gen2hole/examples/sun-openings/survey.json",
+      "guide": "docs/34-sun-openings.md",
+      "section": "从原始采集和扫描重建四件资产",
+      "assets": [
+        "A277",
+        "M277"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "raw-mei",
+        "pavement-sun"
+      ]
     }
   },
   "transfer_routes": {
     "legacy": {
       "name": "055/056 历史八件组合",
       "entry": "outputs/road_hazard_joint_scenes/reproduction/run.sh",
-      "guide": "docs/04-scene-insertion.md"
+      "guide": "docs/04-scene-insertion.md",
+      "section": "迁入方法及自定义宿主"
     },
     "factory": {
       "name": "034/109/110 五类工厂组合",
       "entry": "scripts/hazard_factory/migrate_all.py",
-      "guide": "docs/10-factory.md"
+      "guide": "docs/10-factory.md",
+      "section": "迁入"
     },
     "native": {
       "name": "034/109/110 原生 Gaussian 场景、相机及 LiDAR",
       "entry": "gen2hole/downstream/place.py",
-      "guide": "docs/13-reproduce-and-transfer.md"
+      "guide": "docs/13-reproduce-and-transfer.md",
+      "section": "迁移 P154 到 PandaSet 034 并回放"
     },
     "drive": {
       "name": "PandaSet 单坑原尺度行车回放",
       "entry": "gen2hole/large_pits/__main__.py",
-      "guide": "docs/15-large-dry-pits.md"
+      "guide": "docs/15-large-dry-pits.md",
+      "section": "放入实景并回放"
     },
     "kitti-pair": {
       "name": "KITTI-360 0000 两坑一组及虚拟后视",
       "entry": "streetcrafter/joint/pit_pairs.py",
-      "guide": "streetcrafter/joint/README.md"
+      "guide": "streetcrafter/joint/README.md",
+      "section": "在 KITTI-360 0000 回放双坑"
     },
     "wet": {
       "name": "先按目标坡面求水位，再迁入湿态",
       "entry": "gen2hole/fill_pits.py",
-      "guide": "docs/02-asset-reconstruction.md"
+      "guide": "docs/02-asset-reconstruction.md",
+      "section": "实拍坑底上的积水"
     },
     "photo-water": {
       "name": "按站点重建水面、坑床及折射回放",
       "entry": "gen2hole/oblique_pits.py",
-      "guide": "docs/02-asset-reconstruction.md"
+      "guide": "docs/02-asset-reconstruction.md",
+      "section": "P204 路缘积水坑"
     },
     "repair": {
       "name": "实拍沥青基色迁移及同机位投影",
       "entry": "scripts/review-repair-transfer.py",
-      "guide": "gen2hole/examples/transverse-repair/README.md"
+      "guide": "gen2hole/examples/transverse-repair/README.md",
+      "section": "迁到另一种沥青"
     },
     "archive": {
       "name": "封存成品及环绕复核；独立 GLB 的宿主接入见手册",
       "entry": "scripts/review-large-potholes.py",
-      "guide": "docs/10-factory.md"
+      "guide": "docs/10-factory.md",
+      "section": "大面积坑洞"
     },
     "mesh-view": {
       "name": "米制网格、标定光线与宿主遮挡合成",
       "entry": "scripts/transfer-mesh-view.py",
-      "guide": "docs/17-mixed-road-transfer.md"
+      "guide": "docs/17-mixed-road-transfer.md",
+      "section": "换鱼眼、换渲染器或换世界坐标"
     },
     "joint-props": {
       "name": "KITTI 0000 原生联合场景的成对立体设施及前后视",
       "entry": "streetcrafter/joint/roadside_pairs.py",
-      "guide": "docs/19-roadside-props.md"
+      "guide": "docs/19-roadside-props.md",
+      "section": "迁入指定的 30,000 步原生场景"
     },
     "cycles": {
       "name": "Blender Cycles 原生等距鱼眼、米制深度与双物体对照",
       "entry": "scripts/render-cone-cycles.py",
-      "guide": "docs/20-traffic-cones.md"
+      "guide": "docs/20-traffic-cones.md",
+      "section": "在 Blender Cycles 中独立复核"
     },
     "pavement-layout": {
       "name": "独立支撑面上的成组开口、实车鱼眼与 Cycles 冠形路面",
       "entry": "scripts/transfer-mesh-view.py",
-      "guide": "docs/21-measured-pavement.md"
+      "guide": "docs/21-measured-pavement.md",
+      "section": "接入自己的鱼眼或其他渲染器"
     },
     "pavement-joint": {
       "name": "坑洞和检查井成对迁入 KITTI 联合检查点，按开口切分原路面高斯",
       "entry": "streetcrafter/joint/pavement_pair.py",
-      "guide": "docs/21-measured-pavement.md"
+      "guide": "docs/21-measured-pavement.md",
+      "section": "写入原生联合检查点"
     },
     "metric-ray-origins": {
       "name": "逐像素起点的米制光线与独立 Cycles 正交、后向鱼眼验收",
       "entry": "scripts/transfer-mesh-view.py",
-      "guide": "docs/22-scanned-round-covers.md"
+      "guide": "docs/22-scanned-round-covers.md",
+      "section": "换鱼眼、正交相机或其他宿主"
     },
     "surveyed-receivers": {
       "name": "实测路面支撑、双目前景与立体遗落物接地阴影",
       "entry": "scripts/render-mixed-road.py",
-      "guide": "docs/23-road-debris.md"
+      "guide": "docs/23-road-debris.md",
+      "section": "更换鱼眼相机或渲染器"
     },
     "cycles-debris": {
       "name": "独立 Cycles 鱼眼的透孔、径向深度与材质法线验收",
       "entry": "scripts/render-debris-cycles.py",
-      "guide": "docs/23-road-debris.md"
+      "guide": "docs/23-road-debris.md",
+      "section": "独立核验与适用范围"
     },
     "apron-exposure": {
       "name": "从真实路面登记曝光并回放只含坑床的鱼眼近景",
       "entry": "scripts/transfer-mesh-view.py",
-      "guide": "docs/24-asphalt-breakouts.md"
+      "guide": "docs/24-asphalt-breakouts.md",
+      "section": "在自有鱼眼或其他渲染器登记路面亮度"
     },
     "rolling-readout": {
       "name": "由纳秒行曝光时间和相机轨迹迁入行间移动的鱼眼宿主",
       "entry": "scripts/transfer-mesh-view.py",
-      "guide": "docs/25-rolling-covers.md"
+      "guide": "docs/25-rolling-covers.md",
+      "section": "接入逐行读出的鱼眼或其他渲染器"
     },
     "native-pavement-support": {
       "name": "由测量孔口、修补带和盖板悬出部分限定原生回放范围",
       "entry": "streetcrafter/joint/local_pavement_replay.py",
-      "guide": "docs/25-rolling-covers.md"
+      "guide": "docs/25-rolling-covers.md",
+      "section": "迁入 KITTI 检查点并回看"
     },
     "remapped-camera": {
       "name": "裁切、缩放、旋转及去畸变后，按原始像素光线和读出时刻迁入",
       "entry": "scripts/transfer-mesh-view.py",
-      "guide": "docs/26-remapped-pits.md"
+      "guide": "docs/26-remapped-pits.md",
+      "section": "接入重采样的相机"
     },
     "seat-water": {
       "name": "逐处拟合干坑落点并按目标重力重算水线",
       "entry": "gen2hole/seat_water.py",
-      "guide": "docs/27-wet-pavement.md"
+      "guide": "docs/27-wet-pavement.md",
+      "section": "按每处落点重建水面"
     },
     "water-reflection": {
       "name": "带标定光线的宿主按观察方向渲染积水反射与折射",
       "entry": "gen2hole/downstream/pavement_water.py",
-      "guide": "docs/27-wet-pavement.md"
+      "guide": "docs/27-wet-pavement.md",
+      "section": "接入自己的道路或鱼眼渲染器"
     },
     "metric-reflection": {
       "name": "按实测近物表面、岸壁与天空的可见性渲染积水",
       "entry": "gen2hole/downstream/metric_reflection.py",
-      "guide": "docs/28-roadside-reflections.md"
+      "guide": "docs/28-roadside-reflections.md",
+      "section": "把自己的深度和相机接进来"
     },
     "sampled-radiance": {
       "name": "在有独立光线颜色和响应权重的鱼眼中迁入并保留前景边界",
       "entry": "gen2hole/downstream/host_exposure.py",
-      "guide": "docs/29-mixed-inlets.md"
+      "guide": "docs/29-mixed-inlets.md",
+      "section": "在其他鱼眼或渲染器保留遮挡边缘"
     },
     "cargo-support": {
       "name": "逐件验证立体散落物接地与联合占地，再接入实车相机或原生场景",
       "entry": "gen2hole/downstream/cargo_support.py",
-      "guide": "docs/30-lost-cargo.md"
+      "guide": "docs/30-lost-cargo.md",
+      "section": "换路面或鱼眼相机"
     },
     "cube-depth": {
       "name": "从六面透视颜色与硬件深度缓冲迁入共心鱼眼",
       "entry": "gen2hole/downstream/cube_camera.py",
-      "guide": "docs/31-cube-pits.md"
+      "guide": "docs/31-cube-pits.md",
+      "section": "将六面深度缓冲接入其他鱼眼宿主"
     },
     "position-pass": {
       "name": "从逐光线三维命中位置迁入鱼眼或非共心相机",
       "entry": "gen2hole/downstream/host_position.py",
-      "guide": "docs/32-utility-covers.md"
+      "guide": "docs/32-utility-covers.md",
+      "section": "将其他渲染器的三维命中位置接入鱼眼"
     },
     "raw-mei": {
       "name": "用原始 MEI 鱼眼或针孔标定、裁剪窗口和子像素采样迁入实车",
       "entry": "gen2hole/downstream/mei_camera.py",
-      "guide": "docs/33-mei-pits.md"
+      "guide": "docs/33-mei-pits.md",
+      "section": "用原始标定接入自己的鱼眼图像"
+    },
+    "pavement-sun": {
+      "name": "原始路面的实测日照与井口的方向性遮挡",
+      "entry": "gen2hole/downstream/pavement_sun.py",
+      "guide": "docs/34-sun-openings.md",
+      "section": "把日照登记到其他宿主"
     }
   },
   "groups": {
@@ -2574,7 +2647,8 @@
       "infill-paired-breakouts",
       "cubemap-road-pits",
       "measured-lobed-rut",
-      "heldout-gravel-spalls"
+      "heldout-gravel-spalls",
+      "forked-aggregate-pits"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
@@ -2606,7 +2680,8 @@
       "rusted-ten-vent-cover",
       "sixteen-vent-infill",
       "diamond-gas-hatch",
-      "spoked-utility-chamber"
+      "spoked-utility-chamber",
+      "offset-vented-opening"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

@@ -2,6 +2,7 @@
 import argparse
 import json
 import re
+import subprocess
 from pathlib import Path
 
 from urllib.parse import unquote, urlsplit
@@ -21,9 +22,8 @@ def source(entry):
     return path
 
 
-def check_navigation():
+def check_navigation(pages):
     """Follow relative links on source-checkout entry pages, including explicit HTML anchors."""
-    pages = [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md"))]
     anchors = {}
     count = 0
     for page in pages:
@@ -46,12 +46,48 @@ def check_navigation():
     return count
 
 
+
+def check_release_links(pages):
+    """Verify private GitHub release and attachment links without downloading the large assets."""
+    repo = "Vexlc/road-hazard-reconstruction"
+    prefix = f"https://github.com/{repo}/releases/"
+    links = {}
+    for page in pages:
+        for url in re.findall(r"\]\(([^)]+)\)", page.read_text(encoding="utf-8")):
+            if not url.startswith(prefix):
+                continue
+            parts = [unquote(p) for p in urlsplit(url).path.split("/")[4:]]
+            if len(parts) == 2 and parts[0] == "tag":
+                links.setdefault((parts[1], None), page)
+            elif len(parts) == 3 and parts[0] == "download":
+                links.setdefault((parts[1], parts[2]), page)
+    response = subprocess.run(
+        ["gh", "api", "--paginate", "--slurp", f"repos/{repo}/releases?per_page=100"],
+        check=True, stdout=subprocess.PIPE, text=True,
+    )
+    releases = {
+        release["tag_name"]: {asset["name"] for asset in release["assets"] if asset["state"] == "uploaded"}
+        for batch in json.loads(response.stdout) for release in batch if not release["draft"]
+    }
+    for (tag, name), page in links.items():
+        if tag not in releases or (name is not None and name not in releases[tag]):
+            raise ValueError(f"Missing published GitHub target in {page.relative_to(ROOT)}: {tag} / {name or ''}")
+    print(f"{len({tag for tag, name in links})} linked releases and {sum(name is not None for tag, name in links)} distinct attachment URLs checked")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--write-map", action="store_true", help="Refresh docs/asset-code-index.md")
+    parser.add_argument("--release-links", action="store_true", help="Also verify published URLs through an authenticated GitHub CLI")
     args = parser.parse_args()
     index = json.loads((ROOT / "catalog/reconstruction-index.json").read_text())
     routes = index["transfer_routes"]
+    for key, route in routes.items():
+        guide = source(route["guide"])
+        headings = {line.lstrip("#").strip() for line in guide.read_text().splitlines() if line.startswith("#")}
+        if route["section"] not in headings:
+            raise ValueError(f"Missing transfer instructions for {key}: {route['section']}")
+        source(route["entry"])
     grouped = [family for families in index["groups"].values() for family in families]
     if len(grouped) != len(set(grouped)) or set(grouped) != set(index["families"]):
         raise ValueError("Every reconstruction family must appear in exactly one navigation group")
@@ -65,8 +101,8 @@ def main():
         if row["section"] not in headings or not row["transfer"] or not row["assets"]:
             raise ValueError(f"Missing section, route or IDs: {family}")
         for route in row["transfer"]:
-            source(routes[route]["entry"])
-            source(routes[route]["guide"])
+            if route not in routes:
+                raise ValueError(f"Unknown route {route} in {family}")
             used.add(route)
         for asset in row["assets"]:
             if asset.casefold() in owners:
@@ -84,7 +120,13 @@ def main():
         page.write_text(expected, encoding="utf-8")
     elif not page.is_file() or page.read_text(encoding="utf-8") != expected:
         raise ValueError("Refresh the asset code map with --write-map")
-    links = check_navigation()
+    pages = {ROOT / "README.md", ROOT / "gen2hole/README.md"}
+    for directory in ("docs", "gen2hole/docs", "gen2hole/examples", "pipelines", "streetcrafter"):
+        pages.update((ROOT / directory).rglob("*.md"))
+    pages.update(ROOT / row["guide"] for row in (*index["families"].values(), *routes.values()))
+    links = check_navigation(pages)
+    if args.release_links:
+        check_release_links(pages)
     print(f"{links} local navigation links checked")
     print(f"{len(owners)} IDs, {len(index['families'])} reconstruction families, {len(used)} transfer routes, 20 paired pits")
 

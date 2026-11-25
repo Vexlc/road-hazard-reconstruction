@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from host_depth import optical_samples, reference_samples, sampled
+from host_depth import optical_samples, reference_samples, sampled, sun_samples
 from host_exposure import exposure
 
 
@@ -79,6 +79,9 @@ def register_positions(view, tolerance=0.001, calibration=None):
     )
     if origins is not None:
         out["ray_origins_camera"] = origins
+    if "sun_visibility" in view:
+        vis = sun_samples(view, shape)
+        out["sun_visibility"] = vis[0] if view["sun_visibility"].ndim == 2 else vis
     if "road_albedo_srgb" in view:
         albedo = np.asarray(view["road_albedo_srgb"])
         if albedo.shape != rgb.shape or albedo.dtype != np.uint8:

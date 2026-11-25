@@ -78,7 +78,7 @@ def render(index):
         supported = [family for family in families.values() if key in family["transfer"]]
         coverage = f"{len(supported)} / {sum(len(family['assets']) for family in supported):,}"
         lines.append(
-            f'| <a id="route-{key}"></a>{key} | {row["name"]} | {coverage} | {program} | {link("指南", row["guide"])} |'
+            f'| <a id="route-{key}"></a>{key} | {row["name"]} | {coverage} | {program} | {link(row["section"], row["guide"], row["section"])} |'
         )
     lines.extend(
         [

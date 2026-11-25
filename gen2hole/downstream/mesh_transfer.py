@@ -252,7 +252,7 @@ class RoadMesh:
 
     def render(self, rgb, camera_to_world, rays_camera, anchor, host_range, protected, *,
                occluder_range=None, road_tolerance_m=0.10, with_shadow=False, receiver_mask=None, pixel_width=1.0,
-               ray_origins_camera=None, receiver_band_m=None, apron_samples=False, instance_ids=None):
+               ray_origins_camera=None, receiver_band_m=None, apron_samples=False, grade_samples=False, instance_ids=None):
         """Compare uncertain host pavement and optional positively identified foreground in radial metres."""
         h, w = rgb.shape[:2]
         pose, basis = np.asarray(camera_to_world), np.asarray(anchor["basis_columns"])
@@ -387,6 +387,15 @@ class RoadMesh:
             if receiver_mask is not None:
                 context &= receiver_mask
             xy = origins[context, :2] + directions[context, :2] * distance[context, None]
+            if grade_samples:
+                grade = (plane > 0) & np.isfinite(plane) & ~protected
+                grade &= (abs(crossing) <= self.extent / 2 + 1.2).all(-1)
+                grade &= host_range >= plane - road_tolerance_m
+                if receiver_mask is not None:
+                    grade &= receiver_mask
+                if occluder_range is not None:
+                    grade &= occluder_range >= plane - 1e-5
+                return xy, color[context], context, crossing[grade], grade
             return xy, color[context], context
         visible = target & ~blocked
         if self.standing:
@@ -418,6 +427,13 @@ class RoadMesh:
                 from pavement_appearance import apply_apron
                 xy = origins[visible, :2] + directions[visible, :2] * distance[visible, None]
                 out[visible] = apply_apron(color[visible], xy, reference, ao[visible])
+                if "sunlight" in reference:
+                    from pavement_sun import shade_hits
+                    xyz = origins[visible] + directions[visible] * distance[visible, None]
+                    normals = hits["primitive_normals"].numpy()[visible].copy()
+                    normals[(directions[visible] * normals).sum(1) > 0] *= -1
+                    out[visible] = shade_hits(self, color[visible], xyz, normals, ao[visible],
+                                              reference["sunlight"], out[visible])
             else:
                 src = np.median(color[context], axis=0).clip(20)
                 host = np.median(rgb[context], axis=0).clip(10)

@@ -66,7 +66,18 @@ CUDA_HOME=/usr/local/cuda TORCH_CUDA_ARCH_LIST=8.9 bash scripts/install-streetcr
 
 ## 重建 109 件生成 RGB 资产
 
-以下步骤恢复 109 张主图及其轮廓、相对深度等逐图输入。共享纹理、设计 JSON、人工修订和发布指纹由 Git 提供。下载器逐卷检查 SHA-256，按清单顺序拼合后再校验完整 ZIP。网络中断后重跑同一条命令，已经校验的卷可复用。[Google Drive 输入目录](https://drive.google.com/drive/folders/12y0agwLAAcPllCtBWqWOc2rctY19gG42) · [逐包下载清单](../catalog/downloads.json)
+在私有 GitHub 可以一次下载全部输入和逐文件校验表。新克隆从仓库根目录执行。归档包括两批原图、共享材质、已登记的轮廓、米制尺寸和坑洞相对深度，解压目标为 gen2hole。随后可直接运行下方 build 与 verify 命令。模型权重仅在重新推断图像深度时需要。[GitHub 输入包](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/generated-rgb-inputs.zip)
+
+~~~bash
+repo=Vexlc/road-hazard-reconstruction
+tag=sun-openings-v1.0.0
+gh release download "$tag" -R "$repo" -D "downloads/$tag" -p generated-rgb-inputs.zip -p SHA256SUMS --skip-existing
+(cd "downloads/$tag" && sha256sum --ignore-missing -c SHA256SUMS)
+python3 -m zipfile -e "downloads/$tag/generated-rgb-inputs.zip" gen2hole
+(cd gen2hole && sha256sum -c SHA256SUMS)
+~~~
+
+也可从 Google Drive 的分卷恢复 109 张主图及其轮廓、相对深度等逐图输入。共享纹理、设计 JSON、人工修订和发布指纹由 Git 提供。下载器逐卷检查 SHA-256，按清单顺序拼合后再校验完整 ZIP。网络中断后重跑同一条命令，已经校验的卷可复用。[Google Drive 输入目录](https://drive.google.com/drive/folders/12y0agwLAAcPllCtBWqWOc2rctY19gG42) · [逐包下载清单](../catalog/downloads.json)
 
 ~~~bash
 python scripts/packages.py fetch --group gen2hole-inputs-109
@@ -77,20 +88,10 @@ python gen2hole/gen2hole.py verify --run runs/three-assets
 python gen2hole/gen2hole.py build --all --out runs/all-generated
 ~~~
 
-完整构建之后可再检查一次与历史成品的对应关系。`verify` 检查文件与网格结构，`published_match` 中的两个字节比较字段记录与归档 GLB、PLY 是否完全一致。
+构建完成后，下面这条命令直接读取两个批次下的 218 个 GLB、PLY，把实际字节与历史发布清单中的 SHA-256 对照。产物缺失或不一致时输出具体路径并返回失败状态。参数指向含 pilot 和 series 的整次构建目录。[历史模型指纹](../gen2hole/catalog/assets.json)
 
 ~~~bash
-python - <<'CHECK'
-import json
-from pathlib import Path
-reports = Path('runs/all-generated').glob('*/checks.json')
-assets = {key: row for report in reports for key, row in json.loads(report.read_text()).items()}
-different = [key for key, row in assets.items()
-             if not all(row['published_match'][kind] for kind in ('glb_bytes', 'ply_bytes'))]
-print(f'{len(assets)} 件，差异编号 {different}')
-if len(assets) != 109 or different:
-    raise SystemExit(1)
-CHECK
+python3 gen2hole/gen2hole.py audit --rebuilt runs/all-generated
 ~~~
 
 如果通过浏览器下载了分卷，把 `part-00` 至 `part-28` 对应的原名文件放入 `downloads/roadgs-generated-inputs-109.zip.parts/`，再执行同一条 `fetch` 命令。完整 ZIP 为 471,110,229 字节，SHA-256 为 `9ed232597b6c5c0913e5516994fff1a9b3a16e7c42e3ce196b0138b8b97035a6`。

@@ -106,7 +106,7 @@ def main():
         with TemporaryDirectory(dir=args.views) as folder:
             clips = []
             for recipe, layout in zip(args.layouts, specs):
-                labels = {s["id"]: s["label"] for f in recipe.parent.glob("*/survey.json")
+                labels = {s["id"]: s["label"] for f in (*recipe.parent.glob("survey.json"), *recipe.parent.glob("*/survey.json"))
                           for s in json.loads(f.read_text())["states"]}
                 for item in layout["instances"]:
                     key = item["asset"]

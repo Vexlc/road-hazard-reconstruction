@@ -151,18 +151,22 @@ def apply_models(anchor, models):
     )
 
 
-def register_views(layout, anchor, paths, calibration=None):
+def register_views(layout, anchor, paths, calibration=None, sun_survey=None):
     """Derive each instance's local road transfer from unobstructed reference exposures."""
-    from host_depth import geometry, sampled
+    from host_depth import geometry, sampled, sun_samples
 
     layout.bind(anchor)
     observations = {s["id"]: [] for s in anchor["instances"]}
+    grade = {key: [] for key in observations}
     albedo_mode = None
     for path in paths:
         with np.load(Path(path), allow_pickle=False) as packet:
             rays, host, protected, pose, origins = geometry(
                 packet, calibration, with_origins=True
             )
+            direct = None
+            if sun_survey is not None and "sun_visibility" in packet:
+                direct = sun_samples(packet, host.shape)
             rgb = packet["rgb"]
             albedo = packet.get("road_albedo_srgb")
             if albedo is not None and (
@@ -188,12 +192,20 @@ def register_views(layout, anchor, paths, calibration=None):
                 else None
             )
             from host_exposure import exposure
+
             colors, _ = exposure(packet, host.shape)
             # A resolved photograph supplies one observation; a sampled exposure supplies one per ray.
-            for i, image in enumerate([rgb] if colors is None else colors):
+            images = [rgb] if colors is None else colors
+            if (
+                colors is None
+                and direct is not None
+                and packet["sun_visibility"].ndim == 3
+            ):
+                images = np.broadcast_to(rgb, (*host.shape, 3))
+            for i, image in enumerate(images):
                 for s in anchor["instances"]:
                     mesh = layout.meshes[s["asset"]]
-                    xy, source, context = mesh.render(
+                    result = mesh.render(
                         image,
                         pose,
                         rays[i],
@@ -202,10 +214,21 @@ def register_views(layout, anchor, paths, calibration=None):
                         protected[i],
                         ray_origins_camera=None if origins is None else origins[i],
                         apron_samples=True,
+                        grade_samples=sun_survey is not None,
                         receiver_mask=None if receiver is None else receiver[i],
                         occluder_range=None if occluder is None else occluder[i],
                         pixel_width=len(rays) ** -0.5,
                     )
+                    xy, source, context = result[:3]
+                    if sun_survey is not None:
+                        points, mask = result[3:]
+                        grade[s["id"]].append(
+                            (
+                                points,
+                                image[mask],
+                                None if direct is None else direct[i][mask],
+                            )
+                        )
                     if len(xy):
                         base = albedo[context] if has_albedo else source
                         observations[s["id"]].append((xy, base, image[context]))
@@ -218,6 +241,17 @@ def register_views(layout, anchor, paths, calibration=None):
             *(np.concatenate(v) for v in zip(*batches)),
             layout.meshes[s["asset"]].extent,
         )
+        if sun_survey is not None:
+            from pavement_sun import fit_sun
+
+            mesh = layout.meshes[s["asset"]]
+            result[s["id"]]["sunlight"] = fit_sun(
+                sun_survey,
+                s["anchor"],
+                mesh.extent,
+                np.concatenate([v[1] for v in batches]),
+                grade[s["id"]],
+            )
         if albedo_mode:
             result[s["id"]]["reference_material"] = "host_diffuse_albedo"
     return result

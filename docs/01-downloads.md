@@ -1,5 +1,7 @@
 # 可选下载
 
+两组实测坑与异常井口的四件模型、原始采集、紧凑曝光、两个联合检查点和四段前后视影片已按附件分别提供。[下载与校验](34-sun-openings.md#下载与校验)
+
 新的道路资产按固定标签放在私有 GitHub Releases。每个专题给出原始输入、成品、相机包或宿主检查点的下载命令和校验值。只看效果时可直接下载专题页开头的 MP4。[实测双坑与车尾鱼眼](24-asphalt-breakouts.md) · [扫描井盖及缺盖状态](22-scanned-round-covers.md) · [道路遗落物](23-road-debris.md) · [按资产类型查找其他专题](asset-code-index.md) · [行驶中的鱼眼与沉降、错位井盖](25-rolling-covers.md) · [双坑和裁切、去畸变相机](26-remapped-pits.md) · [干湿双坑、坡度与鱼眼反光](27-wet-pavement.md) · [三段道路与近物倒影](28-roadside-reflections.md) · [大坑搭配沉降盖或缺盖井](29-mixed-inlets.md) · [四件散落货物和逐件接地检查](30-lost-cargo.md) · [四处实测沥青坑与六面深度鱼眼](31-cube-pits.md) · [旋转方盖、隆起圆井与三维位置缓冲](32-utility-covers.md) · [四处实测剥落坑与原始鱼眼标定](33-mei-pits.md)
 
 五类历史库的数据包位于 [Google Drive 项目目录](https://drive.google.com/drive/folders/1jPHeLvbyH7rWThMrXJZVWg3FIOKaVjm_)，按 `assets/`、`inputs/`、`scenes/`、`visualizations/`、`documents/` 分开存放。已设置为“知道链接的任何人可查看”，无需 Google 账号即可查看和下载；没有编辑权限，且未开启搜索发现。
@@ -44,6 +46,8 @@ python scripts/verify-assets.py --category stereo
 浏览器可直接通过上述共享链接下载。如需使用 rclone 批量下载，先在自己的电脑运行 `rclone config` 授权 Google Drive，然后使用清单中的文件夹 ID。上传机器的授权文件、浏览器登录信息与令牌不包含在项目内。
 
 ## 生成 RGB 的原图和拟合输入
+
+私有 GitHub 的 generated-rgb-inputs.zip 包含 299 个输入文件和逐文件校验表，可以一次恢复 109 件的原图、标注与缓存拟合。generated-demo-records.zip 保留历史传感器报告和 PandaSet 034 的前视片段。[GitHub 下载和使用命令](13-reproduce-and-transfer.md#重建-109-件生成-rgb-资产) · [传感器记录包](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/sun-openings-v1.0.0/generated-demo-records.zip)
 
 这一批的最新分卷 ID 与校验值见仓库内的 [downloads.json](../catalog/downloads.json)。分组 `gen2hole-inputs-109` 包含两批生成 RGB 的原图、轮廓与缓存深度。运行 `python scripts/packages.py fetch --group gen2hole-inputs-109` 可自动获取、拼合和核对所有卷，再用 `restore` 解压至本机。[逐步复现](13-reproduce-and-transfer.md) · [Google Drive 分卷](https://drive.google.com/drive/folders/12y0agwLAAcPllCtBWqWOc2rctY19gG42)
 

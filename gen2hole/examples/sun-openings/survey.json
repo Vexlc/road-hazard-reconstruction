@@ -1,0 +1,67 @@
+{
+  "family": "offset-vented-iron",
+  "source_url": "https://ambientcg.com/a/ManholeCover009",
+  "credit": "ambientCG Manhole Cover 009, Asphalt 031 and Concrete 049, CC0. Visible face, relief and fourteen apertures are taken from registered material layers. Dimensions and abnormal installation are designed.",
+  "frame": {
+    "image": "../perforated-covers/split-iron/photo.jpg"
+  },
+  "perforations": {
+    "shape": "round",
+    "corners_xy": [
+      [
+        131,
+        125
+      ],
+      [
+        893,
+        125
+      ],
+      [
+        893,
+        887
+      ],
+      [
+        131,
+        887
+      ]
+    ],
+    "mask": "../perforated-covers/split-iron/openings.png",
+    "lining": "../perforated-covers/lining.jpg",
+    "displacement": "../perforated-covers/split-iron/relief.png",
+    "relief_span_m": 0.006,
+    "pavement": "../perforated-covers/split-iron/pavement.jpg",
+    "edge_patch_xyxy": [
+      667,
+      852,
+      687,
+      868
+    ],
+    "size_m": [
+      0.62,
+      0.62
+    ],
+    "frame_band_m": 0.052,
+    "seat_overlap_m": 0.012,
+    "thickness_m": 0.028,
+    "shaft_depth_m": 0.54,
+    "photographed_surround": true,
+    "scale_source": "The source has no published metric dimensions. The visible lid diameter is assigned 0.62 m. Relief amplitude, thickness, shaft and fragment positions are designed."
+  },
+  "states": [
+    {
+      "id": "A277",
+      "label": "十四通孔铸铁盖向一侧移位",
+      "angle_deg": 0,
+      "offset_m": [
+        0.12,
+        -0.035
+      ]
+    },
+    {
+      "id": "M277",
+      "label": "十四通孔盖缺失后的敞井",
+      "absent": true
+    }
+  ],
+  "geometry_source": "Registered cast-iron color, relief and fourteen through apertures. Shaft, frame dimensions and seating offset are designed."
+}

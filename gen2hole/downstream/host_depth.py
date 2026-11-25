@@ -14,6 +14,14 @@ def sampled(array, shape, name):
     return value
 
 
+def sun_samples(view, shape):
+    """Per-ray visibility of host sunlight on the intact road."""
+    value = sampled(view["sun_visibility"], shape, "sun_visibility")
+    if value.dtype.kind not in "bfiu" or not np.isfinite(value).all() or value.min() < 0 or value.max() > 1:
+        raise ValueError("sun_visibility must be finite and in [0, 1]")
+    return value
+
+
 def sample_origins(view, rays, protected):
     """Ray starts in metres in the camera reference frame, shared or per subpixel."""
     if "ray_origins_camera" not in view:

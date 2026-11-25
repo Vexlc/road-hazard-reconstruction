@@ -90,6 +90,7 @@ def main():
         nargs="+",
         help="Registered host exposures sharing one lighting and camera response",
     )
+    color.add_argument("--sun-survey", type=Path, help="Single-camera JSON with sun_world, lit_srgb and shade_srgb")
     color.add_argument("--calibration", type=Path)
     for command in (fit, render, color):
         command.add_argument("--asset-root", type=Path, help="Built members of a pavement layout JSON")
@@ -150,7 +151,8 @@ def main():
         if layout is None:
             parser.error("calibrate-pavement requires a layout recipe and its models")
         anchor = json.loads(args.anchor.read_text())
-        models = register_views(layout, anchor, args.views, args.calibration)
+        models = register_views(layout, anchor, args.views, args.calibration,
+                                json.loads(args.sun_survey.read_text()) if args.sun_survey else None)
         anchor.pop("pavement_appearance_by_camera", None)
         save_json(args.out, apply_models(anchor, models))
         return

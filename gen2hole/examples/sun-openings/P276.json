@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P276",
+    "label": "边缘分叉的灰色剥落坑",
+    "source": "PothRGBD",
+    "anchor": "20250227_185200",
+    "fit": [
+      "20250227_185200"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

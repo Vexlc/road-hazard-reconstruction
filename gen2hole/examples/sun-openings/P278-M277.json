@@ -1,0 +1,24 @@
+{
+  "id": "P278-M277",
+  "label": "浅色集料坑与缺盖井",
+  "instances": [
+    {
+      "id": "pit",
+      "asset": "P278",
+      "xy_m": [
+        0.92,
+        0.08
+      ],
+      "heading_deg": -8
+    },
+    {
+      "id": "well",
+      "asset": "M277",
+      "xy_m": [
+        -0.92,
+        -0.12
+      ],
+      "heading_deg": 21
+    }
+  ]
+}

@@ -40,13 +40,13 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def pack(out, views):
+def pack(out, views, pairs=PAIRS, sites=SITES):
     from importlib import import_module
 
     subpixels = import_module("render-mixed-road").SUBPIXELS
 
-    for pair in PAIRS:
-        for site, scene in SITES.items():
+    for pair in pairs:
+        for site, scene in sites.items():
             src = views / pair / site
             dest = out / pair / site
             dest.mkdir(parents=True, exist_ok=True)
@@ -118,7 +118,7 @@ def pack(out, views):
                 )
 
 
-def replay(inputs, models, out):
+def replay(inputs, models, out, examples=EXAMPLES, pairs=PAIRS, sites=SITES):
     report = {}
     for record in sorted(inputs.glob("*/*/*/record.json")):
         src = record.parent
@@ -130,7 +130,7 @@ def replay(inputs, models, out):
                 sys.executable,
                 str(ROOT / "scripts/transfer-mesh-view.py"),
                 "render",
-                str(EXAMPLES / (pair + ".json")),
+                str(examples / (pair + ".json")),
                 str(src.parent / "appearance.json"),
                 str(src / "view.npz"),
                 str(target),
@@ -148,8 +148,10 @@ def replay(inputs, models, out):
                 + str(src)
             )
         report[str(src.relative_to(inputs))] = actual
-    if len(report) != 12:
-        raise ValueError("Expected twelve physical sensor exposures")
+    expected = {f"{pair}/{site}/{sensor}" for pair in pairs for site in sites
+                for sensor in (("front_left", "rear_center") if site == "audi" else ("image_00", "image_03"))}
+    if set(report) != expected:
+        raise ValueError("Incomplete exposure set for the requested pairs and hosts")
     save(out / "check.json", report)
 
 

@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from host_depth import geometry, sampled
+from host_depth import geometry, sampled, sun_samples
 
 
 def remap_packet(view, source_xy, calibration=None):
@@ -50,6 +50,11 @@ def remap_packet(view, source_xy, calibration=None):
             if name == "occluder_range":
                 value = value.astype(np.result_type(value, np.float32), copy=False)
             out[name] = pick(value, border)
+    if "sun_visibility" in view:
+        visibility = pick(sun_samples(view, distance.shape), 0)
+        if samples > 1 and view["sun_visibility"].ndim == 2:
+            visibility = visibility[0]
+        out["sun_visibility"] = visibility
     if "reflector_labels" in view:
         out["reflector_labels"] = pick(sampled(view["reflector_labels"], distance.shape, "reflector_labels"), 0)
     if "road_albedo_srgb" in view:

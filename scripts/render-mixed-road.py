@@ -571,6 +571,7 @@ def main():
         action="store_true",
         help="Export a frame jointly showing the layout members, ranked by their harmonic mean visible area",
     )
+    parser.add_argument("--pavement-sun", type=Path, help="Road sunlight references keyed by host sensor")
     parser.add_argument("--appearance-views",type=Path,help="Directory of surveyed original camera packets (same layout and metric placement)")
     parser.add_argument("--cargo-pair", action="store_true", help="Survey both members and select registered two-object views")
     parser.add_argument("--native-mei", action="store_true", help="Use the native MEI inverse through the outer fisheye image")
@@ -591,6 +592,8 @@ def main():
         args.paired_preview = True
     if args.paired_preview and not (args.layout or args.cargo_pair):
         parser.error("--paired-preview requires --layout or --cargo-pair")
+    if args.pavement_sun and not args.appearance_views:
+        parser.error("--pavement-sun requires --appearance-views")
     if args.appearance_views and not args.layout:
         parser.error("--appearance-views requires a surveyed pavement layout")
     rig = ROOT / "work/streetcrafter-rig" / args.scene
@@ -708,9 +711,11 @@ def main():
         previous = json.loads((args.appearance_views / "anchor.json").read_text())
         if previous != anchor:
             raise ValueError("Appearance packets must use the same host, layout and fitted metric anchors")
+        light = json.loads(args.pavement_sun.read_text()) if args.pavement_sun else None
         anchor["pavement_appearance_by_camera"] = {
             data["sensors"][cam]: register_views(
-                layout, anchor, [args.appearance_views / layout.key / data["sensors"][cam] / "view.npz"]
+                layout, anchor, [args.appearance_views / layout.key / data["sensors"][cam] / "view.npz"],
+                sun_survey=None if light is None else dict(light["sensors"][data["sensors"][cam]], sun_world=light["sun_world"])
             )
             for cam, _ in views
         }

@@ -1,5 +1,7 @@
 # 代码作用与执行顺序
 
+需要追踪单件资产时，运行 `python3 gen2hole/gen2hole.py locate A277 --route pavement-sun`。输出包含重建程序、输入配方、指定迁入程序，以及两者各自的运行章节。[完整代码与操作章节对照](asset-code-index.md)
+
 按具体编号查程序、配方、输入和宿主，请使用[资产系列与迁入代码对照](asset-code-index.md)。首次运行可以从[全仓复现手册](16-reproduction-cookbook.md)开始。下表给出当前维护的代码入口，后文保留历史 1,199 件资产管线及综合视频的执行顺序。
 
 | 从哪一步开始 | 代码入口 | 运行后核对什么 |
