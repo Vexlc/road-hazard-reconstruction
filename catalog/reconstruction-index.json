@@ -1,5 +1,5 @@
 {
-  "asset_count": 1524,
+  "asset_count": 1528,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2357,6 +2357,42 @@
         "native-pavement-support",
         "position-pass"
       ]
+    },
+    "measured-lobed-rut": {
+      "name": "双叶剥落坑与长条形轮迹坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/mei-pits",
+      "guide": "docs/33-mei-pits.md",
+      "section": "从六份采集重建四处实测坑",
+      "assets": [
+        "P272",
+        "P273"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "raw-mei"
+      ]
+    },
+    "heldout-gravel-spalls": {
+      "name": "粗碎集料坑及直边浅陷坑",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/mei-pits",
+      "guide": "docs/33-mei-pits.md",
+      "section": "从六份采集重建四处实测坑",
+      "assets": [
+        "P274",
+        "P275"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "raw-mei"
+      ]
     }
   },
   "transfer_routes": {
@@ -2499,6 +2535,11 @@
       "name": "从逐光线三维命中位置迁入鱼眼或非共心相机",
       "entry": "gen2hole/downstream/host_position.py",
       "guide": "docs/32-utility-covers.md"
+    },
+    "raw-mei": {
+      "name": "用原始 MEI 鱼眼或针孔标定、裁剪窗口和子像素采样迁入实车",
+      "entry": "gen2hole/downstream/mei_camera.py",
+      "guide": "docs/33-mei-pits.md"
     }
   },
   "groups": {
@@ -2531,7 +2572,9 @@
       "rounded-spall-and-stony-bowl",
       "wide-spall-and-oval-bed",
       "infill-paired-breakouts",
-      "cubemap-road-pits"
+      "cubemap-road-pits",
+      "measured-lobed-rut",
+      "heldout-gravel-spalls"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

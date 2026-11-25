@@ -84,11 +84,17 @@ class RayWindow:
         return lo, hi
 
 
-def view_model(sensor, data):
+def view_model(sensor, data, *, native_mei=False):
     calibration = data["source_calibration"][sensor]
     w, h = map(int, calibration["size"])
     if calibration["model"] == "MEI":
         spec = calibration["parameters"]
+        if native_mei:
+            from mei_camera import MeiCamera
+            lens = MeiCamera.from_spec(spec)
+            if (w, h) != lens.size:
+                raise ValueError("MEI calibration differs from the raw sensor dimensions")
+            return lens.size, lambda xyz: project_mei(xyz, spec), lens.unproject
         p, d = spec["projection_parameters"], spec["distortion_parameters"]
         k = np.array([[p["gamma1"], 0, p["u0"]], [0, p["gamma2"], p["v0"]], [0, 0, 1.0]])
         coeffs = np.array([d[key] for key in ("k1", "k2", "p1", "p2")])
@@ -567,6 +573,7 @@ def main():
     )
     parser.add_argument("--appearance-views",type=Path,help="Directory of surveyed original camera packets (same layout and metric placement)")
     parser.add_argument("--cargo-pair", action="store_true", help="Survey both members and select registered two-object views")
+    parser.add_argument("--native-mei", action="store_true", help="Use the native MEI inverse through the outer fisheye image")
     parser.add_argument("--survey-only", action="store_true", help="Write the two surveyed seats and world up before building site-dependent water")
     parser.add_argument("--stereo-reflections", action="store_true", help="Also recover finite reflecting surfaces from synchronized KITTI front stereo")
     parser.add_argument("--metric-reflections", action="store_true", help="Trace finite-distance reflections on the current registered LiDAR scan")
@@ -659,7 +666,7 @@ def main():
     ego_masks = json.loads((ROOT / "gen2hole/examples/mixed-road/ego-masks.json").read_text())[args.scene]
     if args.ego_mask:
         ego_masks.update(json.loads(args.ego_mask.read_text())[args.scene])
-    models = {cam: view_model(data["sensors"][cam], data) for cam, _ in views}
+    models = {cam: view_model(data["sensors"][cam], data, native_mei=args.native_mei) for cam, _ in views}
     standing_bounds = []
     registered = []
     for folder in assets.values():

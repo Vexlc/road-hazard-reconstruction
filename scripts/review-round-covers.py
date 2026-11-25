@@ -94,6 +94,7 @@ def main():
         "--plate", type=Path, help="Save a plate using the native Cycles and two real camera views"
     )
     parser.add_argument("--layouts", type=Path, nargs=2, help="Two layouts in drive order")
+    parser.add_argument("--avenue", action="store_true", help="Also join drives in KITTI sequence 0003")
     parser.add_argument("--rear-hold", action="store_true", help="Append a labelled 2.5 s before/after rear exposure to each Audi drive")
     args = parser.parse_args()
     specs = [json.loads(p.read_text()) for p in args.layouts] if args.layouts else []
@@ -120,6 +121,8 @@ def main():
     else:
         video(args.views, "audi", args.views / "audi-front-rear.mp4", pairs)
     video(args.views, "kitti", args.views / "kitti-front-side.mp4", pairs)
+    if args.avenue:
+        video(args.views, "avenue", args.views / "kitti-0003-front-side.mp4", pairs)
     if args.plate:
         args.plate.parent.mkdir(parents=True, exist_ok=True)
         page = plate(args.views, pairs, [s["label"] for s in specs]) if specs else plate(args.views)

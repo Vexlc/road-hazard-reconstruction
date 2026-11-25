@@ -1,0 +1,24 @@
+{
+  "id": "P274-P275",
+  "label": "粗碎集料坑与直边浅陷坑",
+  "instances": [
+    {
+      "id": "forward-pit",
+      "asset": "P274",
+      "xy_m": [
+        0.92,
+        0.14
+      ],
+      "heading_deg": -12
+    },
+    {
+      "id": "rear-pit",
+      "asset": "P275",
+      "xy_m": [
+        -0.92,
+        -0.17
+      ],
+      "heading_deg": 16
+    }
+  ]
+}

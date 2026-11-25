@@ -1,9 +1,8 @@
 """Read metric depth from a host camera and unproject labelled road samples in its world frame."""
 
-import json
 import numpy as np
 
-from mesh_transfer import pixel_rays
+from mei_camera import calibrated_samples
 
 
 def sampled(array, shape, name):
@@ -37,7 +36,7 @@ def optical_samples(view, calibration=None):
         rays = np.asarray(view["rays_camera"])
         valid = True
     else:
-        rays, valid = pixel_rays(json.loads(calibration.read_text()), return_valid=True)
+        rays, valid = calibrated_samples(calibration, view)
     if rays.ndim == 3:
         rays = rays[None]
     if rays.ndim != 4 or rays.shape[-1] != 3 or not rays.shape[0]:

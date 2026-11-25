@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P272",
+    "label": "中部保留沥青脊的双叶剥落坑",
+    "source": "PothRGBD",
+    "anchor": "20250227_183214",
+    "fit": [
+      "20250227_183214"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

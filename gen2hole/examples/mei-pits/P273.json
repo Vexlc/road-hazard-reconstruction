@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P273",
+    "label": "长条形碎石底轮迹坑",
+    "source": "PothRGBD",
+    "anchor": "20250227_174724",
+    "fit": [
+      "20250227_174724"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

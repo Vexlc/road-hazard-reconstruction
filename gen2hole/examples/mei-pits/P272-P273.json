@@ -1,0 +1,24 @@
+{
+  "id": "P272-P273",
+  "label": "双叶剥落坑与长条轮迹坑",
+  "instances": [
+    {
+      "id": "forward-pit",
+      "asset": "P272",
+      "xy_m": [
+        1.1,
+        0.14
+      ],
+      "heading_deg": -12
+    },
+    {
+      "id": "rear-pit",
+      "asset": "P273",
+      "xy_m": [
+        -1.1,
+        -0.17
+      ],
+      "heading_deg": 16
+    }
+  ]
+}
