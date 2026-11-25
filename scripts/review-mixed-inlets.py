@@ -48,7 +48,7 @@ def check_cover(models, src):
     return results
 
 
-def review(root, models, src):
+def review(root, models, src, pairs=None):
     viewsets = (
         ("kitti", "image_00", "KITTI 前视"),
         ("audi", "front_left", "Audi 左前"),
@@ -58,7 +58,7 @@ def review(root, models, src):
     draw = ImageDraw.Draw(canvas)
     font = ImageFont.truetype("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", 20, index=2)
     stats = {}
-    for i, pair in enumerate(("P260-A259", "P261-M259")):
+    for i, pair in enumerate(pairs or ("P260-A259", "P261-M259")):
         for j, (site, sensor, title) in enumerate((*viewsets, ("kitti", "image_03", "KITTI 右侧"))):
             site_root = root / pair / site
             row = json.loads((site_root / "index.json").read_text())[pair]["views"][sensor]
@@ -98,7 +98,8 @@ def review(root, models, src):
             draw.text((x + 8, y + 7), f"{pair}   {title}", font=font, fill="white")
             canvas.paste(crop, (x + (380 - crop.width) // 2, y + 34 + (196 - crop.height) // 2))
     canvas.save(root / "road-pairs.jpg", quality=93)
-    save_json(root / "real-check.json", dict(geometry=check_cover(models, src), views=stats))
+    report = dict(views=stats) if pairs else dict(geometry=check_cover(models, src), views=stats)
+    save_json(root / "real-check.json", report)
 
 
 if __name__ == "__main__":
@@ -106,5 +107,6 @@ if __name__ == "__main__":
     p.add_argument("views", type=Path)
     p.add_argument("assets", type=Path)
     p.add_argument("source", type=Path)
+    p.add_argument("--pairs", nargs=2, help="Review these two layouts without the vented-cover scan checks")
     a = p.parse_args()
-    review(a.views, a.assets, a.source)
+    review(a.views, a.assets, a.source, a.pairs)

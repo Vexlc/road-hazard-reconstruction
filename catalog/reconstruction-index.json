@@ -1,5 +1,5 @@
 {
-  "asset_count": 1516,
+  "asset_count": 1520,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2299,6 +2299,26 @@
         "joint-props",
         "cycles"
       ]
+    },
+    "cubemap-road-pits": {
+      "name": "四处实测沥青坑与立方体鱼眼",
+      "launcher": "gen2hole/multiview_pits.py",
+      "recipe": "gen2hole/examples/cube-pits",
+      "guide": "docs/31-cube-pits.md",
+      "section": "从五份原始曝光重建四个坑",
+      "assets": [
+        "P266",
+        "P267",
+        "P268",
+        "P269"
+      ],
+      "transfer": [
+        "pavement-layout",
+        "pavement-joint",
+        "apron-exposure",
+        "native-pavement-support",
+        "cube-depth"
+      ]
     }
   },
   "transfer_routes": {
@@ -2431,6 +2451,11 @@
       "name": "逐件验证立体散落物接地与联合占地，再接入实车相机或原生场景",
       "entry": "gen2hole/downstream/cargo_support.py",
       "guide": "docs/30-lost-cargo.md"
+    },
+    "cube-depth": {
+      "name": "从六面透视颜色与硬件深度缓冲迁入共心鱼眼",
+      "entry": "gen2hole/downstream/cube_camera.py",
+      "guide": "docs/31-cube-pits.md"
     }
   },
   "groups": {
@@ -2462,7 +2487,8 @@
       "broken-lip-and-bowl",
       "rounded-spall-and-stony-bowl",
       "wide-spall-and-oval-bed",
-      "infill-paired-breakouts"
+      "infill-paired-breakouts",
+      "cubemap-road-pits"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

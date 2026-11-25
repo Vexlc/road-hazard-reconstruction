@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P267",
+    "label": "龟裂路面中的碎边浅坑",
+    "source": "PothRGBD",
+    "anchor": "20250227_170442",
+    "fit": [
+      "20250227_170442"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

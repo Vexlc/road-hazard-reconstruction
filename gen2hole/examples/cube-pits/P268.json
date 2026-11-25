@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P268",
+    "label": "一侧露出陡壁的红褐色坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_055452",
+    "fit": [
+      "20250305_055452"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

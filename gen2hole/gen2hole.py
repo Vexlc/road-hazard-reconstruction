@@ -73,6 +73,23 @@ def example_inputs(group):
         return recipe.parents[1]
 
 
+def list_routes(query):
+    index = load(ROOT.parent / "catalog/reconstruction-index.json")
+    terms = query.casefold().split()
+    matched = False
+    for key, route in index["transfer_routes"].items():
+        description = " ".join([key, route["name"], route["entry"], route["guide"]]).casefold()
+        if not all(term in description for term in terms):
+            continue
+        families = [f for f in index["families"].values() if key in f["transfer"]]
+        size = sum(len(f["assets"]) for f in families)
+        print(f"{key}  {route['name']}  ({len(families)} 个系列，{size} 个编号)")
+        print(f"  {route['entry']}  ·  {route['guide']}")
+        matched = True
+    if not matched:
+        raise ValueError("没有符合条件的迁入路线。省略关键词可列出全部路线。")
+
+
 def search_families(query, route):
     index = load(ROOT.parent / "catalog/reconstruction-index.json")
     routes = index["transfer_routes"]
@@ -357,6 +374,8 @@ def main():
     search = commands.add_parser("search", help="按系列、资产编号或宿主检索全仓重建与迁入代码")
     search.add_argument("query", nargs="?", default="", help="关键词，空格分隔的词需同时匹配")
     search.add_argument("--route", help="仅列出支持指定路线的系列，如 kitti-pair、joint-props")
+    routes = commands.add_parser("routes", help="从宿主或相机名称查找迁入代码、操作指南和覆盖范围")
+    routes.add_argument("query", nargs="?", default="", help="如 鱼眼、KITTI、cube-depth，缺省列出全部路线")
     lookup = commands.add_parser("locate", help="按编号查询整个发布索引中的配方、入口和指南")
     lookup.add_argument("id")
     prompt = commands.add_parser("show", help="查看单件资产的原始生图提示词、原图与成品路径")
@@ -389,6 +408,9 @@ def main():
     try:
         if args.command == "search":
             search_families(args.query, args.route)
+            return
+        if args.command == "routes":
+            list_routes(args.query)
             return
         if args.command == "locate":
             locate(args.id)

@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P266",
+    "label": "黄褐色集料外露的宽浅坑",
+    "source": "PothRGBD",
+    "anchor": "20250305_054900",
+    "fit": [
+      "20250305_054900"
+    ],
+    "holdout": [],
+    "mode": "single_rgbd"
+  }
+]

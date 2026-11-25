@@ -1,0 +1,24 @@
+{
+  "id": "P266-P267",
+  "label": "宽口坑与龟裂碎边坑",
+  "instances": [
+    {
+      "id": "forward-pit",
+      "asset": "P266",
+      "xy_m": [
+        1.24,
+        0.12
+      ],
+      "heading_deg": -9
+    },
+    {
+      "id": "rear-pit",
+      "asset": "P267",
+      "xy_m": [
+        -1.24,
+        -0.14
+      ],
+      "heading_deg": 17
+    }
+  ]
+}

@@ -20,6 +20,10 @@ from pavement_layout import PavementLayout, resolve_instances
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     tasks = parser.add_subparsers(dest="task", required=True)
+    cube = tasks.add_parser("from-cube", help="Sample six perspective color and depth-buffer faces with a central calibrated lens")
+    cube.add_argument("faces", type=Path)
+    cube.add_argument("lens", type=Path)
+    cube.add_argument("out", type=Path)
     readout = tasks.add_parser("register-readout", help="Register scanline mid-exposures against a timed sensor trajectory")
     readout.add_argument("view", type=Path, help="Host packet with int64 row_time_ns")
     readout.add_argument("trajectory", type=Path, help="NPZ with time_ns and camera_to_world at each knot")
@@ -103,12 +107,17 @@ def main():
             parser.error("row_time_ns must match the image height")
         packet["camera_to_world_rows"] = rows
         packet.setdefault("camera_to_world", rows.reshape(-1, *rows.shape[-3:])[0, rows.shape[-3] // 2])
+    if args.task == "from-cube":
+        from cube_camera import convert
+
+        with np.load(args.faces, allow_pickle=False) as faces, np.load(args.lens, allow_pickle=False) as lens:
+            packet = convert(faces, lens)
     if args.task == "remap-camera":
         from camera_remap import remap_packet
 
         with np.load(args.view, allow_pickle=False) as source:
             packet = remap_packet(source, np.load(args.source_xy, allow_pickle=False), args.calibration)
-    if args.task in ("register-readout", "remap-camera", "reflection-mesh"):
+    if args.task in ("register-readout", "remap-camera", "reflection-mesh", "from-cube"):
         from tempfile import NamedTemporaryFile
 
         args.out.parent.mkdir(exist_ok=True, parents=True)

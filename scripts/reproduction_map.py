@@ -65,12 +65,20 @@ def render(index):
             ]
             lines.append("| " + " | ".join(entries) + " |")
     lines.extend(
-        ["", "## 按宿主选迁入入口", "", "| 路线 | 适用场景 | 代码 | 数据、运行和验收 |", "|---|---|---|---|"]
+        [
+            "", "## 按宿主选迁入入口", "",
+            "运行 `python3 gen2hole/gen2hole.py routes 鱼眼` 可按宿主查路线，"
+            "再用 `python3 gen2hole/gen2hole.py search --route 路线名` 查对应的资产系列。"
+            "同一资产可以接入多个宿主，各路线的编号数有重叠。",
+            "", "| 路线 | 适用场景 | 已登记系列 / 编号 | 代码 | 数据、运行和验收 |", "|---|---|---:|---|---|",
+        ]
     )
     for key, row in routes.items():
         program = link(PurePosixPath(row["entry"]).name, row["entry"])
+        supported = [family for family in families.values() if key in family["transfer"]]
+        coverage = f"{len(supported)} / {sum(len(family['assets']) for family in supported):,}"
         lines.append(
-            f'| <a id="route-{key}"></a>{key} | {row["name"]} | {program} | {link("指南", row["guide"])} |'
+            f'| <a id="route-{key}"></a>{key} | {row["name"]} | {coverage} | {program} | {link("指南", row["guide"])} |'
         )
     lines.extend(
         [
