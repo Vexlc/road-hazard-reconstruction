@@ -1,0 +1,124 @@
+{
+  "M570": {
+    "id": "M570",
+    "label": "新奥尔良偏移圆盖与部分敞开的井口",
+    "glb_sha256": "e717de119851084d1da4c05f512e775c58a061470f0b5279582e2f8a4909a9ab",
+    "ply_sha256": "560c4c8466e1354b32f1c22956cb641fb65d21dd7ee9cdfedf88bd55c8f8087b",
+    "gaussians": 349634,
+    "triangles": 327204,
+    "evidence": {
+      "edge_test": {
+        "mouth": {
+          "count": 12,
+          "rms_px": 0.6324196690032335,
+          "max_px": 1.327624739344237
+        },
+        "lid": {
+          "count": 15,
+          "rms_px": 1.485730269841939,
+          "max_px": 4.43721916506778
+        }
+      },
+      "source_probes": {
+        "lid": [
+          9,
+          9,
+          9
+        ],
+        "exposed_shaft": [
+          0,
+          0
+        ],
+        "back_wall": [
+          6,
+          6,
+          6
+        ],
+        "concrete": [
+          1,
+          1
+        ]
+      },
+      "assumed_radius_m": 0.3,
+      "lid_center_displacement_m": 0.5008521050290042,
+      "bore_covered_plan_fraction": 0.05858491207631354,
+      "open_plan_area_m2": 0.22271803714610242,
+      "exposed_grid_area_m2": 0.22278399999999998,
+      "sensor_shaft_no_return_px": 55830,
+      "source_aperture_no_depth_probes": [
+        [
+          337,
+          235
+        ],
+        [
+          400,
+          245
+        ]
+      ],
+      "observed_iron_lower_edge_range_m": [
+        -0.1552225028651868,
+        -0.14045419070648069
+      ],
+      "glyph_heights_mm": [
+        27.5,
+        24.0,
+        27.5,
+        24.0,
+        27.5,
+        27.5,
+        24.0
+      ],
+      "focal_fit_px": 846.6941220775268,
+      "sensitivity": {
+        "660": {
+          "lid_offset_m": 0.5018745692109969,
+          "edge_test": {
+            "mouth": {
+              "count": 12,
+              "rms_px": 1.8867662680262527,
+              "max_px": 4.61880903093011
+            },
+            "lid": {
+              "count": 15,
+              "rms_px": 1.5061376448361974,
+              "max_px": 3.648775645217938
+            }
+          }
+        },
+        "990": {
+          "lid_offset_m": 0.5007683325804002,
+          "edge_test": {
+            "mouth": {
+              "count": 12,
+              "rms_px": 1.3266112647599984,
+              "max_px": 3.0953509577745923
+            },
+            "lid": {
+              "count": 15,
+              "rms_px": 1.9206401136549538,
+              "max_px": 5.325809985589946
+            }
+          }
+        }
+      }
+    },
+    "mesh_depth_p95_m": 0.7799999713897705,
+    "mesh_height_p95_m": 0.027500033378601074,
+    "installed_xy_aabb_m": [
+      1.108,
+      0.72
+    ],
+    "view": {
+      "near": {
+        "core_px": 75422,
+        "opacity_p10": 0.8375696897506714,
+        "mesh_splat_depth_p90_mm": 4.101240634918216
+      },
+      "opposite": {
+        "core_px": 77181,
+        "opacity_p10": 0.8017316460609436,
+        "mesh_splat_depth_p90_mm": 4.789948463439941
+      }
+    }
+  }
+}

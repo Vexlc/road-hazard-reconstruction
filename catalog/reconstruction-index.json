@@ -1,5 +1,5 @@
 {
-  "asset_count": 1566,
+  "asset_count": 1567,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2674,6 +2674,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "midcity-cover": {
+      "name": "新奥尔良偏移圆盖与部分敞开的井口",
+      "launcher": "gen2hole/examples/midcity-cover/build.py",
+      "recipe": "gen2hole/examples/midcity-cover/survey.json",
+      "guide": "gen2hole/examples/midcity-cover/README.md",
+      "section": "从原照重建",
+      "assets": [
+        "M570"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -2962,7 +2976,8 @@
       "lane-photo-covers",
       "field-rims-covers",
       "urayasu-shaft",
-      "hensting-cover"
+      "hensting-cover",
+      "midcity-cover"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

@@ -1,0 +1,18 @@
+{
+  "M570": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 5557,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "e717de119851084d1da4c05f512e775c58a061470f0b5279582e2f8a4909a9ab"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 1386,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "e717de119851084d1da4c05f512e775c58a061470f0b5279582e2f8a4909a9ab"
+    }
+  }
+}

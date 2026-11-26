@@ -1,0 +1,10 @@
+{
+  "M570": {
+    "asset.glb": "e717de119851084d1da4c05f512e775c58a061470f0b5279582e2f8a4909a9ab",
+    "asset.ply": "560c4c8466e1354b32f1c22956cb641fb65d21dd7ee9cdfedf88bd55c8f8087b",
+    "metadata.json": "a2595560f7ffefc9a20fb50eccbd1df5c6347e845744604ae0193688a524b02a",
+    "observed.glb": "ef2806d05aaf4ef3f8dde3bee3c55b0365a64f9325f46de633369e0c3d27b3ac",
+    "splat_material.npz": "8728713f5047136ad7bcdc5b02d247c7df95edee79afc539ea5acfaa227396b6",
+    "surface.npz": "8b15b189cec6e5bf34a0b8da7469878ab0542238216069aad3932610dc829cb4"
+  }
+}
