@@ -1,0 +1,258 @@
+{
+  "stereo": {
+    "focal_px": [
+      722.4420594887546,
+      701.5634007377953
+    ],
+    "baseline_model_m": 8.940214430683355,
+    "camera_eyes_m": [
+      [
+        0.0,
+        0.0,
+        1.6
+      ],
+      [
+        -2.9760742345070854,
+        8.428686021754984,
+        1.4336624997959988
+      ]
+    ],
+    "training_matches": 85,
+    "training_median_sampson_px": 0.6576422218797545,
+    "landmarks": {
+      "open end on far bank": {
+        "world_m": [
+          -1.053214865057993,
+          21.518058664550974,
+          -0.9954297007524002
+        ],
+        "reprojection_px": [
+          0.18300441450995703,
+          0.3482288131562147
+        ]
+      },
+      "far bank pale plate corner": {
+        "world_m": [
+          0.27984267182678263,
+          24.31386275446649,
+          -1.0115926420114785
+        ],
+        "reprojection_px": [
+          0.34478257147621705,
+          0.5942532744047657
+        ]
+      },
+      "short tube at opposite tree roots": {
+        "world_m": [
+          3.7995948925765815,
+          11.452755249761298,
+          -1.1602373432504498
+        ],
+        "reprojection_px": [
+          1.0563286215552912,
+          1.8387901744793946
+        ]
+      },
+      "near bank stub end": {
+        "world_m": [
+          -2.2410538522114343,
+          13.949729668830626,
+          -0.9708492827830812
+        ],
+        "reprojection_px": [
+          1.7944782339018157,
+          4.648579168321044
+        ]
+      },
+      "far blue tube emergence": {
+        "world_m": [
+          2.6710636580651115,
+          23.277049021244412,
+          -1.164753095671406
+        ],
+        "reprojection_px": [
+          0.6943477914606025,
+          1.0977585107521457
+        ]
+      },
+      "blue tube at gravel-bank coupling": {
+        "world_m": [
+          1.7682280122195722,
+          15.251262735642142,
+          -1.1615995828272494
+        ],
+        "reprojection_px": [
+          3.1469803030280663,
+          5.7986509823003995
+        ]
+      }
+    }
+  },
+  "source_views": {
+    "west": {
+      "mesh_visible_pixels": 422060,
+      "native_alpha_above_08": 415560,
+      "water_pixels_checked": 97463,
+      "water_mean_absolute_channel_error_mesh": 40.35156931348307,
+      "water_mean_absolute_channel_error_splats": 17.927251025175366,
+      "component_probes": [
+        {
+          "x": 160,
+          "y": 514,
+          "expected": 13,
+          "actual": 13
+        },
+        {
+          "x": 547,
+          "y": 551,
+          "expected": 146,
+          "actual": 146
+        },
+        {
+          "x": 486,
+          "y": 283,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "x": 545,
+          "y": 225,
+          "expected": 2,
+          "actual": 2
+        },
+        {
+          "x": 595,
+          "y": 252,
+          "expected": 59,
+          "actual": 59
+        },
+        {
+          "x": 345,
+          "y": 465,
+          "expected": 2,
+          "actual": 2
+        },
+        {
+          "x": 756,
+          "y": 476,
+          "expected": 59,
+          "actual": 59
+        },
+        {
+          "x": 821,
+          "y": 447,
+          "expected": 59,
+          "actual": 59
+        }
+      ]
+    },
+    "northwest": {
+      "mesh_visible_pixels": 375271,
+      "native_alpha_above_08": 375014,
+      "water_pixels_checked": 260125,
+      "water_mean_absolute_channel_error_mesh": 46.91202434726894,
+      "water_mean_absolute_channel_error_splats": 23.7481031555342,
+      "component_probes": [
+        {
+          "x": 170,
+          "y": 195,
+          "expected": 13,
+          "actual": 13
+        },
+        {
+          "x": 215,
+          "y": 298,
+          "expected": 2,
+          "actual": 2
+        },
+        {
+          "x": 260,
+          "y": 428,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "x": 640,
+          "y": 442,
+          "expected": 59,
+          "actual": 59
+        },
+        {
+          "x": 114,
+          "y": 293,
+          "expected": 59,
+          "actual": 59
+        },
+        {
+          "x": 133,
+          "y": 491,
+          "expected": 59,
+          "actual": 59
+        },
+        {
+          "x": 186,
+          "y": 253,
+          "expected": 146,
+          "actual": 146
+        }
+      ]
+    }
+  },
+  "vertical_crossing": [
+    {
+      "parts": [
+        59,
+        59,
+        59,
+        59,
+        59
+      ],
+      "z_m": [
+        -0.943615198135376,
+        -0.9591240882873535,
+        -0.951657772064209,
+        -0.920661211013794,
+        -0.8802645206451416
+      ]
+    },
+    {
+      "parts": [
+        2,
+        4,
+        4,
+        4,
+        4
+      ],
+      "z_m": [
+        -1.3211870193481445,
+        -1.3999998569488525,
+        -1.4000003337860107,
+        -1.4000000953674316,
+        -1.3999998569488525
+      ]
+    },
+    {
+      "parts": [
+        2,
+        16,
+        16,
+        16,
+        16
+      ],
+      "z_m": [
+        -1.3211870193481445,
+        -1.76883864402771,
+        -1.7770342826843262,
+        -1.79805588722229,
+        -1.7495229244232178
+      ]
+    }
+  ],
+  "water_visible_plan_area_model_m2": 72.15228042257881,
+  "approach": {
+    "camera_height_m": 1.45,
+    "frames": 36,
+    "travel_model_m": 2.41177107153937,
+    "stop_to_nearest_traced_lip_model_m": 0.997774495041101
+  }
+}

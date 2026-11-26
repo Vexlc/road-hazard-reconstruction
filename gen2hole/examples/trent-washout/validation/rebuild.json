@@ -1,0 +1,10 @@
+{
+  "method": "Separate source export and build directories, identical input bytes, environment and GPU",
+  "sha256": {
+    "asset.glb": "19d73741c47b309a779cef60a4d488447d31a69f9977777bcf28faf797a006d5",
+    "asset.ply": "9b937dd9f80444d9867036cc89936351d2518ab22880798abb8b0096d9559010",
+    "metadata.json": "5df1f579c50fd942c938398816c11b3266d4f8ebe66d4d0ef882e173a5e1dda9",
+    "splat_material.npz": "8940770c7b4159cc4f65085c865c37b6d32eabf6589d6b067064b6c0bfb14fb5",
+    "surface.npz": "eef583c153a3106ed3dc96988d33ef396a30d2d4d086e2b66898c7c1d884740e"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "asset_count": 1560,
+  "asset_count": 1561,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2630,6 +2630,19 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "trent-washout": {
+      "name": "两处机位观测的特伦特河冲断乡道",
+      "launcher": "gen2hole/examples/trent-washout/build.py",
+      "recipe": "gen2hole/examples/trent-washout/survey.json",
+      "guide": "gen2hole/examples/trent-washout/README.md",
+      "section": "从两张原照复现",
+      "assets": [
+        "P564"
+      ],
+      "transfer": [
+        "mesh-view"
+      ]
     }
   },
   "transfer_routes": {
@@ -2874,7 +2887,8 @@
       "forked-aggregate-pits",
       "long-rut-aggregate-bed",
       "lane-scan-pits",
-      "field-rims-scans"
+      "field-rims-scans",
+      "trent-washout"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

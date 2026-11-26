@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,560 个资产编号、77 个重建系列和 34 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,561 个资产编号、78 个重建系列和 34 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -46,6 +46,7 @@
 | [长条露底坑与圆弧集料坑](../docs/35-stereo-drains.md#%E4%BB%8E%E4%B8%A4%E6%AC%A1%E5%9D%91%E6%B4%9E%E9%87%87%E9%9B%86%E5%92%8C%E6%A0%BC%E6%A0%85%E7%85%A7%E7%89%87%E9%87%8D%E5%BB%BA) | 2 | P279 | [重建](../gen2hole/multiview_pits.py) · [配方](../gen2hole/examples/stereo-drains) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure)、[native-pavement-support](#route-native-pavement-support)、[raw-mei](#route-raw-mei)、[pavement-sun](#route-pavement-sun)、[stereo-rays](#route-stereo-rays) |
 | [五件车行道实扫坑槽](../gen2hole/examples/lane-damage/README.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E8%BE%93%E5%85%A5%E9%87%8D%E5%BB%BA) | 5 | P546 | [重建](../gen2hole/examples/lane-damage/points/build.py) · [配方](../gen2hole/examples/lane-damage/points/survey.json) | [mesh-view](#route-mesh-view)、[drive](#route-drive) |
 | [分离坑区、长槽和宽口坑床扫描](../gen2hole/examples/field-rims/README.md#%E4%BB%8E%E8%BE%93%E5%85%A5%E9%87%8D%E5%BB%BA) | 3 | P557 | [重建](../gen2hole/examples/field-rims/build_scans.py) · [配方](../gen2hole/examples/field-rims/scans.json) | [mesh-view](#route-mesh-view)、[drive](#route-drive) |
+| [两处机位观测的特伦特河冲断乡道](../gen2hole/examples/trent-washout/README.md#%E4%BB%8E%E4%B8%A4%E5%BC%A0%E5%8E%9F%E7%85%A7%E5%A4%8D%E7%8E%B0) | 1 | P564 | [重建](../gen2hole/examples/trent-washout/build.py) · [配方](../gen2hole/examples/trent-washout/survey.json) | [mesh-view](#route-mesh-view) |
 
 ## 裂缝、积水、铺装与修补
 
@@ -121,7 +122,7 @@
 | <a id="route-photo-water"></a>photo-water | 按站点重建水面、坑床及折射回放 | 1 / 1 | [oblique_pits.py](../gen2hole/oblique_pits.py) | [P204 路缘积水坑](../docs/02-asset-reconstruction.md#p204-%E8%B7%AF%E7%BC%98%E7%A7%AF%E6%B0%B4%E5%9D%91) |
 | <a id="route-repair"></a>repair | 实拍沥青基色迁移及同机位投影 | 1 / 1 | [review-repair-transfer.py](../scripts/review-repair-transfer.py) | [迁到另一种沥青](../gen2hole/examples/transverse-repair/README.md#%E8%BF%81%E5%88%B0%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%B2%A5%E9%9D%92) |
 | <a id="route-archive"></a>archive | 封存成品及环绕复核；独立 GLB 的宿主接入见手册 | 1 / 30 | [review-large-potholes.py](../scripts/review-large-potholes.py) | [大面积坑洞](../docs/10-factory.md#%E5%A4%A7%E9%9D%A2%E7%A7%AF%E5%9D%91%E6%B4%9E) |
-| <a id="route-mesh-view"></a>mesh-view | 米制网格、标定光线与宿主遮挡合成 | 20 / 54 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [换鱼眼、换渲染器或换世界坐标](../docs/17-mixed-road-transfer.md#%E6%8D%A2%E9%B1%BC%E7%9C%BC%E6%8D%A2%E6%B8%B2%E6%9F%93%E5%99%A8%E6%88%96%E6%8D%A2%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87) |
+| <a id="route-mesh-view"></a>mesh-view | 米制网格、标定光线与宿主遮挡合成 | 21 / 55 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [换鱼眼、换渲染器或换世界坐标](../docs/17-mixed-road-transfer.md#%E6%8D%A2%E9%B1%BC%E7%9C%BC%E6%8D%A2%E6%B8%B2%E6%9F%93%E5%99%A8%E6%88%96%E6%8D%A2%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87) |
 | <a id="route-joint-props"></a>joint-props | KITTI 0000 原生联合场景的成对立体设施及前后视 | 7 / 18 | [roadside_pairs.py](../streetcrafter/joint/roadside_pairs.py) | [迁入指定的 30,000 步原生场景](../docs/19-roadside-props.md#%E8%BF%81%E5%85%A5%E6%8C%87%E5%AE%9A%E7%9A%84-30000-%E6%AD%A5%E5%8E%9F%E7%94%9F%E5%9C%BA%E6%99%AF) |
 | <a id="route-cycles"></a>cycles | Blender Cycles 原生等距鱼眼、米制深度与双物体对照 | 2 / 6 | [render-cone-cycles.py](../scripts/render-cone-cycles.py) | [在 Blender Cycles 中独立复核](../docs/20-traffic-cones.md#%E5%9C%A8-blender-cycles-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E5%A4%8D%E6%A0%B8) |
 | <a id="route-pavement-layout"></a>pavement-layout | 独立支撑面上的成组开口、实车鱼眼与 Cycles 冠形路面 | 20 / 42 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [接入自己的鱼眼或其他渲染器](../docs/21-measured-pavement.md#%E6%8E%A5%E5%85%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E9%B1%BC%E7%9C%BC%E6%88%96%E5%85%B6%E4%BB%96%E6%B8%B2%E6%9F%93%E5%99%A8) |

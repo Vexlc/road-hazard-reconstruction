@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**特伦特河洪水冲断乡道 P564**　两张现场照片配准出两端残路、五块碎板与横跨水面的裸管。附原照、网格、随视角变化的高斯水色以及在断边前停下的相机回放。[中文复现与误差](gen2hole/examples/trent-washout/README.md) · [下载成品](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/trent-washout-v1.0.0)
+
 **浦安地震后外露的检查井筒 A563**　用现场笔长约束比例，重建约 0.63 m 的路面高差，附模型、两台实录激光的合成量程和前后摄短片。[标定与回放步骤](gen2hole/examples/uplifted-shafts/README.md) · [下载模型](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/urayasu-shaft-v1.0.0)
 
 **错向漆线井盖、残板缺口与分层坑槽**　六件新资产保留了井盖与双黄线 52.7° 的夹角、一幅扫描中分离的两处坑区，以及积水补丁中露出的五块骨料。附 034 实拍宿主前后摄回放。[原照、模型和复现步骤](gen2hole/examples/field-rims/README.md) · [下载发布包](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/field-rims-v1.0.0)
@@ -14,7 +16,7 @@ RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资�
 
 **沉降雨篦和缺篦井口**　两组资产已迁入指定的 KITTI 联合场景。新宿主若能提供标定双目和匹配，可从米制距离重新拟合接地与遮挡。[接入与复现](docs/35-stereo-drains.md) · [指定场景的局部前后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/joint-local-front-rear.mp4) · [Audi 实拍车尾](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/audi-front-rear.mp4)
 
-**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,560 个编号所属的 77 个系列与 34 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,561 个编号所属的 78 个系列与 34 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
 
 不知道编号时，可以运行 `python3 gen2hole/gen2hole.py search 井盖`。已有目标场景时，运行 `python3 gen2hole/gen2hole.py routes 鱼眼` 查看可用的迁入程序和指南，再按路线缩小范围，例如 `python3 gen2hole/gen2hole.py search --route kitti-pair`。每条结果列出代表编号、重建代码和操作章节。[按手头材料选择复现入口](docs/16-reproduction-cookbook.md#按手头材料选入口)
 
