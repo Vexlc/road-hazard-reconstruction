@@ -91,6 +91,14 @@ def load_inventory(parent):
 
 
 def part_id(name):
+    if name.startswith("Exposed asphalt wall "):
+        return 180
+    if name.startswith("Inferred wall ") or name == "Optical pocket":
+        return 181
+    contents = {"Black sack": 182, "Folded cardboard": 183, "Trapped cone": 184}
+    base_name = name.removesuffix(" reverse").removesuffix(" back").removesuffix(" side").removesuffix(" continuation")
+    if base_name in contents:
+        return contents[base_name]
     if name.startswith("Delineator "):
         return 176
     if name == "Yellow braided line":

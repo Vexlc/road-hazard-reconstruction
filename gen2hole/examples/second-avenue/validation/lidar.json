@@ -1,0 +1,178 @@
+{
+  "scene": "109",
+  "glb_sha256": "b2664cc3fb625e64d84c783c092ddcc44ff29d96c366ec890b005f8c503a9f5e",
+  "rig_sha256": "cf38b0126f2090cdd62f74364546825137d3bd7cc8e06f1ef5da6739201ad8b5",
+  "constrained_range_minus_plane_m": {
+    "p10": -5.844107548483988,
+    "median": -1.9167347243279398,
+    "p90": -0.13721536487887784
+  },
+  "accepted_scans": 6,
+  "counts": {
+    "candidate_beams": 18934,
+    "paired": 1875,
+    "kept_host": 17059,
+    "upright_cones": 787,
+    "exposed_wall": 10,
+    "unknown": 1078,
+    "continuation": 1054,
+    "bag": 0,
+    "cardboard": 6,
+    "trapped_cone": 18
+  },
+  "frames": [
+    {
+      "frame": 11,
+      "source_sha256": "8bd30181607c7d6bf3f6f4ca8adb0e5622689f445d232400304f8325c83b434f",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.3883321,
+        "exposure_end_s": 1557595834.501373,
+        "margin_m": 0.25,
+        "minimum_bound_m": 2.093471592429335
+      },
+      "candidate_beams": 4304,
+      "paired": 463,
+      "kept_host": 3841,
+      "upright_cones": 182,
+      "exposed_wall": 0,
+      "unknown": 281,
+      "continuation": 281,
+      "bag": 0,
+      "cardboard": 0,
+      "trapped_cone": 0,
+      "packet_sha256": "3c59d46af30d59905b7d308f110fb8d832d74f18d8e6461d2207fb32e101178a",
+      "semantics_sha256": "bdcaa8e3ac1b3b62a0bee7b18847be04b819c6542314c0e3dd1509560648b668"
+    },
+    {
+      "frame": 12,
+      "source_sha256": "01bc0ef194c60b6b0d7506b0aa950d4e31699f439837fd02ac82808fb07295eb",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.4870462,
+        "exposure_end_s": 1557595834.601343,
+        "margin_m": 0.25,
+        "minimum_bound_m": 2.093471592429335
+      },
+      "candidate_beams": 5128,
+      "paired": 570,
+      "kept_host": 4558,
+      "upright_cones": 220,
+      "exposed_wall": 0,
+      "unknown": 350,
+      "continuation": 345,
+      "bag": 0,
+      "cardboard": 0,
+      "trapped_cone": 5,
+      "packet_sha256": "2fa142cb40558b174bb3194a7cc597ebc3a4d750aa18072fefe6b365e3252d44",
+      "semantics_sha256": "f3e34dc69058c768b102522a1d2fdab85dee7474ee50a212ae57fe6901eafdf8"
+    },
+    {
+      "frame": 13,
+      "source_sha256": "50944b33999e958e7c78d55953c2669b4b120a21ea88160a47365eaaa3ca51d3",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.5836227,
+        "exposure_end_s": 1557595834.701323,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.610453415693323
+      },
+      "candidate_beams": 6670,
+      "paired": 657,
+      "kept_host": 6013,
+      "upright_cones": 262,
+      "exposed_wall": 1,
+      "unknown": 394,
+      "continuation": 375,
+      "bag": 0,
+      "cardboard": 6,
+      "trapped_cone": 13,
+      "packet_sha256": "ab7df68c4266512faf6de476bbf11efdff81d2dc9dd7c4ca90d0254daf4dfb25",
+      "semantics_sha256": "fb58a3f08d58e49c30e3771e549b41c7b129c41029a136fd4c82b7d54314bc09"
+    },
+    {
+      "frame": 14,
+      "source_sha256": "5dfd1d35e7be793f924addd8fc254654ec7d83734c72fe533e20447bcb394dc6",
+      "excluded": "Traffic clearance refused at survey interval 14: {'clear': False, 'actor': 'ego', 'asset': 'P584', 'lower_bound_m': 0.03417938931208786, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 28,
+      "source_sha256": "aa86c45f1eae8aa6762f14d88beb4597156c2e3a6ca04d5d2c73c6b98f52f955",
+      "excluded": "Traffic clearance refused at survey interval 26: {'clear': False, 'actor': 'ego', 'asset': 'P584', 'lower_bound_m': -2.2184318225238338, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 29,
+      "source_sha256": "1d258dbed07e700cff7c022082f6b2e8bf881d1db9b06337b2614c9affa088b1",
+      "excluded": "Traffic clearance refused at survey interval 27: {'clear': False, 'actor': 'ego', 'asset': 'P584', 'lower_bound_m': -0.6023098986638695, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 30,
+      "source_sha256": "f2b97f011a74e3b6aca3d0704a944db4479344537a5a1138c72be24b421cba17",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.2986293,
+        "exposure_end_s": 1557595836.4273002,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.023891392663277
+      },
+      "candidate_beams": 940,
+      "paired": 50,
+      "kept_host": 890,
+      "upright_cones": 35,
+      "exposed_wall": 0,
+      "unknown": 15,
+      "continuation": 15,
+      "bag": 0,
+      "cardboard": 0,
+      "trapped_cone": 0,
+      "packet_sha256": "653450e9a437fbc9e41bc7ca63c81a1cd7634bb66e8829ecf0fdef12c7561d12",
+      "semantics_sha256": "1319fb10b63470238f5144f9d17d11f66236737c7176281099d1cae7445c9ceb"
+    },
+    {
+      "frame": 31,
+      "source_sha256": "be60ce706019beceec00c33626c7823230d1cf7b1be73233998c61ea2de96028",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.3986664,
+        "exposure_end_s": 1557595836.5260139,
+        "margin_m": 0.25,
+        "minimum_bound_m": 2.093471592429335
+      },
+      "candidate_beams": 938,
+      "paired": 67,
+      "kept_host": 871,
+      "upright_cones": 43,
+      "exposed_wall": 0,
+      "unknown": 24,
+      "continuation": 24,
+      "bag": 0,
+      "cardboard": 0,
+      "trapped_cone": 0,
+      "packet_sha256": "4c4e6940b229567cabe489517c7ba618d536c0a11e31f1e40a6c53402f77756c",
+      "semantics_sha256": "9923638a2415d069db07027000b2e3718bc1a20a36efc36fad52ccb538c76a08"
+    },
+    {
+      "frame": 32,
+      "source_sha256": "e45c2b046b61039bc76f717737a8b6526da209c34bcc70b999c09f282392a5fa",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.4987295,
+        "exposure_end_s": 1557595836.6224585,
+        "margin_m": 0.25,
+        "minimum_bound_m": 2.093471592429335
+      },
+      "candidate_beams": 954,
+      "paired": 68,
+      "kept_host": 886,
+      "upright_cones": 45,
+      "exposed_wall": 9,
+      "unknown": 14,
+      "continuation": 14,
+      "bag": 0,
+      "cardboard": 0,
+      "trapped_cone": 0,
+      "packet_sha256": "725c959363382d9799243d5c3d214aece7f782c80a5d8d438b5563aa2ff02f01",
+      "semantics_sha256": "a91bfa0d209e86f418c78bfded3659b83e731d3eda026884cea354b6c98d5394"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "P584": {
+    "id": "P584",
+    "label": "第二大道大坑、警示锥与坑内杂物",
+    "glb_sha256": "b2664cc3fb625e64d84c783c092ddcc44ff29d96c366ec890b005f8c503a9f5e",
+    "ply_sha256": "80c2cedefc200a051f460c89ebad3602f61f88d7cf278bc57fffd30c33b25635",
+    "gaussians": 279685,
+    "triangles": 265006,
+    "evidence": {
+      "plane_pose_pitch_roll_height": [
+        0.3820078757741744,
+        -0.05320962195018344,
+        1.7933138593733404
+      ],
+      "aperture_iou": 0.9932465026531597,
+      "component_iou": {
+        "black_bag_visible": 0.9603069595130987,
+        "cardboard_visible": 0.9552017771195853,
+        "fallen_pylon_visible": 0.9032673012606123
+      },
+      "held_out_cone_edge_errors_px": [
+        -1,
+        0,
+        -1,
+        0,
+        -2,
+        0,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "source_rays_without_bounded_hit_in_aperture": 58024,
+      "silhouette_depth_hypotheses": true,
+      "sensitivity": [
+        {
+          "cone_height_m": 0.65,
+          "focal_factor": 0.95,
+          "aperture_box_m": [
+            1.0505585670471191,
+            0.7509060502052307
+          ]
+        },
+        {
+          "cone_height_m": 0.65,
+          "focal_factor": 1.0,
+          "aperture_box_m": [
+            1.0651477575302124,
+            0.7567884922027588
+          ]
+        },
+        {
+          "cone_height_m": 0.65,
+          "focal_factor": 1.05,
+          "aperture_box_m": [
+            1.0786826610565186,
+            0.7621464133262634
+          ]
+        },
+        {
+          "cone_height_m": 0.71,
+          "focal_factor": 0.95,
+          "aperture_box_m": [
+            1.1475332975387573,
+            0.8202204704284668
+          ]
+        },
+        {
+          "cone_height_m": 0.71,
+          "focal_factor": 1.0,
+          "aperture_box_m": [
+            1.1634690761566162,
+            0.8266458511352539
+          ]
+        },
+        {
+          "cone_height_m": 0.71,
+          "focal_factor": 1.05,
+          "aperture_box_m": [
+            1.178253412246704,
+            0.8324985504150391
+          ]
+        },
+        {
+          "cone_height_m": 0.76,
+          "focal_factor": 0.95,
+          "aperture_box_m": [
+            1.228345274925232,
+            0.8779824376106262
+          ]
+        },
+        {
+          "cone_height_m": 0.76,
+          "focal_factor": 1.0,
+          "aperture_box_m": [
+            1.245403528213501,
+            0.8848603963851929
+          ]
+        },
+        {
+          "cone_height_m": 0.76,
+          "focal_factor": 1.05,
+          "aperture_box_m": [
+            1.2612290382385254,
+            0.8911251425743103
+          ]
+        }
+      ]
+    },
+    "mesh_depth_p95_m": 0.5199999809265137,
+    "mesh_height_p95_m": 0.12847946286201217,
+    "installed_xy_aabb_m": [
+      1.65,
+      1.87
+    ],
+    "view": {
+      "near": {
+        "core_px": 29162,
+        "opacity_p10": 0.896277004480362,
+        "mesh_splat_depth_p90_mm": 32.871580123901374
+      },
+      "opposite": {
+        "core_px": 26088,
+        "opacity_p10": 0.9281977534294129,
+        "mesh_splat_depth_p90_mm": 26.81572437286377
+      }
+    }
+  }
+}

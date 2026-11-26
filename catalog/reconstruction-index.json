@@ -1,5 +1,5 @@
 {
-  "asset_count": 1580,
+  "asset_count": 1581,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2817,6 +2817,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "second-avenue": {
+      "name": "第二大道大坑、倒锥与坑内杂物",
+      "launcher": "gen2hole/examples/second-avenue/build.py",
+      "recipe": "gen2hole/examples/second-avenue/survey.json",
+      "guide": "gen2hole/examples/second-avenue/README.md",
+      "section": "从现场照片复现",
+      "assets": [
+        "P584"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3074,7 +3088,8 @@
       "branching-pits",
       "contact-pits",
       "gervis-rupture",
-      "trenton-setts"
+      "trenton-setts",
+      "second-avenue"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

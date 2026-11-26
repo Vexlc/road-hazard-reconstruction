@@ -1,0 +1,18 @@
+{
+  "P584": {
+    "front": {
+      "frames": 4,
+      "representative_frame": 14,
+      "pixels": 20817,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "b2664cc3fb625e64d84c783c092ddcc44ff29d96c366ec890b005f8c503a9f5e"
+    },
+    "back": {
+      "frames": 5,
+      "representative_frame": 29,
+      "pixels": 4021,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "b2664cc3fb625e64d84c783c092ddcc44ff29d96c366ec890b005f8c503a9f5e"
+    }
+  }
+}
