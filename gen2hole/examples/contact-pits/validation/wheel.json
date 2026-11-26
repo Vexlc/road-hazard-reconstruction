@@ -1,0 +1,71 @@
+{
+  "P577": [
+    {
+      "y_m": 0.13999999924139545,
+      "supported_positions": 231,
+      "max_centreline_depth_on_comparable_samples_m": 0.05498581379652023,
+      "max_axle_drop_m": 0.045225029059730915,
+      "max_wheel_to_centreline_clearance_m": 0.01338741106267971
+    },
+    {
+      "y_m": 0.01999999989162793,
+      "supported_positions": 231,
+      "max_centreline_depth_on_comparable_samples_m": 0.05595042556524277,
+      "max_axle_drop_m": 0.05299122153625063,
+      "max_wheel_to_centreline_clearance_m": 0.011144749050102654
+    },
+    {
+      "y_m": -0.1039999994364651,
+      "supported_positions": 222,
+      "max_centreline_depth_on_comparable_samples_m": 0.05761367827653885,
+      "max_axle_drop_m": 0.05155436326883067,
+      "max_wheel_to_centreline_clearance_m": 0.013941544035088849
+    }
+  ],
+  "P578": [
+    {
+      "y_m": 0.0679999974118658,
+      "supported_positions": 209,
+      "max_centreline_depth_on_comparable_samples_m": 0.04004623740911484,
+      "max_axle_drop_m": 0.013925137186416359,
+      "max_wheel_to_centreline_clearance_m": 0.035101980436593294
+    },
+    {
+      "y_m": 0.019999999238784094,
+      "supported_positions": 208,
+      "max_centreline_depth_on_comparable_samples_m": 0.040079351514577866,
+      "max_axle_drop_m": 0.03782723471522331,
+      "max_wheel_to_centreline_clearance_m": 0.029898576542476962
+    },
+    {
+      "y_m": -0.027999998934297665,
+      "supported_positions": 206,
+      "max_centreline_depth_on_comparable_samples_m": 0.03947344049811363,
+      "max_axle_drop_m": 0.03756127133965492,
+      "max_wheel_to_centreline_clearance_m": 0.03502052270269285
+    }
+  ],
+  "P579": [
+    {
+      "y_m": 0.17199999747210987,
+      "supported_positions": 171,
+      "max_centreline_depth_on_comparable_samples_m": 0.09923713654279709,
+      "max_axle_drop_m": 0.0826060049112165,
+      "max_wheel_to_centreline_clearance_m": 0.029475208400249697
+    },
+    {
+      "y_m": 0.03199999952969479,
+      "supported_positions": 171,
+      "max_centreline_depth_on_comparable_samples_m": 0.09855572879314423,
+      "max_axle_drop_m": 0.08756613808188035,
+      "max_wheel_to_centreline_clearance_m": 0.017665616384633265
+    },
+    {
+      "y_m": -0.10399999847150831,
+      "supported_positions": 171,
+      "max_centreline_depth_on_comparable_samples_m": 0.08308076113462448,
+      "max_axle_drop_m": 0.07660860045507789,
+      "max_wheel_to_centreline_clearance_m": 0.03293612495145781
+    }
+  ]
+}

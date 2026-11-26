@@ -1,5 +1,5 @@
 {
-  "asset_count": 1573,
+  "asset_count": 1576,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2745,6 +2745,22 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "contact-pits": {
+      "name": "宽椭圆坑、轮迹长槽与中央深坑的刚性轮迹断面",
+      "launcher": "gen2hole/examples/contact-pits/build.py",
+      "recipe": "gen2hole/examples/contact-pits/survey.json",
+      "guide": "gen2hole/examples/contact-pits/README.md",
+      "section": "从原始点云复现",
+      "assets": [
+        "P577",
+        "P578",
+        "P579"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -2999,7 +3015,8 @@
       "trent-washout",
       "wheel-track-pits",
       "cropthorne-break",
-      "branching-pits"
+      "branching-pits",
+      "contact-pits"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
