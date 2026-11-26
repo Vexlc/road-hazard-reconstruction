@@ -1,0 +1,20 @@
+{
+  "source_directory": "separate tracked-source checkout and identical input archive",
+  "identical_sha256": {
+    "P573/asset.glb": "15f86e26e7fdf284fcec86a459a78ce8079af773ff16c335160433a4ed53d96a",
+    "P573/asset.ply": "414835645cdf37afde01110e2ae597d3077453c88ef8051b70409487fa5ddd8b",
+    "P573/metadata.json": "fa1e5cfb7d99601864805c88240c8e33ce52459f7fcb72810ac4261280dbbdd9",
+    "P573/splat_material.npz": "0ec08c933bd62ef07aac593d1df10a09f92611d009e284393b5f4226f306bc53",
+    "P573/surface.npz": "af92db6a96af8611405639bc59de0871cf390e55a73e3b384e2b1c9836b8d839",
+    "P574/asset.glb": "d11d512d7a6bdb3dc49aa865186ea23667efa38783f65c9faf058bdef3b272ca",
+    "P574/asset.ply": "9acb592e526e81cce16e1fdd0a4ee2557ffed1e2bbc0a1b0565b3102884f8d8d",
+    "P574/metadata.json": "29e1aa026920ba78698a84c22b8691e7e2b8845877e5bc868f48195120991a5f",
+    "P574/splat_material.npz": "f3d15b8973abc8bce03a121f0e310e24455d8a3ee4d35d3045a7ae378f038ba9",
+    "P574/surface.npz": "8dc8b22983ba32b0baec47bafe7e62720099e908ff2651bd54ccc9fc78891887",
+    "P575/asset.glb": "5a7bfd794a7d2339cc238c1f1c90ae535f902cdb5dbe805b683ba6942f8ed540",
+    "P575/asset.ply": "bb9f83e59cf876ae5d59e0ed8596a4b3c08021c85038077abbae5bb161b464dc",
+    "P575/metadata.json": "a0745a86f929df85e3b4c6a6d1f8bbdf7be77ebfb19916033e7e71cc56eda96d",
+    "P575/splat_material.npz": "03db91a47100a6517efc3c3b6548b2b0978652c6d91be1e20f06f30feecba368",
+    "P575/surface.npz": "ccf4da776a2f170efac2e137fa2433db260b5a2eccd4636f738ea2ba3b4aa747"
+  }
+}

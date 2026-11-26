@@ -15,13 +15,13 @@ from inspect_assets import inspect
 from photo_mesh import xyz
 
 
-def check(models, out):
+def check(models, out, survey=HERE / "survey.json"):
     import matplotlib
 
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    ids = [row["id"] for row in json.loads((HERE / "survey.json").read_text())["states"]]
+    ids = [row["id"] for row in json.loads(survey.read_text())["states"]]
     fig, axes = plt.subplots(len(ids), 2, figsize=(11, 10), constrained_layout=True)
 
     def evidence(folder, surface, meta, spec, run):
@@ -156,4 +156,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("models", "out"):
         parser.add_argument(name, type=Path)
+    parser.add_argument("--survey", type=Path, default=HERE / "survey.json")
     check(**vars(parser.parse_args()))

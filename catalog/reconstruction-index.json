@@ -1,5 +1,5 @@
 {
-  "asset_count": 1569,
+  "asset_count": 1572,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2715,6 +2715,22 @@
       "transfer": [
         "fracture-source-view"
       ]
+    },
+    "branching-pits": {
+      "name": "大幅扇形坑、分支坑与环绕留存路面的坑床",
+      "launcher": "gen2hole/examples/branching-pits/build.py",
+      "recipe": "gen2hole/examples/branching-pits/survey.json",
+      "guide": "gen2hole/examples/branching-pits/README.md",
+      "section": "从原始点云复现",
+      "assets": [
+        "P573",
+        "P574",
+        "P575"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -2968,7 +2984,8 @@
       "field-rims-scans",
       "trent-washout",
       "wheel-track-pits",
-      "cropthorne-break"
+      "cropthorne-break",
+      "branching-pits"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
