@@ -1,0 +1,146 @@
+{
+  "A553": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 1727,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "78a025527b021da3a7ec62b783dea49e52657441cb3d9e68cca385d0f0dbe601"
+    },
+    "back": {
+      "frames": 12,
+      "representative_frame": 28,
+      "pixels": 408,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "78a025527b021da3a7ec62b783dea49e52657441cb3d9e68cca385d0f0dbe601"
+    }
+  },
+  "M552": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 10621,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "8eed7e78ae3396eae1ff8455864bf8081ec92809bb26b065c462966da462dae0"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 2357,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "8eed7e78ae3396eae1ff8455864bf8081ec92809bb26b065c462966da462dae0"
+    }
+  },
+  "P546": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 4903,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "35e1d641d17daab1f672abed2c42da56c95e3642b2af8b37ad360beea8095b86"
+    },
+    "back": {
+      "frames": 12,
+      "representative_frame": 28,
+      "pixels": 954,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "35e1d641d17daab1f672abed2c42da56c95e3642b2af8b37ad360beea8095b86"
+    }
+  },
+  "P547": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 3274,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "eeddfeef14c6670960ec2d9e9bff4bae210aed33aba277fb509480c5d93ac8d6"
+    },
+    "back": {
+      "frames": 12,
+      "representative_frame": 28,
+      "pixels": 789,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "eeddfeef14c6670960ec2d9e9bff4bae210aed33aba277fb509480c5d93ac8d6"
+    }
+  },
+  "P548": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 2700,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "134f66ed2599ad25d1ab91facfc8f8339fd16b49f20e3269b3de00dadea80992"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 602,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "134f66ed2599ad25d1ab91facfc8f8339fd16b49f20e3269b3de00dadea80992"
+    }
+  },
+  "P549": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 2439,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "7b6156572add3e00872ef3d6a473d353adfbce538c64febc76ac3228f4824f5b"
+    },
+    "back": {
+      "frames": 12,
+      "representative_frame": 28,
+      "pixels": 585,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "7b6156572add3e00872ef3d6a473d353adfbce538c64febc76ac3228f4824f5b"
+    }
+  },
+  "P550": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 2460,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "d08275afd16a7986e96c4b1b81ad06f9dafd411089f65d20d42451fea7f6093b"
+    },
+    "back": {
+      "frames": 12,
+      "representative_frame": 28,
+      "pixels": 581,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "d08275afd16a7986e96c4b1b81ad06f9dafd411089f65d20d42451fea7f6093b"
+    }
+  },
+  "P551": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 6003,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "29f9a7550a835b1390b49aca85d1d58b68bb8bd9779af8f1f5041af0dd5137dd"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 1343,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "29f9a7550a835b1390b49aca85d1d58b68bb8bd9779af8f1f5041af0dd5137dd"
+    }
+  },
+  "P554": {
+    "front": {
+      "frames": 4,
+      "representative_frame": 14,
+      "pixels": 5379,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "2c017d19dd20030bf6a12ca3013f0513ebbb331e33549f84c3d3a6891fcd3852"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 29,
+      "pixels": 1543,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "2c017d19dd20030bf6a12ca3013f0513ebbb331e33549f84c3d3a6891fcd3852"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "P396",
+    "capture": "20250227_165705",
+    "photo_sha256": "61661c9814e24ba23eab93b6c37c6c3155a17bd2b232bf3a5ba9b4c047d47a0c",
+    "mask_sha256": "f7ea7e9d3265cd86b4d14a7d5d0ad95007e6cdfad735ae3dff1e7c28db16cfa0",
+    "bed_to_shoulder_srgb_p65": [
+      0.90625,
+      0.9047619047619048,
+      0.8968253968253969
+    ]
+  },
+  {
+    "id": "P397",
+    "capture": "20250305_022052",
+    "photo_sha256": "0098f376465c7ff2361c6ae72c636b94f3e40a3625497f46acc95cf30a0a807d",
+    "mask_sha256": "96f979d3bc463827609e538bdab587d9964d6fd70752a2c59b3335232bc20cf8",
+    "bed_to_shoulder_srgb_p65": [
+      0.8761904761904762,
+      0.8660714285714286,
+      0.8695652173913043
+    ]
+  },
+  {
+    "id": "P398",
+    "capture": "20250305_131756",
+    "photo_sha256": "bb67a8fa2ed79044b4ca5ef55f65d4b6f3a5235d677d7be4e9910d84058e0b25",
+    "mask_sha256": "63d528989b378bf807416c4cffcdb5a1ad4c88330333790d4d7cbee4f882a45f",
+    "bed_to_shoulder_srgb_p65": [
+      1.048,
+      0.9830508474576272,
+      0.9576271186440678
+    ]
+  },
+  {
+    "id": "P400",
+    "capture": "20250305_023226",
+    "photo_sha256": "d37d882a6a1901d1c9e3e0c1e5886abecd31c1436f98ac991c87997e213115f1",
+    "mask_sha256": "2bee5e4be00a3e0f1301905743859988683c0d1c95b6570e04cd126bac94bed7",
+    "bed_to_shoulder_srgb_p65": [
+      0.9156626506024096,
+      0.8181818181818182,
+      0.797979797979798
+    ]
+  }
+]

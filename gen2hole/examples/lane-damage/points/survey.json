@@ -1,0 +1,97 @@
+{
+  "dataset": "PointPSSN",
+  "paper": "https://doi.org/10.1016/j.eswa.2025.129833",
+  "repository": "https://github.com/5rexi/PointPSSN/tree/1e4c122811066798db1dc0767a159dce05e48383",
+  "source_zip": "https://drive.google.com/file/d/1zmQ3IzpPbuiBKXMo-ttX1bqew8GSZ9to/view",
+  "archive_sha256": "bcba8a706cdb8f4a957cdc3b7bd8d9f52b85c3b9b3b70a0d5dd3b7553e4d0edd",
+  "authors": "Tingrui Zhang, Xuequan Zhang, Zichuan Yang, Yumin Chen, Li Song, Weichen Zhang",
+  "units": "Metres assumed from unnormalised smartphone survey coordinates; no calibration target is supplied for these samples.",
+  "materials": {
+    "road_damaged": {
+      "page": "https://polyhaven.com/a/road_damaged",
+      "author": "Dimitrios Savva",
+      "diffuse": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/road_damaged/road_damaged_diff_2k.jpg",
+        "bytes": 3590993,
+        "sha256": "07e5d5424365d512a297a0610cb53d1a4ab0b66b1accfd027076baa570b72dd3"
+      },
+      "scan_span_m": 2.2
+    },
+    "road_damaged_2": {
+      "page": "https://polyhaven.com/a/road_damaged_2",
+      "author": "Dimitrios Savva",
+      "diffuse": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/road_damaged_2/road_damaged_2_diff_2k.jpg",
+        "bytes": 3704366,
+        "sha256": "6e3a069bfb23d04598e4e759ded26aa68ffe2d85d15ac7a125034980cae6ef3f"
+      },
+      "scan_span_m": 2.2
+    }
+  },
+  "states": [
+    {
+      "id": "P546",
+      "split": "train",
+      "index": 492,
+      "label": "深条槽与较直的两侧坑缘",
+      "pitch_m": 0.004,
+      "sha256": {
+        "dataset/Data/train/data_492.txt": "d2bd34889bf338ddfe7d9c938569cecdd6c9fd6e6dc55978695cb79027327db1",
+        "dataset/Label/train/label_492.txt": "b767e6a72150c7e524a96b41925ae4ecc5592de06b863f32e5c5b74c780c4d3b"
+      }
+    },
+    {
+      "id": "P547",
+      "split": "train",
+      "index": 58,
+      "label": "一端宽深一端收窄的坑床",
+      "pitch_m": 0.004,
+      "sha256": {
+        "dataset/Data/train/data_58.txt": "953fa326c2d90bec77d2354c4347d0fa1d33622c3263d0af58bd5695200285e5",
+        "dataset/Label/train/label_58.txt": "e520ae7274446e75e09143c09f432026a1d3829dc8d30471ac1dcd8096b5a15c"
+      }
+    },
+    {
+      "id": "P548",
+      "split": "train",
+      "index": 105,
+      "label": "宽面近圆形剥落坑",
+      "pitch_m": 0.004,
+      "sha256": {
+        "dataset/Data/train/data_105.txt": "5e5f0fe13825207ca47daf41b93078b6bf72d603340d57957a5d031dba7796d9",
+        "dataset/Label/train/label_105.txt": "46123216ee22c1db9509c29d51923774c489e89b795469b0323d229c8f8ad1f5"
+      }
+    },
+    {
+      "id": "P549",
+      "split": "train",
+      "index": 26,
+      "label": "延伸一米的浅长坑",
+      "pitch_m": 0.004,
+      "sha256": {
+        "dataset/Data/train/data_26.txt": "ccf5f347f104a967877a8325a5bc8aa6a31c799b41051839048c912d50b8d226",
+        "dataset/Label/train/label_26.txt": "5d21952acb83076bbb2fc0e262ef0117dd8bcd335cd15d21fe72a53fe20b4375"
+      }
+    },
+    {
+      "id": "P550",
+      "split": "train",
+      "index": 396,
+      "label": "宽口不规则剥落坑床",
+      "pitch_m": 0.004,
+      "sha256": {
+        "dataset/Data/train/data_396.txt": "8ebf56412e113790d8b26fa82d7d494419f822d7e853b0a6114f7b29d0ba68bf",
+        "dataset/Label/train/label_396.txt": "2a8c72691c7293989790e1cd8ca5c745a9defe16daaef8cc7151f9f3c9bb1b00"
+      }
+    }
+  ],
+  "road_material": {
+    "path": "Asphalt031/Asphalt031_4K-PNG_Color.png",
+    "page": "https://ambientcg.com/a/Asphalt031",
+    "licence": "CC0",
+    "sha256": "8c638b23c560a16da6bbd0655ec633aa9e415e908bb3bd99a4f260e2ebd7ee6c",
+    "nominal_span_m": 2.0,
+    "scale_basis": "Working grain scale; site material and aggregate grading are unknown."
+  },
+  "family": "large_lane_scans"
+}

@@ -1,0 +1,484 @@
+{
+  "license": "CC0-1.0",
+  "materials": {
+    "road_damaged": {
+      "page": "https://polyhaven.com/a/road_damaged",
+      "author": "Dimitrios Savva",
+      "dimensions_mm": [
+        2200.000047683716,
+        2200.000047683716
+      ],
+      "height_reference": "registered_normals",
+      "files": {
+        "Diffuse": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/road_damaged/road_damaged_diff_2k.jpg",
+          "bytes": 3590993,
+          "sha256": "07e5d5424365d512a297a0610cb53d1a4ab0b66b1accfd027076baa570b72dd3"
+        },
+        "Displacement": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/road_damaged/road_damaged_disp_2k.png",
+          "bytes": 6222965,
+          "sha256": "402e13fe0091f8e84de2632060abdcced49b496e496981b7ab9efe99b5cc3634"
+        },
+        "nor_gl": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/road_damaged/road_damaged_nor_gl_2k.exr",
+          "bytes": 8263209,
+          "sha256": "9da02b57c92a46f450db2f6e67fd6ce14775e68afec06beb1c8082fe095bc9a8"
+        }
+      }
+    },
+    "road_damaged_2": {
+      "page": "https://polyhaven.com/a/road_damaged_2",
+      "author": "Dimitrios Savva",
+      "dimensions_mm": [
+        2200.000047683716,
+        2200.000047683716
+      ],
+      "height_reference": "registered_normals",
+      "files": {
+        "Diffuse": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/road_damaged_2/road_damaged_2_diff_2k.jpg",
+          "bytes": 3704366,
+          "sha256": "6e3a069bfb23d04598e4e759ded26aa68ffe2d85d15ac7a125034980cae6ef3f"
+        },
+        "Displacement": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/road_damaged_2/road_damaged_2_disp_2k.png",
+          "bytes": 6164380,
+          "sha256": "a3503fc47cf2e40953acdee59870f5d9441de6a1a056abfa6293cf67a564824b"
+        },
+        "nor_gl": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/road_damaged_2/road_damaged_2_nor_gl_2k.exr",
+          "bytes": 9222564,
+          "sha256": "eec36669ab9d9266f69f38477bae3ba73712ff42ea113b72d02d704f0e1c3e46"
+        }
+      }
+    }
+  },
+  "states": [
+    {
+      "id": "P388",
+      "label": "近圆形的砂砾露底坑",
+      "material": "road_damaged",
+      "origin_col_row": [
+        108,
+        1328
+      ],
+      "intervals": 600,
+      "step": 2,
+      "datum": "local_shoulder",
+      "height_calibration": "normal_fit",
+      "photographed_rim_xy": [
+        [
+          178,
+          359
+        ],
+        [
+          183,
+          307
+        ],
+        [
+          213,
+          265
+        ],
+        [
+          265,
+          246
+        ],
+        [
+          314,
+          244
+        ],
+        [
+          370,
+          241
+        ],
+        [
+          429,
+          237
+        ],
+        [
+          450,
+          262
+        ],
+        [
+          455,
+          323
+        ],
+        [
+          452,
+          377
+        ],
+        [
+          434,
+          422
+        ],
+        [
+          389,
+          455
+        ],
+        [
+          356,
+          495
+        ],
+        [
+          302,
+          502
+        ],
+        [
+          253,
+          473
+        ],
+        [
+          206,
+          450
+        ],
+        [
+          180,
+          408
+        ]
+      ]
+    },
+    {
+      "id": "P389",
+      "label": "细颈连着宽坑床的剥落",
+      "material": "road_damaged",
+      "origin_col_row": [
+        1216,
+        216
+      ],
+      "intervals": 616,
+      "step": 2,
+      "datum": "local_shoulder",
+      "height_calibration": "normal_fit",
+      "photographed_rim_xy": [
+        [
+          214,
+          330
+        ],
+        [
+          221,
+          260
+        ],
+        [
+          243,
+          231
+        ],
+        [
+          298,
+          217
+        ],
+        [
+          330,
+          183
+        ],
+        [
+          380,
+          161
+        ],
+        [
+          426,
+          156
+        ],
+        [
+          443,
+          173
+        ],
+        [
+          419,
+          219
+        ],
+        [
+          397,
+          248
+        ],
+        [
+          421,
+          289
+        ],
+        [
+          443,
+          332
+        ],
+        [
+          438,
+          385
+        ],
+        [
+          402,
+          426
+        ],
+        [
+          356,
+          445
+        ],
+        [
+          286,
+          436
+        ],
+        [
+          260,
+          407
+        ],
+        [
+          255,
+          371
+        ]
+      ]
+    },
+    {
+      "id": "P390",
+      "label": "双叶相连的沥青剥落坑",
+      "material": "road_damaged_2",
+      "origin_col_row": [
+        76,
+        0
+      ],
+      "intervals": 1200,
+      "step": 4,
+      "datum": "local_shoulder",
+      "height_calibration": "normal_fit",
+      "photographed_rim_xy": [
+        [
+          94,
+          441
+        ],
+        [
+          112,
+          347
+        ],
+        [
+          169,
+          295
+        ],
+        [
+          258,
+          248
+        ],
+        [
+          338,
+          253
+        ],
+        [
+          394,
+          295
+        ],
+        [
+          492,
+          295
+        ],
+        [
+          562,
+          333
+        ],
+        [
+          666,
+          366
+        ],
+        [
+          783,
+          370
+        ],
+        [
+          886,
+          408
+        ],
+        [
+          966,
+          427
+        ],
+        [
+          1036,
+          497
+        ],
+        [
+          1078,
+          586
+        ],
+        [
+          1078,
+          722
+        ],
+        [
+          1041,
+          802
+        ],
+        [
+          975,
+          834
+        ],
+        [
+          881,
+          830
+        ],
+        [
+          825,
+          750
+        ],
+        [
+          792,
+          675
+        ],
+        [
+          722,
+          619
+        ],
+        [
+          661,
+          614
+        ],
+        [
+          600,
+          670
+        ],
+        [
+          525,
+          712
+        ],
+        [
+          436,
+          741
+        ],
+        [
+          305,
+          731
+        ],
+        [
+          230,
+          684
+        ],
+        [
+          169,
+          614
+        ],
+        [
+          117,
+          553
+        ]
+      ]
+    },
+    {
+      "id": "P391",
+      "label": "下缘留有凸舌的扇形浅坑",
+      "material": "road_damaged_2",
+      "origin_col_row": [
+        930,
+        1224
+      ],
+      "intervals": 648,
+      "step": 2,
+      "datum": "local_shoulder",
+      "height_calibration": "normal_fit",
+      "photographed_rim_xy": [
+        [
+          76,
+          375
+        ],
+        [
+          94,
+          334
+        ],
+        [
+          134,
+          296
+        ],
+        [
+          175,
+          266
+        ],
+        [
+          225,
+          261
+        ],
+        [
+          256,
+          218
+        ],
+        [
+          314,
+          192
+        ],
+        [
+          364,
+          172
+        ],
+        [
+          415,
+          175
+        ],
+        [
+          448,
+          195
+        ],
+        [
+          501,
+          200
+        ],
+        [
+          544,
+          243
+        ],
+        [
+          570,
+          319
+        ],
+        [
+          562,
+          380
+        ],
+        [
+          542,
+          440
+        ],
+        [
+          519,
+          483
+        ],
+        [
+          478,
+          471
+        ],
+        [
+          438,
+          448
+        ],
+        [
+          405,
+          448
+        ],
+        [
+          377,
+          471
+        ],
+        [
+          342,
+          516
+        ],
+        [
+          286,
+          532
+        ],
+        [
+          235,
+          516
+        ],
+        [
+          195,
+          491
+        ],
+        [
+          152,
+          494
+        ],
+        [
+          106,
+          461
+        ],
+        [
+          94,
+          415
+        ]
+      ]
+    }
+  ],
+  "shared_normal_scale": true
+}

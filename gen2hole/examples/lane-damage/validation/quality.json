@@ -1,0 +1,411 @@
+{
+  "P546": {
+    "id": "P546",
+    "label": "深条槽与较直的两侧坑缘",
+    "glb_sha256": "35e1d641d17daab1f672abed2c42da56c95e3642b2af8b37ad360beea8095b86",
+    "ply_sha256": "5b172afb1760257c12c960b81dec1558da74a041e32098f6b42906198fb195d7",
+    "gaussians": 473920,
+    "triangles": 129232,
+    "evidence": {
+      "annotated_point_extent_m": [
+        1.4231959581375122,
+        0.4496626555919647
+      ],
+      "reference_depth_p95_m": 0.18707980248649778,
+      "held_out_pit_points": 339,
+      "mae_mm": 5.87325052862275,
+      "p90_mm": 13.98403786041482,
+      "annotated_points": 2125,
+      "heldout_pit_hits": 306
+    },
+    "mesh_depth_p95_m": 0.18795024752616882,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      1.4799999767148555,
+      0.5440000150261857
+    ],
+    "view": {
+      "near": {
+        "core_px": 36399,
+        "opacity_p10": 0.9884974837303162,
+        "mesh_splat_depth_p90_mm": 2.2225379943847656
+      },
+      "opposite": {
+        "core_px": 37645,
+        "opacity_p10": 0.989215075969696,
+        "mesh_splat_depth_p90_mm": 3.6547183990478516
+      }
+    }
+  },
+  "P547": {
+    "id": "P547",
+    "label": "一端宽深一端收窄的坑床",
+    "glb_sha256": "eeddfeef14c6670960ec2d9e9bff4bae210aed33aba277fb509480c5d93ac8d6",
+    "ply_sha256": "0c7d5c0646c7aeeba6c1ce5a6a2fbe21189d64c30aaf38dad040faefb265d8be",
+    "gaussians": 258891,
+    "triangles": 100392,
+    "evidence": {
+      "annotated_point_extent_m": [
+        0.9457204341888428,
+        0.5448333024978638
+      ],
+      "reference_depth_p95_m": 0.07192242871135548,
+      "held_out_pit_points": 128,
+      "mae_mm": 0.8360494112097796,
+      "p90_mm": 1.7497320097730114,
+      "annotated_points": 1387,
+      "heldout_pit_hits": 126
+    },
+    "mesh_depth_p95_m": 0.07199822999536991,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      1.0200000189720317,
+      0.5680000098903527
+    ],
+    "view": {
+      "near": {
+        "core_px": 56539,
+        "opacity_p10": 0.9911851048469543,
+        "mesh_splat_depth_p90_mm": 2.084493637084961
+      },
+      "opposite": {
+        "core_px": 47072,
+        "opacity_p10": 0.9932596266269684,
+        "mesh_splat_depth_p90_mm": 3.263223171234131
+      }
+    }
+  },
+  "P548": {
+    "id": "P548",
+    "label": "宽面近圆形剥落坑",
+    "glb_sha256": "134f66ed2599ad25d1ab91facfc8f8339fd16b49f20e3269b3de00dadea80992",
+    "ply_sha256": "84d8f5c5ce6a58fa042432cf7b71360ed448ec8ba571bdbccaea7cf13b30eff0",
+    "gaussians": 258883,
+    "triangles": 173600,
+    "evidence": {
+      "annotated_point_extent_m": [
+        1.2337913513183594,
+        0.7867564558982849
+      ],
+      "reference_depth_p95_m": 0.06437913068345723,
+      "held_out_pit_points": 126,
+      "mae_mm": 9.528448583956237,
+      "p90_mm": 13.823572678502941,
+      "annotated_points": 1332,
+      "heldout_pit_hits": 110
+    },
+    "mesh_depth_p95_m": 0.05441155899316072,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      0.756000005814337,
+      0.5840000024863652
+    ],
+    "view": {
+      "near": {
+        "core_px": 74595,
+        "opacity_p10": 0.9924292206764221,
+        "mesh_splat_depth_p90_mm": 1.7020702362060547
+      },
+      "opposite": {
+        "core_px": 80719,
+        "opacity_p10": 0.9942519664764404,
+        "mesh_splat_depth_p90_mm": 2.210390567779541
+      }
+    }
+  },
+  "P549": {
+    "id": "P549",
+    "label": "延伸一米的浅长坑",
+    "glb_sha256": "7b6156572add3e00872ef3d6a473d353adfbce538c64febc76ac3228f4824f5b",
+    "ply_sha256": "ba8e02700341e0f3914f907597ab21fd45c169208265d1e77083c9422314c18d",
+    "gaussians": 258699,
+    "triangles": 79328,
+    "evidence": {
+      "annotated_point_extent_m": [
+        1.0340780019760132,
+        0.3897170424461365
+      ],
+      "reference_depth_p95_m": 0.048718765959561545,
+      "held_out_pit_points": 89,
+      "mae_mm": 2.139148650972375,
+      "p90_mm": 4.734661429497981,
+      "annotated_points": 978,
+      "heldout_pit_hits": 86
+    },
+    "mesh_depth_p95_m": 0.047114770859479904,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      1.0360000133514404,
+      0.3760000093659358
+    ],
+    "view": {
+      "near": {
+        "core_px": 38075,
+        "opacity_p10": 0.9916529417037964,
+        "mesh_splat_depth_p90_mm": 2.15299129486084
+      },
+      "opposite": {
+        "core_px": 39655,
+        "opacity_p10": 0.9934539794921875,
+        "mesh_splat_depth_p90_mm": 2.699923515319824
+      }
+    }
+  },
+  "P550": {
+    "id": "P550",
+    "label": "宽口不规则剥落坑床",
+    "glb_sha256": "d08275afd16a7986e96c4b1b81ad06f9dafd411089f65d20d42451fea7f6093b",
+    "ply_sha256": "a8a61623ec77cf59aa4614be6d467297d35655d71cef7b1d02e9923fdc25177b",
+    "gaussians": 258866,
+    "triangles": 76560,
+    "evidence": {
+      "annotated_point_extent_m": [
+        0.6483690142631531,
+        0.5704442858695984
+      ],
+      "reference_depth_p95_m": 0.06047070792488448,
+      "held_out_pit_points": 116,
+      "mae_mm": 0.3863902888760339,
+      "p90_mm": 0.730349470222838,
+      "annotated_points": 1378,
+      "heldout_pit_hits": 109
+    },
+    "mesh_depth_p95_m": 0.06042393669486045,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      0.7759999957951633,
+      0.5519999841163898
+    ],
+    "view": {
+      "near": {
+        "core_px": 76381,
+        "opacity_p10": 0.9920153021812439,
+        "mesh_splat_depth_p90_mm": 1.4396905899047852
+      },
+      "opposite": {
+        "core_px": 69824,
+        "opacity_p10": 0.9948364496231079,
+        "mesh_splat_depth_p90_mm": 2.290946245193482
+      }
+    }
+  },
+  "P551": {
+    "id": "P551",
+    "label": "树影下的积水坑与外露沥青唇",
+    "glb_sha256": "29f9a7550a835b1390b49aca85d1d58b68bb8bd9779af8f1f5041af0dd5137dd",
+    "ply_sha256": "55915e45516720e1f446fe262a50dd554cdc782aa5f5baa8d656735a2edc727b",
+    "gaussians": 551821,
+    "triangles": 186534,
+    "evidence": {
+      "rim_iou": 0.9707789097180085,
+      "sample_parts": [
+        4,
+        2,
+        1
+      ],
+      "water_iou": 0.990080971659919
+    },
+    "mesh_depth_p95_m": 0.04373495578765869,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      0.7749999825065658,
+      1.312500019557774
+    ],
+    "view": {
+      "near": {
+        "core_px": 62288,
+        "opacity_p10": 0.9286604762077332,
+        "mesh_splat_depth_p90_mm": 6.101679801940919
+      },
+      "opposite": {
+        "core_px": 59980,
+        "opacity_p10": 0.9266455709934235,
+        "mesh_splat_depth_p90_mm": 7.8410625457763645
+      }
+    }
+  },
+  "M552": {
+    "id": "M552",
+    "label": "方形缺盖井与外露双面砖墙",
+    "glb_sha256": "8eed7e78ae3396eae1ff8455864bf8081ec92809bb26b065c462966da462dae0",
+    "ply_sha256": "2f9110eb0a7285a75cdcfd74543e5a082aec107a08b0d679a8e1f456a64584ba",
+    "gaussians": 609999,
+    "triangles": 43690,
+    "evidence": {
+      "visible_source_parts": [
+        6,
+        6,
+        7
+      ],
+      "center_first_hit": "shaft bottom",
+      "depth_model_m": 1.165951128958561,
+      "far_corner_reprojection_px": 1.6245864783404014,
+      "rim_component_rms_px": 1.876309717627022
+    },
+    "mesh_depth_p95_m": 1.1659512519836426,
+    "mesh_height_p95_m": 1.1920928955078125e-07,
+    "installed_xy_aabb_m": [
+      1.1584587071556598,
+      1.0791822110043197
+    ],
+    "view": {
+      "near": {
+        "core_px": 183997,
+        "opacity_p10": 0.8973572254180908,
+        "mesh_splat_depth_p90_mm": 12.34362125396728
+      },
+      "opposite": {
+        "core_px": 233002,
+        "opacity_p10": 0.8940520405769348,
+        "mesh_splat_depth_p90_mm": 3.8465976715087864
+      }
+    }
+  },
+  "A553": {
+    "id": "A553",
+    "label": "落在路面的两块复合井盖碎片",
+    "glb_sha256": "78a025527b021da3a7ec62b783dea49e52657441cb3d9e68cca385d0f0dbe601",
+    "ply_sha256": "890f26aa78890007114ba331478a6b1fb688dfcad5427e6627248506c04a5675",
+    "gaussians": 259998,
+    "triangles": 683264,
+    "evidence": {
+      "connected_solids": 2,
+      "components": [
+        {
+          "through_holes": 0,
+          "euler_characteristic": 2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.001431265388360854
+        },
+        {
+          "through_holes": 0,
+          "euler_characteristic": 2,
+          "connected_solids": 1,
+          "closed_oriented_mesh": true,
+          "metal_volume_m3": 0.0009269050800961983
+        }
+      ]
+    },
+    "mesh_depth_p95_m": 0.0,
+    "mesh_height_p95_m": 0.03379786014556885,
+    "installed_xy_aabb_m": [
+      0.7593749830266461,
+      0.27000000493989573
+    ],
+    "view": {
+      "near": {
+        "core_px": 29016,
+        "opacity_p10": 0.9994176626205444,
+        "mesh_splat_depth_p90_mm": 3.4940242767333984
+      },
+      "opposite": {
+        "core_px": 31585,
+        "opacity_p10": 0.9994736194610596,
+        "mesh_splat_depth_p90_mm": 4.204738140106201
+      }
+    }
+  },
+  "P554": {
+    "id": "P554",
+    "label": "沿路缘延伸、保留内侧铺面的长条剥落",
+    "glb_sha256": "2c017d19dd20030bf6a12ca3013f0513ebbb331e33549f84c3d3a6891fcd3852",
+    "ply_sha256": "17d519ce30a52b0104a9b2ce3c90d852e07ab99fda61313c7f7ccbe26786e0d7",
+    "gaussians": 610000,
+    "triangles": 141188,
+    "evidence": {
+      "rim_iou": 0.951509312780989,
+      "sample_parts": [
+        2,
+        1,
+        2
+      ]
+    },
+    "mesh_depth_p95_m": 0.049040699005126955,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      1.6012108970571448,
+      3.2933202423155308
+    ],
+    "view": {
+      "near": {
+        "core_px": 18615,
+        "opacity_p10": 0.8999891996383667,
+        "mesh_splat_depth_p90_mm": 3.4168243408203134
+      },
+      "opposite": {
+        "core_px": 17481,
+        "opacity_p10": 0.8975735306739807,
+        "mesh_splat_depth_p90_mm": 3.0286312103271484
+      }
+    }
+  },
+  "P555": {
+    "id": "P555",
+    "label": "海岸道路成片错台与侧向下陷",
+    "glb_sha256": "594285aa711d5b6615bae50139a6df4d1aba4fc9875859254f39e9436cb43df5",
+    "ply_sha256": "08f8b5c4df95d974a5af83527f98a520edab347b1a83bd9d15f79ef4829adbb1",
+    "gaussians": 610000,
+    "triangles": 13612,
+    "evidence": {
+      "panels": 3,
+      "modeled_high_to_low_m": 0.30999999642372134
+    },
+    "mesh_depth_p95_m": 0.11744117736816406,
+    "mesh_height_p95_m": 0.07537412643432617,
+    "installed_xy_aabb_m": [
+      2.265041247010231,
+      6.602938300929964
+    ],
+    "view": {
+      "near": {
+        "core_px": 46791,
+        "opacity_p10": 0.9032727479934692,
+        "mesh_splat_depth_p90_mm": 8.01229476928711
+      },
+      "opposite": {
+        "core_px": 24488,
+        "opacity_p10": 0.8997358202934265,
+        "mesh_splat_depth_p90_mm": 10.312271118164059
+      }
+    }
+  },
+  "P556": {
+    "id": "P556",
+    "label": "洪水冲断整幅车道，路基向河岸敞开",
+    "glb_sha256": "e837ae2aa24e7c4691c5e38f1522227a077c199e9c292444ba18ada914053336",
+    "ply_sha256": "1414a480c7e1d8e9c84c9da73e7b67fcbd4df2c46453a7f45b0b97b04fb02c91",
+    "gaussians": 610000,
+    "triangles": 45200,
+    "evidence": {
+      "modeled_gap_m": 10.0,
+      "bed_first_hits": 135,
+      "tested_bed_depth_m": [
+        0.5029083490371704,
+        1.696183681488037
+      ],
+      "pavement_first_hits": [
+        13,
+        13
+      ]
+    },
+    "mesh_depth_p95_m": 1.6493996024131772,
+    "mesh_height_p95_m": 1.1920928955078125e-07,
+    "installed_xy_aabb_m": [
+      2.9553331094128743,
+      15.045332461595535
+    ],
+    "view": {
+      "near": {
+        "core_px": 56421,
+        "opacity_p10": 0.901310920715332,
+        "mesh_splat_depth_p90_mm": 11.072158813476562
+      },
+      "opposite": {
+        "core_px": 15236,
+        "opacity_p10": 0.8793938457965851,
+        "mesh_splat_depth_p90_mm": 37.49370574951172
+      }
+    }
+  }
+}

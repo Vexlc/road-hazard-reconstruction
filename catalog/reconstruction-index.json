@@ -1,5 +1,5 @@
 {
-  "asset_count": 1542,
+  "asset_count": 1553,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2523,6 +2523,55 @@
         "field-chamber-replay",
         "mesh-view"
       ]
+    },
+    "lane-scan-pits": {
+      "name": "五件车行道实扫坑槽",
+      "launcher": "gen2hole/examples/lane-damage/points/build.py",
+      "recipe": "gen2hole/examples/lane-damage/points/survey.json",
+      "guide": "gen2hole/examples/lane-damage/README.md",
+      "section": "从原始输入重建",
+      "assets": [
+        "P546",
+        "P547",
+        "P548",
+        "P549",
+        "P550"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
+    },
+    "lane-photo-damage": {
+      "name": "积水、沿路缘剥落、错台与冲毁路基",
+      "launcher": "gen2hole/examples/lane-damage/build_photos.py",
+      "recipe": "gen2hole/examples/lane-damage/photos.json",
+      "guide": "gen2hole/examples/lane-damage/README.md",
+      "section": "选择资产",
+      "assets": [
+        "P551",
+        "P554",
+        "P555",
+        "P556"
+      ],
+      "transfer": [
+        "mesh-view"
+      ]
+    },
+    "lane-photo-covers": {
+      "name": "砖井缺盖与复合井盖碎片",
+      "launcher": "gen2hole/examples/lane-damage/build_photos.py",
+      "recipe": "gen2hole/examples/lane-damage/photos.json",
+      "guide": "gen2hole/examples/lane-damage/README.md",
+      "section": "验证与车辆回放",
+      "assets": [
+        "M552",
+        "A553"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -2765,7 +2814,8 @@
       "measured-lobed-rut",
       "heldout-gravel-spalls",
       "forked-aggregate-pits",
-      "long-rut-aggregate-bed"
+      "long-rut-aggregate-bed",
+      "lane-scan-pits"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
@@ -2778,7 +2828,8 @@
       "paired-road-slots",
       "transverse-repair",
       "seated-wet-pavement",
-      "oval-bed-near-reflection"
+      "oval-bed-near-reflection",
+      "lane-photo-damage"
     ],
     "井盖、雨水篦与敞井": [
       "photo-chamber-BD-v2",
@@ -2801,7 +2852,8 @@
       "offset-vented-opening",
       "settled-welded-storm-drain",
       "rusted-cover",
-      "verge-chamber"
+      "verge-chamber",
+      "lane-photo-covers"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

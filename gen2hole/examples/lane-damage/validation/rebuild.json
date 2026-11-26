@@ -1,0 +1,79 @@
+{
+  "M552": {
+    "asset.glb": "8eed7e78ae3396eae1ff8455864bf8081ec92809bb26b065c462966da462dae0",
+    "asset.ply": "2f9110eb0a7285a75cdcfd74543e5a082aec107a08b0d679a8e1f456a64584ba",
+    "metadata.json": "a2a8185f5996e02889ddf9dd144bbc364364503e84d026513ddc4f53cf1165d6",
+    "splat_material.npz": "c5689290ceda0684f5b832bd95e492093f18484d5eccac4f19fa2602491e1003",
+    "surface.npz": "be879acf8f6f9008e2301284387d48c43be9db2dff16da07b14ebc1f3e48e662"
+  },
+  "P554": {
+    "asset.glb": "2c017d19dd20030bf6a12ca3013f0513ebbb331e33549f84c3d3a6891fcd3852",
+    "asset.ply": "17d519ce30a52b0104a9b2ce3c90d852e07ab99fda61313c7f7ccbe26786e0d7",
+    "metadata.json": "9e4eaec465537ad9854c8f7ffbae82809e5d61dc80c7f5fecf9263f4ea6e6ab1",
+    "splat_material.npz": "7e07ec29baeb040f66fee86d17fb83b6e75865f54ca02a825f80d4b7c00af7a9",
+    "surface.npz": "4851f1f396128f6939b7b1d7c670fe1f92b054b2f3da6f3d3b352ff559ef0fbf"
+  },
+  "P556": {
+    "asset.glb": "e837ae2aa24e7c4691c5e38f1522227a077c199e9c292444ba18ada914053336",
+    "asset.ply": "1414a480c7e1d8e9c84c9da73e7b67fcbd4df2c46453a7f45b0b97b04fb02c91",
+    "metadata.json": "45adc07f08f2399b1a7f822a98dc832bba0cbeb25750ad8f5911bf0cc2555ecd",
+    "splat_material.npz": "8dca1337e7d5ea50ce148ac860386ffb2a32f779e0978bb945b8a792266cfdbe",
+    "surface.npz": "81b599f9bbccc2485b0a1e5670042625a6d98b5a53c3e6e723131cd5a1e8e7b6"
+  },
+  "P555": {
+    "asset.glb": "594285aa711d5b6615bae50139a6df4d1aba4fc9875859254f39e9436cb43df5",
+    "asset.ply": "08f8b5c4df95d974a5af83527f98a520edab347b1a83bd9d15f79ef4829adbb1",
+    "metadata.json": "1db9442e121c66262cd1802827c13b608d7539b2ed9914f5e0ea235d1c881469",
+    "splat_material.npz": "7f74446d1e41a88a2b04cef9a526fffb479ad7ab05dc79f2b41fe8120f1c5b51",
+    "surface.npz": "965bfaa25345570b5d0162306531cd3cee86e23373b5a22daed5a2af60804564"
+  },
+  "P551": {
+    "asset.glb": "29f9a7550a835b1390b49aca85d1d58b68bb8bd9779af8f1f5041af0dd5137dd",
+    "asset.ply": "55915e45516720e1f446fe262a50dd554cdc782aa5f5baa8d656735a2edc727b",
+    "metadata.json": "6edee5fb0531eadbbb88e8b66f12d6c5864ef002313c3f766c9fc5eb29698526",
+    "splat_material.npz": "063d08c880c3974a2b0040f31b56d2d8efa782f65e2027a463f571d1034f5297",
+    "surface.npz": "596dfde0737c90791619789833a827b50bfbcf0bc29a855602f4ad55c8095cc3"
+  },
+  "A553": {
+    "asset.glb": "78a025527b021da3a7ec62b783dea49e52657441cb3d9e68cca385d0f0dbe601",
+    "asset.ply": "890f26aa78890007114ba331478a6b1fb688dfcad5427e6627248506c04a5675",
+    "metadata.json": "8c31e1040aec0330cfcc4a06053ebd6dfe6da46ba79414fe171715f28ac8522f",
+    "splat_material.npz": "3c0b6677aac412c3a4d140abfd95c4ea54fd8e9e5767e19c78effd5879da2c14",
+    "surface.npz": "c2d454454eaa047a615defb347ccf699e31a86e99cfc832e827fe08c131b6940"
+  },
+  "P547": {
+    "asset.glb": "eeddfeef14c6670960ec2d9e9bff4bae210aed33aba277fb509480c5d93ac8d6",
+    "asset.ply": "0c7d5c0646c7aeeba6c1ce5a6a2fbe21189d64c30aaf38dad040faefb265d8be",
+    "metadata.json": "fc2dcbaeee9a2d93a44ddd9c0b491e2976f58c66f998d0363429df811c980874",
+    "splat_material.npz": "285495f1b0bd1b9d654d4006b9447353e5f71ecf231e46f2065d36b1d3d9c450",
+    "surface.npz": "89ba61e2a1c02a6d23d58b5a37ea94edaf8e6bd53000a002a1558b9785ff3e1f"
+  },
+  "P549": {
+    "asset.glb": "7b6156572add3e00872ef3d6a473d353adfbce538c64febc76ac3228f4824f5b",
+    "asset.ply": "ba8e02700341e0f3914f907597ab21fd45c169208265d1e77083c9422314c18d",
+    "metadata.json": "96444136700da84614d63c6e6d15a2eeb6920b0d8e4205021d163cfef28dfb2d",
+    "splat_material.npz": "16d741b9db9d5d9759665156e031b3bef453bd3e8f58e4de16326ea300e14f89",
+    "surface.npz": "47843b61d915079e82071ed2480eea73f6876076847408c94d6299093655fd58"
+  },
+  "P548": {
+    "asset.glb": "134f66ed2599ad25d1ab91facfc8f8339fd16b49f20e3269b3de00dadea80992",
+    "asset.ply": "84d8f5c5ce6a58fa042432cf7b71360ed448ec8ba571bdbccaea7cf13b30eff0",
+    "metadata.json": "8f02739a5f9b574d6c166fcb94eac8821529959f324122bbebb037beb4dd16ad",
+    "splat_material.npz": "84e1311e87603126b07899dccbe63c815b8bf763aeaa3a12d4d4aa08b77ccac5",
+    "surface.npz": "f73da83fb0ab335151a75401dee533b1e8e86e3533159791c33f815d0b6e2d39"
+  },
+  "P550": {
+    "asset.glb": "d08275afd16a7986e96c4b1b81ad06f9dafd411089f65d20d42451fea7f6093b",
+    "asset.ply": "a8a61623ec77cf59aa4614be6d467297d35655d71cef7b1d02e9923fdc25177b",
+    "metadata.json": "9835199da8fded8331f471e8fa4757ab53ac545ba79c9c2cdccf463425528ae4",
+    "splat_material.npz": "559b2dc51e226245b03effb528a7f8c44fff79d6e0d87c06283bf9cba385306b",
+    "surface.npz": "8db4c1b010266e6c9030b5562d85afc14c78b984a97bdca665219587f7543493"
+  },
+  "P546": {
+    "asset.glb": "35e1d641d17daab1f672abed2c42da56c95e3642b2af8b37ad360beea8095b86",
+    "asset.ply": "5b172afb1760257c12c960b81dec1558da74a041e32098f6b42906198fb195d7",
+    "metadata.json": "8ce2187534d84705e72cd6b9cd1ac2edb6ae83165469de01b0a9fe62407630dc",
+    "splat_material.npz": "aed7d2856b2b32db7243fb185a91b559e45be5eab391702e0334737362329d76",
+    "surface.npz": "60f55f0320b5f783301397de4f6a1237f60e1cdca419361d096709a9cdf28355"
+  }
+}
