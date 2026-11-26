@@ -1,0 +1,161 @@
+{
+  "scene": "109",
+  "asset_sha256": "ccc5d864ce7f6bedc9e73e7aecd04d2d4db216be3d85ff6cffd0b5b035d37075",
+  "rig_sha256": "cf38b0126f2090cdd62f74364546825137d3bd7cc8e06f1ef5da6739201ad8b5",
+  "accepted_scans": 7,
+  "totals": {
+    "candidates": 13955,
+    "paired": 3638,
+    "top": 2520,
+    "face": 1118,
+    "kept_host": 10317
+  },
+  "frames": [
+    {
+      "frame": 11,
+      "source_sha256": "8bd30181607c7d6bf3f6f4ca8adb0e5622689f445d232400304f8325c83b434f",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.3883321,
+        "exposure_end_s": 1557595834.501373,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.27540210315432034
+      },
+      "candidates": 2645,
+      "paired": 640,
+      "top": 362,
+      "face": 278,
+      "kept_host": 2005,
+      "labels_sha256": "bdcaa8e3ac1b3b62a0bee7b18847be04b819c6542314c0e3dd1509560648b668",
+      "packet_sha256": "fbb8dfedb063d4ee7b0934917742188f66935b64c7df200c2882934a88c8c9de"
+    },
+    {
+      "frame": 12,
+      "source_sha256": "01bc0ef194c60b6b0d7506b0aa950d4e31699f439837fd02ac82808fb07295eb",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.4870462,
+        "exposure_end_s": 1557595834.601343,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.27540210315432034
+      },
+      "candidates": 3509,
+      "paired": 841,
+      "top": 457,
+      "face": 384,
+      "kept_host": 2668,
+      "labels_sha256": "f3e34dc69058c768b102522a1d2fdab85dee7474ee50a212ae57fe6901eafdf8",
+      "packet_sha256": "7645226d91a33a7a7eb35cfbbdb18c9324bce8691eca4afdd2b64bba4210224d"
+    },
+    {
+      "frame": 13,
+      "source_sha256": "50944b33999e958e7c78d55953c2669b4b120a21ea88160a47365eaaa3ca51d3",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.5836227,
+        "exposure_end_s": 1557595834.701323,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.2618645316315211
+      },
+      "candidates": 4725,
+      "paired": 1172,
+      "top": 723,
+      "face": 449,
+      "kept_host": 3553,
+      "labels_sha256": "fb58a3f08d58e49c30e3771e549b41c7b129c41029a136fd4c82b7d54314bc09",
+      "packet_sha256": "cd3a7d7c9da02d57ad1b12b41a97f161fead4f8a8a0502e5200e044c9256185e"
+    },
+    {
+      "frame": 14,
+      "source_sha256": "5dfd1d35e7be793f924addd8fc254654ec7d83734c72fe533e20447bcb394dc6",
+      "excluded": "Traffic clearance refused at survey interval 14: {'clear': False, 'actor': 'ego', 'asset': 'P581', 'lower_bound_m': -1.3123424711994685, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 31,
+      "source_sha256": "be60ce706019beceec00c33626c7823230d1cf7b1be73233998c61ea2de96028",
+      "excluded": "Traffic clearance refused at survey interval 29: {'clear': False, 'actor': 'ego', 'asset': 'P581', 'lower_bound_m': -1.582735148946122, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 32,
+      "source_sha256": "e45c2b046b61039bc76f717737a8b6526da209c34bcc70b999c09f282392a5fa",
+      "excluded": "Traffic clearance refused at survey interval 30: {'clear': False, 'actor': 'ego', 'asset': 'P581', 'lower_bound_m': 0.024803950390456908, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 33,
+      "source_sha256": "f7ff1eff06561602defd0ff9c276628840080b1ba70612962a88a3c43f069140",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.5987833,
+        "exposure_end_s": 1557595836.7185812,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.27540210315432034
+      },
+      "candidates": 779,
+      "paired": 222,
+      "top": 221,
+      "face": 1,
+      "kept_host": 557,
+      "labels_sha256": "c4891f53b7f67cf8e13f2c24ba627ccfb7b5715a2c249fa206e7297f99f733bf",
+      "packet_sha256": "eb98846e3f3e0f7b3977394337acb8e0694581658bed67a3e3b5b7357283d291"
+    },
+    {
+      "frame": 34,
+      "source_sha256": "525ccb413abe0806e871e6dfc6dd671433e0ac2315f547bc62090b26b9c97ff2",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.6988354,
+        "exposure_end_s": 1557595836.817295,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.27540210315432034
+      },
+      "candidates": 876,
+      "paired": 278,
+      "top": 276,
+      "face": 2,
+      "kept_host": 598,
+      "labels_sha256": "d26b370088ff44e51da727c8c8b4aac9c0a936ca02c78a6fbf5bce077824a717",
+      "packet_sha256": "663199164925b5658180f0fdd614382b64b3e069fdc451d8f8f9df7e9274e1f5"
+    },
+    {
+      "frame": 35,
+      "source_sha256": "8524ca56173ea362935dfed356fd5aaadcfffe7a927c1878f5eec78c3d201797",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.7988825,
+        "exposure_end_s": 1557595836.9137394,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.27540210315432034
+      },
+      "candidates": 778,
+      "paired": 261,
+      "top": 258,
+      "face": 3,
+      "kept_host": 517,
+      "labels_sha256": "3832294607b8ef89bea07248484df56902d9afed36afbde669f42a42e13f0545",
+      "packet_sha256": "592291076f45394a897c82ebec2e795a2271a78556f4e272da7ce1876f48d964"
+    },
+    {
+      "frame": 36,
+      "source_sha256": "8b5803250123c860d6ec1b6f8b31751ea1768b4fa2991900d3e0539f8c608beb",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.8989174,
+        "exposure_end_s": 1557595837.0098627,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.27540210315432034
+      },
+      "candidates": 643,
+      "paired": 224,
+      "top": 223,
+      "face": 1,
+      "kept_host": 419,
+      "labels_sha256": "9f61d576c63d6a69901a113b1a389c150da31b75cbd218707c8baa9ac4e6f543",
+      "packet_sha256": "1b616578a073d5b0139832092e0d87ec16c9220bf3f8c1dfe7d601ec73f463bf"
+    }
+  ],
+  "plane_minus_insert_range_m": {
+    "p50": 0.44171972818533956,
+    "p90": 1.12713733489602,
+    "p99": 1.897666776030695
+  }
+}

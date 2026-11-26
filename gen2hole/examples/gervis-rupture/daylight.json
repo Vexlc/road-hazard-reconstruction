@@ -1,0 +1,16 @@
+{
+  "scene": "109",
+  "sun_world": [
+    0.5974513977236263,
+    -0.2029319997276096,
+    0.7758030876740816
+  ],
+  "direct_fraction": 0.6135322242251317,
+  "source": "gen2hole/downstream/sensors/daylight.json",
+  "shade_to_sun_srgb": [
+    0.6352351916376306,
+    0.6444327731092436,
+    0.729651998849583
+  ],
+  "contrast_frame": 42
+}

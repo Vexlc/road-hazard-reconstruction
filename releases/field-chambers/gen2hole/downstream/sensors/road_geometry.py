@@ -170,6 +170,8 @@ def load_inventory(parent):
 
 
 def part_id(name):
+    if name == "Photographed ribbed road insert":
+        return 175
     verge_parts = {"Blue instrument enclosure": 165, "Pale junction housing": 166,
                   "White rounded enclosure": 167, "Exposed metal spindle": 168,
                   "Pipe coupling": 169, "Pipe elbow": 169, "Yellow insulated lead": 170,

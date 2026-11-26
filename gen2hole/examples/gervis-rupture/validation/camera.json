@@ -1,0 +1,18 @@
+{
+  "P581": {
+    "front": {
+      "frames": 4,
+      "representative_frame": 14,
+      "pixels": 52496,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "ccc5d864ce7f6bedc9e73e7aecd04d2d4db216be3d85ff6cffd0b5b035d37075"
+    },
+    "back": {
+      "frames": 6,
+      "representative_frame": 32,
+      "pixels": 8880,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "ccc5d864ce7f6bedc9e73e7aecd04d2d4db216be3d85ff6cffd0b5b035d37075"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "asset_count": 1577,
+  "asset_count": 1578,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2775,6 +2775,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "gervis-rupture": {
+      "name": "公交车道洪水破裂的三段抬升沥青与条纹嵌件",
+      "launcher": "gen2hole/examples/gervis-rupture/build.py",
+      "recipe": "gen2hole/examples/gervis-rupture/survey.json",
+      "guide": "gen2hole/examples/gervis-rupture/README.md",
+      "section": "从现场照片复现",
+      "assets": [
+        "P581"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3030,7 +3044,8 @@
       "wheel-track-pits",
       "cropthorne-break",
       "branching-pits",
-      "contact-pits"
+      "contact-pits",
+      "gervis-rupture"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

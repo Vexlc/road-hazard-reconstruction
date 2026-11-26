@@ -180,6 +180,7 @@ class RoadMesh:
         cover_vertices = []
         with np.load(folder / "surface.npz", allow_pickle=False) as field:
             self.receiver_sky_blocked = field.get("receiver_sky_blocked")
+            self.return_to_grade_blend_m = float(field.get("return_to_grade_blend_m", 0))
             self.curb_cap_weight = field.get("curb_cap_surface_weight")
             self.curb_donor_tread = field.get("curb_donor_tread_rgb")
             self.curb_tread_geometry = []
@@ -590,6 +591,12 @@ class RoadMesh:
                 opacity[apron, 0] *= map_coordinates(self.lane_apron_weight, grid[apron, ::-1].T,
                                                       order=1, mode="constant")
             out[visible] = srgb(linear(rgb[visible]) * (1-opacity) + linear(out[visible]) * opacity)
+        if self.return_to_grade_blend_m:
+            from prop_lighting import linear, srgb
+            hinge = visible & (part == 13) & (ray_z < self.return_to_grade_blend_m)
+            t = np.clip(ray_z[hinge] / self.return_to_grade_blend_m, 0, 1)[:, None]
+            weight = t*t*(3-2*t)
+            out[hinge] = srgb(linear(out[hinge])*weight + linear(rgb[hinge])*(1-weight))
         if self.receiver_sky_blocked is not None:
             # Occluded skylight darkens measured pavement around a raised slab and beneath an overhang.
             # Part 1 remains the grade receiver, preserving its recorded colour and metric range.
