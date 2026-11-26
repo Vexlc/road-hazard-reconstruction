@@ -1,0 +1,44 @@
+{
+  "triangles": 117048,
+  "geometry_sha256": "9ee09914dd5ff2e3a942e691cdefba7c23de3e0ad3fda3cb621fff44243e0334",
+  "lowest_z_m": -0.14100000262260437,
+  "highest_z_m": 0.008384296670556068,
+  "gaussians": 819979,
+  "sha256": {
+    "asset.glb": "055ea1fe5877613fa597d728f3983d89a3665b6e757448aa729f3c0da76e5144",
+    "surface.npz": "2b28991bf225241de6378b43956238e86e246a42d7faea55bd9d2bfa1dc52858",
+    "metadata.json": "44bce9d5f6b2815bb6d96e052394026d5f9513547e6e4ae246ace0f501e9f1a7",
+    "asset.ply": "6f2804660e18a01c97fc9db8597ba3f4330c085618a4e9e603e4e88e229604b7",
+    "splat_material.npz": "c63bf0363d2f37e8e5b336560cb0811394f1d4a89c7b4fe55c1a6c361fe5c78b"
+  },
+  "independent_rebuild_matches": true,
+  "camera_exposures": {
+    "front_left": {
+      "frames": 8,
+      "best": 8,
+      "error_mm": 0.0,
+      "parts": [
+        0,
+        5,
+        6,
+        8,
+        166,
+        172
+      ]
+    },
+    "back": {
+      "frames": 8,
+      "best": 18,
+      "error_mm": 0.0,
+      "parts": [
+        0,
+        5,
+        6,
+        8,
+        165,
+        172,
+        173
+      ]
+    }
+  }
+}

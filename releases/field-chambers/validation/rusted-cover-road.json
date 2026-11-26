@@ -1,0 +1,70 @@
+{
+  "glb_sha256": "6806b504cc68c90d24bb3f0d42946215e158a481450634b5b048bbcf17c770ff",
+  "sealed_sha256": "7462b6a8ceaf895a51e46992191a382481718fde5202ad1237c67ef550104362",
+  "scene": "109",
+  "cameras": {
+    "back_camera": {
+      "frame": 28,
+      "sensor_frames": 12,
+      "subpixel_error_mm": 0.0,
+      "packet_sha256": "faa5963e109b758bdc193fbca75e8d619d4b31d9ff617ab59218a3c6d88597a9",
+      "samples": 555,
+      "first_parts": {
+        "163": 538,
+        "164": 17
+      },
+      "deeper_than_2mm": 13,
+      "deeper_than_50mm": 0,
+      "maximum_extra_range_mm": 25.41357014239054
+    },
+    "front_camera": {
+      "frame": 15,
+      "sensor_frames": 5,
+      "subpixel_error_mm": 0.0,
+      "packet_sha256": "41bb4d9bbf5906acb1fdc8a1c57989c1ff286f181e14cbef6b3b210a7e9f9ecc",
+      "samples": 2546,
+      "first_parts": {
+        "163": 2470,
+        "164": 76
+      },
+      "deeper_than_2mm": 54,
+      "deeper_than_50mm": 0,
+      "maximum_extra_range_mm": 25.185738356139353
+    }
+  },
+  "lidar": {
+    "scans_sha256": {
+      "11": "8bd30181607c7d6bf3f6f4ca8adb0e5622689f445d232400304f8325c83b434f",
+      "12": "01bc0ef194c60b6b0d7506b0aa950d4e31699f439837fd02ac82808fb07295eb",
+      "13": "50944b33999e958e7c78d55953c2669b4b120a21ea88160a47365eaaa3ca51d3",
+      "14": "5dfd1d35e7be793f924addd8fc254654ec7d83734c72fe533e20447bcb394dc6",
+      "15": "87c2a8d3eb04bb300b5c6e0b2226ab90c3398ff6aecf7e6d1056bea3302ebc02",
+      "27": "71773a0f64dcf863dd7b758a336d568f4f25931278adf0574efda913e64da555",
+      "28": "aa86c45f1eae8aa6762f14d88beb4597156c2e3a6ca04d5d2c73c6b98f52f955",
+      "29": "1d258dbed07e700cff7c022082f6b2e8bf881d1db9b06337b2614c9affa088b1",
+      "30": "f2b97f011a74e3b6aca3d0704a944db4479344537a5a1138c72be24b421cba17",
+      "31": "be60ce706019beceec00c33626c7823230d1cf7b1be73233998c61ea2de96028",
+      "32": "e45c2b046b61039bc76f717737a8b6526da209c34bcc70b999c09f282392a5fa",
+      "33": "f7ff1eff06561602defd0ff9c276628840080b1ba70612962a88a3c43f069140",
+      "34": "525ccb413abe0806e871e6dfc6dd671433e0ac2315f547bc62090b26b9c97ff2",
+      "35": "8524ca56173ea362935dfed356fd5aaadcfffe7a927c1878f5eec78c3d201797",
+      "36": "8b5803250123c860d6ec1b6f8b31751ea1768b4fa2991900d3e0539f8c608beb",
+      "37": "46a189dec06266ad34364a0d0ea3102a8fcbebba9a603db09f7014ffe88d8af3",
+      "38": "05c210937f8ef7ee263520dc169a16daa43ab151447d9b7bc7ceccf7f860c81c"
+    },
+    "excluded_scans": {
+      "15": "Traffic clearance refused at survey interval 15: {'clear': False, 'actor': 'ego', 'asset': 'M544', 'lower_bound_m': 7.940578721266078e-05, 'reason': 'traffic'}",
+      "27": "Traffic clearance refused at survey interval 25: {'clear': False, 'actor': 'ego', 'asset': 'M544', 'lower_bound_m': -1.5940823876094234, 'reason': 'traffic'}",
+      "28": "Traffic clearance refused at survey interval 26: {'clear': False, 'actor': 'ego', 'asset': 'M544', 'lower_bound_m': 0.02994381501303023, 'reason': 'traffic'}"
+    },
+    "packet_sha256": "c60728cb0688f6a1563a21b5ae20d40da077f576789f8bf5e584d7ab2845e8b7",
+    "samples": 192,
+    "first_parts": {
+      "163": 184,
+      "164": 8
+    },
+    "deeper_than_2mm": 7,
+    "deeper_than_50mm": 0,
+    "maximum_extra_range_mm": 25.5584716796875
+  }
+}

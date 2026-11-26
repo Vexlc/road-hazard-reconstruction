@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,540 个资产编号、68 个重建系列和 33 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,542 个资产编号、70 个重建系列和 34 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -84,6 +84,8 @@
 | [辐条圆井与隆起的井盖、井圈](../docs/32-utility-covers.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E6%9D%90%E8%B4%A8%E9%87%8D%E5%BB%BA%E4%B8%A4%E7%A7%8D%E4%BA%95%E7%9B%96) | 2 | A271 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/utility-covers/001/survey.json) · [输入准备](../gen2hole/examples/utility-covers/prepare.py) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure)、[native-pavement-support](#route-native-pavement-support)、[position-pass](#route-position-pass) |
 | [十四通孔铸铁盖错位与缺盖敞井](../docs/34-sun-openings.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E9%87%87%E9%9B%86%E5%92%8C%E6%89%AB%E6%8F%8F%E9%87%8D%E5%BB%BA%E5%9B%9B%E4%BB%B6%E8%B5%84%E4%BA%A7) | 2 | A277 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/sun-openings/survey.json) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure)、[native-pavement-support](#route-native-pavement-support)、[raw-mei](#route-raw-mei)、[pavement-sun](#route-pavement-sun) |
 | [沉降钢格栅与缺篦雨水口](../docs/35-stereo-drains.md#%E4%BB%8E%E4%B8%A4%E6%AC%A1%E5%9D%91%E6%B4%9E%E9%87%87%E9%9B%86%E5%92%8C%E6%A0%BC%E6%A0%85%E7%85%A7%E7%89%87%E9%87%8D%E5%BB%BA) | 2 | A280 | [重建](../gen2hole/survey.py) · [配方](../gen2hole/examples/stereo-drains/survey.json) | [pavement-layout](#route-pavement-layout)、[pavement-joint](#route-pavement-joint)、[apron-exposure](#route-apron-exposure)、[native-pavement-support](#route-native-pavement-support)、[raw-mei](#route-raw-mei)、[pavement-sun](#route-pavement-sun)、[stereo-rays](#route-stereo-rays) |
+| [54 孔锈穿菱纹钢井盖](../releases/field-chambers/README.md#%E4%BB%8E%E5%8E%9F%E7%85%A7%E9%87%8D%E5%BB%BA) | 1 | M544 | [重建](../releases/field-chambers/gen2hole/examples/rusted-cover/build.py) · [配方](../releases/field-chambers/gen2hole/examples/rusted-cover/survey.json) | [field-chamber-replay](#route-field-chamber-replay)、[mesh-view](#route-mesh-view) |
+| [草缘敞口检修井（实验版）](../releases/field-chambers/README.md#%E4%BB%8E%E5%8E%9F%E7%85%A7%E9%87%8D%E5%BB%BA) | 1 | M545 | [重建](../releases/field-chambers/gen2hole/examples/verge-chamber/build.py) · [配方](../releases/field-chambers/gen2hole/examples/verge-chamber/survey.json) | [field-chamber-replay](#route-field-chamber-replay)、[mesh-view](#route-mesh-view) |
 
 ## 路侧与路面立体设施
 
@@ -112,7 +114,7 @@
 | <a id="route-photo-water"></a>photo-water | 按站点重建水面、坑床及折射回放 | 1 / 1 | [oblique_pits.py](../gen2hole/oblique_pits.py) | [P204 路缘积水坑](../docs/02-asset-reconstruction.md#p204-%E8%B7%AF%E7%BC%98%E7%A7%AF%E6%B0%B4%E5%9D%91) |
 | <a id="route-repair"></a>repair | 实拍沥青基色迁移及同机位投影 | 1 / 1 | [review-repair-transfer.py](../scripts/review-repair-transfer.py) | [迁到另一种沥青](../gen2hole/examples/transverse-repair/README.md#%E8%BF%81%E5%88%B0%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%B2%A5%E9%9D%92) |
 | <a id="route-archive"></a>archive | 封存成品及环绕复核；独立 GLB 的宿主接入见手册 | 1 / 30 | [review-large-potholes.py](../scripts/review-large-potholes.py) | [大面积坑洞](../docs/10-factory.md#%E5%A4%A7%E9%9D%A2%E7%A7%AF%E5%9D%91%E6%B4%9E) |
-| <a id="route-mesh-view"></a>mesh-view | 米制网格、标定光线与宿主遮挡合成 | 11 / 34 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [换鱼眼、换渲染器或换世界坐标](../docs/17-mixed-road-transfer.md#%E6%8D%A2%E9%B1%BC%E7%9C%BC%E6%8D%A2%E6%B8%B2%E6%9F%93%E5%99%A8%E6%88%96%E6%8D%A2%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87) |
+| <a id="route-mesh-view"></a>mesh-view | 米制网格、标定光线与宿主遮挡合成 | 13 / 36 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [换鱼眼、换渲染器或换世界坐标](../docs/17-mixed-road-transfer.md#%E6%8D%A2%E9%B1%BC%E7%9C%BC%E6%8D%A2%E6%B8%B2%E6%9F%93%E5%99%A8%E6%88%96%E6%8D%A2%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87) |
 | <a id="route-joint-props"></a>joint-props | KITTI 0000 原生联合场景的成对立体设施及前后视 | 7 / 18 | [roadside_pairs.py](../streetcrafter/joint/roadside_pairs.py) | [迁入指定的 30,000 步原生场景](../docs/19-roadside-props.md#%E8%BF%81%E5%85%A5%E6%8C%87%E5%AE%9A%E7%9A%84-30000-%E6%AD%A5%E5%8E%9F%E7%94%9F%E5%9C%BA%E6%99%AF) |
 | <a id="route-cycles"></a>cycles | Blender Cycles 原生等距鱼眼、米制深度与双物体对照 | 2 / 6 | [render-cone-cycles.py](../scripts/render-cone-cycles.py) | [在 Blender Cycles 中独立复核](../docs/20-traffic-cones.md#%E5%9C%A8-blender-cycles-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E5%A4%8D%E6%A0%B8) |
 | <a id="route-pavement-layout"></a>pavement-layout | 独立支撑面上的成组开口、实车鱼眼与 Cycles 冠形路面 | 20 / 42 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [接入自己的鱼眼或其他渲染器](../docs/21-measured-pavement.md#%E6%8E%A5%E5%85%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E9%B1%BC%E7%9C%BC%E6%88%96%E5%85%B6%E4%BB%96%E6%B8%B2%E6%9F%93%E5%99%A8) |
@@ -136,5 +138,6 @@
 | <a id="route-stereo-rays"></a>stereo-rays | 从双目标定与浮点匹配恢复路面和前景的米制距离 | 3 / 8 | [host_stereo.py](../gen2hole/downstream/host_stereo.py) | [从已标定双目接入新宿主](../docs/35-stereo-drains.md#%E4%BB%8E%E5%B7%B2%E6%A0%87%E5%AE%9A%E5%8F%8C%E7%9B%AE%E6%8E%A5%E5%85%A5%E6%96%B0%E5%AE%BF%E4%B8%BB) |
 | <a id="route-bounded-cargo-seat"></a>bounded-cargo-seat | 有限范围内按逐件接地与整车行驶净距选择落点 | 1 / 4 | [cargo_placement.py](../gen2hole/downstream/cargo_placement.py) | [在允许范围内重新选择落点](../docs/36-street-clutter.md#%E5%9C%A8%E5%85%81%E8%AE%B8%E8%8C%83%E5%9B%B4%E5%86%85%E9%87%8D%E6%96%B0%E9%80%89%E6%8B%A9%E8%90%BD%E7%82%B9) |
 | <a id="route-spherical-panorama"></a>spherical-panorama | 全景左右接缝、跨界窗口和有证据的空背景 | 1 / 4 | [spherical_camera.py](../gen2hole/downstream/spherical_camera.py) | [全景相机接缝与远背景](../docs/36-street-clutter.md#%E5%85%A8%E6%99%AF%E7%9B%B8%E6%9C%BA%E6%8E%A5%E7%BC%9D%E4%B8%8E%E8%BF%9C%E8%83%8C%E6%99%AF) |
+| <a id="route-field-chamber-replay"></a>field-chamber-replay | 锈穿井盖与草缘敞井的实录视角回放 | 2 / 2 | [render-road-distress.py](../releases/field-chambers/scripts/render-road-distress.py) | [在车载数据上复用](../releases/field-chambers/README.md#%E5%9C%A8%E8%BD%A6%E8%BD%BD%E6%95%B0%E6%8D%AE%E4%B8%8A%E5%A4%8D%E7%94%A8) |
 
 更新目录后运行 `python3 scripts/check-reproduction-index.py --write-map`。常规检查运行同一命令并省略参数，检查编号、源文件、指南章节、迁入路线与本页是否一致。

@@ -1,5 +1,5 @@
 {
-  "asset_count": 1540,
+  "asset_count": 1542,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2495,6 +2495,34 @@
         "bounded-cargo-seat",
         "spherical-panorama"
       ]
+    },
+    "rusted-cover": {
+      "name": "54 孔锈穿菱纹钢井盖",
+      "launcher": "releases/field-chambers/gen2hole/examples/rusted-cover/build.py",
+      "recipe": "releases/field-chambers/gen2hole/examples/rusted-cover/survey.json",
+      "guide": "releases/field-chambers/README.md",
+      "section": "从原照重建",
+      "assets": [
+        "M544"
+      ],
+      "transfer": [
+        "field-chamber-replay",
+        "mesh-view"
+      ]
+    },
+    "verge-chamber": {
+      "name": "草缘敞口检修井（实验版）",
+      "launcher": "releases/field-chambers/gen2hole/examples/verge-chamber/build.py",
+      "recipe": "releases/field-chambers/gen2hole/examples/verge-chamber/survey.json",
+      "guide": "releases/field-chambers/README.md",
+      "section": "从原照重建",
+      "assets": [
+        "M545"
+      ],
+      "transfer": [
+        "field-chamber-replay",
+        "mesh-view"
+      ]
     }
   },
   "transfer_routes": {
@@ -2695,6 +2723,12 @@
       "entry": "gen2hole/downstream/spherical_camera.py",
       "guide": "docs/36-street-clutter.md",
       "section": "全景相机接缝与远背景"
+    },
+    "field-chamber-replay": {
+      "name": "锈穿井盖与草缘敞井的实录视角回放",
+      "entry": "releases/field-chambers/scripts/render-road-distress.py",
+      "guide": "releases/field-chambers/README.md",
+      "section": "在车载数据上复用"
     }
   },
   "groups": {
@@ -2765,7 +2799,9 @@
       "diamond-gas-hatch",
       "spoked-utility-chamber",
       "offset-vented-opening",
-      "settled-welded-storm-drain"
+      "settled-welded-storm-drain",
+      "rusted-cover",
+      "verge-chamber"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

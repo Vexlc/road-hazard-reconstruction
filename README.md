@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**现场井口资产 M544、M545**　54 孔锈穿钢井盖与草缘敞井（实验版）。附原照、可下载的 GLB / 3DGS、封孔与遮挡对照、独立重建和车载回放命令。[图文复现指南](releases/field-chambers/README.md) · [下载成品](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/field-chambers-v1.0.0)
+
 **两组路面散落物**　垃圾袋与倒扣周转筐、钢桶与管钳均已成对迁入 30,000 步场景。可复现有限范围内重新选点，以及全景接缝处的双目与遮挡。[复现指南](docs/36-street-clutter.md) · [指定场景前后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/street-clutter-v1.0.0/joint-front-rear.mp4) · [Audi 实拍车尾](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/street-clutter-v1.0.0/audi-front-rear.mp4)
 
 **沉降雨篦和缺篦井口**　两组资产已迁入指定的 KITTI 联合场景。新宿主若能提供标定双目和匹配，可从米制距离重新拟合接地与遮挡。[接入与复现](docs/35-stereo-drains.md) · [指定场景的局部前后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/joint-local-front-rear.mp4) · [Audi 实拍车尾](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/audi-front-rear.mp4)

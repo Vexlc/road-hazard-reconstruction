@@ -1,0 +1,668 @@
+{
+  "glb_sha256": "6806b504cc68c90d24bb3f0d42946215e158a481450634b5b048bbcf17c770ff",
+  "control_sha256": "7462b6a8ceaf895a51e46992191a382481718fde5202ad1237c67ef550104362",
+  "photo_sha256": "56e2884bedc507440bae2ad1b7a5c4a38ddecda58c829e35e105873b250d5d39",
+  "topology": {
+    "through_holes": 54,
+    "euler_characteristic": -106,
+    "connected_solids": 1,
+    "closed_oriented_mesh": true,
+    "metal_volume_m3": 0.0014224694079638198
+  },
+  "source_threshold_iou": {
+    "22": 0.9700350011331302,
+    "30": 0.9817175908462216,
+    "38": 0.9824236817761333
+  },
+  "holes": [
+    {
+      "id": 1,
+      "seed_uv": [
+        582,
+        332
+      ],
+      "source_pixels": 110,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0745379924774
+    },
+    {
+      "id": 2,
+      "seed_uv": [
+        819,
+        339
+      ],
+      "source_pixels": 164,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 3,
+      "seed_uv": [
+        906,
+        407
+      ],
+      "source_pixels": 2289,
+      "recall": 0.9991262560069899,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.01028418540955
+    },
+    {
+      "id": 4,
+      "seed_uv": [
+        351,
+        401
+      ],
+      "source_pixels": 96,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 5,
+      "seed_uv": [
+        827,
+        439
+      ],
+      "source_pixels": 154,
+      "recall": 0.9935064935064936,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 6,
+      "seed_uv": [
+        776,
+        462
+      ],
+      "source_pixels": 2389,
+      "recall": 0.9995814148179154,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.70974469184875
+    },
+    {
+      "id": 7,
+      "seed_uv": [
+        291,
+        450
+      ],
+      "source_pixels": 20,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.04881858825684
+    },
+    {
+      "id": 8,
+      "seed_uv": [
+        405,
+        458
+      ],
+      "source_pixels": 53,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.00006198883057
+    },
+    {
+      "id": 9,
+      "seed_uv": [
+        661,
+        471
+      ],
+      "source_pixels": 38,
+      "recall": 1.0,
+      "metal_ring_agreement": 0.9809523809523809,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.1091980934143
+    },
+    {
+      "id": 10,
+      "seed_uv": [
+        870,
+        494
+      ],
+      "source_pixels": 2833,
+      "recall": 0.9989410518884575,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 311.1579716205597
+    },
+    {
+      "id": 11,
+      "seed_uv": [
+        32,
+        487
+      ],
+      "source_pixels": 393,
+      "recall": 0.9923664122137404,
+      "metal_ring_agreement": 0.9897260273972602,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.2261424064636
+    },
+    {
+      "id": 12,
+      "seed_uv": [
+        959,
+        485
+      ],
+      "source_pixels": 617,
+      "recall": 0.9902755267423015,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 13,
+      "seed_uv": [
+        699,
+        494
+      ],
+      "source_pixels": 643,
+      "recall": 0.9984447900466563,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.00006198883057
+    },
+    {
+      "id": 14,
+      "seed_uv": [
+        575,
+        495
+      ],
+      "source_pixels": 1162,
+      "recall": 0.9982788296041308,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 311.0042214393616
+    },
+    {
+      "id": 15,
+      "seed_uv": [
+        283,
+        493
+      ],
+      "source_pixels": 158,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000321865082
+    },
+    {
+      "id": 16,
+      "seed_uv": [
+        825,
+        560
+      ],
+      "source_pixels": 1835,
+      "recall": 0.9994550408719346,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0312054157257
+    },
+    {
+      "id": 17,
+      "seed_uv": [
+        490,
+        514
+      ],
+      "source_pixels": 36,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000321865082
+    },
+    {
+      "id": 18,
+      "seed_uv": [
+        631,
+        513
+      ],
+      "source_pixels": 21,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.06449460983276
+    },
+    {
+      "id": 19,
+      "seed_uv": [
+        401,
+        526
+      ],
+      "source_pixels": 163,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.00256538391113
+    },
+    {
+      "id": 20,
+      "seed_uv": [
+        445,
+        566
+      ],
+      "source_pixels": 1856,
+      "recall": 0.9989224137931034,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.32758951187134
+    },
+    {
+      "id": 21,
+      "seed_uv": [
+        767,
+        542
+      ],
+      "source_pixels": 106,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.166597366333
+    },
+    {
+      "id": 22,
+      "seed_uv": [
+        47,
+        566
+      ],
+      "source_pixels": 558,
+      "recall": 0.9982078853046595,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.00199913978577
+    },
+    {
+      "id": 23,
+      "seed_uv": [
+        537,
+        586
+      ],
+      "source_pixels": 2626,
+      "recall": 0.9977151561309977,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.788631439209
+    },
+    {
+      "id": 24,
+      "seed_uv": [
+        736,
+        551
+      ],
+      "source_pixels": 30,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0001811981201
+    },
+    {
+      "id": 25,
+      "seed_uv": [
+        602,
+        644
+      ],
+      "source_pixels": 8798,
+      "recall": 0.9997726756080928,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.5609118938446
+    },
+    {
+      "id": 26,
+      "seed_uv": [
+        365,
+        585
+      ],
+      "source_pixels": 775,
+      "recall": 0.9922580645161291,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 27,
+      "seed_uv": [
+        218,
+        578
+      ],
+      "source_pixels": 46,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.00012159347534
+    },
+    {
+      "id": 28,
+      "seed_uv": [
+        695,
+        581
+      ],
+      "source_pixels": 240,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000321865082
+    },
+    {
+      "id": 29,
+      "seed_uv": [
+        1000,
+        606
+      ],
+      "source_pixels": 1646,
+      "recall": 0.9993924665856622,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.07957458496094
+    },
+    {
+      "id": 30,
+      "seed_uv": [
+        844,
+        597
+      ],
+      "source_pixels": 185,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 31,
+      "seed_uv": [
+        299,
+        611
+      ],
+      "source_pixels": 60,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0086450576782
+    },
+    {
+      "id": 32,
+      "seed_uv": [
+        388,
+        625
+      ],
+      "source_pixels": 242,
+      "recall": 0.9958677685950413,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 33,
+      "seed_uv": [
+        144,
+        621
+      ],
+      "source_pixels": 81,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.12216210365295
+    },
+    {
+      "id": 34,
+      "seed_uv": [
+        772,
+        623
+      ],
+      "source_pixels": 129,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0050091743469
+    },
+    {
+      "id": 35,
+      "seed_uv": [
+        492,
+        630
+      ],
+      "source_pixels": 172,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 36,
+      "seed_uv": [
+        245,
+        641
+      ],
+      "source_pixels": 57,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0375831127167
+    },
+    {
+      "id": 37,
+      "seed_uv": [
+        1007,
+        643
+      ],
+      "source_pixels": 132,
+      "recall": 0.9924242424242424,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0004196166992
+    },
+    {
+      "id": 38,
+      "seed_uv": [
+        439,
+        650
+      ],
+      "source_pixels": 98,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0109398365021
+    },
+    {
+      "id": 39,
+      "seed_uv": [
+        214,
+        666
+      ],
+      "source_pixels": 1258,
+      "recall": 0.9992050874403816,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 40,
+      "seed_uv": [
+        284,
+        695
+      ],
+      "source_pixels": 1201,
+      "recall": 0.9983347210657785,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0021779537201
+    },
+    {
+      "id": 41,
+      "seed_uv": [
+        689,
+        679
+      ],
+      "source_pixels": 1978,
+      "recall": 0.9994944388270981,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.31012535095215
+    },
+    {
+      "id": 42,
+      "seed_uv": [
+        877,
+        669
+      ],
+      "source_pixels": 431,
+      "recall": 0.9976798143851509,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 43,
+      "seed_uv": [
+        110,
+        673
+      ],
+      "source_pixels": 453,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 44,
+      "seed_uv": [
+        393,
+        697
+      ],
+      "source_pixels": 831,
+      "recall": 0.9987966305655837,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.036301612854
+    },
+    {
+      "id": 45,
+      "seed_uv": [
+        320,
+        697
+      ],
+      "source_pixels": 16,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.3768825531006
+    },
+    {
+      "id": 46,
+      "seed_uv": [
+        955,
+        700
+      ],
+      "source_pixels": 51,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 47,
+      "seed_uv": [
+        441,
+        714
+      ],
+      "source_pixels": 74,
+      "recall": 0.972972972972973,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.07978320121765
+    },
+    {
+      "id": 48,
+      "seed_uv": [
+        722,
+        717
+      ],
+      "source_pixels": 148,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0028336048126
+    },
+    {
+      "id": 49,
+      "seed_uv": [
+        771,
+        728
+      ],
+      "source_pixels": 327,
+      "recall": 0.9938837920489296,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.00083684921265
+    },
+    {
+      "id": 50,
+      "seed_uv": [
+        624,
+        747
+      ],
+      "source_pixels": 752,
+      "recall": 0.9627659574468085,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.00012159347534
+    },
+    {
+      "id": 51,
+      "seed_uv": [
+        675,
+        743
+      ],
+      "source_pixels": 164,
+      "recall": 0.9939024390243902,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 52,
+      "seed_uv": [
+        170,
+        748
+      ],
+      "source_pixels": 165,
+      "recall": 0.9939393939393939,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    },
+    {
+      "id": 53,
+      "seed_uv": [
+        840,
+        751
+      ],
+      "source_pixels": 60,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0477457046509
+    },
+    {
+      "id": 54,
+      "seed_uv": [
+        811,
+        765
+      ],
+      "source_pixels": 198,
+      "recall": 1.0,
+      "metal_ring_agreement": 1.0,
+      "center_first_part": 7,
+      "center_clearance_mm": 310.0000023841858
+    }
+  ],
+  "packet_sha256": "45af719eb514a3879e4a9edf22601bbbe8940ca9da0943a5c609febb3827124c"
+}

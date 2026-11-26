@@ -1,0 +1,28 @@
+{
+  "native": {
+    "triangles": 680810,
+    "geometry_sha256": "434dee1dbc4e5cc51fdfca72b19d648a065570db3f70fce8b4a851abcab75208",
+    "lowest_z_m": -0.3100000023841858,
+    "highest_z_m": 0.0014000000664964318,
+    "gaussians": 928736,
+    "sha256": {
+      "asset.glb": "6806b504cc68c90d24bb3f0d42946215e158a481450634b5b048bbcf17c770ff",
+      "surface.npz": "27fe53d79abc22351dd8bcaf5372ace592923237c2c58112b7c978df40b8f987",
+      "metadata.json": "b6e0455daa414cc98c6bdba514ecf71f908b00af88d9b197440ff6267da3a415",
+      "asset.ply": "3562f95519022acfb5ef7954977c64ab6ade11c03fff8e8534a2f8bb5d5051b4",
+      "splat_material.npz": "19662edf205f45956b21201722fab795862d1b7105319837f729b5ca37fb1ba5"
+    }
+  },
+  "byte_identical_rebuild": true,
+  "reference_catalog": {
+    "recipe_files": 321,
+    "other_images": 262,
+    "same_source_entry": [],
+    "byte_identical_images": []
+  },
+  "compared_family": "rusted-ten-vent-cover",
+  "previous_ids": [
+    "A249",
+    "M249"
+  ]
+}

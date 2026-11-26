@@ -1,0 +1,39 @@
+{
+  "scene": "109",
+  "support_surface": "Ground",
+  "seed_scan_row": [
+    16,
+    14765
+  ],
+  "seed_scan_sha256": "7607c4253b8f1b7ecf4b5e6e159400f741508e274efa4e4c9f5f6ff5badd740f",
+  "reference_exposure": "tools/multiscene/data/raw/109/camera/left_camera/16.jpg",
+  "reference_sha256": "c9ab0b63c172369595a1bf206611216df0ee54925b31c0167d5f2fb816d45b48",
+  "reference_pixel": [
+    161,
+    808
+  ],
+  "support_scan_range": [
+    11,
+    22
+  ],
+  "radius_m": 0.72,
+  "camera_frame_ranges": {
+    "front_camera": [
+      0,
+      16
+    ],
+    "front_left_camera": [
+      0,
+      26
+    ],
+    "left_camera": [
+      9,
+      30
+    ],
+    "back_camera": [
+      18,
+      42
+    ]
+  },
+  "description": "Unpaved soil between the kerbs of a planted median, west of the nearest shrub."
+}

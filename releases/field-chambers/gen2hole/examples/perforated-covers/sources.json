@@ -1,0 +1,12 @@
+{
+  "yokota_jpeg_sha256": "ee25017361dcca1e075c9d4fda59f2b1d4de89d79b0e43e8d5cfbebc5e05ec0b",
+  "yokota_source": "https://d1ldvf68ux039x.cloudfront.net/thumbs/photos/2606/9735953/1000w_q95.jpg",
+  "cobblestone_color_sha256": "3b1f97c4381cb526bbf312bbe785af7d0a13f690af3c2068f806bd4f5da85c4e",
+  "cobblestone_displacement_sha256": "ef163b287fe5b5245f6e2d7741b3ce9db499cb2ca9a7e6bf00ab9b10dc954b99",
+  "lining_source": "https://ambientcg.com/a/Concrete049",
+  "lining_4k_color_sha256": "c213efb276bce96553193997f11770c26f33da16e076ac358562d0fa3993c625",
+  "split_iron_color_sha256": "63e1e4ba33132531c9f9528b058ae13330e09188f31bd9082b53a75306c37b24",
+  "split_iron_displacement_sha256": "5cd74fcac5ddd044e77e34c18f121aa2556104136476b192d7e1e15bb10bf5f9",
+  "split_iron_pavement_source": "https://ambientcg.com/a/Asphalt031",
+  "split_iron_4k_pavement_sha256": "8c638b23c560a16da6bbd0655ec633aa9e415e908bb3bd99a4f260e2ebd7ee6c"
+}
