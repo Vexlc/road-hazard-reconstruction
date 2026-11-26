@@ -11,7 +11,7 @@ sys.path.insert(0,str(LIB.parent/'scripts'))
 exposure=import_module('check-pavement-pass').exposure
 
 
-def check(models,raw,views,out):
+def check(models,raw,views,out,ids=None):
     rows={}
     for front in sorted((views/'front').glob('*/placement.json')):
         key=front.parent.name
@@ -26,11 +26,13 @@ def check(models,raw,views,out):
                 glb_sha256=digest)
             anchors.append(shot['matrix'])
         assert np.array_equal(*anchors)
-    assert len(rows)==9
+    expected=set(ids or ("P546","P547","P548","P549","P550","P551","M552","A553","P554"))
+    assert set(rows)==expected, (set(rows),expected)
     save_json(out,rows)
 
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for key in ('models','raw','views','out'):p.add_argument(key,type=Path)
+    p.add_argument('--ids',nargs='+',help='Expected asset IDs for an independently reconstructed series')
     check(**vars(p.parse_args()))

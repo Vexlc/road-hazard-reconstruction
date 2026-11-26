@@ -83,13 +83,13 @@ def field_check(folder,surf,meta,spec,run):
 
 
 @torch.inference_mode()
-def inspect(models,out):
+def inspect(models,out,evidence_check=field_check):
     out.mkdir(parents=True,exist_ok=True);records={}
     spec=read_json(HERE/'photos.json')
     for path in sorted(models.glob('*/series/assets/*/*/metadata.json'),key=lambda q:int(q.parent.name[1:])):
         folder=path.parent;key=folder.name;meta=read_json(path);run=folder.parents[3];glb=folder/'asset.glb'
         surf=Surface(glb); row=dict(id=key,label=meta['label'],glb_sha256=sha256(glb),ply_sha256=sha256(folder/'asset.ply'),
-                                   gaussians=meta['gaussians'],triangles=sum(meta['geometry_parts'].values()),evidence=field_check(folder,surf,meta,spec,run))
+                                   gaussians=meta['gaussians'],triangles=sum(meta['geometry_parts'].values()),evidence=evidence_check(folder,surf,meta,spec,run))
         with np.load(folder/'surface.npz') as field:
             mask=field['defect_mask']>.5
             if not mask.any():raise ValueError(key)

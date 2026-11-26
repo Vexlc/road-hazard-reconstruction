@@ -1,5 +1,5 @@
 {
-  "asset_count": 1553,
+  "asset_count": 1559,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2572,6 +2572,50 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "field-rims-scans": {
+      "name": "分离坑区、长槽和宽口坑床扫描",
+      "launcher": "gen2hole/examples/field-rims/build_scans.py",
+      "recipe": "gen2hole/examples/field-rims/scans.json",
+      "guide": "gen2hole/examples/field-rims/README.md",
+      "section": "从输入重建",
+      "assets": [
+        "P557",
+        "P558",
+        "P559"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
+    },
+    "field-rims-covers": {
+      "name": "错向漆线井盖与三块残板缺口",
+      "launcher": "gen2hole/examples/field-rims/build_covers.py",
+      "recipe": "gen2hole/examples/field-rims/covers.json",
+      "guide": "gen2hole/examples/field-rims/README.md",
+      "section": "从输入重建",
+      "assets": [
+        "A560",
+        "M561"
+      ],
+      "transfer": [
+        "mesh-view"
+      ]
+    },
+    "riverview-patch": {
+      "name": "积水破损补丁与五块外露骨料",
+      "launcher": "gen2hole/examples/field-rims/build_covers.py",
+      "recipe": "gen2hole/examples/field-rims/riverview.json",
+      "guide": "gen2hole/examples/field-rims/README.md",
+      "section": "从输入重建",
+      "assets": [
+        "P562"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -2815,7 +2859,8 @@
       "heldout-gravel-spalls",
       "forked-aggregate-pits",
       "long-rut-aggregate-bed",
-      "lane-scan-pits"
+      "lane-scan-pits",
+      "field-rims-scans"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
@@ -2829,7 +2874,8 @@
       "transverse-repair",
       "seated-wet-pavement",
       "oval-bed-near-reflection",
-      "lane-photo-damage"
+      "lane-photo-damage",
+      "riverview-patch"
     ],
     "井盖、雨水篦与敞井": [
       "photo-chamber-BD-v2",
@@ -2853,7 +2899,8 @@
       "settled-welded-storm-drain",
       "rusted-cover",
       "verge-chamber",
-      "lane-photo-covers"
+      "lane-photo-covers",
+      "field-rims-covers"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

@@ -1,0 +1,7 @@
+# 拍摄者、测点和使用条件
+
+- P557、P558、P559 使用 Tingrui Zhang 等人的 PointPSSN 原始点坐标和二元标注，依次来自 test 7、train 409、test 3。发布物包含派生模型。上游仓库未列明确数据许可，原始点云由作者提供。重建材质来自 ambientCG 的 Asphalt031 和 Dimitrios Savva 的两组 Poly Haven 路面扫描，均为 CC0。每条输入的 SHA-256 存于 scans.json。[论文](https://doi.org/10.1016/j.eswa.2025.129833) · [作者代码](https://github.com/5rexi/PointPSSN/tree/1e4c122811066798db1dc0767a159dce05e48383) · [原始数据](https://drive.google.com/file/d/1zmQ3IzpPbuiBKXMo-ttX1bqew8GSZ9to/view) · [Asphalt031](https://ambientcg.com/a/Asphalt031) · [Road Damaged](https://polyhaven.com/a/road_damaged) · [Road Damaged 2](https://polyhaven.com/a/road_damaged_2)
+- A560 的现场照片由 Chris Downer 于 2016 年拍摄于 Bournemouth 的 Redhill Drive。改编包含路面和漆线提取、井盖矫正、井框和盖面凹槽建模。照片和照片衍生资产使用 CC BY-SA 2.0。[现场照片](https://www.geograph.org.uk/photo/5165391) · [许可](https://creativecommons.org/licenses/by-sa/2.0/)
+- M561 的现场照片由 Bob Harvey 于 2021 年拍摄于 Bourne。地点为信号灯旁狭窄的人行道。改编包含可见缺角和三块残板轮廓、去除红色围栏、用同一盖板的纹理补全遮挡区域以及估计井内深度。照片和照片衍生资产使用 CC BY-SA 2.0。[现场照片](https://www.geograph.org.uk/photo/7056199) · [许可](https://creativecommons.org/licenses/by-sa/2.0/)
+- P562 的现场照片由 Kenneth Allen 于 2019 年拍摄于 Cranny 的 Riverview Road。改编包含轮廓标注、嵌套坑壁、水面与露出水面的石块建模。照片和照片衍生资产使用 CC BY-SA 2.0。[现场照片](https://www.geograph.org.uk/photo/6354751) · [许可](https://creativecommons.org/licenses/by-sa/2.0/)
+- 道路回放的原始相机、标定、位姿和激光数据来自 Hesai Technology 与 Scale AI 的 PandaSet 034。八段视频是分别插入资产后的合成影像，宿主数据使用遵循 PandaSet 条款。[PandaSet](https://github.com/scaleapi/pandaset-devkit)
