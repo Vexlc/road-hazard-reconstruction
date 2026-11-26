@@ -1,0 +1,95 @@
+{
+  "P583": {
+    "id": "P583",
+    "label": "特伦顿街口沥青剥失与露石路面",
+    "glb_sha256": "b37901d3455a16525dbc81b2bd35956982bc981c3054b80889783024541c40b1",
+    "ply_sha256": "5b04f989c193a45e79cf3e5fc422c19ff6a6b7d1abb7c983ae8d915276a7dbd8",
+    "gaussians": 479893,
+    "triangles": 99297,
+    "evidence": {
+      "source_rim_absolute_heldout_px": {
+        "p10": 0.04430638038391396,
+        "median": 0.3573233479435605,
+        "p90": 1.0805721155172767
+      },
+      "baseline_m": 5.28042225106235,
+      "training_pairs": 394,
+      "reserved_pairs": 150,
+      "mapped_reserved": 62,
+      "checked_reserved": 45,
+      "field_to_context_px": {
+        "p10": 0.8932942741399867,
+        "median": 2.433622527378776,
+        "p90": 5.610910606964186
+      },
+      "local_road_to_context_px": {
+        "p10": 0.9328519993803192,
+        "median": 2.767749650129364,
+        "p90": 7.188014112965047
+      },
+      "regions": {
+        "2": {
+          "mapped_area_m2": 0.190752,
+          "stereo_cells": 5737,
+          "stereo_fraction": 0.4812112061734608,
+          "supported_relief_mm": {
+            "p10": -6.256740474700928,
+            "median": -2.361121654510498,
+            "p90": 0.35185385942459374
+          },
+          "cycle_error_mm": {
+            "p10": 4.74975188069493e-08,
+            "median": 0.09375019371509552,
+            "p90": 2.12255859375
+          }
+        },
+        "3": {
+          "mapped_area_m2": 0.92368,
+          "stereo_cells": 11332,
+          "stereo_fraction": 0.1962930885155032,
+          "supported_relief_mm": {
+            "p10": -18.429659271240233,
+            "median": -6.666406869888306,
+            "p90": 0.4230866789817804
+          },
+          "cycle_error_mm": {
+            "p10": 4.74975188069493e-08,
+            "median": 0.025634750723838806,
+            "p90": 1.5000007152557373
+          }
+        }
+      },
+      "grade_ties": 58,
+      "interior_void_cells": 0,
+      "extent_m": [
+        2.456,
+        1.96
+      ],
+      "source_witness_parts": [
+        178,
+        1,
+        179,
+        179,
+        1
+      ]
+    },
+    "mesh_depth_p95_m": 0.029468339681625353,
+    "mesh_height_p95_m": 0.001114875078201293,
+    "installed_xy_aabb_m": [
+      2.2439999999999998,
+      1.8359999999999999
+    ],
+    "view": {
+      "near": {
+        "core_px": 29680,
+        "opacity_p10": 0.8826408743858337,
+        "mesh_splat_depth_p90_mm": 2.012991905212403
+      },
+      "opposite": {
+        "core_px": 28823,
+        "opacity_p10": 0.8829772591590881,
+        "mesh_splat_depth_p90_mm": 2.4954795837402344
+      }
+    }
+  }
+}

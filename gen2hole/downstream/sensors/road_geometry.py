@@ -15,6 +15,7 @@ PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidew
          'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain', 'traffic cone', 'tyre', 'wheel rim', 'crate', 'cement sack',
          'shipping carton', 'tool chest', 'garden sack', 'wood box')
 EXACT_PARTS = {
+    "Setts at the isolated asphalt loss": 178, "Setts at the connected asphalt loss": 179,
     "Casting perimeter wall": 5, "Cavity inferred closure": 3,
     'Cast iron throat skirt': 112, 'Chamber joint recess': 6, 'Coursed concrete chamber back': 6,
     'Curb return left': 6, 'Photographed soffit': 10, 'Recessed grate crossbars': 95,

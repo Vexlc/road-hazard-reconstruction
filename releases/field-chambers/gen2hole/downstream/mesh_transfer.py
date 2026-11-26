@@ -244,7 +244,7 @@ class RoadMesh:
         grouped_pit_parts = {1, 134, 135, 137} <= parts <= {1, 2, 134, 135, 136, 137}
         vegetated_parts = parts == {1, 2, 3, 128, 130, 131, 132, 133}
         continuous_cover = attached_cover_surface and parts == {1, 2, 5, 9}
-        self.measured_rim &= continuous_cover or (self.registered_relief and (joint_parts or vegetated_parts or grouped_pit_parts)) or parts in ({1, 2}, {1, 2, 4}) or (self.registered_relief and parts in ({1, 2, 144}, {1, 2, 159}, {1, 2, 13}, {1, 2, 113}, {1, 2, 113, 114}, {1, 2, 113, 153}, {1, 2, 113, 160, 161, 162}, {1, 2, 3, 127})) or (self.continuous_lane and parts in ({1, 2, 113},{1, 2, 113, 138, 139},{1, 2, 113, 145},{1, 2, 113, 146},{1, 2, 113, 154},{1, 2, 113, 155}))
+        self.measured_rim &= continuous_cover or (self.registered_relief and (joint_parts or vegetated_parts or grouped_pit_parts)) or (self.registered_relief and parts == {1, 178, 179}) or parts in ({1, 2}, {1, 2, 4}) or (self.registered_relief and parts in ({1, 2, 144}, {1, 2, 159}, {1, 2, 13}, {1, 2, 113}, {1, 2, 113, 114}, {1, 2, 113, 153}, {1, 2, 113, 160, 161, 162}, {1, 2, 3, 127})) or (self.continuous_lane and parts in ({1, 2, 113},{1, 2, 113, 138, 139},{1, 2, 113, 145},{1, 2, 113, 146},{1, 2, 113, 154},{1, 2, 113, 155}))
 
         self.laser_intensity = 113 in parts and not self.photographic_rgb
         self.edge_opacity = None

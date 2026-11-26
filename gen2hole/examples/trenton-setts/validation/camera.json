@@ -1,0 +1,18 @@
+{
+  "P583": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 10110,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "b37901d3455a16525dbc81b2bd35956982bc981c3054b80889783024541c40b1"
+    },
+    "back": {
+      "frames": 10,
+      "representative_frame": 29,
+      "pixels": 1639,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "b37901d3455a16525dbc81b2bd35956982bc981c3054b80889783024541c40b1"
+    }
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "scene": "109",
+  "glb_sha256": "b37901d3455a16525dbc81b2bd35956982bc981c3054b80889783024541c40b1",
+  "rig_sha256": "cf38b0126f2090cdd62f74364546825137d3bd7cc8e06f1ef5da6739201ad8b5",
+  "supported_range_minus_plane_m": {
+    "p10": -0.0003358655186193718,
+    "median": 0.02894927583139939,
+    "p90": 0.1212872326347597
+  },
+  "accepted_scans": 12,
+  "counts": {
+    "candidate_beams": 4548,
+    "paired": 773,
+    "kept_host": 3775,
+    "paired_isolated": 119,
+    "paired_connected": 654,
+    "stereo_supported": 173,
+    "interpolated": 600
+  },
+  "frames": [
+    {
+      "frame": 11,
+      "source_sha256": "8bd30181607c7d6bf3f6f4ca8adb0e5622689f445d232400304f8325c83b434f",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.3883321,
+        "exposure_end_s": 1557595834.501373,
+        "margin_m": 0.25,
+        "minimum_bound_m": 3.0071287496712276
+      },
+      "candidate_beams": 592,
+      "paired": 91,
+      "kept_host": 501,
+      "paired_isolated": 5,
+      "paired_connected": 86,
+      "stereo_supported": 18,
+      "interpolated": 73,
+      "packet_sha256": "4f5f1b0e0bc46767fb168a409d6d286575aed6844daab6608dd2e98fe4330a6e",
+      "semantics_sha256": "bdcaa8e3ac1b3b62a0bee7b18847be04b819c6542314c0e3dd1509560648b668"
+    },
+    {
+      "frame": 12,
+      "source_sha256": "01bc0ef194c60b6b0d7506b0aa950d4e31699f439837fd02ac82808fb07295eb",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.4870462,
+        "exposure_end_s": 1557595834.601343,
+        "margin_m": 0.25,
+        "minimum_bound_m": 3.0071287496712276
+      },
+      "candidate_beams": 765,
+      "paired": 145,
+      "kept_host": 620,
+      "paired_isolated": 19,
+      "paired_connected": 126,
+      "stereo_supported": 25,
+      "interpolated": 120,
+      "packet_sha256": "d2020b03fabd559cb4a26c39f51ac63a4f27e2b2e9dfc1b8065fdb7bec4edd07",
+      "semantics_sha256": "f3e34dc69058c768b102522a1d2fdab85dee7474ee50a212ae57fe6901eafdf8"
+    },
+    {
+      "frame": 13,
+      "source_sha256": "50944b33999e958e7c78d55953c2669b4b120a21ea88160a47365eaaa3ca51d3",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.5836227,
+        "exposure_end_s": 1557595834.701323,
+        "margin_m": 0.25,
+        "minimum_bound_m": 2.1966010512846808
+      },
+      "candidate_beams": 1027,
+      "paired": 175,
+      "kept_host": 852,
+      "paired_isolated": 25,
+      "paired_connected": 150,
+      "stereo_supported": 38,
+      "interpolated": 137,
+      "packet_sha256": "3d262f1037ad27f40bb3aade0725951f59f081278ef4a7cac54d33080ceb4894",
+      "semantics_sha256": "fb58a3f08d58e49c30e3771e549b41c7b129c41029a136fd4c82b7d54314bc09"
+    },
+    {
+      "frame": 14,
+      "source_sha256": "5dfd1d35e7be793f924addd8fc254654ec7d83734c72fe533e20447bcb394dc6",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.6797454,
+        "exposure_end_s": 1557595834.801299,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.6191654709571193
+      },
+      "candidate_beams": 1345,
+      "paired": 275,
+      "kept_host": 1070,
+      "paired_isolated": 60,
+      "paired_connected": 215,
+      "stereo_supported": 73,
+      "interpolated": 202,
+      "packet_sha256": "27bc6114235171f768fd8772562e51a08d84045f5507980543a52bc608d6a82d",
+      "semantics_sha256": "2b096ae2ebc533f4f1e0de7087f898195434320a87080124c19252fa8477d1bb"
+    },
+    {
+      "frame": 15,
+      "source_sha256": "87c2a8d3eb04bb300b5c6e0b2226ab90c3398ff6aecf7e6d1056bea3302ebc02",
+      "excluded": "Traffic clearance refused at survey interval 15: {'clear': False, 'actor': 'ego', 'asset': 'P583', 'lower_bound_m': -0.9589950871119948, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 28,
+      "source_sha256": "aa86c45f1eae8aa6762f14d88beb4597156c2e3a6ca04d5d2c73c6b98f52f955",
+      "excluded": "Traffic clearance refused at survey interval 26: {'clear': False, 'actor': 'ego', 'asset': 'P583', 'lower_bound_m': -1.5980843891919778, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 29,
+      "source_sha256": "1d258dbed07e700cff7c022082f6b2e8bf881d1db9b06337b2614c9affa088b1",
+      "excluded": "Traffic clearance refused at survey interval 27: {'clear': False, 'actor': 'ego', 'asset': 'P583', 'lower_bound_m': 0.031525163325404115, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 30,
+      "source_sha256": "f2b97f011a74e3b6aca3d0704a944db4479344537a5a1138c72be24b421cba17",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.2986293,
+        "exposure_end_s": 1557595836.4273002,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.6663142899286054
+      },
+      "candidate_beams": 86,
+      "paired": 10,
+      "kept_host": 76,
+      "paired_isolated": 0,
+      "paired_connected": 10,
+      "stereo_supported": 0,
+      "interpolated": 10,
+      "packet_sha256": "952ee1422e6a358ad67c04646e32f83dcdf23d3ce805dd0c7dc732d3e9f33f10",
+      "semantics_sha256": "1319fb10b63470238f5144f9d17d11f66236737c7176281099d1cae7445c9ceb"
+    },
+    {
+      "frame": 31,
+      "source_sha256": "be60ce706019beceec00c33626c7823230d1cf7b1be73233998c61ea2de96028",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.3986664,
+        "exposure_end_s": 1557595836.5260139,
+        "margin_m": 0.25,
+        "minimum_bound_m": 3.0071287496712276
+      },
+      "candidate_beams": 46,
+      "paired": 9,
+      "kept_host": 37,
+      "paired_isolated": 3,
+      "paired_connected": 6,
+      "stereo_supported": 1,
+      "interpolated": 8,
+      "packet_sha256": "f4d92921fd6e92c0c5a9693fd72a77bc6fab5bd85c3cf14897f8016db49ccd87",
+      "semantics_sha256": "9923638a2415d069db07027000b2e3718bc1a20a36efc36fad52ccb538c76a08"
+    },
+    {
+      "frame": 32,
+      "source_sha256": "e45c2b046b61039bc76f717737a8b6526da209c34bcc70b999c09f282392a5fa",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.4987295,
+        "exposure_end_s": 1557595836.6224585,
+        "margin_m": 0.25,
+        "minimum_bound_m": 3.0071287496712276
+      },
+      "candidate_beams": 79,
+      "paired": 6,
+      "kept_host": 73,
+      "paired_isolated": 0,
+      "paired_connected": 6,
+      "stereo_supported": 2,
+      "interpolated": 4,
+      "packet_sha256": "e81c53da0d8e084194757b064e6207660cf67f18fc6d81df80a966920b45c049",
+      "semantics_sha256": "a91bfa0d209e86f418c78bfded3659b83e731d3eda026884cea354b6c98d5394"
+    },
+    {
+      "frame": 33,
+      "source_sha256": "f7ff1eff06561602defd0ff9c276628840080b1ba70612962a88a3c43f069140",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.5987833,
+        "exposure_end_s": 1557595836.7185812,
+        "margin_m": 0.25,
+        "minimum_bound_m": 3.0071287496712276
+      },
+      "candidate_beams": 140,
+      "paired": 21,
+      "kept_host": 119,
+      "paired_isolated": 0,
+      "paired_connected": 21,
+      "stereo_supported": 2,
+      "interpolated": 19,
+      "packet_sha256": "5f878ad8487299c1e1693a17cc4352ab4f05ac604e42f9d25afed4208b418e06",
+      "semantics_sha256": "c4891f53b7f67cf8e13f2c24ba627ccfb7b5715a2c249fa206e7297f99f733bf"
+    },
+    {
+      "frame": 34,
+      "source_sha256": "525ccb413abe0806e871e6dfc6dd671433e0ac2315f547bc62090b26b9c97ff2",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.6988354,
+        "exposure_end_s": 1557595836.817295,
+        "margin_m": 0.25,
+        "minimum_bound_m": 3.0071287496712276
+      },
+      "candidate_beams": 152,
+      "paired": 18,
+      "kept_host": 134,
+      "paired_isolated": 0,
+      "paired_connected": 18,
+      "stereo_supported": 4,
+      "interpolated": 14,
+      "packet_sha256": "2fd89286e3b89e98069d8bebe92499a56695bec5af6938ff0306edc089ab8d16",
+      "semantics_sha256": "d26b370088ff44e51da727c8c8b4aac9c0a936ca02c78a6fbf5bce077824a717"
+    },
+    {
+      "frame": 35,
+      "source_sha256": "8524ca56173ea362935dfed356fd5aaadcfffe7a927c1878f5eec78c3d201797",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.7988825,
+        "exposure_end_s": 1557595836.9137394,
+        "margin_m": 0.25,
+        "minimum_bound_m": 3.0071287496712276
+      },
+      "candidate_beams": 126,
+      "paired": 11,
+      "kept_host": 115,
+      "paired_isolated": 7,
+      "paired_connected": 4,
+      "stereo_supported": 7,
+      "interpolated": 4,
+      "packet_sha256": "07b9435d77d1e10135be11a46415a1998736a5b9006a44887d982dc71e7c338b",
+      "semantics_sha256": "3832294607b8ef89bea07248484df56902d9afed36afbde669f42a42e13f0545"
+    },
+    {
+      "frame": 36,
+      "source_sha256": "8b5803250123c860d6ec1b6f8b31751ea1768b4fa2991900d3e0539f8c608beb",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.8989174,
+        "exposure_end_s": 1557595837.0098627,
+        "margin_m": 0.25,
+        "minimum_bound_m": 2.6684967876591674
+      },
+      "candidate_beams": 104,
+      "paired": 12,
+      "kept_host": 92,
+      "paired_isolated": 0,
+      "paired_connected": 12,
+      "stereo_supported": 3,
+      "interpolated": 9,
+      "packet_sha256": "0b71842cee15573b2a576be250ff241ad6e8885127be68d86b6b4a75a4f758fb",
+      "semantics_sha256": "9f61d576c63d6a69901a113b1a389c150da31b75cbd218707c8baa9ac4e6f543"
+    },
+    {
+      "frame": 37,
+      "source_sha256": "46a189dec06266ad34364a0d0ea3102a8fcbebba9a603db09f7014ffe88d8af3",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.9989614,
+        "exposure_end_s": 1557595837.1084707,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.1770986889565407
+      },
+      "candidate_beams": 86,
+      "paired": 0,
+      "kept_host": 86,
+      "paired_isolated": 0,
+      "paired_connected": 0,
+      "stereo_supported": 0,
+      "interpolated": 0,
+      "packet_sha256": "9613d5bfa61420ff81b0f63eb7e354a9cfdba19e2f712314b2ea803eac8f0c98",
+      "semantics_sha256": "99e8ef9642d5d1bd8a1ad5ee8620d4725e1a7872f81ae5154efe8bdbdf726bb2"
+    }
+  ]
+}
