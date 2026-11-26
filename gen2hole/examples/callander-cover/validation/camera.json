@@ -1,0 +1,18 @@
+{
+  "A580": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 8084,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "3b903ac0c6a23253d8cea288fd7e18f32d393435f865528234034b9d63c048b7"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 1976,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "3b903ac0c6a23253d8cea288fd7e18f32d393435f865528234034b9d63c048b7"
+    }
+  }
+}

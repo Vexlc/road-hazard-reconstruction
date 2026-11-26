@@ -1,5 +1,5 @@
 {
-  "asset_count": 1576,
+  "asset_count": 1577,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2761,6 +2761,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "callander-cover": {
+      "name": "冻胀方井盖、外露铁框与破碎车道沥青",
+      "launcher": "gen2hole/examples/callander-cover/build.py",
+      "recipe": "gen2hole/examples/callander-cover/survey.json",
+      "guide": "gen2hole/examples/callander-cover/README.md",
+      "section": "从现场照片复现",
+      "assets": [
+        "A580"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3061,7 +3075,8 @@
       "hensting-cover",
       "midcity-cover",
       "broadmoor-opening",
-      "whites-hill"
+      "whites-hill",
+      "callander-cover"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

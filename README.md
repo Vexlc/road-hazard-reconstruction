@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**冻裂车道上的方井盖 A580**　现场原照能看到右前缘外露的铁框和周围破碎沥青；提供起伏与齐平两种几何，可用相同车载激光束比较回波。[照片、模型与复现](gen2hole/examples/callander-cover/README.md) · [下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/callander-cover-v1.0.0)
+
 **三件实测车道坑 P577–P579**　两件长边超过一米，另一件坑内深度 P95 约十厘米。可在同一条实际车道比较前后摄回放，也可用九条有采集支撑的轮迹对照坑底和刚性车轮轴心曲线。[坑形、误差与复现](gen2hole/examples/contact-pits/README.md) · [下载模型与视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/contact-pits-v1.0.0)
 
 **德文郡两处车行道连续破损**　沿纵向修补缝剥落的沥青和保留旧面层的坑群，附现场原照、透明贴图、区域标签与路面投影矩阵。[查看贴图和复现方法](gen2hole/examples/devon-road-patches/README.md)
@@ -32,7 +34,7 @@ RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资�
 
 **沉降雨篦和缺篦井口**　两组资产已迁入指定的 KITTI 联合场景。新宿主若能提供标定双目和匹配，可从米制距离重新拟合接地与遮挡。[接入与复现](docs/35-stereo-drains.md) · [指定场景的局部前后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/joint-local-front-rear.mp4) · [Audi 实拍车尾](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/audi-front-rear.mp4)
 
-**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,576 个编号所属的 86 个系列与 35 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,577 个编号所属的 87 个系列与 35 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
 
 不知道编号时，可以运行 `python3 gen2hole/gen2hole.py search 井盖`。已有目标场景时，运行 `python3 gen2hole/gen2hole.py routes 鱼眼` 查看可用的迁入程序和指南，再按路线缩小范围，例如 `python3 gen2hole/gen2hole.py search --route kitti-pair`。每条结果列出代表编号、重建代码和操作章节。[按手头材料选择复现入口](docs/16-reproduction-cookbook.md#按手头材料选入口)
 

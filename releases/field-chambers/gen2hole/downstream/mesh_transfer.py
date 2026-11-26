@@ -189,6 +189,7 @@ class RoadMesh:
             self.cut = field.get("installation_mask", field["defect_mask"]).astype(bool)
             self.extent = np.array([float(field["width"]), float(field["length"])])
             self.registered_relief = bool(field.get("registered_relief", False))
+            attached_cover_surface = bool(field.get("attached_cover_surface", False))
             self.marked_crack = {k: field[k] for k in ("marked_crack","bed_intensity_ratio","paint_survival")} if "marked_crack" in field else None
             self.continuous_lane = bool(field.get("continuous_lane_surface", False))
             # Earlier RGB-D fragments and fissures already carry a photographic part mask.
@@ -240,7 +241,8 @@ class RoadMesh:
         joint_parts = {1, 123, 124, 125} <= parts <= {1, 123, 124, 125, 126, 127, 128, 129}
         grouped_pit_parts = {1, 134, 135, 137} <= parts <= {1, 2, 134, 135, 136, 137}
         vegetated_parts = parts == {1, 2, 3, 128, 130, 131, 132, 133}
-        self.measured_rim &= (self.registered_relief and (joint_parts or vegetated_parts or grouped_pit_parts)) or parts in ({1, 2}, {1, 2, 4}) or (self.registered_relief and parts in ({1, 2, 144}, {1, 2, 159}, {1, 2, 13}, {1, 2, 113}, {1, 2, 113, 114}, {1, 2, 113, 153}, {1, 2, 113, 160, 161, 162}, {1, 2, 3, 127})) or (self.continuous_lane and parts in ({1, 2, 113},{1, 2, 113, 138, 139},{1, 2, 113, 145},{1, 2, 113, 146},{1, 2, 113, 154},{1, 2, 113, 155}))
+        continuous_cover = attached_cover_surface and parts == {1, 2, 5, 9}
+        self.measured_rim &= continuous_cover or (self.registered_relief and (joint_parts or vegetated_parts or grouped_pit_parts)) or parts in ({1, 2}, {1, 2, 4}) or (self.registered_relief and parts in ({1, 2, 144}, {1, 2, 159}, {1, 2, 13}, {1, 2, 113}, {1, 2, 113, 114}, {1, 2, 113, 153}, {1, 2, 113, 160, 161, 162}, {1, 2, 3, 127})) or (self.continuous_lane and parts in ({1, 2, 113},{1, 2, 113, 138, 139},{1, 2, 113, 145},{1, 2, 113, 146},{1, 2, 113, 154},{1, 2, 113, 155}))
 
         self.laser_intensity = 113 in parts and not self.photographic_rgb
         self.edge_opacity = None
