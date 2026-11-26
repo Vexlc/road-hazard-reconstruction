@@ -1,11 +1,11 @@
 # 从现场照片重建两处井口病害
 
-这两件资产适合检验一个具体问题：当相机或激光射线穿过井口时，首先碰到的是孔壁、壳体、线缆，还是井底？源码、原照、标注和参考数值均在本目录。成品压缩包另附高斯点云、封孔对照或新视角实渲、逐射线数据和车载回放。[下载本次 Release](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/field-chambers-v1.0.0)
+这两件资产适合检验一个具体问题：当相机或激光射线穿过井口时，首先碰到的是孔壁、壳体、线缆，还是井底？源码、原照、标注和参考数值均在本目录。成品压缩包另附高斯点云、封孔对照或新视角实渲、逐射线数据和车载回放。[下载本次 Release](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/field-chambers-v1.0.1)
 
 | 资产 | 实拍依据 | 建模范围和状态 | 成品 |
 |---|---|---|---|
-| **M544 菱纹钢井盖锈穿** | 4608 × 3456 原照中 54 个可追踪孔口 | 已核验。单块钢板网格有 54 个贯通孔，含 SH1 高斯与同纹理封孔对照 | [M544.zip](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/field-chambers-v1.0.0/M544.zip) |
-| **M545 草缘敞口检修井** | 640 × 480 原照中的井座、井壁、落叶、三个壳体和交叉管线 | 实验版。近照可约束部件轮廓与前后关系，隐藏的侧面、井宽及绝对深度仍靠估计 | [M545-experimental.zip](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/field-chambers-v1.0.0/M545-experimental.zip) |
+| **M544 菱纹钢井盖锈穿** | 4608 × 3456 原照中 54 个可追踪孔口 | 已核验。单块钢板网格有 54 个贯通孔，含 SH1 高斯与同纹理封孔对照 | [M544.zip](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/field-chambers-v1.0.1/M544.zip) |
+| **M545 草缘敞口检修井** | 640 × 480 原照中的井座、井壁、落叶、三个壳体和交叉管线 | 实验版。近照可约束部件轮廓与前后关系，隐藏的侧面、井宽及绝对深度仍靠估计 | [M545-experimental.zip](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/field-chambers-v1.0.1/M545-experimental.zip) |
 
 ![M544 原照、模型与车辆视野](figures/M544.jpg)
 
@@ -13,7 +13,7 @@
 
 ## 只想查看或导入成品
 
-在同一空目录下载两个 ZIP 和 Release 的 SHA256SUMS。下面的命令检查下载完整性、解到独立目录，再列出模型。只下其中一件时，先从 SHA256SUMS 选取对应文件那一行校验。
+在同一空目录下载两个 ZIP 和 Release 的 SHA256SUMS。校验表也保存在[固定版本源码](SHA256SUMS)中。下面的命令检查下载完整性、解到独立目录，再列出模型。只下其中一件时，先从 SHA256SUMS 选取对应文件那一行校验。
 
 ~~~bash
 sha256sum -c SHA256SUMS
@@ -30,7 +30,7 @@ ls M545/series/assets/missing/M545
 参考运行环境为 Linux x86-64、Python 3.9.23。命令从新的空目录开始。网格重建使用 CPU；完整高斯导出使用 CUDA。建议先做网格，确认原照、比例和上下方向，再安装 GPU 依赖。
 
 ~~~bash
-git clone --depth 1 --branch field-chambers-v1.0.0 https://github.com/Vexlc/road-hazard-reconstruction.git
+git clone --depth 1 --branch field-chambers-v1.0.1 https://github.com/Vexlc/road-hazard-reconstruction.git
 cd road-hazard-reconstruction/releases/field-chambers
 python3.9 -m venv .venv
 source .venv/bin/activate
@@ -106,6 +106,8 @@ done
 python scripts/check-rusted-road.py "$a/asset.glb" build/sealed/series/assets/missing/M544/asset.glb \
   "$raw" build/M544-vehicle build/M544-road.json
 ~~~
+
+从本发布源码重新生成的四段视频、代表帧和逐像素射线文件均与成品包中的对应文件逐字节一致。[逐段帧数和文件哈希](validation/release-replay.json)
 
 ## 换自己的照片时
 

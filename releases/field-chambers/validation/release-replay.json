@@ -1,0 +1,42 @@
+{
+  "M545-front_left": {
+    "frames": 8,
+    "representative_frame": 8,
+    "byte_identical_to_archive": {
+      "rays.npz": "24118c50f3407ff3c70aec017c3cdeef99228f57dcadb7669df8405880c81033",
+      "drive.mp4": "458726d9a76d708011ab5a191b6b00534ff4f16babe10525494bef65803f4b71",
+      "before.png": "e99438e71fa9a8bd4232949e62dd675c5b0d7918ec1c819fac2a957f0abb4c88",
+      "after.png": "046f8532f2af4e5737a54024de1e5b69875faca657ac76cbe12271e3eb23326a"
+    }
+  },
+  "M545-back": {
+    "frames": 8,
+    "representative_frame": 18,
+    "byte_identical_to_archive": {
+      "rays.npz": "83de8e1bec45a094a5a05f320835c1dfad52ebef825a02c104b1194457a57a09",
+      "drive.mp4": "cdbec05e32d28a5ae56e780974178916a1e6f80b64ea05ae6076f2af7f2cc5ce",
+      "before.png": "daa188ae1b57b9a4b311cbce297ba5ce4df99a5351611c2976d1e74044dd213c",
+      "after.png": "713ddf9cee0b34375d763680a443b4205cd0ca9d399ea99bf188deddb92756c1"
+    }
+  },
+  "M544-front": {
+    "frames": 5,
+    "representative_frame": 15,
+    "byte_identical_to_archive": {
+      "rays.npz": "19497ed9f9cc613beb2c2849eefb09ede1ec61e84f44eac165537c76b521757c",
+      "drive.mp4": "36f6a5c04e5ffac0fae01e68c8b9a69a25784db775df84126ddda136b4def7a5",
+      "before.png": "819a8a6010ba0a9bf6510b487ca987de237214aa9020fddc74808b8ad0eed6e4",
+      "after.png": "a33a82171a571ed22d51bbcab979c9ba7f3a27c82dbbc778544b6c5a8f84264c"
+    }
+  },
+  "M544-back": {
+    "frames": 12,
+    "representative_frame": 28,
+    "byte_identical_to_archive": {
+      "rays.npz": "a8adb4b5d4967d79b909de8c229c0adf0d76f8225c87e71df248495917ef170f",
+      "drive.mp4": "6903d89cc98ecae498207e82706b8bad881d8bc1defa0fb7d5506b27cc164b8b",
+      "before.png": "f19021330102aed998d8a08c0ad1614a7844ff5d9abcaea6c949676638f75870",
+      "after.png": "00b1134bdb1ce46f37cf2786e6fab70d72a0b3df796e96406cbe6f0d932cd4aa"
+    }
+  }
+}
