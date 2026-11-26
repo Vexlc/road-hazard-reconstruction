@@ -1,0 +1,217 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:BroadmoorManholeConesJune2008.jpg",
+  "author": "Infrogmation of New Orleans",
+  "licence": "CC BY-SA 3.0",
+  "source_sha256": "1b0530d20a93bdff7c5d37d1e6cb27677f66d89e51563c1d480e47cd7cc4e461",
+  "working_size": [
+    1280,
+    960
+  ],
+  "working_diameter_nominal_m": 0.6,
+  "photo_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/BroadmoorManholeConesJune2008.jpg/1920px-BroadmoorManholeConesJune2008.jpg",
+  "copyright_date": "2008-06-23",
+  "photo_size": [
+    1920,
+    1440
+  ],
+  "original_width": 2816,
+  "focal_mm": 5.8,
+  "focal_plane_px_per_inch": 12515.555555556,
+  "cone_feet_px": [
+    [
+      [
+        316,
+        616
+      ],
+      [
+        429,
+        594
+      ],
+      [
+        465,
+        627
+      ],
+      [
+        350,
+        650
+      ]
+    ],
+    [
+      [
+        597,
+        536
+      ],
+      [
+        690,
+        533
+      ],
+      [
+        700,
+        566
+      ],
+      [
+        600,
+        569
+      ]
+    ],
+    [
+      [
+        731,
+        663
+      ],
+      [
+        779,
+        628
+      ],
+      [
+        896,
+        647
+      ],
+      [
+        848,
+        689
+      ]
+    ]
+  ],
+  "cone_centers_top_px": [
+    [
+      380,
+      434
+    ],
+    [
+      648,
+      391
+    ],
+    [
+      814,
+      455
+    ]
+  ],
+  "bore_radius_assumed_m": 0.279,
+  "bearing_far_arc_px": [
+    [
+      542,
+      615
+    ],
+    [
+      555,
+      607
+    ],
+    [
+      575,
+      600
+    ],
+    [
+      601,
+      596
+    ],
+    [
+      625,
+      594
+    ],
+    [
+      645,
+      593
+    ],
+    [
+      669,
+      594
+    ],
+    [
+      696,
+      597
+    ],
+    [
+      720,
+      602
+    ],
+    [
+      742,
+      611
+    ]
+  ],
+  "lower_wall_far_arc_px": [
+    [
+      555,
+      622
+    ],
+    [
+      575,
+      617
+    ],
+    [
+      600,
+      613
+    ],
+    [
+      625,
+      611
+    ],
+    [
+      645,
+      611
+    ],
+    [
+      675,
+      612
+    ],
+    [
+      700,
+      616
+    ],
+    [
+      725,
+      622
+    ]
+  ],
+  "chip_edge_angles_from_pixels": [
+    [
+      579,
+      588
+    ],
+    [
+      590,
+      584
+    ]
+  ],
+  "fragment_foot_front_px": [
+    [
+      264,
+      625
+    ],
+    [
+      275,
+      625
+    ],
+    [
+      290,
+      624
+    ],
+    [
+      305,
+      624
+    ],
+    [
+      317,
+      623
+    ],
+    [
+      332,
+      621
+    ],
+    [
+      349,
+      618
+    ]
+  ],
+  "fragment_front_at_flange_px": [
+    264,
+    614
+  ],
+  "fragment_front_at_back_ridge_px": [
+    268,
+    598
+  ],
+  "fragment_between_faces_depth_assumed_m": 0.051,
+  "closure_visual_m": 0.85
+}

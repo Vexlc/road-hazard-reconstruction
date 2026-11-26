@@ -1,0 +1,92 @@
+{
+  "M571": {
+    "id": "M571",
+    "label": "Broadmoor 机动车道缺盖井与三只锥桶",
+    "glb_sha256": "a76200625812ad4207c52bde4b5a5c92a68b86e6fc5cba248da59746eeb143df",
+    "ply_sha256": "3fe3f46919b727c81255955243409d2c218c51473fd22774aea38ec328e746ee",
+    "gaussians": 409531,
+    "triangles": 443016,
+    "evidence": {
+      "source_cone_mask_iou": [
+        0.9599136379992803,
+        0.960590048436812,
+        0.9681446405510116
+      ],
+      "recorded_parts": {
+        "road": [
+          1,
+          1
+        ],
+        "open": [
+          0,
+          0,
+          0
+        ],
+        "iron_arc": [
+          18,
+          18
+        ],
+        "cones": [
+          25,
+          25,
+          25
+        ],
+        "lining": [
+          6,
+          6
+        ]
+      },
+      "cone_occlusion": {
+        "source": {
+          "bore_pixels": 14278,
+          "covered_by_cone_px": 272,
+          "fraction": 0.019050287155063735
+        },
+        "left": {
+          "bore_pixels": 3222,
+          "covered_by_cone_px": 1064,
+          "fraction": 0.3302296710117939
+        },
+        "far": {
+          "bore_pixels": 3222,
+          "covered_by_cone_px": 1016,
+          "fraction": 0.3153320918684047
+        },
+        "right": {
+          "bore_pixels": 3222,
+          "covered_by_cone_px": 1217,
+          "fraction": 0.377715704531347
+        }
+      },
+      "opening_plan_m2": 0.244368,
+      "rim_test_z_mm": [
+        5.9604644775390625e-05,
+        -15.467286109924316,
+        5.9604644775390625e-05
+      ],
+      "registration": {
+        "aperture_held_out": 23,
+        "aperture_rms_px": 0.8214676344453364,
+        "aperture_max_px": 1.8836589570981046
+      }
+    },
+    "mesh_depth_p95_m": 0.8500000238418579,
+    "mesh_height_p95_m": 0.2501946568489073,
+    "installed_xy_aabb_m": [
+      1.388,
+      1.0919999999999999
+    ],
+    "view": {
+      "near": {
+        "core_px": 27917,
+        "opacity_p10": 0.8647294044494629,
+        "mesh_splat_depth_p90_mm": 15.772676467895506
+      },
+      "opposite": {
+        "core_px": 24716,
+        "opacity_p10": 0.869044303894043,
+        "mesh_splat_depth_p90_mm": 18.037915229797363
+      }
+    }
+  }
+}

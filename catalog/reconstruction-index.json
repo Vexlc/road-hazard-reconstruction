@@ -1,5 +1,5 @@
 {
-  "asset_count": 1567,
+  "asset_count": 1568,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2688,6 +2688,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "broadmoor-opening": {
+      "name": "住宅车道缺盖井、弧形铁件和三只锥桶",
+      "launcher": "gen2hole/examples/broadmoor-opening/build.py",
+      "recipe": "gen2hole/examples/broadmoor-opening/survey.json",
+      "guide": "gen2hole/examples/broadmoor-opening/README.md",
+      "section": "从原照重建",
+      "assets": [
+        "M571"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -2977,7 +2991,8 @@
       "field-rims-covers",
       "urayasu-shaft",
       "hensting-cover",
-      "midcity-cover"
+      "midcity-cover",
+      "broadmoor-opening"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

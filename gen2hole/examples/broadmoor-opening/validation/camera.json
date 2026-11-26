@@ -1,0 +1,18 @@
+{
+  "M571": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 10456,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "a76200625812ad4207c52bde4b5a5c92a68b86e6fc5cba248da59746eeb143df"
+    },
+    "back": {
+      "frames": 9,
+      "representative_frame": 28,
+      "pixels": 2186,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "a76200625812ad4207c52bde4b5a5c92a68b86e6fc5cba248da59746eeb143df"
+    }
+  }
+}
