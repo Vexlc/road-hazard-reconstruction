@@ -1,0 +1,86 @@
+{
+  "M585": {
+    "id": "M585",
+    "label": "亚历山大街移开的污水井盖、井内踏步与警示柱",
+    "glb_sha256": "bb34e4d2f74bdd5ba8ba4cfe90a49e2918921fd7e2b985b6475c5f93fa30bb4b",
+    "ply_sha256": "d0541b449446f51a887db821dc591f1e4c889ee483ce081bc42da7102bbd51ff",
+    "gaussians": 519239,
+    "triangles": 95127,
+    "evidence": {
+      "detail": {
+        "rim_iou": 0.9760223664881771,
+        "lid_iou": 0.9826724374409461,
+        "step_pixels": 291,
+        "marker_pixels": 15860,
+        "without_bounded_return": 42918,
+        "two_way_pixels": 1061,
+        "shell_depth_difference_m": [
+          0.0038389628095881756,
+          0.033542010637186426,
+          0.9129539934800321
+        ],
+        "shared_geometry_pixels": 856
+      },
+      "street": {
+        "rim_iou": 0.9630123456790124,
+        "lid_iou": 0.9680548635737523,
+        "step_pixels": 140,
+        "marker_pixels": 23177,
+        "without_bounded_return": 13948,
+        "two_way_pixels": 386,
+        "shell_depth_difference_m": [
+          0.002307709622869992,
+          0.02614447583069257,
+          0.33166084025139136
+        ],
+        "shared_geometry_pixels": 349
+      },
+      "cover_replacement": {
+        "checked_pixels": 33647,
+        "range_error_p99_m": 3.5762786865234375e-07
+      },
+      "marker_replacement": {
+        "checked_pixels": 23177,
+        "range_error_p99_m": 4.76837158203125e-07
+      },
+      "cover_removed_center": [
+        185,
+        1
+      ],
+      "ground_reserved": {
+        "count": 203,
+        "reprojection_px": [
+          0.32237697133655335,
+          0.7410542218901032,
+          1.6887169687852712
+        ]
+      },
+      "cover_reserved": {
+        "count": 4,
+        "reprojection_px": [
+          2.6753116077013606,
+          3.3694183859352753,
+          3.437101260241314
+        ]
+      }
+    },
+    "mesh_depth_p95_m": 1.4799997806549072,
+    "mesh_height_p95_m": 0.08362884521484373,
+    "installed_xy_aabb_m": [
+      1.855,
+      0.9349999999999998
+    ],
+    "view": {
+      "near": {
+        "core_px": 21382,
+        "opacity_p10": 0.948272579908371,
+        "mesh_splat_depth_p90_mm": 12.014389038085938
+      },
+      "opposite": {
+        "core_px": 23886,
+        "opacity_p10": 0.9521609544754028,
+        "mesh_splat_depth_p90_mm": 8.595585823059082
+      }
+    }
+  }
+}

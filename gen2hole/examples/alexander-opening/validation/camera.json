@@ -1,0 +1,18 @@
+{
+  "M585": {
+    "front": {
+      "frames": 4,
+      "representative_frame": 14,
+      "pixels": 21213,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "bb34e4d2f74bdd5ba8ba4cfe90a49e2918921fd7e2b985b6475c5f93fa30bb4b"
+    },
+    "back": {
+      "frames": 9,
+      "representative_frame": 29,
+      "pixels": 5599,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "bb34e4d2f74bdd5ba8ba4cfe90a49e2918921fd7e2b985b6475c5f93fa30bb4b"
+    }
+  }
+}

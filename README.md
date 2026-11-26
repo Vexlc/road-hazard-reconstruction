@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**亚历山大街移开井盖 M585**　同一现场的两次曝光，附井圈、踏步、可独立摆放的盖板与警示柱，以及移走盖板后的敞井。[双视角复现](gen2hole/examples/alexander-opening/README.md) · [下载模型与回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/alexander-opening-v1.0.0)
+
 **纽约第二大道大坑 P584**　两只警示锥立在坑边，倒锥、黑袋和折叠纸板遮住坑底。附现场回投、车载前后摄及区分推测深度的激光量程。[重建与复现](gen2hole/examples/second-avenue/README.md) · [下载模型与回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/second-avenue-v1.0.0)
 
 **双机位街口露石与沥青剥失 P583**　同一路口相隔 11 秒的原片重建，区分双向视差支持与补全区域，附相机及激光回放。[现场对照与复现](gen2hole/examples/trenton-setts/README.md) · [模型与传感器附件](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/trenton-setts-v1.0.0)

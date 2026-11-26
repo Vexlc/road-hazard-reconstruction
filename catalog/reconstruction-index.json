@@ -1,5 +1,5 @@
 {
-  "asset_count": 1581,
+  "asset_count": 1582,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2831,6 +2831,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "alexander-opening": {
+      "name": "亚历山大街移开的污水井盖、井内踏步与警示柱",
+      "launcher": "gen2hole/examples/alexander-opening/build.py",
+      "recipe": "gen2hole/examples/alexander-opening/survey.json",
+      "guide": "gen2hole/examples/alexander-opening/README.md",
+      "section": "从现场照片复现",
+      "assets": [
+        "M585"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3136,7 +3150,8 @@
       "broadmoor-opening",
       "whites-hill",
       "callander-cover",
-      "zimple-opening"
+      "zimple-opening",
+      "alexander-opening"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

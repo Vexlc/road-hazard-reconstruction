@@ -91,6 +91,17 @@ def load_inventory(parent):
 
 
 def part_id(name):
+    if name.startswith("Alexander marker "):
+        return 188
+    if name.startswith("Alexander casting "):
+        return 5
+    if name.startswith("Alexander hidden lid"):
+        return 190
+    if name.startswith("Alexander SEWER lid"):
+        return 185
+    alexander = {"Alexander masonry envelope": 186, "Alexander step": 187, "Alexander optical termination": 189}
+    if name in alexander:
+        return alexander[name]
     if name.startswith("Exposed asphalt wall "):
         return 180
     if name.startswith("Inferred wall ") or name == "Optical pocket":
