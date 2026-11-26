@@ -1,0 +1,40 @@
+{
+  "A563": {
+    "id": "A563",
+    "label": "浦安路面下沉后外露的检查井筒",
+    "glb_sha256": "068aafda9fa21368dddc6c846b4683c35bb68308852136487d66805f558cbadf",
+    "ply_sha256": "7036a1567d41a3ce358134c118fb8b0367110bf4ea53476906bd6257c10b90a0",
+    "gaussians": 464932,
+    "triangles": 97164,
+    "evidence": {
+      "source_silhouette_iou": 0.9677076261597647,
+      "source_silhouette_pixels": 217165,
+      "height_when_pen_contact_shifted_5mm_m": [
+        0.5908402168953899,
+        0.650126569220729
+      ],
+      "reserved_ring_rms_px": 4.750617554315752,
+      "reserved_ring_max_px": 12.279481633705704,
+      "cap_height_above_road_model_m": 0.6259045302867889,
+      "pen_constraint_m": 0.146
+    },
+    "mesh_depth_p95_m": 0.0,
+    "mesh_height_p95_m": 0.6259046792984009,
+    "installed_xy_aabb_m": [
+      0.9204483627490476,
+      0.9229360610267477
+    ],
+    "view": {
+      "near": {
+        "core_px": 112874,
+        "opacity_p10": 0.9173113524913787,
+        "mesh_splat_depth_p90_mm": 37.85531520843506
+      },
+      "opposite": {
+        "core_px": 140849,
+        "opacity_p10": 0.9222651124000549,
+        "mesh_splat_depth_p90_mm": 41.77703857421874
+      }
+    }
+  }
+}

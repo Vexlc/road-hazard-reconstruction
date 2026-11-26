@@ -1,5 +1,5 @@
 {
-  "asset_count": 1559,
+  "asset_count": 1560,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2616,6 +2616,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "urayasu-shaft": {
+      "name": "原照有参照长度的外露井筒",
+      "launcher": "gen2hole/examples/uplifted-shafts/build.py",
+      "recipe": "gen2hole/examples/uplifted-shafts/urayasu.json",
+      "guide": "gen2hole/examples/uplifted-shafts/README.md",
+      "section": "从原照重建",
+      "assets": [
+        "A563"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -2900,7 +2914,8 @@
       "rusted-cover",
       "verge-chamber",
       "lane-photo-covers",
-      "field-rims-covers"
+      "field-rims-covers",
+      "urayasu-shaft"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

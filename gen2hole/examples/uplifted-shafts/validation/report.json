@@ -1,0 +1,295 @@
+{
+  "scene": "109",
+  "rig_sha256": "cf38b0126f2090cdd62f74364546825137d3bd7cc8e06f1ef5da6739201ad8b5",
+  "cross_camera_origin_residual": {
+    "front_left_camera": {
+      "median_m": 0.008990013318542212,
+      "p95_m": 0.009421326211853213
+    },
+    "front_right_camera": {
+      "median_m": 0.012861034760098151,
+      "p95_m": 0.013448745678958781
+    },
+    "left_camera": {
+      "median_m": 0.012744894305830118,
+      "p95_m": 0.014139489070596187
+    },
+    "right_camera": {
+      "median_m": 0.005799611704808028,
+      "p95_m": 0.007694085669125831
+    },
+    "back_camera": {
+      "median_m": 0.030043763489688118,
+      "p95_m": 0.03208809814795015
+    }
+  },
+  "assets": {
+    "A563": {
+      "totals": {
+        "candidate_beams": 5781,
+        "changed": 3431,
+        "main_hits": 1029,
+        "forward_hits": 2402,
+        "through_box_without_mesh": 2265,
+        "measured_return_in_front": 85
+      },
+      "frames": [
+        {
+          "frame": 11,
+          "source_sha256": "8bd30181607c7d6bf3f6f4ca8adb0e5622689f445d232400304f8325c83b434f",
+          "candidate_beams": 759,
+          "changed": 438,
+          "main_hits": 30,
+          "forward_hits": 408,
+          "through_box_without_mesh": 302,
+          "measured_return_in_front": 19,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595834.3883321,
+            "exposure_end_s": 1557595834.501373,
+            "margin_m": 0.25,
+            "minimum_bound_m": 3.3942036526523385
+          },
+          "packet_sha256": "7c55525870bcf3e078cf787ad164f886b0d912d70376644fc40d26a6ee027d60"
+        },
+        {
+          "frame": 12,
+          "source_sha256": "01bc0ef194c60b6b0d7506b0aa950d4e31699f439837fd02ac82808fb07295eb",
+          "candidate_beams": 929,
+          "changed": 558,
+          "main_hits": 49,
+          "forward_hits": 509,
+          "through_box_without_mesh": 365,
+          "measured_return_in_front": 6,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595834.4870462,
+            "exposure_end_s": 1557595834.601343,
+            "margin_m": 0.25,
+            "minimum_bound_m": 3.3942036526523385
+          },
+          "packet_sha256": "0e6bf128a761225ec3dab5dc204a5728c3d4c0b38ce4743fa9e55b68a41dd3f9"
+        },
+        {
+          "frame": 13,
+          "source_sha256": "50944b33999e958e7c78d55953c2669b4b120a21ea88160a47365eaaa3ca51d3",
+          "candidate_beams": 1167,
+          "changed": 714,
+          "main_hits": 56,
+          "forward_hits": 658,
+          "through_box_without_mesh": 439,
+          "measured_return_in_front": 14,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595834.5836227,
+            "exposure_end_s": 1557595834.701323,
+            "margin_m": 0.25,
+            "minimum_bound_m": 2.8467054391851354
+          },
+          "packet_sha256": "4bf67b28a932363b0535bf94e83ddddda5b9bbb52eed5599293196661bfaa6ce"
+        },
+        {
+          "frame": 14,
+          "source_sha256": "5dfd1d35e7be793f924addd8fc254654ec7d83734c72fe533e20447bcb394dc6",
+          "candidate_beams": 1542,
+          "changed": 890,
+          "main_hits": 63,
+          "forward_hits": 827,
+          "through_box_without_mesh": 634,
+          "measured_return_in_front": 18,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595834.6797454,
+            "exposure_end_s": 1557595834.801299,
+            "margin_m": 0.25,
+            "minimum_bound_m": 1.274469704014126
+          },
+          "packet_sha256": "454c5b3195e6d4da8e778766f25c658dc05bd086b23250d65c0318ee7344ec15"
+        },
+        {
+          "frame": 15,
+          "source_sha256": "87c2a8d3eb04bb300b5c6e0b2226ab90c3398ff6aecf7e6d1056bea3302ebc02",
+          "rejected": "Traffic clearance refused at survey interval 15: {'clear': False, 'actor': 'ego', 'asset': 'A563', 'lower_bound_m': -0.29655861384043103, 'reason': 'traffic'}"
+        },
+        {
+          "frame": 27,
+          "source_sha256": "71773a0f64dcf863dd7b758a336d568f4f25931278adf0574efda913e64da555",
+          "rejected": "Traffic clearance refused at survey interval 25: {'clear': False, 'actor': 'ego', 'asset': 'A563', 'lower_bound_m': -1.9750048637457378, 'reason': 'traffic'}"
+        },
+        {
+          "frame": 28,
+          "source_sha256": "aa86c45f1eae8aa6762f14d88beb4597156c2e3a6ca04d5d2c73c6b98f52f955",
+          "rejected": "Traffic clearance refused at survey interval 26: {'clear': False, 'actor': 'ego', 'asset': 'A563', 'lower_bound_m': -0.3690379750571706, 'reason': 'traffic'}"
+        },
+        {
+          "frame": 29,
+          "source_sha256": "1d258dbed07e700cff7c022082f6b2e8bf881d1db9b06337b2614c9affa088b1",
+          "candidate_beams": 147,
+          "changed": 82,
+          "main_hits": 82,
+          "forward_hits": 0,
+          "through_box_without_mesh": 65,
+          "measured_return_in_front": 0,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595836.1985924,
+            "exposure_end_s": 1557595836.3311775,
+            "margin_m": 0.25,
+            "minimum_bound_m": 1.2497299323715092
+          },
+          "packet_sha256": "e4a31e8613a3c653c035ca32cd93c6b5ddde6a5a8c4019281a1e7cfdf9338feb"
+        },
+        {
+          "frame": 30,
+          "source_sha256": "f2b97f011a74e3b6aca3d0704a944db4479344537a5a1138c72be24b421cba17",
+          "candidate_beams": 180,
+          "changed": 100,
+          "main_hits": 100,
+          "forward_hits": 0,
+          "through_box_without_mesh": 80,
+          "measured_return_in_front": 0,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595836.2986293,
+            "exposure_end_s": 1557595836.4273002,
+            "margin_m": 0.25,
+            "minimum_bound_m": 2.876703702745777
+          },
+          "packet_sha256": "4e752c65e45cb0df878c31b9009347ceeb76ca6729e7e0525e791eb0f28a3106"
+        },
+        {
+          "frame": 31,
+          "source_sha256": "be60ce706019beceec00c33626c7823230d1cf7b1be73233998c61ea2de96028",
+          "candidate_beams": 197,
+          "changed": 117,
+          "main_hits": 117,
+          "forward_hits": 0,
+          "through_box_without_mesh": 80,
+          "measured_return_in_front": 0,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595836.3986664,
+            "exposure_end_s": 1557595836.5260139,
+            "margin_m": 0.25,
+            "minimum_bound_m": 3.3942036526523385
+          },
+          "packet_sha256": "6abfd897957e58827a71122255f045611d6f89bc790dec91f9ffe2b965049103"
+        },
+        {
+          "frame": 32,
+          "source_sha256": "e45c2b046b61039bc76f717737a8b6526da209c34bcc70b999c09f282392a5fa",
+          "candidate_beams": 227,
+          "changed": 153,
+          "main_hits": 153,
+          "forward_hits": 0,
+          "through_box_without_mesh": 67,
+          "measured_return_in_front": 7,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595836.4987295,
+            "exposure_end_s": 1557595836.6224585,
+            "margin_m": 0.25,
+            "minimum_bound_m": 3.3942036526523385
+          },
+          "packet_sha256": "b1f02930cf3203fe90228ff53b9feab0126b6a0459bab85e6404ebe1da27bec5"
+        },
+        {
+          "frame": 33,
+          "source_sha256": "f7ff1eff06561602defd0ff9c276628840080b1ba70612962a88a3c43f069140",
+          "candidate_beams": 199,
+          "changed": 132,
+          "main_hits": 132,
+          "forward_hits": 0,
+          "through_box_without_mesh": 66,
+          "measured_return_in_front": 1,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595836.5987833,
+            "exposure_end_s": 1557595836.7185812,
+            "margin_m": 0.25,
+            "minimum_bound_m": 3.3942036526523385
+          },
+          "packet_sha256": "657404167a4f2cf370bb4b897397f66c91e1453bd53889227c7af9eb76e5e1fd"
+        },
+        {
+          "frame": 34,
+          "source_sha256": "525ccb413abe0806e871e6dfc6dd671433e0ac2315f547bc62090b26b9c97ff2",
+          "candidate_beams": 164,
+          "changed": 99,
+          "main_hits": 99,
+          "forward_hits": 0,
+          "through_box_without_mesh": 54,
+          "measured_return_in_front": 11,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595836.6988354,
+            "exposure_end_s": 1557595836.817295,
+            "margin_m": 0.25,
+            "minimum_bound_m": 3.3942036526523385
+          },
+          "packet_sha256": "fe6a933141cf99f8ea62cd7f7e7afb3583a788b744ca74289e0ed71e7dd1b6b3"
+        },
+        {
+          "frame": 35,
+          "source_sha256": "8524ca56173ea362935dfed356fd5aaadcfffe7a927c1878f5eec78c3d201797",
+          "candidate_beams": 141,
+          "changed": 80,
+          "main_hits": 80,
+          "forward_hits": 0,
+          "through_box_without_mesh": 61,
+          "measured_return_in_front": 0,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595836.7988825,
+            "exposure_end_s": 1557595836.9137394,
+            "margin_m": 0.25,
+            "minimum_bound_m": 3.3942036526523385
+          },
+          "packet_sha256": "6eea2f08a7eae287d387f1810790ef1d5a7e69796841e7d95613983e99eb7352"
+        },
+        {
+          "frame": 36,
+          "source_sha256": "8b5803250123c860d6ec1b6f8b31751ea1768b4fa2991900d3e0539f8c608beb",
+          "candidate_beams": 129,
+          "changed": 68,
+          "main_hits": 68,
+          "forward_hits": 0,
+          "through_box_without_mesh": 52,
+          "measured_return_in_front": 9,
+          "traffic": {
+            "scene": "109",
+            "exposure_start_s": 1557595836.8989174,
+            "exposure_end_s": 1557595837.0098627,
+            "margin_m": 0.25,
+            "minimum_bound_m": 3.3368952051713743
+          },
+          "packet_sha256": "b81fdc4624180c740968cb5223511cde7ea79fad46bc527e2ccf58d898ee6e7d"
+        }
+      ],
+      "anchor": [
+        -22.687345477297143,
+        24.100308827314787,
+        -0.3930083710060279
+      ],
+      "basis": [
+        [
+          -0.8692547876967704,
+          -0.4938486821289533,
+          0.022574171651211568
+        ],
+        [
+          0.49434223310322634,
+          -0.8687411783209508,
+          0.03024105917525673
+        ],
+        [
+          0.0046766052600087085,
+          0.03744655189762873,
+          0.9992876888635325
+        ]
+      ],
+      "glb_sha256": "068aafda9fa21368dddc6c846b4683c35bb68308852136487d66805f558cbadf",
+      "placement_sha256": "65a571f1ccd96c392fd6408862619e6756694556599c1b4941943e681d748cb3"
+    }
+  }
+}

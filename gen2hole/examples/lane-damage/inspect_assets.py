@@ -83,7 +83,7 @@ def field_check(folder,surf,meta,spec,run):
 
 
 @torch.inference_mode()
-def inspect(models,out,evidence_check=field_check):
+def inspect(models,out,evidence_check=field_check,fit_tall=False):
     out.mkdir(parents=True,exist_ok=True);records={}
     spec=read_json(HERE/'photos.json')
     for path in sorted(models.glob('*/series/assets/*/*/metadata.json'),key=lambda q:int(q.parent.name[1:])):
@@ -105,7 +105,9 @@ def inspect(models,out,evidence_check=field_check):
             if key=='M552':offset=[-.48,-.37,1.04] if name=='near' else [.45,.24,.9]
             if key in ('P554','P555','P556'):
                 offset=[.72,-.23,.49] if name=='near' else [-.68,.38,.67]
-            eye=target+np.array(offset)*span*1.18
+            if fit_tall:
+                target[2]=meta['highest_z_m']*.47
+            eye=target+np.array(offset)*span*(1.55 if fit_tall else 1.18)
             w,h,fx=720,520,718
             r,B=view_rays(eye,target,fx,w,h);view=np.eye(4);view[:3,:3]=B;view[:3,3]=-B@eye
             K=np.array([[fx,0,w/2],[0,fx,h/2],[0,0,1.]])

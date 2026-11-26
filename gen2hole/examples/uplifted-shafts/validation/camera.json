@@ -1,0 +1,18 @@
+{
+  "A563": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 26098,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "068aafda9fa21368dddc6c846b4683c35bb68308852136487d66805f558cbadf"
+    },
+    "back": {
+      "frames": 10,
+      "representative_frame": 28,
+      "pixels": 6050,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "068aafda9fa21368dddc6c846b4683c35bb68308852136487d66805f558cbadf"
+    }
+  }
+}
