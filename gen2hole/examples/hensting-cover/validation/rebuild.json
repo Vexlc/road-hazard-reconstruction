@@ -1,0 +1,9 @@
+{
+  "A565": {
+    "asset.glb": "07b072f6b0a907c1c71cda6b844b221b36beedad824dbf40a62467d8f4c356c2",
+    "asset.ply": "b18a87b23de2668a287cf9fe37a825d20fca2220b13f2a22628d654dc5f48081",
+    "metadata.json": "4517f4aef3171d9332020872ee47eb829ead9131f92a8efc667b256a11f1393f",
+    "splat_material.npz": "cb5dc8e79145adc17e8bcf65d70774aa2e9d3edba02b03c6d371dc9934a4f21b",
+    "surface.npz": "6ced588f6512b05406239cc6d97725777ce545deabd634ac604137f63d2be616"
+  }
+}

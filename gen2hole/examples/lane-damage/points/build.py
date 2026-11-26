@@ -34,6 +34,7 @@ def build(
     refine=None,
     partitions=None,
     wall_projection=None,
+    mesh_layout=None,
 ):
     spec = json.loads(survey.read_text())
     rows = []
@@ -57,9 +58,15 @@ def build(
             dist = distance_transform_edt(~install) * rec["pitch_m"]
             tri = grid_faces(*z.shape)
             frac = mask.ravel()[tri].sum(1) >= 2
+            vertices = np.dstack([xy, z])
+            if "observed_mesh" in m:
+                vertices, tri, frac = m["observed_mesh"]
             img, donor, color_reference = texture(spec, rec, m, materials, wall_projection)
             ref = refs / (key + ".jpg")
             Image.fromarray(img).save(ref, quality=95)
+            uv = 0.5 + vertices[..., :2] / extent
+            if mesh_layout is not None:
+                img, vertices, tri, uv = mesh_layout(m, img, vertices, tri, uv, extent)
             mesh = Mesh()
             mat = mesh.material(
                 "Photographed pavement and exposed aggregate", img, 0.94, 0, 2.8
@@ -72,9 +79,13 @@ def build(
                 if partitions is None
                 else partitions(m, tri)
             )
+            # A clipped field capture can leave unsupported space inside its bounding box.
+            # Restrict every exported primitive to the same observed triangles as the height map.
+            if "supported_faces" in m:
+                pieces = [(name, keep & m["supported_faces"], road) for name, keep, road in pieces]
             for name, keep, road in pieces:
                 mesh.add(
-                    name, np.dstack([xy, z]), tri[keep], 0.5 + xy / extent, mat, road
+                    name, vertices, tri[keep], uv, mat, road
                 )
             field = dict(
                 height=z,
@@ -87,6 +98,9 @@ def build(
                 registered_relief=True,
                 observed_footprint=m["support"],
             )
+            if "supported_faces" in m or "observed_mesh" in m:
+                field["alpha"] *= m["support"]
+                field["height"] = np.where(m["support"], z, 0)
             for name in ("basin_id", "separator_mask", "crest_mask", "trough_mask"):
                 if name in m:
                     field[name] = m[name]
@@ -119,6 +133,8 @@ def build(
                 surface_dimensions_m=extent.tolist(),
                 seed=19000 + int(key[1:]),
             )
+            if "capture_reconstruction" in m:
+                meta["capture_reconstruction"] = m["capture_reconstruction"]
             mesh.save(dest, cache, meta, field)
             flatten_scene(dest / "asset.glb")
             evaldir = out / "evaluation" / key

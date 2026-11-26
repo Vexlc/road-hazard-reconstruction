@@ -1,0 +1,153 @@
+{
+  "A565": {
+    "id": "A565",
+    "label": "铣刨乡道路面中重新调高的阶梯边铸铁井盖",
+    "glb_sha256": "07b072f6b0a907c1c71cda6b844b221b36beedad824dbf40a62467d8f4c356c2",
+    "ply_sha256": "b18a87b23de2668a287cf9fe37a825d20fca2220b13f2a22628d654dc5f48081",
+    "gaussians": 419857,
+    "triangles": 84758,
+    "evidence": {
+      "component_probes": [
+        {
+          "pixel": [
+            153,
+            321
+          ],
+          "expected": 9,
+          "first": 9
+        },
+        {
+          "pixel": [
+            114,
+            327
+          ],
+          "expected": 9,
+          "first": 9
+        },
+        {
+          "pixel": [
+            161,
+            305
+          ],
+          "expected": 9,
+          "first": 9
+        },
+        {
+          "pixel": [
+            145,
+            353
+          ],
+          "expected": 5,
+          "first": 5
+        },
+        {
+          "pixel": [
+            87,
+            347
+          ],
+          "expected": 5,
+          "first": 5
+        },
+        {
+          "pixel": [
+            246,
+            320
+          ],
+          "expected": 2,
+          "first": 2
+        },
+        {
+          "pixel": [
+            276,
+            338
+          ],
+          "expected": 1,
+          "first": 1
+        }
+      ],
+      "held_out_edge_distances_px": [
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "edge_rms_px": 0.6454972243679028,
+      "levels": {
+        "lid": {
+          "part": 9,
+          "z_m": 0.04499995708465576
+        },
+        "excavated shoulder": {
+          "part": 2,
+          "z_m": -0.11811387538909912
+        },
+        "milled road": {
+          "part": 1,
+          "z_m": 0.0
+        }
+      },
+      "rib_sections": [
+        {
+          "first": [
+            5,
+            147,
+            5
+          ],
+          "web_projects_forward_mm": 9.633421897888184
+        },
+        {
+          "first": [
+            5,
+            147,
+            5
+          ],
+          "web_projects_forward_mm": 9.746968746185303
+        },
+        {
+          "first": [
+            5,
+            147,
+            5
+          ],
+          "web_projects_forward_mm": 9.643644094467163
+        }
+      ],
+      "frame_foot_depth_below_lid_m": [
+        0.11930485615404536,
+        0.12873757292741123,
+        0.13611384114613873
+      ],
+      "pose_angles_degree": [
+        11.46694872986575,
+        -0.5746032055476099,
+        -10.151638005397288
+      ]
+    },
+    "mesh_depth_p95_m": 0.11811387538909912,
+    "mesh_height_p95_m": 0.04500007629394531,
+    "installed_xy_aabb_m": [
+      1.2159999999999997,
+      1.6239999999999999
+    ],
+    "view": {
+      "near": {
+        "core_px": 116755,
+        "opacity_p10": 0.8976333975791931,
+        "mesh_splat_depth_p90_mm": 20.859146118164062
+      },
+      "opposite": {
+        "core_px": 119416,
+        "opacity_p10": 0.9065324664115906,
+        "mesh_splat_depth_p90_mm": 25.545954704284668
+      }
+    }
+  }
+}

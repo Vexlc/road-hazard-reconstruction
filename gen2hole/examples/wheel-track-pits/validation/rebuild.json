@@ -1,0 +1,30 @@
+{
+  "P566": {
+    "asset.glb": "17c7076d9ade9668e4a4ec36479a9f59ca030b665d9ad3a5debcc83a00e5cf14",
+    "asset.ply": "b881366b804e3e10c49e4dc6dd902efe6b7c081161e4cae75c293cebbbcc0488",
+    "metadata.json": "26272dd57892c2799ab26fe7e2108418248dfab03f42c84b1ecc5a46e775a9eb",
+    "splat_material.npz": "b44e79bb3f1eb0fda9b30e5b9338802a0cee27239ce2c99feec0c563df68f295",
+    "surface.npz": "8f5cd7c7912bfd4dca47dd056581bb7f7718b3bdfa94babb88ec22e7f98ea267"
+  },
+  "P567": {
+    "asset.glb": "cdf4b0d8f092a0e31793c3e2b95d91be3f9c1983e7d53340345e7c1b654a277e",
+    "asset.ply": "887887dd5093711174d1a4220ff69d988a14e4b0a891517eed84a9f130b1584e",
+    "metadata.json": "d8e4326c3c919f12afa08b26a5c8ec2e8e8c00c85c12b36aa3a7030af2b269fc",
+    "splat_material.npz": "76c13c7110cb68985b5f91c3b6880825a1320532fa19c710251cc42c0332dd3a",
+    "surface.npz": "a6376a15113faac420cdc514655d71117eb96f091f30a9bef098dddf82f20a5b"
+  },
+  "P568": {
+    "asset.glb": "4322f813cc46459c686152c7d9f174eaa7e7491473fa59885ff1d916e6f0db47",
+    "asset.ply": "bd08d492a0c22010bc0efddea0af3fe861a1458bde80b01216b943d8c87879c1",
+    "metadata.json": "24e3794b7484f22e214f26a13e897ef62fab4bb89a01f4ee4e22c092749005fa",
+    "splat_material.npz": "6d2fdea7042f6212b04ef26cfb912ec937f3c33028582a9122aa7095b95e2b3f",
+    "surface.npz": "c7911838ea7a64fc0b544842850a04167faef511b915e67e534d3a4621ef102c"
+  },
+  "P569": {
+    "asset.glb": "474b0f1b9851e15e7826297d3f7a1754c9a117fd81ee7e1ab4ae93815846969d",
+    "asset.ply": "8cd844ffbf536ff48077cbf6dbb8ee60d00d56e5d6a55b90054b71c15852cb15",
+    "metadata.json": "9bc6a5d5f365fb2063c3144340fbf81c7af9e9722e0017817ff48e0cb1221fac",
+    "splat_material.npz": "78551a80bb56e422ae5411c1b636be3cd61bafacdb4a0127fe30af4908283641",
+    "surface.npz": "4c6452ef58e4e177b801e3f424c422d5ca8d3b71a1542d3169ddf3ea78491f65"
+  }
+}

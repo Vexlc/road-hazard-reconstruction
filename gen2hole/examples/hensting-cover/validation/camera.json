@@ -1,0 +1,18 @@
+{
+  "A565": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 17052,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "07b072f6b0a907c1c71cda6b844b221b36beedad824dbf40a62467d8f4c356c2"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 4000,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "07b072f6b0a907c1c71cda6b844b221b36beedad824dbf40a62467d8f4c356c2"
+    }
+  }
+}

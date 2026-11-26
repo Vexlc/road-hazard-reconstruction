@@ -83,11 +83,13 @@ def field_check(folder,surf,meta,spec,run):
 
 
 @torch.inference_mode()
-def inspect(models,out,evidence_check=field_check,fit_tall=False):
+def inspect(models,out,evidence_check=field_check,fit_tall=False,ids=None):
     out.mkdir(parents=True,exist_ok=True);records={}
     spec=read_json(HERE/'photos.json')
     for path in sorted(models.glob('*/series/assets/*/*/metadata.json'),key=lambda q:int(q.parent.name[1:])):
-        folder=path.parent;key=folder.name;meta=read_json(path);run=folder.parents[3];glb=folder/'asset.glb'
+        folder=path.parent;key=folder.name
+        if ids is not None and key not in ids:continue
+        meta=read_json(path);run=folder.parents[3];glb=folder/'asset.glb'
         surf=Surface(glb); row=dict(id=key,label=meta['label'],glb_sha256=sha256(glb),ply_sha256=sha256(folder/'asset.ply'),
                                    gaussians=meta['gaussians'],triangles=sum(meta['geometry_parts'].values()),evidence=evidence_check(folder,surf,meta,spec,run))
         with np.load(folder/'surface.npz') as field:
@@ -120,6 +122,8 @@ def inspect(models,out,evidence_check=field_check,fit_tall=False):
                                    mesh_splat_depth_p90_mm=float(1000*np.percentile(abs(rgba[:,:,3][core]-d[core]),90)))
             Image.fromarray(np.uint8(rgba[:,:,:3].clip(0,1)*255+.5)).save(out/(key+'-'+name+'.jpg'),quality=94)
         records[key]=row;save_json(out/'quality.json',records);print(key,flush=True)
+    if ids is not None and set(records)!=set(ids):
+        raise ValueError(f"Expected {sorted(ids)}, found {sorted(records)}")
     return records
 
 

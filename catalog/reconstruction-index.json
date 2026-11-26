@@ -1,5 +1,5 @@
 {
-  "asset_count": 1561,
+  "asset_count": 1566,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2643,6 +2643,37 @@
       "transfer": [
         "mesh-view"
       ]
+    },
+    "hensting-cover": {
+      "name": "铣刨路面中调高的阶梯边铸铁井盖",
+      "launcher": "gen2hole/examples/hensting-cover/build.py",
+      "recipe": "gen2hole/examples/hensting-cover/survey.json",
+      "guide": "gen2hole/examples/hensting-cover/README.md",
+      "section": "从原照重建",
+      "assets": [
+        "A565"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
+    },
+    "wheel-track-pits": {
+      "name": "保留采集边界的楔形深槽与纵向坑床断面",
+      "launcher": "gen2hole/examples/wheel-track-pits/build_scans.py",
+      "recipe": "gen2hole/examples/wheel-track-pits/survey.json",
+      "guide": "gen2hole/examples/wheel-track-pits/README.md",
+      "section": "从采集记录重建",
+      "assets": [
+        "P566",
+        "P567",
+        "P568",
+        "P569"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -2888,7 +2919,8 @@
       "long-rut-aggregate-bed",
       "lane-scan-pits",
       "field-rims-scans",
-      "trent-washout"
+      "trent-washout",
+      "wheel-track-pits"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
@@ -2929,7 +2961,8 @@
       "verge-chamber",
       "lane-photo-covers",
       "field-rims-covers",
-      "urayasu-shaft"
+      "urayasu-shaft",
+      "hensting-cover"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

@@ -60,6 +60,8 @@ EXACT_PARTS = {
     'Left torn asphalt flap': 13, 'Right torn asphalt flap': 13,
     'Left torn asphalt flap edge': 14, 'Right torn asphalt flap edge': 14,
     'Left torn asphalt flap underside': 15, 'Right torn asphalt flap underside': 15,
+    'Registered front casting': 5, 'Casting perimeter wall': 5, 'Lower casting flange': 5,
+    'Lower casting flange edge': 5, 'Front casting gussets': 147, 'Level-setting shims': 148,
     'Outlet bevel': 99, 'Outlet bore': 100, 'Outlet continuation': 101,
     'Measured high spot on pit bed': 144, 'Photographed asphalt fissure': 145, 'Photographed bed fragment': 146, 'Photographed verge': 2,
     'Trapped leaf and silt': 142, 'Trapped leaf and silt edge': 142,
