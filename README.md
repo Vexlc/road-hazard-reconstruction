@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**德文郡两处车行道连续破损**　沿纵向修补缝剥落的沥青和保留旧面层的坑群，附现场原照、透明贴图、区域标签与路面投影矩阵。[查看贴图和复现方法](gen2hole/examples/devon-road-patches/README.md)
+
 **窄路边移开盖板的积水通信井 M576**　井内近照与道路远照相隔 62 秒，分别恢复井壁、水面、管口和行车方向上可见的围栏、盖板。附 27 帧双向行车画面和 23 个激光扫描。[照片、遮挡实验与复现](gen2hole/examples/whites-hill/README.md) · [模型与回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/whites-hill-v1.0.0)
 
 **三处实测车道坑 P573–P575**　约 1.30 × 1.11 m 的扇形大坑、带浅窄分支的剥落，以及绕过残余铺装的弯曲坑床。附 344 个留出坑点的误差和 49 帧双向行车回放。[断面、照片材质与复现](gen2hole/examples/branching-pits/README.md) · [模型与视频](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/branching-pits-v1.0.0)

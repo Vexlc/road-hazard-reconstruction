@@ -1,0 +1,124 @@
+{
+  "photo": "7794657",
+  "source_sha256": "e1351cdb84be6a669133c3f376ac0f5f0708ae308bad1fdc070d1dcf1f118b5b",
+  "size_px": [
+    572,
+    867
+  ],
+  "camera_height_units": 1,
+  "units": "one assumed source camera height",
+  "source_xy_to_atlas_xy": [
+    [
+      0.5714285714285714,
+      0.5435080483001937,
+      -220.6169919524421
+    ],
+    [
+      0.0,
+      2.508982625376674,
+      -505.89719657086357
+    ],
+    [
+      0.0,
+      0.0017301944397090513,
+      -0.12111361077963358
+    ]
+  ],
+  "atlas_xy_to_road_xy": [
+    [
+      0.003125,
+      0.0,
+      -0.9816599868531064
+    ],
+    [
+      -0.0,
+      -0.003125,
+      4.276255330490404
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "source_mask_roundtrip_iou": {
+    "1": 0.999410446881264,
+    "2": 0.9998600517808411,
+    "3": 1.0
+  },
+  "projection_sensitivity": [
+    {
+      "horizon_px": 62,
+      "focal_px": 504.0,
+      "span_camera_heights": [
+        1.5733966188222528,
+        2.156859598226256
+      ]
+    },
+    {
+      "horizon_px": 62,
+      "focal_px": 560.0,
+      "span_camera_heights": [
+        1.5610362282780355,
+        2.3590052385966906
+      ]
+    },
+    {
+      "horizon_px": 62,
+      "focal_px": 616.0,
+      "span_camera_heights": [
+        1.551827569374785,
+        2.564381011358436
+      ]
+    },
+    {
+      "horizon_px": 70,
+      "focal_px": 504.0,
+      "span_camera_heights": [
+        1.633413955345458,
+        2.3241295329983283
+      ]
+    },
+    {
+      "horizon_px": 70,
+      "focal_px": 560.0,
+      "span_camera_heights": [
+        1.6218114932963301,
+        2.5458103282083417
+      ]
+    },
+    {
+      "horizon_px": 70,
+      "focal_px": 616.0,
+      "span_camera_heights": [
+        1.613173271890789,
+        2.770639471515085
+      ]
+    },
+    {
+      "horizon_px": 78,
+      "focal_px": 504.0,
+      "span_camera_heights": [
+        1.699950105503138,
+        2.51597106055537
+      ]
+    },
+    {
+      "horizon_px": 78,
+      "focal_px": 560.0,
+      "span_camera_heights": [
+        1.6891043099364755,
+        2.759965939927885
+      ]
+    },
+    {
+      "horizon_px": 78,
+      "focal_px": 616.0,
+      "span_camera_heights": [
+        1.6810346079689815,
+        3.007023184335832
+      ]
+    }
+  ],
+  "probe_count": 6
+}
