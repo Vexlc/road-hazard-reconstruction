@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,568 个资产编号、82 个重建系列和 34 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,569 个资产编号、83 个重建系列和 35 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -48,6 +48,7 @@
 | [分离坑区、长槽和宽口坑床扫描](../gen2hole/examples/field-rims/README.md#%E4%BB%8E%E8%BE%93%E5%85%A5%E9%87%8D%E5%BB%BA) | 3 | P557 | [重建](../gen2hole/examples/field-rims/build_scans.py) · [配方](../gen2hole/examples/field-rims/scans.json) | [mesh-view](#route-mesh-view)、[drive](#route-drive) |
 | [两处机位观测的特伦特河冲断乡道](../gen2hole/examples/trent-washout/README.md#%E4%BB%8E%E4%B8%A4%E5%BC%A0%E5%8E%9F%E7%85%A7%E5%A4%8D%E7%8E%B0) | 1 | P564 | [重建](../gen2hole/examples/trent-washout/build.py) · [配方](../gen2hole/examples/trent-washout/survey.json) | [mesh-view](#route-mesh-view) |
 | [保留采集边界的楔形深槽与纵向坑床断面](../gen2hole/examples/wheel-track-pits/README.md#%E4%BB%8E%E9%87%87%E9%9B%86%E8%AE%B0%E5%BD%95%E9%87%8D%E5%BB%BA) | 4 | P566 | [重建](../gen2hole/examples/wheel-track-pits/build_scans.py) · [配方](../gen2hole/examples/wheel-track-pits/survey.json) | [mesh-view](#route-mesh-view)、[drive](#route-drive) |
+| [倒树遮挡的公路塌陷与截断路缘石](../gen2hole/examples/cropthorne-break/README.md#%E4%BB%8E%E7%8E%B0%E5%9C%BA%E7%85%A7%E7%89%87%E9%87%8D%E5%BB%BA) | 1 | P572 | [重建](../gen2hole/examples/cropthorne-break/build.py) · [配方](../gen2hole/examples/cropthorne-break/survey.json) | [fracture-source-view](#route-fracture-source-view) |
 
 ## 裂缝、积水、铺装与修补
 
@@ -151,5 +152,6 @@
 | <a id="route-bounded-cargo-seat"></a>bounded-cargo-seat | 有限范围内按逐件接地与整车行驶净距选择落点 | 1 / 4 | [cargo_placement.py](../gen2hole/downstream/cargo_placement.py) | [在允许范围内重新选择落点](../docs/36-street-clutter.md#%E5%9C%A8%E5%85%81%E8%AE%B8%E8%8C%83%E5%9B%B4%E5%86%85%E9%87%8D%E6%96%B0%E9%80%89%E6%8B%A9%E8%90%BD%E7%82%B9) |
 | <a id="route-spherical-panorama"></a>spherical-panorama | 全景左右接缝、跨界窗口和有证据的空背景 | 1 / 4 | [spherical_camera.py](../gen2hole/downstream/spherical_camera.py) | [全景相机接缝与远背景](../docs/36-street-clutter.md#%E5%85%A8%E6%99%AF%E7%9B%B8%E6%9C%BA%E6%8E%A5%E7%BC%9D%E4%B8%8E%E8%BF%9C%E8%83%8C%E6%99%AF) |
 | <a id="route-field-chamber-replay"></a>field-chamber-replay | 锈穿井盖与草缘敞井的实录视角回放 | 2 / 2 | [render-road-distress.py](../releases/field-chambers/scripts/render-road-distress.py) | [在车载数据上复用](../releases/field-chambers/README.md#%E5%9C%A8%E8%BD%A6%E8%BD%BD%E6%95%B0%E6%8D%AE%E4%B8%8A%E5%A4%8D%E7%94%A8) |
+| <a id="route-fracture-source-view"></a>fracture-source-view | 断边的现场相机量程与正射图 | 1 / 1 | [check.py](../gen2hole/examples/cropthorne-break/check.py) | [在原机位和正射视图核验](../gen2hole/examples/cropthorne-break/README.md#%E5%9C%A8%E5%8E%9F%E6%9C%BA%E4%BD%8D%E5%92%8C%E6%AD%A3%E5%B0%84%E8%A7%86%E5%9B%BE%E6%A0%B8%E9%AA%8C) |
 
 更新目录后运行 `python3 scripts/check-reproduction-index.py --write-map`。常规检查运行同一命令并省略参数，检查编号、源文件、指南章节、迁入路线与本页是否一致。

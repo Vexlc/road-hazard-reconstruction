@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**洪水冲断 B4084 公路 P572**　重建倒树前方的沥青断边和路缘石，附原机位逐像素有效量程、缺测区域、正射图和假想轮迹到断边的距离。[照片与复现步骤](gen2hole/examples/cropthorne-break/README.md) · [下载发布包](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/cropthorne-break-v1.0.0)
+
 **住宅车道上的缺盖井 M571**　现场三只锥桶和断裂井缘同框。附原机位遮挡检查、双向行车画面及两台实录激光的合成回波。[中文复现和量程文件](gen2hole/examples/broadmoor-opening/README.md) · [下载发布包](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/broadmoor-opening-v1.0.0)
 
 **新奥尔良偏移井盖 M570**　根据一张同框原照重建盖板和井口的相对位置。附现场可见套筒、两种深度模型及前后摄合成回放。[原照、复现与遮挡比例](gen2hole/examples/midcity-cover/README.md) · [下载模型和回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/midcity-cover-v1.0.0)
@@ -22,7 +24,7 @@ RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资�
 
 **沉降雨篦和缺篦井口**　两组资产已迁入指定的 KITTI 联合场景。新宿主若能提供标定双目和匹配，可从米制距离重新拟合接地与遮挡。[接入与复现](docs/35-stereo-drains.md) · [指定场景的局部前后视](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/joint-local-front-rear.mp4) · [Audi 实拍车尾](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/stereo-drains-v1.0.0/audi-front-rear.mp4)
 
-**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,568 个编号所属的 82 个系列与 34 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
+**[全仓复现手册](docs/16-reproduction-cookbook.md)**　从干净克隆开始，按输入选择重建方法，按宿主选择迁入方法。逐项对照表收录 1,569 个编号所属的 83 个系列与 35 条迁入或展示路线，列出每个系列的构建程序、配方、输入准备和操作步骤。[按系列查代码](docs/asset-code-index.md) · [20 个常见大坑分十组驶过后回看](https://github.com/Vexlc/road-hazard-reconstruction/releases/download/reproduction-2026.11.25/paired-front-to-rear.mp4)
 
 不知道编号时，可以运行 `python3 gen2hole/gen2hole.py search 井盖`。已有目标场景时，运行 `python3 gen2hole/gen2hole.py routes 鱼眼` 查看可用的迁入程序和指南，再按路线缩小范围，例如 `python3 gen2hole/gen2hole.py search --route kitti-pair`。每条结果列出代表编号、重建代码和操作章节。[按手头材料选择复现入口](docs/16-reproduction-cookbook.md#按手头材料选入口)
 

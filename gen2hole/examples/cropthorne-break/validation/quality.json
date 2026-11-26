@@ -1,0 +1,43 @@
+{
+  "source_assumed_scale": true,
+  "range_is_camera_ray_distance": true,
+  "model_sha256": "0012b2eced4f2564cfa0bde1e6dc3f601db7ecc3cc3f3f33a842dda87c4b405d",
+  "visible_asphalt_pixels": 46079,
+  "visible_kerb_pixels": 2207,
+  "context_core_pixels": {
+    "pipe": 97,
+    "soil": 6868,
+    "fallen_tree": 18252,
+    "far_barrier": 212
+  },
+  "unknown_context_hits": 0,
+  "boundary_max_px": 1,
+  "boundary_rays": 136,
+  "texture_mae_u8": 0.0,
+  "assumed_1p60_m_track_paths": [
+    {
+      "x_m": -1.518145457511769,
+      "forward_from_camera_m": 9.324554230356625
+    },
+    {
+      "x_m": -0.7181454575117691,
+      "forward_from_camera_m": 9.263782760153713
+    },
+    {
+      "x_m": 0.08185454248823099,
+      "forward_from_camera_m": 9.172672961407121
+    }
+  ],
+  "spacing_sensitivity": [
+    {
+      "mark_spacing_m": 3.0,
+      "visible_span_m": 4.290064318810988,
+      "median_forward_distance_m": 8.653493913809063
+    },
+    {
+      "mark_spacing_m": 3.5,
+      "visible_span_m": 5.00507503861282,
+      "median_forward_distance_m": 10.095742899443907
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "method": "Clean source directory, pinned references, isolated trimesh 4.4.9 dependency and independent Python processes.",
+  "identical_sha256": {
+    "P572.glb": "0012b2eced4f2564cfa0bde1e6dc3f601db7ecc3cc3f3f33a842dda87c4b405d",
+    "camera.json": "bde2c5b4c54fb933613937a8c74910fdf2ddb5a60dd07952160c018cbbf1095e",
+    "context-cores.png": "643b53528dcd3fc2a8d670d30e84e5bb95b0d1a14c1000cff30e637aa41d2270",
+    "edge.npz": "81db13bd9bc7b5a900e034b97ce81735c395348414043ac66ec53a72e97cb3a1",
+    "orthophoto.png": "dee4e35fc43619bf6a12269ecebd60ef2a0c4534d19538349a3e22fd48eb9b38",
+    "overview.jpg": "8384fbe9dd002b6c065e30cf406ee2f16cbfd92800dba20499b0ea81e7cd45af",
+    "quality.json": "a4cf0a1ee2c3b865df2c3141ec738705ba3938c2c5c66baedcd9cd176e3b3632",
+    "range.npz": "e8f0ae7405a38ceba4c5e1556dac597f54a698aa7f7adee09e3f38446400fc6f"
+  }
+}

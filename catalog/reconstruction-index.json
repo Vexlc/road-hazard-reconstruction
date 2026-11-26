@@ -1,5 +1,5 @@
 {
-  "asset_count": 1568,
+  "asset_count": 1569,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2702,6 +2702,19 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "cropthorne-break": {
+      "name": "倒树遮挡的公路塌陷与截断路缘石",
+      "launcher": "gen2hole/examples/cropthorne-break/build.py",
+      "recipe": "gen2hole/examples/cropthorne-break/survey.json",
+      "guide": "gen2hole/examples/cropthorne-break/README.md",
+      "section": "从现场照片重建",
+      "assets": [
+        "P572"
+      ],
+      "transfer": [
+        "fracture-source-view"
+      ]
     }
   },
   "transfer_routes": {
@@ -2908,6 +2921,12 @@
       "entry": "releases/field-chambers/scripts/render-road-distress.py",
       "guide": "releases/field-chambers/README.md",
       "section": "在车载数据上复用"
+    },
+    "fracture-source-view": {
+      "name": "断边的现场相机量程与正射图",
+      "entry": "gen2hole/examples/cropthorne-break/check.py",
+      "guide": "gen2hole/examples/cropthorne-break/README.md",
+      "section": "在原机位和正射视图核验"
     }
   },
   "groups": {
@@ -2948,7 +2967,8 @@
       "lane-scan-pits",
       "field-rims-scans",
       "trent-washout",
-      "wheel-track-pits"
+      "wheel-track-pits",
+      "cropthorne-break"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",
