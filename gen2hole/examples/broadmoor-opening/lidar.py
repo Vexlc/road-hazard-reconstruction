@@ -8,7 +8,10 @@ import sys
 
 import numpy as np
 import pandas as pd
-from camera import HERE, RADIUS
+import json
+
+HERE = Path(__file__).resolve().parent
+RADIUS = json.loads((HERE / "survey.json").read_text())["working_diameter_nominal_m"] / 2
 
 sys.path.insert(0, str(HERE.parent / "lane-damage"))
 from photo_mesh import LIB, Surface
@@ -19,10 +22,23 @@ from prepare_scans import ROAD_NAMES, possible, RIG
 from traffic_safe_drive import read, write, digest
 
 
-def check(models, drive, raw, out):
-    folder = models / "model/series/assets/missing/M571"
+def check(
+    models,
+    drive,
+    raw,
+    out,
+    *,
+    asset_id="M571",
+    radius=RADIUS,
+    extra_parts=None,
+    replacement_parts=(5, 6),
+    replacement_state="replaced_road_with_sleeve_or_seat",
+):
+    folder = models / "model/series/assets/missing" / asset_id
     mesh = Surface(folder / "observed.glb", exclude={1})
-    placements = [read(drive / side / "M571/placement.json") for side in ("front", "back")]
+    if extra_parts is None:
+        extra_parts = {"cone_hits": 25, "arc_hits": 18}
+    placements = [read(drive / side / asset_id / "placement.json") for side in ("front", "back")]
     assert placements[0]["anchor"] == placements[1]["anchor"]
     assert all(
         p["glb_sha256"] == digest(folder / "asset.glb") and p["scene"] == raw.name
@@ -44,7 +60,7 @@ def check(models, drive, raw, out):
     outcomes = [
         "unchanged",
         "nearer_native_surface",
-        "replaced_road_with_sleeve_or_seat",
+        replacement_state,
         "open_depth_unknown",
     ]
     out.mkdir(parents=True, exist_ok=True)
@@ -58,7 +74,7 @@ def check(models, drive, raw, out):
         records.append(row)
         try:
             row["traffic"] = survey.require_window(
-                {"M571": bounds}, float(time.min()), float(time.max()), 0.25
+                {asset_id: bounds}, float(time.min()), float(time.max()), 0.25
             )
         except ValueError as error:
             row["excluded"] = str(error)
@@ -78,13 +94,13 @@ def check(models, drive, raw, out):
         row["labels_sha256"] = digest(labels_path)
         hit, part, _ = mesh.cast(o, v)
         t = -o[:, 2] / np.where(abs(v[:, 2]) > 1e-8, v[:, 2], np.nan)
-        crosses = (t > 0) & (np.linalg.norm(o[:, :2] + t[:, None] * v[:, :2], axis=1) < RADIUS)
+        crosses = (t > 0) & (np.linalg.norm(o[:, :2] + t[:, None] * v[:, :2], axis=1) < radius)
         # Ignore the outside of the sleeve on rays whose entry at grade is on intact road.
         below = o[:, 2] + np.where(np.isfinite(hit), hit, 0) * v[:, 2] < -0.002
         valid = np.isfinite(hit) & (hit > 0) & (~below | crosses)
         orig_position = o + v * before[:, None]
         local_road = np.isin(semantic, road_ids) & (abs(orig_position[:, 2]) < 0.04)
-        replaces = crosses & local_road & (np.linalg.norm(orig_position[:, :2], axis=1) < RADIUS)
+        replaces = crosses & local_road & (np.linalg.norm(orig_position[:, :2], axis=1) < radius)
         kind = np.zeros(len(ids), "u1")
         nearer = valid & (hit < before - 0.003)
         kind[nearer] = 1
@@ -97,7 +113,12 @@ def check(models, drive, raw, out):
         assert np.all(after[kind == 1] < before[kind == 1] - 0.003) and np.all(
             after[kind == 2] >= before[kind == 2] - 0.003
         )
-        assert np.all(np.isin(part[kind == 2], [5, 6])) and np.all(np.isnan(after[kind == 3]))
+        if not np.all(np.isin(part[kind == 2], replacement_parts)):
+            bad = (kind == 2) & ~np.isin(part, replacement_parts)
+            raise ValueError(
+                (frame, part[bad].tolist(), (o[bad] + v[bad] * hit[bad, None]).tolist())
+            )
+        assert np.all(np.isnan(after[kind == 3]))
         assert not np.any(np.isin(part, [3, 7]))
         packet = out / f"{frame:02}.npz"
         np.savez_compressed(
@@ -116,8 +137,10 @@ def check(models, drive, raw, out):
         counts = {name: int((kind == j).sum()) for j, name in enumerate(outcomes)}
         counts.update(
             candidate_beams=len(kind),
-            cone_hits=int(((kind == 1) & (part == 25)).sum()),
-            arc_hits=int(((kind == 1) & (part == 18)).sum()),
+            **{
+                name: int(((kind == 1) & (part == code)).sum())
+                for name, code in extra_parts.items()
+            },
         )
         row.update(counts, packet_sha256=digest(packet))
         totals.update(counts)
@@ -132,9 +155,7 @@ def check(models, drive, raw, out):
     # Validate the vertical control separately from the measured directions.
     down = mesh.cast(np.array([[0.0, 0.0, 1.0]]), np.array([[0.0, 0.0, -1.0]]))[0]
     assert (
-        np.isinf(down[0])
-        and totals["cone_hits"] > 0
-        and totals["replaced_road_with_sleeve_or_seat"] > 0
+        np.isinf(down[0]) and totals[next(iter(extra_parts))] > 0 and totals[replacement_state] > 0
     )
     report = dict(
         scene=raw.name,

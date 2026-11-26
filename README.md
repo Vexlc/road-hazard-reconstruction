@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**路口敞井、警示柱与入井绳索 M582**　新奥尔良现场原照配准，附井口可见几何、底座通孔、前后摄遮挡及双激光未知量程。[现场对照与复现](gen2hole/examples/zimple-opening/README.md) · [模型与回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/zimple-opening-v1.0.0)
+
 **公交车道大面积隆起断裂 P581**　同一现场的三条沥青断边分别建模，附摄影对照、尺度敏感性、三条高程断面及前后摄和双激光回放。[现场照片与复现](gen2hole/examples/gervis-rupture/README.md) · [模型与传感器数据](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/gervis-rupture-v1.0.0)
 
 **冻裂车道上的方井盖 A580**　现场原照能看到右前缘外露的铁框和周围破碎沥青；提供起伏与齐平两种几何，可用相同车载激光束比较回波。[照片、模型与复现](gen2hole/examples/callander-cover/README.md) · [下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/callander-cover-v1.0.0)

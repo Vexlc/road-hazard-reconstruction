@@ -180,6 +180,7 @@ class RoadMesh:
         cover_vertices = []
         with np.load(folder / "surface.npz", allow_pickle=False) as field:
             self.receiver_sky_blocked = field.get("receiver_sky_blocked")
+            self.cast_receiver_sunlight = bool(field.get("cast_receiver_sunlight", False))
             self.return_to_grade_blend_m = float(field.get("return_to_grade_blend_m", 0))
             self.curb_cap_weight = field.get("curb_cap_surface_weight")
             self.curb_donor_tread = field.get("curb_donor_tread_rgb")
@@ -542,6 +543,13 @@ class RoadMesh:
                             xyz = origins[relief] + directions[relief] * distance[relief, None]
                             light = irradiance(self, xyz, normals[relief], anchor)
                             out[relief] = srgb(linear(out[relief]) * light[:, None])
+                elif self.cast_receiver_sunlight and self.photographic_rgb and "relief_daylight" in anchor:
+                    # The portable marker already carries visible surface illumination
+                    # in its photograph. A single exposure preserves printed tape and
+                    # reflective stripes as it crosses parked cars in the background.
+                    # Bound the exposure change: the donor road is pale loose gravel.
+                    scale = np.clip(np.sqrt(exposure), .84, 1.12)
+                    out[visible] = np.uint8(np.rint(np.clip(color[visible] * scale * ao[visible,None], 0, 255)))
                 elif "relief_daylight" in anchor:
                     from scanned_daylight import apply
                     points = origins[visible] + directions[visible] * distance[visible, None]
@@ -607,7 +615,17 @@ class RoadMesh:
             field = self.receiver_sky_blocked
             grid = uv[receiver] * (np.array(field.shape[::-1]) - 1)
             fraction = map_coordinates(field, grid[:,::-1].T, order=1, mode="constant")
-            shaded = srgb(linear(rgb[receiver]) * (1 - .72*fraction[:,None]))
+            gain = 1 - .72*fraction
+            if self.cast_receiver_sunlight and "relief_daylight" in anchor and receiver.any():
+                light = anchor["relief_daylight"]
+                sun = unit(np.asarray(light["sun_world"]) @ np.asarray(anchor["basis_columns"]))
+                if sun[2] > 0:
+                    origin = np.column_stack((crossing[receiver], np.full(receiver.sum(), .001)))
+                    rays = np.column_stack((origin, np.broadcast_to(sun, origin.shape)))
+                    shade = self.scene.test_occlusions(o3d.core.Tensor(rays.astype("f4")), nthreads=2).numpy()
+                    direct = light["direct_fraction"]
+                    gain = (1-direct)*gain + direct*(~shade)
+            shaded = srgb(linear(rgb[receiver]) * gain[:,None])
             changed = (shaded != rgb[receiver]).any(axis=1)
             out[receiver] = shaded
             visible[receiver] = changed

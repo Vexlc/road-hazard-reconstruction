@@ -1,0 +1,18 @@
+{
+  "M582": {
+    "front": {
+      "frames": 3,
+      "representative_frame": 13,
+      "pixels": 16648,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "a17584cb58ebba263af95967bd592efc714c932f8886aa635df583cf2a4b9720"
+    },
+    "back": {
+      "frames": 8,
+      "representative_frame": 30,
+      "pixels": 3636,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "a17584cb58ebba263af95967bd592efc714c932f8886aa635df583cf2a4b9720"
+    }
+  }
+}

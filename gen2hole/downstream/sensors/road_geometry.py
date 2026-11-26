@@ -15,6 +15,7 @@ PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidew
          'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain', 'traffic cone', 'tyre', 'wheel rim', 'crate', 'cement sack',
          'shipping carton', 'tool chest', 'garden sack', 'wood box')
 EXACT_PARTS = {
+    "Casting perimeter wall": 5, "Cavity inferred closure": 3,
     'Cast iron throat skirt': 112, 'Chamber joint recess': 6, 'Coursed concrete chamber back': 6,
     'Curb return left': 6, 'Photographed soffit': 10, 'Recessed grate crossbars': 95,
     'Wall cable fitting': 118, 'Black insulated cables': 115, 'Grey insulated cables': 116,
@@ -89,6 +90,10 @@ def load_inventory(parent):
 
 
 def part_id(name):
+    if name.startswith("Delineator "):
+        return 176
+    if name == "Yellow braided line":
+        return 177
     if name == "Photographed ribbed road insert":
         return 175
     for prefix, code in [('Tyre ', 26), ('Wheel rim ', 27), ('Road crate ', 28), ('Cement sack ', 29),

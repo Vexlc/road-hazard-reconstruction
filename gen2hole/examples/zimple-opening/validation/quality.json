@@ -1,0 +1,126 @@
+{
+  "M582": {
+    "id": "M582",
+    "label": "Zimple 街口缺盖井、警示柱与黄色绳索",
+    "glb_sha256": "a17584cb58ebba263af95967bd592efc714c932f8886aa635df583cf2a4b9720",
+    "ply_sha256": "8539ad710eabf2fe525bf8aa4a3003622192450488cb7c39d86311c6dbab85cd",
+    "gaussians": 429534,
+    "triangles": 60940,
+    "evidence": {
+      "source_probes": {
+        "shaft_center": {
+          "pixel": [
+            3020,
+            2979
+          ],
+          "first_part": 0,
+          "expected": 0
+        },
+        "far_lip": {
+          "pixel": [
+            2898,
+            2948
+          ],
+          "first_part": 5,
+          "expected": 5
+        },
+        "post": {
+          "pixel": [
+            3073,
+            2180
+          ],
+          "first_part": 176,
+          "expected": 176
+        },
+        "reflector": {
+          "pixel": [
+            3080,
+            2375
+          ],
+          "first_part": 176,
+          "expected": 176
+        },
+        "ballast": {
+          "pixel": [
+            2970,
+            2844
+          ],
+          "first_part": 176,
+          "expected": 176
+        },
+        "entering_line": {
+          "pixel": [
+            3176,
+            2964
+          ],
+          "first_part": 177,
+          "expected": 177
+        },
+        "ground_line": {
+          "pixel": [
+            3302,
+            2921
+          ],
+          "first_part": 177,
+          "expected": 177
+        },
+        "gravel": {
+          "pixel": [
+            2890,
+            3014
+          ],
+          "first_part": 1,
+          "expected": 1
+        }
+      },
+      "rim_fit_max_px": 7.698080980989876,
+      "rim_heldout_count": 27,
+      "rim_heldout_mean_px": 0.7547251881067255,
+      "rim_heldout_max_px": 1.3360847030994516,
+      "post_heldout_edges": 88,
+      "post_outline_rms_px": 2.320854074767226,
+      "handle_first_height_m": [
+        0.0,
+        0.0
+      ],
+      "scale_sensitivity": [
+        {
+          "diameter_m": 0.55,
+          "camera_height_m": 1.0493051235946347,
+          "post_height_m": 1.2445624935689492
+        },
+        {
+          "diameter_m": 0.6,
+          "camera_height_m": 1.1446965212655138,
+          "post_height_m": 1.35770453985743
+        },
+        {
+          "diameter_m": 0.65,
+          "camera_height_m": 1.240086900497788,
+          "post_height_m": 1.4708464490149522
+        }
+      ],
+      "open_plan_m2": 0.242775,
+      "center_vertical_visual_z_m": -0.7999999523162842,
+      "center_vertical_observed": "no return"
+    },
+    "mesh_depth_p95_m": 0.7999999523162842,
+    "mesh_height_p95_m": 0.11600005626678467,
+    "installed_xy_aabb_m": [
+      4.625,
+      1.7599999999999998
+    ],
+    "view": {
+      "near": {
+        "core_px": 2077,
+        "opacity_p10": 0.8595854640007019,
+        "mesh_splat_depth_p90_mm": 29.32147979736329
+      },
+      "opposite": {
+        "core_px": 2929,
+        "opacity_p10": 0.873589301109314,
+        "mesh_splat_depth_p90_mm": 31.951713562011722
+      }
+    }
+  }
+}

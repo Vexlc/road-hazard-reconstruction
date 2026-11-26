@@ -1,0 +1,264 @@
+{
+  "scene": "109",
+  "visual_model_sha256": "a17584cb58ebba263af95967bd592efc714c932f8886aa635df583cf2a4b9720",
+  "open_model_sha256": "2e514295f8f334072873a6d45d0e119dc520188b64d8df0981937b5539e90574",
+  "rig_sha256": "cf38b0126f2090cdd62f74364546825137d3bd7cc8e06f1ef5da6739201ad8b5",
+  "road_semantic_ids": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "host_grade_tolerance_m": 0.04,
+  "states": [
+    "unchanged",
+    "nearer_native_surface",
+    "replaced_road_with_observed_geometry",
+    "open_depth_unknown"
+  ],
+  "anchor": {
+    "center_world": [
+      -22.687345477297143,
+      24.100308827314787,
+      -0.3930083710060279
+    ],
+    "basis_columns": [
+      [
+        -0.9031212209435554,
+        0.42879186915761736,
+        0.022574171651211568
+      ],
+      [
+        -0.4280880557784676,
+        -0.9032309199976327,
+        0.03024105917525673
+      ],
+      [
+        0.03335681011777275,
+        0.017647609032007606,
+        0.9992876888635325
+      ]
+    ],
+    "inliers": 3634,
+    "cells": 88,
+    "rms_m": 0.008388377854102026,
+    "relief_daylight": {
+      "scene": "109",
+      "sun_world": [
+        0.5974513977236263,
+        -0.2029319997276096,
+        0.7758030876740816
+      ],
+      "direct_fraction": 0.6135322242251317,
+      "source": "gen2hole/downstream/sensors/daylight.json",
+      "shade_to_sun_srgb": [
+        0.6352351916376306,
+        0.6444327731092436,
+        0.729651998849583
+      ],
+      "contrast_frame": 42
+    },
+    "yaw_offset_deg": 70.0
+  },
+  "vertical_center_control": "no observed return",
+  "totals": {
+    "unchanged": 24262,
+    "nearer_native_surface": 961,
+    "replaced_road_with_observed_geometry": 25,
+    "open_depth_unknown": 20,
+    "candidate_beams": 25268,
+    "marker_hits": 669,
+    "line_hits": 292
+  },
+  "per_sensor": {
+    "0": {
+      "unchanged": 12094,
+      "nearer_native_surface": 426,
+      "replaced_road_with_observed_geometry": 15,
+      "open_depth_unknown": 6
+    },
+    "1": {
+      "unchanged": 12168,
+      "nearer_native_surface": 535,
+      "replaced_road_with_observed_geometry": 10,
+      "open_depth_unknown": 14
+    }
+  },
+  "frames": [
+    {
+      "frame": 11,
+      "cloud_sha256": "8bd30181607c7d6bf3f6f4ca8adb0e5622689f445d232400304f8325c83b434f",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.3883321,
+        "exposure_end_s": 1557595834.501373,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.8573782079857213
+      },
+      "labels_sha256": "bdcaa8e3ac1b3b62a0bee7b18847be04b819c6542314c0e3dd1509560648b668",
+      "unchanged": 6668,
+      "nearer_native_surface": 253,
+      "replaced_road_with_observed_geometry": 4,
+      "open_depth_unknown": 6,
+      "candidate_beams": 6931,
+      "marker_hits": 191,
+      "line_hits": 62,
+      "packet_sha256": "228423d8718a3593a86eb95849b2c77062bfbf9664a5cd9c38b0e8f7e0503ddc"
+    },
+    {
+      "frame": 12,
+      "cloud_sha256": "01bc0ef194c60b6b0d7506b0aa950d4e31699f439837fd02ac82808fb07295eb",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.4870462,
+        "exposure_end_s": 1557595834.601343,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.7818851498582724
+      },
+      "labels_sha256": "f3e34dc69058c768b102522a1d2fdab85dee7474ee50a212ae57fe6901eafdf8",
+      "unchanged": 8329,
+      "nearer_native_surface": 356,
+      "replaced_road_with_observed_geometry": 8,
+      "open_depth_unknown": 8,
+      "candidate_beams": 8701,
+      "marker_hits": 263,
+      "line_hits": 93,
+      "packet_sha256": "a58d94396e8d372625b7ad4526b12e8c3e06f65fcd5ee0602b337affb29dbfa9"
+    },
+    {
+      "frame": 13,
+      "cloud_sha256": "50944b33999e958e7c78d55953c2669b4b120a21ea88160a47365eaaa3ca51d3",
+      "excluded": "Traffic clearance refused at survey interval 13: {'clear': False, 'actor': 'ego', 'asset': 'M582', 'lower_bound_m': 0.20440060794193426, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 29,
+      "cloud_sha256": "1d258dbed07e700cff7c022082f6b2e8bf881d1db9b06337b2614c9affa088b1",
+      "excluded": "Traffic clearance refused at survey interval 27: {'clear': False, 'actor': 'ego', 'asset': 'M582', 'lower_bound_m': -2.276635266924935, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 30,
+      "cloud_sha256": "f2b97f011a74e3b6aca3d0704a944db4479344537a5a1138c72be24b421cba17",
+      "excluded": "Traffic clearance refused at survey interval 28: {'clear': False, 'actor': 'ego', 'asset': 'M582', 'lower_bound_m': -0.6508938849238075, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 31,
+      "cloud_sha256": "be60ce706019beceec00c33626c7823230d1cf7b1be73233998c61ea2de96028",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.3986664,
+        "exposure_end_s": 1557595836.5260139,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.981249039091062
+      },
+      "labels_sha256": "9923638a2415d069db07027000b2e3718bc1a20a36efc36fad52ccb538c76a08",
+      "unchanged": 2030,
+      "nearer_native_surface": 41,
+      "replaced_road_with_observed_geometry": 0,
+      "open_depth_unknown": 0,
+      "candidate_beams": 2071,
+      "marker_hits": 40,
+      "line_hits": 1,
+      "packet_sha256": "a7eae723e86c2b479101c234152ab22e7fb2746dd85d903abcb1be4c5ea0a07b"
+    },
+    {
+      "frame": 32,
+      "cloud_sha256": "e45c2b046b61039bc76f717737a8b6526da209c34bcc70b999c09f282392a5fa",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.4987295,
+        "exposure_end_s": 1557595836.6224585,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.8573782079857213
+      },
+      "labels_sha256": "a91bfa0d209e86f418c78bfded3659b83e731d3eda026884cea354b6c98d5394",
+      "unchanged": 1816,
+      "nearer_native_surface": 51,
+      "replaced_road_with_observed_geometry": 9,
+      "open_depth_unknown": 0,
+      "candidate_beams": 1876,
+      "marker_hits": 51,
+      "line_hits": 0,
+      "packet_sha256": "ae7cf21e00b43f1e4fdb91b9d15dc2b9ef92b26a7ec070ef7652be39ef550a57"
+    },
+    {
+      "frame": 33,
+      "cloud_sha256": "f7ff1eff06561602defd0ff9c276628840080b1ba70612962a88a3c43f069140",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.5987833,
+        "exposure_end_s": 1557595836.7185812,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.8573782079857213
+      },
+      "labels_sha256": "c4891f53b7f67cf8e13f2c24ba627ccfb7b5715a2c249fa206e7297f99f733bf",
+      "unchanged": 1721,
+      "nearer_native_surface": 59,
+      "replaced_road_with_observed_geometry": 0,
+      "open_depth_unknown": 6,
+      "candidate_beams": 1786,
+      "marker_hits": 41,
+      "line_hits": 18,
+      "packet_sha256": "2b610c0f8b101107134e85202997207d8718988063dc365fb3b36208fb8c1c89"
+    },
+    {
+      "frame": 34,
+      "cloud_sha256": "525ccb413abe0806e871e6dfc6dd671433e0ac2315f547bc62090b26b9c97ff2",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.6988354,
+        "exposure_end_s": 1557595836.817295,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.8573782079857213
+      },
+      "labels_sha256": "d26b370088ff44e51da727c8c8b4aac9c0a936ca02c78a6fbf5bce077824a717",
+      "unchanged": 1490,
+      "nearer_native_surface": 80,
+      "replaced_road_with_observed_geometry": 0,
+      "open_depth_unknown": 0,
+      "candidate_beams": 1570,
+      "marker_hits": 39,
+      "line_hits": 41,
+      "packet_sha256": "239cce4e1edf4be5a753c24424ac020e623ed63359ce2ed9810fb165a80db00b"
+    },
+    {
+      "frame": 35,
+      "cloud_sha256": "8524ca56173ea362935dfed356fd5aaadcfffe7a927c1878f5eec78c3d201797",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.7988825,
+        "exposure_end_s": 1557595836.9137394,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.8573782079857213
+      },
+      "labels_sha256": "3832294607b8ef89bea07248484df56902d9afed36afbde669f42a42e13f0545",
+      "unchanged": 1192,
+      "nearer_native_surface": 65,
+      "replaced_road_with_observed_geometry": 4,
+      "open_depth_unknown": 0,
+      "candidate_beams": 1261,
+      "marker_hits": 26,
+      "line_hits": 39,
+      "packet_sha256": "9e6cf975925929e317c886df12473215ccef8873c52b68d25c783d07679219be"
+    },
+    {
+      "frame": 36,
+      "cloud_sha256": "8b5803250123c860d6ec1b6f8b31751ea1768b4fa2991900d3e0539f8c608beb",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.8989174,
+        "exposure_end_s": 1557595837.0098627,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.6551529411514165
+      },
+      "labels_sha256": "9f61d576c63d6a69901a113b1a389c150da31b75cbd218707c8baa9ac4e6f543",
+      "unchanged": 1016,
+      "nearer_native_surface": 56,
+      "replaced_road_with_observed_geometry": 0,
+      "open_depth_unknown": 0,
+      "candidate_beams": 1072,
+      "marker_hits": 18,
+      "line_hits": 38,
+      "packet_sha256": "30e538e46862a4e8e9237d0b6fba7803180984e552e83717025bc915d3d9315f"
+    }
+  ]
+}

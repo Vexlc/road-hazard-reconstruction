@@ -1,5 +1,5 @@
 {
-  "asset_count": 1578,
+  "asset_count": 1579,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2789,6 +2789,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "zimple-opening": {
+      "name": "新奥尔良街口缺盖井、警示柱与入井绳索",
+      "launcher": "gen2hole/examples/zimple-opening/build.py",
+      "recipe": "gen2hole/examples/zimple-opening/survey.json",
+      "guide": "gen2hole/examples/zimple-opening/README.md",
+      "section": "从现场照片复现",
+      "assets": [
+        "M582"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3091,7 +3105,8 @@
       "midcity-cover",
       "broadmoor-opening",
       "whites-hill",
-      "callander-cover"
+      "callander-cover",
+      "zimple-opening"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

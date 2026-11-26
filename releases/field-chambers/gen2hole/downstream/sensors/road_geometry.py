@@ -112,6 +112,12 @@ _part_labels.update({96: 'inlet casting edges and reveal', 110: 'curb support bl
                      118: 'wall cable fitting', 119: 'electrical conduit jacket',
                      120: 'electrical conduit bore', 121: 'electrical conduit termination',
                      140: 'grate twig', 141: 'grate leaf'})
+_part_labels.update({165: "blue instrument enclosure", 166: "pale junction housing",
+                     167: "white rounded enclosure", 168: "exposed metal spindle",
+                     169: "pipe fitting", 170: "yellow insulated lead", 171: "grey insulated lead",
+                     172: "dry stem", 173: "leaf litter", 174: "folding manhole guard",
+                     175: "ribbed road insert", 176: "intersection delineator and ballast",
+                     177: "yellow braided line"})
 PARTS += tuple(_part_labels[code] for code in range(len(PARTS), max(_part_labels) + 1))
 
 CLASSES = {'pothole': 1, 'missing': 2, 'raised': 3}
@@ -170,6 +176,10 @@ def load_inventory(parent):
 
 
 def part_id(name):
+    if name.startswith("Delineator "):
+        return 176
+    if name == "Yellow braided line":
+        return 177
     if name == "Photographed ribbed road insert":
         return 175
     verge_parts = {"Blue instrument enclosure": 165, "Pale junction housing": 166,
