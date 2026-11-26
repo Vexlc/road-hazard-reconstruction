@@ -1,0 +1,18 @@
+{
+  "M576": {
+    "front": {
+      "frames": 6,
+      "representative_frame": 16,
+      "pixels": 56237,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "3ee9a49d93691a6c1210002314f67e143895199cec2d72e9b81a74bd38a8f4d5"
+    },
+    "back": {
+      "frames": 21,
+      "representative_frame": 29,
+      "pixels": 12559,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "3ee9a49d93691a6c1210002314f67e143895199cec2d72e9b81a74bd38a8f4d5"
+    }
+  }
+}

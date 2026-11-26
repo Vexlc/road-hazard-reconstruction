@@ -15,6 +15,11 @@ PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidew
          'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain', 'traffic cone', 'tyre', 'wheel rim', 'crate', 'cement sack',
          'shipping carton', 'tool chest', 'garden sack', 'wood box')
 EXACT_PARTS = {
+    'Cast iron throat skirt': 112, 'Chamber joint recess': 6, 'Coursed concrete chamber back': 6,
+    'Curb return left': 6, 'Photographed soffit': 10, 'Recessed grate crossbars': 95,
+    'Wall cable fitting': 118, 'Black insulated cables': 115, 'Grey insulated cables': 116,
+    'Tracer wire': 117, 'Pipe coupling': 169, 'Electrical conduit 1 bore': 120,
+    'Electrical conduit 1 end': 121, 'Lid edge': 11,
     'Fracture inset rim': 19, 'Road around the aperture': 1, 'Road adjoining the fracture': 1,
     'Fracture lip and exposed bed': 2, 'Fracture sidewall in surface coordinates': 3,
     'Water surface': 4, 'Cast ring and cover seat': 5, 'Cast seat riser and ledge': 5, 'Inspection shaft': 6,
@@ -90,6 +95,8 @@ def part_id(name):
                          ('Dropped wrench ', 37)]:
         if name.startswith(prefix):
             return code
+    if name.startswith('Folding manhole guard panel '):
+        return 174
     if name.startswith('Traffic cone '):
         return 25
     if name.startswith('Barrier '):

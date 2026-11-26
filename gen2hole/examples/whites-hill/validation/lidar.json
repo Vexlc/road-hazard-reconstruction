@@ -1,0 +1,557 @@
+{
+  "scene": "109",
+  "model_sha256": "3ee9a49d93691a6c1210002314f67e143895199cec2d72e9b81a74bd38a8f4d5",
+  "rig_sha256": "cf38b0126f2090cdd62f74364546825137d3bd7cc8e06f1ef5da6739201ad8b5",
+  "states": [
+    "unchanged",
+    "closer_inserted_surface",
+    "replaced_host_road",
+    "unknown"
+  ],
+  "vertical_water_return_m": [
+    1.6019978523254395,
+    1.6019978523254395,
+    1.60199773311615
+  ],
+  "vertical_solid_only": "no return",
+  "totals": {
+    "candidates": 29924,
+    "unchanged": 21569,
+    "closer": 8319,
+    "replaced_road": 36,
+    "unknown": 0,
+    "guard_hits": 7486,
+    "slab_hits": 806,
+    "water_hits": 0,
+    "different_by_water_response": 0
+  },
+  "accepted_scans": 23,
+  "frames": [
+    {
+      "frame": 11,
+      "source_sha256": "8bd30181607c7d6bf3f6f4ca8adb0e5622689f445d232400304f8325c83b434f",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.3883321,
+        "exposure_end_s": 1557595834.501373,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 3284,
+      "unchanged": 2374,
+      "closer": 904,
+      "replaced_road": 6,
+      "unknown": 0,
+      "guard_hits": 827,
+      "slab_hits": 75,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "bdcaa8e3ac1b3b62a0bee7b18847be04b819c6542314c0e3dd1509560648b668",
+      "packet_sha256": "835833084979a904cd9a299b2163e27c26fa7cc8052e6081f65b713a5f4cf62f"
+    },
+    {
+      "frame": 12,
+      "source_sha256": "01bc0ef194c60b6b0d7506b0aa950d4e31699f439837fd02ac82808fb07295eb",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.4870462,
+        "exposure_end_s": 1557595834.601343,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 3782,
+      "unchanged": 2664,
+      "closer": 1111,
+      "replaced_road": 7,
+      "unknown": 0,
+      "guard_hits": 992,
+      "slab_hits": 114,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "f3e34dc69058c768b102522a1d2fdab85dee7474ee50a212ae57fe6901eafdf8",
+      "packet_sha256": "33d06e1ce35c6dc982f3a5d7492a570a3e95d1302dc58fddbd2d0f2637ffbd3a"
+    },
+    {
+      "frame": 13,
+      "source_sha256": "50944b33999e958e7c78d55953c2669b4b120a21ea88160a47365eaaa3ca51d3",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.5836227,
+        "exposure_end_s": 1557595834.701323,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 4409,
+      "unchanged": 3042,
+      "closer": 1363,
+      "replaced_road": 4,
+      "unknown": 0,
+      "guard_hits": 1224,
+      "slab_hits": 133,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "fb58a3f08d58e49c30e3771e549b41c7b129c41029a136fd4c82b7d54314bc09",
+      "packet_sha256": "f4d6e7bd1d0d9335231b31a1a2a8cf07aee2bf314edc6a5d4de9131d8724ba45"
+    },
+    {
+      "frame": 14,
+      "source_sha256": "5dfd1d35e7be793f924addd8fc254654ec7d83734c72fe533e20447bcb394dc6",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.6797454,
+        "exposure_end_s": 1557595834.801299,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 5174,
+      "unchanged": 3686,
+      "closer": 1477,
+      "replaced_road": 11,
+      "unknown": 0,
+      "guard_hits": 1311,
+      "slab_hits": 163,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "2b096ae2ebc533f4f1e0de7087f898195434320a87080124c19252fa8477d1bb",
+      "packet_sha256": "f88932bbafde59d7604b9bdb3f8f5be093abbf14572cb0b42d7f71295904ccfb"
+    },
+    {
+      "frame": 15,
+      "source_sha256": "87c2a8d3eb04bb300b5c6e0b2226ab90c3398ff6aecf7e6d1056bea3302ebc02",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595834.7783275,
+        "exposure_end_s": 1557595834.901274,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 6100,
+      "unchanged": 4395,
+      "closer": 1697,
+      "replaced_road": 8,
+      "unknown": 0,
+      "guard_hits": 1505,
+      "slab_hits": 192,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "0f21675327cbd102a2777898cb099018b82ff631a564efb3a470a619d49c6073",
+      "packet_sha256": "93ae00c862581ccab4717af325ed540d8033a2bbb98603c720ee3eaa1a6df30a"
+    },
+    {
+      "frame": 16,
+      "source_sha256": "7607c4253b8f1b7ecf4b5e6e159400f741508e274efa4e4c9f5f6ff5badd740f",
+      "excluded": "Traffic clearance refused at survey interval 16: {'clear': False, 'actor': 'ego', 'asset': 'M576', 'lower_bound_m': -0.06294323049403783, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 28,
+      "source_sha256": "aa86c45f1eae8aa6762f14d88beb4597156c2e3a6ca04d5d2c73c6b98f52f955",
+      "excluded": "Traffic clearance refused at survey interval 26: {'clear': False, 'actor': 'ego', 'asset': 'M576', 'lower_bound_m': -1.7563662288528183, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 29,
+      "source_sha256": "1d258dbed07e700cff7c022082f6b2e8bf881d1db9b06337b2614c9affa088b1",
+      "excluded": "Traffic clearance refused at survey interval 27: {'clear': False, 'actor': 'ego', 'asset': 'M576', 'lower_bound_m': -0.35919090952908483, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 30,
+      "source_sha256": "f2b97f011a74e3b6aca3d0704a944db4479344537a5a1138c72be24b421cba17",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.2986293,
+        "exposure_end_s": 1557595836.4273002,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.119580185770408
+      },
+      "candidates": 763,
+      "unchanged": 559,
+      "closer": 204,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 189,
+      "slab_hits": 15,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "1319fb10b63470238f5144f9d17d11f66236737c7176281099d1cae7445c9ceb",
+      "packet_sha256": "48234953e0bbda7f3c9cadb75e484b21db30dfa2d6f507887dc44ff3c20e0950"
+    },
+    {
+      "frame": 31,
+      "source_sha256": "be60ce706019beceec00c33626c7823230d1cf7b1be73233998c61ea2de96028",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.3986664,
+        "exposure_end_s": 1557595836.5260139,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 756,
+      "unchanged": 534,
+      "closer": 222,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 210,
+      "slab_hits": 12,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "9923638a2415d069db07027000b2e3718bc1a20a36efc36fad52ccb538c76a08",
+      "packet_sha256": "116babce5d8fab74e9ce74413213987befd4c4d4680704a392c98fdcfacddae4"
+    },
+    {
+      "frame": 32,
+      "source_sha256": "e45c2b046b61039bc76f717737a8b6526da209c34bcc70b999c09f282392a5fa",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.4987295,
+        "exposure_end_s": 1557595836.6224585,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 743,
+      "unchanged": 542,
+      "closer": 201,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 201,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "a91bfa0d209e86f418c78bfded3659b83e731d3eda026884cea354b6c98d5394",
+      "packet_sha256": "6641700682b50a5f9b1f1a77138075e5705570f8fbbfe39bd07703b24f04a44b"
+    },
+    {
+      "frame": 33,
+      "source_sha256": "f7ff1eff06561602defd0ff9c276628840080b1ba70612962a88a3c43f069140",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.5987833,
+        "exposure_end_s": 1557595836.7185812,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 749,
+      "unchanged": 499,
+      "closer": 250,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 211,
+      "slab_hits": 39,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "c4891f53b7f67cf8e13f2c24ba627ccfb7b5715a2c249fa206e7297f99f733bf",
+      "packet_sha256": "3711a9bab2ce0f45bb46b8d485c471cd1722c0cacf019d4fa4c7bfd81db79c4c"
+    },
+    {
+      "frame": 34,
+      "source_sha256": "525ccb413abe0806e871e6dfc6dd671433e0ac2315f547bc62090b26b9c97ff2",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.6988354,
+        "exposure_end_s": 1557595836.817295,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 753,
+      "unchanged": 554,
+      "closer": 199,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 169,
+      "slab_hits": 22,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "d26b370088ff44e51da727c8c8b4aac9c0a936ca02c78a6fbf5bce077824a717",
+      "packet_sha256": "eaf2f0b693bb87782723258ebfffdceaec7e8c725f1d5ed6bba7a1a5e54b3496"
+    },
+    {
+      "frame": 35,
+      "source_sha256": "8524ca56173ea362935dfed356fd5aaadcfffe7a927c1878f5eec78c3d201797",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.7988825,
+        "exposure_end_s": 1557595836.9137394,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 748,
+      "unchanged": 573,
+      "closer": 175,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 158,
+      "slab_hits": 17,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "3832294607b8ef89bea07248484df56902d9afed36afbde669f42a42e13f0545",
+      "packet_sha256": "8531d3cee27778aa0d01b83abee1e096a3a60c59b6cfafdbc1aacf7808318597"
+    },
+    {
+      "frame": 36,
+      "source_sha256": "8b5803250123c860d6ec1b6f8b31751ea1768b4fa2991900d3e0539f8c608beb",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.8989174,
+        "exposure_end_s": 1557595837.0098627,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 687,
+      "unchanged": 543,
+      "closer": 144,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 133,
+      "slab_hits": 11,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "9f61d576c63d6a69901a113b1a389c150da31b75cbd218707c8baa9ac4e6f543",
+      "packet_sha256": "61002492e4c1099f855cdd22834a96df2a29a80061d5a6219636fe41a50b5755"
+    },
+    {
+      "frame": 37,
+      "source_sha256": "46a189dec06266ad34364a0d0ea3102a8fcbebba9a603db09f7014ffe88d8af3",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595836.9989614,
+        "exposure_end_s": 1557595837.1084707,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 592,
+      "unchanged": 482,
+      "closer": 110,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 100,
+      "slab_hits": 9,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "99e8ef9642d5d1bd8a1ad5ee8620d4725e1a7872f81ae5154efe8bdbdf726bb2",
+      "packet_sha256": "132e4d9ab2681bb09ba971c0d1754acd6064f61d8aaf95f934a3d626660b0f75"
+    },
+    {
+      "frame": 38,
+      "source_sha256": "05c210937f8ef7ee263520dc169a16daa43ab151447d9b7bc7ceccf7f860c81c",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595837.0990133,
+        "exposure_end_s": 1557595837.2051528,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 526,
+      "unchanged": 425,
+      "closer": 101,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 97,
+      "slab_hits": 4,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "ebe788b4102880b1b87ca6bd6c48930a3621076ae69c6aca27784656b0cdcde4",
+      "packet_sha256": "45291aee4dcf139c95e8f9b414800d2d30c6dc790b5a9799f11074fb7ac0dfdf"
+    },
+    {
+      "frame": 49,
+      "source_sha256": "13b7c1eb7b1298d04c557949a1e24671a9b2861af5c21926d17ab031bc543357",
+      "excluded": "Traffic clearance refused at survey interval 47: {'clear': False, 'actor': 'bde6f085-611f-4f17-822b-a10586909f5a', 'asset': 'M576', 'lower_bound_m': 0.11544635949385595, 'reason': 'traffic'}"
+    },
+    {
+      "frame": 50,
+      "source_sha256": "0c33de02eac0ef992a5af0a211355e67551226e7b1d41f96846e3d1a20d0ad6b",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595838.273701,
+        "exposure_end_s": 1557595838.401978,
+        "margin_m": 0.25,
+        "minimum_bound_m": 0.8430267920166465
+      },
+      "candidates": 144,
+      "unchanged": 113,
+      "closer": 31,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 31,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "4e6a2da60bfd0d54ea9c94bbee76e6d7b6defda8bc8fb682c539956a2e745741",
+      "packet_sha256": "76360e2dc327cca47ca88a7c44d642c6b1bdaeb6f1d8c3a02dfa2dd0712a4c4b"
+    },
+    {
+      "frame": 51,
+      "source_sha256": "896ab5141f085a25d69e47bea36d15a10e010874699108efc9d028407a69fdad",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595838.3702774,
+        "exposure_end_s": 1557595838.5019631,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 116,
+      "unchanged": 93,
+      "closer": 23,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 23,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "0b21181dd93b5c4f5ab4f7f4334cdb3263998e20d1663f3dadecfc9f9a284f6f",
+      "packet_sha256": "c056ebcccafeee9aaf2ab896343631a4af7b3dab1d772542de86a740e9789d00"
+    },
+    {
+      "frame": 52,
+      "source_sha256": "51c9774fcae514bcd36e40d3f47a79d46b660eef2702c018b25110c80f9179d4",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595838.4663997,
+        "exposure_end_s": 1557595838.601947,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 101,
+      "unchanged": 87,
+      "closer": 14,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 14,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "dca851d611250a256d422c9a364b4d5f7a603fa4424787263dd1bcef9f9a0e1c",
+      "packet_sha256": "cfcc752bac7790058f8076d91f2db26b15f4682013ac0035cb197b934e2785fe"
+    },
+    {
+      "frame": 53,
+      "source_sha256": "20ac7ddd8306940bd093e3988fedeeb5a52d4bea327df66964ccdb007a5e5af4",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595838.5649815,
+        "exposure_end_s": 1557595838.701931,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 110,
+      "unchanged": 86,
+      "closer": 24,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 24,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "58717fa4c93afbd9d178208a5d088a345fbbde09b31cab9b3932ae3354ddb9b2",
+      "packet_sha256": "814f389600dd12b883d00151206037d57a2f525d597bd8c9cf729118e6ec9b18"
+    },
+    {
+      "frame": 54,
+      "source_sha256": "aed28fe0d0f77688c9117942a54308b82bc364d8b50bccd3d505f083628f566d",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595838.6615577,
+        "exposure_end_s": 1557595838.801928,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 96,
+      "unchanged": 80,
+      "closer": 16,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 16,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "a0a97fe411510c8a58d8e39fb0eb4b325544b0ec940d6b76d6b6da2265b911ad",
+      "packet_sha256": "761d351fcedae981ccaea18f8a5c51acf1bac49f462f6976e62e266b98003fd7"
+    },
+    {
+      "frame": 55,
+      "source_sha256": "2ad6d682e499198791be8997224aa2122f7b66557eb65436107b573052e5f71e",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595838.7575486,
+        "exposure_end_s": 1557595838.901915,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 82,
+      "unchanged": 64,
+      "closer": 18,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 18,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "caf3ac4de92944e54babbb9859bd443367c941f187e35e7a98e281f940e70292",
+      "packet_sha256": "a0c4dddd585b35adbfd3db89b684acdec243c272e40dfa18821d60a44d5627b2"
+    },
+    {
+      "frame": 56,
+      "source_sha256": "4e7ad2dd15c356e2bad7de1db36dc4c317601d9eff640add99a1ad8bdca2ad94",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595838.856262,
+        "exposure_end_s": 1557595839.001893,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 73,
+      "unchanged": 63,
+      "closer": 10,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 10,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "5f6d5e1888a50708839010a599faa719e83fe85f438e1b5416dc67414049bffd",
+      "packet_sha256": "a5f05012035ac8603493085266b1da031d8b3b1ad535718d62d74c50980de0cc"
+    },
+    {
+      "frame": 57,
+      "source_sha256": "6b89ad4f9645e76653d548da83a10050d2be1d5205e15ad999776f5c4809a62f",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595838.9989953,
+        "exposure_end_s": 1557595839.147542,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 69,
+      "unchanged": 56,
+      "closer": 13,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 11,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "414e151f1e43045f235244f82e8545cdf9250b6df987f19d71aabf161b0de651",
+      "packet_sha256": "fc9d36cb19fbc3fc28c4284515499fdcb07d9b8f09043be2de5f9254bc098f50"
+    },
+    {
+      "frame": 58,
+      "source_sha256": "a20844ba101683f333c99328adc862e22adf23c6549197ac37bd10f333b3f2f0",
+      "traffic": {
+        "scene": "109",
+        "exposure_start_s": 1557595839.0989773,
+        "exposure_end_s": 1557595839.2441182,
+        "margin_m": 0.25,
+        "minimum_bound_m": 1.277261975806848
+      },
+      "candidates": 67,
+      "unchanged": 55,
+      "closer": 12,
+      "replaced_road": 0,
+      "unknown": 0,
+      "guard_hits": 12,
+      "slab_hits": 0,
+      "water_hits": 0,
+      "different_by_water_response": 0,
+      "labels_sha256": "26e584ba65b4cb19f07efe0ea22710f4d15d9cb126cdb9a1210243bea06d7762",
+      "packet_sha256": "3263301a18e9f0d74df66acba21a857b940d65d8fe1980a50513e1a1110b4a4b"
+    }
+  ]
+}

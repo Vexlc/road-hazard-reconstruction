@@ -1,5 +1,5 @@
 {
-  "asset_count": 1572,
+  "asset_count": 1573,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2731,6 +2731,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "whites-hill": {
+      "name": "窄路施工围栏、移开盖板与积水通信井",
+      "launcher": "gen2hole/examples/whites-hill/build.py",
+      "recipe": "gen2hole/examples/whites-hill/survey.json",
+      "guide": "gen2hole/examples/whites-hill/README.md",
+      "section": "从两张现场照片复现",
+      "assets": [
+        "M576"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3029,7 +3043,8 @@
       "urayasu-shaft",
       "hensting-cover",
       "midcity-cover",
-      "broadmoor-opening"
+      "broadmoor-opening",
+      "whites-hill"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

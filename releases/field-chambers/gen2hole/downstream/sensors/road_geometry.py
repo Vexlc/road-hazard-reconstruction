@@ -219,6 +219,8 @@ def part_id(name):
     for prefix, code in PROP_PREFIXES:
         if name.startswith(prefix):
             return code
+    if name.startswith('Folding manhole guard panel '):
+        return 174
     if name.startswith('Traffic cone '):
         return 25
     if name.startswith('Barrier '):
