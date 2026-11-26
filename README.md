@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**实测深槽、弧缘月牙坑与宽浅坑 P586–P588**　长槽可见长度 1.49 m，月牙坑贴着半径约 0.89 m 的实测凸缘。附独立立面网格、留出点误差及 47 帧实录车道合成。[几何与复现](gen2hole/examples/deep-track-pits/README.md) · [下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/deep-track-pits-v1.0.0)
+
 **亚历山大街移开井盖 M585**　同一现场的两次曝光，附井圈、踏步、可独立摆放的盖板与警示柱，以及移走盖板后的敞井。[双视角复现](gen2hole/examples/alexander-opening/README.md) · [下载模型与回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/alexander-opening-v1.0.0)
 
 **纽约第二大道大坑 P584**　两只警示锥立在坑边，倒锥、黑袋和折叠纸板遮住坑底。附现场回投、车载前后摄及区分推测深度的激光量程。[重建与复现](gen2hole/examples/second-avenue/README.md) · [下载模型与回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/second-avenue-v1.0.0)

@@ -1,0 +1,34 @@
+{
+  "P586": {
+    "main_label_extent_m": [
+      1.4920397996902466,
+      0.4163665473461151
+    ],
+    "main_label_points": 1681,
+    "disconnected_labels_in_source": 0,
+    "context_test_returns": 94,
+    "context_closest_p90_mm": 20.288883209228516,
+    "context_closest_median_mm": 2.357149600982666,
+    "context_triangles": 1668
+  },
+  "P587": {
+    "main_label_extent_m": [
+      1.0604376792907715,
+      0.3472234606742859
+    ],
+    "main_label_points": 448,
+    "disconnected_labels_in_source": 0,
+    "context_test_returns": 47,
+    "context_closest_p90_mm": 4.072193813323974,
+    "context_closest_median_mm": 0.5064878463745117,
+    "context_triangles": 1010
+  },
+  "P588": {
+    "main_label_extent_m": [
+      0.9822747111320496,
+      0.8302565217018127
+    ],
+    "main_label_points": 1043,
+    "disconnected_labels_in_source": 3
+  }
+}

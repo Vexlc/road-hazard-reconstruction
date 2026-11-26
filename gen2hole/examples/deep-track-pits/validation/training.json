@@ -1,0 +1,358 @@
+{
+  "P586": [
+    {
+      "h_m": 0.11,
+      "k": 8,
+      "blend": 0.0,
+      "vertical_mae_mm": 6.616347872744918,
+      "vertical_p90_mm": 16.33189996436345,
+      "closest_p90_mm": 6.95291090011597,
+      "missing": 30,
+      "hits": 397
+    },
+    {
+      "h_m": 0.11,
+      "k": 8,
+      "blend": 0.65,
+      "vertical_mae_mm": 6.934891171476394,
+      "vertical_p90_mm": 16.12805652238504,
+      "closest_p90_mm": 7.756371021270754,
+      "missing": 29,
+      "hits": 398
+    },
+    {
+      "h_m": 0.11,
+      "k": 8,
+      "blend": 1.0,
+      "vertical_mae_mm": 7.393030722952575,
+      "vertical_p90_mm": 17.09004581351635,
+      "closest_p90_mm": 8.428939628601082,
+      "missing": 27,
+      "hits": 400
+    },
+    {
+      "h_m": 0.11,
+      "k": 16,
+      "blend": 0.65,
+      "vertical_mae_mm": 7.511398318664133,
+      "vertical_p90_mm": 16.164382761797622,
+      "closest_p90_mm": 8.974013710021975,
+      "missing": 28,
+      "hits": 399
+    },
+    {
+      "h_m": 0.11,
+      "k": 16,
+      "blend": 1.0,
+      "vertical_mae_mm": 8.437527561838639,
+      "vertical_p90_mm": 19.384059733488847,
+      "closest_p90_mm": 10.549932670593265,
+      "missing": 26,
+      "hits": 401
+    },
+    {
+      "h_m": 0.2,
+      "k": 8,
+      "blend": 0.0,
+      "vertical_mae_mm": 6.350784546950861,
+      "vertical_p90_mm": 16.154503697168526,
+      "closest_p90_mm": 5.984719181060792,
+      "missing": 18,
+      "hits": 409
+    },
+    {
+      "h_m": 0.2,
+      "k": 8,
+      "blend": 0.65,
+      "vertical_mae_mm": 6.363197667612243,
+      "vertical_p90_mm": 14.508503265819467,
+      "closest_p90_mm": 6.362464237213136,
+      "missing": 15,
+      "hits": 412
+    },
+    {
+      "h_m": 0.2,
+      "k": 8,
+      "blend": 1.0,
+      "vertical_mae_mm": 6.610632438230808,
+      "vertical_p90_mm": 14.893270793894375,
+      "closest_p90_mm": 6.796879386901863,
+      "missing": 14,
+      "hits": 413
+    },
+    {
+      "h_m": 0.2,
+      "k": 16,
+      "blend": 0.65,
+      "vertical_mae_mm": 6.93490147558893,
+      "vertical_p90_mm": 15.275235959844412,
+      "closest_p90_mm": 7.735157680511476,
+      "missing": 15,
+      "hits": 412
+    },
+    {
+      "h_m": 0.2,
+      "k": 16,
+      "blend": 1.0,
+      "vertical_mae_mm": 7.623994071699112,
+      "vertical_p90_mm": 16.632437824630305,
+      "closest_p90_mm": 9.457314109802248,
+      "missing": 15,
+      "hits": 412
+    },
+    {
+      "h_m": 0.34,
+      "k": 8,
+      "blend": 0.0,
+      "vertical_mae_mm": 5.956276874473078,
+      "vertical_p90_mm": 16.0672910045498,
+      "closest_p90_mm": 5.984725666046144,
+      "missing": 15,
+      "hits": 412
+    },
+    {
+      "h_m": 0.34,
+      "k": 8,
+      "blend": 0.65,
+      "vertical_mae_mm": 5.967770451094192,
+      "vertical_p90_mm": 13.841736623640136,
+      "closest_p90_mm": 6.310813617706299,
+      "missing": 12,
+      "hits": 415
+    },
+    {
+      "h_m": 0.34,
+      "k": 8,
+      "blend": 1.0,
+      "vertical_mae_mm": 6.2900107507335425,
+      "vertical_p90_mm": 15.068706548029377,
+      "closest_p90_mm": 6.52183828353882,
+      "missing": 11,
+      "hits": 416
+    },
+    {
+      "h_m": 0.34,
+      "k": 16,
+      "blend": 0.65,
+      "vertical_mae_mm": 6.540071563027398,
+      "vertical_p90_mm": 14.72664716613871,
+      "closest_p90_mm": 7.787428092956543,
+      "missing": 11,
+      "hits": 416
+    },
+    {
+      "h_m": 0.34,
+      "k": 16,
+      "blend": 1.0,
+      "vertical_mae_mm": 7.08155179179002,
+      "vertical_p90_mm": 15.680504095480622,
+      "closest_p90_mm": 9.246394157409668,
+      "missing": 11,
+      "hits": 416
+    }
+  ],
+  "P587": [
+    {
+      "h_m": 0.11,
+      "k": 8,
+      "blend": 0.0,
+      "vertical_mae_mm": 5.612092597903956,
+      "vertical_p90_mm": 16.43478419926705,
+      "closest_p90_mm": 8.92899227142334,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.11,
+      "k": 8,
+      "blend": 0.65,
+      "vertical_mae_mm": 6.129995312795626,
+      "vertical_p90_mm": 19.605702427054243,
+      "closest_p90_mm": 10.714335632324218,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.11,
+      "k": 8,
+      "blend": 1.0,
+      "vertical_mae_mm": 6.492362301828195,
+      "vertical_p90_mm": 21.538751382624167,
+      "closest_p90_mm": 12.931286430358892,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.11,
+      "k": 16,
+      "blend": 0.65,
+      "vertical_mae_mm": 7.763621071183384,
+      "vertical_p90_mm": 22.549142656947527,
+      "closest_p90_mm": 13.396467208862308,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.11,
+      "k": 16,
+      "blend": 1.0,
+      "vertical_mae_mm": 9.807372802179872,
+      "vertical_p90_mm": 28.643680761291897,
+      "closest_p90_mm": 16.415837478637695,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.2,
+      "k": 8,
+      "blend": 0.0,
+      "vertical_mae_mm": 5.436664858096151,
+      "vertical_p90_mm": 16.43473651555123,
+      "closest_p90_mm": 8.762649726867677,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.2,
+      "k": 8,
+      "blend": 0.65,
+      "vertical_mae_mm": 6.0934168669835245,
+      "vertical_p90_mm": 20.518709444272062,
+      "closest_p90_mm": 10.692875671386725,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.2,
+      "k": 8,
+      "blend": 1.0,
+      "vertical_mae_mm": 6.674581075236714,
+      "vertical_p90_mm": 22.186231331132593,
+      "closest_p90_mm": 13.642749595642092,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.2,
+      "k": 16,
+      "blend": 0.65,
+      "vertical_mae_mm": 7.1546500108678215,
+      "vertical_p90_mm": 23.778682248088376,
+      "closest_p90_mm": 13.944797706604007,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.2,
+      "k": 16,
+      "blend": 1.0,
+      "vertical_mae_mm": 9.581416696011633,
+      "vertical_p90_mm": 30.193888644230974,
+      "closest_p90_mm": 18.140430450439457,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.34,
+      "k": 8,
+      "blend": 0.0,
+      "vertical_mae_mm": 5.341302385999664,
+      "vertical_p90_mm": 16.32971549578355,
+      "closest_p90_mm": 7.704681205749521,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.34,
+      "k": 8,
+      "blend": 0.65,
+      "vertical_mae_mm": 6.218024344263415,
+      "vertical_p90_mm": 21.453254132463897,
+      "closest_p90_mm": 11.191964340209964,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.34,
+      "k": 8,
+      "blend": 1.0,
+      "vertical_mae_mm": 6.8936255572147385,
+      "vertical_p90_mm": 23.66523199262929,
+      "closest_p90_mm": 13.379050064086918,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.34,
+      "k": 16,
+      "blend": 0.65,
+      "vertical_mae_mm": 7.675993218850879,
+      "vertical_p90_mm": 26.073013719371396,
+      "closest_p90_mm": 13.434234046936039,
+      "missing": 0,
+      "hits": 127
+    },
+    {
+      "h_m": 0.34,
+      "k": 16,
+      "blend": 1.0,
+      "vertical_mae_mm": 9.481859457461802,
+      "vertical_p90_mm": 29.987381497338703,
+      "closest_p90_mm": 18.341513824462893,
+      "missing": 0,
+      "hits": 127
+    }
+  ],
+  "P588": [
+    {
+      "h_m": 1.0,
+      "k": 8,
+      "blend": 0.0,
+      "vertical_mae_mm": 6.133149328915161,
+      "vertical_p90_mm": 16.85384895225051,
+      "closest_p90_mm": 13.669699287414549,
+      "missing": 1,
+      "hits": 288
+    },
+    {
+      "h_m": 1.0,
+      "k": 8,
+      "blend": 0.65,
+      "vertical_mae_mm": 5.4880037108262645,
+      "vertical_p90_mm": 13.94658087601288,
+      "closest_p90_mm": 13.277720832824706,
+      "missing": 1,
+      "hits": 288
+    },
+    {
+      "h_m": 1.0,
+      "k": 8,
+      "blend": 1.0,
+      "vertical_mae_mm": 5.233958092542019,
+      "vertical_p90_mm": 12.998761959090018,
+      "closest_p90_mm": 12.613859176635739,
+      "missing": 1,
+      "hits": 288
+    },
+    {
+      "h_m": 1.0,
+      "k": 16,
+      "blend": 0.65,
+      "vertical_mae_mm": 5.40152946729781,
+      "vertical_p90_mm": 13.678902702863681,
+      "closest_p90_mm": 12.786007118225095,
+      "missing": 1,
+      "hits": 288
+    },
+    {
+      "h_m": 1.0,
+      "k": 16,
+      "blend": 1.0,
+      "vertical_mae_mm": 5.130591563997855,
+      "vertical_p90_mm": 11.658629031862391,
+      "closest_p90_mm": 11.472041511535645,
+      "missing": 1,
+      "hits": 288
+    }
+  ]
+}

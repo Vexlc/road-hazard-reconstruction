@@ -1,5 +1,5 @@
 {
-  "asset_count": 1582,
+  "asset_count": 1585,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2845,6 +2845,22 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "deep-track-pits": {
+      "name": "截断深槽、弧缘月牙坑与偏心宽浅坑",
+      "launcher": "gen2hole/examples/deep-track-pits/reconstruct.py",
+      "recipe": "gen2hole/examples/deep-track-pits/survey.json",
+      "guide": "gen2hole/examples/deep-track-pits/README.md",
+      "section": "从原始点云复现",
+      "assets": [
+        "P586",
+        "P587",
+        "P588"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3103,7 +3119,8 @@
       "contact-pits",
       "gervis-rupture",
       "trenton-setts",
-      "second-avenue"
+      "second-avenue",
+      "deep-track-pits"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

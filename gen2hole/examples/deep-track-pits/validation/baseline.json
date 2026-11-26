@@ -1,0 +1,203 @@
+{
+  "P586": {
+    "id": "P586",
+    "label": "单端截断的长条深槽",
+    "glb_sha256": "4c57e01319dff9fd30383db11c2d7e9e36e5d42c64f38870f74dbb18fdffeba0",
+    "ply_sha256": "d981289405350c9fe8e370ace882fbe0031fb241cf39b6c8899a3bf568fbd10f",
+    "gaussians": 416540,
+    "triangles": 152138,
+    "evidence": {
+      "source_points": 5000,
+      "reserved_all": 531,
+      "reserved_pit_points": 132,
+      "vertical_hits": 130,
+      "misses_outside_capture": 2,
+      "vertical_first_hits_on_bed": 128,
+      "heldout_vertical_mae_mm": 5.1084973626577685,
+      "heldout_vertical_p90_mm": 17.626033512117694,
+      "heldout_closest_surface_p90_mm": 10.042191123962402,
+      "observed_label_bounds_m": [
+        1.4920397996902466,
+        0.4163665473461151
+      ],
+      "source_depth_p95_m": 0.1534144432099072,
+      "unsupported_grid_ray_misses": 1593,
+      "external_misses": 4,
+      "profiles": [
+        {
+          "offset_m": -0.1572331656202642,
+          "first_hit_samples": 299,
+          "unobserved_samples": 80,
+          "pit_samples": 287,
+          "pit_depth_p95_m": 0.13990904092788697
+        },
+        {
+          "offset_m": -0.00010005807264330639,
+          "first_hit_samples": 298,
+          "unobserved_samples": 81,
+          "pit_samples": 284,
+          "pit_depth_p95_m": 0.15927730798721312
+        },
+        {
+          "offset_m": 0.14814001554033313,
+          "first_hit_samples": 297,
+          "unobserved_samples": 82,
+          "pit_samples": 297,
+          "pit_depth_p95_m": 0.12130458354949951
+        }
+      ]
+    },
+    "mesh_depth_p95_m": 0.15573906898498532,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      1.4880000217051446,
+      0.43600000050461407
+    ],
+    "view": {
+      "near": {
+        "core_px": 37352,
+        "opacity_p10": 0.9887174367904663,
+        "mesh_splat_depth_p90_mm": 2.557992935180664
+      },
+      "opposite": {
+        "core_px": 31659,
+        "opacity_p10": 0.9894534468650817,
+        "mesh_splat_depth_p90_mm": 3.124713897705078
+      }
+    }
+  },
+  "P587": {
+    "id": "P587",
+    "label": "凸起弧缘旁的月牙形坑",
+    "glb_sha256": "4ad6b8d3cadb6fe83499ecad6251305f08d8c0c835540b576f57dd731823cd22",
+    "ply_sha256": "3a3d0b6c5a47ff31610a9f1538df144cb310c213b5a83d7f534b2f3c00bf28e6",
+    "gaussians": 258989,
+    "triangles": 101411,
+    "evidence": {
+      "source_points": 5000,
+      "reserved_all": 423,
+      "reserved_pit_points": 31,
+      "vertical_hits": 28,
+      "misses_outside_capture": 3,
+      "vertical_first_hits_on_bed": 23,
+      "heldout_vertical_mae_mm": 10.30882878568896,
+      "heldout_vertical_p90_mm": 31.019853787627643,
+      "heldout_closest_surface_p90_mm": 16.648962020874023,
+      "observed_label_bounds_m": [
+        1.0604376792907715,
+        0.3472234606742859
+      ],
+      "source_depth_p95_m": 0.10989981724010288,
+      "unsupported_grid_ray_misses": 1350,
+      "external_misses": 4,
+      "profiles": [
+        {
+          "offset_m": -0.09590253736123346,
+          "first_hit_samples": 293,
+          "unobserved_samples": 0,
+          "pit_samples": 148,
+          "pit_depth_p95_m": 0.1000490128993988
+        },
+        {
+          "offset_m": -0.001452064939640483,
+          "first_hit_samples": 293,
+          "unobserved_samples": 0,
+          "pit_samples": 188,
+          "pit_depth_p95_m": 0.10691037774085999
+        },
+        {
+          "offset_m": 0.060450068552823116,
+          "first_hit_samples": 222,
+          "unobserved_samples": 71,
+          "pit_samples": 109,
+          "pit_depth_p95_m": 0.10185630321502685
+        }
+      ]
+    },
+    "mesh_depth_p95_m": 0.10647806376218795,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      1.0479999904424115,
+      0.3599999954825953
+    ],
+    "view": {
+      "near": {
+        "core_px": 23714,
+        "opacity_p10": 0.9915897905826568,
+        "mesh_splat_depth_p90_mm": 3.169894218444824
+      },
+      "opposite": {
+        "core_px": 21962,
+        "opacity_p10": 0.9915820360183716,
+        "mesh_splat_depth_p90_mm": 2.053380012512207
+      }
+    }
+  },
+  "P588": {
+    "id": "P588",
+    "label": "偏心宽浅坑",
+    "glb_sha256": "30cd2d229f681e0c188094fa6a3d6f55986dc295634ad3a31647523e77fd467f",
+    "ply_sha256": "7d645f65e9b9aee6b04c30d8b7a6ebb2861a61c66d53881d21d89e9e74f9fb7d",
+    "gaussians": 300541,
+    "triangles": 292835,
+    "evidence": {
+      "source_points": 5000,
+      "reserved_all": 447,
+      "reserved_pit_points": 86,
+      "vertical_hits": 86,
+      "misses_outside_capture": 0,
+      "vertical_first_hits_on_bed": 72,
+      "heldout_vertical_mae_mm": 5.610643527870343,
+      "heldout_vertical_p90_mm": 12.638634205587614,
+      "heldout_closest_surface_p90_mm": 12.321512699127197,
+      "observed_label_bounds_m": [
+        1.9830257892608643,
+        0.9375170469284058
+      ],
+      "source_depth_p95_m": 0.07341377793577886,
+      "unsupported_grid_ray_misses": 5779,
+      "external_misses": 4,
+      "profiles": [
+        {
+          "offset_m": -0.12245814477785183,
+          "first_hit_samples": 288,
+          "unobserved_samples": 106,
+          "pit_samples": 145,
+          "pit_depth_p95_m": 0.04597005844116211
+        },
+        {
+          "offset_m": 0.08702951028704659,
+          "first_hit_samples": 290,
+          "unobserved_samples": 104,
+          "pit_samples": 183,
+          "pit_depth_p95_m": 0.07656276226043701
+        },
+        {
+          "offset_m": 0.2796064648801241,
+          "first_hit_samples": 289,
+          "unobserved_samples": 105,
+          "pit_samples": 171,
+          "pit_depth_p95_m": 0.07075411081314087
+        }
+      ]
+    },
+    "mesh_depth_p95_m": 0.07398026436567307,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      1.0360000286160445,
+      0.7999999932780666
+    ],
+    "view": {
+      "near": {
+        "core_px": 75183,
+        "opacity_p10": 0.9904164552688599,
+        "mesh_splat_depth_p90_mm": 2.0734071731567383
+      },
+      "opposite": {
+        "core_px": 83157,
+        "opacity_p10": 0.9921422123908996,
+        "mesh_splat_depth_p90_mm": 2.603292465209961
+      }
+    }
+  }
+}
