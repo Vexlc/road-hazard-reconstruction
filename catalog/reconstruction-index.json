@@ -1,5 +1,5 @@
 {
-  "asset_count": 1588,
+  "asset_count": 1589,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2903,6 +2903,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "vine-road": {
+      "name": "阿拉斯加 Vine Road 震后错断车道",
+      "launcher": "gen2hole/examples/vine-road/build.py",
+      "recipe": "gen2hole/examples/vine-road/survey.json",
+      "guide": "gen2hole/examples/vine-road/README.md",
+      "section": "从现场照片复现",
+      "assets": [
+        "P592"
+      ],
+      "transfer": [
+        "mesh-view",
+        "metric-ray-origins"
+      ]
     }
   },
   "transfer_routes": {
@@ -3163,7 +3177,8 @@
       "trenton-setts",
       "second-avenue",
       "deep-track-pits",
-      "dover-collapse"
+      "dover-collapse",
+      "vine-road"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**阿拉斯加 Vine Road 震后错断车道 P592**　三张早期航拍重建 10 块分离的沥青路面，南北跨度约 89 米。附短边三角网、震前高程对照、12 个合成车载机位和逐束量程。可从两期原始点云及照片重新核对关键输入。[中文复现说明](gen2hole/examples/vine-road/README.md) · [模型与回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/vine-road-v1.0.0)
+
 **华盛顿第四街凸起井盖 A591**　近处盖板提供盖好、部分移开、缺失三态；另有原照中相隔约 11.40 m 的两块可见盖面，以及同一路段连续出现两只井盖的实车前后摄。附逐束高度区间、现场标注和可独立移动的盖板。[现场、图板与复现](gen2hole/examples/pepco-trench/README.md) · [发布包](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/pepco-trench-v1.0.0)
 
 **Dover 大面积车道塌陷 P590**　从 USGS 两张反向现场照片重建一整片下沉沥青。按名义车道尺度估算，面板约 4.55 × 3.97 m，下沉深度第 95 百分位约 24 cm。附双视角支撑区网格、三条剖面、实车前后摄及逐束激光回放。[现场对照与复现](gen2hole/examples/dover-collapse/README.md) · [发布包](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/dover-collapse-v1.0.0)

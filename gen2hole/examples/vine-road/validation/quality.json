@@ -1,0 +1,35 @@
+{
+  "plates": 10,
+  "mesh_facets": 29184,
+  "strict_facets": 1288,
+  "splats": 950000,
+  "sampled_gaussians": 23171,
+  "max_splat_distance_to_mesh_m": 0.0002170685911551118,
+  "full_top_area_m2": 794.69,
+  "strict_top_area_m2": 95.37,
+  "strict_top_fraction": 0.12000906013665706,
+  "valid_grade_cells": 9537,
+  "strict_drop_m_p50_p95": [
+    1.0746833086013794,
+    1.9947036743164057
+  ],
+  "camera_frames": 12,
+  "lidar_rays": 129408,
+  "mesh_lidar_hits": 11738,
+  "strict_lidar_hits": 3521,
+  "same_plate_both_lidar_hits": 3283,
+  "third_camera": {
+    "n": 94,
+    "pixel_p50_p90": [
+      1.039374655631021,
+      2.5477495129526617
+    ]
+  },
+  "intact_control": {
+    "n": 5,
+    "abs_z_m_p50_p90": [
+      0.11747995763545482,
+      0.22129117251119387
+    ]
+  }
+}

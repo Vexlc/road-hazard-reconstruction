@@ -1,6 +1,6 @@
 # 资产系列与迁入代码对照
 
-本版登记 1,588 个资产编号、96 个重建系列和 35 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
+本版登记 1,589 个资产编号、97 个重建系列和 35 条迁入或展示路线。同一次采集的不同盖板状态分别占一个编号。表中只列每个系列的代表编号，按任意编号运行 `python3 gen2hole/gen2hole.py locate 编号` 可以查看它的配方与迁入入口。[从干净克隆到首次运行](16-reproduction-cookbook.md) · [输入包与版本](01-downloads.md)
 
 从“操作步骤”进入对应系列的文档；“重建”是实际程序入口，“配方”列出原始数据或已登记的参数。从“迁入路线”可跳到本页下方对应的宿主、实现代码和验收方法。
 
@@ -56,6 +56,7 @@
 | [第二大道大坑、倒锥与坑内杂物](../gen2hole/examples/second-avenue/README.md#%E4%BB%8E%E7%8E%B0%E5%9C%BA%E7%85%A7%E7%89%87%E5%A4%8D%E7%8E%B0) | 1 | P584 | [重建](../gen2hole/examples/second-avenue/build.py) · [配方](../gen2hole/examples/second-avenue/survey.json) | [mesh-view](#route-mesh-view)、[drive](#route-drive) |
 | [截断深槽、弧缘月牙坑与偏心宽浅坑](../gen2hole/examples/deep-track-pits/README.md#%E4%BB%8E%E5%8E%9F%E5%A7%8B%E7%82%B9%E4%BA%91%E5%A4%8D%E7%8E%B0) | 3 | P586 | [重建](../gen2hole/examples/deep-track-pits/reconstruct.py) · [配方](../gen2hole/examples/deep-track-pits/survey.json) | [mesh-view](#route-mesh-view)、[drive](#route-drive) |
 | [Dover 大面积车道下沉与张开断口](../gen2hole/examples/dover-collapse/README.md#%E4%BB%8E%E7%8E%B0%E5%9C%BA%E7%85%A7%E7%89%87%E5%A4%8D%E7%8E%B0) | 1 | P590 | [重建](../gen2hole/examples/dover-collapse/build.py) · [配方](../gen2hole/examples/dover-collapse/survey.json) | [mesh-view](#route-mesh-view)、[drive](#route-drive) |
+| [阿拉斯加 Vine Road 震后错断车道](../gen2hole/examples/vine-road/README.md#%E4%BB%8E%E7%8E%B0%E5%9C%BA%E7%85%A7%E7%89%87%E5%A4%8D%E7%8E%B0) | 1 | P592 | [重建](../gen2hole/examples/vine-road/build.py) · [配方](../gen2hole/examples/vine-road/survey.json) | [mesh-view](#route-mesh-view)、[metric-ray-origins](#route-metric-ray-origins) |
 
 ## 裂缝、积水、铺装与修补
 
@@ -140,12 +141,12 @@
 | <a id="route-photo-water"></a>photo-water | 按站点重建水面、坑床及折射回放 | 1 / 1 | [oblique_pits.py](../gen2hole/oblique_pits.py) | [P204 路缘积水坑](../docs/02-asset-reconstruction.md#p204-%E8%B7%AF%E7%BC%98%E7%A7%AF%E6%B0%B4%E5%9D%91) |
 | <a id="route-repair"></a>repair | 实拍沥青基色迁移及同机位投影 | 1 / 1 | [review-repair-transfer.py](../scripts/review-repair-transfer.py) | [迁到另一种沥青](../gen2hole/examples/transverse-repair/README.md#%E8%BF%81%E5%88%B0%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%B2%A5%E9%9D%92) |
 | <a id="route-archive"></a>archive | 封存成品及环绕复核；独立 GLB 的宿主接入见手册 | 1 / 30 | [review-large-potholes.py](../scripts/review-large-potholes.py) | [大面积坑洞](../docs/10-factory.md#%E5%A4%A7%E9%9D%A2%E7%A7%AF%E5%9D%91%E6%B4%9E) |
-| <a id="route-mesh-view"></a>mesh-view | 米制网格、标定光线与宿主遮挡合成 | 38 / 81 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [换鱼眼、换渲染器或换世界坐标](../docs/17-mixed-road-transfer.md#%E6%8D%A2%E9%B1%BC%E7%9C%BC%E6%8D%A2%E6%B8%B2%E6%9F%93%E5%99%A8%E6%88%96%E6%8D%A2%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87) |
+| <a id="route-mesh-view"></a>mesh-view | 米制网格、标定光线与宿主遮挡合成 | 39 / 82 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [换鱼眼、换渲染器或换世界坐标](../docs/17-mixed-road-transfer.md#%E6%8D%A2%E9%B1%BC%E7%9C%BC%E6%8D%A2%E6%B8%B2%E6%9F%93%E5%99%A8%E6%88%96%E6%8D%A2%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87) |
 | <a id="route-joint-props"></a>joint-props | KITTI 0000 原生联合场景的成对立体设施及前后视 | 7 / 18 | [roadside_pairs.py](../streetcrafter/joint/roadside_pairs.py) | [迁入指定的 30,000 步原生场景](../docs/19-roadside-props.md#%E8%BF%81%E5%85%A5%E6%8C%87%E5%AE%9A%E7%9A%84-30000-%E6%AD%A5%E5%8E%9F%E7%94%9F%E5%9C%BA%E6%99%AF) |
 | <a id="route-cycles"></a>cycles | Blender Cycles 原生等距鱼眼、米制深度与双物体对照 | 2 / 6 | [render-cone-cycles.py](../scripts/render-cone-cycles.py) | [在 Blender Cycles 中独立复核](../docs/20-traffic-cones.md#%E5%9C%A8-blender-cycles-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E5%A4%8D%E6%A0%B8) |
 | <a id="route-pavement-layout"></a>pavement-layout | 独立支撑面上的成组开口、实车鱼眼与 Cycles 冠形路面 | 20 / 42 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [接入自己的鱼眼或其他渲染器](../docs/21-measured-pavement.md#%E6%8E%A5%E5%85%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E9%B1%BC%E7%9C%BC%E6%88%96%E5%85%B6%E4%BB%96%E6%B8%B2%E6%9F%93%E5%99%A8) |
 | <a id="route-pavement-joint"></a>pavement-joint | 坑洞和检查井成对迁入 KITTI 联合检查点，按开口切分原路面高斯 | 22 / 45 | [pavement_pair.py](../streetcrafter/joint/pavement_pair.py) | [写入原生联合检查点](../docs/21-measured-pavement.md#%E5%86%99%E5%85%A5%E5%8E%9F%E7%94%9F%E8%81%94%E5%90%88%E6%A3%80%E6%9F%A5%E7%82%B9) |
-| <a id="route-metric-ray-origins"></a>metric-ray-origins | 逐像素起点的米制光线与独立 Cycles 正交、后向鱼眼验收 | 4 / 8 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [换鱼眼、正交相机或其他宿主](../docs/22-scanned-round-covers.md#%E6%8D%A2%E9%B1%BC%E7%9C%BC%E6%AD%A3%E4%BA%A4%E7%9B%B8%E6%9C%BA%E6%88%96%E5%85%B6%E4%BB%96%E5%AE%BF%E4%B8%BB) |
+| <a id="route-metric-ray-origins"></a>metric-ray-origins | 逐像素起点的米制光线与独立 Cycles 正交、后向鱼眼验收 | 5 / 9 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [换鱼眼、正交相机或其他宿主](../docs/22-scanned-round-covers.md#%E6%8D%A2%E9%B1%BC%E7%9C%BC%E6%AD%A3%E4%BA%A4%E7%9B%B8%E6%9C%BA%E6%88%96%E5%85%B6%E4%BB%96%E5%AE%BF%E4%B8%BB) |
 | <a id="route-surveyed-receivers"></a>surveyed-receivers | 实测路面支撑、双目前景与立体遗落物接地阴影 | 4 / 12 | [render-mixed-road.py](../scripts/render-mixed-road.py) | [更换鱼眼相机或渲染器](../docs/23-road-debris.md#%E6%9B%B4%E6%8D%A2%E9%B1%BC%E7%9C%BC%E7%9B%B8%E6%9C%BA%E6%88%96%E6%B8%B2%E6%9F%93%E5%99%A8) |
 | <a id="route-cycles-debris"></a>cycles-debris | 独立 Cycles 鱼眼的透孔、径向深度与材质法线验收 | 2 / 4 | [render-debris-cycles.py](../scripts/render-debris-cycles.py) | [独立核验与适用范围](../docs/23-road-debris.md#%E7%8B%AC%E7%AB%8B%E6%A0%B8%E9%AA%8C%E4%B8%8E%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4) |
 | <a id="route-apron-exposure"></a>apron-exposure | 从真实路面登记曝光并回放只含坑床的鱼眼近景 | 15 / 32 | [transfer-mesh-view.py](../scripts/transfer-mesh-view.py) | [在自有鱼眼或其他渲染器登记路面亮度](../docs/24-asphalt-breakouts.md#%E5%9C%A8%E8%87%AA%E6%9C%89%E9%B1%BC%E7%9C%BC%E6%88%96%E5%85%B6%E4%BB%96%E6%B8%B2%E6%9F%93%E5%99%A8%E7%99%BB%E8%AE%B0%E8%B7%AF%E9%9D%A2%E4%BA%AE%E5%BA%A6) |

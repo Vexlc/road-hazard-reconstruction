@@ -179,6 +179,8 @@ def load_inventory(parent):
 
 
 def part_id(name):
+    if name.startswith("Vine Road plate "):
+        return 13
     if name.startswith("Alexander marker "):
         return 188
     if name.startswith("Alexander casting "):
