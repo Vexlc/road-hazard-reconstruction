@@ -1,0 +1,186 @@
+{
+  "topology": {
+    "through_holes": 8,
+    "euler_characteristic": -14,
+    "connected_solids": 1,
+    "closed_oriented_mesh": true,
+    "metal_volume_m3": 0.0031891268079900746
+  },
+  "normal_rays_through_slots": 248,
+  "normal_rays_on_ribs": 217,
+  "fitted_slot_span_m": 0.33491989471349454,
+  "slot_widths_m": [
+    0.02090625,
+    0.02075,
+    0.02075,
+    0.0204375,
+    0.02121875,
+    0.02121875,
+    0.021843750000000002,
+    0.0195
+  ],
+  "inferred_thickness_m": 0.03295524142875744,
+  "thickness_residual_px": [
+    -0.4030264321811501,
+    -1.5527608040698624,
+    6.286382779682526,
+    -1.9206777457419548,
+    -2.026342178085031,
+    -0.13196693888176014
+  ],
+  "heldout_tip_errors_px": [
+    1.1336861769554814,
+    0.43828913640019085,
+    2.5470599085828955,
+    1.012378957327109
+  ],
+  "source_face_core_pixels": 116317,
+  "top_face_srgb_mae": 1.0274479798023217,
+  "top_face_srgb_p90": 2.0,
+  "camera_sensitivity": [
+    {
+      "focal_scale": 0.9,
+      "principal_shift_px": [
+        0,
+        0
+      ],
+      "thickness_m": 0.03316840704546527,
+      "slot_span_m": 0.33635985752074876,
+      "heldout_tip_max_px": 2.221485215004524
+    },
+    {
+      "focal_scale": 1.1,
+      "principal_shift_px": [
+        0,
+        0
+      ],
+      "thickness_m": 0.03284776595310766,
+      "slot_span_m": 0.33312730520793166,
+      "heldout_tip_max_px": 2.822966137671802
+    },
+    {
+      "focal_scale": 1.0,
+      "principal_shift_px": [
+        -220,
+        -160
+      ],
+      "thickness_m": 0.03317527503341388,
+      "slot_span_m": 0.33164949635754787,
+      "heldout_tip_max_px": 2.3799506423953742
+    },
+    {
+      "focal_scale": 1.0,
+      "principal_shift_px": [
+        220,
+        160
+      ],
+      "thickness_m": 0.032502662792402486,
+      "slot_span_m": 0.3379148598410123,
+      "heldout_tip_max_px": 2.7133277093622308
+    }
+  ],
+  "states": {
+    "seated": {
+      "id": "M589",
+      "label": "Brastad 白漆八槽排水篦",
+      "glb_sha256": "e6874d08f0234fab9d38979096a1a4f76ccd0889c6cd0b6de3d2b099990df1f5",
+      "ply_sha256": "e13ea3afc887a635fcb060c82b7ababda2ad46ece750b4ffdc2959c03ab5667a",
+      "gaussians": 414051,
+      "triangles": 2398,
+      "evidence": {
+        "static_contact_area_fraction": 0.37820673518843484,
+        "centroid_inside_support_hull_m": 0.19183401111714057,
+        "normal_rays": 28223,
+        "clear_to_optical_closure": 13866,
+        "throat_open_fraction": 0.4913014208269851,
+        "plate_first": 14357
+      },
+      "mesh_depth_p95_m": 0.5499998331069946,
+      "mesh_height_p95_m": 5.960464477539063e-08,
+      "installed_xy_aabb_m": [
+        0.47200000000000003,
+        0.44799999999999995
+      ],
+      "view": {
+        "near": {
+          "core_px": 162673,
+          "opacity_p10": 0.9788358449935913,
+          "mesh_splat_depth_p90_mm": 3.803348541259768
+        },
+        "opposite": {
+          "core_px": 163880,
+          "opacity_p10": 0.9917486548423767,
+          "mesh_splat_depth_p90_mm": 2.5353252887725852
+        }
+      }
+    },
+    "partial": {
+      "id": "M589",
+      "label": "Brastad 白漆八槽排水篦",
+      "glb_sha256": "e0652e8019cb1c3df67da1edba5ba4aee78aa4415856202fa90d041c38c9db8b",
+      "ply_sha256": "2a8e75b10ca988b46b346a8f27af597c00ec758a7252fa898a4fb36279120bb5",
+      "gaussians": 414051,
+      "triangles": 2398,
+      "evidence": {
+        "static_contact_area_fraction": 0.436350105428536,
+        "centroid_inside_support_hull_m": 0.1193204567995857,
+        "normal_rays": 28223,
+        "clear_to_optical_closure": 18652,
+        "throat_open_fraction": 0.660879424582787,
+        "plate_first": 9571
+      },
+      "mesh_depth_p95_m": 0.5499998331069946,
+      "mesh_height_p95_m": 0.032955288887023926,
+      "installed_xy_aabb_m": [
+        0.63,
+        0.44999999999999996
+      ],
+      "view": {
+        "near": {
+          "core_px": 101512,
+          "opacity_p10": 0.9715331315994262,
+          "mesh_splat_depth_p90_mm": 3.381240367889405
+        },
+        "opposite": {
+          "core_px": 120773,
+          "opacity_p10": 0.9793802738189697,
+          "mesh_splat_depth_p90_mm": 2.1330833435058603
+        }
+      }
+    },
+    "displaced": {
+      "id": "M589",
+      "label": "Brastad 白漆八槽排水篦",
+      "glb_sha256": "07b736cba501f8898dc54d42926048c452f90d38cbcdd7e824e0d8c7d448f3ac",
+      "ply_sha256": "d4f7c5ff5321d0f9f064720872bc31a5c59639498b1ec47a9e608dd74ea5f6e2",
+      "gaussians": 392480,
+      "triangles": 2398,
+      "evidence": {
+        "static_contact_area_fraction": 1.0,
+        "centroid_inside_support_hull_m": 0.1919937067155316,
+        "normal_rays": 28223,
+        "clear_to_optical_closure": 28223,
+        "throat_open_fraction": 1.0,
+        "plate_first": 0
+      },
+      "mesh_depth_p95_m": 0.5499998331069946,
+      "mesh_height_p95_m": 0.032955288887023926,
+      "installed_xy_aabb_m": [
+        0.9879999999999999,
+        0.552
+      ],
+      "view": {
+        "near": {
+          "core_px": 47660,
+          "opacity_p10": 0.9648232638835907,
+          "mesh_splat_depth_p90_mm": 2.9980301856994624
+        },
+        "opposite": {
+          "core_px": 67228,
+          "opacity_p10": 0.9644726872444153,
+          "mesh_splat_depth_p90_mm": 2.5756716728210454
+        }
+      }
+    }
+  }
+}

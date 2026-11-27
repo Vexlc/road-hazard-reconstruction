@@ -1,5 +1,5 @@
 {
-  "asset_count": 1585,
+  "asset_count": 1586,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2861,6 +2861,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "brastad-grate": {
+      "name": "修路现场白漆八槽排水篦的三种移盖状态",
+      "launcher": "gen2hole/examples/brastad-grate/build.py",
+      "recipe": "gen2hole/examples/brastad-grate/survey.json",
+      "guide": "gen2hole/examples/brastad-grate/README.md",
+      "section": "从现场照片复现",
+      "assets": [
+        "M589"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3168,7 +3182,8 @@
       "whites-hill",
       "callander-cover",
       "zimple-opening",
-      "alexander-opening"
+      "alexander-opening",
+      "brastad-grate"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

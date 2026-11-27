@@ -1,0 +1,50 @@
+{
+  "displaced": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 3783,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "07b736cba501f8898dc54d42926048c452f90d38cbcdd7e824e0d8c7d448f3ac"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 949,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "07b736cba501f8898dc54d42926048c452f90d38cbcdd7e824e0d8c7d448f3ac"
+    }
+  },
+  "partial": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 3066,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "e0652e8019cb1c3df67da1edba5ba4aee78aa4415856202fa90d041c38c9db8b"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 606,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "e0652e8019cb1c3df67da1edba5ba4aee78aa4415856202fa90d041c38c9db8b"
+    }
+  },
+  "seated": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 2025,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "e6874d08f0234fab9d38979096a1a4f76ccd0889c6cd0b6de3d2b099990df1f5"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 474,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "e6874d08f0234fab9d38979096a1a4f76ccd0889c6cd0b6de3d2b099990df1f5"
+    }
+  }
+}

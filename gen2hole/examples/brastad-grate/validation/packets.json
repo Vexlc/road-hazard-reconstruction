@@ -1,0 +1,25 @@
+{
+  "candidate_rows": 5916,
+  "per_sensor": {
+    "0": 1406,
+    "1": 4510
+  },
+  "max_recast_error_m": 0.0,
+  "changed_first_part_pairs": [
+    [
+      0,
+      217,
+      285
+    ],
+    [
+      217,
+      0,
+      271
+    ],
+    [
+      285,
+      271,
+      0
+    ]
+  ]
+}
