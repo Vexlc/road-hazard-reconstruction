@@ -2,6 +2,8 @@
 
 RoadGS 从道路病害参考图生成米制网格和 3D Gaussian Splatting 资产，再将它们放入 PandaSet 动态道路，回放相机画面和激光雷达回波。后续开发统一从本仓库开始。
 
+**Dover 大面积车道塌陷 P590**　从 USGS 两张反向现场照片重建一整片下沉沥青。按名义车道尺度估算，面板约 4.55 × 3.97 m，下沉深度第 95 百分位约 24 cm。附双视角支撑区网格、三条剖面、实车前后摄及逐束激光回放。[现场对照与复现](gen2hole/examples/dover-collapse/README.md) · [发布包](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/dover-collapse-v1.0.0)
+
 **修路现场白漆八槽排水篦 M589**　同一块实拍篦板提供盖好、部分移开、完全移开三态，以及独立篦板和无盖井座。可逐束比较移盖前后的车载激光与前后摄画面。[现场依据与复现](gen2hole/examples/brastad-grate/README.md) · [下载模型与回放](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/brastad-grate-v1.0.0)
 
 **实测深槽、弧缘月牙坑与宽浅坑 P586–P588**　长槽可见长度 1.49 m，月牙坑贴着半径约 0.89 m 的实测凸缘。附独立立面网格、留出点误差及 47 帧实录车道合成。[几何与复现](gen2hole/examples/deep-track-pits/README.md) · [下载](https://github.com/Vexlc/road-hazard-reconstruction/releases/tag/deep-track-pits-v1.0.0)

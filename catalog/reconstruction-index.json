@@ -1,5 +1,5 @@
 {
-  "asset_count": 1586,
+  "asset_count": 1587,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2875,6 +2875,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "dover-collapse": {
+      "name": "Dover 大面积车道下沉与张开断口",
+      "launcher": "gen2hole/examples/dover-collapse/build.py",
+      "recipe": "gen2hole/examples/dover-collapse/survey.json",
+      "guide": "gen2hole/examples/dover-collapse/README.md",
+      "section": "从现场照片复现",
+      "assets": [
+        "P590"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3134,7 +3148,8 @@
       "gervis-rupture",
       "trenton-setts",
       "second-avenue",
-      "deep-track-pits"
+      "deep-track-pits",
+      "dover-collapse"
     ],
     "裂缝、积水、铺装与修补": [
       "photo-cracks",

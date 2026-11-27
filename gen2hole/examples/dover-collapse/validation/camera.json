@@ -1,0 +1,18 @@
+{
+  "P590": {
+    "front": {
+      "frames": 7,
+      "representative_frame": 24,
+      "pixels": 41749,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "1a652097ede452c12ff8df357e3e2d1711a82688460f450d0c336cd091793fda"
+    },
+    "back": {
+      "frames": 8,
+      "representative_frame": 41,
+      "pixels": 11604,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "1a652097ede452c12ff8df357e3e2d1711a82688460f450d0c336cd091793fda"
+    }
+  }
+}

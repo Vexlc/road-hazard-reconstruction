@@ -1,0 +1,109 @@
+{
+  "P590": {
+    "id": "P590",
+    "label": "Dover 整片车道下沉与张开断口",
+    "glb_sha256": "1a652097ede452c12ff8df357e3e2d1711a82688460f450d0c336cd091793fda",
+    "ply_sha256": "58400682376646b66440ccb4a22e76a9d996b8d12ba495bd64a5056a0d64b6f3",
+    "gaussians": 760000,
+    "triangles": 55502,
+    "evidence": {
+      "raw_feature_pairs": 1162,
+      "training_inliers": 488,
+      "trained_panel_ties": 363,
+      "reserved_total": 232,
+      "reserved_epipolar_inliers": 133,
+      "reserved_panel_candidates": 155,
+      "reserved_panel_inliers": 89,
+      "coordinate_units": "conditional on lane scale",
+      "recovered_deck_extent_xy_m": [
+        4.548,
+        3.9720000000000004
+      ],
+      "training_depth_p95_m": 0.23832632852688995,
+      "model_area_weighted_depth_p95_m": 0.2406081676483154,
+      "two_view_tin_area_fraction": 0.34630123897849185,
+      "heldout_vertical_panel_hits": 89,
+      "heldout_vertical_median_mm": 2.0109120164687466,
+      "heldout_vertical_p90_mm": 8.624765525024184,
+      "cross_view": [
+        {
+          "source": 0,
+          "heldout_inside": 89,
+          "panel_first_hit": 88,
+          "model_error_median_px": 2.133925185579951,
+          "model_error_p90_px": 6.233467544225636,
+          "grade_error_median_px": 122.32924517255427,
+          "grade_error_p90_px": 173.95817200309318,
+          "tie_only_mesh_hits": 60
+        },
+        {
+          "source": 1,
+          "heldout_inside": 89,
+          "panel_first_hit": 87,
+          "model_error_median_px": 2.695958161340444,
+          "model_error_p90_px": 8.878120918560949,
+          "grade_error_median_px": 184.67071256800438,
+          "grade_error_p90_px": 325.35529381130294,
+          "tie_only_mesh_hits": 58
+        }
+      ],
+      "sensitivity": [
+        {
+          "lane_m": 3.0,
+          "focal_prior_px": 650,
+          "training_depth_p95_m": 0.2166596223036859
+        },
+        {
+          "lane_m": 3.6,
+          "focal_prior_px": 650,
+          "training_depth_p95_m": 0.2599923097974263
+        },
+        {
+          "lane_m": 3.3,
+          "focal_prior_px": 520,
+          "training_depth_p95_m": 0.2391515125528136
+        },
+        {
+          "lane_m": 3.3,
+          "focal_prior_px": 825,
+          "training_depth_p95_m": 0.23770609085677377
+        }
+      ],
+      "profiles": [
+        {
+          "offset_y_m": -0.7800000000000002,
+          "max_drop_m": 0.2296539545059204,
+          "support_samples": 96
+        },
+        {
+          "offset_y_m": 0.17999999999999972,
+          "max_drop_m": 0.23365330696105957,
+          "support_samples": 187
+        },
+        {
+          "offset_y_m": 1.092,
+          "max_drop_m": 0.24106204509735107,
+          "support_samples": 141
+        }
+      ]
+    },
+    "mesh_depth_p95_m": 0.2406079888343811,
+    "mesh_height_p95_m": 0.0,
+    "installed_xy_aabb_m": [
+      4.548,
+      3.9720000000000004
+    ],
+    "view": {
+      "near": {
+        "core_px": 97659,
+        "opacity_p10": 0.963357400894165,
+        "mesh_splat_depth_p90_mm": 5.928993225097656
+      },
+      "opposite": {
+        "core_px": 119178,
+        "opacity_p10": 0.9623852014541626,
+        "mesh_splat_depth_p90_mm": 7.431983947753906
+      }
+    }
+  }
+}
