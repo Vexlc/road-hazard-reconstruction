@@ -1,0 +1,22 @@
+{
+  "loose-cover.glb": "0d19ad4f55d43f5f9e192fce2e58716dc445a2d33cababe91e4d4678cc8f0f67",
+  "observed-pair.glb": "fa4bf8febe35637e6673448d9df492bdb36cb1518c664b8fca40acc30492528e",
+  "observations.npz": "ad581fa072dc38c34c43c38f100d191b70ecb20d5ef439bc7a134c52f35bc23f",
+  "casting.png": "24093c125c11f29a3439e6604bd91e5fcc82b8241cc7144c32d930bd131bdbd2",
+  "registration.json": "c0f4fe7032ce896e4307ad7887ad51cb0c5f0ed7437b220f79fc423ab8ee3764",
+  "raised/model/series/assets/raised/A591/asset.glb": "48ec86d1013f506d7357cd1259f8e72362c1ba72ba6c759a5273466543092a10",
+  "raised/model/series/assets/raised/A591/asset.ply": "76b44cab74560c76c23dce3d523c5f0cc3a5593c03fcb55514f199e8b77c8d1d",
+  "raised/model/series/assets/raised/A591/metadata.json": "6ffd8d9d8cbfb0d390163753d9ae4d30d17bc3240c890f0e0038345c3e24180a",
+  "raised/model/series/assets/raised/A591/surface.npz": "3fbba6e6fc87c019eb1933f1c059b1ab0d04bcc1c633490d9b84dc853c50e8b9",
+  "raised/model/series/assets/raised/A591/splat_material.npz": "7e51574f90823abed9dd24eb840342d4818a9014bb1181436ddd508394051345",
+  "offset/model/series/assets/raised/A591/asset.glb": "6c86593766a6a2b499cba67d9d36c837efc26a3b46ba2e835cdd9f88e6290520",
+  "offset/model/series/assets/raised/A591/asset.ply": "dad43de145a429402a9345e6daa4eef1b6d717f245901190b514009e6994b4f4",
+  "offset/model/series/assets/raised/A591/metadata.json": "56a41b6dcaafb3ded3d84f042e2f878c9e1dc9968f982ce82d3463bd3c97d1f1",
+  "offset/model/series/assets/raised/A591/surface.npz": "613091b150e0901d9e53ee6a34134acc1b64348e3b2a80d120a1c3eaedb7b30e",
+  "offset/model/series/assets/raised/A591/splat_material.npz": "c49aaf2f577f20f381f518d03bd252abb8f38013adaff568fd97f7a56a742eba",
+  "open/model/series/assets/raised/A591/asset.glb": "b78c980a718c336f3babe92536d848602d4c85f6b60329b72e3beb3a24e8c01b",
+  "open/model/series/assets/raised/A591/asset.ply": "5a1f74be16cd3008e16af00484f9dcc6a30b47a1b8453a41e27284849306d55b",
+  "open/model/series/assets/raised/A591/metadata.json": "8977796cb20ad0af3ad4a6fbe3b04501ea3c39981e4fb56372ba4a324d3ff72c",
+  "open/model/series/assets/raised/A591/surface.npz": "d83bd22ceee9e9015fa5d35540d4709c8fb966621448c6e894971e2a92e1166d",
+  "open/model/series/assets/raised/A591/splat_material.npz": "77200a721e33407a04c5b43d242bbfc3f7343453a6eb014e5351e1b399e35bb7"
+}

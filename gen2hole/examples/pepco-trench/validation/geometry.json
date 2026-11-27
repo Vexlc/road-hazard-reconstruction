@@ -1,0 +1,69 @@
+{
+  "states": {
+    "raised": {
+      "aperture_uncovered_fraction": 0.0,
+      "lid_source_texel_fraction": 0.7205573371668694,
+      "median_inner_first_z_m": 0.03810000419616699
+    },
+    "offset": {
+      "aperture_uncovered_fraction": 0.39024057234919857,
+      "lid_source_texel_fraction": 0.7205573371668694,
+      "median_inner_first_z_m": 0.06410002708435059
+    },
+    "open": {
+      "aperture_uncovered_fraction": 1.0,
+      "lid_source_texel_fraction": null,
+      "median_inner_first_z_m": -0.6299999952316284
+    }
+  },
+  "observed_pair_uv_checks": [
+    {
+      "vertices": 11705,
+      "triangles": 22973,
+      "max_vertex_px": 0.00010675686769098667,
+      "max_centroid_px": 0.004329126608772109
+    },
+    {
+      "vertices": 15791,
+      "triangles": 31100,
+      "max_vertex_px": 0.00010216788253394645,
+      "max_centroid_px": 0.00011419399091592665
+    }
+  ],
+  "heldout_ring_radial_median_mm": [
+    2.4111264999696624,
+    5.918893616282755
+  ],
+  "nominal_scale_trials": [
+    {
+      "diameter_m": 0.65,
+      "center_spacing_m": 10.2877591620389
+    },
+    {
+      "diameter_m": 0.72,
+      "center_spacing_m": 11.39567168718155
+    },
+    {
+      "diameter_m": 0.8,
+      "center_spacing_m": 12.661857430201724
+    }
+  ],
+  "focal_prior_trials": [
+    {
+      "prior_px": 1600,
+      "center_spacing_m": 11.396366025149637,
+      "p90_px": [
+        8.472788575593356,
+        0.7091950095315092
+      ]
+    },
+    {
+      "prior_px": 2500,
+      "center_spacing_m": 11.394869223035938,
+      "p90_px": [
+        8.47558947850199,
+        0.7095136715336687
+      ]
+    }
+  ]
+}

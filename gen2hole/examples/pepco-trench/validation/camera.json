@@ -1,0 +1,50 @@
+{
+  "raised": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 6944,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "48ec86d1013f506d7357cd1259f8e72362c1ba72ba6c759a5273466543092a10"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 1587,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "48ec86d1013f506d7357cd1259f8e72362c1ba72ba6c759a5273466543092a10"
+    }
+  },
+  "offset": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 9611,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "6c86593766a6a2b499cba67d9d36c837efc26a3b46ba2e835cdd9f88e6290520"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 2290,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "6c86593766a6a2b499cba67d9d36c837efc26a3b46ba2e835cdd9f88e6290520"
+    }
+  },
+  "open": {
+    "front": {
+      "frames": 5,
+      "representative_frame": 15,
+      "pixels": 6944,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "b78c980a718c336f3babe92536d848602d4c85f6b60329b72e3beb3a24e8c01b"
+    },
+    "back": {
+      "frames": 11,
+      "representative_frame": 28,
+      "pixels": 1587,
+      "max_ray_error_m": 0.0,
+      "glb_sha256": "b78c980a718c336f3babe92536d848602d4c85f6b60329b72e3beb3a24e8c01b"
+    }
+  }
+}

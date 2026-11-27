@@ -1,0 +1,30 @@
+{
+  "front": {
+    "frames": 8,
+    "joint_frames": 8,
+    "first_hits": [
+      {
+        "tested": 5357,
+        "max_error_m": 0.0
+      },
+      {
+        "tested": 654,
+        "max_error_m": 0.0
+      }
+    ]
+  },
+  "back": {
+    "frames": 4,
+    "joint_frames": 4,
+    "first_hits": [
+      {
+        "tested": 145,
+        "max_error_m": 0.0
+      },
+      {
+        "tested": 1154,
+        "max_error_m": 0.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "raised": {
+    "id": "A591",
+    "label": "华盛顿公用管线凸起井盖",
+    "glb_sha256": "48ec86d1013f506d7357cd1259f8e72362c1ba72ba6c759a5273466543092a10",
+    "ply_sha256": "76b44cab74560c76c23dce3d523c5f0cc3a5593c03fcb55514f199e8b77c8d1d",
+    "gaussians": 270000,
+    "triangles": 3072,
+    "evidence": {
+      "aperture_uncovered_fraction": 0.0,
+      "lid_source_texel_fraction": 0.7205573371668694,
+      "median_inner_first_z_m": 0.03810000419616699
+    },
+    "mesh_depth_p95_m": 0.0,
+    "mesh_height_p95_m": 0.03810006380081177,
+    "installed_xy_aabb_m": [
+      0.756,
+      0.756
+    ],
+    "view": {
+      "near": {
+        "core_px": 142333,
+        "opacity_p10": 0.9997524619102478,
+        "mesh_splat_depth_p90_mm": 1.1889934539794922
+      },
+      "opposite": {
+        "core_px": 146690,
+        "opacity_p10": 0.9997363090515137,
+        "mesh_splat_depth_p90_mm": 1.472175121307373
+      }
+    }
+  },
+  "offset": {
+    "id": "A591",
+    "label": "华盛顿公用管线凸起井盖",
+    "glb_sha256": "6c86593766a6a2b499cba67d9d36c837efc26a3b46ba2e835cdd9f88e6290520",
+    "ply_sha256": "dad43de145a429402a9345e6daa4eef1b6d717f245901190b514009e6994b4f4",
+    "gaussians": 269177,
+    "triangles": 3072,
+    "evidence": {
+      "aperture_uncovered_fraction": 0.39024057234919857,
+      "lid_source_texel_fraction": 0.7205573371668694,
+      "median_inner_first_z_m": 0.06410002708435059
+    },
+    "mesh_depth_p95_m": 0.6299999952316284,
+    "mesh_height_p95_m": 0.06410008668899536,
+    "installed_xy_aabb_m": [
+      0.9750000000000001,
+      0.798
+    ],
+    "view": {
+      "near": {
+        "core_px": 110300,
+        "opacity_p10": 0.9864038109779358,
+        "mesh_splat_depth_p90_mm": 2.9267072677612305
+      },
+      "opposite": {
+        "core_px": 117093,
+        "opacity_p10": 0.9761154770851135,
+        "mesh_splat_depth_p90_mm": 3.449058532714844
+      }
+    }
+  },
+  "open": {
+    "id": "A591",
+    "label": "华盛顿公用管线凸起井盖",
+    "glb_sha256": "b78c980a718c336f3babe92536d848602d4c85f6b60329b72e3beb3a24e8c01b",
+    "ply_sha256": "5a1f74be16cd3008e16af00484f9dcc6a30b47a1b8453a41e27284849306d55b",
+    "gaussians": 270000,
+    "triangles": 2306,
+    "evidence": {
+      "aperture_uncovered_fraction": 1.0,
+      "lid_source_texel_fraction": null,
+      "median_inner_first_z_m": -0.6299999952316284
+    },
+    "mesh_depth_p95_m": 0.630000114440918,
+    "mesh_height_p95_m": 0.03810000419616699,
+    "installed_xy_aabb_m": [
+      0.756,
+      0.756
+    ],
+    "view": {
+      "near": {
+        "core_px": 142333,
+        "opacity_p10": 0.9548779726028442,
+        "mesh_splat_depth_p90_mm": 3.02731990814209
+      },
+      "opposite": {
+        "core_px": 146690,
+        "opacity_p10": 0.9553191065788269,
+        "mesh_splat_depth_p90_mm": 2.6328682899475107
+      }
+    }
+  }
+}

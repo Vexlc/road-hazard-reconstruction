@@ -1,5 +1,5 @@
 {
-  "asset_count": 1587,
+  "asset_count": 1588,
   "families": {
     "baseline-stereo": {
       "name": "双目 XYZ",
@@ -2889,6 +2889,20 @@
         "mesh-view",
         "drive"
       ]
+    },
+    "pepco-trench": {
+      "name": "华盛顿凸起井盖、移盖三态与连续双井",
+      "launcher": "gen2hole/examples/pepco-trench/build.py",
+      "recipe": "gen2hole/examples/pepco-trench/survey.json",
+      "guide": "gen2hole/examples/pepco-trench/README.md",
+      "section": "从现场照片复现",
+      "assets": [
+        "A591"
+      ],
+      "transfer": [
+        "mesh-view",
+        "drive"
+      ]
     }
   },
   "transfer_routes": {
@@ -3198,7 +3212,8 @@
       "callander-cover",
       "zimple-opening",
       "alexander-opening",
-      "brastad-grate"
+      "brastad-grate",
+      "pepco-trench"
     ],
     "路侧与路面立体设施": [
       "concrete-barriers",

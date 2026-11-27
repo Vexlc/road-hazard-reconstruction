@@ -15,6 +15,8 @@ PARTS = ('background', 'adjoining road', 'fracture bed and lip', 'fracture sidew
          'concrete barrier', 'hydrant body', 'hydrant cap', 'hydrant chain', 'traffic cone', 'tyre', 'wheel rim', 'crate', 'cement sack',
          'shipping carton', 'tool chest', 'garden sack', 'wood box')
 EXACT_PARTS = {
+    'Pepco outer frame wall': 5, 'Pepco seat riser': 5,
+    'Pepco near photographed face': 9, 'Pepco far photographed face': 9,
     "Setts at the isolated asphalt loss": 178, "Setts at the connected asphalt loss": 179,
     "Photographed corroded chequer plate": 163, "Rust perforation cut edge": 164,
     'Printed wrapper caught in grate': 156, 'Snagged grate rod': 157, 'Cover lifting staple': 158, 'Photographed gutter lip': 98,
